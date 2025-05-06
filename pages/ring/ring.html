@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Arena - Ring</title>
+    <link rel="stylesheet" href="./ring.css">
+    <script src="/assets/ace/src-min-noconflict/ace.js" defer></script>
+    <script src="/assets/ace/src-min-noconflict/ext-language_tools.js" defer></script>
+    <script src="/assets/ace/src-min-noconflict/ext-emmet.js" defer></script>
+    <script src="/assets/scripts/dompurify.min.js" defer></script>
+    <script src="/assets/scripts/color.js" defer></script>
+    <script type="module" src="./ring.js" defer></script>
+</head>
+
+<body>
+    <div class="ring">
+        <div class="ring__editor">
+            <div class="ring__editor-header">
+                <div>Editor</div>
+                <div>
+                    <input type="checkbox" id="vim-mode">
+                    <label for="vim-mode">Vim mode</label>
+                </div>
+            </div>
+
+            <div class="ring__editor-body">
+                <div id="ace-editor"></div>
+            </div>
+        </div>
+
+        <div class="ring__output">
+            <div class="ring__output-header">
+                <div>Output</div>
+                <div>
+                    <input type="checkbox" id="show-diff">
+                    <label for="show-diff">Diff</label>
+                </div>
+            </div>
+
+            <div class="ring__output-body">
+                <div class="ring__label">
+                    <span>You</span>
+                    <app-progressbar id="progressbar"></app-progressbar>
+                    <span id="progress">0%</span>
+                    <div class="char-count-wrap">
+                        <span id="char-count">0</span> chars
+                    </div>
+                </div>
+
+                <div id="output-wrap">
+                    <img id="output-img" src="/assets/img/placeholder.png" alt="Output image">
+                    <iframe id="output-iframe" frameborder="0"></iframe>
+                    <img id="output-diff" src="/assets/img/placeholder.png" alt="Output difference"></img>
+                    <div id="reference-bg">
+                        <div id="ruler"></div>
+                    </div>
+                </div>
+
+                <div id="opponents-container">
+                    <!-- opponents will be added here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="ring__target">
+            <div class="ring__target-header">
+                <div>Target</div>
+            </div>
+
+            <div class="ring__target-body">
+                <div class="ring__label">
+                    <span>Recreate this target</span>
+                    <div class="hr"></div>
+                </div>
+
+                <img id="target-img" src="/assets/img/placeholder.png" alt="Target image">
+
+                <div id="target-colors"></div>
+
+                <p style="font-style: italic">Challenge Courtesy of CSSBattle<br>You can view the <a
+                        id="original-target-link" class="link" href="#" target="_blank">original challenge here</a> </p>
+
+                <a id="share-link" href="#">Invite link</a>
+
+                <div id="connection-status"></div>
+
+                <app-chat id="chat"></app-chat>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

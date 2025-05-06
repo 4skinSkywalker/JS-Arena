@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Arena - Homepage</title>
+    <link rel="stylesheet" href="./home.css">
+    <script type="module" src="./home.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Arena Challenges</h1>
+            <p>Play JS challenges with your friends!</p>
+
+            <div class="mt-3">
+                <button class="btn btn-primary">Create Lobby</button>
+            </div>
+        </div>
+
+        <h2 class="mt-xl mb-1">Open Lobbies</h2>
+        <div class="scrollable">
+            <ul>
+                <li>
+                    <div class="lobby lobby-open">
+                        <div class="lobby-content">
+                            <div class="lobby-title">Prova</div>
+                            <div class="lobby-number-of-players">Players <span>3/5</span></div>
+                        </div>
+                        <button class="btn btn-primary">Join</button>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="lobby lobby-open">
+                        <div class="lobby-content">
+                            <div class="lobby-title">Prova 2</div>
+                            <div class="lobby-number-of-players">Players <span>2/5</span></div>
+                        </div>
+                        <button class="btn btn-primary">Join</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <h2 class="mt-xl mb-1">Running Lobbies</h2>
+        <div class="scrollable">
+            <ul>
+                <li>
+                    <div class="lobby lobby-close">
+                        <div class="lobby-content">
+                            <div class="lobby-title">Prova 2</div>
+                            <div class="lobby-number-of-players">Players <span>5/5</span></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
