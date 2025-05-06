@@ -1,16 +1,3 @@
-/*Actions:
-- createRoom: Triggered when a user wants to create a new lobby
-- listRooms: Used to request the current list of available lobbies
-- joinRoom: Triggered when a user wants to join a specific lobby
-- lobbyStatus: Sent to users to update them on lobby status changes like full capacity or game starting
-- startGame: Triggered to start the game session from the lobby
-
-Events:
-- lobbyJoined: Sent to all users when someone joins a lobby
-- lobbyLeft: Sent to all users when someone leaves a lobby
-- lobbyUpdated: Sent to users when a lobby is updated, such as when a new user joins or when the lobby settings are changed
-- clientConnected: Sent when a new client connects to the socket server
-- clientDisconnected: Sent when a client disconnects from the socket server*/
 const globalRooms = {};
 const globalClients = {};
 
@@ -48,13 +35,24 @@ class Client {
         ws.on("close", () => this.handleClose(ws));
 
         this.id = getUid();
-        this.name = null;
+        this.name = "Anonymous";
         this.rooms = {};
         globalClients[this.id] = this;
     }
 
     sendMsg(topic, message) {
         this.ws.send(JSON.stringify({ topic, message }));
+    }
+
+    handleClientInfoReceived(message) {
+        const { name } = message;
+        console.log("Client info received", name);
+
+        this.name = name;
+
+        for (client of Object.values(globalClients)) {
+            client.handleListClients();
+        }
     }
 
     handlePing(clientId) {
@@ -70,19 +68,21 @@ class Client {
             return console.error("Room not defined");
         }
 
+        if (!this.rooms[roomId].clients[this.id]) {
+            return console.error("Client not in room");
+        }
+
         checkString({ text });
     
         for (const client of this.rooms[roomId].clients) {
-            if (client.id !== this.id) {
-                client.sendMsg(
-                    "chatReceived",
-                    {
-                        clientId: this.id,
-                        name: this.name || "Anonymous",
-                        text
-                    }
-                );
-            }
+            client.sendMsg(
+                "chatReceived",
+                {
+                    client: this.toJSON(),
+                    name: this.name,
+                    text
+                }
+            );
         }
     }
     
@@ -93,6 +93,10 @@ class Client {
         if (!this.rooms[roomId]) {
             return console.error("Room not defined");
         }
+
+        if (!this.rooms[roomId].clients[this.id]) {
+            return console.error("Client not in room");
+        }
     
         checkString({ numOfProblemsSolved });
 
@@ -101,28 +105,33 @@ class Client {
             const client = this.rooms[roomId].clients.find(c => c.clientId === clientId);
             if (client) {
                 client.sendMsg("progressReceived", {
-                    roomId: roomId,
-                    clientId: this.id,
+                    room: this.rooms[roomId].toJSON(),
+                    client: this.toJSON(),
                     numOfProblemsSolved
                 });
             }
         } else {
             // The data has to be sent to all clients
             for (const client of Object.values(this.rooms[roomId].clients)) {
-                if (client.clientId !== this.id) {
-                    client.sendMsg("progressReceived", {
-                        roomId: roomId,
-                        clientId: this.id,
-                        numOfProblemsSolved
-                    });
-                }
+                client.sendMsg("progressReceived", {
+                    room: this.rooms[roomId].toJSON(),
+                    client: this.toJSON(),
+                    numOfProblemsSolved
+                });
             }
         }
     }
+
+    handleListClients() {
+        this.sendMsg("clientListed", {
+            rooms: Object.values(globalClients).map(item => item.toJSON())
+        });
+    }
     
     handleListRooms() {
-        const rooms = Object.values(globalRooms).map(room => room.toJSON());
-        this.sendMsg("roomsListed", rooms);
+        this.sendMsg("roomsListed", {
+            rooms: Object.values(globalRooms).map(item => item.toJSON())
+        });
     }
 
     handleCreateRoom(message) {
@@ -130,36 +139,88 @@ class Client {
         console.log("Creating room", name);
 
         const room = new Room(name);
-        this.sendMsg("roomCreated", room.id);
+        room.host = this;
+        this.sendMsg("roomCreated", {
+            room: room.toJSON()
+        });
+
+        this.handleListRooms();
     }
 
     handleJoinRoom(message) {
         const { roomId } = message;
+
+        if (!globalRooms[roomId]) {
+            return console.error("Room not defined");
+        }
+        
         console.log("User joining room", roomId);
 
-        const room = globalRooms[roomId];
-        if (!room) {
+        globalRooms[roomId].addClient(this);
+        for (const client of Object.values(globalRooms[roomId].clients)) {
+            client.sendMsg("clientJoinedRoom", {
+                room: globalRooms[roomId].toJSON(),
+                client: this.toJSON()
+            });
+        }
+
+        this.handleListRooms();
+    }
+
+    handleRoomStatus(message) {
+        const { roomId } = message;
+
+        if (!this.rooms[roomId]) {
             return console.error("Room not defined");
         }
 
-        room.addClient(this);
-        for (const client of Object.values(this.room.clients)) {
-            if (client.clientId !== this.id) {
-                client.sendMsg("roomJoined", {
-                    roomId: room.id,
-                    clientId: this.id
-                });
-            }
+        if (!this.rooms[roomId].clients[this.id]) {
+            return console.error("Client not in room");
         }
+
+        console.log("Room status of room", roomId);
+
+        this.sendMsg("roomStatusReceived", {
+            room: this.rooms[roomId].toJSON()
+        });
     }
 
-    handleRoomStatus(message) {}
+    handleStartGame(message) {
+        const { roomId } = message;
+
+        if (!this.rooms[roomId]) {
+            return console.error("Room not defined");
+        }
+
+        if (!this.rooms[roomId].clients[this.id]) {
+            return console.error("Client not in room");
+        }
+
+        if (this.rooms[roomId].host !== this) {
+            return console.error("Only the host can start the game");
+        }
+
+        console.log("Game starting in room", roomId);
+
+        this.rooms[roomId].started = true;
+        for (const client of Object.values(this.rooms[roomId].clients)) {
+            client.sendMsg("gameStarted", {
+                room: this.rooms[roomId].toJSON()
+            });
+        }
+
+        this.handleListRooms();
+    }
 
     handleMessage(messageWrap) {
         const { topic, message } = parseMsg(messageWrap);
         console.log(topic, message);
     
         switch (topic) {
+            case "clientInfoReceived": {
+                handleClientInfoReceived(message);
+                break;
+            }
             case "ping": {
                 handlePing(message);
                 break;
@@ -170,6 +231,10 @@ class Client {
             }
             case "progress": {
                 handleProgress(message);
+                break;
+            }
+            case "listClients": {
+                handleListClients();
                 break;
             }
             case "listRooms": {
@@ -199,16 +264,14 @@ class Client {
     }
 
     handleClose() {
-        if (!this.rooms.length) {
-            return console.error("Rooms is empty");
-        }
-
-        for (const room of this.rooms) {
+        for (const room of Object.values(this.rooms)) {
             console.log(this.id, "is leaving room", room.id);
 
             if (room.removeClient(this)) {
                 for (const client of this.room.clients) {
-                    client.sendMsg("clientDisconnected", this.id);
+                    client.sendMsg("clientLeftRoom", {
+                        client: this.toJSON()
+                    });
                 }
             }
         
@@ -221,16 +284,21 @@ class Client {
     toJSON() {
         return {
             id: this.id,
-            name: this.name
+            name: this.name,
+            rooms: Object.values(this.rooms).map(item => item.toJSON())
         };
     }
 }
 
 class Room {
-    constructor(name) {
+    constructor(name, client) {
         this.id = getUid();
         this.name = name;
-        this.clients = {};
+        this.started = false;
+        this.host = client;
+        this.clients = {
+            [client.id]: client
+        };
         globalRooms[this.id] = this;
     }
 
@@ -263,13 +331,22 @@ class Room {
         return {
             id: this.id,
             name: this.name,
+            started: this.started,
+            host: this.host.name,
+            clients: Object.values(this.clients).map(item => item.toJSON())
         };
     }
+}
+
+function setClientInfo(client) {
+    client.sendMsg("setClientInfo");
 }
 
 function handleConnection(ws) {
     const client = new Client(ws);
     console.log("Client connected", client.id);
+
+    setClientInfo(client);
 }
 
 module.exports = {
