@@ -1,13 +1,20 @@
-import { getUid, parseMsg, checkString, latinize } from "/utils.js";
+import { getUid, parseMsg, checkString, latinize } from "./utils";
+import WebSocket from 'ws';
+import { IClientJSON, IPingPayload, IRoomJSON } from "./models";
 
-const globalRooms = {};
-const globalClients = {};
+const globalRooms: Record<string, Room> = {};
+const globalClients: Record<string, Client> = {};
 
 class Client {
-    constructor(ws) {
+    private ws: WebSocket;
+    public id: string;
+    public name: string;
+    public rooms: Record<string, Room>;
+
+    constructor(ws: WebSocket) {
         this.ws = ws;
-        ws.on("message", msg => this.handleMessage(ws, msg));
-        ws.on("close", () => this.handleClose(ws));
+        this.ws.on("message", message => this.handleMessage(message));
+        this.ws.on("close", () => this.handleClose());
 
         this.id = getUid();
         this.name = "Anonymous";
@@ -15,7 +22,7 @@ class Client {
         globalClients[this.id] = this;
     }
 
-    sendMsg(topic, message) {
+    sendMsg(topic: string, message?: {}) {
         this.ws.send(JSON.stringify({ topic, message }));
     }
 
@@ -25,12 +32,13 @@ class Client {
 
         this.name = name;
 
-        for (client of Object.values(globalClients)) {
+        for (const client of Object.values(globalClients)) {
             client.handleListClients();
         }
     }
 
-    handlePing(clientId) {
+    handlePing(message: IPingPayload) {
+        const { clientId } = message;
         console.log("Ping received from", clientId);
         this.sendMsg("pong");
     }
@@ -193,43 +201,43 @@ class Client {
     
         switch (topic) {
             case "clientInfoReceived": {
-                handleClientInfoReceived(message);
+                this.handleClientInfoReceived(message);
                 break;
             }
             case "ping": {
-                handlePing(message);
+                this.handlePing(message as IPingPayload);
                 break;
             }
             case "chat": {
-                handleChat(message);
+                this.handleChat(message);
                 break;
             }
             case "progress": {
-                handleProgress(message);
+                this.handleProgress(message);
                 break;
             }
             case "listClients": {
-                handleListClients();
+                this.handleListClients();
                 break;
             }
             case "listRooms": {
-                handleListRooms();
+                this.handleListRooms();
                 break;
             }
             case "createRoom": {
-                handleCreateRoom(message);
+                this.handleCreateRoom(message);
                 break;
             }
             case "joinRoom": {
-                handleJoinRoom(message);
+                this.handleJoinRoom(message);
                 break;
             }
             case "roomStatus": {
-                handleRoomStatus(message);
+                this.handleRoomStatus(message);
                 break;
             }
             case "startGame": {
-                handleStartGame(message);
+                this.handleStartGame(message);
                 break;
             }
             default: {
@@ -253,20 +261,31 @@ class Client {
             this.room.deleteFromGlobal();
         }
 
+        console.log("Client disconnected", this.id, "with name", this.name);
         delete globalClients[this.id];
     }
 
-    toJSON() {
+    toJSON(): IClientJSON {
         return {
             id: this.id,
             name: this.name,
-            rooms: Object.values(this.rooms).map(item => item.toJSON())
+            rooms: (Object.values(this.rooms) as Room[])
+                .map(room => room.toJSON())
         };
     }
 }
 
 class Room {
-    constructor(name, client) {
+    public id: string;
+    public name: string;
+    public started: boolean;
+    public host: Client;
+    public clients: Record<string, Client>;
+
+    constructor(
+        name: string,
+        client: Client
+    ) {
         this.id = getUid();
         this.name = name;
         this.started = false;
@@ -277,15 +296,15 @@ class Room {
         globalRooms[this.id] = this;
     }
 
-    addClient(client) {
+    addClient(client: Client) {
         if (this.clients[client.id]) {
             return console.error("Client already in room");
         }
 
-        this.clients[this.client.id] = client;
+        this.clients[client.id] = client;
     }
 
-    removeClient(client) {
+    removeClient(client: Client) {
         if (!this.clients[client.id]) {
             return false;
         }
@@ -299,31 +318,24 @@ class Room {
             return console.error("Cannot destroy room", this.id, "with clients in it");
         }
 
-        delete globalRooms[roomId];
+        delete globalRooms[this.id];
     }
 
-    toJSON() {
+    toJSON(): IRoomJSON {
         return {
             id: this.id,
             name: this.name,
             started: this.started,
             host: this.host.name,
-            clients: Object.values(this.clients).map(item => item.toJSON())
+            clients: (Object.values(this.clients) as Client[])
+                .map(client => client.toJSON())
         };
     }
 }
 
-function setClientInfo(client) {
-    client.sendMsg("setClientInfo");
-}
-
-function handleConnection(ws) {
+export function handleConnection(ws: WebSocket) {
     const client = new Client(ws);
     console.log("Client connected", client.id);
 
-    setClientInfo(client);
+    client.sendMsg("setClientInfo");
 }
-
-module.exports = {
-    handleConnection
-};

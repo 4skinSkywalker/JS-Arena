@@ -1,10 +1,11 @@
-const WebSocketServer = require("ws").Server;
-const http = require("http");
-const express = require("express");
+import { Server as WebSocketServer } from "ws";
+import http from "http";
+import express from "express";
+import cors from "cors";
+import { handleConnection } from "./websocket";
+
 const app = express();
-const cors = require("cors");
 const port = process.env.PORT || 5000;
-const { handleConnection } = require("./websocket-utils");
 
 process.on("unhandledRejection", (reason, p) =>
     console.error(reason, "Unhandled Rejection at Promise", p)
