@@ -12,6 +12,37 @@ export interface IRoomJSON {
     clients: IClientJSON[];
 }
 
-export interface IPingPayload {
+export interface IClientInfoReceivedMessage {
+    name: string;
+}
+
+export interface IPingMessage {
     clientId: string;
+}
+
+export interface IChatMessage {
+    roomId: string;
+    text: string;
+}
+
+export interface IProgressMessage {
+    roomId: string;
+    clientId: string;
+    howManySolved: number;
+}
+
+export interface ICreateRoomMessage {
+    name: string;
+}
+
+export interface IJoinRoomMessage {
+    roomId: string;
+}
+
+export interface IRoomStatusMessage {
+    roomId: string;
+}
+
+export interface IStartGameMessage {
+    roomId: string;
 }

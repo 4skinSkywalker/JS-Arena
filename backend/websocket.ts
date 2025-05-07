@@ -1,6 +1,6 @@
-import { getUid, parseMsg, checkString, latinize } from "./utils";
+import { getUid, parseMsg } from "./utils";
 import WebSocket from 'ws';
-import { IClientJSON, IPingPayload, IRoomJSON } from "./models";
+import { IClientInfoReceivedMessage, IPingMessage, IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage } from "./models";
 
 const globalRooms: Record<string, Room> = {};
 const globalClients: Record<string, Client> = {};
@@ -26,7 +26,7 @@ class Client {
         this.ws.send(JSON.stringify({ topic, message }));
     }
 
-    handleClientInfoReceived(message) {
+    handleClientInfoReceived(message: IClientInfoReceivedMessage) {
         const { name } = message;
         console.log("Client info received", name);
 
@@ -37,13 +37,13 @@ class Client {
         }
     }
 
-    handlePing(message: IPingPayload) {
+    handlePing(message: IPingMessage) {
         const { clientId } = message;
         console.log("Ping received from", clientId);
         this.sendMsg("pong");
     }
     
-    handleChat(message) {
+    handleChat(message: IChatMessage) {
         const { roomId, text } = message;
         console.log(this.id, "sent chat message", text);
 
@@ -54,10 +54,8 @@ class Client {
         if (!this.rooms[roomId].clients[this.id]) {
             return console.error("Client not in room");
         }
-
-        checkString({ text });
     
-        for (const client of this.rooms[roomId].clients) {
+        for (const client of Object.values(this.rooms[roomId].clients)) {
             client.sendMsg(
                 "chatReceived",
                 {
@@ -69,37 +67,34 @@ class Client {
         }
     }
     
-    handleProgress(message) {
-        const { roomId, clientId, numOfProblemsSolved } = message;
-        console.log(this.id, "sent progress", numOfProblemsSolved);
+    handleProgress(msg: IProgressMessage) {
+        console.log(this.id, "sent progress", msg.howManySolved);
 
-        if (!this.rooms[roomId]) {
+        if (!this.rooms[msg.roomId]) {
             return console.error("Room not defined");
         }
 
-        if (!this.rooms[roomId].clients[this.id]) {
+        if (!this.rooms[msg.roomId].clients[this.id]) {
             return console.error("Client not in room");
         }
-    
-        checkString({ numOfProblemsSolved });
 
-        if (clientId) {
+        if (msg.clientId) {
             // The data has to be sent to a specific client
-            const client = this.rooms[roomId].clients.find(c => c.clientId === clientId);
+            const client = this.rooms[msg.roomId].clients[msg.clientId];
             if (client) {
                 client.sendMsg("progressReceived", {
-                    room: this.rooms[roomId].toJSON(),
+                    room: this.rooms[msg.roomId].toJSON(),
                     client: this.toJSON(),
-                    numOfProblemsSolved
+                    howManySolved: msg.howManySolved
                 });
             }
         } else {
             // The data has to be sent to all clients
-            for (const client of Object.values(this.rooms[roomId].clients)) {
+            for (const client of Object.values(this.rooms[msg.roomId].clients)) {
                 client.sendMsg("progressReceived", {
-                    room: this.rooms[roomId].toJSON(),
+                    room: this.rooms[msg.roomId].toJSON(),
                     client: this.toJSON(),
-                    numOfProblemsSolved
+                    howManySolved: msg.howManySolved
                 });
             }
         }
@@ -117,11 +112,10 @@ class Client {
         });
     }
 
-    handleCreateRoom(message) {
-        const { name } = message;
-        console.log("Creating room", name);
+    handleCreateRoom(msg: ICreateRoomMessage) {
+        console.log("Creating room", msg.name);
 
-        const room = new Room(name);
+        const room = new Room(msg.name, this);
         room.host = this;
         this.sendMsg("roomCreated", {
             room: room.toJSON()
@@ -130,19 +124,17 @@ class Client {
         this.handleListRooms();
     }
 
-    handleJoinRoom(message) {
-        const { roomId } = message;
-
-        if (!globalRooms[roomId]) {
+    handleJoinRoom(msg: IJoinRoomMessage) {
+        if (!globalRooms[msg.roomId]) {
             return console.error("Room not defined");
         }
         
-        console.log("User joining room", roomId);
+        console.log("User joining room", msg.roomId);
 
-        globalRooms[roomId].addClient(this);
-        for (const client of Object.values(globalRooms[roomId].clients)) {
+        globalRooms[msg.roomId].addClient(this);
+        for (const client of Object.values(globalRooms[msg.roomId].clients)) {
             client.sendMsg("clientJoinedRoom", {
-                room: globalRooms[roomId].toJSON(),
+                room: globalRooms[msg.roomId].toJSON(),
                 client: this.toJSON()
             });
         }
@@ -150,100 +142,56 @@ class Client {
         this.handleListRooms();
     }
 
-    handleRoomStatus(message) {
-        const { roomId } = message;
-
-        if (!this.rooms[roomId]) {
+    handleRoomStatus(msg: IRoomStatusMessage) {
+        if (!this.rooms[msg.roomId]) {
             return console.error("Room not defined");
         }
 
-        if (!this.rooms[roomId].clients[this.id]) {
+        if (!this.rooms[msg.roomId].clients[this.id]) {
             return console.error("Client not in room");
         }
 
-        console.log("Room status of room", roomId);
+        console.log("Room status of room", msg.roomId);
 
         this.sendMsg("roomStatusReceived", {
-            room: this.rooms[roomId].toJSON()
+            room: this.rooms[msg.roomId].toJSON()
         });
     }
 
-    handleStartGame(message) {
-        const { roomId } = message;
-
-        if (!this.rooms[roomId]) {
+    handleStartGame(msg: IStartGameMessage) {
+        if (!this.rooms[msg.roomId]) {
             return console.error("Room not defined");
         }
 
-        if (!this.rooms[roomId].clients[this.id]) {
+        if (!this.rooms[msg.roomId].clients[this.id]) {
             return console.error("Client not in room");
         }
 
-        if (this.rooms[roomId].host !== this) {
+        if (this.rooms[msg.roomId].host !== this) {
             return console.error("Only the host can start the game");
         }
 
-        console.log("Game starting in room", roomId);
+        console.log("Game starting in room", msg.roomId);
 
-        this.rooms[roomId].started = true;
-        for (const client of Object.values(this.rooms[roomId].clients)) {
+        this.rooms[msg.roomId].started = true;
+        for (const client of Object.values(this.rooms[msg.roomId].clients)) {
             client.sendMsg("gameStarted", {
-                room: this.rooms[roomId].toJSON()
+                room: this.rooms[msg.roomId].toJSON()
             });
         }
 
         this.handleListRooms();
     }
 
-    handleMessage(messageWrap) {
-        const { topic, message } = parseMsg(messageWrap);
+    handleMessage(event: any) {
+        const { topic, message } = parseMsg(event);
         console.log(topic, message);
-    
-        switch (topic) {
-            case "clientInfoReceived": {
-                this.handleClientInfoReceived(message);
-                break;
-            }
-            case "ping": {
-                this.handlePing(message as IPingPayload);
-                break;
-            }
-            case "chat": {
-                this.handleChat(message);
-                break;
-            }
-            case "progress": {
-                this.handleProgress(message);
-                break;
-            }
-            case "listClients": {
-                this.handleListClients();
-                break;
-            }
-            case "listRooms": {
-                this.handleListRooms();
-                break;
-            }
-            case "createRoom": {
-                this.handleCreateRoom(message);
-                break;
-            }
-            case "joinRoom": {
-                this.handleJoinRoom(message);
-                break;
-            }
-            case "roomStatus": {
-                this.handleRoomStatus(message);
-                break;
-            }
-            case "startGame": {
-                this.handleStartGame(message);
-                break;
-            }
-            default: {
-                console.log("Unknown topic", topic);
-            }
+
+        if (!this.handlers[topic]) {
+            return console.error("Topic not recognized");
         }
+
+        this.handlers[topic](message);
     }
 
     handleClose() {
@@ -251,14 +199,14 @@ class Client {
             console.log(this.id, "is leaving room", room.id);
 
             if (room.removeClient(this)) {
-                for (const client of this.room.clients) {
+                for (const client of Object.values(room.clients)) {
                     client.sendMsg("clientLeftRoom", {
                         client: this.toJSON()
                     });
                 }
             }
         
-            this.room.deleteFromGlobal();
+            room.deleteFromGlobalIfEmpty();
         }
 
         console.log("Client disconnected", this.id, "with name", this.name);
@@ -273,6 +221,19 @@ class Client {
                 .map(room => room.toJSON())
         };
     }
+
+    handlers: Record<string, (msg: any) => void> = {
+        "clientInfoReceived": this.handleClientInfoReceived,
+        "ping": this.handlePing,
+        "chat": this.handleChat,
+        "progress": this.handleProgress,
+        "listClients": this.handleListClients,
+        "listRooms": this.handleListRooms,
+        "createRoom": this.handleCreateRoom,
+        "joinRoom": this.handleJoinRoom,
+        "roomStatus": this.handleRoomStatus,
+        "startGame": this.handleStartGame,
+    };
 }
 
 class Room {
@@ -313,12 +274,10 @@ class Room {
         return true;
     }
 
-    deleteFromGlobal() {
-        if (Object.keys(this.clients).length) {
-            return console.error("Cannot destroy room", this.id, "with clients in it");
+    deleteFromGlobalIfEmpty() {
+        if (!Object.keys(this.clients).length) {
+            delete globalRooms[this.id];
         }
-
-        delete globalRooms[this.id];
     }
 
     toJSON(): IRoomJSON {
