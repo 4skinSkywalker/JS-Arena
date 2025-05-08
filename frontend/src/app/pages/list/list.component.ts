@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BasicModule } from '../../basic.module';
 import { ApiService } from '../../services/api.service';
-import { map, startWith, Subject, switchMap, takeUntil } from 'rxjs';
+import { map, startWith, switchMap } from 'rxjs';
 import { FormControl } from '@angular/forms';
 
 @Component({

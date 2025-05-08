@@ -2,6 +2,11 @@ import { getUid, parseMsg } from "./utils";
 import WebSocket from 'ws';
 import { IClientInfoReceivedMessage, IPingMessage, IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage } from "./models";
 
+/**
+ * TODO:
+ * - If host leaves a room, the room should be deleted and the clients should be notified
+ */
+
 const globalRooms: Record<string, Room> = {};
 const globalClients: Record<string, Client> = {};
 
