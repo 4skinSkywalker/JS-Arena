@@ -1,0 +1,53 @@
+.container {
+    padding-inline: 1rem;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.scrollable-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scrollable-toolbar-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.scrollable  {
+    max-height: 40svh;
+    overflow-y: scroll;
+    padding: 1rem;
+    border: 2px solid rgba(var(--primary-color));
+    box-shadow: 0 0 10px 0 rgba(var(--primary-color));
+}
+
+.scrollable ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.scrollable:has(> ul:empty)::after {
+    content: "No lobbies found";
+}
+
+.lobby {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(var(--primary-color));
+    box-shadow: 0 0 10px 0 rgba(var(--primary-color));
+}
+
+.lobby-content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1rem;
+}
+
+.lobby-content > * {
+    line-height: 1.15;
+}
