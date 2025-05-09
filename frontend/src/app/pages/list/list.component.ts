@@ -59,6 +59,7 @@ export class ListComponent {
     if (!clientInfo) {
       return check("#modal-trigger");
     }
+    
     this.api.send("clientInfo", clientInfo);
   }
 
@@ -67,6 +68,7 @@ export class ListComponent {
     if (!username) {
       return console.error("Username is empty");
     }
+
     const clientInfo = { name: username };
     uncheck("#modal-trigger");
     saveIntoLS("clientInfo", JSON.stringify(clientInfo));
