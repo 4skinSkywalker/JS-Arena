@@ -1,4 +1,4 @@
-import { getUid, parseMsg } from "./utils";
+import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
 import { IPingMessage, IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage, IClientInfoMessage } from "./models";
 
@@ -16,7 +16,7 @@ class Client {
     name: string;
     rooms: Record<string, Room>;
     handlers: Record<string, (msg: any) => void> = {
-        "clientInfo": this.handleclientInfo.bind(this),
+        "clientInfo": this.handleClientInfo.bind(this),
         "ping": this.handlePing.bind(this),
         "chat": this.handleChat.bind(this),
         "progress": this.handleProgress.bind(this),
@@ -43,7 +43,7 @@ class Client {
         this.ws.send(JSON.stringify({ topic, message }));
     }
 
-    handleclientInfo(message: IClientInfoMessage) {
+    handleClientInfo(message: IClientInfoMessage) {
         const { name } = message;
         console.log("Client info received", name);
 
@@ -203,7 +203,7 @@ class Client {
     }
 
     handleMessage(event: any) {
-        const { topic, message } = parseMsg(event);
+        const { topic, message } = parseEvent(event);
         console.log(topic, message);
 
         if (!this.handlers[topic]) {

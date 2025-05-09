@@ -2,14 +2,21 @@ export function getUid() {
     return Math.random().toString(36).substring(2, 15);
 }
 
-export function parseMsg(message: string) {
-    const MAX_SIZE = 1024 * 100; // Max 100KB
-
-    if (message.length > MAX_SIZE) {
-        throw new Error("Message too big");
+export function parseEvent(event: string) {
+    if (event.length > 1024 * 100) { // Max 100KB
+        throw new Error("Event is too big");
     }
 
-    return JSON.parse(Buffer.from(message).toString("utf-8"));
+    const parsedEvent = JSON.parse(Buffer.from(event).toString("utf-8"));
+    if (!parsedEvent.topic) {
+        throw new Error("Event has no topic");
+    }
+
+    if (parsedEvent.message) {
+        parsedEvent.message = JSON.parse(parsedEvent.message);
+    }
+
+    return parsedEvent;
 }
 
 export function checkString(map: Record<string, any>) {
