@@ -1,4 +1,24 @@
+<div class="modal">
+  <input class="modal-trigger" type="checkbox" id="modal-trigger">
+  
+  <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+    <h2 class="modal-title">Insert your alias</h2>
+
+    <div class="modal-body">
+        <div class="form-control-wrap">
+            <input type="text" class="form-control" [formControl]="username" placeholder="Insert your alias">
+        </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="usernameModalOk()">Ok</button>
+    </div>
+  </div>
+</div>
+
 <div class="container">
+    <h2 class="text-center">Players connected {{ (api.clients$ | async)?.length }}</h2>
+
     <div class="scrollable-toolbar mt-xl mb-1">
         <h2 class="m-0">Open Rooms</h2>
         <div class="scrollable-toolbar-controls">

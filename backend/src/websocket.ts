@@ -1,6 +1,6 @@
 import { getUid, parseMsg } from "./utils";
 import WebSocket from 'ws';
-import { IClientInfoReceivedMessage, IPingMessage, IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage } from "./models";
+import { IPingMessage, IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage, IClientInfoMessage } from "./models";
 
 /**
  * TODO:
@@ -11,10 +11,22 @@ const globalRooms: Record<string, Room> = {};
 const globalClients: Record<string, Client> = {};
 
 class Client {
-    private ws: WebSocket;
-    public id: string;
-    public name: string;
-    public rooms: Record<string, Room>;
+    ws: WebSocket;
+    id: string;
+    name: string;
+    rooms: Record<string, Room>;
+    handlers: Record<string, (msg: any) => void> = {
+        "clientInfo": this.handleclientInfo.bind(this),
+        "ping": this.handlePing.bind(this),
+        "chat": this.handleChat.bind(this),
+        "progress": this.handleProgress.bind(this),
+        "listClients": this.handleListClients.bind(this),
+        "listRooms": this.handleListRooms.bind(this),
+        "createRoom": this.handleCreateRoom.bind(this),
+        "joinRoom": this.handleJoinRoom.bind(this),
+        "roomStatus": this.handleRoomStatus.bind(this),
+        "startGame": this.handleStartGame.bind(this),
+    };
 
     constructor(ws: WebSocket) {
         this.ws = ws;
@@ -31,7 +43,7 @@ class Client {
         this.ws.send(JSON.stringify({ topic, message }));
     }
 
-    handleClientInfoReceived(message: IClientInfoReceivedMessage) {
+    handleclientInfo(message: IClientInfoMessage) {
         const { name } = message;
         console.log("Client info received", name);
 
@@ -106,14 +118,16 @@ class Client {
     }
 
     handleListClients() {
-        this.sendMsg("clientListed", {
-            rooms: Object.values(globalClients).map(item => item.toJSON())
+        this.sendMsg("clientsListed", {
+            clients: Object.values(globalClients)
+                .map(item => item.toJSON())
         });
     }
     
     handleListRooms() {
         this.sendMsg("roomsListed", {
-            rooms: Object.values(globalRooms).map(item => item.toJSON())
+            rooms: Object.values(globalRooms)
+                .map(item => item.toJSON())
         });
     }
 
@@ -226,27 +240,14 @@ class Client {
                 .map(room => room.toJSON())
         };
     }
-
-    handlers: Record<string, (msg: any) => void> = {
-        "clientInfoReceived": this.handleClientInfoReceived,
-        "ping": this.handlePing,
-        "chat": this.handleChat,
-        "progress": this.handleProgress,
-        "listClients": this.handleListClients,
-        "listRooms": this.handleListRooms,
-        "createRoom": this.handleCreateRoom,
-        "joinRoom": this.handleJoinRoom,
-        "roomStatus": this.handleRoomStatus,
-        "startGame": this.handleStartGame,
-    };
 }
 
 class Room {
-    public id: string;
-    public name: string;
-    public started: boolean;
-    public host: Client;
-    public clients: Record<string, Client>;
+    id: string;
+    name: string;
+    started: boolean;
+    host: Client;
+    clients: Record<string, Client>;
 
     constructor(
         name: string,
@@ -300,6 +301,4 @@ class Room {
 export function handleConnection(ws: WebSocket) {
     const client = new Client(ws);
     console.log("Client connected", client.id);
-
-    client.sendMsg("setClientInfo");
 }
