@@ -22,10 +22,6 @@ export interface IClientInfoMessage {
     name: string;
 }
 
-export interface IPingMessage {
-    clientId: string;
-}
-
 export interface IChatMessage {
     roomId: string;
     text: string;
@@ -61,4 +57,8 @@ export interface IStartGameMessage {
 //      ╚═╝      ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚═════╝ 
 export interface IClientsListedMessage {
     clients: IClientJSON[];
+}
+
+export interface IRoomsListedMessage {
+    rooms: IRoomJSON[];
 }

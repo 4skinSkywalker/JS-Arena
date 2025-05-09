@@ -12,13 +12,17 @@ import { check, latinize, loadFromLS, saveIntoLS, uncheck } from '../../../utils
   styleUrl: './list.component.scss'
 })
 export class ListComponent {
+  check = check;
+  uncheck = uncheck;
   openedRooms$;
   closedRooms$;
   filterByName = new FormControl("", { nonNullable: true });
   username = new FormControl("", { nonNullable: true });
+  roomName = new FormControl("", { nonNullable: true });
 
   handlers: Handlers = {
     "clientsListed": console.warn,
+    "roomsListed": console.warn,
   };
 
   constructor(public api: ApiService) {
@@ -28,10 +32,7 @@ export class ListComponent {
         switchMap((value: string) => {
           return this.api.rooms$.pipe(
             map(rooms =>
-              rooms.filter(room => 
-                !room.started &&
-                room.name.toUpperCase().includes(value.toUpperCase())
-              )
+              rooms.filter(room => !room.started && room.name.toUpperCase().includes(value.toUpperCase()))
             )
           );
         })
@@ -48,6 +49,7 @@ export class ListComponent {
   ngOnInit() {
     this.api.subscribe(this.handlers);
     this.sendClientInfo();
+    this.api.send("listRooms");
   }
 
   ngOnDestroy() {
@@ -57,7 +59,7 @@ export class ListComponent {
   sendClientInfo() {
     const clientInfo = loadFromLS("clientInfo");
     if (!clientInfo) {
-      return check("#modal-trigger");
+      return check("#username-modal-trigger");
     }
     
     this.api.send("clientInfo", clientInfo);
@@ -70,8 +72,19 @@ export class ListComponent {
     }
 
     const clientInfo = { name: username };
-    uncheck("#modal-trigger");
-    saveIntoLS("clientInfo", JSON.stringify(clientInfo));
+    uncheck("#username-modal-trigger");
+    saveIntoLS("clientInfo", clientInfo);
     this.api.send("clientInfo", clientInfo);
+  }
+
+  roomNameModalOk() {
+    const roomName = latinize(this.roomName.value);
+    if (!roomName) {
+      return console.error("Username is empty");
+    }
+
+    const createRoom = { name: roomName };
+    uncheck("#create-room-modal-trigger");
+    this.api.send("createRoom", createRoom);
   }
 }

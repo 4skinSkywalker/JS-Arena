@@ -1,6 +1,6 @@
 import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IPingMessage, IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage, IClientInfoMessage } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage, IClientInfoMessage } from "./models";
 
 /**
  * TODO:
@@ -54,9 +54,7 @@ class Client {
         }
     }
 
-    handlePing(message: IPingMessage) {
-        const { clientId } = message;
-        console.log("Ping received from", clientId);
+    handlePing() {
         this.sendMsg("pong");
     }
     

@@ -13,12 +13,17 @@ export function debounce(callback: () => void, wait: number) {
     };
 }
 
-export function saveIntoLS(key: string, val: string) {
-    window.localStorage.setItem(key, val);
+export function saveIntoLS(key: string, val: any) {
+    window.localStorage.setItem(key, JSON.stringify(val));
 }
 
 export function loadFromLS(key: string) {
-    return window.localStorage.getItem(key);
+    const val = window.localStorage.getItem(key);
+    if (!val) {
+        throw new Error("Key not found");
+    }
+
+    return JSON.parse(val);
 }
 
 export function copyToClipboard(text: string) {
@@ -34,6 +39,8 @@ export function check(id: string) {
     const el = document.querySelector(id) as HTMLInputElement;
     if (el && "checked" in el) {
         el.checked = true;
+    } else {
+        console.error("Element not found", id);
     }
 }
 
@@ -41,6 +48,8 @@ export function uncheck(id: string) {
     const el = document.querySelector(id) as HTMLInputElement;
     if (el && "checked" in el) {
         el.checked = false;
+    } else {
+        console.error("Element not found", id);
     }
 }
 
