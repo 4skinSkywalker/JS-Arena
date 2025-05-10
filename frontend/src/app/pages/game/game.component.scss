@@ -1,14 +1,18 @@
-.game {
+.game-container {
     display: grid;
     grid-template-columns: 80ch 1fr;
-    background-color: #111;
     overflow: hidden;
 }
 
-.editor-container {
+.editor-container,
+.content-container {
+    position: relative;
     display: grid;
-    grid-template-rows: 4fr 1fr;
+    grid-template-rows: 3fr 1fr;
     height: 100svh;
+}
+
+.editor-container {
     border-right: 2px solid #333;
 }
 
@@ -20,16 +24,18 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 0.5rem 1.75rem;
+    padding: 10px 30px;
 }
 
-.console-container {
+.console-container,
+.chat-container {
     background-color: #222;
     display: grid;
     overflow: hidden;
 }
 
-.console-title {
+.console-title,
+.chat-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,14 +43,51 @@
     padding: 0 5px;
     font-size: 0.9rem;
     background-color: #181818;
-    border-bottom: 2px solid #333;
+    border-block: 2px solid #333;
     cursor: grab;
 }
 
-.console-title:active {
+.console-title:active,
+.chat-title:active {
   cursor: grabbing;
 }
 
-.console {
+.console,
+.chat {
     overflow-x: auto;
+}
+
+.sections-divider {
+    position: absolute;
+    top: 0;
+    left: calc(2px + 100%);
+    z-index: 10;
+    height: 100%;
+    width: 25px;
+    background-color: #181818;
+    border-right: 2px solid #333;
+    cursor: grab;
+}
+
+.sections-divider:active {
+  cursor: grabbing;
+}
+
+.content-container {
+    padding-left: 25px;
+}
+
+.instructions-container {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+}
+
+.instructions .nav {
+    background-color: #111;
+    border-bottom: 2px solid #333;
+}
+
+.leaderboard-container {
+    padding: 15px;
+    background-color: #111;
 }

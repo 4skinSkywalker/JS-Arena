@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { debounce, delay } from '../../../utils';
+import { debounce, delay, drag } from '../../../utils';
 
 @Component({
   selector: 'app-game',
@@ -31,7 +31,9 @@ export class GameComponent {
   async ngAfterViewInit() {
     await delay(0.2);
     this.initEditor();
+    this.initGameResize();
     this.initEditorResize();
+    this.initContentResize();
   }
 
   ngOnDestroy() {
@@ -74,32 +76,24 @@ export class GameComponent {
     localStorage.setItem(this.editorContentKey, value);
   }
 
-  drag(options: any) {
-    let { target, downCb, moveCb, upCb, ctx, direction } = options;
-    direction = direction || "x";
-    ctx = ctx || {};
-    target.addEventListener("mousedown", (mdevt: any) => {
-      document.querySelectorAll("iframe").forEach(el => el.style.pointerEvents = "none");
-      document.body.classList.add("moving");
-      const mdpos = direction === "x" ? mdevt.clientX : mdevt.clientY;
-      downCb && downCb(mdevt, ctx);
+  initGameResize() {
+    const gameContainer = document.querySelector(".game-container") as HTMLDivElement;
+    const editorContainer = document.querySelector(".editor-container");
+    const contentContainer = document.querySelector(".content-container");
+    const sectionsDivider = document.querySelector(".sections-divider");
 
-      const moveHandler = (mmevt: any) => {
-        mmevt.preventDefault();
-        const mmpos = direction === "x" ? mmevt.clientX : mmevt.clientY;
-        ctx.pos = Math.round(mmpos - mdpos);
-        moveCb && moveCb(mmevt, ctx);
-      };
-      document.addEventListener("mousemove", moveHandler);
-
-      const upHandler = (muevt: any) => {
-        document.querySelectorAll("iframe").forEach(el => el.style.pointerEvents = "initial");
-        document.body.classList.remove("moving");
-        document.removeEventListener("mousemove", moveHandler);
-        document.removeEventListener("mouseup", upHandler);
-        upCb && upCb(muevt, ctx);
-      };
-      document.addEventListener("mouseup", upHandler);
+    drag({
+      target: sectionsDivider,
+      downCb: (evt: any, ctx: any) => {
+        ctx.editorContainerWidth = editorContainer?.clientWidth;
+        ctx.contentContainerWidth = contentContainer?.clientWidth;
+      },
+      moveCb: (evt: any, ctx: any) => {
+        if (gameContainer) {
+          gameContainer.style.gridTemplateColumns = `${ctx.editorContainerWidth + ctx.pos}px ${ctx.contentContainerWidth - ctx.pos}px`;
+        }
+      },
+      direction: "x"
     });
   }
 
@@ -109,19 +103,36 @@ export class GameComponent {
     const consoleContainer = document.querySelector(".console-container");
     const consoleTitle = document.querySelector(".console-title");
 
-    this.drag({
+    drag({
       target: consoleTitle,
       downCb: (evt: any, ctx: any) => {
-        // console.log("Mouse down", evt);
         ctx.editorWrapHeight = editorWrap?.clientHeight;
         ctx.consoleContainerHeight = consoleContainer?.clientHeight;
       },
       moveCb: (evt: any, ctx: any) => {
-        // console.log("Mouse move", evt);
-        const editorWrapHeight = ctx.editorWrapHeight + ctx.pos;
-        const consoleContainerHeight = ctx.consoleContainerHeight - ctx.pos;
         if (editorContainer) {
-          editorContainer.style.gridTemplateRows = `${editorWrapHeight}px ${consoleContainerHeight}px`;
+          editorContainer.style.gridTemplateRows = `${ctx.editorWrapHeight + ctx.pos}px ${ctx.consoleContainerHeight - ctx.pos}px`;
+        }
+      },
+      direction: "y"
+    });
+  }
+
+  initContentResize() {
+    const contentContainer = document.querySelector(".content-container") as HTMLDivElement;
+    const instructionsContainer = document.querySelector(".instructions-container");
+    const chatContainer = document.querySelector(".chat-container");
+    const chatTitle = document.querySelector(".chat-title");
+
+    drag({
+      target: chatTitle,
+      downCb: (evt: any, ctx: any) => {
+        ctx.instructionsContainerHeight = instructionsContainer?.clientHeight;
+        ctx.chatContainerHeight = chatContainer?.clientHeight;
+      },
+      moveCb: (evt: any, ctx: any) => {
+        if (contentContainer) {
+          contentContainer.style.gridTemplateRows = `${ctx.instructionsContainerHeight + ctx.pos}px ${ctx.chatContainerHeight - ctx.pos}px`;
         }
       },
       direction: "y"
