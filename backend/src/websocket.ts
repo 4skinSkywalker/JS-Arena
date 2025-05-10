@@ -254,7 +254,11 @@ class Client {
                 }
             }
         
-            room.deleteFromGlobalIfEmpty();
+            if (!room.deleteFromGlobalIfEmpty() && room.host.id === this.id) {
+                const previousHost = room.host;
+                room.host = Object.values(room.clients)[0];
+                console.log(`Room "${room.name}" (${room.id}) host changed from ${previousHost.name} (${previousHost.id}) to ${room.host.name} (${room.host.id})`);
+            }
         }
 
         if (rooms.length) {
