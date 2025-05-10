@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IClientJSON, IClientsListedMessage, IRoomJSON, IRoomsListedMessage } from '../../../../backend/src/models';
+import { IClientJSON, IClientsListedMessage, IRoomJSON, IRoomsListedMessage, IWhoAmIReceivedMessage } from '../../../../backend/src/models';
 import { BehaviorSubject } from 'rxjs';
 
 export type Handlers  = Record<string, (msg: any) => void>;
@@ -10,11 +10,13 @@ export type Handlers  = Record<string, (msg: any) => void>;
 export class ApiService {
   ready = false;
   ws = new WebSocket("ws://localhost:5000");
+  client$ = new BehaviorSubject<IClientJSON | null>(null);
   rooms$ = new BehaviorSubject<IRoomJSON[]>([]);
   clients$ = new BehaviorSubject<IClientJSON[]>([]);
 
   tempMessages: { topic: string, message?: any }[] = [];
   handlers: Record<string, ((msg: any) => void)[]> = {
+    "whoAmIReceived": [this.handleWhoAmIReceived.bind(this)],
     "pong": [this.handlePong.bind(this)],
     "clientsListed": [this.handleClientListed.bind(this)],
     "roomsListed": [this.handleRoomsListed.bind(this)],
@@ -49,6 +51,18 @@ export class ApiService {
     }
   }
 
+  on(topic: string, handler: (msg: any) => void) {
+    return this.subscribe({ [topic]: handler });
+  }
+
+  one(topic: string, handler: (msg: any) => void) {
+    const _handler = (msg: any) => {
+      handler(msg);
+      this.unsubscribe({ [topic]: _handler });
+    };
+    this.subscribe({ [topic]: _handler });
+  }
+
   send(topic: string, message?: any) {
     if (!this.ready) {
       this.tempMessages.push({ topic, message });
@@ -57,17 +71,22 @@ export class ApiService {
     this.ws.send(JSON.stringify({ topic, message: JSON.stringify(message) }));
   }
 
+  handleWhoAmIReceived(msg: IWhoAmIReceivedMessage) {
+    console.log("Received client object", msg.client);
+    this.client$.next(msg.client);
+  }
+
+  handlePong() {
+    console.log("Pong received");
+    setTimeout(() => this.send("ping"), 10000);
+  }
+
   handleClientListed(msg: IClientsListedMessage) {
     this.clients$.next(msg.clients);
   }
 
   handleRoomsListed(msg: IRoomsListedMessage) {
     this.rooms$.next(msg.rooms);
-  }
-
-  handlePong() {
-    console.log("Pong received");
-    setTimeout(() => this.send("ping"), 10000);
   }
 
   handleMessage(event: any) {

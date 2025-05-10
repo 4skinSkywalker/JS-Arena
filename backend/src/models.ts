@@ -14,7 +14,7 @@ export interface IRoomJSON {
     id: string;
     name: string;
     started: boolean;
-    host: string;
+    host: IClientJSON;
     clients: IClientJSON[];
 }
 
@@ -55,10 +55,19 @@ export interface IStartGameMessage {
 // ╚════╝██╔╝    ██╔══╝  ██╔══██╗██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██║╚██╗██║██║  ██║
 //      ██╔╝     ██║     ██║  ██║╚██████╔╝██║ ╚████║   ██║   ███████╗██║ ╚████║██████╔╝
 //      ╚═╝      ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝╚═════╝ 
+export interface IWhoAmIReceivedMessage {
+    client: IClientJSON;
+}
+
 export interface IClientsListedMessage {
     clients: IClientJSON[];
 }
 
 export interface IRoomsListedMessage {
     rooms: IRoomJSON[];
+}
+
+export interface IClientLeftRoomMessage {
+    room: IRoomJSON;
+    client: IClientJSON;
 }

@@ -3,7 +3,9 @@ import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
 import { map, startWith, switchMap } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { check, latinize, loadFromLS, saveIntoLS, uncheck } from '../../../utils';
+import { check, delay, latinize, loadFromLS, saveIntoLS, uncheck } from '../../../utils';
+import { LoaderService } from '../../components/loader/loader-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -20,12 +22,13 @@ export class ListComponent {
   username = new FormControl("", { nonNullable: true });
   roomName = new FormControl("", { nonNullable: true });
 
-  handlers: Handlers = {
-    "clientsListed": console.warn,
-    "roomsListed": console.warn,
-  };
+  handlers: Handlers = {};
 
-  constructor(public api: ApiService) {
+  constructor(
+    private loaderService: LoaderService,
+    private router: Router,
+    public api: ApiService
+  ) {
     this.openedRooms$ = this.filterByName.valueChanges
       .pipe(
         startWith(""),
@@ -49,7 +52,6 @@ export class ListComponent {
   ngOnInit() {
     this.api.subscribe(this.handlers);
     this.sendClientInfo();
-    this.api.send("listRooms");
   }
 
   ngOnDestroy() {
@@ -85,6 +87,13 @@ export class ListComponent {
 
     const createRoom = { name: roomName };
     uncheck("#create-room-modal-trigger");
+
+    this.api.one("roomCreated", async ({ room }) => {
+      await this.router.navigate(["/game", room.id]);
+      this.loaderService.isLoading = false;
+    });
+
     this.api.send("createRoom", createRoom);
+    this.loaderService.isLoading = true;
   }
 }

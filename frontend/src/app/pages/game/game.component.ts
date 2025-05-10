@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-game',
@@ -8,7 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './game.component.scss'
 })
 export class GameComponent {
-  constructor(private route: ActivatedRoute) {
-    console.log(this.route.snapshot.paramMap.get('id'));
+  roomId;
+
+  constructor(
+    private route: ActivatedRoute,
+    public api: ApiService
+  ) {
+    this.roomId = this.route.snapshot.paramMap.get("id");
+    this.api.send("joinRoom", { roomId: this.roomId });
   }
 }
