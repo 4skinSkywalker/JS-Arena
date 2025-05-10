@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '../../services/api.service';
+import { ApiService, Handlers } from '../../services/api.service';
 
 @Component({
   selector: 'app-game',
@@ -11,11 +11,21 @@ import { ApiService } from '../../services/api.service';
 export class GameComponent {
   roomId;
 
+  handlers: Handlers = {};
+
   constructor(
     private route: ActivatedRoute,
     public api: ApiService
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id");
     this.api.send("joinRoom", { roomId: this.roomId });
+  }
+
+  ngOnInit() {
+    this.api.subscribe(this.handlers);
+  }
+
+  ngOnDestroy() {
+    this.api.unsubscribe(this.handlers);
   }
 }

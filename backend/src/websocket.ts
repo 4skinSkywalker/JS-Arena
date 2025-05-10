@@ -56,6 +56,7 @@ class Client {
         this.name = name;
         this.handleWhoAmI();
         this.handleAllListClients();
+        this.handleAllListRooms();
     }
 
     handlePing() {
@@ -149,7 +150,11 @@ class Client {
     handleCreateRoom(msg: ICreateRoomMessage) {
         console.log("Creating room", msg.name);
 
-        const room = new Room(msg.name, this);
+        const room = new Room({
+            id: msg.roomId,
+            name: msg.name,
+            client: this
+        });
         room.host = this;
         this.rooms[room.id] = room;
 
@@ -162,7 +167,11 @@ class Client {
 
     handleJoinRoom(msg: IJoinRoomMessage) {
         if (!globalRooms[msg.roomId]) {
-            return console.error("Room not defined");
+            console.error("Room not defined");
+            return this.handleCreateRoom({
+                roomId: msg.roomId,
+                name: "Untitled room"
+            });
         }
         
         console.log("User joining room", msg.roomId);
@@ -282,16 +291,17 @@ class Room {
     host: Client;
     clients: Record<string, Client>;
 
-    constructor(
+    constructor(opts: {
+        id?: string,
         name: string,
         client: Client
-    ) {
-        this.id = getUid();
-        this.name = name;
+    }) {
+        this.id = opts.id || getUid();
+        this.name = opts.name;
         this.started = false;
-        this.host = client;
+        this.host = opts.client;
         this.clients = {
-            [client.id]: client
+            [opts.client.id]: opts.client
         };
         globalRooms[this.id] = this;
     }
@@ -338,7 +348,4 @@ class Room {
 export function handleConnection(ws: WebSocket) {
     const client = new Client(ws);
     console.log(`Client with id ${client.id} connected`);
-    client.handleWhoAmI();
-    client.handleListClients();
-    client.handleListRooms();
 }

@@ -34,6 +34,7 @@ export interface IProgressMessage {
 }
 
 export interface ICreateRoomMessage {
+    roomId?: string;
     name: string;
 }
 

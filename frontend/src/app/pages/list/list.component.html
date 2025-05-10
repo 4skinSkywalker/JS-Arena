@@ -23,11 +23,7 @@
                             <div>Clients</div>
                             <div>{{ item.clients.length }} (@for (client of item.clients; let last = $last; track client.id) {<span>{{ client.name }}</span>{{ !last ? ", " : ""  }}})</div>
                         </div>
-                        <button 
-                            class="btn btn-primary"
-                            [routerLink]="['/game', item.id]"
-                            [disabled]="item.host.id === (api.client$ | async)?.id"
-                        >Join</button>
+                        <button class="btn btn-primary" [routerLink]="['/game', item.id]">Join</button>
                     </div>
                 </li>
             }
@@ -53,24 +49,6 @@
             }
         </ul>
     </div>
-</div>
-
-<div class="modal">
-  <input class="modal-trigger" type="checkbox" id="username-modal-trigger">
-  
-  <div class="modal-dialog" style="max-width: 500px; width: 98%;">
-    <h2 class="modal-title">What's your alias?</h2>
-
-    <div class="modal-body">
-        <div class="form-control-wrap">
-            <input type="text" class="form-control" [formControl]="username" placeholder="Insert your alias">
-        </div>
-    </div>
-
-    <div class="modal-footer">
-      <button class="btn btn-primary" (click)="usernameModalOk()">Ok</button>
-    </div>
-  </div>
 </div>
 
 <div class="modal">

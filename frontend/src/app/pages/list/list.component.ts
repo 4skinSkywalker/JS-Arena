@@ -3,7 +3,7 @@ import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
 import { map, startWith, switchMap } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { check, delay, latinize, loadFromLS, saveIntoLS, uncheck } from '../../../utils';
+import { check, latinize, uncheck } from '../../../utils';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,6 @@ export class ListComponent {
   openedRooms$;
   closedRooms$;
   filterByName = new FormControl("", { nonNullable: true });
-  username = new FormControl("", { nonNullable: true });
   roomName = new FormControl("", { nonNullable: true });
 
   handlers: Handlers = {};
@@ -47,36 +46,6 @@ export class ListComponent {
           rooms.filter(room => room.started)
         )
       );
-  }
-
-  ngOnInit() {
-    this.api.subscribe(this.handlers);
-    this.sendClientInfo();
-  }
-
-  ngOnDestroy() {
-    this.api.unsubscribe(this.handlers);
-  }
-
-  sendClientInfo() {
-    const clientInfo = loadFromLS("clientInfo");
-    if (!clientInfo) {
-      return check("#username-modal-trigger");
-    }
-    
-    this.api.send("clientInfo", clientInfo);
-  }
-
-  usernameModalOk() {
-    const username = latinize(this.username.value);
-    if (!username) {
-      return console.error("Username is empty");
-    }
-
-    const clientInfo = { name: username };
-    uncheck("#username-modal-trigger");
-    saveIntoLS("clientInfo", clientInfo);
-    this.api.send("clientInfo", clientInfo);
   }
 
   roomNameModalOk() {

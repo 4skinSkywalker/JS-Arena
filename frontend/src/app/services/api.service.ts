@@ -35,6 +35,7 @@ export class ApiService {
       if (!this.handlers[topic]) {
         this.handlers[topic] = [];
       }
+      console.log("Subscribing", topic);
       this.handlers[topic].push(handler);
     }
     return () => this.unsubscribe({ ...topicHandler });
@@ -45,6 +46,7 @@ export class ApiService {
       const handler = topicHandler[topic];
       for (let i = this.handlers[topic].length - 1; i >= 0; i--) {
         if (this.handlers[topic][i] === handler) {
+          console.log("Unsubscribing", topic);
           this.handlers[topic].splice(i, 1);
         }
       }
@@ -60,7 +62,7 @@ export class ApiService {
       handler(msg);
       this.unsubscribe({ [topic]: _handler });
     };
-    this.subscribe({ [topic]: _handler });
+    return this.subscribe({ [topic]: _handler });
   }
 
   send(topic: string, message?: any) {
