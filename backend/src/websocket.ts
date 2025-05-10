@@ -2,11 +2,6 @@ import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
 import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage, IClientInfoMessage } from "./models";
 
-/**
- * TODO:
- * - If host leaves a room, the room should be deleted and the clients should be notified
- */
-
 const globalRooms: Record<string, Room> = {};
 const globalClients: Record<string, Client> = {};
 
@@ -68,7 +63,7 @@ class Client {
             return console.error("Room not found");
         }
 
-        console.log(`Client ${this.name} (${this.id}) sent chat message "${msg.text}" in room ${this.rooms[msg.roomId].name} (${msg.roomId})`);
+        console.log(`Client "${this.name}" (${this.id}) sent chat message "${msg.text}" in room "${this.rooms[msg.roomId].name}" (${msg.roomId})`);
 
         for (const client of Object.values(this.rooms[msg.roomId].clients)) {
             client.sendMsg(
@@ -87,7 +82,7 @@ class Client {
             return console.error("Room not found");
         }
 
-        console.log(`Client ${this.name} (${this.id}) sent progress ${msg.howManySolved} in room ${this.rooms[msg.roomId].name} (${msg.roomId})`);
+        console.log(`Client "${this.name}" (${this.id}) sent progress ${msg.howManySolved} in room "${this.rooms[msg.roomId].name}" (${msg.roomId})`);
 
         if (msg.clientId) {
             // The data has to be sent to a specific client
@@ -167,7 +162,7 @@ class Client {
 
     handleJoinRoom(msg: IJoinRoomMessage) {
         if (!globalRooms[msg.roomId]) {
-            console.error("Room not defined");
+            console.error("Room not found, creating it");
             return this.handleCreateRoom({
                 roomId: msg.roomId,
                 name: "Untitled room"
@@ -248,7 +243,7 @@ class Client {
     handleClose() {
         const rooms = Object.values(this.rooms);
         for (const room of rooms) {
-            console.log(`Client ${this.name} (${this.id}) is leaving the room ${room.name} (${room.id})`);
+            console.log(`Client "${this.name}" (${this.id}) is leaving the room "${room.name}" (${room.id})`);
 
             if (room.removeClient(this)) {
                 for (const client of Object.values(room.clients)) {
@@ -266,7 +261,7 @@ class Client {
             this.handleAllListRooms();
         }
 
-        console.log(`Client ${this.name} (${this.id}) disconnected`);
+        console.log(`Client "${this.name}" (${this.id}) disconnected`);
         delete globalClients[this.id];
 
         this.handleAllListClients();
