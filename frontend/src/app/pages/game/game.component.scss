@@ -8,7 +8,7 @@
 .content-container {
     position: relative;
     display: grid;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 2.5fr 1fr;
     height: 100svh;
 }
 
@@ -54,7 +54,7 @@
 
 .console,
 .chat {
-    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .sections-divider {
@@ -80,14 +80,39 @@
 .instructions-container {
     display: grid;
     grid-template-columns: 1fr 250px;
+    overflow: hidden;
+}
+
+.instructions {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
 }
 
 .instructions .nav {
     background-color: #111;
-    border-bottom: 2px solid #333;
+    border: none;
+}
+
+.instructions .nav-content {
+    padding: 15px;
+    overflow-y: auto;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
 }
 
 .leaderboard-container {
-    padding: 15px;
+    padding: 20px;
     background-color: #111;
+    display: grid;
+    gap: 20px;
+    align-content: start;
+    overflow-y: auto;
+}
+
+.leaderboard-container tbody td:nth-child(2) {
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

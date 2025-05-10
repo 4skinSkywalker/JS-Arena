@@ -20,7 +20,7 @@ export function saveIntoLS(key: string, val: any) {
 export function loadFromLS(key: string) {
     const val = window.localStorage.getItem(key);
     if (!val) {
-        throw new Error("Key not found");
+        return null;
     }
 
     return JSON.parse(val);

@@ -12,6 +12,7 @@ import { debounce, delay, drag } from '../../../utils';
 export class GameComponent {
   roomId;
   editorContentKey;
+  navTab: "instructions" | "benchmark" = "instructions";
 
   handlers: Handlers = {};
 
