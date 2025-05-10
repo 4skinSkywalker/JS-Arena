@@ -1,0 +1,50 @@
+.game {
+    display: grid;
+    grid-template-columns: 80ch 1fr;
+    background-color: #111;
+    overflow: hidden;
+}
+
+.editor-container {
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    height: 100svh;
+    border-right: 2px solid #333;
+}
+
+.editor-wrap {
+    position: relative;
+}
+
+.editor-floatbar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem 1.75rem;
+}
+
+.console-container {
+    background-color: #222;
+    display: grid;
+    overflow: hidden;
+}
+
+.console-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    padding: 0 5px;
+    font-size: 0.9rem;
+    background-color: #181818;
+    border-bottom: 2px solid #333;
+    cursor: grab;
+}
+
+.console-title:active {
+  cursor: grabbing;
+}
+
+.console {
+    overflow-x: auto;
+}
