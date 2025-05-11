@@ -6,6 +6,10 @@ body {
     padding: 0;
 }
 
+body::before {
+    all: unset;
+}
+
 .ace_editor {
     font: inherit;
     height: 100%;
