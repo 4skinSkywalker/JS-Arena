@@ -58,7 +58,13 @@ export class GameComponent {
 
   @HostListener("document:keydown", ["$event"])
   handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.shiftKey && event.key === "Enter") {
+      event.preventDefault();
+      this.runCode(null);
+    }
+    
     if (event.ctrlKey && event.key === "Enter") {
+      event.preventDefault();
       this.runAllTests();
     }
   }
