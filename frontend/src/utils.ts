@@ -93,3 +93,30 @@ export function drag(options: any) {
         document.addEventListener("mouseup", upHandler);
     });
 }
+
+export function equal(a: any, b: any): boolean {
+    // Strict equality for primitives
+    if (a === b) return true;
+
+    // Check if both are arrays
+    if (Array.isArray(a) && Array.isArray(b)) {
+        if (a.length !== b.length) return false;
+        return a.every((val, i) => equal(val, b[i]));
+    }
+
+    // Check if both are objects
+    if (
+        typeof a === "object" &&
+        typeof b === "object" &&
+        a !== null &&
+        b !== null
+    ) {
+        const keysA = Object.keys(a);
+        const keysB = Object.keys(b);
+        if (keysA.length !== keysB.length) return false;
+        return keysA.every((key) => equal(a[key], b[key]));
+    }
+
+    // Fallback for other types
+    return false;
+}

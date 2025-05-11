@@ -48,6 +48,11 @@
     border-block: 2px solid #333;
 }
 
+.editor-buttons {
+    display: flex;
+    gap: var(--tertiary-space);
+}
+
 .console-container,
 .chat-container {
     background-color: #222;
@@ -88,20 +93,20 @@
 }
 
 .console-message {
-    padding: 5px;
+    padding: 5px var(--tertiary-space);
     border-bottom: 2px solid #333;
 }
 
-.console-message.log {
-    color: #fff;
+.log-color {
+    color: #fff !important;
 }
 
-.console-message.warn {
-    color: #fd0;
+.warn-color {
+    color: #fd0 !important;
 }
 
-.console-message.error {
-    color: #f00;
+.error-color {
+    color: #f00 !important;
 }
 
 .content-container {
@@ -148,6 +153,14 @@
     background-color: #181818;
 }
 
+.benchmark-accordion .accordion-item.test-passed {
+    background-color: #040;
+}
+
+.benchmark-accordion .accordion-item.test-failed {
+    background-color: #400;
+}
+
 .benchmark-accordion-header-content {
     display: flex;
     justify-content: space-between;
@@ -156,6 +169,14 @@
 
 .benchmark-accordion .accordion-body {
     background: #222;
+}
+
+.benchmark-accordion .accordion-item.test-passed .accordion-body {
+    background-color: #020;
+}
+
+.benchmark-accordion .accordion-item.test-failed .accordion-body {
+    background-color: #200;
 }
 
 .leaderboard-container {

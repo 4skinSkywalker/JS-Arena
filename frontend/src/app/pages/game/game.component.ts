@@ -1,15 +1,22 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { debounce, delay, drag, getUid } from '../../../utils';
+import { debounce, delay, drag } from '../../../utils';
 import { IChatReceivedMessage } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 
 interface IConsoleLogMessage {
-  id: string;
   level: "log" | "warn" | "error";
   text: string;
+}
+
+interface ITest {
+  status: "pending" | "passed" | "failed";
+  input: any;
+  expectedOutput: any;
+  output: any;
+  logs: IConsoleLogMessage[];
 }
 
 @Component({
@@ -26,6 +33,33 @@ export class GameComponent {
   consoleLogMessages: IConsoleLogMessage[] = [];
   chatMessages: IChatReceivedMessage[] = [];
   chatMessage = new FormControl("", { nonNullable: true });
+  tests: ITest[] = [
+    {
+      status: "failed",
+      input: [1, 2, 3, 4, 5],
+      expectedOutput: 15,
+      output: 9,
+      logs: [
+        { level: "log", text: "Sum is 15" }
+      ]
+    },
+    {
+      status: "passed",
+      input: [1, 2, 3, 4, 5],
+      expectedOutput: 15,
+      output: 9,
+      logs: [
+        { level: "log", text: "Sum is 15" }
+      ]
+    },
+    {
+      status: "pending",
+      input: [1, 2, 3, 4, 5],
+      expectedOutput: 15,
+      output: null,
+      logs: []
+    }
+  ];
 
   handlers: Handlers = {
     "chatReceived": this.handleChatReceived.bind(this)
@@ -34,7 +68,7 @@ export class GameComponent {
   @HostListener("document:keydown", ["$event"])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === "Enter") {
-      this.runCode();
+      this.runAllTests();
     }
   }
 
@@ -174,7 +208,6 @@ export class GameComponent {
   consoleLog(level: "log" | "warn" | "error") {
     return (...args: any) => {
       this.consoleLogMessages.push({
-        id: getUid(),
         level,
         text: args.map((arg: any) => {
           return (typeof arg === "string") 
@@ -187,17 +220,26 @@ export class GameComponent {
     };
   }
 
-  async runCode() {
+  async runCode(input: any, loggers?: { log?: () => void, warn?: () => void, error?: () => void }) {
     this.consoleLogMessages = [];
     await delay(0.1);
-    (window as any).llog = this.consoleLog("log");
-    (window as any).lwarn = this.consoleLog("warn");
-    (window as any).lerror = this.consoleLog("error");
+    (window as any).llog = !loggers?.log ? this.consoleLog("log") : loggers.log;
+    (window as any).lwarn = !loggers?.warn ? this.consoleLog("warn") : loggers.warn;
+    (window as any).lerror = !loggers?.error ? this.consoleLog("error") : loggers.error;
     const tamperedContent = this.editorContent
       .replace(/console\.log/g, "llog")
       .replace(/console\.warn/g, "lwarn")
       .replace(/console\.error/g, "lerror");
     window.eval(tamperedContent);
+    return (window as any).solution && (window as any).solution(input);
+  }
+
+  async runSingleTest(index: number) {
+
+  }
+
+  async runAllTests() {
+
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {

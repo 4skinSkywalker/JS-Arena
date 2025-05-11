@@ -13,19 +13,19 @@
     <div class="scrollable">
         <ul>
             @for (item of openedRooms$ | async; track item.id) {
-                <li>
-                    <div class="lobby lobby-open">
-                        <div class="lobby-content">
-                            <div>Room</div>
-                            <div>{{ item.name }}</div>
-                            <div>Host</div>
-                            <div>{{ item.host.name }}</div>
-                            <div>Clients</div>
-                            <div>{{ item.clients.length }} (@for (client of item.clients; let last = $last; track client.id) {<span>{{ client.name }}</span>{{ !last ? ", " : ""  }}})</div>
-                        </div>
-                        <button class="btn btn-primary" [routerLink]="['/game', item.id]">Join</button>
+            <li>
+                <div class="lobby lobby-open">
+                    <div class="lobby-content">
+                        <div>Room</div>
+                        <div>{{ item.name }}</div>
+                        <div>Host</div>
+                        <div>{{ item.host.name }}</div>
+                        <div>Clients</div>
+                        <div>{{ item.clients.length }} (@for (client of item.clients; let last = $last; track client.id) {<span>{{ client.name }}</span>{{ !last ? ", " : ""  }}})</div>
                     </div>
-                </li>
+                    <button class="btn btn-primary" [routerLink]="['/game', item.id]">Join</button>
+                </div>
+            </li>
             }
         </ul>
     </div>
@@ -34,18 +34,18 @@
     <div class="scrollable">
         <ul>
             @for (item of closedRooms$ | async; track item.id) {
-                <li>
-                    <div class="lobby lobby-close">
-                        <div class="lobby-content">
-                            <div>Room</div>
-                            <div>{{ item.name }}</div>
-                            <div>Host</div>
-                            <div>{{ item.host }}</div>
-                            <div>Clients</div>
-                            <div>{{ item.clients.length }}</div>
-                        </div>
+            <li>
+                <div class="lobby lobby-close">
+                    <div class="lobby-content">
+                        <div>Room</div>
+                        <div>{{ item.name }}</div>
+                        <div>Host</div>
+                        <div>{{ item.host }}</div>
+                        <div>Clients</div>
+                        <div>{{ item.clients.length }}</div>
                     </div>
-                </li>
+                </div>
+            </li>
             }
         </ul>
     </div>
