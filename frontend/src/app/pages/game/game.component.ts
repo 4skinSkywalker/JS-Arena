@@ -235,7 +235,7 @@ export class GameComponent {
         }).join(" ")
       });
 
-      setTimeout(() => this.scrollToBottom(".console"), 200);
+      setTimeout(() => this.scrollToBottom(".console"), 150);
     };
   }
 
