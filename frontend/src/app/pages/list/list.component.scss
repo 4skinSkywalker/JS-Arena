@@ -38,7 +38,6 @@
     align-items: center;
     padding: var(--tertiary-space) var(--secondary-space);
     border: 2px solid rgba(var(--primary-color));
-    box-shadow: 0 0 10px 0 rgba(var(--primary-color));
 }
 
 .lobby-content {
@@ -49,8 +48,11 @@
 }
 
 .lobby-content > * {
-    line-height: 1.15;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.lobby-content > *:nth-child(even) {
+    font-weight: 700;
 }
