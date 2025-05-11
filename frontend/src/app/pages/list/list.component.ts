@@ -46,6 +46,8 @@ export class ListComponent {
           rooms.filter(room => room.started)
         )
       );
+
+    this.api.send("listRooms");
   }
 
   roomNameModalOk() {

@@ -20,8 +20,6 @@
                         <div>{{ item.name }}</div>
                         <div>Host</div>
                         <div>{{ item.host.name }}</div>
-                        <div>Clients</div>
-                        <div>{{ item.clients.length }} (@for (client of item.clients; let last = $last; track client.id) {<span>{{ client.name }}</span>{{ !last ? ", " : ""  }}})</div>
                     </div>
                     <button class="btn btn-primary" [routerLink]="['/game', item.id]">Join</button>
                 </div>

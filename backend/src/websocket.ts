@@ -76,7 +76,6 @@ class Client {
         this.name = name;
         this.handleWhoAmI();
         sendEverybodyClients();
-        sendEverybodyRooms();
     }
 
     handlePing() {
@@ -164,10 +163,8 @@ class Client {
         
         console.log("User joining room", msg.roomId);
 
-        globalRooms[msg.roomId].addClient(this);
         this.rooms[msg.roomId] = globalRooms[msg.roomId];
-
-        sendEverybodyRooms();
+        this.rooms[msg.roomId].addClient(this);
     }
 
     handleRoomDetails(msg: IRoomDetailsMessage) {
@@ -357,6 +354,7 @@ class Room {
     deleteFromGlobalIfEmpty() {
         if (!Object.keys(this.clients).length) {
             delete globalRooms[this.id];
+            sendEverybodyRooms();
             return true;
         }
         return false;
