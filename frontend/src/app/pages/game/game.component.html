@@ -1,10 +1,11 @@
 <div class="game-container">
     <div class="editor-container">
         <div class="editor-wrap">
-            <div class="editor" id="editor"></div>
-            <div class="editor-floatbar">
-                <button class="btn btn-primary" (click)="runCode()">Run</button>
+            <div class="editor-title">
+                <span>Editor</span>
+                <button class="btn compact btn-primary" (click)="runCode()">Run (⌘ + ↵)</button>
             </div>
+            <div class="editor" id="editor"></div>
         </div>
         <div class="console-container">
             <div class="console-title">Console</div>
@@ -26,10 +27,10 @@
             <div class="instructions">
                 <ul class="nav">
                     <li class="nav-item" [class.active]="navTab === 'instructions'">
-                        <a class="nav-link" href="javascript:void(0)" (click)="navTab = 'instructions'">Instructions</a>
+                        <a class="nav-link compact" href="javascript:void(0)" (click)="navTab = 'instructions'">Instructions</a>
                     </li>
                     <li class="nav-item" [class.active]="navTab === 'benchmark'">
-                        <a class="nav-link" href="javascript:void(0)" (click)="navTab = 'benchmark'">Benchmark</a>
+                        <a class="nav-link compact" href="javascript:void(0)" (click)="navTab = 'benchmark'">Benchmark</a>
                     </li>
                 </ul>
                 <div class="nav-content">
@@ -192,8 +193,8 @@
                 }
             </div>
             <div class="chat-composer">
-                <input type="text" class="form-control" placeholder="Type your message here...">
-                <button class="btn btn-primary">Send</button>
+                <input type="text" class="form-control compact" placeholder="Type your message here...">
+                <button class="btn compact btn-primary">Send (↵)</button>
             </div>
         </div>
     </div>

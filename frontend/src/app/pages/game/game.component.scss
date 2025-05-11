@@ -1,3 +1,10 @@
+.compact {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
 .game-container {
     display: grid;
     grid-template-columns: 640px 1fr;
@@ -16,7 +23,7 @@
 }
 
 .content-container {
-    grid-template-rows: 1fr 275px;
+    grid-template-rows: 1fr 250px;
 }
 
 .editor-container {
@@ -24,14 +31,21 @@
 }
 
 .editor-wrap {
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.editor-floatbar {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 0 30px var(--tertiary-space) 0;
+.editor-title,
+.console-title,
+.chat-title {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px var(--tertiary-space);
+    font-size: 0.9rem;
+    background-color: #181818;
+    border-block: 2px solid #333;
 }
 
 .console-container,
@@ -44,15 +58,6 @@
 
 .console-title,
 .chat-title {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 30px;
-    padding: 0 5px;
-    font-size: 0.9rem;
-    background-color: #181818;
-    border-block: 2px solid #333;
     cursor: grab;
 }
 
@@ -118,6 +123,8 @@
 .instructions .nav {
     background-color: #111;
     border: none;
+    gap: var(--tertiary-space);
+    padding: 5px var(--tertiary-space);
 }
 
 .instructions .nav-content {
@@ -184,6 +191,11 @@
     display: flex;
     gap: var(--tertiary-space);
     align-items: center;
-    padding: var(--tertiary-space);
+    padding: 5px var(--tertiary-space);
     border-top: 2px solid #333;
+}
+
+.chat-composer input {
+    border: none;
+    box-shadow: none;
 }

@@ -10,6 +10,10 @@ body::before {
     all: unset;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
 .ace_editor {
     font: inherit;
     height: 100%;
