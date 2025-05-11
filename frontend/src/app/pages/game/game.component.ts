@@ -2,22 +2,9 @@ import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { debounce, delay, drag, equal } from '../../../utils';
-import { IChatReceivedMessage } from '../../../../../backend/src/models';
+import { IChatReceivedMessage, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
-
-interface IConsoleLogMessage {
-  level: "log" | "warn" | "error";
-  text: string;
-}
-
-interface ITest {
-  status: "pending" | "running" | "passed" | "failed";
-  input: any;
-  expectedOutput: any;
-  output: any;
-  logs: IConsoleLogMessage[];
-}
 
 @Component({
   selector: 'app-game',
@@ -30,9 +17,10 @@ export class GameComponent {
   editorContent = "";
   editorContentKey;
   navTab: "instructions" | "benchmark" = "instructions";
-  consoleLogMessages: IConsoleLogMessage[] = [];
+  consoleLogMessages: ILogMessage[] = [];
   chatMessages: IChatReceivedMessage[] = [];
   chatMessage = new FormControl("", { nonNullable: true });
+  room?: IRoomJSON;
   tests: ITest[] = [
     {
       status: "failed",
@@ -62,7 +50,8 @@ export class GameComponent {
   ];
 
   handlers: Handlers = {
-    "chatReceived": this.handleChatReceived.bind(this)
+    "chatReceived": this.handleChatReceived.bind(this),
+    "roomDetailsReceived": this.handleRoomDetailsReceived.bind(this)
   };
 
   @HostListener("document:keydown", ["$event"])
@@ -79,6 +68,7 @@ export class GameComponent {
     this.roomId = this.route.snapshot.paramMap.get("id");
     this.editorContentKey = `editor-content-${this.roomId}`;
     this.api.send("joinRoom", { roomId: this.roomId });
+    this.api.send("roomDetails", { roomId: this.roomId });
   }
 
   ngOnInit() {
@@ -245,9 +235,9 @@ export class GameComponent {
 
     await delay(0.2);
     const output = await this.runCode(test.input, {
-      log: (...args: any) => test.logs.push(this.createLog("log", args)),
-      warn: (...args: any) => test.logs.push(this.createLog("warn", args)),
-      error: (...args: any) => test.logs.push(this.createLog("error", args))
+      log: (...args: any) => test.logs?.push(this.createLog("log", args)),
+      warn: (...args: any) => test.logs?.push(this.createLog("warn", args)),
+      error: (...args: any) => test.logs?.push(this.createLog("error", args))
     });
 
     if (equal(output, test.expectedOutput)) {
@@ -266,6 +256,10 @@ export class GameComponent {
   handleChatReceived(msg: IChatReceivedMessage) {
     this.chatMessages.push(msg);
     this.scrollToBottom(".chat");
+  }
+
+  handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
+    console.warn("Room details received", msg.room);
   }
 
   sendChatMessage(message: string) {

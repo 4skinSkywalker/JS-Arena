@@ -1,9 +1,30 @@
 import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomStatusMessage, IStartGameMessage, IClientInfoMessage } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions } from "./models";
+import { PROBLEMS } from "./problems";
 
 const globalRooms: Record<string, Room> = {};
 const globalClients: Record<string, Client> = {};
+
+function sendEverybodyClients() {
+    console.log("Sending clients to every client");
+    for (const client of Object.values(globalClients)) {
+        client.sendMsg("clientsListed", {
+            clients: Object.values(globalClients)
+                .map(item => item.toJSON())
+        });
+    }
+}
+
+function sendEverybodyRooms() {
+    console.log("Sending rooms to every client");
+    for (const client of Object.values(globalClients)) {
+        client.sendMsg("roomsListed", {
+            rooms: Object.values(globalRooms)
+                .map(item => item.toJSON())
+        });
+    }
+}
 
 class Client {
     ws: WebSocket;
@@ -20,7 +41,7 @@ class Client {
         "listRooms": this.handleListRooms.bind(this),
         "createRoom": this.handleCreateRoom.bind(this),
         "joinRoom": this.handleJoinRoom.bind(this),
-        "roomStatus": this.handleRoomStatus.bind(this),
+        "roomDetails": this.handleRoomDetails.bind(this),
         "startGame": this.handleStartGame.bind(this),
     };
 
@@ -35,13 +56,17 @@ class Client {
         globalClients[this.id] = this;
     }
 
+    getRoomsArray() {
+        return Object.values(this.rooms);
+    }
+
     sendMsg(topic: string, message?: {}) {
         this.ws.send(JSON.stringify({ topic, message }));
     }
 
     handleWhoAmI() {
         console.log("Sending client his/her info");
-        this.sendMsg("whoAmIReceived", { client: this.toJSON(true) });
+        this.sendMsg("whoAmIReceived", { client: this.toJSON({ includeRooms: true }) });
     }
 
     handleClientInfo(message: IClientInfoMessage) {
@@ -50,8 +75,8 @@ class Client {
 
         this.name = name;
         this.handleWhoAmI();
-        this.handleAllListClients();
-        this.handleAllListRooms();
+        sendEverybodyClients();
+        sendEverybodyRooms();
     }
 
     handlePing() {
@@ -63,22 +88,10 @@ class Client {
             return console.error("Room not found");
         }
 
-        console.log(`Client "${this.name}" (${this.id}) sent chat message "${msg.text}" in room "${this.rooms[msg.roomId].name}" (${msg.roomId})`);
-
-        for (const client of Object.values(this.rooms[msg.roomId].clients)) {
-            client.sendMsg(
-                "chatReceived",
-                {
-                    id: getUid(),
-                    room: this.rooms[msg.roomId].toJSON(),
-                    client: this.toJSON(),
-                    time: new Date().toLocaleTimeString(),
-                    text: msg.text
-                }
-            );
-        }
+        this.rooms[msg.roomId].sendChatMessage(msg.text, this);
     }
     
+    // TODO: Refactor this method something can be moved into the Room class
     handleProgress(msg: IProgressMessage) {
         if (!this.rooms[msg.roomId]) {
             return console.error("Room not found");
@@ -98,7 +111,7 @@ class Client {
             }
         } else {
             // The data has to be sent to all clients
-            for (const client of Object.values(this.rooms[msg.roomId].clients)) {
+            for (const client of this.rooms[msg.roomId].getClientsArray()) {
                 client.sendMsg("progressReceived", {
                     room: this.rooms[msg.roomId].toJSON(),
                     client: this.toJSON(),
@@ -108,32 +121,12 @@ class Client {
         }
     }
 
-    handleAllListClients() {
-        console.log("Sending clients to every client");
-        for (const client of Object.values(globalClients)) {
-            client.sendMsg("clientsListed", {
-                clients: Object.values(globalClients)
-                    .map(item => item.toJSON())
-            });
-        }
-    }
-
     handleListClients() {
         console.log("Sending clients to requester");
         this.sendMsg("clientsListed", {
             clients: Object.values(globalClients)
                 .map(item => item.toJSON())
         });
-    }
-
-    handleAllListRooms() {
-        console.log("Sending rooms to every client");
-        for (const client of Object.values(globalClients)) {
-            client.sendMsg("roomsListed", {
-                rooms: Object.values(globalRooms)
-                    .map(item => item.toJSON())
-            });
-        }
     }
     
     handleListRooms() {
@@ -155,11 +148,9 @@ class Client {
         room.host = this;
         this.rooms[room.id] = room;
 
-        this.sendMsg("roomCreated", {
-            room: room.toJSON()
-        });
+        this.sendMsg("roomCreated", { room: room.toJSON() });
 
-        this.handleAllListRooms();
+        sendEverybodyRooms();
     }
 
     handleJoinRoom(msg: IJoinRoomMessage) {
@@ -176,17 +167,10 @@ class Client {
         globalRooms[msg.roomId].addClient(this);
         this.rooms[msg.roomId] = globalRooms[msg.roomId];
 
-        for (const client of Object.values(globalRooms[msg.roomId].clients)) {
-            client.sendMsg("clientJoinedRoom", {
-                room: globalRooms[msg.roomId].toJSON(),
-                client: this.toJSON()
-            });
-        }
-
-        this.handleAllListRooms();
+        sendEverybodyRooms();
     }
 
-    handleRoomStatus(msg: IRoomStatusMessage) {
+    handleRoomDetails(msg: IRoomDetailsMessage) {
         if (!this.rooms[msg.roomId]) {
             return console.error("Room not defined");
         }
@@ -197,9 +181,7 @@ class Client {
 
         console.log("Room status of room", msg.roomId);
 
-        this.sendMsg("roomStatusReceived", {
-            room: this.rooms[msg.roomId].toJSON()
-        });
+        this.rooms[msg.roomId].sendRoomDetails(this);
     }
 
     handleStartGame(msg: IStartGameMessage) {
@@ -215,16 +197,7 @@ class Client {
             return console.error("Only the host can start the game");
         }
 
-        console.log("Game starting in room", msg.roomId);
-
-        this.rooms[msg.roomId].started = true;
-        for (const client of Object.values(this.rooms[msg.roomId].clients)) {
-            client.sendMsg("gameStarted", {
-                room: this.rooms[msg.roomId].toJSON()
-            });
-        }
-
-        this.handleListRooms();
+        this.rooms[msg.roomId].setStarted(true);
     }
 
     handleMessage(event: any) {
@@ -243,44 +216,38 @@ class Client {
     }
 
     handleClose() {
-        const rooms = Object.values(this.rooms);
+        const rooms = this.getRoomsArray();
         for (const room of rooms) {
             console.log(`Client "${this.name}" (${this.id}) is leaving the room "${room.name}" (${room.id})`);
 
-            if (room.removeClient(this)) {
-                for (const client of Object.values(room.clients)) {
-                    client.sendMsg("clientLeftRoom", {
-                        room: room.toJSON(),
-                        client: this.toJSON()
-                    });
-                }
-            }
+            room.removeClient(this);
         
             if (!room.deleteFromGlobalIfEmpty() && room.host.id === this.id) {
-                const previousHost = room.host;
-                room.host = Object.values(room.clients)[0];
-                console.log(`Room "${room.name}" (${room.id}) host changed from ${previousHost.name} (${previousHost.id}) to ${room.host.name} (${room.host.id})`);
+                room.passHostToNextClient();
             }
         }
 
         if (rooms.length) {
-            this.handleAllListRooms();
+            sendEverybodyRooms();
         }
 
         console.log(`Client "${this.name}" (${this.id}) disconnected`);
         delete globalClients[this.id];
 
-        this.handleAllListClients();
+        sendEverybodyClients();
     }
 
-    toJSON(includeRooms = true): IClientJSON {
+    toJSON(opts?: IClientToJSONOptions): IClientJSON {
+        opts = opts || {};
+        opts.includeRooms = opts.includeRooms == null ? true : opts.includeRooms;
+
         return {
             id: this.id,
             name: this.name,
-            rooms: !includeRooms
+            rooms: !opts.includeRooms
                 ? []
-                : (Object.values(this.rooms) as Room[])
-                    .map(room => room.toJSON(false))
+                : this.getRoomsArray()
+                    .map(room => room.toJSON({ includeClients: false }))
         };
     }
 }
@@ -289,6 +256,7 @@ class Room {
     id: string;
     name: string;
     started: boolean;
+    problem: IProblem;
     host: Client;
     clients: Record<string, Client>;
 
@@ -300,6 +268,7 @@ class Room {
         this.id = opts.id || getUid();
         this.name = opts.name;
         this.started = false;
+        this.problem = PROBLEMS[Math.floor(Math.random() * PROBLEMS.length)];
         this.host = opts.client;
         this.clients = {
             [opts.client.id]: opts.client
@@ -307,20 +276,81 @@ class Room {
         globalRooms[this.id] = this;
     }
 
+    getClientsArray() {
+        return Object.values(this.clients);
+    }
+
+    setStarted(value: boolean) {
+        console.log("Game starting in room", this.id);
+        this.started = value;
+
+        for (const client of this.getClientsArray()) {
+            client.sendMsg("gameStarted");
+            this.sendRoomDetails(client);
+        }
+
+        sendEverybodyRooms();
+    }
+
+    sendChatMessage(text: string, client: Client) {
+        console.log(`Client "${client.name}" (${client.id}) sent chat message "${text}" in room "${this.name}" (${this.id})`);
+        for (const client of this.getClientsArray()) {
+            client.sendMsg(
+                "chatReceived",
+                {
+                    id: getUid(),
+                    room: this.toJSON(),
+                    client: client.toJSON(),
+                    time: new Date().toLocaleTimeString(),
+                    text
+                }
+            );
+        }
+    }
+
+    sendRoomDetails(client?: Client) {
+        if (client) {
+            // Send to the client that requested the details
+            client.sendMsg("roomDetailsReceived", {
+                room: this.toJSON({ includeProblem: true })
+            });
+        } else {
+            // Send to all clients in the room
+            for (const client of this.getClientsArray()) {
+                client.sendMsg("roomDetailsReceived", {
+                    room: this.toJSON({ includeProblem: true })
+                });
+            }
+        }
+    }
+
+    passHostToNextClient() {
+        const clients = this.getClientsArray();
+        if (!clients.length) {
+            return console.error("Room has no clients");
+        }
+
+        const previousHost = this.host;
+        this.host = clients[0];
+        console.log(`Room "${this.name}" (${this.id}) host changed from ${previousHost.name} (${previousHost.id}) to ${this.host.name} (${this.host.id})`);
+        
+        this.sendRoomDetails();
+    }
+
     addClient(client: Client) {
         if (this.clients[client.id]) {
             return console.error("Client already in room");
         }
-
         this.clients[client.id] = client;
+        this.sendRoomDetails();
     }
 
     removeClient(client: Client) {
         if (!this.clients[client.id]) {
             return false;
         }
-
         delete this.clients[client.id];
+        this.sendRoomDetails();
         return true;
     }
 
@@ -332,16 +362,21 @@ class Room {
         return false;
     }
 
-    toJSON(includeClients = true): IRoomJSON {
+    toJSON(opts?: IRoomToJSONOptions): IRoomJSON {
+        opts = opts || {};
+        opts.includeClients = opts.includeClients == null ? true : opts.includeClients;
+        opts.includeProblem = opts.includeProblem == null ? false : opts.includeProblem;
+
         return {
             id: this.id,
             name: this.name,
             started: this.started,
-            host: this.host.toJSON(false),
-            clients: !includeClients
+            problem: (this.started && opts.includeProblem) ? this.problem : undefined,
+            host: this.host.toJSON({ includeRooms: false }),
+            clients: !opts.includeClients
                 ? []
-                : (Object.values(this.clients) as Client[])
-                    .map(client => client.toJSON(false))
+                : this.getClientsArray()
+                    .map(client => client.toJSON({ includeRooms: false })),
         };
     }
 }

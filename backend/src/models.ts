@@ -4,6 +4,33 @@
 // ╚════╝██╔╝    ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══╝  ██║╚██╗██║██║  ██║
 //      ██╔╝     ██████╔╝██║  ██║╚██████╗██║  ██╗███████╗██║ ╚████║██████╔╝
 //      ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═════╝                                                                                                                           
+export interface IClientToJSONOptions {
+    includeRooms?: boolean;
+}
+
+export interface IRoomToJSONOptions {
+    includeClients?: boolean;
+    includeProblem?: boolean;
+}
+
+export interface ILogMessage {
+    level: "log" | "warn" | "error";
+    text: string;
+}
+
+export interface ITest {
+    input: any;
+    expectedOutput: any;
+    status?: "pending" | "running" | "passed" | "failed";
+    output?: any;
+    logs?: ILogMessage[];
+}
+
+export interface IProblem {
+    description: string;
+    tests: ITest[];
+}
+
 export interface IClientJSON {
     id: string;
     name: string;
@@ -14,6 +41,7 @@ export interface IRoomJSON {
     id: string;
     name: string;
     started: boolean;
+    problem?: IProblem;
     host: IClientJSON;
     clients: IClientJSON[];
 }
@@ -42,7 +70,7 @@ export interface IJoinRoomMessage {
     roomId: string;
 }
 
-export interface IRoomStatusMessage {
+export interface IRoomDetailsMessage {
     roomId: string;
 }
 
@@ -79,4 +107,8 @@ export interface IChatReceivedMessage {
     client: IClientJSON;
     time: string;
     text: string;
+}
+
+export interface IRoomDetailsReceivedMessage {
+    room: IRoomJSON;
 }

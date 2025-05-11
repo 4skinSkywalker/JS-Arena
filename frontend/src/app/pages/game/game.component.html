@@ -83,7 +83,7 @@
                                                 [class.error-color]="msg.level === 'error'"
                                             >{{msg.text}}</div>
                                             }
-                                            @if (!test.logs.length) {
+                                            @if (!test.logs?.length) {
                                             No logs
                                             }
                                         </div>

@@ -53,11 +53,11 @@ export class ApiService {
     }
   }
 
-  on(topic: string, handler: (msg: any) => void) {
+  on(topic: string, handler: (msg: any) => void = (() => {})) {
     return this.subscribe({ [topic]: handler });
   }
 
-  one(topic: string, handler: (msg: any) => void) {
+  one(topic: string, handler: (msg: any) => void = (() => {})) {
     const _handler = (msg: any) => {
       handler(msg);
       this.unsubscribe({ [topic]: _handler });
