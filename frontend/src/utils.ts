@@ -1,3 +1,8 @@
+export function getUid() {
+    return Math.random().toString(36).substring(2, 15);
+}
+
+
 export async function delay(s: number) {
     return new Promise(res => setTimeout(res, s * 1000));
 }

@@ -8,8 +8,15 @@
 .content-container {
     position: relative;
     display: grid;
-    grid-template-rows: 1fr 275px;
     height: 100svh;
+}
+
+.editor-container {
+    grid-template-rows: 1fr 200px;
+}
+
+.content-container {
+    grid-template-rows: 1fr 275px;
 }
 
 .editor-container {
@@ -24,7 +31,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: var(--tertiary-space) 30px;
+    padding: 0 30px var(--tertiary-space) 0;
 }
 
 .console-container,

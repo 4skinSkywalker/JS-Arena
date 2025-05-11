@@ -3,13 +3,13 @@
         <div class="editor-wrap">
             <div class="editor" id="editor"></div>
             <div class="editor-floatbar">
-                <button class="btn btn-primary" (click)="runCode()">Run code</button>
+                <button class="btn btn-primary" (click)="runCode()">Run</button>
             </div>
         </div>
         <div class="console-container">
             <div class="console-title">Console</div>
             <div class="console">
-                @for (msg of consoleLogMessages; track msg.timestamp) {
+                @for (msg of consoleLogMessages; track msg.id) {
                     <div 
                         class="console-message" 
                         [class.log]="msg.level === 'log'"

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { debounce, delay, drag } from '../../../utils';
+import { debounce, delay, drag, getUid } from '../../../utils';
 import { IChatReceivedMessage } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 
 interface IConsoleLogMessage {
+  id: string;
   level: "log" | "warn" | "error";
-  timestamp: number;
   text: string;
 }
 
@@ -145,6 +145,8 @@ export class GameComponent {
     } else {
       aceEditor.setValue(`function solution() {}`);
     }
+
+    aceEditor.clearSelection();
   }
 
   onEditorValueChange(value: string) {
@@ -224,15 +226,15 @@ export class GameComponent {
   consoleLog(level: "log" | "warn" | "error") {
     return (...args: any) => {
       this.consoleLogMessages.push({
+        id: getUid(),
         level,
-        timestamp: new Date().getTime(),
         text: args.map((arg: any) => {
           return (typeof arg === "string") 
             ? arg
             : JSON.stringify(arg);
         }).join(" ")
       });
-      
+
       setTimeout(() => this.scrollToBottom(".console"), 200);
     };
   }
