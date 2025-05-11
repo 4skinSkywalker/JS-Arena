@@ -53,8 +53,8 @@
                                 <label class="accordion-header" tabindex="0">
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-accordion-header-content">
-                                        <div>Test {{ $index }} / {{ tests.length }} ({{ test.status !== "pending" ? test.status : "Not run" }})</div>
-                                        <button class="btn compact btn-primary" (click)="runSingleTest($index)">Run</button>
+                                        <div>Test {{ $index }} / {{ tests.length }} ({{ test.status === "pending" ? "Not run" : test.status }})</div>
+                                        <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
                                 <div class="accordion-body">

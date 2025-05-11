@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { debounce, delay, drag } from '../../../utils';
+import { debounce, delay, drag, equal } from '../../../utils';
 import { IChatReceivedMessage } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
@@ -12,7 +12,7 @@ interface IConsoleLogMessage {
 }
 
 interface ITest {
-  status: "pending" | "passed" | "failed";
+  status: "pending" | "running" | "passed" | "failed";
   input: any;
   expectedOutput: any;
   output: any;
@@ -36,8 +36,8 @@ export class GameComponent {
   tests: ITest[] = [
     {
       status: "failed",
-      input: [1, 2, 3, 4, 5],
-      expectedOutput: 15,
+      input: [1, 2, 3, 4],
+      expectedOutput: 10,
       output: 9,
       logs: [
         { level: "log", text: "Sum is 15" }
@@ -54,8 +54,8 @@ export class GameComponent {
     },
     {
       status: "pending",
-      input: [1, 2, 3, 4, 5],
-      expectedOutput: 15,
+      input: [1, 2],
+      expectedOutput: 3,
       output: null,
       logs: []
     }
@@ -205,16 +205,20 @@ export class GameComponent {
     el.scrollTop = el.scrollHeight;
   }
 
+  createLog(level: "log" | "warn" | "error", args: any) {
+    return {
+      level,
+      text: args.map((arg: any) => {
+        return (typeof arg === "string") 
+          ? arg
+          : JSON.stringify(arg);
+      }).join(" ")
+    };
+  }
+
   consoleLog(level: "log" | "warn" | "error") {
     return (...args: any) => {
-      this.consoleLogMessages.push({
-        level,
-        text: args.map((arg: any) => {
-          return (typeof arg === "string") 
-            ? arg
-            : JSON.stringify(arg);
-        }).join(" ")
-      });
+      this.consoleLogMessages.push(this.createLog(level, args));
 
       this.scrollToBottom(".console");
     };
@@ -234,12 +238,29 @@ export class GameComponent {
     return (window as any).solution && (window as any).solution(input);
   }
 
-  async runSingleTest(index: number) {
+  async runSingleTest(test: ITest) {
+    test.output = null;
+    test.logs = [];
+    test.status = "running";
 
+    await delay(0.2);
+    const output = await this.runCode(test.input, {
+      log: (...args: any) => test.logs.push(this.createLog("log", args)),
+      warn: (...args: any) => test.logs.push(this.createLog("warn", args)),
+      error: (...args: any) => test.logs.push(this.createLog("error", args))
+    });
+
+    if (equal(output, test.expectedOutput)) {
+      test.status = "passed";
+    } else {
+      test.status = "failed";
+    }
+
+    test.output = output;
   }
 
   async runAllTests() {
-
+    this.tests.forEach(test => this.runSingleTest(test));
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {
