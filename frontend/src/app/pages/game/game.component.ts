@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { debounce, delay, drag, getUid } from '../../../utils';
 import { IChatReceivedMessage } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
+import { FormControl } from '@angular/forms';
 
 interface IConsoleLogMessage {
   id: string;
@@ -23,73 +24,19 @@ export class GameComponent {
   editorContentKey;
   navTab: "instructions" | "benchmark" = "instructions";
   consoleLogMessages: IConsoleLogMessage[] = [];
-  chatMessages: IChatReceivedMessage[] = [
-    { 
-      id: "123",
-      room: {
-        id: "123", 
-        name: "Lobby", 
-        started: true, 
-        host: { 
-          id: "123", 
-          name: "Steve", 
-          rooms: [] 
-        }, 
-        clients: []
-      },
-      client: {
-        id: "123", 
-        name: "Steve", 
-        rooms: []
-      },
-      time: "12:00", 
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, quaerat!"
-    },
-    { 
-      id: "234",
-      room: {
-        id: "123", 
-        name: "Lobby", 
-        started: true, 
-        host: { 
-          id: "123", 
-          name: "Steve", 
-          rooms: [] 
-        }, 
-        clients: []
-      },
-      client: {
-        id: "123", 
-        name: "Steve", 
-        rooms: []
-      },
-      time: "12:00", 
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, quaerat!"
-    },
-    { 
-      id: "345",
-      room: {
-        id: "123", 
-        name: "Lobby", 
-        started: true, 
-        host: { 
-          id: "123", 
-          name: "Steve", 
-          rooms: [] 
-        }, 
-        clients: []
-      },
-      client: {
-        id: "123", 
-        name: "Steve", 
-        rooms: []
-      },
-      time: "12:00", 
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, quaerat!"
-    },
-  ];
+  chatMessages: IChatReceivedMessage[] = [];
+  chatMessage = new FormControl("", { nonNullable: true });
 
-  handlers: Handlers = {};
+  handlers: Handlers = {
+    "chatReceived": this.handleChatReceived.bind(this)
+  };
+
+  @HostListener("document:keydown", ["$event"])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.ctrlKey && event.key === "Enter") {
+      this.runCode();
+    }
+  }
 
   constructor(
     private route: ActivatedRoute,
@@ -218,7 +165,8 @@ export class GameComponent {
     });
   }
 
-  scrollToBottom(selector: string) {
+  async scrollToBottom(selector: string) {
+    await delay(0.15);
     const el = document.querySelector(selector) as HTMLDivElement;
     el.scrollTop = el.scrollHeight;
   }
@@ -235,12 +183,13 @@ export class GameComponent {
         }).join(" ")
       });
 
-      setTimeout(() => this.scrollToBottom(".console"), 150);
+      this.scrollToBottom(".console");
     };
   }
 
-  runCode() {
+  async runCode() {
     this.consoleLogMessages = [];
+    await delay(0.1);
     (window as any).llog = this.consoleLog("log");
     (window as any).lwarn = this.consoleLog("warn");
     (window as any).lerror = this.consoleLog("error");
@@ -249,5 +198,18 @@ export class GameComponent {
       .replace(/console\.warn/g, "lwarn")
       .replace(/console\.error/g, "lerror");
     window.eval(tamperedContent);
+  }
+
+  handleChatReceived(msg: IChatReceivedMessage) {
+    this.chatMessages.push(msg);
+    this.scrollToBottom(".chat");
+  }
+
+  sendChatMessage(message: string) {
+    this.api.send("chat", {
+      roomId: this.roomId,
+      text: message
+    });
+    this.chatMessage.setValue("");
   }
 }

@@ -188,13 +188,22 @@
                             <div class="chat-author">{{msg.client.name}}</div>
                             <div class="chat-time">{{msg.time}}</div>
                         </div>
-                        <div class="chat-message">{{msg.text}}</div>
+                        <div class="chat-message self-type" data-speed="0">{{msg.text}}</div>
                     </div>
                 }
             </div>
             <div class="chat-composer">
-                <input type="text" class="form-control compact" placeholder="Type your message here...">
-                <button class="btn compact btn-primary">Send (↵)</button>
+                <input 
+                    type="text" 
+                    class="form-control compact"
+                    placeholder="Type your message here..."
+                    [formControl]="chatMessage"
+                    (keydown.enter)="sendChatMessage(chatMessage.value)"
+                >
+                <button 
+                    class="btn compact btn-primary"
+                    (click)="sendChatMessage(chatMessage.value)"
+                >Send (↵)</button>
             </div>
         </div>
     </div>
