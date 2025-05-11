@@ -2,6 +2,9 @@
     padding-inline: var(--secondary-space);
     max-width: 1024px;
     margin: 0 auto;
+    display: grid;
+    align-content: space-evenly;
+    height: 100svh;
 }
 
 .scrollable-toolbar {
@@ -16,7 +19,7 @@
 }
 
 .scrollable  {
-    max-height: 35svh;
+    height: 34svh;
     overflow-y: scroll;
     padding: var(--secondary-space);
     border: 2px solid rgba(var(--primary-color));

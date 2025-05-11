@@ -1,51 +1,55 @@
 <div class="container">
-    <h2 class="pt-2 text-center">Players connected {{ (api.clients$ | async)?.length }}</h2>
+    <h2 class="mb-1 text-center">Players connected {{ (api.clients$ | async)?.length }}</h2>
 
-    <div class="scrollable-toolbar mt-xl mb-1">
-        <h2 class="m-0">Open Rooms</h2>
-        <div class="scrollable-toolbar-controls">
-            <div class="form-control-wrap">
-                <input type="text" class="form-control" [formControl]="filterByName" placeholder="Filter by name...">
+    <div>
+        <div class="scrollable-toolbar mb-1">
+            <h2 class="m-0">Open Rooms</h2>
+            <div class="scrollable-toolbar-controls">
+                <div class="form-control-wrap">
+                    <input type="text" class="form-control" [formControl]="filterByName" placeholder="Filter by name...">
+                </div>
+                <button class="btn btn-primary" (click)="check('#create-room-modal-trigger')">Create Room</button>
             </div>
-            <button class="btn btn-primary" (click)="check('#create-room-modal-trigger')">Create Room</button>
+        </div>
+        <div class="scrollable">
+            <ul>
+                @for (item of openedRooms$ | async; track item.id) {
+                <li>
+                    <div class="lobby lobby-open">
+                        <div class="lobby-content">
+                            <div>Room</div>
+                            <div>{{ item.name }}</div>
+                            <div>Host</div>
+                            <div>{{ item.host.name }}</div>
+                        </div>
+                        <button class="btn btn-primary" [routerLink]="['/game', item.id]">Join</button>
+                    </div>
+                </li>
+                }
+            </ul>
         </div>
     </div>
-    <div class="scrollable">
-        <ul>
-            @for (item of openedRooms$ | async; track item.id) {
-            <li>
-                <div class="lobby lobby-open">
-                    <div class="lobby-content">
-                        <div>Room</div>
-                        <div>{{ item.name }}</div>
-                        <div>Host</div>
-                        <div>{{ item.host.name }}</div>
-                    </div>
-                    <button class="btn btn-primary" [routerLink]="['/game', item.id]">Join</button>
-                </div>
-            </li>
-            }
-        </ul>
-    </div>
 
-    <h2 class="mt-xl mb-1">Running Rooms</h2>
-    <div class="scrollable">
-        <ul>
-            @for (item of closedRooms$ | async; track item.id) {
-            <li>
-                <div class="lobby lobby-close">
-                    <div class="lobby-content">
-                        <div>Room</div>
-                        <div>{{ item.name }}</div>
-                        <div>Host</div>
-                        <div>{{ item.host }}</div>
-                        <div>Clients</div>
-                        <div>{{ item.clients.length }}</div>
+    <div>
+        <h2 class="mb-1">Running Rooms</h2>
+        <div class="scrollable">
+            <ul>
+                @for (item of closedRooms$ | async; track item.id) {
+                <li>
+                    <div class="lobby lobby-close">
+                        <div class="lobby-content">
+                            <div>Room</div>
+                            <div>{{ item.name }}</div>
+                            <div>Host</div>
+                            <div>{{ item.host }}</div>
+                            <div>Clients</div>
+                            <div>{{ item.clients.length }}</div>
+                        </div>
                     </div>
-                </div>
-            </li>
-            }
-        </ul>
+                </li>
+                }
+            </ul>
+        </div>
     </div>
 </div>
 
