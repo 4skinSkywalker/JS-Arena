@@ -24,6 +24,5 @@ body::before {
 }
 
 *:focus {
-    box-shadow: unset;
     animation: rainbow-border 12s linear infinite !important;
 }
