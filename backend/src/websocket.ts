@@ -69,8 +69,10 @@ class Client {
             client.sendMsg(
                 "chatReceived",
                 {
+                    id: getUid(),
+                    room: this.rooms[msg.roomId].toJSON(),
                     client: this.toJSON(),
-                    name: this.name,
+                    time: new Date().toLocaleTimeString(),
                     text: msg.text
                 }
             );

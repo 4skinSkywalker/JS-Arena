@@ -1,5 +1,5 @@
 .container {
-    padding-inline: 1rem;
+    padding-inline: var(--secondary-space);
     max-width: 1024px;
     margin: 0 auto;
 }
@@ -12,13 +12,13 @@
 
 .scrollable-toolbar-controls {
     display: flex;
-    gap: 1rem;
+    gap: var(--secondary-space);
 }
 
 .scrollable  {
     max-height: 35svh;
     overflow-y: scroll;
-    padding: 1rem;
+    padding: var(--secondary-space);
     border: 2px solid rgba(var(--primary-color));
     box-shadow: 0 0 10px 0 rgba(var(--primary-color));
 }
@@ -36,7 +36,7 @@
 .lobby {
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: var(--tertiary-space) var(--secondary-space);
     border: 2px solid rgba(var(--primary-color));
     box-shadow: 0 0 10px 0 rgba(var(--primary-color));
 }
@@ -45,7 +45,7 @@
     flex-grow: 1;
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 0 1rem;
+    gap: 0 var(--secondary-space);
 }
 
 .lobby-content > * {

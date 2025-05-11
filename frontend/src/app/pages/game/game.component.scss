@@ -1,6 +1,6 @@
 .game-container {
     display: grid;
-    grid-template-columns: 80ch 1fr;
+    grid-template-columns: 640px 1fr;
     overflow: hidden;
 }
 
@@ -8,7 +8,7 @@
 .content-container {
     position: relative;
     display: grid;
-    grid-template-rows: 2.5fr 1fr;
+    grid-template-rows: 1fr 275px;
     height: 100svh;
 }
 
@@ -24,18 +24,20 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    padding: 10px 30px;
+    padding: var(--tertiary-space) 30px;
 }
 
 .console-container,
 .chat-container {
     background-color: #222;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
 .console-title,
 .chat-title {
+    flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,6 +73,23 @@
 
 .sections-divider:active {
   cursor: grabbing;
+}
+
+.console-message {
+    padding: 5px;
+    border-bottom: 2px solid #333;
+}
+
+.console-message.log {
+    color: #fff;
+}
+
+.console-message.warn {
+    color: #fd0;
+}
+
+.console-message.error {
+    color: #f00;
 }
 
 .content-container {
@@ -115,4 +134,55 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.chat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--tertiary-space);
+    padding: var(--tertiary-space);
+    padding-bottom: 75px;
+}
+
+.chat-message-wrap {
+    width: 375px;
+    border: 2px solid rgba(var(--primary-color));
+    background-color: #111;
+    padding: var(--tertiary-space);
+}
+
+.chat-message-wrap.my-message {
+    margin-left: auto;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chat-author,
+.chat-time,
+.chat-message {
+    line-height: 1;
+}
+
+.chat-author {
+    font-weight: 700;
+}
+
+.chat-composer {
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    z-index: 10;
+    width: calc(100% - 25px);
+    background: #000;
+    display: flex;
+    gap: var(--tertiary-space);
+    align-items: center;
+    padding: var(--tertiary-space);
+    border-top: 2px solid #333;
 }

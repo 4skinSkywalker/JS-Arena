@@ -72,3 +72,11 @@ export interface IClientLeftRoomMessage {
     room: IRoomJSON;
     client: IClientJSON;
 }
+
+export interface IChatReceivedMessage {
+    id: string;
+    room: IRoomJSON;
+    client: IClientJSON;
+    time: string;
+    text: string;
+}

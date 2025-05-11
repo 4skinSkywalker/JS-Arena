@@ -2,17 +2,92 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { debounce, delay, drag } from '../../../utils';
+import { IChatReceivedMessage } from '../../../../../backend/src/models';
+import { BasicModule } from '../../basic.module';
+
+interface IConsoleLogMessage {
+  level: "log" | "warn" | "error";
+  timestamp: number;
+  text: string;
+}
 
 @Component({
   selector: 'app-game',
-  imports: [],
+  imports: [BasicModule],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
 export class GameComponent {
   roomId;
+  editorContent = "";
   editorContentKey;
   navTab: "instructions" | "benchmark" = "instructions";
+  consoleLogMessages: IConsoleLogMessage[] = [];
+  chatMessages: IChatReceivedMessage[] = [
+    { 
+      id: "123",
+      room: {
+        id: "123", 
+        name: "Lobby", 
+        started: true, 
+        host: { 
+          id: "123", 
+          name: "Steve", 
+          rooms: [] 
+        }, 
+        clients: []
+      },
+      client: {
+        id: "123", 
+        name: "Steve", 
+        rooms: []
+      },
+      time: "12:00", 
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, quaerat!"
+    },
+    { 
+      id: "234",
+      room: {
+        id: "123", 
+        name: "Lobby", 
+        started: true, 
+        host: { 
+          id: "123", 
+          name: "Steve", 
+          rooms: [] 
+        }, 
+        clients: []
+      },
+      client: {
+        id: "123", 
+        name: "Steve", 
+        rooms: []
+      },
+      time: "12:00", 
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, quaerat!"
+    },
+    { 
+      id: "345",
+      room: {
+        id: "123", 
+        name: "Lobby", 
+        started: true, 
+        host: { 
+          id: "123", 
+          name: "Steve", 
+          rooms: [] 
+        }, 
+        clients: []
+      },
+      client: {
+        id: "123", 
+        name: "Steve", 
+        rooms: []
+      },
+      time: "12:00", 
+      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, quaerat!"
+    },
+  ];
 
   handlers: Handlers = {};
 
@@ -74,6 +149,7 @@ export class GameComponent {
 
   onEditorValueChange(value: string) {
     console.log("Editor value changed", value);
+    this.editorContent = value;
     localStorage.setItem(this.editorContentKey, value);
   }
 
@@ -138,5 +214,38 @@ export class GameComponent {
       },
       direction: "y"
     });
+  }
+
+  scrollToBottom(selector: string) {
+    const el = document.querySelector(selector) as HTMLDivElement;
+    el.scrollTop = el.scrollHeight;
+  }
+
+  consoleLog(level: "log" | "warn" | "error") {
+    return (...args: any) => {
+      this.consoleLogMessages.push({
+        level,
+        timestamp: new Date().getTime(),
+        text: args.map((arg: any) => {
+          return (typeof arg === "string") 
+            ? arg
+            : JSON.stringify(arg);
+        }).join(" ")
+      });
+      
+      setTimeout(() => this.scrollToBottom(".console"), 200);
+    };
+  }
+
+  runCode() {
+    this.consoleLogMessages = [];
+    (window as any).llog = this.consoleLog("log");
+    (window as any).lwarn = this.consoleLog("warn");
+    (window as any).lerror = this.consoleLog("error");
+    const tamperedContent = this.editorContent
+      .replace(/console\.log/g, "llog")
+      .replace(/console\.warn/g, "lwarn")
+      .replace(/console\.error/g, "lerror");
+    window.eval(tamperedContent);
   }
 }
