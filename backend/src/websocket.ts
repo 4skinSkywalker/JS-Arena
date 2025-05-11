@@ -291,8 +291,8 @@ class Room {
 
     sendChatMessage(text: string, client: Client) {
         console.log(`Client "${client.name}" (${client.id}) sent chat message "${text}" in room "${this.name}" (${this.id})`);
-        for (const client of this.getClientsArray()) {
-            client.sendMsg(
+        for (const _client of this.getClientsArray()) {
+            _client.sendMsg(
                 "chatReceived",
                 {
                     id: getUid(),
