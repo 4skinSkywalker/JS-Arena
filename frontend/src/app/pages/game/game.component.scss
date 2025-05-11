@@ -120,18 +120,42 @@
     overflow: hidden;
 }
 
-.instructions .nav {
+.instructions-nav {
     background-color: #111;
     border: none;
     gap: var(--tertiary-space);
     padding: 5px var(--tertiary-space);
 }
 
-.instructions .nav-content {
-    padding: 15px;
+.instructions-nav-content {
     overflow-y: auto;
     border-top: 2px solid #333;
     border-right: 2px solid #333;
+
+}
+
+.instructions-nav-content-1 {
+    padding: var(--secondary-space);
+}
+
+.benchmark-accordion {
+    box-shadow: none;
+}
+
+.benchmark-accordion .accordion-item {
+    border: none;
+    border-bottom: 2px solid rgba(var(--primary-color), 1) !important;
+    background-color: #181818;
+}
+
+.benchmark-accordion-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.benchmark-accordion .accordion-body {
+    background: #222;
 }
 
 .leaderboard-container {
