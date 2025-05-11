@@ -156,8 +156,12 @@
             <div class="chat-title">Chat</div>
             <div class="chat">
                 @for (msg of chatMessages; track msg.id) {
-                <div class="chat-message-wrap" [class.my-message]="msg.client.id === (api.client$ | async)?.id">
-                    <div class="chat-header">
+                <div 
+                    class="chat-message-wrap" 
+                    [class.my-message]="msg.client.id === (api.client$ | async)?.id"
+                    [class.system-message]="msg.client.id === '-1'"
+                >
+                    <div class="chat-header" *ngIf="msg.client.id !== '-1'">
                         <div class="chat-author">{{msg.client.name}}</div>
                         <div class="chat-time">{{msg.time}}</div>
                     </div>

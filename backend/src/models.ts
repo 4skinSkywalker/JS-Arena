@@ -112,3 +112,8 @@ export interface IChatReceivedMessage {
 export interface IRoomDetailsReceivedMessage {
     room: IRoomJSON;
 }
+
+export interface IClientParticipationChangeMessage {
+    room: IRoomJSON;
+    client: IClientJSON;
+}

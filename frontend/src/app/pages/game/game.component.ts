@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { debounce, delay, drag, equal } from '../../../utils';
-import { IChatReceivedMessage, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
+import { IChatReceivedMessage, IClientParticipationChangeMessage, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 
@@ -51,7 +51,9 @@ export class GameComponent {
 
   handlers: Handlers = {
     "chatReceived": this.handleChatReceived.bind(this),
-    "roomDetailsReceived": this.handleRoomDetailsReceived.bind(this)
+    "roomDetailsReceived": this.handleRoomDetailsReceived.bind(this),
+    "clientJoined": this.handleClientJoined.bind(this),
+    "clientLeft": this.handleClientLeft.bind(this)
   };
 
   @HostListener("document:keydown", ["$event"])
@@ -254,12 +256,38 @@ export class GameComponent {
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {
-    this.chatMessages.push(msg);
-    this.scrollToBottom(".chat");
+    if (msg.room.id === this.roomId) {
+      this.chatMessages.push(msg);
+      this.scrollToBottom(".chat");
+    }
   }
 
   handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
     console.warn("Room details received", msg.room);
+  }
+
+  generateSystemMessage(text: string) {
+    const fakeClient = { id: "-1", name: "", rooms: [] };
+    const fakeRoom = { id: "-1", name: "", started: false, host: fakeClient, clients: [] };
+    this.chatMessages.push({
+      id: "-1",
+      room: fakeRoom,
+      client: fakeClient,
+      time: "00:00:00",
+      text
+    });
+  }
+
+  handleClientJoined(msg: IClientParticipationChangeMessage) {
+    if (msg.room.id === this.roomId) {
+      this.generateSystemMessage(`Client ${msg.client.name} joined the room`);
+    }
+  }
+
+  handleClientLeft(msg: IClientParticipationChangeMessage) {
+    if (msg.room.id === this.roomId) {
+      this.generateSystemMessage(`Client ${msg.client.name} left the room`);
+    }
   }
 
   sendChatMessage(message: string) {

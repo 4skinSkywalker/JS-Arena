@@ -339,6 +339,12 @@ class Room {
             return console.error("Client already in room");
         }
         this.clients[client.id] = client;
+        for (const _client of this.getClientsArray()) {
+            _client.sendMsg("clientJoined", {
+                room: this.toJSON({ includeClients: false }),
+                client: client.toJSON({ includeRooms: false })
+            });
+        }
         this.sendRoomDetails();
     }
 
@@ -347,6 +353,12 @@ class Room {
             return false;
         }
         delete this.clients[client.id];
+        for (const _client of this.getClientsArray()) {
+            _client.sendMsg("clientLeft", {
+                room: this.toJSON({ includeClients: false }),
+                client: client.toJSON({ includeRooms: false })
+            });
+        }
         this.sendRoomDetails();
         return true;
     }

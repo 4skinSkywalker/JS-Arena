@@ -214,6 +214,16 @@
     margin-left: auto;
 }
 
+.chat-message-wrap.system-message {
+    padding: 5px var(--tertiary-space);
+    background-color: #0000;
+    margin-inline: auto;
+    text-align: center;
+    color: #444;
+    border: none;
+    width: auto;
+}
+
 .chat-header {
     display: flex;
     justify-content: space-between;
