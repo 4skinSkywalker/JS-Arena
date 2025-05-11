@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { debounce, delay, drag, equal } from '../../../utils';
+import { check, debounce, delay, drag, equal, uncheck } from '../../../utils';
 import { IChatReceivedMessage, IClientParticipationChangeMessage, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
@@ -13,6 +13,8 @@ import { FormControl } from '@angular/forms';
   styleUrl: './game.component.scss'
 })
 export class GameComponent {
+  check = check;
+  uncheck = uncheck;
   roomId;
   editorContent = "";
   editorContentKey;
@@ -62,7 +64,7 @@ export class GameComponent {
       event.preventDefault();
       this.runCode(null);
     }
-    
+
     if (event.ctrlKey && event.key === "Enter") {
       event.preventDefault();
       this.runAllTests();
@@ -85,6 +87,7 @@ export class GameComponent {
 
   async ngAfterViewInit() {
     await delay(0.2);
+    this.copyPasteProtection();
     this.initEditor();
     this.initGameResize();
     this.initEditorResize();
@@ -93,6 +96,14 @@ export class GameComponent {
 
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
+  }
+
+  copyPasteProtection() {
+    (document.querySelector(".instructions-nav-content-description") as HTMLDivElement)
+      .addEventListener("copy", (e: any) => {
+        e.preventDefault();
+        check("#cannot-copy-paste-modal-trigger");
+      });
   }
 
   initEditor() {
@@ -113,6 +124,24 @@ export class GameComponent {
 
     aceEditor.getSession().setUseWorker(false);
     aceEditor.getSession().setMode("ace/mode/javascript");
+
+    // Start of copy/paste protection
+    aceEditor.commands.addCommand({
+      name: "breakTheEditor", 
+      bindKey: "ctrl-c|ctrl-v|ctrl-x|ctrl-shift-v|shift-del|cmd-c|cmd-v|cmd-x", 
+      exec: function() {
+        check("#cannot-copy-paste-modal-trigger");
+      } 
+    });
+    aceEditor.on("paste", (e: any) => {
+      e.text = "";
+      check("#cannot-copy-paste-modal-trigger");
+    });
+    aceEditor.on("paste", (e: any) => (e: any) => {
+      e.text = "";
+      check("#cannot-copy-paste-modal-trigger");
+    });
+    // End of copy/paste protection
 
     aceEditor.getSession().on("change", debounce(() => {
       this.onEditorValueChange(aceEditor.getSession().getValue());
