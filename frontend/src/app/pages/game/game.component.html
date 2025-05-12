@@ -51,17 +51,18 @@
                         }
                         <div class="countdown">{{countdown}}</div>
                     </div>
-                    }                    
-                    @if (navTab === "instructions") {
-                    <div
-                        class="instructions-nav-content-description"
-                        [class.blurred]="!gameStarted"
-                        [innerHTML]="markdownService.render(problemDescription || '').trim()"
-                    ></div>
                     }
 
-                    @if (navTab === "benchmark") {
-                    <div class="instructions-nav-content-benchmark">
+                    <div
+                        class="instructions-nav-content-description"
+                        [class.hidden]="navTab !== 'instructions'"
+                        [innerHTML]="markdownService.render(problemDescription || '').trim()"
+                    ></div>
+
+                    <div
+                        class="instructions-nav-content-benchmark"
+                        [class.hidden]="navTab !== 'benchmark'"
+                    >
                         <div class="accordion benchmark-accordion">
                             @for (test of problemTests; track $index) {
                             <div 
@@ -112,7 +113,6 @@
                             }
                         </div>
                     </div>
-                    }
                 </div>
             </div>
             <div class="leaderboard-container">
