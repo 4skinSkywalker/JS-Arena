@@ -164,12 +164,12 @@ class Client {
         console.log("User joining room", msg.roomId);
 
         this.rooms[msg.roomId] = globalRooms[msg.roomId];
-        this.rooms[msg.roomId].addClient(this);
+        globalRooms[msg.roomId].addClient(this);
     }
 
     handleRoomDetails(msg: IRoomDetailsMessage) {
         if (!this.rooms[msg.roomId]) {
-            return console.error("Room not defined");
+            return console.error("Room not found");
         }
 
         if (!this.rooms[msg.roomId].clients[this.id]) {
@@ -183,7 +183,7 @@ class Client {
 
     handleStartGame(msg: IStartGameMessage) {
         if (!this.rooms[msg.roomId]) {
-            return console.error("Room not defined");
+            return console.error("Room not found");
         }
 
         if (!this.rooms[msg.roomId].clients[this.id]) {
@@ -192,6 +192,10 @@ class Client {
 
         if (this.rooms[msg.roomId].host !== this) {
             return console.error("Only the host can start the game");
+        }
+
+        if (this.rooms[msg.roomId].started) {
+            return console.error("Game already started");
         }
 
         this.rooms[msg.roomId].setStarted(true);

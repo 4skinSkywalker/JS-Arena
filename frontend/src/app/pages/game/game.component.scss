@@ -151,11 +151,13 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 10;
     width: 100%;
     height: 100%;
     backdrop-filter: blur(8px);
     display: grid;
     place-items: center;
+    overflow: hidden;
 }
 
 .prestart-overlay > * {
@@ -165,7 +167,7 @@
 .countdown {
     position: absolute;
     opacity: 0;
-    font-size: 20rem;
+    font-size: 40rem;
     font-weight: 700;
     pointer-events: none;
 }
@@ -200,14 +202,6 @@
     background-color: #181818;
 }
 
-.benchmark-accordion .accordion-item.test-passed {
-    background-color: #040;
-}
-
-.benchmark-accordion .accordion-item.test-failed {
-    background-color: #400;
-}
-
 .benchmark-accordion-header-content {
     display: flex;
     justify-content: space-between;
@@ -218,12 +212,20 @@
     background: #222;
 }
 
+.benchmark-accordion .accordion-item.test-passed {
+    background-color: #1d3b29;
+}
+
+.benchmark-accordion .accordion-item.test-failed {
+    background-color: #3b2224;
+}
+
 .benchmark-accordion .accordion-item.test-passed .accordion-body {
-    background-color: #020;
+    background-color: #162d20;
 }
 
 .benchmark-accordion .accordion-item.test-failed .accordion-body {
-    background-color: #200;
+    background-color: #2b1819;
 }
 
 .leaderboard-container {

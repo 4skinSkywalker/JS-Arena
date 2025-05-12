@@ -4,7 +4,7 @@
             <div class="editor-title">
                 <span>Editor</span>
                 <div class="editor-buttons">
-                    <button class="btn compact btn-primary" (click)="runCode(null)">Run code (⇧ + ↵)</button>
+                    <button class="btn compact btn-primary" (click)="runCode(problemTests[0].input || null)">Run code (⇧ + ↵)</button>
                     <button class="btn compact btn-primary" (click)="runAllTests()">Run tests (⌘ + ↵)</button>
                 </div>
             </div>
@@ -37,14 +37,10 @@
                     </li>
                 </ul>
                 <div class="instructions-nav-content" [class.non-scrollable]="!gameStarted">
-                    @if (!gameStarted) {
+                    @if ((!alreadyStartedOnInitializedRoom && !countdownExpired) || !gameStarted) {
                     <div class="prestart-overlay">
                         @if (room?.host?.id === (api.client$ | async)?.id) {
-                            <button
-                                class="btn btn-primary"
-                                [disabled]="startPressed"
-                                (click)="startGame()"
-                            >Start Game</button>
+                            <button class="btn btn-primary" (click)="startGame()">Start Game</button>
                         }
                         @else {
                             <p>Waiting for host to start the game...</p>

@@ -10,7 +10,7 @@ export class MarkdownService {
   marked = new Marked(
     markedHighlight({
       langPrefix: "hljs language-",
-      highlight(code, lang, info) {
+      highlight(code: any, lang: any, info: any) {
         const language = hljs.getLanguage(lang) ? lang : "plaintext"
         return hljs.highlight(code, { language }).value
       },

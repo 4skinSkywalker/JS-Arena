@@ -6,6 +6,8 @@ import { IChatReceivedMessage, IClientParticipationChangeMessage, ILogMessage, I
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
+import { LoaderService } from '../../components/loader/loader-service.service';
+import { DEFAULT_EDITOR_CONTENT } from './game.constants';
 
 @Component({
   selector: 'app-game',
@@ -24,25 +26,28 @@ export class GameComponent {
   chatMessages: IChatReceivedMessage[] = [];
   chatMessage = new FormControl("", { nonNullable: true });
 
+  initializedRoom = false;
+  alreadyStartedOnInitializedRoom = false;
   room?: IRoomJSON;
   gameStarted = false;
   problemDescription = "";
   problemTests: ITest[] = [];
-  startPressed = false;
   countdown = 0;
+  countdownExpired = false;
 
   handlers: Handlers = {
     "chatReceived": this.handleChatReceived.bind(this),
     "roomDetailsReceived": this.handleRoomDetailsReceived.bind(this),
     "clientJoined": this.handleClientJoined.bind(this),
-    "clientLeft": this.handleClientLeft.bind(this)
+    "clientLeft": this.handleClientLeft.bind(this),
+    "gameStarted": this.handleGameStarted.bind(this),
   };
 
   @HostListener("document:keydown", ["$event"])
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.shiftKey && event.key === "Enter") {
       event.preventDefault();
-      this.runCode(null);
+      this.runCode(this.problemTests[0].input || null);
     }
 
     if (event.ctrlKey && event.key === "Enter") {
@@ -55,11 +60,13 @@ export class GameComponent {
     public api: ApiService,
     public markdownService: MarkdownService,
     private route: ActivatedRoute,
+    private loaderService: LoaderService,
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id");
     this.editorContentKey = `editor-content-${this.roomId}`;
     this.api.send("joinRoom", { roomId: this.roomId });
     this.api.send("roomDetails", { roomId: this.roomId });
+    this.loaderService.isLoading = true;
   }
 
   ngOnInit() {
@@ -106,23 +113,13 @@ export class GameComponent {
     aceEditor.getSession().setUseWorker(false);
     aceEditor.getSession().setMode("ace/mode/javascript");
 
-    // Start of copy/paste protection
     aceEditor.commands.addCommand({
-      name: "breakTheEditor", 
-      bindKey: "ctrl-c|ctrl-v|ctrl-x|ctrl-shift-v|shift-del|cmd-c|cmd-v|cmd-x", 
+      name: "copyPasteProtection", 
+      bindKey: "ctrl-v|ctrl-x|ctrl-shift-v|cmd-v|cmd-x", 
       exec: function() {
         check("#cannot-copy-paste-modal-trigger");
       } 
     });
-    aceEditor.on("paste", (e: any) => {
-      e.text = "";
-      check("#cannot-copy-paste-modal-trigger");
-    });
-    aceEditor.on("paste", (e: any) => (e: any) => {
-      e.text = "";
-      check("#cannot-copy-paste-modal-trigger");
-    });
-    // End of copy/paste protection
 
     aceEditor.getSession().on("change", debounce(() => {
       this.onEditorValueChange(aceEditor.getSession().getValue());
@@ -132,7 +129,7 @@ export class GameComponent {
     if (lastEditorContent) {
       aceEditor.setValue(lastEditorContent);
     } else {
-      aceEditor.setValue(`function solution() {}`);
+      aceEditor.setValue(DEFAULT_EDITOR_CONTENT);
     }
 
     aceEditor.clearSelection();
@@ -235,15 +232,24 @@ export class GameComponent {
   async runCode(input: any, loggers?: { log?: () => void, warn?: () => void, error?: () => void }) {
     this.consoleLogMessages = [];
     await delay(0.1);
+
     (window as any).llog = !loggers?.log ? this.consoleLog("log") : loggers.log;
     (window as any).lwarn = !loggers?.warn ? this.consoleLog("warn") : loggers.warn;
     (window as any).lerror = !loggers?.error ? this.consoleLog("error") : loggers.error;
+
     const tamperedContent = this.editorContent
       .replace(/console\.log/g, "llog")
       .replace(/console\.warn/g, "lwarn")
       .replace(/console\.error/g, "lerror");
-    window.eval(tamperedContent);
-    return (window as any).solution && (window as any).solution(input);
+    
+    let output;
+    try {
+      window.eval(tamperedContent);
+      output = (window as any).solution(input);
+    } catch (e: any) {
+      this.consoleLog("error")(e.message || e);
+    }
+    return output;
   }
 
   async runSingleTest(test: ITest) {
@@ -252,11 +258,14 @@ export class GameComponent {
     test.status = "running";
 
     await delay(0.2);
-    const output = await this.runCode(test.input, {
-      log: (...args: any) => test.logs?.push(this.createLog("log", args)),
-      warn: (...args: any) => test.logs?.push(this.createLog("warn", args)),
-      error: (...args: any) => test.logs?.push(this.createLog("error", args))
-    });
+    const output = await this.runCode(
+      test.input,
+      {
+        log: (...args: any) => test.logs?.push(this.createLog("log", args)),
+        warn: (...args: any) => test.logs?.push(this.createLog("warn", args)),
+        error: (...args: any) => test.logs?.push(this.createLog("error", args))
+      }
+    );
 
     if (equal(output, test.expectedOutput)) {
       test.status = "passed";
@@ -268,7 +277,10 @@ export class GameComponent {
   }
 
   async runAllTests() {
-    this.problemTests.forEach(test => this.runSingleTest(test));
+    this.navTab = "benchmark";
+    for (const test of this.problemTests) {
+      await this.runSingleTest(test);
+    }
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {
@@ -280,8 +292,17 @@ export class GameComponent {
 
   handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
     if (msg.room.id === this.roomId) {
-      console.warn("Room details received", msg.room);
       this.room = msg.room;
+
+      if (!this.initializedRoom) {
+        this.loaderService.isLoading = false;
+        if (msg.room.started) {
+          this.alreadyStartedOnInitializedRoom = true;
+          this.generateSystemMessage(`Game already started`);
+        }
+      }
+      this.initializedRoom = true;
+
       if (msg.room.problem && !this.gameStarted) {
         this.gameStarted = msg.room.started;
         this.problemDescription = msg.room.problem.description;
@@ -330,13 +351,22 @@ export class GameComponent {
     }
   }
 
-  async startGame() {
-    this.startPressed = true;
+  async countdownAnimation() {
     const countdown = document.querySelector(".countdown");
     for (const num of [3, 2, 1]) {
       this.countdown = num;
       this.flickAnimation(countdown);
+      this.generateSystemMessage(`Game starts in ${num} seconds`);
       await delay(1);
     }
+    this.countdownExpired = true;
+  }
+
+  async startGame() {
+    this.api.send("startGame", { roomId: this.roomId });
+  }
+
+  handleGameStarted() {
+    this.countdownAnimation();
   }
 }
