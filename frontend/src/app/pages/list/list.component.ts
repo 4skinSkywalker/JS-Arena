@@ -24,9 +24,9 @@ export class ListComponent {
   handlers: Handlers = {};
 
   constructor(
+    public api: ApiService,
     private loaderService: LoaderService,
-    private router: Router,
-    public api: ApiService
+    private router: Router
   ) {
     this.openedRooms$ = this.filterByName.valueChanges
       .pipe(

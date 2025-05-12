@@ -36,15 +36,34 @@
                         <a class="nav-link compact" href="javascript:void(0)" (click)="navTab = 'benchmark'">Benchmark</a>
                     </li>
                 </ul>
-                <div class="instructions-nav-content">
+                <div class="instructions-nav-content" [class.non-scrollable]="!gameStarted">
+                    @if (!gameStarted) {
+                    <div class="prestart-overlay">
+                        @if (room?.host?.id === (api.client$ | async)?.id) {
+                            <button
+                                class="btn btn-primary"
+                                [disabled]="startPressed"
+                                (click)="startGame()"
+                            >Start Game</button>
+                        }
+                        @else {
+                            <p>Waiting for host to start the game...</p>
+                        }
+                        <div class="countdown">{{countdown}}</div>
+                    </div>
+                    }                    
                     @if (navTab === "instructions") {
-                    <div class="instructions-nav-content-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit commodi veniam itaque odit iure et explicabo amet praesentium, eos minima distinctio repellendus repudiandae, odio magni iste illum alias reiciendis? Quasi aperiam impedit fuga. Sint soluta illo voluptatem at dolores consequuntur laborum necessitatibus totam perferendis alias error ab corrupti, ipsa assumenda ex odio exercitationem. At consequatur molestiae aliquam nihil quas pariatur minus expedita sapiente temporibus quo quisquam similique neque maxime distinctio atque natus, iste voluptas quia error nam voluptatibus eos quibusdam. Saepe earum fugiat hic tenetur quis iste at laborum, vitae veniam ab accusantium recusandae, distinctio illum minima ea magnam dolorum! Distinctio minima voluptatem doloribus quibusdam est! Nulla ducimus libero, architecto assumenda aliquid dolor, veritatis numquam animi, odit cumque asperiores temporibus quidem atque sunt. Accusamus sed in sint non consequatur, beatae hic, omnis enim architecto, nobis iste amet totam et error numquam. Suscipit maxime accusantium soluta eos sunt dignissimos minima natus voluptates, earum velit corporis fugiat, quis sint tenetur! Qui a rerum fuga ad corporis debitis quas quia nam obcaecati, dolor sequi explicabo sint quae ut doloribus cumque fugit non officia nostrum reiciendis facilis! Reprehenderit aspernatur nostrum praesentium quos beatae labore aperiam, quasi excepturi totam voluptatum dignissimos animi facilis magni deserunt aliquid recusandae eligendi tenetur earum ipsam at non a modi. Ipsam tempore tempora autem necessitatibus praesentium reiciendis perspiciatis amet dolorum vel! Molestiae ipsa quisquam perferendis vitae perspiciatis dolorum voluptate deleniti magni ad voluptatum corporis in repellendus vero non itaque cupiditate corrupti iusto, distinctio cum veniam ab vel soluta velit? Laboriosam eius eaque officiis sit laudantium ut ea assumenda natus atque incidunt deserunt officia quo totam blanditiis eveniet sint architecto, odio mollitia earum nesciunt ullam, vitae est itaque. Soluta, reprehenderit nam maxime libero corporis in consequuntur placeat deserunt, neque adipisci dicta labore aliquid sint beatae odio? Recusandae dicta obcaecati doloremque molestiae error, consequatur accusamus veniam eius, tempora laboriosam incidunt voluptatum quod ipsam quisquam, optio sit assumenda excepturi. Cum voluptatum est delectus repellendus, praesentium ex! Est a error minus eveniet, alias ipsam nemo quasi dolores deserunt nisi voluptatum illo, non minima optio labore animi tenetur, at ut aperiam nostrum sit! Tempora nobis soluta quos necessitatibus suscipit commodi omnis provident praesentium minus molestias consectetur tenetur, facere, totam atque, iste laudantium voluptatibus ipsam reiciendis? Amet veritatis, eaque perferendis sed magni, omnis aliquam quas sunt et, voluptates minima? Dolorum, eligendi. Accusamus, quisquam placeat asperiores, ab deleniti minus cupiditate quae saepe natus nihil aspernatur iusto dolor veritatis itaque recusandae fugit odit voluptas, sed doloremque illum sint veniam. Quos, eius fugit architecto assumenda aperiam molestias earum explicabo magni cupiditate quis accusamus aspernatur illum aut pariatur asperiores recusandae iure minima provident ea commodi ex reprehenderit obcaecati tenetur. Quisquam reiciendis dolores, voluptates explicabo impedit unde reprehenderit quasi error facere quas delectus recusandae quam laboriosam eum praesentium incidunt tempora repudiandae illum placeat quidem eos perspiciatis voluptas. Atque hic ex doloremque, error, sapiente ea placeat aperiam fuga quasi ipsum minus esse? Distinctio officiis consequatur dolore quidem expedita, cumque ratione doloribus quibusdam, enim corporis illo labore, dicta dolor ipsam. Quaerat expedita deleniti in qui nemo voluptatibus nostrum? Iure laboriosam enim officiis voluptatem! Eum natus molestias id tempora earum veritatis quis quo? Unde optio nisi earum ad? Dolorem ea consequuntur impedit? Dignissimos facere magnam eaque! Perspiciatis tempore laborum quidem enim placeat voluptates laudantium distinctio facere. Quas dolorum expedita, nemo soluta exercitationem quibusdam non modi aperiam accusantium. Blanditiis voluptates sint, temporibus aperiam atque totam vero ipsam fugit provident perferendis repellat nam, facilis veniam et. Numquam sequi repellat, quia quidem officia sapiente recusandae magnam a laboriosam impedit, voluptatibus totam. Nemo earum tenetur quasi, saepe pariatur hic corporis aperiam sit cupiditate eveniet alias ex ipsum iste delectus nostrum, quod iusto eius, exercitationem sint molestiae esse ducimus dolor enim nobis! Ducimus repellendus, quisquam fugiat non maxime enim modi. Distinctio rerum eligendi soluta laudantium facere eaque quas possimus quod id, quae dolorum odit consectetur. Harum rem expedita fugiat et reprehenderit sit beatae nesciunt! Libero voluptate minima dicta omnis nulla dolor facilis laudantium placeat vitae optio rerum quisquam culpa nemo ut fugiat, hic obcaecati quibusdam, fugit praesentium molestias illo nam? Quis ipsum ipsa ipsam perspiciatis aliquid illum adipisci sunt perferendis officia atque rem a natus eligendi enim debitis provident voluptates impedit cum commodi repellat nulla, ut et quae! Eos tempore eveniet, doloribus autem voluptatem dignissimos ut! Veritatis beatae commodi, cupiditate iste rem molestias eligendi! Pariatur quidem voluptates deleniti id amet. Maxime vitae quia quidem eum architecto ratione nobis tempora expedita, fuga ea repudiandae deserunt neque facilis illum ut corporis repellat, molestias totam sapiente. Aperiam esse harum earum possimus neque fugit delectus ea molestias modi cum optio placeat unde, corrupti voluptate dolores alias debitis ut. Eos consequatur accusantium atque natus omnis enim labore rem porro alias, voluptates fugiat amet provident, reiciendis quaerat libero. Totam accusantium tempore hic atque maxime id rem suscipit, sit nemo qui unde libero, ea ab nihil voluptatibus ullam, exercitationem quos. Dicta velit aliquam unde necessitatibus consequuntur possimus consequatur, excepturi debitis quas in quis perferendis ipsam quia, temporibus inventore libero incidunt at saepe quod. Quos fugiat, id aspernatur laborum eveniet repellat blanditiis atque vitae, nesciunt excepturi numquam deleniti? Suscipit quibusdam, officiis assumenda facilis obcaecati, molestiae ad necessitatibus ipsa vero nulla odio fugit! Fugit necessitatibus aliquam placeat fuga sed enim id! Officia rerum dolorum reprehenderit esse adipisci, sapiente voluptatum corrupti nesciunt perspiciatis voluptates architecto maxime quasi alias ut cupiditate sit accusantium, officiis ullam. Fugiat recusandae animi, sequi ipsam nobis consectetur totam modi dignissimos porro tempora! A enim, in perspiciatis optio rerum cumque! Vitae deserunt quo sapiente minima debitis repudiandae. Enim nihil, at minima omnis possimus sed sint nemo maiores vel temporibus nulla id, quaerat, quod illum quasi. Nihil unde aspernatur minus, eum iusto quidem molestias delectus? Odio debitis, error ducimus eaque reprehenderit, iusto, vero doloremque quibusdam qui quis fugit! Nulla impedit libero illo delectus sint quibusdam quod at, ab cumque odio nisi assumenda perspiciatis non recusandae? Fugit illum aliquam vero ea expedita, minus facilis provident accusantium cupiditate labore deleniti voluptas quaerat in? Corrupti et delectus, perspiciatis cum saepe minus, aliquam quidem praesentium excepturi voluptatibus debitis repellendus id totam?</div>
+                    <div
+                        class="instructions-nav-content-description"
+                        [class.blurred]="!gameStarted"
+                        [innerHTML]="markdownService.render(problemDescription || '').trim()"
+                    ></div>
                     }
 
                     @if (navTab === "benchmark") {
                     <div class="instructions-nav-content-benchmark">
                         <div class="accordion benchmark-accordion">
-                            @for (test of tests; track $index) {
+                            @for (test of problemTests; track $index) {
                             <div 
                                 class="accordion-item"
                                 [class.test-passed]="test.status === 'passed'"
@@ -53,7 +72,7 @@
                                 <label class="accordion-header" tabindex="0">
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-accordion-header-content">
-                                        <div>Test {{ $index }} / {{ tests.length }} ({{ test.status === "pending" ? "Not run" : test.status }})</div>
+                                        <div>Test {{ $index }} / {{ problemTests.length }} ({{ test.status === "pending" ? "Not run" : test.status }})</div>
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
@@ -165,7 +184,7 @@
                         <div class="chat-author">{{msg.client.name}}</div>
                         <div class="chat-time">{{msg.time}}</div>
                     </div>
-                    <div class="chat-message self-type" data-speed="0">{{msg.text}}</div>
+                    <div class="chat-message">{{msg.text}}</div>
                 </div>
                 }
             </div>

@@ -5,6 +5,7 @@ import { check, debounce, delay, drag, equal, uncheck } from '../../../utils';
 import { IChatReceivedMessage, IClientParticipationChangeMessage, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
+import { MarkdownService } from '../../services/markdown.service';
 
 @Component({
   selector: 'app-game',
@@ -22,34 +23,13 @@ export class GameComponent {
   consoleLogMessages: ILogMessage[] = [];
   chatMessages: IChatReceivedMessage[] = [];
   chatMessage = new FormControl("", { nonNullable: true });
+
   room?: IRoomJSON;
-  tests: ITest[] = [
-    {
-      status: "failed",
-      input: [1, 2, 3, 4],
-      expectedOutput: 10,
-      output: 9,
-      logs: [
-        { level: "log", text: "Sum is 15" }
-      ]
-    },
-    {
-      status: "passed",
-      input: [1, 2, 3, 4, 5],
-      expectedOutput: 15,
-      output: 9,
-      logs: [
-        { level: "log", text: "Sum is 15" }
-      ]
-    },
-    {
-      status: "pending",
-      input: [1, 2],
-      expectedOutput: 3,
-      output: null,
-      logs: []
-    }
-  ];
+  gameStarted = false;
+  problemDescription = "";
+  problemTests: ITest[] = [];
+  startPressed = false;
+  countdown = 0;
 
   handlers: Handlers = {
     "chatReceived": this.handleChatReceived.bind(this),
@@ -72,8 +52,9 @@ export class GameComponent {
   }
 
   constructor(
+    public api: ApiService,
+    public markdownService: MarkdownService,
     private route: ActivatedRoute,
-    public api: ApiService
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id");
     this.editorContentKey = `editor-content-${this.roomId}`;
@@ -287,7 +268,7 @@ export class GameComponent {
   }
 
   async runAllTests() {
-    this.tests.forEach(test => this.runSingleTest(test));
+    this.problemTests.forEach(test => this.runSingleTest(test));
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {
@@ -298,7 +279,15 @@ export class GameComponent {
   }
 
   handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
-    console.warn("Room details received", msg.room);
+    if (msg.room.id === this.roomId) {
+      console.warn("Room details received", msg.room);
+      this.room = msg.room;
+      if (msg.room.problem && !this.gameStarted) {
+        this.gameStarted = msg.room.started;
+        this.problemDescription = msg.room.problem.description;
+        this.problemTests = msg.room.problem.tests;
+      }
+    }
   }
 
   generateSystemMessage(text: string) {
@@ -331,5 +320,23 @@ export class GameComponent {
       text: message
     });
     this.chatMessage.setValue("");
+  }
+
+  async flickAnimation(el: Element | null) {
+    if (el) {
+      el.classList.remove("animation");
+      await delay(0.1);
+      el.classList.add("animation");
+    }
+  }
+
+  async startGame() {
+    this.startPressed = true;
+    const countdown = document.querySelector(".countdown");
+    for (const num of [3, 2, 1]) {
+      this.countdown = num;
+      this.flickAnimation(countdown);
+      await delay(1);
+    }
   }
 }
