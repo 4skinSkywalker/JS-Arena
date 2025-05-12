@@ -117,3 +117,8 @@ export interface IClientParticipationChangeMessage {
     room: IRoomJSON;
     client: IClientJSON;
 }
+
+export interface IClientWithScore extends IClientJSON {
+  testsPassed?: number;
+  charCount?: number;
+}

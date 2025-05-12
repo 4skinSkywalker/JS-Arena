@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { check, debounce, delay, drag, equal, uncheck } from '../../../utils';
-import { IChatReceivedMessage, IClientParticipationChangeMessage, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
+import { IChatReceivedMessage, IClientJSON, IClientParticipationChangeMessage, IClientWithScore, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
@@ -25,7 +25,6 @@ export class GameComponent {
   consoleLogMessages: ILogMessage[] = [];
   chatMessages: IChatReceivedMessage[] = [];
   chatMessage = new FormControl("", { nonNullable: true });
-
   initializedRoom = false;
   alreadyStartedOnInitializedRoom = false;
   room?: IRoomJSON;
@@ -34,6 +33,8 @@ export class GameComponent {
   problemTests: ITest[] = [];
   countdown = 0;
   countdownExpired = false;
+  clientsSortByScore: IClientWithScore[] = [];
+  clientsSortByCharCount: IClientWithScore[] = [];
 
   handlers: Handlers = {
     "chatReceived": this.handleChatReceived.bind(this),
@@ -292,6 +293,8 @@ export class GameComponent {
   handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
     if (msg.room.id === this.roomId) {
       this.room = msg.room;
+      this.clientsSortByScore = msg.room.clients;
+      this.clientsSortByCharCount = msg.room.clients;
 
       if (!this.initializedRoom) {
         this.loaderService.isLoading = false;

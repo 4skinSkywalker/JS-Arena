@@ -121,21 +121,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @for (client of clientsSortByScore; track client.id) {
                         <tr>
-                            <th>1</th>
-                            <td>Steve</td>
-                            <td>5 / 20</td>
+                            <th>{{ $index + 1 }}</th>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.testsPassed || "?" }} / {{ problemTests.length }}</td>
                         </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>Yukihiro</td>
-                            <td>3 / 20</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>George</td>
-                            <td>1 / 20</td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
 
@@ -148,21 +140,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @for (client of clientsSortByCharCount; track client.id) {
                         <tr>
-                            <th>1</th>
-                            <td>Yukihiro</td>
-                            <td>275</td>
+                            <th>{{ $index + 1 }}</th>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.charCount || "?" }}</td>
                         </tr>
-                        <tr>
-                            <th>2</th>
-                            <td>Steve</td>
-                            <td>311</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>George</td>
-                            <td>398</td>
-                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>
