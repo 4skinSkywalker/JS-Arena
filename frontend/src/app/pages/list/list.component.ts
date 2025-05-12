@@ -50,10 +50,27 @@ export class ListComponent {
     this.api.send("listRooms");
   }
 
+  openCreateRoomModal() {
+    check('#create-room-modal-trigger');
+
+    const input = document.querySelector(".create-room-modal .form-control") as HTMLInputElement;
+    input.value = "";
+    setTimeout(() => input.focus(), 100);
+    
+    const keydownHandler = (evt: any) => {
+      if (evt.key === "Enter") {
+        evt.preventDefault();
+        this.roomNameModalOk();
+        input.removeEventListener("keydown", keydownHandler);
+      }
+    };
+    input.addEventListener("keydown", keydownHandler);
+  }
+
   roomNameModalOk() {
     const roomName = latinize(this.roomName.value);
     if (!roomName) {
-      return console.error("Username is empty");
+      return console.error("Room name is empty");
     }
 
     const createRoom = { name: roomName };

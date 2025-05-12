@@ -22,6 +22,9 @@ export class AppComponent {
 
   ngOnInit() {
     this.api.subscribe(this.handlers);
+  }
+
+  ngAfterViewInit() {
     this.sendClientInfo();
   }
 
@@ -32,10 +35,27 @@ export class AppComponent {
   sendClientInfo() {
     const clientInfo = loadFromLS("clientInfo");
     if (!clientInfo) {
-      return check("#username-modal-trigger");
+      return this.openUsernameModal();
     }
-    
+
     this.api.send("clientInfo", clientInfo);
+  }
+
+  openUsernameModal() {
+    check("#username-modal-trigger");
+
+    const input = document.querySelector(".username-modal .form-control") as HTMLInputElement;
+    input.value = "";
+    setTimeout(() => input.focus(), 100);
+    
+    const keydownHandler = (evt: any) => {
+      if (evt.key === "Enter") {
+        evt.preventDefault();
+        this.usernameModalOk();
+        input.removeEventListener("keydown", keydownHandler);
+      }
+    };
+    input.addEventListener("keydown", keydownHandler);
   }
 
   usernameModalOk() {

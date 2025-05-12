@@ -224,7 +224,6 @@ export class GameComponent {
   consoleLog(level: "log" | "warn" | "error") {
     return (...args: any) => {
       this.consoleLogMessages.push(this.createLog(level, args));
-
       this.scrollToBottom(".console");
     };
   }
@@ -321,6 +320,7 @@ export class GameComponent {
       time: "00:00:00",
       text
     });
+    this.scrollToBottom(".chat");
   }
 
   handleClientJoined(msg: IClientParticipationChangeMessage) {
@@ -359,6 +359,7 @@ export class GameComponent {
       this.generateSystemMessage(`Game starts in ${num} seconds`);
       await delay(1);
     }
+    this.generateSystemMessage("Game started. Good luck!");
     this.countdownExpired = true;
   }
 
