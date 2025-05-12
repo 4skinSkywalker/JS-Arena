@@ -21,7 +21,7 @@ export interface ILogMessage {
 export interface ITest {
     input: any;
     expectedOutput: any;
-    status?: "pending" | "running" | "passed" | "failed";
+    status?: "running" | "passed" | "failed";
     output?: any;
     logs?: ILogMessage[];
 }
