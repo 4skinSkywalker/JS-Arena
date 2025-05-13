@@ -3,13 +3,18 @@
         <div class="editor-wrap">
             <div class="editor-title">
                 <span>Editor</span>
-                <div class="editor-buttons">
-                    <button class="btn compact btn-primary" (click)="runCode(problemTests[0].input || null)">Run code (⇧ + ↵)</button>
-                    <button class="btn compact btn-primary" (click)="runAllTests()">Run tests (⌘ + ↵)</button>
-                </div>
+                <button
+                    class="btn compact btn-primary"
+                    (click)="runCode(problemTests[0].input || null)"
+                >Run code (⇧ + ↵)</button>
+                <button
+                    class="btn compact btn-primary"
+                    (click)="runAllTests()"
+                >Run tests (⌘ + ↵)</button>
             </div>
             <div class="editor" id="editor"></div>
         </div>
+
         <div class="console-container">
             <div class="console-title">Console</div>
             <div class="console">
@@ -25,38 +30,41 @@
         </div>
         <div class="sections-divider"></div>
     </div>
+
     <div class="content-container">
         <div class="instructions-container">
             <div class="instructions">
-                <ul class="nav instructions-nav">
+                <ul class="nav">
                     <li class="nav-item" [class.active]="navTab === 'instructions'">
-                        <a class="nav-link compact" href="javascript:void(0)" (click)="navTab = 'instructions'">Instructions</a>
+                        <a class="nav-link compact" (click)="navTab = 'instructions'">Instructions</a>
                     </li>
+
                     <li class="nav-item" [class.active]="navTab === 'benchmark'">
-                        <a class="nav-link compact" href="javascript:void(0)" (click)="navTab = 'benchmark'">Benchmark</a>
+                        <a class="nav-link compact" (click)="navTab = 'benchmark'">Benchmark</a>
                     </li>
                 </ul>
-                <div class="instructions-nav-content" [class.non-scrollable]="!gameStarted">
-                    @if ((!alreadyStartedOnInitializedRoom && !countdownExpired) || !gameStarted) {
+
+                <div class="nav-panel" [class.non-scrollable]="!hasGameStarted()">
+                    @if (!hasGameStarted()) {
                     <div class="prestart-overlay">
-                        @if (room?.host?.id === (api.client$ | async)?.id) {
-                            <button class="btn btn-primary" (click)="startGame()">Start Game</button>
+                        @if (isHost()) {
+                        <button class="btn btn-primary" (click)="startGame()">Start game</button>
                         }
                         @else {
-                            <p>Waiting for host to start the game...</p>
+                        <p>Waiting for host to start the game...</p>
                         }
                         <div class="countdown">{{countdown}}</div>
                     </div>
                     }
 
                     <div
-                        class="instructions-nav-content-description"
+                        class="nav-panel-description"
                         [class.hidden]="navTab !== 'instructions'"
                         [innerHTML]="markdownService.render(problemDescription || '').trim()"
                     ></div>
 
                     <div
-                        class="instructions-nav-content-benchmark"
+                        class="nav-panel-benchmark"
                         [class.hidden]="navTab !== 'benchmark'"
                     >
                         <div class="accordion benchmark-accordion">
@@ -68,7 +76,7 @@
                             >
                                 <label class="accordion-header" tabindex="0">
                                     <input class="accordion-trigger" type="checkbox">
-                                    <div class="benchmark-accordion-header-content">
+                                    <div class="benchmark-header">
                                         <div>Test {{ $index }} / {{ problemTests.length }} ({{ !test.status ? "Not run" : test.status }})</div>
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
@@ -111,7 +119,17 @@
                     </div>
                 </div>
             </div>
+
             <div class="leaderboard-container">
+                @if (isHost()) {
+                <div class="host-commands">
+                    <h3 class="m-0">Host commands</h3>
+                    <button class="btn compact btn-primary" [disabled]="!hasGameStarted()">Random problem</button>
+                    <button class="btn compact btn-primary" [disabled]="!hasGameStarted()">New game</button>
+                    <button class="btn compact btn-primary">Kick player</button>
+                </div>
+                }
+
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -151,23 +169,27 @@
                 </table>
             </div>
         </div>
+
         <div class="chat-container">
             <div class="chat-title">Chat</div>
             <div class="chat">
-                @for (msg of chatMessages; track msg.id) {
+                @for (msg of chatMessages; track $index) {
                 <div 
                     class="chat-message-wrap" 
                     [class.my-message]="msg.client.id === (api.client$ | async)?.id"
                     [class.system-message]="msg.client.id === '-1'"
                 >
-                    <div class="chat-header" *ngIf="msg.client.id !== '-1'">
+                    @if (msg.client.id !== '-1') {
+                    <div class="chat-header">
                         <div class="chat-author">{{msg.client.name}}</div>
                         <div class="chat-time">{{msg.time}}</div>
                     </div>
+                    }
                     <div class="chat-message">{{msg.text}}</div>
                 </div>
                 }
             </div>
+
             <div class="chat-composer">
                 <input 
                     type="text" 
@@ -196,7 +218,7 @@
     </div>
 
     <div class="modal-footer">
-      <button class="btn btn-primary" (click)="uncheck('#cannot-copy-paste-modal-trigger')">Ok</button>
+        <button class="btn btn-primary" (click)="uncheck('#cannot-copy-paste-modal-trigger')">Ok</button>
     </div>
   </div>
 </div>

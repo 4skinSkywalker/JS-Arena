@@ -4,12 +4,8 @@
     <div>
         <div class="scrollable-toolbar mb-1">
             <h2 class="m-0">Open Rooms</h2>
-            <div class="scrollable-toolbar-controls">
-                <div class="form-control-wrap">
-                    <input type="text" class="form-control" [formControl]="filterByName" placeholder="Filter by name...">
-                </div>
-                <button class="btn btn-primary" (click)="openCreateRoomModal()">Create Room</button>
-            </div>
+            <input type="text" class="form-control" [formControl]="filterByName" placeholder="Filter by name...">
+            <button class="btn btn-primary" (click)="openCreateRoomModal()">Create Room</button>
         </div>
         <div class="scrollable">
             <ul>
@@ -22,6 +18,7 @@
                             <div>Host</div>
                             <div>{{ item.host.name }}</div>
                         </div>
+                        
                         <button class="btn btn-primary" [routerLink]="['/game', item.id]">Join</button>
                     </div>
                 </li>
@@ -41,9 +38,7 @@
                             <div>Room</div>
                             <div>{{ item.name }}</div>
                             <div>Host</div>
-                            <div>{{ item.host }}</div>
-                            <div>Clients</div>
-                            <div>{{ item.clients.length }}</div>
+                            <div>{{ item.host.name }}</div>
                         </div>
                     </div>
                 </li>

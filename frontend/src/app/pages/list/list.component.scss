@@ -11,11 +11,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+    gap: var(--tertiary-space);
 
-.scrollable-toolbar-controls {
-    display: flex;
-    gap: var(--secondary-space);
+    .form-control {
+        width: auto;
+        margin-left: auto;
+    }
 }
 
 .scrollable  {
@@ -23,16 +24,16 @@
     overflow-y: scroll;
     padding: var(--secondary-space);
     border: 2px solid rgba(var(--primary-color));
-}
 
-.scrollable ul {
-    display: flex;
-    flex-direction: column;
-    gap: var(--secondary-space);
-}
-
-.scrollable:has(> ul:empty)::after {
-    content: "No lobbies found";
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--secondary-space);
+    }
+    
+    &:has(> ul:empty)::after {
+        content: "No lobbies found";
+    }
 }
 
 .lobby {
@@ -40,22 +41,34 @@
     align-items: center;
     padding: var(--tertiary-space) var(--secondary-space);
     border: 2px solid rgba(var(--primary-color));
-    box-shadow: 0 0 10px 0 rgba(var(--primary-color));
-}
+    transition: all 0.4s ease;
+    
+    &.lobby-open {
+        box-shadow: 0 0 10px 0 rgba(var(--primary-color));
 
-.lobby-content {
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0 var(--secondary-space);
-}
+        &:hover {
+            background-color: rgba(var(--primary-color), 0.2);
+        }
+    }
 
-.lobby-content > * {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+    &.lobby-close {
+        opacity: 0.85;
+    }
 
-.lobby-content > *:nth-child(even) {
-    font-weight: 700;
+    .lobby-content {
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0 var(--secondary-space);
+
+        > * {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        > *:nth-child(even) {
+            font-weight: 700;
+        }
+    }
 }

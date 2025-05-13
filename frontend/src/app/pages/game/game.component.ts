@@ -26,9 +26,9 @@ export class GameComponent {
   chatMessages: IChatReceivedMessage[] = [];
   chatMessage = new FormControl("", { nonNullable: true });
   initializedRoom = false;
-  alreadyStartedOnInitializedRoom = false;
+  alreadyStartedOnInit = false;
   room?: IRoomJSON;
-  gameStarted = false;
+  roomStarted = false;
   problemDescription = "";
   problemTests: ITest[] = [];
   countdown = 0;
@@ -85,6 +85,16 @@ export class GameComponent {
 
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
+  }
+
+  isHost() {
+    return this.room &&
+      this.api.client$.value &&
+      this.room?.host?.id === this.api.client$.value?.id;
+  }
+
+  hasGameStarted() {
+    return this.alreadyStartedOnInit || (this.roomStarted && this.countdownExpired);
   }
 
   copyPasteProtection() {
@@ -299,14 +309,14 @@ export class GameComponent {
       if (!this.initializedRoom) {
         this.loaderService.isLoading = false;
         if (msg.room.started) {
-          this.alreadyStartedOnInitializedRoom = true;
+          this.alreadyStartedOnInit = true;
           this.generateSystemMessage(`Game already started`);
         }
       }
       this.initializedRoom = true;
 
-      if (msg.room.problem && !this.gameStarted) {
-        this.gameStarted = msg.room.started;
+      if (msg.room.problem && !this.roomStarted) {
+        this.roomStarted = msg.room.started;
         this.problemDescription = msg.room.problem.description;
         this.problemTests = msg.room.problem.tests;
       }
