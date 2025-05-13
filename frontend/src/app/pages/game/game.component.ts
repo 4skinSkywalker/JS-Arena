@@ -18,6 +18,8 @@ export interface IClientWithScore extends IClientJSON, IScore {}
   styleUrl: './game.component.scss'
 })
 export class GameComponent {
+  DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
+  JSON = JSON;
   check = check;
   uncheck = uncheck;
   roomId;
@@ -377,7 +379,7 @@ export class GameComponent {
         testsPassed: this.clientScoreMap[client.id]?.testsPassed,
         charCount: this.clientScoreMap[client.id]?.charCount
       }))
-      .sort((a, b) => b.charCount - a.charCount);
+      .sort((a, b) => a.charCount - b.charCount);
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {

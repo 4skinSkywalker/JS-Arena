@@ -85,17 +85,17 @@
                                     <div class="p-2">
                                         <div class="mb-2">
                                             <div>Input</div>
-                                            {{ test.input }}
+                                            {{ JSON.stringify(test.input) }}
                                         </div>
 
                                         <div class="mb-2">
                                             <div>Expected output</div>
-                                            {{ test.expectedOutput }}
+                                            {{ JSON.stringify(test.expectedOutput) }}
                                         </div>
 
                                         <div class="mb-2">
                                             <div>Your output</div>
-                                            {{ test.output ? test.output : "Not run" }}
+                                            {{ test.output ? JSON.stringify(test.output) : "Not run" }}
                                         </div>
 
                                         <div>
@@ -149,7 +149,7 @@
                         <tr>
                             <th>{{ $index + 1 }}</th>
                             <td>{{ client.name }}</td>
-                            <td>{{ client.testsPassed || "?" }} / {{ problemTests.length }}</td>
+                            <td>{{ client.testsPassed || "0" }} / {{ problemTests.length }}</td>
                         </tr>
                         }
                     </tbody>
@@ -168,7 +168,7 @@
                         <tr>
                             <th>{{ $index + 1 }}</th>
                             <td>{{ client.name }}</td>
-                            <td>{{ client.charCount || "?" }}</td>
+                            <td>{{ client.charCount || DEFAULT_EDITOR_CONTENT.length }}</td>
                         </tr>
                         }
                     </tbody>
