@@ -98,7 +98,7 @@ export class GameComponent {
   }
 
   copyPasteProtection() {
-    (document.querySelector(".instructions-nav-content-description") as HTMLDivElement)
+    (document.querySelector(".nav-panel-description") as HTMLDivElement)
       .addEventListener("copy", (e: any) => {
         e.preventDefault();
         check("#cannot-copy-paste-modal-trigger");
