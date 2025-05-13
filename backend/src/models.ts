@@ -55,10 +55,13 @@ export interface IChatMessage {
     text: string;
 }
 
-export interface IProgressMessage {
+export interface IScore {
+    testsPassed?: number;
+    charCount?: number;
+}
+
+export interface IProgressMessage extends IScore {
     roomId: string;
-    clientId: string;
-    howManySolved: number;
 }
 
 export interface ICreateRoomMessage {
@@ -113,12 +116,9 @@ export interface IRoomDetailsReceivedMessage {
     room: IRoomJSON;
 }
 
-export interface IClientParticipationChangeMessage {
-    room: IRoomJSON;
+export interface IClientWithRoomMessage {
     client: IClientJSON;
+    room: IRoomJSON;
 }
 
-export interface IClientWithScore extends IClientJSON {
-  testsPassed?: number;
-  charCount?: number;
-}
+export interface IProgressReceivedMessage extends IClientWithRoomMessage, IScore {}

@@ -2,6 +2,9 @@ export function getUid() {
     return Math.random().toString(36).substring(2, 15);
 }
 
+export function deepCopy(obj: any) {
+    return JSON.parse(JSON.stringify(obj));
+}
 
 export async function delay(s: number) {
     return new Promise(res => setTimeout(res, s * 1000));

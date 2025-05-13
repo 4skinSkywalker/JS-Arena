@@ -90,34 +90,12 @@ class Client {
         this.rooms[msg.roomId].sendChatMessage(msg.text, this);
     }
     
-    // TODO: Refactor this method something can be moved into the Room class
     handleProgress(msg: IProgressMessage) {
         if (!this.rooms[msg.roomId]) {
             return console.error("Room not found");
         }
 
-        console.log(`Client "${this.name}" (${this.id}) sent progress ${msg.howManySolved} in room "${this.rooms[msg.roomId].name}" (${msg.roomId})`);
-
-        if (msg.clientId) {
-            // The data has to be sent to a specific client
-            const client = this.rooms[msg.roomId].clients[msg.clientId];
-            if (client) {
-                client.sendMsg("progressReceived", {
-                    room: this.rooms[msg.roomId].toJSON(),
-                    client: this.toJSON(),
-                    howManySolved: msg.howManySolved
-                });
-            }
-        } else {
-            // The data has to be sent to all clients
-            for (const client of this.rooms[msg.roomId].getClientsArray()) {
-                client.sendMsg("progressReceived", {
-                    room: this.rooms[msg.roomId].toJSON(),
-                    client: this.toJSON(),
-                    howManySolved: msg.howManySolved
-                });
-            }
-        }
+        this.rooms[msg.roomId].sendProgress(this, msg.testsPassed, msg.charCount);
     }
 
     handleListClients() {
@@ -306,6 +284,17 @@ class Room {
                     text
                 }
             );
+        }
+    }
+
+    sendProgress(client: Client, testsPassed?: number, charCount?: number) {
+        for (const _client of this.getClientsArray()) {
+            _client.sendMsg("progressReceived", {
+                room: this.toJSON(),
+                client: client.toJSON(),
+                testsPassed,
+                charCount
+            });
         }
     }
 

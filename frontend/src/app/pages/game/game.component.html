@@ -124,9 +124,15 @@
                 @if (isHost()) {
                 <div class="host-commands">
                     <h3 class="m-0">Host commands</h3>
-                    <button class="btn compact btn-primary" [disabled]="!hasGameStarted()">Random problem</button>
-                    <button class="btn compact btn-primary" [disabled]="!hasGameStarted()">New game</button>
-                    <button class="btn compact btn-primary">Kick player</button>
+                    <button
+                        class="btn compact btn-primary"
+                        [disabled]="!hasGameStarted()"
+                        (click)="newGame()"
+                    >New game</button>
+                    <button
+                        class="btn compact btn-primary"
+                        (click)="kickPlayer()"
+                    >Kick player</button>
                 </div>
                 }
 

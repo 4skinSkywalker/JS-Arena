@@ -1,13 +1,15 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { check, debounce, delay, drag, equal, uncheck } from '../../../utils';
-import { IChatReceivedMessage, IClientJSON, IClientParticipationChangeMessage, IClientWithScore, ILogMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
+import { check, debounce, deepCopy, delay, drag, equal, uncheck } from '../../../utils';
+import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, IScore, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { DEFAULT_EDITOR_CONTENT } from './game.constants';
+
+export interface IClientWithScore extends IClientJSON, IScore {}
 
 @Component({
   selector: 'app-game',
@@ -33,6 +35,7 @@ export class GameComponent {
   problemTests: ITest[] = [];
   countdown = 0;
   countdownExpired = false;
+  clientScoreMap: Record<string, IScore> = {};
   clientsSortByScore: IClientWithScore[] = [];
   clientsSortByCharCount: IClientWithScore[] = [];
 
@@ -42,6 +45,7 @@ export class GameComponent {
     "clientJoined": this.handleClientJoined.bind(this),
     "clientLeft": this.handleClientLeft.bind(this),
     "gameStarted": this.handleGameStarted.bind(this),
+    "progressReceived": this.handleProgressReceived.bind(this),
   };
 
   @HostListener("document:keydown", ["$event"])
@@ -148,8 +152,11 @@ export class GameComponent {
 
   onEditorValueChange(value: string) {
     console.log("Editor value changed", value);
+
     this.editorContent = value;
     localStorage.setItem(this.editorContentKey, value);
+
+    this.api.send("progress", { roomId: this.roomId, charCount: value.length });
   }
 
   initGameResize() {
@@ -284,43 +291,18 @@ export class GameComponent {
     }
 
     test.output = output;
+    return test.status === "passed";
   }
 
   async runAllTests() {
     this.navTab = "benchmark";
+    let testsPassed = 0;
     for (const test of this.problemTests) {
-      await this.runSingleTest(test);
-    }
-  }
-
-  handleChatReceived(msg: IChatReceivedMessage) {
-    if (msg.room.id === this.roomId) {
-      this.chatMessages.push(msg);
-      this.scrollToBottom(".chat");
-    }
-  }
-
-  handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
-    if (msg.room.id === this.roomId) {
-      this.room = msg.room;
-      this.clientsSortByScore = msg.room.clients;
-      this.clientsSortByCharCount = msg.room.clients;
-
-      if (!this.initializedRoom) {
-        this.loaderService.isLoading = false;
-        if (msg.room.started) {
-          this.alreadyStartedOnInit = true;
-          this.generateSystemMessage(`Game already started`);
-        }
-      }
-      this.initializedRoom = true;
-
-      if (msg.room.problem && !this.roomStarted) {
-        this.roomStarted = msg.room.started;
-        this.problemDescription = msg.room.problem.description;
-        this.problemTests = msg.room.problem.tests;
+      if (await this.runSingleTest(test)) {
+        testsPassed++;
       }
     }
+    this.api.send("progress", { roomId: this.roomId, testsPassed });
   }
 
   generateSystemMessage(text: string) {
@@ -334,18 +316,6 @@ export class GameComponent {
       text
     });
     this.scrollToBottom(".chat");
-  }
-
-  handleClientJoined(msg: IClientParticipationChangeMessage) {
-    if (msg.room.id === this.roomId) {
-      this.generateSystemMessage(`Client ${msg.client.name} joined the room`);
-    }
-  }
-
-  handleClientLeft(msg: IClientParticipationChangeMessage) {
-    if (msg.room.id === this.roomId) {
-      this.generateSystemMessage(`Client ${msg.client.name} left the room`);
-    }
   }
 
   sendChatMessage(message: string) {
@@ -376,11 +346,97 @@ export class GameComponent {
     this.countdownExpired = true;
   }
 
-  async startGame() {
+  startGame() {
     this.api.send("startGame", { roomId: this.roomId });
+  }
+
+  gameOver() {
+    // TODO
+  }
+
+  newGame() {
+    alert("Not implemented yet"); // TODO
+  }
+
+  kickPlayer() {
+    alert("Not implemented yet"); // TODO
+  }
+
+  setClientArrays() {
+    this.clientsSortByScore = [...(this.room?.clients || [])]
+      .map(client => ({
+        ...deepCopy(client),
+        testsPassed: this.clientScoreMap[client.id]?.testsPassed,
+        charCount: this.clientScoreMap[client.id]?.charCount
+      }))
+      .sort((a, b) => b.testsPassed - a.testsPassed);
+
+    this.clientsSortByCharCount = [...(this.room?.clients || [])]
+      .map(client => ({
+        ...deepCopy(client),
+        testsPassed: this.clientScoreMap[client.id]?.testsPassed,
+        charCount: this.clientScoreMap[client.id]?.charCount
+      }))
+      .sort((a, b) => b.charCount - a.charCount);
+  }
+
+  handleChatReceived(msg: IChatReceivedMessage) {
+    if (msg.room.id !== this.roomId) {
+      return;
+    }
+    this.chatMessages.push(msg);
+    this.scrollToBottom(".chat");
+  }
+
+  handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
+    if (msg.room.id !== this.roomId) {
+      return;
+    }
+
+    this.room = msg.room;
+    this.setClientArrays();
+
+    if (!this.initializedRoom) {
+      this.loaderService.isLoading = false;
+      if (msg.room.started) {
+        this.alreadyStartedOnInit = true;
+        this.generateSystemMessage(`Game already started`);
+      }
+    }
+    this.initializedRoom = true;
+
+    if (msg.room.problem && !this.roomStarted) {
+      this.roomStarted = msg.room.started;
+      this.problemDescription = msg.room.problem.description;
+      this.problemTests = msg.room.problem.tests;
+    }
+  }
+
+  handleClientJoined(msg: IClientWithRoomMessage) {
+    if (msg.room.id !== this.roomId) {
+      return;
+    }
+    this.generateSystemMessage(`Client ${msg.client.name} joined the room`);
+  }
+
+  handleClientLeft(msg: IClientWithRoomMessage) {
+    if (msg.room.id !== this.roomId) {
+      return;
+    }
+    this.generateSystemMessage(`Client ${msg.client.name} left the room`);
   }
 
   handleGameStarted() {
     this.countdownAnimation();
+  }
+
+  handleProgressReceived(msg: IProgressReceivedMessage) {
+    if (msg.room.id !== this.roomId) {
+      return;
+    }
+    this.clientScoreMap[msg.client.id] = this.clientScoreMap[msg.client.id] || {};
+    this.clientScoreMap[msg.client.id].testsPassed = msg.testsPassed ?? this.clientScoreMap[msg.client.id].testsPassed;
+    this.clientScoreMap[msg.client.id].charCount = msg.charCount ?? this.clientScoreMap[msg.client.id].charCount;
+    this.setClientArrays();
   }
 }
