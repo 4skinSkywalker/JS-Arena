@@ -59,8 +59,8 @@ export class GameComponent {
     return [...(this.room()?.clients || [])]
       .map(client => ({
         ...deepCopy(client),
-        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed,
-        charCount: this.clientScoreMap()?.[client.id]?.charCount
+        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed || 0,
+        charCount: this.clientScoreMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
       }))
       .sort((a, b) => b.testsPassed - a.testsPassed);
   });
@@ -68,8 +68,8 @@ export class GameComponent {
     return [...(this.room()?.clients || [])]
       .map(client => ({
         ...deepCopy(client),
-        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed,
-        charCount: this.clientScoreMap()?.[client.id]?.charCount
+        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed || 0,
+        charCount: this.clientScoreMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
       }))
       .sort((a, b) => a.charCount - b.charCount);
   });
@@ -329,7 +329,7 @@ export class GameComponent {
     if (this.testsRunning()) {
       return;
     }
-    
+
     this.testsRunning.set(true);
     this.navTab.set("benchmark");
     let testsPassed = 0;
