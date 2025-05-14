@@ -472,6 +472,7 @@ export class GameComponent {
     this.alreadyStartedOnInit.set(false);
     this.roomStarted.set(false);
     this.countdownExpired.set(false);
+    this.winnerName.set("");
 
     Object.keys(this.clientScoreMap).forEach(clientId => {
       this.clientScoreMap.update(prev => ({
