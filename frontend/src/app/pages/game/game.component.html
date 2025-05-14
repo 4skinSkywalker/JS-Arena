@@ -5,7 +5,7 @@
                 <span>Editor</span>
                 <button
                     class="btn compact btn-primary"
-                    (click)="runCode(problemTests[0]?.input || null)"
+                    (click)="runCode(problemTests()[0]?.input || null)"
                 >Run code (⇧ + ↵)</button>
                 <button
                     class="btn compact btn-primary"
@@ -18,7 +18,7 @@
         <div class="console-container">
             <div class="console-title">Console</div>
             <div class="console">
-                @for (msg of consoleLogMessages; track $index) {
+                @for (msg of consoleLogMessages(); track $index) {
                 <div 
                     class="console-message" 
                     [class.log-color]="msg.level === 'log'"
@@ -35,18 +35,18 @@
         <div class="instructions-container">
             <div class="instructions">
                 <ul class="nav">
-                    <li class="nav-item" [class.active]="navTab === 'instructions'">
-                        <a class="nav-link compact" (click)="navTab = 'instructions'">Instructions</a>
+                    <li class="nav-item" [class.active]="navTab() === 'instructions'">
+                        <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
                     </li>
 
-                    <li class="nav-item" [class.active]="navTab === 'benchmark'">
-                        <a class="nav-link compact" (click)="navTab = 'benchmark'">Benchmark</a>
+                    <li class="nav-item" [class.active]="navTab() === 'benchmark'">
+                        <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark</a>
                     </li>
                 </ul>
 
                 <div class="nav-panel" [class.non-scrollable]="!hasGameStarted()">
                     <div class="prestart-overlay" [hidden]="hasGameStarted()">
-                        @if (!(countdownRunning$ | async)) {
+                        @if (!countdownRunning()) {
                         @if (isHost()) {
                         <button class="btn btn-primary" (click)="startGame()">Start game</button>
                         }
@@ -54,21 +54,21 @@
                         <p>Waiting for host to start the game...</p>
                         }
                         }
-                        <div class="countdown">{{countdown}}</div>
+                        <div class="countdown">{{ countdown() }}</div>
                     </div>
 
                     <div
                         class="nav-panel-description"
-                        [class.hidden]="navTab !== 'instructions'"
-                        [innerHTML]="markdownService.render(problemDescription || '').trim()"
+                        [class.hidden]="navTab() !== 'instructions'"
+                        [innerHTML]="markdownService.render(problemDescription() || '').trim()"
                     ></div>
 
                     <div
                         class="nav-panel-benchmark"
-                        [class.hidden]="navTab !== 'benchmark'"
+                        [class.hidden]="navTab() !== 'benchmark'"
                     >
                         <div class="accordion benchmark-accordion">
-                            @for (test of problemTests; track $index) {
+                            @for (test of problemTests(); track $index) {
                             <div 
                                 class="accordion-item"
                                 [class.test-passed]="test.status === 'passed'"
@@ -77,7 +77,7 @@
                                 <label class="accordion-header" tabindex="0">
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-header">
-                                        <div>Test {{ $index }} / {{ problemTests.length }} ({{ !test.status ? "Not run" : test.status }})</div>
+                                        <div>Test {{ $index }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
@@ -95,7 +95,7 @@
 
                                         <div class="mb-2">
                                             <div>Your output</div>
-                                            {{ test.output ? JSON.stringify(test.output) : "Not run" }}
+                                            {{ test.output ? JSON.stringify(test.output) : "⠀" }}
                                         </div>
 
                                         <div>
@@ -108,7 +108,7 @@
                                             >{{msg.text}}</div>
                                             }
                                             @if (!test.logs?.length) {
-                                            No logs
+                                            ⠀
                                             }
                                         </div>
                                     </div>
@@ -145,11 +145,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (client of clientsSortByScore; track client.id) {
+                        @for (client of clientsSortByScore(); track client.id) {
                         <tr>
                             <th>{{ $index + 1 }}</th>
                             <td>{{ client.name }}</td>
-                            <td>{{ client.testsPassed || "0" }} / {{ problemTests.length }}</td>
+                            <td>{{ client.testsPassed || "0" }} / {{ problemTests().length }}</td>
                         </tr>
                         }
                     </tbody>
@@ -164,11 +164,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (client of clientsSortByCharCount; track client.id) {
+                        @for (client of clientsSortByCharCount(); track client.id) {
                         <tr>
                             <th>{{ $index + 1 }}</th>
                             <td>{{ client.name }}</td>
-                            <td>{{ client.charCount || DEFAULT_EDITOR_CONTENT.length }}</td>
+                            <td>{{ client.charCount == null ? DEFAULT_EDITOR_CONTENT.length : client.charCount }}</td>
                         </tr>
                         }
                     </tbody>
@@ -179,7 +179,7 @@
         <div class="chat-container">
             <div class="chat-title">Chat</div>
             <div class="chat">
-                @for (msg of chatMessages; track $index) {
+                @for (msg of chatMessages(); track $index) {
                 <div 
                     class="chat-message-wrap" 
                     [class.my-message]="msg.client.id === (api.client$ | async)?.id"

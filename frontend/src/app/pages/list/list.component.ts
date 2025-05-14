@@ -78,10 +78,10 @@ export class ListComponent {
 
     this.api.one("roomCreated", async ({ room }) => {
       await this.router.navigate(["/game", room.id]);
-      this.loaderService.isLoading = false;
+      this.loaderService.isLoading.set(false);
     });
 
     this.api.send("createRoom", createRoom);
-    this.loaderService.isLoading = true;
+    this.loaderService.isLoading.set(true);
   }
 }

@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, computed, HostListener, Signal, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { check, debounce, deepCopy, delay, drag, equal, uncheck } from '../../../utils';
@@ -7,10 +8,15 @@ import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
-import { DEFAULT_EDITOR_CONTENT } from './game.constants';
-import { BehaviorSubject } from 'rxjs';
+import { DEFAULT_EDITOR_CONTENT } from './game.const';
+import { getFakeClient, getFakeRoom } from './game.util';
 
-export interface IClientWithScore extends IClientJSON, IScore {}
+interface IClientWithScore extends IClientJSON, IScore {}
+interface ILoggerMethods {
+  log?: () => void;
+  warn?: () => void;
+  error?: () => void;
+}
 
 @Component({
   selector: 'app-game',
@@ -25,24 +31,48 @@ export class GameComponent {
   uncheck = uncheck;
   roomId;
   aceEditor: any;
-  editorContent = "";
   editorContentKey;
-  navTab: "instructions" | "benchmark" = "instructions";
-  consoleLogMessages: ILogMessage[] = [];
-  chatMessages: IChatReceivedMessage[] = [];
+  editorContent = signal("");
+  navTab = signal<"instructions" | "benchmark">("instructions");
+  consoleLogMessages = signal<ILogMessage[]>([]);
+  chatMessages = signal<IChatReceivedMessage[]>([]);
   chatMessage = new FormControl("", { nonNullable: true });
-  initializedRoom = false;
-  alreadyStartedOnInit = false;
-  room?: IRoomJSON;
-  roomStarted = false;
-  problemDescription = "";
-  problemTests: ITest[] = [];
-  countdown = 0;
-  countdownRunning$ = new BehaviorSubject(false);
-  countdownExpired = false;
-  clientScoreMap: Record<string, IScore> = {};
-  clientsSortByScore: IClientWithScore[] = [];
-  clientsSortByCharCount: IClientWithScore[] = [];
+  initializedRoom = signal(false);
+  alreadyStartedOnInit = signal(false);
+  room = signal<IRoomJSON | null | undefined>(null);
+  client: Signal<IClientJSON | null | undefined>;
+  isHost: Signal<boolean>;
+
+  testsRunning = signal(false);
+  roomStarted = signal(false);
+  countdown = signal(0);
+  countdownRunning = signal(false);
+  countdownExpired = signal(false);
+  hasGameStarted = computed(() => 
+    this.alreadyStartedOnInit() || 
+    (this.roomStarted() && this.countdownExpired())
+  );
+  problemDescription = signal("");
+  problemTests = signal<ITest[]>([]);
+  clientScoreMap = signal<Record<string, IScore>>({});
+  clientsSortByScore = computed<IClientWithScore[]>(() => {
+    return [...(this.room()?.clients || [])]
+      .map(client => ({
+        ...deepCopy(client),
+        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed,
+        charCount: this.clientScoreMap()?.[client.id]?.charCount
+      }))
+      .sort((a, b) => b.testsPassed - a.testsPassed);
+  });
+  clientsSortByCharCount = computed<IClientWithScore[]>(() => {
+    return [...(this.room()?.clients || [])]
+      .map(client => ({
+        ...deepCopy(client),
+        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed,
+        charCount: this.clientScoreMap()?.[client.id]?.charCount
+      }))
+      .sort((a, b) => a.charCount - b.charCount);
+  });
 
   handlers: Handlers = {
     "chatReceived": this.handleChatReceived.bind(this),
@@ -57,7 +87,7 @@ export class GameComponent {
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.shiftKey && event.key === "Enter") {
       event.preventDefault();
-      this.runCode(this.problemTests[0]?.input || null);
+      this.runCode(this.problemTests()[0]?.input || null);
     }
 
     if (event.ctrlKey && event.key === "Enter") {
@@ -74,13 +104,19 @@ export class GameComponent {
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id");
     this.editorContentKey = `editor-content-${this.roomId}`;
-    this.api.send("joinRoom", { roomId: this.roomId });
-    this.api.send("roomDetails", { roomId: this.roomId });
-    this.loaderService.isLoading = true;
+    this.client = toSignal(this.api.client$);
+    this.isHost = computed(() => {
+      const room = this.room();
+      const client = this.client();
+      return !!room && !!room.host && !!client && room.host.id === client.id;
+    });
   }
 
   ngOnInit() {
     this.api.subscribe(this.handlers);
+    this.api.send("joinRoom", { roomId: this.roomId });
+    this.api.send("roomDetails", { roomId: this.roomId });
+    this.loaderService.isLoading.set(true);
   }
 
   async ngAfterViewInit() {
@@ -93,16 +129,6 @@ export class GameComponent {
 
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
-  }
-
-  isHost() {
-    return this.room &&
-      this.api.client$.value &&
-      this.room?.host?.id === this.api.client$.value?.id;
-  }
-
-  hasGameStarted() {
-    return this.alreadyStartedOnInit || (this.roomStarted && this.countdownExpired);
   }
 
   initEditor() {
@@ -131,10 +157,10 @@ export class GameComponent {
     aceEditor.on("paste", function(pasteObj: any) {
         const content = aceEditor.getValue();
         if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
-          console.log("Paste allowed content:", pasteObj.text);
+          console.log("Paste allowed:", pasteObj.text);
           return pasteObj.text;
         } else {
-          console.log("Paste forbidden content:", pasteObj.text);
+          console.log("Paste forbidden:", pasteObj.text);
           setTimeout(() => {
             aceEditor.setValue(content);
             aceEditor.clearSelection();
@@ -143,17 +169,14 @@ export class GameComponent {
         }
     });
 
-    aceEditor.getSession().on(
-      "change",
-      debounce(() => {
-        const content = aceEditor.getSession().getValue();
-        memory.push(content);
-        if (memory.length > 10) {
-          memory.shift();
-        }
-        this.onEditorValueChange(content);
-      }, 500)
-    );
+    aceEditor.getSession().on("change", debounce(() => {
+      const content = aceEditor.getSession().getValue();
+      memory.push(content);
+      if (memory.length > 100) {
+        memory.shift();
+      }
+      this.onEditorValueChange(content);
+    }, 500));
 
     const lastEditorContent = localStorage.getItem(this.editorContentKey) || '';
     if (lastEditorContent) {
@@ -166,11 +189,8 @@ export class GameComponent {
   }
 
   onEditorValueChange(value: string) {
-    console.log("Editor value changed", value);
-
-    this.editorContent = value;
+    this.editorContent.set(value);
     localStorage.setItem(this.editorContentKey, value);
-
     this.api.send("progress", { roomId: this.roomId, charCount: value.length });
   }
 
@@ -179,7 +199,6 @@ export class GameComponent {
     const editorContainer = document.querySelector(".editor-container");
     const contentContainer = document.querySelector(".content-container");
     const sectionsDivider = document.querySelector(".sections-divider");
-
     drag({
       target: sectionsDivider,
       downCb: (evt: any, ctx: any) => {
@@ -200,7 +219,6 @@ export class GameComponent {
     const editorWrap = document.querySelector(".editor-wrap");
     const consoleContainer = document.querySelector(".console-container");
     const consoleTitle = document.querySelector(".console-title");
-
     drag({
       target: consoleTitle,
       downCb: (evt: any, ctx: any) => {
@@ -221,7 +239,6 @@ export class GameComponent {
     const instructionsContainer = document.querySelector(".instructions-container");
     const chatContainer = document.querySelector(".chat-container");
     const chatTitle = document.querySelector(".chat-title");
-
     drag({
       target: chatTitle,
       downCb: (evt: any, ctx: any) => {
@@ -246,37 +263,35 @@ export class GameComponent {
   createLog(level: "log" | "warn" | "error", args: any) {
     return {
       level,
-      text: args.map((arg: any) => {
-        return (typeof arg === "string") 
-          ? arg
-          : JSON.stringify(arg);
-      }).join(" ")
+      text: args.map((arg: any) =>
+        (typeof arg === "string") ? arg : JSON.stringify(arg)
+      ).join(" ")
     };
   }
 
   consoleLog(level: "log" | "warn" | "error") {
     return (...args: any) => {
-      this.consoleLogMessages.push(this.createLog(level, args));
+      this.consoleLogMessages.update(prev => [...prev, this.createLog(level, args)]);
       this.scrollToBottom(".console");
     };
   }
 
-  async runCode(input: any, loggers?: { log?: () => void, warn?: () => void, error?: () => void }) {
-    this.consoleLogMessages = [];
+  async runCode(input: any, loggers?: ILoggerMethods) {
+    this.consoleLogMessages.set([]);
     await delay(0.1);
 
     (window as any).llog = !loggers?.log ? this.consoleLog("log") : loggers.log;
     (window as any).lwarn = !loggers?.warn ? this.consoleLog("warn") : loggers.warn;
     (window as any).lerror = !loggers?.error ? this.consoleLog("error") : loggers.error;
 
-    const tamperedContent = this.editorContent
+    const modifiedContent = this.editorContent()
       .replace(/console\.log/g, "llog")
       .replace(/console\.warn/g, "lwarn")
       .replace(/console\.error/g, "lerror");
     
     let output;
     try {
-      window.eval(tamperedContent);
+      window.eval(modifiedContent);
       output = (window as any).solution(input);
     } catch (e: any) {
       (window as any).lerror(e.message || e);
@@ -306,38 +321,41 @@ export class GameComponent {
     }
 
     test.output = output;
+    this.problemTests.set(this.problemTests().map(t => t === test ? test : t));
     return test.status === "passed";
   }
 
   async runAllTests() {
-    this.navTab = "benchmark";
+    if (this.testsRunning()) {
+      return;
+    }
+    
+    this.testsRunning.set(true);
+    this.navTab.set("benchmark");
     let testsPassed = 0;
-    for (const test of this.problemTests) {
+    for (const test of this.problemTests()) {
       if (await this.runSingleTest(test)) {
         testsPassed++;
       }
     }
     this.api.send("progress", { roomId: this.roomId, testsPassed });
+    this.testsRunning.set(false);
   }
 
   generateSystemMessage(text: string) {
-    const fakeClient = { id: "-1", name: "", rooms: [] };
-    const fakeRoom = { id: "-1", name: "", started: false, host: fakeClient, clients: [] };
-    this.chatMessages.push({
+    const chatMsg = {
       id: "-1",
-      room: fakeRoom,
-      client: fakeClient,
+      room: getFakeRoom(),
+      client: getFakeClient(),
       time: "00:00:00",
       text
-    });
+    };
+    this.chatMessages.update(prev => [...prev, chatMsg]);
     this.scrollToBottom(".chat");
   }
 
   sendChatMessage(message: string) {
-    this.api.send("chat", {
-      roomId: this.roomId,
-      text: message
-    });
+    this.api.send("chat", { roomId: this.roomId, text: message });
     this.chatMessage.setValue("");
   }
 
@@ -350,17 +368,17 @@ export class GameComponent {
   }
 
   async countdownAnimation() {
-    this.countdownRunning$.next(true);
+    this.countdownRunning.set(true);
     const countdown = document.querySelector(".countdown");
     for (const num of [3, 2, 1]) {
-      this.countdown = num;
+      this.countdown.set(num);
       this.flickAnimation(countdown);
       this.generateSystemMessage(`Game starts in ${num} seconds`);
       await delay(1);
     }
     this.generateSystemMessage("Game started. Good luck!");
-    this.countdownExpired = true;
-    this.countdownRunning$.next(false);
+    this.countdownExpired.set(true);
+    this.countdownRunning.set(false);
   }
 
   startGame() {
@@ -384,29 +402,11 @@ export class GameComponent {
     alert("Not implemented yet"); // TODO
   }
 
-  setClientArrays() {
-    this.clientsSortByScore = [...(this.room?.clients || [])]
-      .map(client => ({
-        ...deepCopy(client),
-        testsPassed: this.clientScoreMap[client.id]?.testsPassed,
-        charCount: this.clientScoreMap[client.id]?.charCount
-      }))
-      .sort((a, b) => b.testsPassed - a.testsPassed);
-
-    this.clientsSortByCharCount = [...(this.room?.clients || [])]
-      .map(client => ({
-        ...deepCopy(client),
-        testsPassed: this.clientScoreMap[client.id]?.testsPassed,
-        charCount: this.clientScoreMap[client.id]?.charCount
-      }))
-      .sort((a, b) => a.charCount - b.charCount);
-  }
-
   handleChatReceived(msg: IChatReceivedMessage) {
     if (msg.room.id !== this.roomId) {
       return;
     }
-    this.chatMessages.push(msg);
+    this.chatMessages.update(prev => [...prev, msg]);
     this.scrollToBottom(".chat");
   }
 
@@ -415,22 +415,21 @@ export class GameComponent {
       return;
     }
 
-    this.room = msg.room;
-    this.setClientArrays();
+    this.room.set(msg.room);
 
-    if (!this.initializedRoom) {
-      this.loaderService.isLoading = false;
+    if (!this.initializedRoom()) {
+      this.loaderService.isLoading.set(false);
       if (msg.room.started) {
-        this.alreadyStartedOnInit = true;
+        this.alreadyStartedOnInit.set(true);
         this.generateSystemMessage(`Game already started`);
       }
     }
-    this.initializedRoom = true;
+    this.initializedRoom.set(true);
 
-    if (msg.room.problem && !this.roomStarted) {
-      this.roomStarted = msg.room.started;
-      this.problemDescription = msg.room.problem.description;
-      this.problemTests = msg.room.problem.tests;
+    if (msg.room.problem && !this.roomStarted()) {
+      this.roomStarted.set(msg.room.started);
+      this.problemDescription.set(msg.room.problem.description);
+      this.problemTests.set(msg.room.problem.tests);
     }
   }
 
@@ -448,21 +447,35 @@ export class GameComponent {
     this.generateSystemMessage(`Client ${msg.client.name} left the room`);
   }
 
-  handleGameStarted() {
+  resetGame() {
     this.aceEditor.setValue(DEFAULT_EDITOR_CONTENT);
     this.aceEditor.clearSelection();
 
-    this.navTab = "instructions";
+    this.navTab.set("instructions");
     
-    this.consoleLogMessages = [];
+    this.consoleLogMessages.set([]);
 
-    this.problemDescription = "";
-    this.problemTests = [];
+    this.problemDescription.set("");
+    this.problemTests.set([]);
 
-    this.alreadyStartedOnInit = false;
-    this.roomStarted = false;
-    this.countdownExpired = false;
+    this.alreadyStartedOnInit.set(false);
+    this.roomStarted.set(false);
+    this.countdownExpired.set(false);
 
+    Object.keys(this.clientScoreMap).forEach(clientId => {
+      this.clientScoreMap.update(prev => ({
+        ...prev,
+        [clientId]: {
+          testsPassed: 0,
+          charCount: DEFAULT_EDITOR_CONTENT.length
+        }
+      }));
+    });
+    this.room.set(this.room()); // Recompute dependant signals
+  }
+
+  handleGameStarted() {
+    this.resetGame();
     this.countdownAnimation();
   }
 
@@ -470,9 +483,13 @@ export class GameComponent {
     if (msg.room.id !== this.roomId) {
       return;
     }
-    this.clientScoreMap[msg.client.id] = this.clientScoreMap[msg.client.id] || {};
-    this.clientScoreMap[msg.client.id].testsPassed = msg.testsPassed ?? this.clientScoreMap[msg.client.id].testsPassed;
-    this.clientScoreMap[msg.client.id].charCount = msg.charCount ?? this.clientScoreMap[msg.client.id].charCount;
-    this.setClientArrays();
+    this.clientScoreMap.update(prev => ({
+      ...prev,
+      [msg.client.id]: {
+        testsPassed: msg.testsPassed ?? prev[msg.client.id]?.testsPassed,
+        charCount: msg.charCount ?? prev[msg.client.id]?.charCount
+      }
+    }));
+    this.room.set(this.room()); // Recompute dependant signals
   }
 }
