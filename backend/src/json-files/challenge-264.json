@@ -1,0 +1,25 @@
+{
+  "description": "### Array Packing\n\nYou are given an array of up to four integers. Your task is to pack these integers into a single number M in the following way:\n\n- The first element of the array occupies the first 8 bits of M;\n- The second element occupies next 8 bits, and so on.\n\nReturn the obtained integer M.\n\nNote: the phrase \"first bits of M\" refers to the least significant bits of M - the right-most bits of an integer.\n\nInput: An array of integers a.\nOutput: A single integer.\n\nExample:\n\n```js arrayPacking([24, 85, 0]) // 21784 ```",
+  "tests": [
+    {
+      "input": [24, 85, 0],
+      "expectedOutput": 21784
+    },
+    {
+      "input": [23, 45, 39],
+      "expectedOutput": 2567447
+    },
+    {
+      "input": [1, 2, 4, 8],
+      "expectedOutput": 134480385
+    },
+    {
+      "input": [5],
+      "expectedOutput": 5
+    },
+    {
+      "input": [187, 99, 42, 43],
+      "expectedOutput": 724198331
+    }
+  ]
+}

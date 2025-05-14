@@ -1,0 +1,17 @@
+{
+  "description": "### Aaga\n\nThis function takes a string as input and returns 'True' if the string can have at most one character that appears more than once in the string. It returns 'False' if the condition is not met.\n\nInput: A string\nOutput: 'True' or 'False' string\n\nExample:\n\n ```js Aaga('abc1234defabce1d2f3') // 'True' ```",
+  "tests": [
+    {
+      "input": "abcdefghijklmnopqrstuvwxyz",
+      "expectedOutput": "False"
+    },
+    {
+      "input": "1234567890",
+      "expectedOutput": "False"
+    },
+    {
+      "input": "abc1234defabce1d2f3",
+      "expectedOutput": "True"
+    }
+  ]
+}

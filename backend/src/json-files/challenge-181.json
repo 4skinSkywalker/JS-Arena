@@ -1,0 +1,29 @@
+{
+  "description": "### FirstDigit\n\nThis problem requires you to find the first digit that occurs in a given string.\n\nInput: A single string `s` in which we need to find the first digit.\nOutput: Returns the first digit that occurs in the given string.\n\nExample:\n\n```js firstDigit(\"var_1__Int\") // 1 ```",
+  "tests": [
+    {
+      "input": "var_1__Int",
+      "expectedOutput": "1"
+    },
+    {
+      "input": "q2q-q",
+      "expectedOutput": "2"
+    },
+    {
+      "input": "0ss",
+      "expectedOutput": "0"
+    },
+    {
+      "input": "_Aas_23",
+      "expectedOutput": "2"
+    },
+    {
+      "input": "a a_933",
+      "expectedOutput": "9"
+    },
+    {
+      "input": "ok0",
+      "expectedOutput": "0"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "description": "### PercentageGreen\n\nYou are given two integers, green and total. The number green represents the number of green pixels in an image, and the number total represents the total number of pixels. Your task is to implement a function that returns what percentage of the total amount of pixels is green.\n\nInput: Two integers - green and total (1 ≤ green, total ≤ 1,000).\nOutput: An integer - the percentage of the total amount of pixels that is green, rounded down to the nearest integer.\n\nExample:\n\n```js percentageGreen(2, 5) // 40 ```",
+  "tests": [
+    {
+      "input": { "green": 2, "total": 5 },
+      "expectedOutput": 40
+    },
+    {
+      "input": { "green": 4, "total": 5 },
+      "expectedOutput": 80
+    },
+    {
+      "input": { "green": 1, "total": 1 },
+      "expectedOutput": 100
+    },
+    {
+      "input": { "green": 500, "total": 1000 },
+      "expectedOutput": 50
+    },
+    {
+      "input": { "green": 0, "total": 5 },
+      "expectedOutput": 0
+    }
+  ]
+}

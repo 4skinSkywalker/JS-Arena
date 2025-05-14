@@ -1,0 +1,33 @@
+{
+  "description": "### integerToStringOfFixedWidth\n\nThis function converts a number to a string of a specified width, prepending it with zeros if it is shorter or trimming the right side if it is longer.\n\nInput: Two parameters - a number and the width of the string (integer).\nOutput: Returns the string representation of the number, trimmed or padded to match the specified width.\n\nExample:\n\n```js integerToStringOfFixedWidth(1234, 2) // \"34\" ```",
+  "tests": [
+    {
+      "input": [1234, 2],
+      "expectedOutput": "34"
+    },
+    {
+      "input": [1234, 4],
+      "expectedOutput": "1234"
+    },
+    {
+      "input": [1234, 5],
+      "expectedOutput": "01234"
+    },
+    {
+      "input": [0, 1],
+      "expectedOutput": "0"
+    },
+    {
+      "input": [89, 4],
+      "expectedOutput": "0089"
+    },
+    {
+      "input": [23456, 4],
+      "expectedOutput": "3456"
+    },
+    {
+      "input": [899, 3],
+      "expectedOutput": "899"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "description": "### AddTwoDigits\n\nYou are given a two-digit integer n. Return the sum of its digits.\n\nInput: A positive two-digit integer.\nOutput: The sum of the two digits.\n\nExample:\n\n```js addTwoDigits(29) // 11 ```",
+  "tests": [
+    {
+      "input": 29,
+      "expectedOutput": 11
+    },
+    {
+      "input": 48,
+      "expectedOutput": 12
+    },
+    {
+      "input": 10,
+      "expectedOutput": 1
+    },
+    {
+      "input": 25,
+      "expectedOutput": 7
+    },
+    {
+      "input": 52,
+      "expectedOutput": 7
+    },
+    {
+      "input": 99,
+      "expectedOutput": 18
+    }
+  ]
+}

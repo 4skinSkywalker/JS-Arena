@@ -1,0 +1,40 @@
+{
+  "description": "### StrangeCode\n\nThe programming challenge involves writing a function 'strangeCode' which accepts two integers (s and e) as arguments and generates a string. The function starts with the string 'a', and for each increment of 's' and decrement of 'e' until 's' < 'e' - 1, the letter 'a' in the string is changed to 'b' and vice versa. The function returns the resulting string.\n\nInput: Two integers, 's' and 'e'.\nOutput: A string.\n\nExample:\n\n```js strangeCode(4, 8) // 'ab' ```",
+  "tests": [
+    {
+      "input": {
+        "s": 4,
+        "e": 8
+      },
+      "expectedOutput": "ab"
+    },
+    {
+      "input": {
+        "s": 10,
+        "e": 15
+      },
+      "expectedOutput": "ab"
+    },
+    {
+      "input": {
+        "s": 10,
+        "e": 16
+      },
+      "expectedOutput": "aba"
+    },
+    {
+      "input": {
+        "s": 5,
+        "e": 8
+      },
+      "expectedOutput": "a"
+    },
+    {
+      "input": {
+        "s": 2,
+        "e": 7
+      },
+      "expectedOutput": "ab"
+    }
+  ]
+}

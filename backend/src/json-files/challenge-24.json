@@ -1,0 +1,45 @@
+{
+  "description": "### SumOfPowers\n\nThe problem requires to implement a function 'sumOfPowers' which takes two parameters 'n' and 'divisor'. It calculates sum of the largest power of 'divisor' that divides each number from 1 to 'n' (inclusive).\n\nInput: Two integers, 'n' and 'divisor'\nOutput: An integer which represents the sum\n\nExample:\n\n```js sumOfPowers(6, 2) // 4 ```",
+  "tests": [
+    {
+      "input": {"n": 6, "divisor": 2},
+      "expectedOutput": 4
+    },
+    {
+      "input": {"n": 12, "divisor": 5},
+      "expectedOutput": 2
+    },
+    {
+      "input": {"n": 20, "divisor": 4},
+      "expectedOutput": 6
+    },
+    {
+      "input": {"n": 1, "divisor": 2},
+      "expectedOutput": 0
+    },
+    {
+      "input": {"n": 1, "divisor": 1000},
+      "expectedOutput": 0
+    },
+    {
+      "input": {"n": 2, "divisor": 2},
+      "expectedOutput": 1
+    },
+    {
+      "input": {"n": 10, "divisor": 3},
+      "expectedOutput": 4
+    },
+    {
+      "input": {"n": 239, "divisor": 2},
+      "expectedOutput": 232
+    },
+    {
+      "input": {"n": 239, "divisor": 3},
+      "expectedOutput": 115
+    },
+    {
+      "input": {"n": 239, "divisor": 4},
+      "expectedOutput": 76
+    }
+  ]
+}

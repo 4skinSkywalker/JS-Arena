@@ -1,0 +1,13 @@
+{
+  "description": "### ArrayComplexElementsProduct\n\nThis function calculates the product of complex elements in the array. It takes two arrays as input, one representing the real part and the other one representing the imaginary part of complex numbers.\n\nInput: Two arrays `real` and `imag` representing the real and imaginary parts of complex numbers respectively.\nOutput: An array representing the product of complex numbers.\n\nExample:\n\n```js arrayComplexElementsProduct([1, 2], [1, 3]) // [-1, 5] ```",
+  "tests": [
+    {
+      "input": {"real": [1, 2], "imag": [1, 3]},
+      "expectedOutput": [-1, 5]
+    },
+    {
+      "input": {"real": [1, 2, 3], "imag": [0, 0, 0]},
+      "expectedOutput": [6, 0]
+    }
+  ]
+}

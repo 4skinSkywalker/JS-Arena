@@ -1,0 +1,17 @@
+{
+  "description": "### FullName\n\nCreating a full name from given first and last name.\n\nInput: Two strings, first being the first name and the second string being the last name.\nOutput: A single string which is the full name.\n\nExample:\n\n```js fullName(\"David\", \"Stevenson\") // \"David Stevenson\" ```",
+  "tests": [
+    {
+      "input": ["David", "Stevenson"],
+      "expectedOutput": "David Stevenson"
+    },
+    {
+      "input": ["Tigran", "Sloyan"],
+      "expectedOutput": "Tigran Sloyan"
+    },
+    {
+      "input": ["Aram", "Shatakhtsyan"],
+      "expectedOutput": "Aram Shatakhtsyan"
+    }
+  ]
+}

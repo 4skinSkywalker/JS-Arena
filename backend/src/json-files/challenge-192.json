@@ -1,0 +1,25 @@
+{
+  "description": "### ExtraNumber\n\nYou're given three integers, a, b and c. It is guaranteed that two of these integers are the same, but the third is different. Find the third one.\n\nInput: Three integers a, b and c, where 1 ≤ a, b, c ≤ 10⁹.\nOutput: The third different integer.\n\nExample:\n\n```js extraNumber(2, 7, 2) // 7 ```",
+  "tests": [
+    {
+      "input": [2, 7, 2],
+      "expectedOutput": 7
+    },
+    {
+      "input": [3, 2, 2],
+      "expectedOutput": 3
+    },
+    {
+      "input": [5, 5, 1],
+      "expectedOutput": 1
+    },
+    {
+      "input": [500000000, 3, 500000000],
+      "expectedOutput": 3
+    },
+    {
+      "input": [1, 5, 1],
+      "expectedOutput": 5
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "description": "### Largest Values in Tree Rows\n\nYou have a binary tree t. Your task is to find the largest value in each row of this tree. In a tree, a row is a set of nodes that have equal depth. For example, a row with depth 0 is a tree root, a row of depth 1 is composed of root's children, etc.\n\nReturn an array in which the first element is the largest value in the row of depth 0, the second element is the largest value in the row of depth 1, etc.\n\nInput: A binary tree `t`.\nOutput: An array in which each element represents the largest value in the row of its index depth.\n\nExample:\n\n```js largestValuesInTreeRows(new Tree(-1, new Tree(5, null, null), new Tree(7, null, new Tree(1, null, null)))) // [-1, 7, 1] ```",
+  "tests": [
+    {
+      "input": {
+        "value": -1,
+        "left": {
+          "value": 5,
+          "left": null,
+          "right": null
+        },
+        "right": {
+          "value": 7,
+          "left": null,
+          "right": {
+            "value": 1,
+            "left": null,
+            "right": null
+          }
+        }
+      },
+      "expectedOutput": [-1, 7, 1]
+    },
+    {
+      "input": null,
+      "expectedOutput": []
+    },
+    {
+      "input": {
+        "value": -1,
+        "left": null,
+        "right": null
+      },
+      "expectedOutput": [-1]
+    },
+    {
+      "input": {
+        "value": -1,
+        "left": {
+          "value": 5,
+          "left": null,
+          "right": null
+        },
+        "right": {
+          "value": 7,
+          "left": null,
+          "right": {
+            "value": 1,
+            "left": {
+              "value": 5,
+              "left": null,
+              "right": null
+            },
+            "right": null
+          }
+        }
+      },
+      "expectedOutput": [-1, 7, 1, 5]
+    },
+    {
+      "input": {
+        "value": -1,
+        "left": {
+          "value": 5,
+          "left": {
+            "value": -1,
+            "left": {
+              "value": 10,
+              "left": null,
+              "right": null
+            },
+            "right": null
+          },
+          "right": null
+        },
+        "right": {
+          "value": 7,
+          "left": null,
+          "right": {
+            "value": 1,
+            "left": {
+              "value": 5,
+              "left": null,
+              "right": null
+            },
+            "right": null
+          }
+        }
+      },
+      "expectedOutput": [-1, 7, 1, 10]
+    }
+  ]
+}

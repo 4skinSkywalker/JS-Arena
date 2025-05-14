@@ -1,0 +1,17 @@
+{
+  "description": "### ApplesDistribution\n\nThe task is to calculate the possible ways of distributing a certain number of apples to a certain number of boxes with the limitation that no box has more residual apples than a given maximum. For each box, we check if the modulus of the number of apples and the box capacity is lesser than or equal to the maximum residue. If this is the case, we increment a counter variable and return it after the loop iteration.\n\nInput: Three integers (apples, boxCapacity, maxResidue)\nOutput: An integer (number of possible ways of distributing the apples)\n\nExample:\n\n```js\napplesDistribution(7, 4, 1); // 3\napplesDistribution(10, 5, 1); // 4\napplesDistribution(4, 4, 3); // 4\n```",
+  "tests": [
+    {
+      "input": [7, 4, 1],
+      "expectedOutput": 3
+    },
+    {
+      "input": [10, 5, 1],
+      "expectedOutput": 4
+    },
+    {
+      "input": [4, 4, 3],
+      "expectedOutput": 4
+    }
+  ]
+}

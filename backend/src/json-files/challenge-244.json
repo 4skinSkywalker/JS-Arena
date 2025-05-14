@@ -1,0 +1,29 @@
+{
+  "description": "### ComfortableNumbers\n\nGiven two integers l and r, find the number of 'comfortable pairs' in the segment [l, r]. A pair of numbers is called 'comfortable' if the difference between the two numbers is less than or equal to their total sum's digital representation.\n\nInput: Two integers l and r.\nOutput: Single integer, represents the number of 'comfortable pairs'.\n\nExample:\n\n```js comfortableNumbers(10, 12) // 2 ```",
+  "tests": [
+    {
+      "input": [10, 12],
+      "expectedOutput": 2
+    },
+    {
+      "input": [1, 9],
+      "expectedOutput": 20
+    },
+    {
+      "input": [13, 13],
+      "expectedOutput": 0
+    },
+    {
+      "input": [12, 108],
+      "expectedOutput": 707
+    },
+    {
+      "input": [239, 777],
+      "expectedOutput": 6166
+    },
+    {
+      "input": [1, 1000],
+      "expectedOutput": 11435
+    }
+  ]
+}

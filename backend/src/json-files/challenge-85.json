@@ -1,0 +1,17 @@
+{
+  "description": "### numberOfEvenDigits\n\nThis function counts the number of even digits in a given number.\n\nInput: A single integer 'n'.\nOutput: An integer, representing the number of even digits in 'n'.\n\nExample:\n\n```js numberOfEvenDigits(1010) // 2 ```",
+  "tests": [
+    {
+      "input": 1010,
+      "expectedOutput": 2
+    },
+    {
+      "input": 123,
+      "expectedOutput": 1
+    },
+    {
+      "input": 135,
+      "expectedOutput": 0
+    }
+  ]
+}

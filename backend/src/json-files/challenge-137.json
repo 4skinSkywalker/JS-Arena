@@ -1,0 +1,45 @@
+{
+  "description": "### IsTandemRepeat\n\nA tandem repeat of a sequence sequence is defined as the concatenation of one or more copies of that sequence end-to-end. For example, the sequence 'catcat' is a tandem repeat of the sequence 'cat'.\n\nGiven a string sequence, determine whether it is a tandem repeat of some word.\n\nInput: A string of length n (2 ≤ n ≤ 20).\nOutput: Return true if the string can be represented as a tandem repeat of some word, otherwise return false.\n\nExample:\n\n```js\nisTandemRepeat(\"tandemtandem\") // true\nisTandemRepeat(\"qqq\") // false\n```",
+  "tests": [
+    {
+      "input": "tandemtandem",
+      "expectedOutput": true
+    },
+    {
+      "input": "qqq",
+      "expectedOutput": false
+    },
+    {
+      "input": "2w2ww",
+      "expectedOutput": false
+    },
+    {
+      "input": "hophey",
+      "expectedOutput": false
+    },
+    {
+      "input": "CodeSignalCodeSignal",
+      "expectedOutput": true
+    },
+    {
+      "input": "interestinterest",
+      "expectedOutput": true
+    },
+    {
+      "input": "aa",
+      "expectedOutput": true
+    },
+    {
+      "input": "ab",
+      "expectedOutput": false
+    },
+    {
+      "input": "stringString",
+      "expectedOutput": false
+    },
+    {
+      "input": "truetruetrue",
+      "expectedOutput": false
+    }
+  ]
+}

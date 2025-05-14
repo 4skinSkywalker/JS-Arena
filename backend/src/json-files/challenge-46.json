@@ -1,0 +1,33 @@
+{
+  "description": "### Rounders Function\n\nThe function receives a number and rounds off each digit from right to left, until we get to the leftmost digit. Then we return the final rounded number.\n\nInput: A positive integer\nOutput: A rounded integer\n\nExample:\n\n```js rounders(1234) // 1000 ```",
+  "tests": [
+    {
+      "input": 15,
+      "expectedOutput": 20
+    },
+    {
+      "input": 1234,
+      "expectedOutput": 1000
+    },
+    {
+      "input": 1445,
+      "expectedOutput": 2000
+    },
+    {
+      "input": 14,
+      "expectedOutput": 10
+    },
+    {
+      "input": 10,
+      "expectedOutput": 10
+    },
+    {
+      "input": 7001,
+      "expectedOutput": 7000
+    },
+    {
+      "input": 99,
+      "expectedOutput": 100
+    }
+  ]
+}

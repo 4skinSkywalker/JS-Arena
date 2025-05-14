@@ -1,0 +1,45 @@
+{
+  "description": "### findEmailDomain\n\nThe function finds the domain of an email address. The input will be an email address as string and output will be the domain part of this email address as string.\n\nInput: String (email address)\nOutput: String (domain of the email)\n\nExample:\n\n```js findEmailDomain(\"prettyandsimple@example.com\") // \"example.com\" ```",
+  "tests": [
+    {
+      "input": "prettyandsimple@example.com",
+      "expectedOutput": "example.com"
+    },
+    {
+      "input": "fully-qualified-domain@codesignal.com",
+      "expectedOutput": "codesignal.com"
+    },
+    {
+      "input": "\" \"@space.com",
+      "expectedOutput": "space.com"
+    },
+    {
+      "input": "someaddress@yandex.ru",
+      "expectedOutput": "yandex.ru"
+    },
+    {
+      "input": "\" \"@xample.org",
+      "expectedOutput": "xample.org"
+    },
+    {
+      "input": "\"much.more unusual\"@yahoo.com",
+      "expectedOutput": "yahoo.com"
+    },
+    {
+      "input": "\"very.unusual.@.unusual.com\"@usual.com",
+      "expectedOutput": "usual.com"
+    },
+    {
+      "input": "admin@mailserver2.ru",
+      "expectedOutput": "mailserver2.ru"
+    },
+    {
+      "input": "example-indeed@strange-example.com",
+      "expectedOutput": "strange-example.com"
+    },
+    {
+      "input": "very.common@gmail.com",
+      "expectedOutput": "gmail.com"
+    }
+  ]
+}

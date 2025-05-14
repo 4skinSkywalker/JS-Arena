@@ -1,0 +1,25 @@
+{
+  "description": "### WhoseMove\n\nA chess game. Function \"whoseMove\" takes two parameters:\n\nFirst parameter is last player who has made a move.\n\nThe result of his move is defined by the second parameter.\n\nIf second parameter is true then the move was successful and it's other player's turn.\n\nIf second parameter is false then the move was a mistake and the first player will make his move again.\n\nThe first player will make the first move again after his unsuccessful move.\n\nThe first parameter takes only two values: \"black\" - the first player did a move and \"white\" - the second player did a move.\n\nThe second parameter takes only two values: true - the player did a move successfully and false - the player did a mistake.\n\nInput: A string and a boolean (\"black\", false)\n\nOutput: A type of string which tells the name of the player whose turn is now.\n\nExample:\n\n```js whoseMove(\"white\", false) // \"white\" ```",
+  "tests": [
+    {
+      "input": ["black", false],
+      "expectedOutput": "white"
+    },
+    {
+      "input": ["white", true],
+      "expectedOutput": "white"
+    },
+    {
+      "input": ["white", false],
+      "expectedOutput": "black"
+    },
+    {
+      "input": ["black", true],
+      "expectedOutput": "black"
+    },
+    {
+      "input": ["black", false],
+      "expectedOutput": "white"
+    }
+  ]
+}

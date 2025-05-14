@@ -1,0 +1,25 @@
+{
+  "description": "### Reverse Complement\n\nThe function `reverseComplement` takes a string of nucleotides and returns the reverse complement strand. The reverse complement of a DNA sequence is formed by reversing the sequence and replacing all occurrences of 'A' with 'T', 'T' with 'A', 'G' with 'C', 'C' with 'G', 'W' with 'S', and 'S' with 'W'.\n\nInput: A string representing the original strand\nOutput: A string representing the reverse complement of the input strand\n\nExample:\n\n```js reverseComplement('ATGCWS') // 'SWGCAT' ```",
+  "tests": [
+    {
+      "input": "ATGCWS",
+      "expectedOutput": "SWGCAT"
+    },
+    {
+      "input": "TTAGCG",
+      "expectedOutput": "CGCTAA"
+    },
+    {
+      "input": "AATTCG",
+      "expectedOutput": "CGAATT"
+    },
+    {
+      "input": "CGTACA",
+      "expectedOutput": "TGTACG"
+    },
+    {
+      "input": "AGTCWS",
+      "expectedOutput": "SWGACT"
+    }
+  ]
+}

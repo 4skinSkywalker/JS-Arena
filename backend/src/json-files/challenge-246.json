@@ -1,0 +1,25 @@
+{
+  "description": "### CircleOfNumbers\n\nThe task is to find the radially opposite number on a circle with `n` numbers. The numbers are 0 to `n-1`.\n\nInput: Two integers which represent number of equal parts the circle is divided into (`n`) and a number `firstNumber` on the circle.\nOutput: An integer which is the radially opposite number to the `firstNumber`.\n\nExample:\n\n```js circleOfNumbers(10, 2) // 7 ```",
+  "tests": [
+    {
+      "input": {"n": 10, "firstNumber": 2},
+      "expectedOutput": 7
+    },
+    {
+      "input": {"n": 10, "firstNumber": 7},
+      "expectedOutput": 2
+    },
+    {
+      "input": {"n": 4, "firstNumber": 1},
+      "expectedOutput": 3
+    },
+    {
+      "input": {"n": 6, "firstNumber": 3},
+      "expectedOutput": 0
+    },
+    {
+      "input": {"n": 18, "firstNumber": 6},
+      "expectedOutput": 15
+    }
+  ]
+}

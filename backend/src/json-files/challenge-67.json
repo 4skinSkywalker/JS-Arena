@@ -1,0 +1,29 @@
+{
+  "description": "### ProperOrImproper\n\nWrite a method that checks if a given fractions in the form of an array of two integers is a Proper fraction or an Improper fraction.\n\nInput: an array of two integers {a, b} where a is the numerator and b is the denominator of a fraction\nOutput: Returns 'Proper' if the absolute value of fraction (a/b) is less than 1, otherwise, returns 'Improper'\n\nExample:\n\n```js properOrImproper([6, 3]) // \"Improper\" ```",
+  "tests": [
+    {
+      "input": [7, 2],
+      "expectedOutput": "Improper"
+    },
+    {
+      "input": [6, 3],
+      "expectedOutput": "Improper"
+    },
+    {
+      "input": [-3, 3],
+      "expectedOutput": "Improper"
+    },
+    {
+      "input": [0, -3],
+      "expectedOutput": "Proper"
+    },
+    {
+      "input": [-2, -3],
+      "expectedOutput": "Proper"
+    },
+    {
+      "input": [7, 7],
+      "expectedOutput": "Improper"
+    }
+  ]
+}

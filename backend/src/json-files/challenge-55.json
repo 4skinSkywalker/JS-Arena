@@ -1,0 +1,113 @@
+{
+    "description": "### Restore Binary Tree\n\nYou are given the inorder and preorder traversals of a Binary Tree in the form of integer arrays. Construct the binary tree and return its root.\n\nInput: Two arrays, 'inorder' & 'preorder', where 'inorder' is the inorder traversal of the tree and 'preorder' is the preorder traversal of the tree.\nOutput: The root node of the constructed tree.\n\nExample:\n\n```js restoreBinaryTree([4, 2, 1, 5, 3, 6], [1, 2, 4, 3, 5, 6]) // { 'value': 1, 'left': { 'value': 2, 'left': { 'value': 4, 'left': null, 'right': null }, 'right': null }, 'right': { 'value': 3, 'left': { 'value': 5, 'left': null, 'right': null }, 'right': { 'value': 6, 'left': null, 'right': null }}} ```",
+    "tests": [
+        {
+            "input": [
+                [
+                    4,
+                    2,
+                    1,
+                    5,
+                    3,
+                    6
+                ],
+                [
+                    1,
+                    2,
+                    4,
+                    3,
+                    5,
+                    6
+                ]
+            ],
+            "expectedOutput": {
+                "value": 1,
+                "left": {
+                    "value": 2,
+                    "left": {
+                        "value": 4,
+                        "left": null,
+                        "right": null
+                    },
+                    "right": null
+                },
+                "right": {
+                    "value": 3,
+                    "left": {
+                        "value": 5,
+                        "left": null,
+                        "right": null
+                    },
+                    "right": {
+                        "value": 6,
+                        "left": null,
+                        "right": null
+                    }
+                }
+            }
+        },
+        {
+            "input": [
+                [
+                    2,
+                    5
+                ],
+                [
+                    5,
+                    2
+                ]
+            ],
+            "expectedOutput": {
+                "value": 5,
+                "left": {
+                    "value": 2,
+                    "left": null,
+                    "right": null
+                },
+                "right": null
+            }
+        },
+        {
+            "input": [
+                [
+                    100
+                ],
+                [
+                    100
+                ]
+            ],
+            "expectedOutput": {
+                "value": 100,
+                "left": null,
+                "right": null
+            }
+        },
+        {
+            "input": [
+                [
+                    -100000,
+                    -99999,
+                    -99998
+                ],
+                [
+                    -99999,
+                    -100000,
+                    -99998
+                ]
+            ],
+            "expectedOutput": {
+                "value": -99999,
+                "left": {
+                    "value": -100000,
+                    "left": null,
+                    "right": null
+                },
+                "right": {
+                    "value": -99998,
+                    "left": null,
+                    "right": null
+                }
+            }
+        }
+    ]
+}

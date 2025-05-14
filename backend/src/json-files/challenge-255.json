@@ -1,0 +1,25 @@
+{
+  "description": "### Candies\n\nA function that calculates how many candies will be equally distributed amongst n children, given that m candies are available. If there are some candies left after equal distribution, these candies will not be used.\n\nInput: Two integers: n (number of children) and m (number of candies).\nOutput: The maximum amount of candies that can be equally distributed.\n\nExample:\n\n```js candies(3,10) // 9 ```",
+  "tests": [
+    {
+      "input": {"n": 3, "m": 10},
+      "expectedOutput": 9
+    },
+    {
+      "input": {"n": 1, "m": 2},
+      "expectedOutput": 2
+    },
+    {
+      "input": {"n": 10, "m": 5},
+      "expectedOutput": 0
+    },
+    {
+      "input": {"n": 4, "m": 4},
+      "expectedOutput": 4
+    },
+    {
+      "input": {"n": 4, "m": 15},
+      "expectedOutput": 12
+    }
+  ]
+}

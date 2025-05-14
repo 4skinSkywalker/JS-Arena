@@ -1,0 +1,25 @@
+{
+  "description": "### VolleyballPositions\n\nIn a normal game of volleyball there are always exactly six players playing. So the positions are numbered as follows:\n\nPlayers rotate position as follows: 1-2-3-4-5-6-1-2-3-4-5-6-1....\nFind the initial position for each player after K rotations have been made.\nGiven the initial configuration of players and the number of rotations K, return an array representing the positions of players.\n\nInput: Takes an array of string arrays representing the initial formation and an integer K representing the number of rotations.\n\nOutput: An array of string arrays representing the final configuration after K rotations.\n\nExample:\n\n```js volleyballPositions([['empty','Player5','empty'], ['Player4','empty','Player2'], ['empty','Player3','empty'], ['Player6','empty','Player1']], 2) // [['empty','Player1','empty'], ['Player2','empty','Player3'], ['empty','Player4','empty'], ['Player5','empty','Player6']] ```",
+  "tests": [
+    {
+      "input": [[["empty","Player5","empty"], ["Player4","empty","Player2"], ["empty","Player3","empty"], ["Player6","empty","Player1"]], 2],
+      "expectedOutput": [["empty","Player1","empty"], ["Player2","empty","Player3"], ["empty","Player4","empty"], ["Player5","empty","Player6"]]
+    },
+    {
+      "input": [[["empty","Alice","empty"], ["Bob","empty","Charlie"], ["empty","Dave","empty"], ["Eve","empty","Frank"]], 6],
+      "expectedOutput": [["empty","Alice","empty"], ["Bob","empty","Charlie"], ["empty","Dave","empty"], ["Eve","empty","Frank"]]
+    },
+    {
+      "input": [[["empty","player 3","empty"], ["player 3","empty","player"], ["empty","4","empty"], ["5","empty","42"]], 1000000],
+      "expectedOutput": [["empty","5","empty"], ["4","empty","player 3"], ["empty","player","empty"], ["42","empty","player 3"]]
+    },
+    {
+      "input": [[["empty","player 3","empty"], ["player 8","empty","player"], ["empty","4","empty"], ["5","empty","42"]], 0],
+      "expectedOutput": [["empty","player 3","empty"], ["player 8","empty","player"], ["empty","4","empty"], ["5","empty","42"]]
+    },
+    {
+      "input": [[["empty","player 3","empty"], ["player 8","empty","player"], ["empty","4","empty"], ["5","empty","42"]], 1000000000],
+      "expectedOutput": [["empty","5","empty"], ["4","empty","player 8"], ["empty","player","empty"], ["42","empty","player 3"]]
+    }
+  ]
+}

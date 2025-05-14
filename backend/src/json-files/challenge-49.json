@@ -1,0 +1,21 @@
+{
+  "description": "### Reverse Sentence\n\nThis problem requires you to reverse the words in a sentence. If the sentence includes no spaces, it should be returned unchanged.\n\nInput: A string containing a sentence (which may include no spaces).\nOutput: A string containing the words of the original sentence in reverse order.\n\nExample:\n\n```js reverseSentence(\"Man bites dog\") // \"dog bites Man\" ```",
+  "tests": [
+    {
+      "input": "Man bites dog",
+      "expectedOutput": "dog bites Man"
+    },
+    {
+      "input": "IHateSpaces",
+      "expectedOutput": "IHateSpaces"
+    },
+    {
+      "input": "a b c",
+      "expectedOutput": "c b a"
+    },
+    {
+      "input": "BgwlaMUMkToumKe ANHz",
+      "expectedOutput": "ANHz BgwlaMUMkToumKe"
+    }
+  ]
+}

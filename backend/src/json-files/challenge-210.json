@@ -1,0 +1,25 @@
+{
+  "description": "### DigitTreeSum\n\nThe function 'digitTreeSum' calculates the sum of all paths from root to leaves in a binary tree where a path's value is the concatenation of all edges' values.\n\nInput: A binary tree of integers. Example:  {\"value\": 1, \"left\": {\"value\": 0, \"left\": {\"value\": 3, \"left\": null, \"right\": null}, \"right\": {\"value\": 1, \"left\": null, \"right\": null}}, \"right\": {\"value\": 4, \"left\": null, \"right\": null}}\nOutput: A long integer representing the total sum.\n\nExample:\n\n```js digitTreeSum({\"value\": 1, \"left\": {\"value\": 0, \"left\": {\"value\": 3, \"left\": null, \"right\": null}, \"right\": {\"value\": 1, \"left\": null, \"right\": null}}, \"right\": {\"value\": 4, \"left\": null, \"right\": null}}) // 218```",
+  "tests": [
+    {
+      "input": "{\"value\": 1, \"left\": {\"value\": 0, \"left\": {\"value\": 3, \"left\": null, \"right\": null}, \"right\": {\"value\": 1, \"left\": null, \"right\": null}}, \"right\": {\"value\": 4, \"left\": null, \"right\": null}}",
+      "expectedOutput": 218
+    },
+    {
+      "input": "{\"value\": 0, \"left\": {\"value\": 9, \"left\": null, \"right\": null}, \"right\": {\"value\": 9, \"left\": {\"value\": 1, \"left\": null, \"right\": null}, \"right\": {\"value\": 3, \"left\": null, \"right\": null}}}",
+      "expectedOutput": 193
+    },
+    {
+      "input": "{\"value\": 9, \"left\": null, \"right\": null}",
+      "expectedOutput": 9
+    },
+    {
+      "input": "{\"value\": 0, \"left\": {\"value\": 0, \"left\": null, \"right\": null}, \"right\": {\"value\": 0, \"left\": null, \"right\": null}}",
+      "expectedOutput": 0
+    },
+    {
+      "input": "{\"value\": 0, \"left\": {\"value\": 1, \"left\": null, \"right\": null}, \"right\": null}",
+      "expectedOutput": 1
+    }
+  ]
+}

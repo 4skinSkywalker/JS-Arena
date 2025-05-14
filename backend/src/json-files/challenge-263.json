@@ -1,0 +1,29 @@
+{
+"description": "### ArrayPreviousLess\n\nFor each item in an array `a`, the function `arrayPreviousLess(a)` returns the first number from the array that is smaller than the item and located before it. If there are no such items, the function returns -1. \n\nInput: An integer array `a` for which the previous lower numbers for each item are to be found.\nOutput: A new integer array that contains the previous less integers for each item in `a`.\n\nExample:\n\n```js arrayPreviousLess([3, 5, 2, 4, 5])  // returns [-1, 3, -1, 2, 4]```", 
+"tests": [
+   {
+     "input": [3, 5, 2, 4, 5],
+     "expectedOutput": [-1, 3, -1, 2, 4]
+   },
+   {
+     "input": [2, 2, 1, 3, 4, 5, 5, 3],
+     "expectedOutput": [-1, -1, -1, 1, 3, 4, 4, 1]
+   },
+   {
+     "input": [3, 2, 1],
+     "expectedOutput": [-1, -1, -1]
+   },
+   {
+     "input": [100, 101, 102],
+     "expectedOutput": [-1, 100, 101]
+   },
+   {
+     "input": [7, 7, 8, 3, 4, 4, 2, 5, 6, 7, 7],
+     "expectedOutput": [-1, -1, 7, -1, 3, 3, -1, 2, 5, 6, 6]
+   },
+   {
+     "input": [68, 135, 101, 170, 125],
+     "expectedOutput": [-1, 68, 68, 101, 101]
+   }
+ ]
+}

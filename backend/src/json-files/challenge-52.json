@@ -1,0 +1,77 @@
+{
+  "description": "### ReverseInteger\n\nThis function reverse the input integer. For instance, 123 becomes 321, and -900 becomes -9.\n\nInput: A positive or negative integer.\nOutput: The input integer reversed.\n\nExample:\n\n```js\nreverseInteger(12345) // 54321\nreverseInteger(-4243) // -3424\n```",
+  "tests": [
+    {
+      "input": 12345,
+      "expectedOutput": 54321
+    },
+    {
+      "input": -4243,
+      "expectedOutput": -3424
+    },
+    {
+      "input": 1,
+      "expectedOutput": 1
+    },
+    {
+      "input": 10,
+      "expectedOutput": 1
+    },
+    {
+      "input": -100,
+      "expectedOutput": -1
+    },
+    {
+      "input": 900000,
+      "expectedOutput": 9
+    },
+    {
+      "input": -901000,
+      "expectedOutput": -109
+    },
+    {
+      "input": 120,
+      "expectedOutput": 21
+    },
+    {
+      "input": -102,
+      "expectedOutput": -201
+    },
+    {
+      "input": 8192,
+      "expectedOutput": 2918
+    },
+    {
+      "input": -61733,
+      "expectedOutput": -33716
+    },
+    {
+      "input": -34794,
+      "expectedOutput": -49743
+    },
+    {
+      "input": -89827,
+      "expectedOutput": -72898
+    },
+    {
+      "input": 83650,
+      "expectedOutput": 5638
+    },
+    {
+      "input": -71511,
+      "expectedOutput": -11517
+    },
+    {
+      "input": 20842,
+      "expectedOutput": 24802
+    },
+    {
+      "input": 43889,
+      "expectedOutput": 98834
+    },
+    {
+      "input": 123,
+      "expectedOutput": 321
+    }
+  ]
+}

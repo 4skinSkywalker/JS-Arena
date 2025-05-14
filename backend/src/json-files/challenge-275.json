@@ -1,0 +1,25 @@
+{
+  "description": "### Are Equally Strong\n\nYour left and right hand strengths are represented as two integers. Given four integers a, b, c, and d, determine if your strengths in another day would still be the same. Return true if the strengths are equally strong, and false otherwise.\n\nInput: Four integers - a, b, c, and d.\nOutput: Return a boolean value.\n\nExample:\n\n```js areEquallyStrong(10, 15, 15, 10) // true ```",
+  "tests": [
+    {
+      "input": [10, 15, 15, 10],
+      "expectedOutput": true
+    },
+    {
+      "input": [15, 10, 15, 10],
+      "expectedOutput": true
+    },
+    {
+      "input": [15, 10, 15, 9],
+      "expectedOutput": false
+    },
+    {
+      "input": [10, 5, 5, 10],
+      "expectedOutput": true
+    },
+    {
+      "input": [10, 15, 5, 20],
+      "expectedOutput": false
+    }
+  ]
+}

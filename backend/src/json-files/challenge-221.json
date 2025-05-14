@@ -1,0 +1,45 @@
+{
+  "description": "### Delete Digit\n\nThe goal is to delete one digit in a way that the number that you get is the biggest possible number you can make. You are allowed to delete one digit from the number. \n\nInput: An integer `n` (1 ≤ n ≤ 10^6)\nOutput: Return an integer `m` which is the maximum possible value that can be obtained by deleting one digit from the original number.\n\nExample:\n\n```js deleteDigit(152) // 52 ```",
+  "tests": [
+    {
+      "input": 152,
+      "expectedOutput": 52
+    },
+    {
+      "input": 1001,
+      "expectedOutput": 101
+    },
+    {
+      "input": 10,
+      "expectedOutput": 1
+    },
+    {
+      "input": 222219,
+      "expectedOutput": 22229
+    },
+    {
+      "input": 109,
+      "expectedOutput": 19
+    },
+    {
+      "input": 222250,
+      "expectedOutput": 22250
+    },
+    {
+      "input": 44435,
+      "expectedOutput": 4445
+    },
+    {
+      "input": 12,
+      "expectedOutput": 2
+    },
+    {
+      "input": 218616,
+      "expectedOutput": 28616
+    },
+    {
+      "input": 861452,
+      "expectedOutput": 86452
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "description": "### Is_palindrome\n\nThis function checks if the given number is a palindrome. A palindrome is a number that remains the same when its digits are reversed.\n\nInput: Integer (INPUT_DESCRIPTION)\nOutput: Integer (OUTPUT_DESCRIPTION) - 1 if the number is a palindrome, 0 if not.\n\nExample:\n\n```js is_palindrome(11) // 1 ```",
+  "tests": [
+    {
+      "input": 1,
+      "expectedOutput": 1
+    },
+    {
+      "input": 0,
+      "expectedOutput": 1
+    },
+    {
+      "input": 12,
+      "expectedOutput": 0
+    },
+    {
+      "input": 11,
+      "expectedOutput": 1
+    }
+  ]
+}

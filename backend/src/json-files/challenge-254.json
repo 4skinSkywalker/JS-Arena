@@ -1,0 +1,25 @@
+{
+  "description": "### Candles Problem\n\nGiven the number of initial candles you have and the number of candle leftovers required to make a new candle. Determine the total number of candles you can burn.\n\nInput: Two integers, candlesNumber and makeNew where candlesNumber is the number of initial candles you have, and makeNew is the number of candle leftovers required to make a new candle.\nOutput: An integer, the total number of candles you can burn.\n\nExample:\n\n```js candles(5, 2) // 9 ```",
+  "tests": [
+    {
+      "input": {"candlesNumber": 5, "makeNew": 1},
+      "expectedOutput": 9
+    },
+    {
+      "input": {"candlesNumber": 3, "makeNew": 11},
+      "expectedOutput": 4
+    },
+    {
+      "input": {"candlesNumber": 15, "makeNew": 14},
+      "expectedOutput": 16
+    },
+    {
+      "input": {"candlesNumber": 12, "makeNew": 6},
+      "expectedOutput": 20
+    },
+    {
+      "input": {"candlesNumber": 13, "makeNew": 2},
+      "expectedOutput": 16
+    }
+  ]
+}

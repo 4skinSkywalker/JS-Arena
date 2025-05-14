@@ -1,0 +1,26 @@
+{
+  "description": "### CountDistantPairs\n\nA function is needed to count the number of distant pairs in a string. A distant pair is two characters that are exactly the same, and are exactly d characters apart in the string.\n\nInput: A string s and an integer d\nOutput: The number of distant pairs in s.\n\nExample:\n\n```js countDistantPairs(\"abacaba\", 1) // 3 ```",
+  "tests": [
+    {
+      "input": {
+        "s": "abacaba",
+        "d": 1
+      },
+      "expectedOutput": 3
+    },
+    {
+      "input": {
+        "s": "abacaba",
+        "d": 2
+      },
+      "expectedOutput": 0
+    },
+    {
+      "input": {
+        "s": "abacaba",
+        "d": 3
+      },
+      "expectedOutput": 3
+    }
+  ]
+}

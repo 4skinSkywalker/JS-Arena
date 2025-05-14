@@ -1,0 +1,13 @@
+{
+  "description": "### Josephus Problem\n\nThe Josephus Problem is a theoretical problem related to a certain counting-out game. There are n people standing in a circle waiting to be executed. The counting out begins at some point in the circle and proceeds around the circle in a fixed direction. In each step, a certain number of people are skipped and the next person is executed. The elimination proceeds around the circle (which is becoming smaller and smaller as the executed people are removed), until only the last person remains, who is given freedom. The task is to choose the place in the initial circle so that you are the last one remaining and so survive. In this problem, the counting out is simulated using a data structure that models the circle of people.\n\nInput: Two integers, 'n' (number of people in the circle) and 'k' (skip value)\nOutput: The safe position\n\nExample:\n\n```js josephusProblem(3, 2) // 3 ```\n```js josephusProblem(7, 2) // 7 ```",
+  "tests": [
+    {
+      "input": [3, 2],
+      "expectedOutput": 3
+    },
+    {
+      "input": [7, 2],
+      "expectedOutput": 7
+    }
+  ]
+}

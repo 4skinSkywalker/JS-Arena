@@ -1,0 +1,29 @@
+{
+  "description": "### ReplaceAllDigitsRegExp\n\nThe challenge requires creating a function that replaces every digit in the input string with a '#' character using regular expressions.\n\nInput: A single string containing alphanumeric characters.\nOutput: The processed string where all digits have been replaced with '#' character.\n\nExample:\n\n```js replaceAllDigitsRegExp(\"012ss210\") // \"###ss###\" ```",
+  "tests": [
+    {
+      "input": "There are 12 points",
+      "expectedOutput": "There are ## points"
+    },
+    {
+      "input": "012ss210",
+      "expectedOutput": "###ss###"
+    },
+    {
+      "input": " _Aas 23",
+      "expectedOutput": " _Aas ##"
+    },
+    {
+      "input": "no digits here",
+      "expectedOutput": "no digits here"
+    },
+    {
+      "input": " aa_0239mehce3d",
+      "expectedOutput": " aa_####mehce#d"
+    },
+    {
+      "input": "v z gv4zyx eu mu ",
+      "expectedOutput": "v z gv#zyx eu mu "
+    }
+  ]
+}

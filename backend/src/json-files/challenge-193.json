@@ -1,0 +1,39 @@
+{
+  "description": "### Extract Each Kth\n\nGiven array of integers, remove each kth element from it.\n\nInput: Two arguments. List of integers and positive integer.\nOutput: Return List of integers.\n\nExample:\n\n```js extractEachKth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3) // [1, 2, 4, 5, 7, 8, 10] ```",
+  "tests": [
+    {
+      "input": { 
+        "inputArray": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 
+        "k": 3
+      },
+      "expectedOutput": [1, 2, 4, 5, 7, 8, 10]
+    },
+    {
+      "input": {
+        "inputArray": [1, 1, 1, 1, 1],
+        "k": 1
+      },
+      "expectedOutput": []
+    },
+    {
+      "input": { 
+        "inputArray": [1, 2, 1, 2, 1, 2, 1, 2],
+        "k": 2 },
+      "expectedOutput": [1, 1, 1, 1]
+    },
+    {
+      "input": {
+        "inputArray": [1, 2, 1, 2, 1, 2, 1, 2],
+        "k": 10
+      },
+      "expectedOutput": [1, 2, 1, 2, 1, 2, 1, 2]
+    },
+    {
+      "input": { 
+        "inputArray": [2, 4, 6, 8, 10], 
+        "k": 2 
+      },
+      "expectedOutput": [2, 6, 10]
+    }
+  ]
+}

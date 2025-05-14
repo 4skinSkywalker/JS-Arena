@@ -1,0 +1,29 @@
+{
+  "description": "### LateRide\n\nWrite a Java program to calculate the sum of the digits in the current time shown by the input provided in minutes past midnight (between 0 and 1439, inclusive).\n\nInput: {An integer argument 'n', where 0 ≤ n ≤ 1439}\nOutput: {An integer which represents the sum of the digits in the current time.}\n\nExample:\n\n```js \nlateRide(808); // 14 \nlateRide(1439); // 19 \n```",
+  "tests": [
+    {
+      "input": 240,
+      "expectedOutput": 4
+    },
+    {
+      "input": 808,
+      "expectedOutput": 14
+    },
+    {
+      "input": 1439,
+      "expectedOutput": 19
+    },
+    {
+      "input": 0,
+      "expectedOutput": 0
+    },
+    {
+      "input": 23,
+      "expectedOutput": 5
+    },
+    {
+      "input": 8,
+      "expectedOutput": 8
+    }
+  ]
+}

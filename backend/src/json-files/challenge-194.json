@@ -1,0 +1,25 @@
+{
+  "description": "### Exercise Elaboration\n\nThe function 'exerciseElaboration(p, n)' finds the squared sum of two given integers 'p' and 'n' with 'n' number of zeros in between them. It then returns the summed up digits of this squared number.\n\nInput: Two integer arguments 'p' and 'n'.\nOutput: A single integer denoting the sum of the digits of the squared number `p0...0p`.\n\nExample:\n\n```js exerciseElaboration(5, 1) // 19 ```",
+  "tests": [
+    {
+      "input": [5, 1],
+      "expectedOutput": 19
+    },
+    {
+      "input": [9, 0],
+      "expectedOutput": 18
+    },
+    {
+      "input": [1, 2],
+      "expectedOutput": 4
+    },
+    {
+      "input": [2, 1],
+      "expectedOutput": 16
+    },
+    {
+      "input": [1, 0],
+      "expectedOutput": 4
+    }
+  ]
+}

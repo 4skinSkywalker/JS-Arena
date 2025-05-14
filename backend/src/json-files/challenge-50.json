@@ -1,0 +1,29 @@
+{
+   "description": "### ReverseOnDiagonals\n\nThe function `reverseOnDiagonals(int[][] a)` takes a square 2D integer array 'a' and returns a new 2D array where the elements on the diagonals are the reverse of the original ones.  The non-diagonal elements are unaltered. The array 'a' and the returned array both have the same dimensions.\n\nInput: A 2D Integer array (1 ≤ a.length ≤ 5, 1 ≤ a[i].length = a.length ≤ 5)\nOutput: A 2D Integer array with the same dimensions as the input, with reversed diagonals.\n\nExample:\n\n```js reverseOnDiagonals(new int[][] {{1,2,3},{4,5,6},{7,8,9}}) // returns [[9,2,7],[4,5,6],[3,8,1]] ```",
+   "tests": [
+      {
+         "input": [[[1,2,3], [4,5,6], [7,8,9]]],
+         "expectedOutput": [[9,2,7], [4,5,6], [3,8,1]]
+      },
+      {
+         "input": [[[239]]],
+         "expectedOutput": [[239]]
+      },
+      {
+         "input": [[[1,10], [100,1000]]],
+         "expectedOutput": [[1000,100], [10,1]]
+      },
+      {
+         "input": [[[43,455,32,103], [102,988,298,981], [309,21,53,64], [2,22,35,291]]],
+         "expectedOutput": [[291,455,32,2], [102,53,21,981], [309,298,988,64], [103,22,35,43]]
+      },
+      {
+         "input": [[[34,1000,139,248,972,584], [98,1,398,128,762,654], [33,498,132,543,764,43], [329,12,54,764,666,213], [928,109,489,71,837,332], [93,298,42,53,76,43]]],
+         "expectedOutput": [[43,1000,139,248,972,93], [98,837,398,128,109,654], [33,498,764,54,764,43], [329,12,543,132,666,213], [928,762,489,71,1,332], [584,298,42,53,76,34]]
+      },
+      {
+         "input": [[[1,1], [2,2]]],
+         "expectedOutput": [[2,2], [1,1]]
+      }
+   ]
+}

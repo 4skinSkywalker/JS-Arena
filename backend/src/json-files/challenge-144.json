@@ -1,0 +1,25 @@
+{
+  "description": "### isPower\n\nThe function checks if the given number is a perfect power of some number. It first checks if the number is 1, in which case it returns true, as 1 is a perfect power of any number. It then goes through a loop where it takes the ith root of the number and checks if the result is a whole number. If so, it returns true, as this means that the number is a perfect power of i.\n\nInput: An integer n\nOutput: A boolean value - true if the number is a perfect power of some number, else false.\n\nExample:\n\n```js isPower(125) // true ```",
+  "tests": [
+    {
+      "input": 125,
+      "expectedOutput": true
+    },
+    {
+      "input": 72,
+      "expectedOutput": false
+    },
+    {
+      "input": 100,
+      "expectedOutput": true
+    },
+    {
+      "input": 11,
+      "expectedOutput": false
+    },
+    {
+      "input": 324,
+      "expectedOutput": true
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "description": "### SubtractionByRegrouping\n\nThis Java program performs subtraction by regrouping. The program takes two integers, 'minuend' and 'subtrahend', and subtracts the 'subtrahend' from the 'minuend' using the regrouping method. The function then returns the result in the form of an array of integers.\n\nInput: Two integers\nOutput: An array of integers\n\nExample:\n\n```js subtractionByRegrouping(2024, 1234) // [4, 12, 9, 1] ```",
+  "tests": [
+    {
+      "input": {
+        "minuend": 2024,
+        "subtrahend": 1234
+      },
+      "expectedOutput": [4, 12, 9, 1]
+    },
+    {
+      "input": {
+        "minuend": 6,
+        "subtrahend": 5
+      },
+      "expectedOutput": [6]
+    },
+    {
+      "input": {
+        "minuend": 4567,
+        "subtrahend": 3456
+      },
+      "expectedOutput": [7, 6, 5, 4]
+    },
+    {
+      "input": {
+        "minuend": 3001,
+        "subtrahend": 2901
+      },
+      "expectedOutput": [1, 0, 10, 2]
+    },
+    {
+      "input": {
+        "minuend": 5000,
+        "subtrahend": 4999
+      },
+      "expectedOutput": [10, 9, 9, 4]
+    }
+  ]
+}

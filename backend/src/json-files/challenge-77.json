@@ -1,0 +1,33 @@
+{
+  "description": "### Parking Cost\n\nA parking lot charges $0.20 per 10 minutes. The first half an hour is free. From the moment at which 30 minutes have passed, each started 10 minutes interval costs $0.20. Starting from the one at which first two hours have passed, each started 10 minutes interval costs $0.40.\n\nInput: Two strings, timeIn and timeOut, each of them representing a time in 24-hour format ('HH:MM')\nOutput: Return an integer, the cost (in number of cents) of parking.\n\nExample:\n\n```js parkingCost('14:11', '14:39') // 0 ```",
+  "tests": [
+    {
+      "input": {"timeIn": "14:11", "timeOut": "14:39"},
+      "expectedOutput": 0
+    },
+    {
+      "input": {"timeIn": "07:02", "timeOut": "07:42"},
+      "expectedOutput": 1
+    },
+    {
+      "input": {"timeIn": "12:20", "timeOut": "14:54"},
+      "expectedOutput": 17
+    },
+    {
+      "input": {"timeIn": "00:01", "timeOut": "04:45"},
+      "expectedOutput": 43
+    },
+    {
+      "input": {"timeIn": "08:23", "timeOut": "08:54"},
+      "expectedOutput": 1
+    },
+    {
+      "input": {"timeIn": "21:57", "timeOut": "23:58"},
+      "expectedOutput": 11
+    },
+    {
+      "input": {"timeIn": "23:44", "timeOut": "23:59"},
+      "expectedOutput": 0
+    }
+  ]
+}

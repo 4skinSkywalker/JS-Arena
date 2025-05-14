@@ -1,0 +1,13 @@
+{
+  "description": "### Matrix Trace\n\nThe task is to calculate the sum of the elements of the main diagonal (from top-left to bottom-right) of a given n by n (2D) array. The function `matrixTrace(m)` takes a 2D array `m` as input and returns the trace of the matrix.\n\nInput: A 2D array `m`.\nOutput: An integer that is the trace of the matrix `m`.\n\nExample:\n\n```js matrixTrace({[1,1,1], [0,5,0], [2,1,3]}) // 9 ```",
+  "tests": [
+    {
+      "input": [[1,1,1], [0,5,0], [2,1,3]],
+      "expectedOutput": 9
+    },
+    {
+      "input": [[0,1,1], [0,0,0], [2,1,0]],
+      "expectedOutput": 0
+    }
+  ]
+}

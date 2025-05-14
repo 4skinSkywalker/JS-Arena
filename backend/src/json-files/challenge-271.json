@@ -1,0 +1,17 @@
+{
+  "description": "### ArithmeticProgression\n\nA class ArithmeticProgression that contains a method to calculate the n-th term of an arithmetic progression. The arithmetic progression is defined by the two elements element1 and element2, and the n-th term is needed to be returned.\n\nInput: Three arguments. An integers element1, element2 (0≤element1≤10^9, 0≤element2≤10^9), and a positive integer n (0≤n≤10^9).\nOutput: The return value will be an integer, the n-th term of the arithmetic progression.\n\nExample:\n\n```js arithmeticProgression(3, 2, 4) // 0 ```",
+  "tests": [
+    {
+      "input": [3, 2, 4],
+      "expectedOutput": 0
+    },
+    {
+      "input": [2, 2, 2],
+      "expectedOutput": 2
+    },
+    {
+      "input": [4, 10000, 1],
+      "expectedOutput": 4
+    }
+  ]
+}

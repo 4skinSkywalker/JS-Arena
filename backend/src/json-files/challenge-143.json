@@ -1,0 +1,49 @@
+{
+  "description": "### IsPowerOfTwo2\n\nA function that checks if a given number is a power of two. If the number is a power of two, the function returns true; otherwise, it returns false.\n\nInput: a long integer n\nOutput: a boolean value signifying if n is a power of two or not\n\nExample:\n\n```js isPowerOfTwo2(64) // true ```",
+  "tests": [
+    {
+      "input": 64,
+      "expectedOutput": true
+    },
+    {
+      "input": 5,
+      "expectedOutput": false
+    },
+    {
+      "input": 1,
+      "expectedOutput": true
+    },
+    {
+      "input": 16,
+      "expectedOutput": true
+    },
+    {
+      "input": 7,
+      "expectedOutput": false
+    },
+    {
+      "input": 17179869184,
+      "expectedOutput": true
+    },
+    {
+      "input": 34359738368,
+      "expectedOutput": true
+    },
+    {
+      "input": 68719476736,
+      "expectedOutput": true
+    },
+    {
+      "input": 41,
+      "expectedOutput": false
+    },
+    {
+      "input": 239,
+      "expectedOutput": false
+    },
+    {
+      "input": 137438953472,
+      "expectedOutput": true
+    }
+  ]
+}

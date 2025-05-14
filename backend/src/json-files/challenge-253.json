@@ -1,0 +1,17 @@
+{
+  "description": "### Capitalize Vowels\n\nThis function takes a string as an input, find all the vowels in the string, and capitalize them.\n\nInput: A string with lowercase and uppercase letters and possibly some numbers or special characters ('_', '-', '/', ...)\nOutput: The same string but with all the vowels capitalized\n\nExample:\n\n```js capitalizeVowelsRegExp('There are 12 points') // 'ThErE ArE 12 pOInts' ```",
+  "tests": [
+    {
+      "input": "There are 12 points",
+      "expectedOutput": "ThErE ArE 12 pOInts"
+    },
+    {
+      "input": " _Aaaaas 23",
+      "expectedOutput": " _AAAAAs 23"
+    },
+    {
+      "input": " a_2",
+      "expectedOutput": " A_2"
+    }
+  ]
+}

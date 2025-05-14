@@ -1,0 +1,13 @@
+{
+  "description": "### splitAddress\n\nThe function `splitAddress` takes in a website address as a parameter and returns a list containing the protocol, domain and other elements of the address.\n\nInput: A string representing the address. For example: 'http://codesignal.com'.\nOutput: A list containing elements of the address. For example: ['http', 'codesignal'].\n\nExample:\n\n```js splitAddress('http://codesignal.com') // ['http', 'codesignal'] ```",
+  "tests": [
+    {
+      "input": "http://codesignal.com",
+      "expectedOutput": ["http", "codesignal"]
+    },
+    {
+      "input": "http://stackoverflow.com/questions",
+      "expectedOutput": ["http", "stackoverflow", "questions"]
+    }
+  ]
+}

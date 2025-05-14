@@ -1,0 +1,21 @@
+{
+  "description": "### No Odd Digits\n\nCreate a function that takes a number as an argument and returns a new number that has no odd digits.\n\nInput: A number containing even and odd digits.\nOutput: A new number that contains only the even digits from the input number. If the input number is odd, return 0.\n\nExample:\n\n```js noOddDigits(12345678) // 2468 ```",
+  "tests": [
+    {
+      "input": 12345678,
+      "expectedOutput": 2468
+    },
+    {
+      "input": 299752,
+      "expectedOutput": 22
+    },
+    {
+      "input": 1,
+      "expectedOutput": 0
+    },
+    {
+      "input": 0,
+      "expectedOutput": 0
+    }
+  ]
+}

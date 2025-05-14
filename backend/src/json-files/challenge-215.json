@@ -1,0 +1,17 @@
+{
+  "description": "### DifferentSubstringsTrie\n\nThe task is to write a function that takes a string as input and returns the total count of different substrings of the string. The function uses a Trie data structure to store all prefixes of the string and count them.\n\nInput: A string (1 <= string.length <= 10^5)\nOutput: An integer representing the count of different substrings.\n\nExample:\n\n```js differentSubstringsTrie('abac'); // 9 ```",
+  "tests": [
+    {
+      "input": "abac",
+      "expectedOutput": 9
+    },
+    {
+      "input": "abacaba",
+      "expectedOutput": 21
+    },
+    {
+      "input": "string",
+      "expectedOutput": 21
+    }
+  ]
+}

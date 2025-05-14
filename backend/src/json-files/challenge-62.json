@@ -1,0 +1,25 @@
+{
+  "description": "### ReflectString\n\nIn the world of parallel programming, there is a widely known concept of reflection. This can be used to obtain information about classes, interfaces and methods. Suppose you have a string that you want to reverse in order to obtain its reflected version.\n\nYou decide to start by writing a function that reflects the lowercase letters. To do this, consider the English alphabet as being placed on a circle, with the 26-th letter 'z' being adjacent to the first letter 'a'.\n\nNow let's reflect each letter in s by its counterpart in the reversed alphabet: the letter 'a' becomes 'z', 'b' - becomes 'y', 'c' - becomes 'x', etc.\n\nFinally return the resulted string.\n\nInput: A string s of lowercase letters.\nOutput: Return string after reflecting all the characters in the string.\n\nExample:\n\n```js reflectString(\"name\") // \"mznv\" ```",
+  "tests": [
+    {
+      "input": "name",
+      "expectedOutput": "mznv"
+    },
+    {
+      "input": "abyz",
+      "expectedOutput": "zyba"
+    },
+    {
+      "input": "nnnnn",
+      "expectedOutput": "mmmmm"
+    },
+    {
+      "input": "pqr",
+      "expectedOutput": "kji"
+    },
+    {
+      "input": "codesignal",
+      "expectedOutput": "xlwvhrtmzo"
+    }
+  ]
+}

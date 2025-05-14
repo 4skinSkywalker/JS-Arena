@@ -1,0 +1,17 @@
+{
+  "description": "### FromDecimal\n\nThe problem requires to convert a decimal into a given base number. For this, the problem is created a method: `fromDecimal(int b, int n)`. The method receives two parameters an integer `b` (2 ≤ b ≤ 10) is the base to convert to and an integer `n` (0 ≤ n) is a number to convert from decimal to the base `b`.\n\nInput: Two parameters - an integer `b` and an integer `n`\nOutput: A String which is a converted base of `n` according to `b`\n\nExample:\n\n```js fromDecimal(2, 13) // '1101' ```",
+  "tests": [
+    {
+      "input": [2, 13],
+      "expectedOutput": "1101"
+    },
+    {
+      "input": [3, 66],
+      "expectedOutput": "2110"
+    },
+    {
+      "input": [9, 381367044],
+      "expectedOutput": "876543210"
+    }
+  ]
+}

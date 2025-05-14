@@ -1,0 +1,25 @@
+{
+  "description": "### Longest Word\n\nA function that takes a text string and returns the longest word containing only letters.\n\nInput: a string of text\nOutput: a string representing the longest word containing only letters\n\nExample:\n\n```js longestWord('Ready, steady, go!') // 'steady' ```",
+  "tests": [
+    {
+      "input": "Ready, steady, go!",
+      "expectedOutput": "steady"
+    },
+    {
+      "input": "Ready[[[, steady, go!",
+      "expectedOutput": "steady"
+    },
+    {
+      "input": "ABCd",
+      "expectedOutput": "ABCd"
+    },
+    {
+      "input": "To be or not to be",
+      "expectedOutput": "not"
+    },
+    {
+      "input": "You are the best!!!!!!!!!!!! CodeFighter ever!",
+      "expectedOutput": "CodeFighter"
+    }
+  ]
+}

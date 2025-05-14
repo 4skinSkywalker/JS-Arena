@@ -1,0 +1,25 @@
+{
+  "description": "### List Without Loop\n\nCreate a function `listWithoutLoop(n)` that generates a list with numbers from n to 0 and back to n with step being -5. The function should solve this task without using loops.\n\nInput: A single integer 'n'.\nOutput: A list of integers.\n\nExample:\n\n```js\n listWithoutLoop(10) // [10, 5, 0, 5, 10] ```",
+  "tests": [
+    {
+      "input": 10,
+      "expectedOutput": [10, 5, 0, 5, 10]
+    },
+    {
+      "input": 0,
+      "expectedOutput": [0]
+    },
+    {
+      "input": 20,
+      "expectedOutput": [20, 15, 10, 5, 0, 5, 10, 15, 20]
+    },
+    {
+      "input": 15,
+      "expectedOutput": [15, 10, 5, 0, 5, 10, 15]
+    },
+    {
+      "input": 5,
+      "expectedOutput": [5, 0, 5]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "description": "### checkIncreasingSequence\n\nThis function takes an array of integers as an input and returns a boolean indicating whether the sequence is strictly increasing. A sequence is considered as strictly increasing if each element is greater than the previously one.\n\nInput: An array of integers eg. ([1, 3, 8])\nOutput: A Boolean value. It will be true if the array is strictly increasing and false if it's not.\n\nExample:\n\n```js checkIncreasingSequence([1, 2, 3, 4, 5]) // true ```",
+  "tests": [
+    {
+      "input": [1, 3, 8],
+      "expectedOutput": true
+    },
+    {
+      "input": [2, 2, 3],
+      "expectedOutput": false
+    },
+    {
+      "input": [2, 2],
+      "expectedOutput": false
+    },
+    {
+      "input": [1, 2, 4, 6, 11],
+      "expectedOutput": true
+    },
+    {
+      "input": [1, 3, 1, 2, 3],
+      "expectedOutput": false
+    },
+    {
+      "input": [3, 2, 1],
+      "expectedOutput": false
+    },
+    {
+      "input": [1, 2, 3, 4, 5, 4],
+      "expectedOutput": false
+    },
+    {
+      "input": [1, 2, 2, 3, 4, 5],
+      "expectedOutput": false
+    },
+    {
+      "input": [1, 2, 3, 4, 5],
+      "expectedOutput": true
+    },
+    {
+      "input": [1],
+      "expectedOutput": true
+    }
+  ]
+}

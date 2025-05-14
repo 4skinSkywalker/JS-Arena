@@ -1,0 +1,13 @@
+{
+  "description": "### Parabole\n\nA class with the main function to solve the parabola equation given the coefficients and x value.\n\nInput: Four integers representing the coefficients a, b, c, and the value of x in the quadratic equation ax^2 + bx + c.\nOutput: Single integer as the evaluation of the input in the quadratic equation.\n\nExample:\n\n```js parabole(1, 2, 3, -1) // 2 ```",
+  "tests": [
+    {
+      "input": [1, 2, 3, -1],
+      "expectedOutput": 2
+    },
+    {
+      "input": [-1, -4, 7, 14],
+      "expectedOutput": -245
+    }
+  ]
+}

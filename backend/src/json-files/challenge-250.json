@@ -1,0 +1,25 @@
+{
+"description": "### CheckFactorial\n\nThis function takes a number as input and checks if it's a factorial of a number.\n\nInput: A single integer.\nOutput: A boolean value that is true if the given number is a factorial of a number and false otherwise.\n\nExample:\n\n```js checkFactorial(120) // true ```",
+"tests": [
+  {
+    "input": 120,
+    "expectedOutput": true
+  },
+  {
+    "input": 25,
+    "expectedOutput": false
+  },
+  {
+    "input": 119,
+    "expectedOutput": false
+  },
+  {
+    "input": 121,
+    "expectedOutput": false
+  },
+  {
+    "input": 1,
+    "expectedOutput": true
+  }
+]
+}

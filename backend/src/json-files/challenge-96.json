@@ -1,0 +1,21 @@
+{
+  "description": "### Minimum On Stack\n\nThe function `minimumOnStack` receives an array of operations. It pushes values into a stack and pops them out according to the operations provided. It's also capable of providing the minimum value in the stack. When the operation is 'push x', the function pushes x into the stack. When the operation is 'pop', it removes the last pushed item from the stack. If the operation is 'min', it returns the smallest number in the stack, and adds it to the output array.\n\nInput: An array of strings. Each string can be either 'push x', 'pop', or 'min', where x is an integer.\nOutput: An array of integers. Each integer is a minimum value returned after a 'min' operation.\n\nExample:\n\n```js minimumOnStack(['push 10', 'min', 'push 5', 'min', 'push 8', 'min', 'pop', 'min', 'pop', 'min']) // [10, 5, 5, 5, 10] ```",
+  "tests": [
+    {
+      "input": ["push 10", "min", "push 5", "min", "push 8", "min", "pop", "min", "pop", "min"],
+      "expectedOutput": [10, 5, 5, 5, 10]
+    },
+    {
+      "input": ["push 10", "min", "pop", "push 3", "min", "push 5", "pop", "push 3", "min", "pop"],
+      "expectedOutput": [10, 3, 3]
+    },
+    {
+      "input": ["push 10"],
+      "expectedOutput": []
+    },
+    {
+      "input": ["push 10", "pop"],
+      "expectedOutput": []
+    }
+  ]
+}

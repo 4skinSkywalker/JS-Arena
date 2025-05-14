@@ -1,0 +1,25 @@
+{
+  "description": "### EvenNumbersBeforeFixed\n\nGiven an array of integers sequence and an integer fixedElement, return the number of even numbers in the sequence before the first occurrence of the fixedElement if it's present, otherwise return -1.\n\nInput: Two parameters - an array of integers and a single integer\nOutput: Single integer\n\nExample:\n\n```js evenNumbersBeforeFixed([1, 4, 2, 6, 3, 1], 6) // 2 ```",
+  "tests": [
+    {
+      "input": {"s": [1, 4, 2, 6, 3, 1], "e": 6},
+      "expectedOutput": 2
+    },
+    {
+      "input": {"s": [2, 2, 2, 1], "e": 3},
+      "expectedOutput": -1
+    },
+    {
+      "input": {"s": [2, 3, 4, 3], "e": 3},
+      "expectedOutput": 1
+    },
+    {
+      "input": {"s": [1, 3, 5], "e": 5},
+      "expectedOutput": 0
+    },
+    {
+      "input": {"s": [], "e": 6},
+      "expectedOutput": -1
+    }
+  ]
+}

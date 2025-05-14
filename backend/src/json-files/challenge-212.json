@@ -1,0 +1,21 @@
+{
+  "description": "### Digit Distance Number\n\nFunction calculates the digit distance number of a given number. Digit distance between two digits, a and b, is absolute difference of a and b. Digit distance number of a number abc... (where a, b, c... are digits of given number) is (b-a)(c-b)... (where (x) denotes concatenation). For example, if n = 2744, the digit distance number will be 530.\n\nInput: A single integer value.\nOutput: The calculated digit distance number.\n\nExample:\n\n```js digitDistanceNumber(2744) // 530 ```",
+  "tests": [
+    {
+      "input": 2744,
+      "expectedOutput": 530
+    },
+    {
+      "input": 330,
+      "expectedOutput": 3
+    },
+    {
+      "input": 333,
+      "expectedOutput": 0
+    },
+    {
+      "input": 19,
+      "expectedOutput": 8
+    }
+  ]
+}

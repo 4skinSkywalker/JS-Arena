@@ -1,0 +1,25 @@
+{
+  "description": "### Pieces Of Distinct Lengths\n\nGiven a total length of string `s`, this function returns the maximum number of pieces of string of distinct lengths you can make.\n\nInput: A single integer `s` which represents the total length of the string (1 ≤ s ≤ 2*10^9).\nOutput: A single integer `n` which represents the maximum number of pieces of string of distinct lengths.\n\nExample:\n\n```js piecesOfDistinctLengths(14) // 4 ```",
+  "tests": [
+    {
+      "input": 14,
+      "expectedOutput": 4
+    },
+    {
+      "input": 3,
+      "expectedOutput": 2
+    },
+    {
+      "input": 4,
+      "expectedOutput": 2
+    },
+    {
+      "input": 7,
+      "expectedOutput": 3
+    },
+    {
+      "input": 10,
+      "expectedOutput": 4
+    }
+  ]
+}

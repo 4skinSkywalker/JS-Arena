@@ -1,0 +1,25 @@
+{
+  "description": "### EquationTemplate\n\nThe task is to create a boolean function, which receives an int array as a parameter and returns true if it can be arranged to form an equation such as: a*b=c*d or a*b*c=d, otherwise returns false. The function should not use any combinations with similar indices.\n\nInput: An int array a of size 4 such that (0 <= |a[i]| <= 30).\nOutput: Returns true if array elements can be rearranged to form an equation a*b=c*d or a*b*c=d and false otherwise.\n\nExample:\n\n```js equationTemplate([2, 4, 3, 6]) // true ```",
+  "tests": [
+    {
+      "input": [2, 4, 3, 6], 
+      "expectedOutput": true
+    },
+    {
+      "input": [2, 3, 30, 5],
+      "expectedOutput": true
+    },
+    {
+      "input": [2, 3, 5, 5],
+      "expectedOutput": false
+    },
+    {
+      "input": [1, 2, 3, 4],
+      "expectedOutput": false
+    },
+    {
+      "input": [0, 1, 1, 1],
+      "expectedOutput": false
+    }
+  ]
+}

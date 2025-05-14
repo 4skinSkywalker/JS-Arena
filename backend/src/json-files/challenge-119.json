@@ -1,0 +1,45 @@
+{
+  "description": "### LineEncoding\n\nGiven a string, return a new string where each group consecutive repeating characters are replaced by the number of those characters followed by the character itself.\n\nInput: A string s (1 ≤ s.length ≤ 50).\nOutput: Return a new string encoded with the specified format.\n\nExample:\n\n```js lineEncoding(\"aabbbc\") // \"2a3bc\" ```",
+  "tests": [
+    {
+      "input": "aabbbc",
+      "expectedOutput": "2a3bc"
+    },
+    {
+      "input": "abbcabb",
+      "expectedOutput": "a2bca2b"
+    },
+    {
+      "input": "abcd",
+      "expectedOutput": "abcd"
+    },
+    {
+      "input": "zzzz",
+      "expectedOutput": "4z"
+    },
+    {
+      "input": "wwwwwwwawwwwwww",
+      "expectedOutput": "7wa7w"
+    },
+    {
+      "input": "ccccccccccccccc",
+      "expectedOutput": "15c"
+    },
+    {
+      "input": "qwertyuioplkjhg",
+      "expectedOutput": "qwertyuioplkjhg"
+    },
+    {
+      "input": "ssiiggkooo",
+      "expectedOutput": "2s2i2gk3o"
+    },
+    {
+      "input": "adfaaa",
+      "expectedOutput": "adf3a"
+    },
+    {
+      "input": "bbjaadlkjdl",
+      "expectedOutput": "2bj2adlkjdl"
+    }
+  ]
+}

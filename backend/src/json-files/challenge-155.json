@@ -1,0 +1,45 @@
+{
+  "description": "### IsCaseInsensitivePalindrome\n\nA palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward, ignoring spaces, punctuation, and capitalization.\n\nWrite a function that determines whether the input string is a palindrome or not.\n\nInput: A string.\nOutput: A boolean value indicating if the string is a palindrome or not.\n\nExample:\n\n```js isCaseInsensitivePalindrome(\"AaBaa\") // true ```",
+  "tests": [
+    {
+      "input": "AaBaa",
+      "expectedOutput": true
+    },
+    {
+      "input": "abac",
+      "expectedOutput": false
+    },
+    {
+      "input": "aBACaba",
+      "expectedOutput": true
+    },
+    {
+      "input": "opOP",
+      "expectedOutput": false
+    },
+    {
+      "input": "ZZzzazZzz",
+      "expectedOutput": true
+    },
+    {
+      "input": "zzzzazzzz",
+      "expectedOutput": true
+    },
+    {
+      "input": "ZZzzabzZzz",
+      "expectedOutput": false
+    },
+    {
+      "input": "abcdcbA",
+      "expectedOutput": true
+    },
+    {
+      "input": "abracabra",
+      "expectedOutput": false
+    },
+    {
+      "input": "abcd",
+      "expectedOutput": false
+    }
+  ]
+}

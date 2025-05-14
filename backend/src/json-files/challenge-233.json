@@ -1,0 +1,29 @@
+{
+   "description": "### CountSumOfTwoRepresentations2\n\nGiven integers n, l and r, find the number of ways to represent n as a sum of two integers A and B, such that l ≤ A ≤ B ≤ r.\n\nInput: {input0: int, input1: int, input2: int}\nOutput: {output: int}\n\nExample:\n\n```js countSumOfTwoRepresentations2(6, 2, 4) // 2 ```",
+   "tests": [
+      {
+         "input": {"input0": 6, "input1": 2, "input2": 4},
+         "expectedOutput": 2
+      },
+      {
+         "input": {"input0": 6, "input1": 3, "input2": 3},
+         "expectedOutput": 1
+      },
+      {
+         "input": {"input0": 10, "input1": 9, "input2": 11},
+         "expectedOutput": 0
+      },
+      {
+         "input": {"input0": 24, "input1": 8, "input2": 16},
+         "expectedOutput": 5
+      },
+      {
+         "input": {"input0": 24, "input1": 12, "input2": 12},
+         "expectedOutput": 1
+      },
+      {
+         "input": {"input0": 93, "input1": 24, "input2": 58},
+         "expectedOutput": 12
+      }
+   ]
+}

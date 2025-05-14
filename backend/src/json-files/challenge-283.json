@@ -1,0 +1,45 @@
+{
+  "description": "### allLongestStrings\n\nGiven an array of strings, return an array containing all of the longest strings.\n\nInput: Array of Strings\nOutput: Array of Longest Strings\n\nExample:\n\n```js allLongestStrings([\"aba\", \"aa\", \"ad\", \"vcd\", \"aba\"]) // [\"aba\", \"vcd\",  \"aba\"] ```",
+  "tests": [
+    {
+      "input": ["aba", "aa", "ad", "vcd", "aba"],
+      "expectedOutput": ["aba", "vcd",  "aba"]
+    },
+    {
+      "input": ["aa"],
+      "expectedOutput": ["aa"]
+    },
+    {
+      "input": ["abc", "eeee", "abcd", "dcd"],
+      "expectedOutput": ["eeee", "abcd"]
+    },
+    {
+      "input": ["a", "abc", "cbd", "zzzzzz", "a", "abcdef", "asasa", "aaaaaa"],
+      "expectedOutput": ["zzzzzz", "abcdef", "aaaaaa"]
+    },
+    {
+      "input": ["enyky", "benyky", "yely", "varennyky"],
+      "expectedOutput": ["varennyky"]
+    },
+    {
+      "input": ["abacaba", "abacab", "abac", "xxxxxx"],
+      "expectedOutput": ["abacaba"]
+    },
+    {
+      "input": ["young", "yooooooung", "hot", "or", "not", "come", "on", "fire", "water", "watermelon"],
+      "expectedOutput": ["yooooooung", "watermelon"]
+    },
+    {
+      "input": ["onsfnib", "aokbcwthc", "jrfcw"],
+      "expectedOutput": ["aokbcwthc"]
+    },
+    {
+      "input": ["lbgwyqkry"],
+      "expectedOutput": ["lbgwyqkry"]
+    },
+    {
+      "input": ["i"],
+      "expectedOutput": ["i"]
+    }
+  ]
+}

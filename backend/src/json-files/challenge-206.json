@@ -1,0 +1,26 @@
+{
+  "description": "### Divisors Subset\n\nThis function calculates how many integers between 1 and n inclusive can be divided evenly by every number in the specified subset.\n\nInput: An array of distinct positive integers ('subset') and a positive integer n.\nOutput: The number of integers between 1 and n inclusive that can be divided evenly by every number in the subset.\n\nExample:\n\n```js divisorsSubset([2, 3], 13) // 2 ```",
+  "tests": [
+    {
+      "input": {
+        "subset": [2, 3],
+        "n": 13
+      },
+      "expectedOutput": 2
+    },
+    {
+      "input": {
+        "subset": [1],
+        "n": 62
+      },
+      "expectedOutput": 62
+    },
+    {
+      "input": {
+        "subset": [12, 2, 4, 6],
+        "n": 143
+      },
+      "expectedOutput": 11
+    }
+  ]
+}

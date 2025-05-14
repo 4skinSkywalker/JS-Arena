@@ -1,0 +1,40 @@
+{
+  "description": "### RegexMatching\n\nYou are implementing a basic regex matcher that checks if the input string matches the given pattern. For simplicity, the pattern can only contain the meta characters ^ and $. \n\n^ means that the pattern has to start with the subsequent substring, $ means it has to end with the preceeding substring and if ^ or $ characters are not present the substring has to occur somewhere in the tested string.\n\nInput: Two parameters - pattern and test of type String\nOutput: Returns a boolean indicating whether the test string matches the pattern.\n\nExample:\n\n```js \nregexMatching('^code', 'codesignal') // true \nregexMatching('hello', 'world') // false\nregexMatching('aba', 'abacaba') // true```\n",
+  "tests": [
+    {
+      "input": {
+        "pattern": "^code", 
+        "test": "codesignal"
+      },
+      "expectedOutput": true
+    },
+    {
+      "input": {
+        "pattern": "nal$", 
+        "test": "codesignal"
+      },
+      "expectedOutput": true
+    },
+    {
+      "input": {
+        "pattern": "hello", 
+        "test": "world"
+      },
+      "expectedOutput": false
+    },
+    {
+      "input": {
+        "pattern": "aba",
+        "test": "abacaba"
+      },
+      "expectedOutput": true
+    },
+    {
+      "input": {
+        "pattern": "def$", 
+        "test": "asdef"
+      },
+      "expectedOutput": true
+    }
+  ]
+}

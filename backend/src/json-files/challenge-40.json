@@ -1,0 +1,29 @@
+{
+  "description": "### ShuffledArray\n\nA sorted array was shuffled and then one element was removed. The task is to return the array to its initial, sorted form.\n\nInput: An array of integers, which was shuffled and then one number removed.\nOutput: Initial, sorted array, from which the number got removed.\n\nExample:\n\n```js shuffledArray([1, 12, 3, 6, 2]) // [1, 2, 3, 6] ```",
+  "tests": [
+    {
+      "input": [1, 12, 3, 6, 2],
+      "expectedOutput": [1, 2, 3, 6]
+    },
+    {
+      "input": [1, -3, -5, 7, 2],
+      "expectedOutput": [-5, -3, 2, 7]
+    },
+    {
+      "input": [2, -1, 2, 2, -1],
+      "expectedOutput": [-1, -1, 2, 2]
+    },
+    {
+      "input": [-3, -3],
+      "expectedOutput": [-3]
+    },
+    {
+      "input": [37, 11, -37, -85, -67, 32, 90, -90, 56, 80, 37],
+      "expectedOutput": [-90, -85, -67, -37, 11, 37, 37, 56, 80, 90]
+    },
+    {
+      "input": [18, -73, -39, 65, -65, -52],
+      "expectedOutput": [-65, -52, -39, 18, 65]
+    }
+  ]
+}

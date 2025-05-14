@@ -1,0 +1,13 @@
+{
+  "description": "### DotProduct\n\nImplement a function that calculates the dot product of two 3D vectors. The dot product of two vectors is equal to the sum of the elementwise products.\n\nInput: Two arrays representing the vectors\nOutput: An integer representing the dot product of the vectors\n\nExample:\n\n```js dotProduct([1, 1, 1], [0, 1, -1]) // 0 ```",
+  "tests": [
+    {
+      "input": [[1, 1, 1], [0, 1, -1]],
+      "expectedOutput": 0
+    },
+    {
+      "input": [[0, 0, 1], [0, 5, -2]],
+      "expectedOutput": -2
+    }
+  ]
+}

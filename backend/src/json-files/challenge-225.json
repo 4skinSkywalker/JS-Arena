@@ -1,0 +1,13 @@
+{
+  "description": "### CubeVolume\n\nThis program calculates the volume of a cube given the length of one of its sides.\n\nInput: an integer n (1 <= n <= 10^3), the length of the side of the cube\nOutput: an integer, the volume of the cube\n\nExample:\n\n```js cubeVolume(5) // 125 ```",
+  "tests": [
+    {
+      "input": 5,
+      "expectedOutput": 125
+    },
+    {
+      "input": 1,
+      "expectedOutput": 1
+    }
+  ]
+}

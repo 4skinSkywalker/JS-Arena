@@ -1,0 +1,45 @@
+{
+  "description": "### LatinLettersSearchRegExp\n\nIn this problem, the task is to return whether any of the letters in the input string is a Latin letter.\n\nInput: A string which may contain any type of characters\nOutput: A boolean value indicating if there is any Latin letter in the input string\n\nExample:\n\n```js latinLettersSearchRegExp('a_ _2') // true ```",
+  "tests": [
+    {
+      "input": "a_ _2",
+      "expectedOutput": true
+    },
+    {
+      "input": "W2",
+      "expectedOutput": true
+    },
+    {
+      "input": "_1111 ",
+      "expectedOutput": false
+    },
+    {
+      "input": "1337 ",
+      "expectedOutput": false
+    },
+    {
+      "input": "123456789O",
+      "expectedOutput": true
+    },
+    {
+      "input": "_111l ",
+      "expectedOutput": true
+    },
+    {
+      "input": "a",
+      "expectedOutput": true
+    },
+    {
+      "input": "12375$&*D",
+      "expectedOutput": true
+    },
+    {
+      "input": "#!@_@($_+)",
+      "expectedOutput": false
+    },
+    {
+      "input": "........",
+      "expectedOutput": false
+    }
+  ]
+}

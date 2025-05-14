@@ -1,0 +1,26 @@
+{
+  "description": "### ArrayElementsProduct\n\nWrite a function named `arrayElementsProduct` that receives an array of integers and returns the product of all the elements in the array.\n\nInput: An array of integers (1 ≤ a.length ≤ 10, 1 ≤ a[i] ≤ 20).\nOutput: An integer which is the product of all the elements in the input array.\n\nExample:\n\n```java\narrayElementsProduct([1, 3, 2, 10]); // 60\n```",
+  
+  "tests": [
+    {
+      "input": [1, 3, 2, 10], 
+      "expectedOutput": 60
+    },
+    {
+      "input": [2, 4, 10, 1], 
+      "expectedOutput": 80
+    },
+    {
+      "input": [1, 1], 
+      "expectedOutput": 1
+    },
+    {
+      "input": [],
+      "expectedOutput": "No elements in array"
+    },
+    {
+      "input": [10, -5, 3],
+      "expectedOutput": -150
+    }
+  ]
+}

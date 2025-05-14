@@ -1,0 +1,25 @@
+{
+  "description": "### InsertDashes\n\nA code is written to insert dashes (-) between each two neighboring letters. If the string starts or ends with a space, it stays there.\n\nInput: A string 'input' (1 ≤ input's length ≤ 100)\nOutput: The same string but after removal of certain letters.\n\nExample:\n\n```js insertDashes(\"aba caba\") // \"a-b-a c-a-b-a\" ```\n\n```js insertDashes(\"x\") // \"x\" ```",
+  "tests": [
+    {
+      "input": "aba caba",
+      "expectedOutput": "a-b-a c-a-b-a"
+    },
+    {
+      "input": "x",
+      "expectedOutput": "x"
+    },
+    {
+      "input": "Hello World",
+      "expectedOutput": "H-e-l-l-o W-o-r-l-d"
+    },
+    {
+      "input": "Advanced AI",
+      "expectedOutput": "A-d-v-a-n-c-e-d A-I"
+    },
+    {
+      "input": " random spaces ",
+      "expectedOutput": " r-a-n-d-o-m s-p-a-c-e-s "
+    }
+  ]
+}

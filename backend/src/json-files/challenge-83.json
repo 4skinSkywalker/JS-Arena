@@ -1,0 +1,37 @@
+{
+  "description": "### NumbersGrouping\n\nYou are given an array of integers a. A new array of integers b is formed while the following conditions are true:\n\n- find the maximum value of a and put it into b;\n- find the item which is equal to a[i] - 1 in a, put it into b, and remove the item from a;\n- repeat the previous step until it's impossible to perform.\n\nYour task is to return the size of b.\n\nInput: An array of integers.\nOutput: The size of the array b.\n\nExample:\n\n```js numbersGrouping([20000, 239, 10001, 999999, 10000, 20566, 29999]) // 11 ```",
+  "tests": [
+    {
+      "input": [20000, 239, 10001, 999999, 10000, 20566, 29999],
+      "expectedOutput": 11
+    },
+    {
+      "input": [10000, 20000, 30000, 40000, 50000, 60000, 10000, 120000, 150000, 200000, 300000, 1000000, 10000000, 100000000, 10000000],
+      "expectedOutput": 28
+    },
+    {
+      "input": [10000],
+      "expectedOutput": 2
+    },
+    {
+      "input": [10000, 1],
+      "expectedOutput": 3
+    },
+    {
+      "input": [685400881, 696804468, 696804942, 803902442, 976412678, 976414920, 47763597, 803900633, 233144924, 47764349, 233149077, 214990733, 214994039, 280528089, 280524347, 685401797],
+      "expectedOutput": 24
+    },
+    {
+      "input": [598589004, 92986320, 520103781, 808743817, 635098665, 95244159, 808747008, 867017063, 635092226, 867013865, 92989995, 520100093, 95245838, 84897101, 598583113, 84893918],
+      "expectedOutput": 24
+    },
+    {
+      "input": [1000000000, 999990000, 999980000, 999970000, 999960000, 999950000, 999940000, 999930000, 999920000, 999910000],
+      "expectedOutput": 20
+    },
+    {
+      "input": [102382103, 21039898, 39823, 433, 30928398, 40283209, 23234, 342534, 98473483, 498398424, 9384984, 9839239],
+      "expectedOutput": 24
+    }
+  ]
+}

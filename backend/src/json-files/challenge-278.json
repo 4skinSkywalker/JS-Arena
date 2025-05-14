@@ -1,0 +1,26 @@
+{
+  "description": "### Amend The Sentence\n\nYou have been given a string s, which is supposed to be a sentence. However, someone forgot to put spaces between the different words, and for some reason, they capitalized the first letter of every word. Return the sentence after making the following amendments:\n\nChange the capitalization of each word's first letter to lowercase.\n\nAdd a single space between each word.\n\nInput: A string of n (1 ≤ n ≤ 104) characters, the first of which is uppercase and all others are either lowercase or uppercase.\nOutput: Return the sentence after making the amendments.\n\nExample:\n\n```js amendTheSentence(\"CodesignalIsAwesome\") // \"codesignal is awesome\" ```",
+
+  "tests": [
+    {
+      "input": "CodesignalIsAwesome",
+      "expectedOutput": "codesignal is awesome"
+    },
+    {
+      "input": "Hello",
+      "expectedOutput": "hello"
+    },
+    {
+      "input": "vSKwWDjwIerQKMgVaAniorRJlerbKpDgvyKBLPNwSRWtylqKewNFtERNuUBBHAsGkTSSfdhQHJYvAighAdeG",
+      "expectedOutput": "v s kw w djw ier q k mg va aniorr jlerb kp dgvyk b l p nw s r wtylq kew n fte r nu u b b h as gk t s sfdh q h j yv aigh ade g"
+    },
+    {
+      "input": "iFvFAxtViLJDuWWXJesppOcLVdRAJZwBobdczkkWSPHzFLfyvmJYPdqYqRKKvLGYLwEFXcJiyYWLqjBvHjeqE",
+      "expectedOutput": "i fv faxt vi lj du w w xjespp oc l vdr aj zwbobdczkk w s p hz flfyvm j y pd qyq r k kv l g y l w e fxc jiy y w lq j bv hjeq e"
+    },
+    {
+      "input": "iEiMCyKAdsfGMPa",
+      "expectedOutput": "i ei m cy k adsf g m pa"
+    }
+  ]
+}

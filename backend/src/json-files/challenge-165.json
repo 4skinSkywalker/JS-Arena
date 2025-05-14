@@ -1,0 +1,25 @@
+{
+ "description": "### Higher Version\n\nThe function takes two version strings, as input parameters and checks if the first version is higher than the second one. If ver1 is higher than ver2, true is returned, otherwise false.\n\nInput: Two strings ver1 and ver2 representing the versions.\nOutput: A boolean value, true if ver1 is higher than ver2, false otherwise.\n\nExample:\n\n```js higherVersion('1.2.2', '1.2.0') // true ```",
+ "tests": [
+   {
+     "input": ["1.2.2", "1.2.0"],
+     "expectedOutput": true
+   },
+   {
+     "input": ["1.0.5", "1.1.0"],
+     "expectedOutput": false
+   },
+   {
+     "input": ["1.1.0", "1.1.5"],
+     "expectedOutput": false
+   },
+   {
+     "input": ["10", "9"],
+     "expectedOutput": true
+   },
+   {
+     "input": ["1.0.10", "1.1.5"],
+     "expectedOutput": false
+   }
+ ]
+}

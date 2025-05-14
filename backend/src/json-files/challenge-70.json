@@ -1,0 +1,25 @@
+{
+  "description": "### Points Collision\n\nYou need to write a function that takes 4 points (p, q, u, v) in the form of two-dimensional arrays. The function checks if the line pq collides with the line uv.\n\nInput: four 2D-points in the form (x,y) as Four arrays.\nOutput: A boolean value indicating whether the two lines are intersecting.\n\nExample:\n\n```js pointsCollision([0, 0], [1, 7], [1, 1], [-3, 0]) // true ```",
+  "tests": [
+    {
+      "input": [[[0, 0], [1, 7], [1, 1], [-3, 0]]],
+      "expectedOutput": true
+    },
+    {
+      "input": [[[10, 0], [1, -3], [30, 30], [-2, 0]]],
+      "expectedOutput": false
+    },
+    {
+      "input": [[[40, 0], [0, 1], [5, 5], [2, 0]]],
+      "expectedOutput": true
+    },
+    {
+      "input": [[[-30, 0], [0, -1], [4, 4], [2, 0]]],
+      "expectedOutput": false
+    },
+    {
+      "input": [[[1, 1], [1, 1], [8, 2], [8, 2]]],
+      "expectedOutput": true
+    }
+  ]
+}

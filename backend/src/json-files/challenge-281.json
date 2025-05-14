@@ -1,0 +1,45 @@
+{
+  "description": "### AlphabetSubsequence\n\nCheck whether the given string is a subsequence of the plaintext alphabet.\n\nInput: A string s of length n (1 <= n <= 15), contains only characters between 'a' and 'z' inclusive.\nOutput: Return a boolean whether the string is a subsequence of the plaintext alphabet or not.\n\nExample:\n\n```js alphabetSubsequence('ace'); // true ```",
+  "tests": [
+    {
+      "input": "effg",
+      "expectedOutput": false
+    },
+    {
+      "input": "cdce",
+      "expectedOutput": false
+    },
+    {
+      "input": "ace",
+      "expectedOutput": true
+    },
+    {
+      "input": "bxz",
+      "expectedOutput": true
+    },
+    {
+      "input": "cdefghijkxyzz",
+      "expectedOutput": false
+    },
+    {
+      "input": "qa",
+      "expectedOutput": false
+    },
+    {
+      "input": "fkyz",
+      "expectedOutput": true
+    },
+    {
+      "input": "xz",
+      "expectedOutput": true
+    },
+    {
+      "input": "pfyz",
+      "expectedOutput": false
+    },
+    {
+      "input": "fz",
+      "expectedOutput": true
+    }
+  ]
+}

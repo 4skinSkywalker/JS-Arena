@@ -1,0 +1,21 @@
+{
+  "description": "### BfsComponentSize\n\nA function that takes a boolean 2D matrix and returns the size of a component that the second node (the node with index 1) belongs to.\n\nInput: A boolean 2D array representating a graph. Array indices represent nodes, and each internal array represents connections between nodes. If an element at [i][j] is true, it means there's a connection between nodes i and j.\nOutput: The size of the component to which node 1 belongs.\n\nExample:\n\n```js bfsComponentSize([[false,true,false], [true,false,false], [false,false,false]]) // 2 ```",
+  "tests": [
+    {
+      "input": [[[false,true,false], [true,false,false], [false,false,false]]],
+      "expectedOutput": 2
+    },
+    {
+      "input": [[[false,false,true,false], [false,false,false,false], [true,false,false,true], [false,false,true,false]]],
+      "expectedOutput": 1
+    },
+    {
+      "input": [[[false,false,false], [false,false,false], [false,false,false]]],
+      "expectedOutput": 1
+    },
+    {
+      "input": [[[false,true,true], [true,false,false], [true,true,false]]],
+      "expectedOutput": 3
+    }
+  ]
+}

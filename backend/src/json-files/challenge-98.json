@@ -1,0 +1,13 @@
+{
+  "description": "### Metro Card\n\nYou just bought a public transit card that allows you to ride the Metro for a certain number of days.\n\nInput: An integer representing the last number of days the card was used.\nOutput: The list of all possible numbers of days you could buy a new card for, sorted in increasing order, that will let you use the card after it expires.\n\nExample:\n\n```js metroCard(30) // [31] ```",
+  "tests": [
+    {
+      "input": 30,
+      "expectedOutput": [31]
+    },
+    {
+      "input": 31,
+      "expectedOutput": [28, 30, 31]
+    }
+  ]
+}

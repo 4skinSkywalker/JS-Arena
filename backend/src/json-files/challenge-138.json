@@ -1,0 +1,25 @@
+{
+  "description": "### isSuspiciousRespondent\n\nThe function checks if the respondent answered the same for all three questions. This may indicate a suspicious behavior, and therefore the respondent's data could be disqualified.\n\nInput: Three Boolean parameters representing the answers for the three questions.\nOutput: A Boolean indicating whether the respondent is suspicious or not.\n\nExample:\n\n```js isSuspiciousRespondent(false, true, true) // false ```",
+  "tests": [
+    {
+      "input": [false, false, false],
+      "expectedOutput": true
+    },
+    {
+      "input": [true, true, true],
+      "expectedOutput": true
+    },
+    {
+      "input": [false, true, false],
+      "expectedOutput": false
+    },
+    {
+      "input": [true, false, true],
+      "expectedOutput": false
+    },
+    {
+      "input": [true, true, false],
+      "expectedOutput": false
+    }
+  ]
+}

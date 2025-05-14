@@ -1,0 +1,13 @@
+{
+  "description": "### numberOfOperations\n\nThis problem requires you to create a function that determines the number of operations to make two given numbers equal by repeatedly dividing each number by the other until they both become equal. If a number is not divisible by the other, then it cannot be made equal and the function should return the count until then. The function takes two integers as parameters and returns an integer which is the result.\n\nInput: Function receives two integers a, b (1 <= a, b <= 10^9).\nOutput: The function should return an integer representing the number of operations.\n\nExample:\n\n```js numberOfOperations(432, 72) // 4 ```\n```js numberOfOperations(7, 14) // 1 ```",
+  "tests": [
+    {
+      "input": [432, 72],
+      "expectedOutput": 4
+    },
+    {
+      "input": [7, 14],
+      "expectedOutput": 1
+    }
+  ]
+}

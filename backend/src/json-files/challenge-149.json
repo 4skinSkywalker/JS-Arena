@@ -1,0 +1,40 @@
+{
+  "description": "### IsInfiniteProcess\n\nIn this problem, you need to create a function `isInfiniteProcess(int a, int b)`. This function is meant to simulate a simple process. It takes two integers as arguments, `a` and `b`. In each step `a` increases by 1 and `b` decreases by 1. This continues until `a` equals `b` or if `a` becomes greater than `b`. The function should return `true` if the process is infinite (i.e., `a` becomes greater than `b`) and `false` otherwise.\n\nInput: Two integers a and b (0 ≤ a ≤ 20, 0 ≤ b ≤ 20)\nOutput: Return `true` if the process is infinite and `false` otherwise\n\nExample:\n\n```js isInfiniteProcess(2, 6) // false ```",
+  "tests": [
+    {
+      "input": {
+        "a": 2,
+        "b": 6
+      },
+      "expectedOutput": false
+    },
+    {
+      "input": {
+        "a": 2,
+        "b": 3
+      },
+      "expectedOutput": true
+    },
+    {
+      "input": {
+        "a": 2,
+        "b": 10
+      },
+      "expectedOutput": false
+    },
+    {
+      "input": {
+        "a": 0,
+        "b": 1
+      },
+      "expectedOutput": true
+    },
+    {
+      "input": {
+        "a": 3,
+        "b": 1
+      },
+      "expectedOutput": true
+    }
+  ]
+}

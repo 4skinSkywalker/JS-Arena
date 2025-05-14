@@ -1,0 +1,13 @@
+{
+  "description": "### Delete Whitespaces\n\nA Java function that receives a string and removes all the white spaces from it\n\nInput: A string with whitespaces (Example: \"a b cd e\")\nOutput: The same string but with all the whitespaces removed (Example: \"abcde\")\n\nExample:\n\n```js deleteWhitespaces(\"a b cd e\") // \"abcde\" ```",
+  "tests": [
+    {
+      "input": "a b cd e",
+      "expectedOutput": "abcde"
+    },
+    {
+      "input": "a b c dc ",
+      "expectedOutput": "abcdc"
+    }
+  ]
+}

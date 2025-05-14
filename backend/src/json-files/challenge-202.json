@@ -1,0 +1,45 @@
+{
+   "description": "### encloseInBrackets\n\nThe function encloses an input string with brackets.\n\nInput: A string s\nOutput: String s enclosed in brackets\n\nExample:\n\n```js encloseInBrackets(\"abacaba\") // (abacaba) ```",
+   "tests": [
+     {
+       "input": "abacaba",
+       "expectedOutput": "(abacaba)"
+     },
+     {
+       "input": "abcdef",
+       "expectedOutput": "(abcdef)"
+     },
+     {
+       "input": "aaad",
+       "expectedOutput": "(aaad)"
+     },
+     {
+       "input": "if",
+       "expectedOutput": "(if)"
+     },
+     {
+       "input": "it",
+       "expectedOutput": "(it)"
+     },
+     {
+       "input": "doesnt",
+       "expectedOutput": "(doesnt)"
+     },
+     {
+       "input": "challenge",
+       "expectedOutput": "(challenge)"
+     },
+     {
+       "input": "you",
+       "expectedOutput": "(you)"
+     },
+     {
+       "input": "itt",
+       "expectedOutput": "(itt)"
+     },
+     {
+       "input": "wont",
+       "expectedOutput": "(wont)"
+     }
+   ]
+ }

@@ -1,0 +1,49 @@
+{
+  "description": "### NewRoadSystem\n\nThe function 'newRoadSystem' determines if the road system is efficient. The system is considered efficient if every city has the same amount of outgoing and incoming roads.\nSpecifically, this function accepts a 2D boolean array indicating roads between cities and returns true if the road system is efficient, otherwise it returns false.\n\nInput: A 2D boolean array (up to 100x100, input house can't be equal to the output house).\nOutput: A boolean indicating whether the road system is efficient or not.\n\nExample:\n\n```js newRoadSystem({[false,true,false,false], [false,false,true,false], [true,false,false,true], [false,false,true,false]}) // true ```",
+  "tests": [
+    {
+      "input": [[[false,true,false,false], [false,false,true,false], [true,false,false,true], [false,false,true,false]]],
+      "expectedOutput": true
+    },
+    {
+      "input": [[[false,true,false,false,false,false,false], [true,false,false,false,false,false,false], [false,false,false,true,false,false,false], [false,false,true,false,false,false,false], [false,false,false,false,false,false,true], [false,false,false,false,true,false,false], [false,false,false,false,false,true,false]]],
+      "expectedOutput": true
+    },
+    {
+      "input": [[[false,true,false], [false,false,false], [true,false,false]]],
+      "expectedOutput": false
+    },
+    {
+      "input": [[[false,false,false,false], [false,false,false,false], [false,false,false,false], [false,false,false,false]]],
+      "expectedOutput": true
+    },
+    {
+      "input": [[[false]]],
+      "expectedOutput": true
+    },
+    {
+      "input": [[[false,true,true,true,false], [true,false,true,true,true], [true,true,false,true,false], [true,true,true,false,true], [true,true,true,true,false]]],
+      "expectedOutput": false
+    },
+    {
+      "input": [[[false,true,true,true,true], [true,false,true,true,true], [true,true,false,true,true], [true,true,true,false,true], [true,true,true,true,false]]],
+      "expectedOutput": true
+    },
+    {
+      "input": [[[false,true,false,true,true], [false,false,false,false,true], [true,false,false,true,true], [true,true,true,false,false], [true,true,true,false,false]]],
+      "expectedOutput": false
+    },
+    {
+      "input": [[[false,true,true,false,true], [true,false,false,true,false], [false,true,false,true,false], [true,true,true,false,true], [true,true,false,false,false]]],
+      "expectedOutput": false
+    },
+    {
+      "input": [[[false,true,false,true,true], [true,false,true,true,true], [false,false,false,false,true], [false,false,true,false,true], [true,false,true,true,false]]],
+      "expectedOutput": false
+    },
+    {
+      "input": [[[false,false,false,false,true,true,false,true,false,true], [false,false,true,false,false,false,true,false,false,true], [false,false,false,true,false,false,false,true,false,true], [false,true,false,false,true,false,false,true,false,false], [false,true,false,true,false,false,false,true,false,false], [true,true,true,true,true,false,true,false,true,true], [false,false,true,true,true,true,false,false,false,true], [true,true,true,false,false,false,false,false,false,false], [false,false,false,true,false,true,true,true,false,false], [false,true,true,true,true,false,true,false,true,false]]],
+      "expectedOutput": false
+    }
+  ]
+}

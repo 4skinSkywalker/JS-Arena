@@ -1,0 +1,25 @@
+{
+  "description": "### IsLucky\n\nA ticket number n is considered lucky if the sum of the first half of the digits is equal to the sum of the second half.\n\nInput: An integer representing ticket number.\nOutput: A boolean value - true if ticket number is lucky, false otherwise.\n\nExample:\n\n```js isLucky(1230) // true ```",
+  "tests": [
+    {
+      "input": 1230,
+      "expectedOutput": true
+    },
+    {
+      "input": 239017,
+      "expectedOutput": false
+    },
+    {
+      "input": 134008,
+      "expectedOutput": true
+    },
+    {
+      "input": 10,
+      "expectedOutput": false
+    },
+    {
+      "input": 1010,
+      "expectedOutput": true
+    }
+  ]
+}

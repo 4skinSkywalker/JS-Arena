@@ -1,0 +1,21 @@
+{
+  "description": "### LookAndSaySequenceNextElement\n\nThis function takes a string as an input, this string can be assumed to represent a number in a sequence where each number describes what the previous number looked like. e.g. '11' --> '21' --> '1211' --> '111221' and so on. Hence the function needs to return a string which represents the next number in the look and say sequence.\n\nInput: A single string.\nOutput: A single string.\n\nExample:\n\n```js lookAndSaySequenceNextElement('1') // '11' ```",
+  "tests": [
+    {
+      "input": "1",
+      "expectedOutput": "11"
+    },
+    {
+      "input": "1211",
+      "expectedOutput": "111221"
+    },
+    {
+      "input": "13112221",
+      "expectedOutput": "1113213211"
+    },
+    {
+      "input": "1113213211",
+      "expectedOutput": "31131211131221"
+    }
+  ]
+}

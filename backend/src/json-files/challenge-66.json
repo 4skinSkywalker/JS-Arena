@@ -1,0 +1,25 @@
+{
+  "description": "### rangeBitCount\n\nYou are given two numbers a and b where 0 ≤ a ≤ b. Imagine you construct an array of all the integers from a to b inclusive. You need to count the number of 1s in the binary representations of all the numbers in the array.\n\nInput: Two integers a and b, where a and b are between 0 and 10^5 inclusively.\nOutput: An integer representing the number of 1s in the binary representations of all the numbers between a and b inclusive.\n\nExample:\n\n```js rangeBitCount(2, 7) // 11 ```",
+  "tests": [
+    {
+      "input": [2, 7],
+      "expectedOutput": 11
+    },
+    {
+      "input": [0, 1],
+      "expectedOutput": 1
+    },
+    {
+      "input": [1, 10],
+      "expectedOutput": 17
+    },
+    {
+      "input": [8, 9],
+      "expectedOutput": 3
+    },
+    {
+      "input": [9, 10],
+      "expectedOutput": 4
+    }
+  ]
+}

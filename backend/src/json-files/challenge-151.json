@@ -1,0 +1,53 @@
+{
+"description": "### isGeometricProgression\n\nThe function `isGeometricProgression(sequence)` determines whether a given sequence is in geometric progression or not. It takes an array of numbers as input and returns a boolean output.\n\nInput: `sequence` - An array of numbers (e.g., [1, 4, 16])\nOutput: Returns `true` if the sequence is a geometric progression, `false` otherwise\n\nExample:\n\n```js isGeometricProgression([1, 4, 16]) // true ```",
+"tests": [
+{
+"input": [[1, 4, 16]],
+"expectedOutput": true
+},
+{
+"input": [[2, 4, 8, 17, 34]],
+"expectedOutput": false
+},
+{
+"input": [[27, 9, 3, 1]],
+"expectedOutput": true
+},
+{
+"input": [[4, 6, 9]],
+"expectedOutput": true
+},
+{
+"input": [[18, 9, 3, 1]],
+"expectedOutput": false
+},
+{
+"input": [[25, 10, 4]],
+"expectedOutput": true
+},
+{
+"input": [[1, 3, 9, 27]],
+"expectedOutput": true
+},
+{
+"input": [[1, 3, 9, 27, 81, 243]],
+"expectedOutput": true
+},
+{
+"input": [[1, 3, 9, 27, 81, 244]],
+"expectedOutput": false
+},
+{
+"input": [[10, 100, 1000]],
+"expectedOutput": true
+},
+{
+"input": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]],
+"expectedOutput": false
+},
+{
+"input": [[2, 4, 8, 16]],
+"expectedOutput": true
+}
+]
+}

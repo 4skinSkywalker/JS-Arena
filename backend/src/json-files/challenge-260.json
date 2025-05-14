@@ -1,0 +1,30 @@
+{
+  "description": "### Avoid Obstacles\n\nYou are tasked to find a step size that will allow you to traverse through a field filled with obstacles. The step size you choose must allow you to avoid colliding with any of the obstacles.\n\nThe obstacles are represented as an array of integer values which correspond to the positions the obstacles are located. Your function should accept this array as its parameter.\n\nInput: An array of integers representing the positions of obstacles.\nOutput: An integer representing the minimal step size that allows you to avoid all obstacles.\n\nExample:\n\n```js avoidObstacles([5, 3, 6, 7, 9]) // 4 ```",
+
+  "tests": [
+    {
+      "input": [5, 3, 6, 7, 9],
+      "expectedOutput": 4
+    },
+    {
+      "input": [2, 3],
+      "expectedOutput": 4
+    },
+    {
+      "input": [1, 4, 10, 6, 2],
+      "expectedOutput": 7
+    },
+    {
+      "input": [1000, 999],
+      "expectedOutput": 6
+    },
+    {
+      "input": [19, 32, 11, 23],
+      "expectedOutput": 3
+    },
+    {
+      "input": [5, 8, 9, 13, 14],
+      "expectedOutput": 6
+    }
+  ]
+}
