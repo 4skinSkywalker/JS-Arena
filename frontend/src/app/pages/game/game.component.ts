@@ -123,41 +123,31 @@ export class GameComponent {
     aceEditor.getSession().setUseWorker(false);
     aceEditor.getSession().setMode('ace/mode/javascript');
 
-    // Get the underlying text input element of Ace Editor
-    const textInput = aceEditor.textInput.getElement();
-
-    // textInput.addEventListener("paste", function (event: any) {
-    //   const editorContent = aceEditor.getValue();
-    //   const clipboardData = event.clipboardData || (window as any).clipboardData;
-    //   const pastedData = clipboardData.getData("text");
-
-    //   if (editorContent.includes(pastedData)) {
-    //     console.log("Paste allowed");
-    //   } else {
-    //     console.log("Paste blocked");
-    //     event.preventDefault();
-    //     check("#cannot-copy-paste-modal-trigger");
-    //   }
-    // });
-
-    aceEditor.on("paste", function(paste: any) {
+    let memory: string[] = [];
+    aceEditor.on("paste", function(pasteObj: any) {
         const content = aceEditor.getValue();
-        console.log("Pasting", content, paste);
-
-        if (content.includes(paste.text)) {
-          console.log("Paste allowed", content, paste.text);
-          return paste.text;
+        if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
+          console.log("Paste allowed content:", pasteObj.text);
+          return pasteObj.text;
         } else {
-          console.log("Paste blocked", content, paste.text);
-          setTimeout(() => aceEditor.setValue(content), 0);
+          console.log("Paste forbidden content:", pasteObj.text);
+          setTimeout(() => {
+            aceEditor.setValue(content);
+            aceEditor.clearSelection();
+          }, 100);
           return "";
         }
     });
 
     aceEditor.getSession().on(
-      'change',
+      "change",
       debounce(() => {
-        this.onEditorValueChange(aceEditor.getSession().getValue());
+        const content = aceEditor.getSession().getValue();
+        memory.push(content);
+        if (memory.length > 10) {
+          memory.shift();
+        }
+        this.onEditorValueChange(content);
       }, 500)
     );
 
