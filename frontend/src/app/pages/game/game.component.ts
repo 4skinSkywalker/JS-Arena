@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { DEFAULT_EDITOR_CONTENT } from './game.constants';
+import { BehaviorSubject } from 'rxjs';
 
 export interface IClientWithScore extends IClientJSON, IScore {}
 
@@ -23,6 +24,7 @@ export class GameComponent {
   check = check;
   uncheck = uncheck;
   roomId;
+  aceEditor: any;
   editorContent = "";
   editorContentKey;
   navTab: "instructions" | "benchmark" = "instructions";
@@ -36,6 +38,7 @@ export class GameComponent {
   problemDescription = "";
   problemTests: ITest[] = [];
   countdown = 0;
+  countdownRunning$ = new BehaviorSubject(false);
   countdownExpired = false;
   clientScoreMap: Record<string, IScore> = {};
   clientsSortByScore: IClientWithScore[] = [];
@@ -104,13 +107,14 @@ export class GameComponent {
 
   initEditor() {
     const ace = (window as any).ace;
-    console.log('Initializing editor', ace);
-    const aceEditor = ace.edit('editor');
-    aceEditor.setTheme('ace/theme/monokai');
+    console.log("Initializing editor", ace);
+    const aceEditor = ace.edit("editor");
+    this.aceEditor = aceEditor;
+    aceEditor.setTheme("ace/theme/monokai");
 
-    ace.require('ace/ext/emmet').setCore('ext/emmet_core');
-    ace.config.loadModule('ace/snippets/javascript', () =>
-      console.log('JS snippets loaded.')
+    ace.require("ace/ext/emmet").setCore("ext/emmet_core");
+    ace.config.loadModule("ace/snippets/javascript", () =>
+      console.log("JS snippets loaded.")
     );
 
     aceEditor.setOptions({
@@ -121,7 +125,7 @@ export class GameComponent {
     });
 
     aceEditor.getSession().setUseWorker(false);
-    aceEditor.getSession().setMode('ace/mode/javascript');
+    aceEditor.getSession().setMode("ace/mode/javascript");
 
     let memory: string[] = [];
     aceEditor.on("paste", function(pasteObj: any) {
@@ -285,7 +289,7 @@ export class GameComponent {
     test.logs = [];
     test.status = "running";
 
-    await delay(0.2);
+    await delay(0.1);
     const output = await this.runCode(
       test.input,
       {
@@ -346,6 +350,7 @@ export class GameComponent {
   }
 
   async countdownAnimation() {
+    this.countdownRunning$.next(true);
     const countdown = document.querySelector(".countdown");
     for (const num of [3, 2, 1]) {
       this.countdown = num;
@@ -355,6 +360,7 @@ export class GameComponent {
     }
     this.generateSystemMessage("Game started. Good luck!");
     this.countdownExpired = true;
+    this.countdownRunning$.next(false);
   }
 
   startGame() {
@@ -370,7 +376,7 @@ export class GameComponent {
   }
 
   areYouSureNewGameOk() {
-    alert("Not implemented yet"); // TODO
+    this.api.send("restartGame", { roomId: this.roomId });
     uncheck("#are-you-sure-new-game");
   }
 
@@ -443,6 +449,20 @@ export class GameComponent {
   }
 
   handleGameStarted() {
+    this.aceEditor.setValue(DEFAULT_EDITOR_CONTENT);
+    this.aceEditor.clearSelection();
+
+    this.navTab = "instructions";
+    
+    this.consoleLogMessages = [];
+
+    this.problemDescription = "";
+    this.problemTests = [];
+
+    this.alreadyStartedOnInit = false;
+    this.roomStarted = false;
+    this.countdownExpired = false;
+
     this.countdownAnimation();
   }
 

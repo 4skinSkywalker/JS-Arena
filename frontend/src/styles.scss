@@ -26,3 +26,7 @@ body::before {
 *:focus {
     animation: rainbow-border 12s linear infinite !important;
 }
+
+[hidden] {
+    display: none !important;
+}

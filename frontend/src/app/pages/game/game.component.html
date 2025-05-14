@@ -45,17 +45,17 @@
                 </ul>
 
                 <div class="nav-panel" [class.non-scrollable]="!hasGameStarted()">
-                    @if (!hasGameStarted()) {
-                    <div class="prestart-overlay">
+                    <div class="prestart-overlay" [hidden]="hasGameStarted()">
+                        @if (!(countdownRunning$ | async)) {
                         @if (isHost()) {
                         <button class="btn btn-primary" (click)="startGame()">Start game</button>
                         }
                         @else {
                         <p>Waiting for host to start the game...</p>
                         }
+                        }
                         <div class="countdown">{{countdown}}</div>
                     </div>
-                    }
 
                     <div
                         class="nav-panel-description"

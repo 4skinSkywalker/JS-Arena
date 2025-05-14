@@ -65,6 +65,7 @@ class Client {
         "joinRoom": this.handleJoinRoom.bind(this),
         "roomDetails": this.handleRoomDetails.bind(this),
         "startGame": this.handleStartGame.bind(this),
+        "restartGame": this.handleRestartGame.bind(this),
     };
 
     constructor(ws: WebSocket) {
@@ -181,7 +182,7 @@ class Client {
         this.rooms[msg.roomId].sendRoomDetails(this);
     }
 
-    handleStartGame(msg: IStartGameMessage) {
+    handleStartGame(msg: IStartGameMessage, bypass?: boolean) {
         if (!this.rooms[msg.roomId]) {
             return console.error("Room not found");
         }
@@ -194,11 +195,15 @@ class Client {
             return console.error("Only the host can start the game");
         }
 
-        if (this.rooms[msg.roomId].started) {
+        if (this.rooms[msg.roomId].started && !bypass) {
             return console.error("Game already started");
         }
 
         this.rooms[msg.roomId].setStarted(true);
+    }
+
+    handleRestartGame(msg: IStartGameMessage) {
+        this.handleStartGame(msg, true);
     }
 
     handleMessage(event: any) {
@@ -269,12 +274,16 @@ class Room {
         this.id = opts.id || getUid();
         this.name = opts.name;
         this.started = false;
-        this.problem = problems[Math.floor(Math.random() * problems.length)];
+        this.problem = this.getRandomProblem();
         this.host = opts.client;
         this.clients = {
             [opts.client.id]: opts.client
         };
         globalRooms[this.id] = this;
+    }
+
+    getRandomProblem() {
+        return problems[Math.floor(Math.random() * problems.length)];
     }
 
     getClientsArray() {
@@ -284,6 +293,7 @@ class Room {
     setStarted(value: boolean) {
         console.log("Game starting in room", this.id);
         this.started = value;
+        this.problem = this.getRandomProblem();
 
         for (const client of this.getClientsArray()) {
             client.sendMsg("gameStarted");

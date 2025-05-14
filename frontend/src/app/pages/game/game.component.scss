@@ -169,6 +169,7 @@
 
     .countdown {
         position: absolute;
+        backdrop-filter: blur(8px);
         opacity: 0;
         font-size: 40rem;
         font-weight: 700;
