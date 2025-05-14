@@ -1,5 +1,5 @@
 {
-  "description": "### IsSumOfConsecutive\n\nDetermine if it's possible to write a given integer number `n` as the sum of consecutive positive numbers.\n\nInput: A single integer `n` (1 ≤ `n` ≤ 100).\nOutput: Return `true` if it's possible to express `n` as the sum of some consecutive positive integers, `false` otherwise.\n\nExample:\n\n```js isSumOfConsecutive(9) // true ```",
+  "description": "### IsSumOfConsecutive\n\nDetermine if it's possible to write a given integer number `n` as the sum of consecutive positive numbers.\n\nInput: A single integer `n` (1 ≤ `n` ≤ 100).\nOutput: Return `true` if it's possible to express `n` as the sum of some consecutive positive integers, `false` otherwise.\n\nExample:\n\n``` isSumOfConsecutive(9) // true ```",
   "tests": [
     {
       "input": 9,

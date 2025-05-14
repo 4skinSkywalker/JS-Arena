@@ -1,5 +1,5 @@
 {
-  "description": "### isIdentityMatrix\n\nA function to check if a given matrix is an identity matrix.\n\nInput: A matrix as a nested array.\nOutput: Boolean value, true if the matrix is an identity matrix, false otherwise.\n\nExample:\n\n```js isIdentityMatrix({[1,0,0], [0,1,0], [0,0,1]}) // true ```",
+  "description": "### isIdentityMatrix\n\nA function to check if a given matrix is an identity matrix.\n\nInput: A matrix as a nested array.\nOutput: Boolean value, true if the matrix is an identity matrix, false otherwise.\n\nExample:\n\n``` isIdentityMatrix({[1,0,0], [0,1,0], [0,0,1]}) // true ```",
   "tests": [
     {
       "input": { "matrix": [[1,0,0], [0,1,0], [0,0,1]] },

@@ -1,5 +1,5 @@
 {
-  "description": "### UniqueDigitProducts\n\nA problem that takes in an array of integers and returns the count of product of the digits of the integers after making each digit of the integer unique.\n\nInput: An array of integers (1 <= a.length <= 50; 1 <= a[i] <= 10^9)\nOutput: Returns a count of unique products.\n\nExample:\n\n```js uniqueDigitProducts([2, 8, 121, 42, 222, 23]) // 3 ```",
+  "description": "### UniqueDigitProducts\n\nA problem that takes in an array of integers and returns the count of product of the digits of the integers after making each digit of the integer unique.\n\nInput: An array of integers (1 <= a.length <= 50; 1 <= a[i] <= 10^9)\nOutput: Returns a count of unique products.\n\nExample:\n\n``` uniqueDigitProducts([2, 8, 121, 42, 222, 23]) // 3 ```",
   "tests": [
     {
       "input": [[2, 8, 121, 42, 222, 23]],

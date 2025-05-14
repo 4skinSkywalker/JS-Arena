@@ -1,5 +1,5 @@
 {
-  "description": "### fractionMultiplication\n\nThis function multiplies two fractions and simplifies the result.\n\nInput: Two arrays representing two fractions in the form [numerator, denominator]\nOutput: An array in the form [numerator, denominator] representing the simplified result of the multiplication\n\nExample:\n\n```js fractionMultiplication([3, 2], [2, 5]) // [3, 5] ```",
+  "description": "### fractionMultiplication\n\nThis function multiplies two fractions and simplifies the result.\n\nInput: Two arrays representing two fractions in the form [numerator, denominator]\nOutput: An array in the form [numerator, denominator] representing the simplified result of the multiplication\n\nExample:\n\n``` fractionMultiplication([3, 2], [2, 5]) // [3, 5] ```",
   "tests": [
     {
       "input": [[3, 2], [2, 5]],

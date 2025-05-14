@@ -1,5 +1,5 @@
 {
-  "description": "### Sheffer Stroke\n\nA function that calculates the Sheffer Stroke (also known as NAND) of two boolean values. The Sheffer stroke is a logical operation which combines two values and outputs the inverse of their logical AND.\n\nInput: Two Boolean values (true or false)\nOutput: A Boolean value\n\nExample:\n\n```js shefferStroke(true, true) // false ```",
+  "description": "### Sheffer Stroke\n\nA function that calculates the Sheffer Stroke (also known as NAND) of two boolean values. The Sheffer stroke is a logical operation which combines two values and outputs the inverse of their logical AND.\n\nInput: Two Boolean values (true or false)\nOutput: A Boolean value\n\nExample:\n\n``` shefferStroke(true, true) // false ```",
   "tests": [
     {
       "input": {

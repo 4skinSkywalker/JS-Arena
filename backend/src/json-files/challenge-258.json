@@ -1,5 +1,5 @@
 {
-  "description": "### BishopAndPawn\n\nThe task is to check if a bishop can caputre a pawn in one move. The chess pieces are read represented as 2D coordinates. You are given the coordinates of the pieces as strings where 'a1' is the bottom left corner and 'h8' is the top right corner.\n\nInput: Two strings representing the coordinates of the bishop and the pawn.\nOutput: Return boolean value, true if bishop can capture pawn in one move, else false.\n\nExample:\n\n```js bishopAndPawn(\"a1\", \"c3\") // true ```",
+  "description": "### BishopAndPawn\n\nThe task is to check if a bishop can caputre a pawn in one move. The chess pieces are read represented as 2D coordinates. You are given the coordinates of the pieces as strings where 'a1' is the bottom left corner and 'h8' is the top right corner.\n\nInput: Two strings representing the coordinates of the bishop and the pawn.\nOutput: Return boolean value, true if bishop can capture pawn in one move, else false.\n\nExample:\n\n``` bishopAndPawn(\"a1\", \"c3\") // true ```",
   "tests": [
     {
       "input": {

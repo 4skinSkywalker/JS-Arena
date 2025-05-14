@@ -1,5 +1,5 @@
 {
-  "description": "### increaseNumberRoundness\n\nDetermine whether we can obtain some number by at most one swap operation among the number's digits so that the obtained number is divisible by 10. We can use each digit in a number only once.\n\nInput: A positive integer n (n ≤ 1e9).\nOutput: A boolean value. Return True if it's possible to reach a number which can be divided by 10 following the rules above; otherwise, False.\n\nExample:\n\n```js increaseNumberRoundness(902200100) // true ```",
+  "description": "### increaseNumberRoundness\n\nDetermine whether we can obtain some number by at most one swap operation among the number's digits so that the obtained number is divisible by 10. We can use each digit in a number only once.\n\nInput: A positive integer n (n ≤ 1e9).\nOutput: A boolean value. Return True if it's possible to reach a number which can be divided by 10 following the rules above; otherwise, False.\n\nExample:\n\n``` increaseNumberRoundness(902200100) // true ```",
   "tests": [
     {
       "input": 902200100,

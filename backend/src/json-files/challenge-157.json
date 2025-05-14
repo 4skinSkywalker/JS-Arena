@@ -1,5 +1,5 @@
 {
-  "description": "### integerToStringOfFixedWidth\n\nThis function converts a number to a string of a specified width, prepending it with zeros if it is shorter or trimming the right side if it is longer.\n\nInput: Two parameters - a number and the width of the string (integer).\nOutput: Returns the string representation of the number, trimmed or padded to match the specified width.\n\nExample:\n\n```js integerToStringOfFixedWidth(1234, 2) // \"34\" ```",
+  "description": "### integerToStringOfFixedWidth\n\nThis function converts a number to a string of a specified width, prepending it with zeros if it is shorter or trimming the right side if it is longer.\n\nInput: Two parameters - a number and the width of the string (integer).\nOutput: Returns the string representation of the number, trimmed or padded to match the specified width.\n\nExample:\n\n``` integerToStringOfFixedWidth(1234, 2) // \"34\" ```",
   "tests": [
     {
       "input": [1234, 2],

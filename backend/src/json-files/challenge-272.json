@@ -1,5 +1,5 @@
 {
-  "description": "### ArithmeticExpression\n\nThe task requires to check if one of the four arithmetic operations can be used to get a specific number from another two. You have to implement a method arithmeticExpression that takes three integers as parameters and returns a boolean.\n\nInput: Three integers a, b, c. Each from 1 to 100 inclusive.\nOutput: A boolean. True if the output integer can be gotten by applying one of the four arithmetic operations ('+', '-', '*', '/') once to the two input integers, false otherwise.\n\nExample:\n\n```js arithmeticExpression(2, 3, 5) // true ```",
+  "description": "### ArithmeticExpression\n\nThe task requires to check if one of the four arithmetic operations can be used to get a specific number from another two. You have to implement a method arithmeticExpression that takes three integers as parameters and returns a boolean.\n\nInput: Three integers a, b, c. Each from 1 to 100 inclusive.\nOutput: A boolean. True if the output integer can be gotten by applying one of the four arithmetic operations ('+', '-', '*', '/') once to the two input integers, false otherwise.\n\nExample:\n\n``` arithmeticExpression(2, 3, 5) // true ```",
   "tests": [
     {
       "input": [2, 3, 5],

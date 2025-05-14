@@ -1,5 +1,5 @@
 {
-  "description": "### LastDigit\n\nThe task is to create a function that determines the last digit of a^b. The function will receive two integers (a and b) and return a single integer - the last digit of a^b.\n\nInput: Two integers, a and b (0 <= a, b <= 1_000_000)\nOutput: An integer representing the last digit of a^b.\n\nExample:\n\n```js lastDigit(2, 5) // 2 ```",
+  "description": "### LastDigit\n\nThe task is to create a function that determines the last digit of a^b. The function will receive two integers (a and b) and return a single integer - the last digit of a^b.\n\nInput: Two integers, a and b (0 <= a, b <= 1_000_000)\nOutput: An integer representing the last digit of a^b.\n\nExample:\n\n``` lastDigit(2, 5) // 2 ```",
   "tests": [
     {
       "input": { "a": 2, "b": 5 },

@@ -1,5 +1,5 @@
 {
-  "description": "### Kill Kth Bit\n\nIn this problem, the input is two parameters, an integer 'n' and another integer 'k'. The function 'killKthBit' is expected to turn off the kth bit in the binary representation of 'n'. The kth bit is counted from right to left(1-based).\n\nInput:  two integers 'n' and 'k' (1 ≤ n ≤ 231 - 1, 1 ≤ k ≤ 31)\nOutput: an integer, that is the resulting number after turning off the kth bit.\n\nExample:\n\n```js killKthBit(37, 3) // 33 ```",
+  "description": "### Kill Kth Bit\n\nIn this problem, the input is two parameters, an integer 'n' and another integer 'k'. The function 'killKthBit' is expected to turn off the kth bit in the binary representation of 'n'. The kth bit is counted from right to left(1-based).\n\nInput:  two integers 'n' and 'k' (1 ≤ n ≤ 231 - 1, 1 ≤ k ≤ 31)\nOutput: an integer, that is the resulting number after turning off the kth bit.\n\nExample:\n\n``` killKthBit(37, 3) // 33 ```",
   "tests": [
     {
       "input": [37, 3],

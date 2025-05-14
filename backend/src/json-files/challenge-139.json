@@ -1,5 +1,5 @@
 {
-  "description": "### isSumOfConsecutive2\n\nCreates a function that calculates how many ways can a given number 'n' be represented as a sum of consecutive integers.\n\nInput: A single integer 'n'. (1 ≤ n ≤ 104)\nOutput: Returns a single integer - the count of ways the input can be represented as sum of consecutive integers.\n\nExample:\n\n```js isSumOfConsecutive2(9) // 2 ```",
+  "description": "### isSumOfConsecutive2\n\nCreates a function that calculates how many ways can a given number 'n' be represented as a sum of consecutive integers.\n\nInput: A single integer 'n'. (1 ≤ n ≤ 104)\nOutput: Returns a single integer - the count of ways the input can be represented as sum of consecutive integers.\n\nExample:\n\n``` isSumOfConsecutive2(9) // 2 ```",
   "tests": [
     {
       "input": 9,

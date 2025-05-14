@@ -1,5 +1,5 @@
 {
-  "description": "### HTML End Tag by Start Tag\n\nThe function htmlEndTagByStartTag takes a start tag as a string and returns the corresponding end tag. Note: The input does not contain any attributes.\n\nInput: A string representing the start tag (`<tag>`, `<tag/>`, or `<tag />`).\nOutput: A string representing the end tag (`</tag>`).\n\nExample:\n\n```js htmlEndTagByStartTag(\"<button type='button' disabled>\") // \"</button>\" ```",
+  "description": "### HTML End Tag by Start Tag\n\nThe function htmlEndTagByStartTag takes a start tag as a string and returns the corresponding end tag. Note: The input does not contain any attributes.\n\nInput: A string representing the start tag (`<tag>`, `<tag/>`, or `<tag />`).\nOutput: A string representing the end tag (`</tag>`).\n\nExample:\n\n``` htmlEndTagByStartTag(\"<button type='button' disabled>\") // \"</button>\" ```",
   "tests": [
     {
       "input": "<button type='button' disabled>",

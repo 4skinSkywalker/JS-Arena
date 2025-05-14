@@ -1,5 +1,5 @@
 {
-  "description": "### greetPerson\n\nA function that takes a string (name of a person) as an argument and returns a greeting message that includes the provided name.\n\nInput: A single string, representing the name.\nOutput: A string, representing the greeting message including the name.\n\nExample:\n\n```js greetPerson(\"John\") // \"Hello, John\" ```",
+  "description": "### greetPerson\n\nA function that takes a string (name of a person) as an argument and returns a greeting message that includes the provided name.\n\nInput: A single string, representing the name.\nOutput: A string, representing the greeting message including the name.\n\nExample:\n\n``` greetPerson(\"John\") // \"Hello, John\" ```",
   "tests": [
     {
       "input": "\"Polly\"",

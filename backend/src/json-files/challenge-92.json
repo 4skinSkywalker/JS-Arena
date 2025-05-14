@@ -1,5 +1,5 @@
 {
-  "description": "### MixedFractionToImproper\n\nGiven a mixed fraction represented as an array [a, b, c] where a is the integer part, b is the numerator and c is the denominator, return this fraction as an improper fraction [n, d] where n is the numerator and d is the denominator in their simplified form.\n\nInput: An array of three integers [a, b, c]\n\nOutput: An array of two integers [n, d] - the numerator and denominator of the improper fraction in their simplified form.\n\nExample:\n\n```js mixedFractionToImproper([3, 1, 2]) // [7, 2] ```",
+  "description": "### MixedFractionToImproper\n\nGiven a mixed fraction represented as an array [a, b, c] where a is the integer part, b is the numerator and c is the denominator, return this fraction as an improper fraction [n, d] where n is the numerator and d is the denominator in their simplified form.\n\nInput: An array of three integers [a, b, c]\n\nOutput: An array of two integers [n, d] - the numerator and denominator of the improper fraction in their simplified form.\n\nExample:\n\n``` mixedFractionToImproper([3, 1, 2]) // [7, 2] ```",
   "tests": [
     {
       "input": [3, 1, 2],

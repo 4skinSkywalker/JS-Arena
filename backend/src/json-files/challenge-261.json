@@ -1,5 +1,5 @@
 {
-  "description": "### arraySumAdjacentDifference\n\nThe task was to define a function that calculates the absolute sum of differences between the adjacent elements of the given array.\n\nInput: An array, 'inputArray', of integers. (0 ≤ inputArray.length ≤ 20, -10 ≤ inputArray[i] ≤ 10)\nOutput: An integer indicating the sum of absolute differences.\n\nExample:\n\n```js arraySumAdjacentDifference([4, 7, 1, 2]) // returns 10 ```",
+  "description": "### arraySumAdjacentDifference\n\nThe task was to define a function that calculates the absolute sum of differences between the adjacent elements of the given array.\n\nInput: An array, 'inputArray', of integers. (0 ≤ inputArray.length ≤ 20, -10 ≤ inputArray[i] ≤ 10)\nOutput: An integer indicating the sum of absolute differences.\n\nExample:\n\n``` arraySumAdjacentDifference([4, 7, 1, 2]) // returns 10 ```",
   "tests": [
     {
       "input": {"inputArray": [4, 7, 1, 2]},

@@ -1,5 +1,5 @@
 {
-  "description": "### shapeArea\n\nThe function shapeArea takes an integer n and returns the area of a shape, using the following formula: r = sum([n-1:n].^2)\n\nInput: An integer n, which falls in the range [1,10000] \nOutput: An integer, which represents the area of the shape.\n\nExample:\n\n```js shapeArea(2) // 5 ```",
+  "description": "### shapeArea\n\nThe function shapeArea takes an integer n and returns the area of a shape, using the following formula: r = sum([n-1:n].^2)\n\nInput: An integer n, which falls in the range [1,10000] \nOutput: An integer, which represents the area of the shape.\n\nExample:\n\n``` shapeArea(2) // 5 ```",
   "tests": [
     {
       "input": 2,

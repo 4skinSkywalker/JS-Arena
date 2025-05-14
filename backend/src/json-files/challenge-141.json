@@ -1,5 +1,5 @@
 {
-  "description": "### isSum\n\nThe function takes in a value and checks if it can be written as a sum of consecutive natural numbers.\n\nInput: An integer value.\nOutput: Returns True if the input value can be expressed as sum of consecutive natural numbers, returns False otherwise.\n\nExample:\n\n```js isSum(10) // True ```",
+  "description": "### isSum\n\nThe function takes in a value and checks if it can be written as a sum of consecutive natural numbers.\n\nInput: An integer value.\nOutput: Returns True if the input value can be expressed as sum of consecutive natural numbers, returns False otherwise.\n\nExample:\n\n``` isSum(10) // True ```",
   "tests": [
     {
       "input": 10,

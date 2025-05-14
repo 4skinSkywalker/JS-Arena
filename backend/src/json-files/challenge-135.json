@@ -1,5 +1,5 @@
 {
-  "description": "### isUppercase\n\nCheck if a character is uppercase.\n\nInput: A single string character.\nOutput: A boolean value indicating whether the input is an uppercase character.\n\nExample:\n\n```js isUppercase('A') // True ```",
+  "description": "### isUppercase\n\nCheck if a character is uppercase.\n\nInput: A single string character.\nOutput: A boolean value indicating whether the input is an uppercase character.\n\nExample:\n\n``` isUppercase('A') // True ```",
   "tests": [
     {
       "input": "A",

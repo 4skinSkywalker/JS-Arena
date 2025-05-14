@@ -1,5 +1,5 @@
 {
-  "description": "### DifferentValuesInMultiplicationTable2\n\nGiven dimensions of a multiplication table n and m, the task is to generate a multiplication table of n (rows) x m (columns) and then count different integers in that table.\n\nInput: Two integers n and m. (2 ≤ n,m ≤ 100)\nOutput: Returns the number of different integers in the multiplication table.\n\nExample:\n\n```js differentValuesInMultiplicationTable2(3, 2) // 5 ```",
+  "description": "### DifferentValuesInMultiplicationTable2\n\nGiven dimensions of a multiplication table n and m, the task is to generate a multiplication table of n (rows) x m (columns) and then count different integers in that table.\n\nInput: Two integers n and m. (2 ≤ n,m ≤ 100)\nOutput: Returns the number of different integers in the multiplication table.\n\nExample:\n\n``` differentValuesInMultiplicationTable2(3, 2) // 5 ```",
   "tests": [
     {
       "input": {"n": 3, "m": 2},

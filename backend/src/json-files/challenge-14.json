@@ -1,5 +1,5 @@
 {
-  "description": "### Tennis Set Score\n\nA function to determine if a given pair of scores corresponds to a valid set in tennis.\n\nInput: Two integers between 0 and 10, representing the score of each player.\nOutput: A boolean value indicating if the scores could constitute a valid set in a game of tennis (true) or not (false).\n\nExample:\n\n```js tennisSet(3, 6) // true ```",
+  "description": "### Tennis Set Score\n\nA function to determine if a given pair of scores corresponds to a valid set in tennis.\n\nInput: Two integers between 0 and 10, representing the score of each player.\nOutput: A boolean value indicating if the scores could constitute a valid set in a game of tennis (true) or not (false).\n\nExample:\n\n``` tennisSet(3, 6) // true ```",
   "tests": [
     {
       "input": [3, 6],

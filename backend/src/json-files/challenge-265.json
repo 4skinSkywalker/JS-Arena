@@ -1,5 +1,5 @@
 {
-  "description": "### ArrayMinimumIndex\n\nThe task is to find the index of the smallest element in the given input array.\n\nInput: An array of integers, arr.\nOutput: An integer representing the index of the smallest element in the array.\n\nExample:\n\n```js arrayMinimumIndex([19, 32, 11, 23]) // 2 ```",
+  "description": "### ArrayMinimumIndex\n\nThe task is to find the index of the smallest element in the given input array.\n\nInput: An array of integers, arr.\nOutput: An integer representing the index of the smallest element in the array.\n\nExample:\n\n``` arrayMinimumIndex([19, 32, 11, 23]) // 2 ```",
   "tests": [
     {
       "input": [19, 32, 11, 23],

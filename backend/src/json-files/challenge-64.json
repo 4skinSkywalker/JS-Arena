@@ -1,5 +1,5 @@
 {
-  "description": "### ReachNextLevel\n\nYou are playing an RPG game. Currently your experience points (XP) total is equal to experience. To reach the next level your XP should be at least at threshold. If you kill the monster in the next fight, you will gain reward XP.\n\nInput: Three integers representing the current XP (experience), the XP needed for the next level (threshold), and the XP earned from killing a monster (reward).\nOutput: A boolean indicating if the total experience after gaining reward XP is enough to reach the next level.\n\nExample:\n\n```js reachNextLevel(10, 15, 5) // true ```",
+  "description": "### ReachNextLevel\n\nYou are playing an RPG game. Currently your experience points (XP) total is equal to experience. To reach the next level your XP should be at least at threshold. If you kill the monster in the next fight, you will gain reward XP.\n\nInput: Three integers representing the current XP (experience), the XP needed for the next level (threshold), and the XP earned from killing a monster (reward).\nOutput: A boolean indicating if the total experience after gaining reward XP is enough to reach the next level.\n\nExample:\n\n``` reachNextLevel(10, 15, 5) // true ```",
   "tests": [
     {
       "input": { "experience": 10, "threshold": 15, "reward": 5 },

@@ -1,5 +1,5 @@
 {
-  "description": "### Same Elements Naive\n\nThis problem asks to return the number of identical elements in two given lists. The function takes two arguments: a and b, which are the lists to compare. This is a naive solution, which means it potentially uses more memory or CPU time than necessary.\n\nInput: Two lists, a and b, containing integers.\nOutput: An integer that represents the number of identical elements in the two given lists.\n\nExample:\n\n```js sameElementsNaive([1, 2, 3], [3, 4, 5]) // 1 ```",
+  "description": "### Same Elements Naive\n\nThis problem asks to return the number of identical elements in two given lists. The function takes two arguments: a and b, which are the lists to compare. This is a naive solution, which means it potentially uses more memory or CPU time than necessary.\n\nInput: Two lists, a and b, containing integers.\nOutput: An integer that represents the number of identical elements in the two given lists.\n\nExample:\n\n``` sameElementsNaive([1, 2, 3], [3, 4, 5]) // 1 ```",
   "tests": [
     {
       "input": [[1, 2, 3], [3, 4, 5]],

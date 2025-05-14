@@ -1,5 +1,5 @@
 {
-  "description": "### Max Zeros\n\nImplement a function that determines the numerical base from 2 to 36 that yields the maximum number of zeros in its representation of a given number. If multiple bases have the same maximum number of zeros, return the smallest one. The function takes an integer as an input and returns an integer as output.\n\nInput: A single integer.\nOutput: A single integer.\n\nExample:\n\n```js maxZeros(9) // 2 ```",
+  "description": "### Max Zeros\n\nImplement a function that determines the numerical base from 2 to 36 that yields the maximum number of zeros in its representation of a given number. If multiple bases have the same maximum number of zeros, return the smallest one. The function takes an integer as an input and returns an integer as output.\n\nInput: A single integer.\nOutput: A single integer.\n\nExample:\n\n``` maxZeros(9) // 2 ```",
   "tests": [
     {
       "input": 9,

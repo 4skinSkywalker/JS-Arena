@@ -1,5 +1,5 @@
 {
-  "description": "### LongestSequence\n\nThis programming challenge `LongestSequence` asks you to implement a function that determines the longest sequence of numbers in an array where the difference between consecutive numbers is the same. The function takes an array of integers and returns an integer that represents the length of the longest sequence.\n\nInput: Array of Integers\nOutput: Integer\n\nExample:\n\n```js longestSequence([1, 7, 3, 5, 4, 2]) // 3 ```",
+  "description": "### LongestSequence\n\nThis programming challenge `LongestSequence` asks you to implement a function that determines the longest sequence of numbers in an array where the difference between consecutive numbers is the same. The function takes an array of integers and returns an integer that represents the length of the longest sequence.\n\nInput: Array of Integers\nOutput: Integer\n\nExample:\n\n``` longestSequence([1, 7, 3, 5, 4, 2]) // 3 ```",
   "tests": [
     {
       "input": [[1, 7, 3, 5, 4, 2]],

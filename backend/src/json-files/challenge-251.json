@@ -1,5 +1,5 @@
 {
-  "description": "### Century From Year\n\nGiven a year, return its corresponding century. Years end in 00 are considered to be part of the previous century.\n\nInput: An integer within the range of 1 to 2005.\nOutput: An integer representing the century for the given year.\n\nExample:\n\n```js \ncenturyFromYear(2000) // 20\ncenturyFromYear(2001) // 21\n ```",
+  "description": "### Century From Year\n\nGiven a year, return its corresponding century. Years end in 00 are considered to be part of the previous century.\n\nInput: An integer within the range of 1 to 2005.\nOutput: An integer representing the century for the given year.\n\nExample:\n\n``` \ncenturyFromYear(2000) // 20\ncenturyFromYear(2001) // 21\n ```",
   "tests": [
     {
       "input": 1905,

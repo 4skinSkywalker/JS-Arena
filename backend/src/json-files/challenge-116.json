@@ -1,5 +1,5 @@
 {
-  "description": "### longestString\n\nThis function takes an array of strings as input and returns the longest string from the array.\n\nInput: Array of strings\nOutput: The longest string\n\nExample:\n\n```js longestString(['a', 'ab', 'c']); // 'ab' ```",
+  "description": "### longestString\n\nThis function takes an array of strings as input and returns the longest string from the array.\n\nInput: Array of strings\nOutput: The longest string\n\nExample:\n\n``` longestString(['a', 'ab', 'c']); // 'ab' ```",
   "tests": [
     {
       "input": ["a", "ab", "c"],

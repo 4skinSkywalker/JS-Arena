@@ -1,5 +1,5 @@
 {
-  "description": "### mySubstring\n\nWrite a function `mySubstring` that takes a string `s`, and two indices, `l` and `r`, and returns a substring of `s` from index `l` to `r` (both inclusive).\n\nInput: Three parameters - a string, `s`, and two integers, `l` and `r`, where `l` and `r` represent the starting and ending indices (0-indexed) of the substring respectively.\nOutput: Return a string which is the substring of `s` from index `l` to `r`.\n\nExample:\n\n```js \nmySubstring('abcde', 2, 3) // 'cd' \nmySubstring('abcdef', 0, 2) // 'abc' ```",
+  "description": "### mySubstring\n\nWrite a function `mySubstring` that takes a string `s`, and two indices, `l` and `r`, and returns a substring of `s` from index `l` to `r` (both inclusive).\n\nInput: Three parameters - a string, `s`, and two integers, `l` and `r`, where `l` and `r` represent the starting and ending indices (0-indexed) of the substring respectively.\nOutput: Return a string which is the substring of `s` from index `l` to `r`.\n\nExample:\n\n``` \nmySubstring('abcde', 2, 3) // 'cd' \nmySubstring('abcdef', 0, 2) // 'abc' ```",
   "tests": [
     {
       "input": ["abcde", 2, 3],

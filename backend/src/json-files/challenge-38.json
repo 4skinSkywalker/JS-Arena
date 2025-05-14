@@ -1,5 +1,5 @@
 {
-  "description": "### Sum of Factorials\n\nThe task is to create a function `SoF(n)` which sums up all the factorials from 1 to `n`. If the value provided is less than 1, the function should return 1.\n\nInput: A single integer `n` where (1 <= `n` <= 100)\nOutput: The sum of all the factorials from 1 to `n`.\n\nExample:\n\n```js SoF(3) // 9 ```",
+  "description": "### Sum of Factorials\n\nThe task is to create a function `SoF(n)` which sums up all the factorials from 1 to `n`. If the value provided is less than 1, the function should return 1.\n\nInput: A single integer `n` where (1 <= `n` <= 100)\nOutput: The sum of all the factorials from 1 to `n`.\n\nExample:\n\n``` SoF(3) // 9 ```",
   "tests": [
     {
       "input": 1,

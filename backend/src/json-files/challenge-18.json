@@ -1,5 +1,5 @@
 {
-  "description": "### Swap Adjacent Bits\n\nYou're given an arbitrary 32-bit integer n. Swap each pair of adjacent bits in its binary representation and return the result as a decimal number.\n\nInput: An integer n.\nOutput: An integer, where each pair of adjacent bits in the binary representation of n are swapped.\n\nExample:\n\n```js swapAdjacentBits(13) // 14 ```",
+  "description": "### Swap Adjacent Bits\n\nYou're given an arbitrary 32-bit integer n. Swap each pair of adjacent bits in its binary representation and return the result as a decimal number.\n\nInput: An integer n.\nOutput: An integer, where each pair of adjacent bits in the binary representation of n are swapped.\n\nExample:\n\n``` swapAdjacentBits(13) // 14 ```",
   "tests": [
     {
       "input": 13,

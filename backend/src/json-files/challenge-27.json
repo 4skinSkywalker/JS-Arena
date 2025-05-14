@@ -1,5 +1,5 @@
 {
-  "description": "### Sum Of Cubes\n\nWrite a function that calculates and returns the sum of cubes for a given integer n. It should compute the sum all the way from 1 to n where n is a non-negative integer.\n\nInput: An integer number.\nOutput: An integer number, representing sum of cubes from 1 to the given number.\n\nExample:\n\n```js sumOfCubes(3); // 36 ```",
+  "description": "### Sum Of Cubes\n\nWrite a function that calculates and returns the sum of cubes for a given integer n. It should compute the sum all the way from 1 to n where n is a non-negative integer.\n\nInput: An integer number.\nOutput: An integer number, representing sum of cubes from 1 to the given number.\n\nExample:\n\n``` sumOfCubes(3); // 36 ```",
   "tests": [
     {
       "input": 3,

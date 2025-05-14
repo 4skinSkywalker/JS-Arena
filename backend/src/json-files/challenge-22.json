@@ -1,5 +1,5 @@
 {
-  "description": "### Sum of The Angles\n\nIn a polygon, calculate the sum of the interior angles given the number of sides (n).\n\nInput: An integer, n, representing the number of sides in the polygon.\nOutput: An integer, representing the sum of the interior angles of the polygon.\n\nExample:\n\n```js sumOfTheAngles(3) // 180 ```",
+  "description": "### Sum of The Angles\n\nIn a polygon, calculate the sum of the interior angles given the number of sides (n).\n\nInput: An integer, n, representing the number of sides in the polygon.\nOutput: An integer, representing the sum of the interior angles of the polygon.\n\nExample:\n\n``` sumOfTheAngles(3) // 180 ```",
   "tests": [
     {
       "input": 3,

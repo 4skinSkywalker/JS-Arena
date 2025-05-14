@@ -1,5 +1,5 @@
 {
-  "description": "### NthElementFromTheEnd\n\nThis Java method returns the Nth element from the end of a given linked list, if present. If there's no such element, the method returns -1.\n\nInput: {\"linkedList\": [1,2,3,4], \"n\": 2}\nOutput: Returns the Nth Element from the End of the Linked List or -1 if the List is smaller than N.\n\nExample:\n\n```js nthElementFromTheEnd([1,2,3,4], 2) // 3 ```",
+  "description": "### NthElementFromTheEnd\n\nThis Java method returns the Nth element from the end of a given linked list, if present. If there's no such element, the method returns -1.\n\nInput: {\"linkedList\": [1,2,3,4], \"n\": 2}\nOutput: Returns the Nth Element from the End of the Linked List or -1 if the List is smaller than N.\n\nExample:\n\n``` nthElementFromTheEnd([1,2,3,4], 2) // 3 ```",
   "tests": [
     {
       "input": {"linkedList": [1, 2, 3, 4], "n": 3},

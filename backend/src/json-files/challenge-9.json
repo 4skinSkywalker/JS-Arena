@@ -1,5 +1,5 @@
 {
-  "description": "### Unusual Dictionary\n\nThe task is to find out if a given list of words/phrases abide by a rule of an unusual dictionary. In an unusual dictionary, individual words are sorted as in a normal English dictionary, ignoring any initial articles (a, an, the).\n\nInput: An array of strings (each string being a word or a phrase).\nOutput: A boolean value representing whether the given array of strings follow the unusual dictionary order rule or not.\n\nExample:\n\n```js unusualDictionary([\"the cat\", \"to hiss\", \"a kitten\", \"to meow\", \"playful\", \"to purr\"]) // true ```",
+  "description": "### Unusual Dictionary\n\nThe task is to find out if a given list of words/phrases abide by a rule of an unusual dictionary. In an unusual dictionary, individual words are sorted as in a normal English dictionary, ignoring any initial articles (a, an, the).\n\nInput: An array of strings (each string being a word or a phrase).\nOutput: A boolean value representing whether the given array of strings follow the unusual dictionary order rule or not.\n\nExample:\n\n``` unusualDictionary([\"the cat\", \"to hiss\", \"a kitten\", \"to meow\", \"playful\", \"to purr\"]) // true ```",
   "tests": [
     {
       "input": [["the cat", "to hiss", "a kitten", "to meow", "playful", "to purr"]],

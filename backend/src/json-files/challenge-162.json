@@ -1,5 +1,5 @@
 {
-  "description": "### imageTruncation\n\nThis function truncates each pixel's brightness to the threshold if it is above the threshold. Once the threshold is reached, it stays constant.\n\nInput: Two arrays, one with sub-arrays representing pixels in an image and their brightness and the other with thresholds.\nOutput: An array with sub-arrays of pixel brightness not exceeding the given thresholds.\n\nExample:\n\n```js imageTruncation([[0,100,100], [1,255,103]], 102) // [[0,100,100], [1,102,102]] ```",
+  "description": "### imageTruncation\n\nThis function truncates each pixel's brightness to the threshold if it is above the threshold. Once the threshold is reached, it stays constant.\n\nInput: Two arrays, one with sub-arrays representing pixels in an image and their brightness and the other with thresholds.\nOutput: An array with sub-arrays of pixel brightness not exceeding the given thresholds.\n\nExample:\n\n``` imageTruncation([[0,100,100], [1,255,103]], 102) // [[0,100,100], [1,102,102]] ```",
   "tests": [
     {
       "input": [[[0,100,100], [1,255,103]], 102],

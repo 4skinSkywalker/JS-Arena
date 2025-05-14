@@ -1,5 +1,5 @@
 {
-  "description": "### ShuffledArray\n\nA sorted array was shuffled and then one element was removed. The task is to return the array to its initial, sorted form.\n\nInput: An array of integers, which was shuffled and then one number removed.\nOutput: Initial, sorted array, from which the number got removed.\n\nExample:\n\n```js shuffledArray([1, 12, 3, 6, 2]) // [1, 2, 3, 6] ```",
+  "description": "### ShuffledArray\n\nA sorted array was shuffled and then one element was removed. The task is to return the array to its initial, sorted form.\n\nInput: An array of integers, which was shuffled and then one number removed.\nOutput: Initial, sorted array, from which the number got removed.\n\nExample:\n\n``` shuffledArray([1, 12, 3, 6, 2]) // [1, 2, 3, 6] ```",
   "tests": [
     {
       "input": [1, 12, 3, 6, 2],

@@ -1,5 +1,5 @@
 {
-  "description": "### Divide As Long As Possible\n\nThe function 'divideAsLongAsPossible' takes two arguments, a number 'n', and a divisor 'd'. The function keeps dividing 'n' by 'd' as long as 'n' is divisible by 'd', and then returns the final reduced value of 'n'.\n\nInput: A number 'n' and a divisor 'd'.\nOutput: The final reduced value of 'n' after constant division by 'd'.\n\nExample:\n\n```js divideAsLongAsPossible(36, 3) // 4 ```",
+  "description": "### Divide As Long As Possible\n\nThe function 'divideAsLongAsPossible' takes two arguments, a number 'n', and a divisor 'd'. The function keeps dividing 'n' by 'd' as long as 'n' is divisible by 'd', and then returns the final reduced value of 'n'.\n\nInput: A number 'n' and a divisor 'd'.\nOutput: The final reduced value of 'n' after constant division by 'd'.\n\nExample:\n\n``` divideAsLongAsPossible(36, 3) // 4 ```",
   "tests": [
     {
       "input": {

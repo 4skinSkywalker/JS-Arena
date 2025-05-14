@@ -1,5 +1,5 @@
 {
-  "description": "### CheckPalindrome\n\nA function checkPalindrome that takes a string and checks whether it is a palindrome or not. A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward (ignoring spaces, punctuation, and capitalization).\n\nInput: A string s (1 ≤ s.length ≤ 105).\nOutput: Return true if the given string is a palindrome and false otherwise.\n\nExample:\n\n```js checkPalindrome('aabaa') // true ```",
+  "description": "### CheckPalindrome\n\nA function checkPalindrome that takes a string and checks whether it is a palindrome or not. A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward (ignoring spaces, punctuation, and capitalization).\n\nInput: A string s (1 ≤ s.length ≤ 105).\nOutput: Return true if the given string is a palindrome and false otherwise.\n\nExample:\n\n``` checkPalindrome('aabaa') // true ```",
   "tests": [
     {
       "input": "aabaa",

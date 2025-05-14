@@ -1,5 +1,5 @@
 {
-  "description": "### AddTwoDigits\n\nYou are given a two-digit integer n. Return the sum of its digits.\n\nInput: A positive two-digit integer.\nOutput: The sum of the two digits.\n\nExample:\n\n```js addTwoDigits(29) // 11 ```",
+  "description": "### AddTwoDigits\n\nYou are given a two-digit integer n. Return the sum of its digits.\n\nInput: A positive two-digit integer.\nOutput: The sum of the two digits.\n\nExample:\n\n``` addTwoDigits(29) // 11 ```",
   "tests": [
     {
       "input": 29,

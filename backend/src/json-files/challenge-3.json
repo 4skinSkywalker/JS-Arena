@@ -1,5 +1,5 @@
 {
-  "description": "### WeakNumbers\n\nA number is called weak (relative to a set of other numbers) if a number of factors/divisors it has is less than the number of factors that the other numbers have. This program calculates the weakness of numbers in a range [1, n] and returns an array {x, y} where x is the maximum weakness and y is the number of instances of that weakness.\n\nInput: An integer n.\nOutput: An array of two integers.\n\nExample:\n\n```js weakNumbers(9) // [2, 2] ```",
+  "description": "### WeakNumbers\n\nA number is called weak (relative to a set of other numbers) if a number of factors/divisors it has is less than the number of factors that the other numbers have. This program calculates the weakness of numbers in a range [1, n] and returns an array {x, y} where x is the maximum weakness and y is the number of instances of that weakness.\n\nInput: An integer n.\nOutput: An array of two integers.\n\nExample:\n\n``` weakNumbers(9) // [2, 2] ```",
   "tests": [
     {
       "input": 9,

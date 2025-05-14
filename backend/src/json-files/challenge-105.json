@@ -1,5 +1,5 @@
 {
-  "description": "### Maximal Even\n\nWrite a function called 'maximalEven' that accepts an array of numbers and returns the maximum even number from the array.\n\nInput: An array of integers\nOutput: The maximum even integer in the array\n\nExample:\n\n```js maximalEven([4, 3, 6, 8, 2, 4]) // 8 ```",
+  "description": "### Maximal Even\n\nWrite a function called 'maximalEven' that accepts an array of numbers and returns the maximum even number from the array.\n\nInput: An array of integers\nOutput: The maximum even integer in the array\n\nExample:\n\n``` maximalEven([4, 3, 6, 8, 2, 4]) // 8 ```",
   "tests": [
     {
       "input": [4, 3, 6, 8, 2, 4],

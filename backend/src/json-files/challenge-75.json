@@ -1,5 +1,5 @@
 {
-  "description": "### passwordCheck\n\nA function to check if a password meets the following criteria: It should consist of at least 5 characters, contain at least one uppercase letter, one lowercase letter, and one number.\n\nInput: A string representing the password to check.\nOutput: A boolean value indicating whether the password meets the criteria or not.\n\nExample:\n\n```js passwordCheck('my.Password123') // true ```",
+  "description": "### passwordCheck\n\nA function to check if a password meets the following criteria: It should consist of at least 5 characters, contain at least one uppercase letter, one lowercase letter, and one number.\n\nInput: A string representing the password to check.\nOutput: A boolean value indicating whether the password meets the criteria or not.\n\nExample:\n\n``` passwordCheck('my.Password123') // true ```",
   "tests": [
     {
       "input": "my.Password123",

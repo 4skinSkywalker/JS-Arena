@@ -1,5 +1,5 @@
 {
-  "description": "### ProperOrImproper\n\nWrite a method that checks if a given fractions in the form of an array of two integers is a Proper fraction or an Improper fraction.\n\nInput: an array of two integers {a, b} where a is the numerator and b is the denominator of a fraction\nOutput: Returns 'Proper' if the absolute value of fraction (a/b) is less than 1, otherwise, returns 'Improper'\n\nExample:\n\n```js properOrImproper([6, 3]) // \"Improper\" ```",
+  "description": "### ProperOrImproper\n\nWrite a method that checks if a given fractions in the form of an array of two integers is a Proper fraction or an Improper fraction.\n\nInput: an array of two integers {a, b} where a is the numerator and b is the denominator of a fraction\nOutput: Returns 'Proper' if the absolute value of fraction (a/b) is less than 1, otherwise, returns 'Improper'\n\nExample:\n\n``` properOrImproper([6, 3]) // \"Improper\" ```",
   "tests": [
     {
       "input": [7, 2],

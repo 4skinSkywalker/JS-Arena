@@ -1,5 +1,5 @@
 {
-   "description": "### encloseInBrackets\n\nThe function encloses an input string with brackets.\n\nInput: A string s\nOutput: String s enclosed in brackets\n\nExample:\n\n```js encloseInBrackets(\"abacaba\") // (abacaba) ```",
+   "description": "### encloseInBrackets\n\nThe function encloses an input string with brackets.\n\nInput: A string s\nOutput: String s enclosed in brackets\n\nExample:\n\n``` encloseInBrackets(\"abacaba\") // (abacaba) ```",
    "tests": [
      {
        "input": "abacaba",

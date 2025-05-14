@@ -1,5 +1,5 @@
 {
-"description": "### isGeometricProgression\n\nThe function `isGeometricProgression(sequence)` determines whether a given sequence is in geometric progression or not. It takes an array of numbers as input and returns a boolean output.\n\nInput: `sequence` - An array of numbers (e.g., [1, 4, 16])\nOutput: Returns `true` if the sequence is a geometric progression, `false` otherwise\n\nExample:\n\n```js isGeometricProgression([1, 4, 16]) // true ```",
+"description": "### isGeometricProgression\n\nThe function `isGeometricProgression(sequence)` determines whether a given sequence is in geometric progression or not. It takes an array of numbers as input and returns a boolean output.\n\nInput: `sequence` - An array of numbers (e.g., [1, 4, 16])\nOutput: Returns `true` if the sequence is a geometric progression, `false` otherwise\n\nExample:\n\n``` isGeometricProgression([1, 4, 16]) // true ```",
 "tests": [
 {
 "input": [[1, 4, 16]],

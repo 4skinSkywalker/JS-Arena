@@ -1,5 +1,5 @@
 {
-  "description": "### lastDigitRegExp\n\nThe function `lastDigitRegExp(s)` returns the last digit in the string s. If a string doesn't have any digits, the function should return an empty string.\n\nInput: a string `s`.\n\nOutput: a string representing the last digit in the input string.\n\nExample:\n\n```js lastDigitRegExp(\"var_1__Int\") // \"1\" ```",
+  "description": "### lastDigitRegExp\n\nThe function `lastDigitRegExp(s)` returns the last digit in the string s. If a string doesn't have any digits, the function should return an empty string.\n\nInput: a string `s`.\n\nOutput: a string representing the last digit in the input string.\n\nExample:\n\n``` lastDigitRegExp(\"var_1__Int\") // \"1\" ```",
   "tests": [
     {
       "input": "var_1__Int",

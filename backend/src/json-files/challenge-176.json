@@ -1,5 +1,5 @@
 {
-  "description": "### FractionDivision\n\nThe FractionDivision function takes two fractions represented as arrays of two elements [numerator, denominator] and returns their division represented as an array of two elements in simplified form.\n\nInput: Two arrays each having two integers - the numerator and denominator of the fractions.\nOutput: An array representing the simplified form of the division of the two fractions.\n\nExample:\n\n```js fractionDivision([2, 3], [5, 6]) // [4, 5] ```",
+  "description": "### FractionDivision\n\nThe FractionDivision function takes two fractions represented as arrays of two elements [numerator, denominator] and returns their division represented as an array of two elements in simplified form.\n\nInput: Two arrays each having two integers - the numerator and denominator of the fractions.\nOutput: An array representing the simplified form of the division of the two fractions.\n\nExample:\n\n``` fractionDivision([2, 3], [5, 6]) // [4, 5] ```",
   "tests": [
     {
       "input": [[2, 3], [5, 6]],

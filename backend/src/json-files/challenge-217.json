@@ -1,5 +1,5 @@
 {
-  "description": "### Different Digits Number Search\n\nWrite a function that takes an array of integers and return the first integer from the array that contains exactly different digits or -1 if there is none.\n\nInput: An array of integers\nOutput: An integer\n\nExample:\n\n```js differentDigitsNumberSearch([22, 111, 101, 124, 33, 30]) // 124 ```",
+  "description": "### Different Digits Number Search\n\nWrite a function that takes an array of integers and return the first integer from the array that contains exactly different digits or -1 if there is none.\n\nInput: An array of integers\nOutput: An integer\n\nExample:\n\n``` differentDigitsNumberSearch([22, 111, 101, 124, 33, 30]) // 124 ```",
   "tests": [
     {
       "input": [22, 111, 101, 124, 33, 30],

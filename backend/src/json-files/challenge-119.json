@@ -1,5 +1,5 @@
 {
-  "description": "### LineEncoding\n\nGiven a string, return a new string where each group consecutive repeating characters are replaced by the number of those characters followed by the character itself.\n\nInput: A string s (1 ≤ s.length ≤ 50).\nOutput: Return a new string encoded with the specified format.\n\nExample:\n\n```js lineEncoding(\"aabbbc\") // \"2a3bc\" ```",
+  "description": "### LineEncoding\n\nGiven a string, return a new string where each group consecutive repeating characters are replaced by the number of those characters followed by the character itself.\n\nInput: A string s (1 ≤ s.length ≤ 50).\nOutput: Return a new string encoded with the specified format.\n\nExample:\n\n``` lineEncoding(\"aabbbc\") // \"2a3bc\" ```",
   "tests": [
     {
       "input": "aabbbc",

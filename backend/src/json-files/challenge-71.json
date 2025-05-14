@@ -1,5 +1,5 @@
 {
-  "description": "### pointInLine\n\nThis function receives a point (an array of two integers) and a line (an array of three integers representing a linear equation). It checks whether the given point lies on the line defined by the equation. It returns true if the point is on the line, and false otherwise.\n\nInput: Two arrays - [x, y] for point, [a, b, c] for line\nOutput: Boolean value representing whether the point exists on the line or not.\n\nExample:\n\n```js pointInLine([0, 1], [1, 1, 0]) // false ```",
+  "description": "### pointInLine\n\nThis function receives a point (an array of two integers) and a line (an array of three integers representing a linear equation). It checks whether the given point lies on the line defined by the equation. It returns true if the point is on the line, and false otherwise.\n\nInput: Two arrays - [x, y] for point, [a, b, c] for line\nOutput: Boolean value representing whether the point exists on the line or not.\n\nExample:\n\n``` pointInLine([0, 1], [1, 1, 0]) // false ```",
   "tests": [
     {
       "input": {"point": [0, 1], "line": [1, 1, 0]},

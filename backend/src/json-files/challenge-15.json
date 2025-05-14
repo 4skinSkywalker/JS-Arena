@@ -1,5 +1,5 @@
 {
-  "description": "### SymbolsPermutation\n\nThe task is to determine if it is possible to rearrange characters of a string 'word1' to obtain another string 'word2'. To solve this, the function 'symbolsPermutation' accepts two strings, sorts them alphabetically and then compares them. If they are equal, it returns true, otherwise false.\n\nInput: Two strings, 'word1' and 'word2'. (1 ≤ word1.length ≤ 10^2, 1 ≤ word2.length ≤ 10^2)\nOutput: Returns 'true' if it is possible to rearrange characters of 'word1' to get 'word2', otherwise it returns 'false'.\n\nExample:\n\n```js symbolsPermutation('abc', 'cab') // true ```",
+  "description": "### SymbolsPermutation\n\nThe task is to determine if it is possible to rearrange characters of a string 'word1' to obtain another string 'word2'. To solve this, the function 'symbolsPermutation' accepts two strings, sorts them alphabetically and then compares them. If they are equal, it returns true, otherwise false.\n\nInput: Two strings, 'word1' and 'word2'. (1 ≤ word1.length ≤ 10^2, 1 ≤ word2.length ≤ 10^2)\nOutput: Returns 'true' if it is possible to rearrange characters of 'word1' to get 'word2', otherwise it returns 'false'.\n\nExample:\n\n``` symbolsPermutation('abc', 'cab') // true ```",
   "tests": [
     {
       "input": {

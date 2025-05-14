@@ -1,5 +1,5 @@
 {
-  "description": "### Equal Pair Of Bits\n\nYou're given two integers, n and m. Find position of the rightmost bit in which they differ in their binary representations (it is guaranteed that such a bit exists), counting from right to left.\n\nReturn the value of 2^position_of_the_found_bit.\n\nInput: Two arguments as integers.\nOutput: The result, as an integer.\n\nExample:\n\n```js equalPairOfBits(10, 11) // 2 ```",
+  "description": "### Equal Pair Of Bits\n\nYou're given two integers, n and m. Find position of the rightmost bit in which they differ in their binary representations (it is guaranteed that such a bit exists), counting from right to left.\n\nReturn the value of 2^position_of_the_found_bit.\n\nInput: Two arguments as integers.\nOutput: The result, as an integer.\n\nExample:\n\n``` equalPairOfBits(10, 11) // 2 ```",
   "tests": [
     {
       "input": {"n": 10, "m": 0},

@@ -1,5 +1,5 @@
 {
-  "description": "### AlphabetSubstring\n\nThe function 'alphabetSubstring' checks if the provided string is a contiguous substring of the characters from 'a' to 'z'. The function is case-sensitive. Thus, the function returns true if the string can be inserted somewhere within the string of alphabets preserving the character sequence, else it returns false.\n\nInput: A string comprised of lowercase alphabets\nOutput: A boolean denoting whether the string is a contiguous substring of the alphabets or not\n\nExample:\n\n```js alphabetSubstring(\"efghi\") // true ```",
+  "description": "### AlphabetSubstring\n\nThe function 'alphabetSubstring' checks if the provided string is a contiguous substring of the characters from 'a' to 'z'. The function is case-sensitive. Thus, the function returns true if the string can be inserted somewhere within the string of alphabets preserving the character sequence, else it returns false.\n\nInput: A string comprised of lowercase alphabets\nOutput: A boolean denoting whether the string is a contiguous substring of the alphabets or not\n\nExample:\n\n``` alphabetSubstring(\"efghi\") // true ```",
   "tests": [
     {
       "input": "efghi",

@@ -1,5 +1,5 @@
 {
-  "description": "### largestNumber\n\nWrite a function that takes a number n and returns the largest number possible that can be formed with n digits.\n\nInput: Input to the function is an integer that represents the number of digits.\nOutput: Output should be the largest number that can be formed with given number of digits.\n\nExample:\n\n```js largestNumber(2) // 99 ```",
+  "description": "### largestNumber\n\nWrite a function that takes a number n and returns the largest number possible that can be formed with n digits.\n\nInput: Input to the function is an integer that represents the number of digits.\nOutput: Output should be the largest number that can be formed with given number of digits.\n\nExample:\n\n``` largestNumber(2) // 99 ```",
   "tests": [
     {
       "input": 2,

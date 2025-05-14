@@ -1,5 +1,5 @@
 {
-  "description": "### Array Replace\n\nThis program takes an array of integers and two other integers as input and replaces all occurrences of the second integer in the array with the third integer, then returns the modified array.\n\nInput: An array of integers inputArray, an integer elemToReplace, and another integer substitutionElem.\nOutput: The modified array after replacing all occurences of elemToReplace with substitutionElem.\n\nExample:\n\n```js arrayReplace([1, 2, 1], 1, 3) // [3, 2, 3] ```",
+  "description": "### Array Replace\n\nThis program takes an array of integers and two other integers as input and replaces all occurrences of the second integer in the array with the third integer, then returns the modified array.\n\nInput: An array of integers inputArray, an integer elemToReplace, and another integer substitutionElem.\nOutput: The modified array after replacing all occurences of elemToReplace with substitutionElem.\n\nExample:\n\n``` arrayReplace([1, 2, 1], 1, 3) // [3, 2, 3] ```",
   "tests": [
     {
       "input": { "inputArray": [1, 2, 1], "elemToReplace": 1, "substitutionElem": 3 },

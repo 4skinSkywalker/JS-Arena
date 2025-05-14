@@ -1,5 +1,5 @@
 {
-  "description": "### BuildPalindrome\n\nGiven a string, your task is to check whether it's possible to create a palindrome by adding characters to it, and return the new palindrome. If it's impossible, return null.\n\nInput: A string s\nOutput: a string which is the palindrome\n\nExample:\n\n```js buildPalindrome(\"abcdc\") // \"abcdcba\" ```",
+  "description": "### BuildPalindrome\n\nGiven a string, your task is to check whether it's possible to create a palindrome by adding characters to it, and return the new palindrome. If it's impossible, return null.\n\nInput: A string s\nOutput: a string which is the palindrome\n\nExample:\n\n``` buildPalindrome(\"abcdc\") // \"abcdcba\" ```",
   "tests": [
     {
       "input": "abcdc",

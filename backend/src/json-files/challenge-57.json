@@ -1,5 +1,5 @@
 {
-  "description": "### ReplaceAllDigitsRegExp\n\nThe challenge requires creating a function that replaces every digit in the input string with a '#' character using regular expressions.\n\nInput: A single string containing alphanumeric characters.\nOutput: The processed string where all digits have been replaced with '#' character.\n\nExample:\n\n```js replaceAllDigitsRegExp(\"012ss210\") // \"###ss###\" ```",
+  "description": "### ReplaceAllDigitsRegExp\n\nThe challenge requires creating a function that replaces every digit in the input string with a '#' character using regular expressions.\n\nInput: A single string containing alphanumeric characters.\nOutput: The processed string where all digits have been replaced with '#' character.\n\nExample:\n\n``` replaceAllDigitsRegExp(\"012ss210\") // \"###ss###\" ```",
   "tests": [
     {
       "input": "There are 12 points",

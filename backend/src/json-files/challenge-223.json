@@ -1,5 +1,5 @@
 {
-  "description": "### Decipher\n\nYou are presented with an encrypted string that was converted following this rule: the character with charCode x was converted to a string with the code 'x'. Your task is to reverse this conversion process.\n\nInput: A string of digits representing the encrypted text.\nOutput: A string that represents the original text after being decrypted.\n\nExample:\n\n```js decipher('10197115121') // 'easy' ```",
+  "description": "### Decipher\n\nYou are presented with an encrypted string that was converted following this rule: the character with charCode x was converted to a string with the code 'x'. Your task is to reverse this conversion process.\n\nInput: A string of digits representing the encrypted text.\nOutput: A string that represents the original text after being decrypted.\n\nExample:\n\n``` decipher('10197115121') // 'easy' ```",
   "tests": [
     {
       "input": "10197115121",

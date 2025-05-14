@@ -1,5 +1,5 @@
 {
-  "description": "### Right Triangle Validator\n\nThis problem requires determining if a triangle with given side lengths can be a right triangle. To be a right triangle, the square of the longest side (hypotenuse) must be equal to the sum of the squares of the other two sides.\n\nInput: An array of three integers representing the lengths of the sides of the triangle.\nOutput: Return a boolean indicating whether the triangle could be a right triangle.\n\nExample:\n\n```js rightTriangle([3, 5, 4]) // true ```",
+  "description": "### Right Triangle Validator\n\nThis problem requires determining if a triangle with given side lengths can be a right triangle. To be a right triangle, the square of the longest side (hypotenuse) must be equal to the sum of the squares of the other two sides.\n\nInput: An array of three integers representing the lengths of the sides of the triangle.\nOutput: Return a boolean indicating whether the triangle could be a right triangle.\n\nExample:\n\n``` rightTriangle([3, 5, 4]) // true ```",
   "tests": [
     {
       "input": [3, 5, 4],

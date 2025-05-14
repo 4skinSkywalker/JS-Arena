@@ -1,5 +1,5 @@
 {
-  "description": "### Different Rightmost Bit\n\nYou're given two integers, n and m. Find position of the rightmost bit in which they differ in their binary representations (it is guaranteed that such a bit exists), counting from right to left.\n\nReturn the value of 2^position_of_the_found_bit (0-based).\n\nInput: Two arguments as integers.\nOutput: The answer, as an integer.\n\nExample:\n\n```js differentRightmostBit(11, 13) // 2 ```",
+  "description": "### Different Rightmost Bit\n\nYou're given two integers, n and m. Find position of the rightmost bit in which they differ in their binary representations (it is guaranteed that such a bit exists), counting from right to left.\n\nReturn the value of 2^position_of_the_found_bit (0-based).\n\nInput: Two arguments as integers.\nOutput: The answer, as an integer.\n\nExample:\n\n``` differentRightmostBit(11, 13) // 2 ```",
   "tests": [
     {
       "input": {"n": 11, "m": 13},

@@ -1,5 +1,5 @@
 {
-  "description": "### LeastFactorial\n\nThe function finds the smallest factorial that is not less than n. The function should return an integer, the small factorial.\n\nInput: A single integer n (1 ≤ n ≤ 120)\nOutput: An integer, the smallest factorial that is not less than n.\n\nExample:\n\n```js\nleastFactorial(17) // 24\n```\n\n```js\nleastFactorial(5) // 6\n```\n\n```js\nleastFactorial(109) // 120\n```",
+  "description": "### LeastFactorial\n\nThe function finds the smallest factorial that is not less than n. The function should return an integer, the small factorial.\n\nInput: A single integer n (1 ≤ n ≤ 120)\nOutput: An integer, the smallest factorial that is not less than n.\n\nExample:\n\n```\nleastFactorial(17) // 24\n```\n\n```\nleastFactorial(5) // 6\n```\n\n```\nleastFactorial(109) // 120\n```",
   "tests": [
     {
       "input": 17,

@@ -1,5 +1,5 @@
 {
-  "description": "### SubtractionByRegrouping\n\nThis Java program performs subtraction by regrouping. The program takes two integers, 'minuend' and 'subtrahend', and subtracts the 'subtrahend' from the 'minuend' using the regrouping method. The function then returns the result in the form of an array of integers.\n\nInput: Two integers\nOutput: An array of integers\n\nExample:\n\n```js subtractionByRegrouping(2024, 1234) // [4, 12, 9, 1] ```",
+  "description": "### SubtractionByRegrouping\n\nThis Java program performs subtraction by regrouping. The program takes two integers, 'minuend' and 'subtrahend', and subtracts the 'subtrahend' from the 'minuend' using the regrouping method. The function then returns the result in the form of an array of integers.\n\nInput: Two integers\nOutput: An array of integers\n\nExample:\n\n``` subtractionByRegrouping(2024, 1234) // [4, 12, 9, 1] ```",
   "tests": [
     {
       "input": {

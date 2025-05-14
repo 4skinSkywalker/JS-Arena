@@ -1,5 +1,5 @@
 {
-  "description": "### Is Diagonal Matrix\n\nThe function `isDiagonalMatrix(matrix)` checks if the given matrix is a diagonal matrix. A diagonal matrix is a square matrix in which the entries outside the main diagonal are all zero. The diagonal entries themselves may be zero.\n\nInput: A multi-dimensional array representing a matrix \nOutput: Returns `true` if the matrix is a diagonal matrix, otherwise returns `false`.\n\nExample:\n\n```js isDiagonalMatrix([[1,0,0], [0,5,0], [0,0,3]]) // true ```",
+  "description": "### Is Diagonal Matrix\n\nThe function `isDiagonalMatrix(matrix)` checks if the given matrix is a diagonal matrix. A diagonal matrix is a square matrix in which the entries outside the main diagonal are all zero. The diagonal entries themselves may be zero.\n\nInput: A multi-dimensional array representing a matrix \nOutput: Returns `true` if the matrix is a diagonal matrix, otherwise returns `false`.\n\nExample:\n\n``` isDiagonalMatrix([[1,0,0], [0,5,0], [0,0,3]]) // true ```",
   "tests": [
     {
       "input": [[1,0,0], [0,5,0], [0,0,3]],

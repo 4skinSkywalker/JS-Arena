@@ -1,5 +1,5 @@
 {
-  "description": "### Sort By Length\n\nThis function sorts an array of strings by their length. The sorting order should be from shortest to longest.\n\nInput: An array of strings\nOutput: A sorted array from shortest to longest\n\nExample:\n\n```js sortByLength([\"abc\", \"\", \"aaa\", \"a\", \"zz\"]) // [\"\", \"a\", \"zz\", \"abc\", \"aaa\"] ```",
+  "description": "### Sort By Length\n\nThis function sorts an array of strings by their length. The sorting order should be from shortest to longest.\n\nInput: An array of strings\nOutput: A sorted array from shortest to longest\n\nExample:\n\n``` sortByLength([\"abc\", \"\", \"aaa\", \"a\", \"zz\"]) // [\"\", \"a\", \"zz\", \"abc\", \"aaa\"] ```",
   "tests": [
     {
       "input": ["abc", "", "aaa", "a", "zz"],

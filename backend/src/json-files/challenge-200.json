@@ -1,5 +1,5 @@
 {
-  "description": "### equationSolutions\n\nYou must find the count of all pairs `(a, b)` in range between `l` and `r` (inclusive) that satisfy the equation `a^3 == b^2`.\n\nInput: Two integers `l` and `r` (both inclusive) as the range of possible values for a and b.\nOutput: A single integer representing the number of satisfying pairs.\n\nExample:\n\n```js equationSolutions(1, 4) // 1 ```",
+  "description": "### equationSolutions\n\nYou must find the count of all pairs `(a, b)` in range between `l` and `r` (inclusive) that satisfy the equation `a^3 == b^2`.\n\nInput: Two integers `l` and `r` (both inclusive) as the range of possible values for a and b.\nOutput: A single integer representing the number of satisfying pairs.\n\nExample:\n\n``` equationSolutions(1, 4) // 1 ```",
   "tests": [
     {
       "input": [1, 4],

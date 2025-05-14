@@ -1,5 +1,5 @@
 {
-  "description": "### Hailstone Sequence\n\nThe task is to write a function called `hailstoneSequence(n)`. This function gets a positive integer as the parameter and calculates the number of steps needed for the hailstone sequence to reach 1 for the provided number.\n\nThe hailstone sequence starts with an integer n and repeatedly applies the following steps:\n\n- If n is odd, multiply it by 3 and add 1\n- If n is even, divide it by 2\n\nThis sequence continues until n becomes 1.\n\nInput: A positive integer n.\nOutput: The number of steps to reach 1.\n\nExample:\n\n```js\nhailstoneSequence(27) // 111\n```\n",
+  "description": "### Hailstone Sequence\n\nThe task is to write a function called `hailstoneSequence(n)`. This function gets a positive integer as the parameter and calculates the number of steps needed for the hailstone sequence to reach 1 for the provided number.\n\nThe hailstone sequence starts with an integer n and repeatedly applies the following steps:\n\n- If n is odd, multiply it by 3 and add 1\n- If n is even, divide it by 2\n\nThis sequence continues until n becomes 1.\n\nInput: A positive integer n.\nOutput: The number of steps to reach 1.\n\nExample:\n\n```\nhailstoneSequence(27) // 111\n```\n",
   "tests": [
     {
       "input": 5,

@@ -1,5 +1,5 @@
 {
-  "description": "### Reverse Nodes In K Groups\n\nGiven a linked list l, reverse its nodes k at a time and return the modified list. k is a positive integer that is less than or equal to the length of l. If the number of nodes in the linked list is not a multiple of k, then the nodes that are left out at the end should remain as-is.\n\nInput: Given parameters are the root of the linked list l as ListNode<Integer> and an integer k.\nOutput: Should return a ListNode<Integer> which is the root of the modified list.\n\nExample:\n\n```js reverseNodesInKGroups(ListNode<Integer>{1,2,3,4,5}, 2) // ListNode<Integer>{2,1,4,3,5} ```",
+  "description": "### Reverse Nodes In K Groups\n\nGiven a linked list l, reverse its nodes k at a time and return the modified list. k is a positive integer that is less than or equal to the length of l. If the number of nodes in the linked list is not a multiple of k, then the nodes that are left out at the end should remain as-is.\n\nInput: Given parameters are the root of the linked list l as ListNode<Integer> and an integer k.\nOutput: Should return a ListNode<Integer> which is the root of the modified list.\n\nExample:\n\n``` reverseNodesInKGroups(ListNode<Integer>{1,2,3,4,5}, 2) // ListNode<Integer>{2,1,4,3,5} ```",
   "tests": [
     {
       "input": {"l": [1, 2, 3, 4, 5], "k": 2},

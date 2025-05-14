@@ -1,5 +1,5 @@
 {
-  "description": "### Magical Well\n\nYou are standing at a magical well. It has two positive integers written on it: a and b. Each time you cast a coin into the well, it gives you a * a and b and then both a and b increase by 1. You have n coins. How much money will you have after throwing n coins into the well?\n\nInput: Three arguments. The initial integers a and b, and the number of coins n (1 ≤ a, b, n ≤ 1000).\nOutput: The amount of money you will get (as an integer).\n\nExample:\n\n```js magicalWell(1, 2, 2) // 8 ```",
+  "description": "### Magical Well\n\nYou are standing at a magical well. It has two positive integers written on it: a and b. Each time you cast a coin into the well, it gives you a * a and b and then both a and b increase by 1. You have n coins. How much money will you have after throwing n coins into the well?\n\nInput: Three arguments. The initial integers a and b, and the number of coins n (1 ≤ a, b, n ≤ 1000).\nOutput: The amount of money you will get (as an integer).\n\nExample:\n\n``` magicalWell(1, 2, 2) // 8 ```",
   "tests": [
     {
       "input": [1, 2, 2],

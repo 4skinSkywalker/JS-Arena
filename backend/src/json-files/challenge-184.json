@@ -1,5 +1,5 @@
 {
-  "description": "### FindHyperlink\n\nThis problem asks to find and return the hyperlink value from given HTML string which contains <a> tag. The hyperlink value is defined as the value inside href attribute of <a> tag.\n\nInput: A string containing HTML with a single <a> tag\nOutput: A string containing the hyperlink value from the <a> tag's href attribute. If more than one <a> tag is present, return the hyperlink of the first <a> tag. If no valid hyperlink exists, return an empty string.\n\nExample:\n\n```js findHyperlink(\"<a href=\\\"http://www.example.org\\\">Example1</a>\") // \"http://www.example.org\" ```",
+  "description": "### FindHyperlink\n\nThis problem asks to find and return the hyperlink value from given HTML string which contains <a> tag. The hyperlink value is defined as the value inside href attribute of <a> tag.\n\nInput: A string containing HTML with a single <a> tag\nOutput: A string containing the hyperlink value from the <a> tag's href attribute. If more than one <a> tag is present, return the hyperlink of the first <a> tag. If no valid hyperlink exists, return an empty string.\n\nExample:\n\n``` findHyperlink(\"<a href=\\\"http://www.example.org\\\">Example1</a>\") // \"http://www.example.org\" ```",
   "tests": [
     {
       "input": "<a href=\"http://www.example.org\">Example1</a>",

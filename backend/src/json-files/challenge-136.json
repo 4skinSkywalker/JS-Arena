@@ -1,5 +1,5 @@
 {
-  "description": "### IsUnstablePair\n\nThis program checks if two input strings are unstable pairs. An unstable pair is set where filename1 < filename2, but when both are converted to upper case, filename1 > filename2, or vice versa. The output of the function is a boolean representing whether the input pair is unstable or not.\n\nInput: Two strings\nOutput: Boolean\n\nExample:\n\n```js isUnstablePair(\"aa\", \"AAB\") // true ```",
+  "description": "### IsUnstablePair\n\nThis program checks if two input strings are unstable pairs. An unstable pair is set where filename1 < filename2, but when both are converted to upper case, filename1 > filename2, or vice versa. The output of the function is a boolean representing whether the input pair is unstable or not.\n\nInput: Two strings\nOutput: Boolean\n\nExample:\n\n``` isUnstablePair(\"aa\", \"AAB\") // true ```",
   "tests": [
     {
       "input": { "filename1": "aa", "filename2": "AAB" },

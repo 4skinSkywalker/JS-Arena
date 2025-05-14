@@ -1,5 +1,5 @@
 {
-  "description": "### SmallestMultiple\n\nThis program finds the smallest multiple that is evenly divisible by all numbers in the given range. The function smallestMultiple(left, right) takes two integers as inputs representing the left and right boundaries of the range respectively.\n\nInput: Two integers left and right (1 ≤ left ≤ right ≤ 10)\nOutput: An integer representing the smallest multiple evenly divisible by all numbers in the range from 'left' to 'right'.\n\nExample:\n\n```js smallestMultiple(2, 4) // 12 ```",
+  "description": "### SmallestMultiple\n\nThis program finds the smallest multiple that is evenly divisible by all numbers in the given range. The function smallestMultiple(left, right) takes two integers as inputs representing the left and right boundaries of the range respectively.\n\nInput: Two integers left and right (1 ≤ left ≤ right ≤ 10)\nOutput: An integer representing the smallest multiple evenly divisible by all numbers in the range from 'left' to 'right'.\n\nExample:\n\n``` smallestMultiple(2, 4) // 12 ```",
   "tests": [
     {
       "input": {"left": 2, "right": 4},

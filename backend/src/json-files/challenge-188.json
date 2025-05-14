@@ -1,5 +1,5 @@
 {
-  "description": "### Fibonacci Sum\n\nThe function, `fibonacciSum`, is used for computing a list of Fibonacci numbers that adds up to the input number.\n\nInput: An integer `n`\nOutput: An array of Fibonacci numbers that sum up to `n`\n\nExample:\n\n```js fibonacciSum(20); // [2, 5, 13] ```",
+  "description": "### Fibonacci Sum\n\nThe function, `fibonacciSum`, is used for computing a list of Fibonacci numbers that adds up to the input number.\n\nInput: An integer `n`\nOutput: An array of Fibonacci numbers that sum up to `n`\n\nExample:\n\n``` fibonacciSum(20); // [2, 5, 13] ```",
   "tests": [
     {
       "input": 20,

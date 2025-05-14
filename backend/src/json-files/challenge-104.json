@@ -1,5 +1,5 @@
 {
-  "description": "### MaximumSubsetProduct\n\nYou are given an array of integers. You need to choose a subset of these integers such that their product is maximized. Return the maximum achievable product. If the maximum product is less than 1, return 1.\n\nInput: An array of integers\nOutput: An integer - the maximum product achievable from the subset of integers or 1 if it's less than 1\n\nExample:\n\n```js maximumSubsetProduct([1, -1, -1, 1]) // 1 ```",
+  "description": "### MaximumSubsetProduct\n\nYou are given an array of integers. You need to choose a subset of these integers such that their product is maximized. Return the maximum achievable product. If the maximum product is less than 1, return 1.\n\nInput: An array of integers\nOutput: An integer - the maximum product achievable from the subset of integers or 1 if it's less than 1\n\nExample:\n\n``` maximumSubsetProduct([1, -1, -1, 1]) // 1 ```",
   "tests": [
     {
       "input": [[1, 2, -2, -3, 3, 5]],

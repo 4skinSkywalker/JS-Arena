@@ -1,5 +1,5 @@
 {
-  "description": "### LargestDistance\n\nA program that receives an array of numbers and calculates the maximum absolute distance between numbers in the array, considering each pair of points as a coordinate (x,y) and stepping two by two. The absolute difference is computed either between Xs or Ys.\n\nInput: An array of integers\nOutput: An integer represents the maximum distance\n\nExample:\n\n```js largestDistance([7, 6, 6, 8, 1, 2, 8, 6]) // 7 ```",
+  "description": "### LargestDistance\n\nA program that receives an array of numbers and calculates the maximum absolute distance between numbers in the array, considering each pair of points as a coordinate (x,y) and stepping two by two. The absolute difference is computed either between Xs or Ys.\n\nInput: An array of integers\nOutput: An integer represents the maximum distance\n\nExample:\n\n``` largestDistance([7, 6, 6, 8, 1, 2, 8, 6]) // 7 ```",
   "tests": [
     {
       "input": [7, 6, 6, 8, 1, 2, 8, 6],

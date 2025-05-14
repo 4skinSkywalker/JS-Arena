@@ -1,5 +1,5 @@
 {
-  "description": "### ExtraNumber\n\nYou're given three integers, a, b and c. It is guaranteed that two of these integers are the same, but the third is different. Find the third one.\n\nInput: Three integers a, b and c, where 1 ≤ a, b, c ≤ 10⁹.\nOutput: The third different integer.\n\nExample:\n\n```js extraNumber(2, 7, 2) // 7 ```",
+  "description": "### ExtraNumber\n\nYou're given three integers, a, b and c. It is guaranteed that two of these integers are the same, but the third is different. Find the third one.\n\nInput: Three integers a, b and c, where 1 ≤ a, b, c ≤ 10⁹.\nOutput: The third different integer.\n\nExample:\n\n``` extraNumber(2, 7, 2) // 7 ```",
   "tests": [
     {
       "input": [2, 7, 2],

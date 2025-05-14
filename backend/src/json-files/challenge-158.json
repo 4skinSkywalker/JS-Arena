@@ -1,5 +1,5 @@
 {
-  "description": "### Inside Circle\n\nThis function checks whether a point is within a certain radius of a center point.\n\nInput: A list for the point [pointX, pointY], a list for the center [centerX, centerY], and a number for the radius.\nOutput: It returns true if the point is within the radius of the center point including on the radius line, otherwise false.\n\nExample:\n\n```js insideCircle([1, 1], [2, 2], 1) // false ```",
+  "description": "### Inside Circle\n\nThis function checks whether a point is within a certain radius of a center point.\n\nInput: A list for the point [pointX, pointY], a list for the center [centerX, centerY], and a number for the radius.\nOutput: It returns true if the point is within the radius of the center point including on the radius line, otherwise false.\n\nExample:\n\n``` insideCircle([1, 1], [2, 2], 1) // false ```",
   "tests": [
     {
       "input": [[1, 1], [2, 2], 1],

@@ -6,7 +6,8 @@ export const DEFAULT_EDITOR_CONTENT = `/**
  */
 
 function solution(input) {
-  // TODO: Implement your logic here.
-  console.warn("Solution not implemented");
-  return input;
+    // TODO: Implement your logic here.
+    console.warn("Solution not implemented");
+    console.log(input);
+    return input;
 }`;

@@ -1,5 +1,5 @@
 {
-  "description": "### FibonacciNumber\n\nImplement a method that calculates the nth Fibonacci number.\n\nInput: An integer `n` (1 <= n <= 30).\nOutput: The nth Fibonacci number.\n\nExample:\n\n```js fibonacciNumber(7) // 13 ```",
+  "description": "### FibonacciNumber\n\nImplement a method that calculates the nth Fibonacci number.\n\nInput: An integer `n` (1 <= n <= 30).\nOutput: The nth Fibonacci number.\n\nExample:\n\n``` fibonacciNumber(7) // 13 ```",
   "tests": [
     {
       "input": 2,

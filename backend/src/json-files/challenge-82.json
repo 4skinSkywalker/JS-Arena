@@ -1,5 +1,5 @@
 {
-  "description": "### OneTwoMany\n\nA method that converts an integer to a specific string representation. It should work as follows:\n\nIf the integer is 1, convert it to 'one'.\nIf the integer is 2, convert it to 'two'.\nIf the integer is greater than 2, convert it to 'many'.\n\nInput: A single integer, n.\nOutput: A single string that represents the input integer according to the rules given.\n\nExample:\n\n```js oneTwoMany(3) // 'many' ```",
+  "description": "### OneTwoMany\n\nA method that converts an integer to a specific string representation. It should work as follows:\n\nIf the integer is 1, convert it to 'one'.\nIf the integer is 2, convert it to 'two'.\nIf the integer is greater than 2, convert it to 'many'.\n\nInput: A single integer, n.\nOutput: A single string that represents the input integer according to the rules given.\n\nExample:\n\n``` oneTwoMany(3) // 'many' ```",
   "tests": [
     {
       "input": 20,

@@ -1,5 +1,5 @@
 {
-  "description": "### PrimeFactors2\n\nA function that takes in a positive integer and returns a sorted array of its prime factors.\n\nInput: A single positive integer.\nOutput: An array of prime factors of the given integer, sorted in ascending order.\n\nExample:\n\n```js primeFactors2(100) // [2, 5] ```",
+  "description": "### PrimeFactors2\n\nA function that takes in a positive integer and returns a sorted array of its prime factors.\n\nInput: A single positive integer.\nOutput: An array of prime factors of the given integer, sorted in ascending order.\n\nExample:\n\n``` primeFactors2(100) // [2, 5] ```",
   "tests": [
     {
       "input": 100,

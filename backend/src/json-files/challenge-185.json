@@ -1,5 +1,5 @@
 {
-  "description": "### FindEqual\n\nIn an array of integers, this function determines whether there are at least two equal elements.\n\nInput: An array of integers (`sequence`).\nOutput: A boolean value indicating whether there are at least two equal elements in the array.\n\nExample:\n\n```js findEqual([1, 3, 2, 1]) // true ```",
+  "description": "### FindEqual\n\nIn an array of integers, this function determines whether there are at least two equal elements.\n\nInput: An array of integers (`sequence`).\nOutput: A boolean value indicating whether there are at least two equal elements in the array.\n\nExample:\n\n``` findEqual([1, 3, 2, 1]) // true ```",
   "tests": [
     {
       "input": [1, 3, 2, 1],

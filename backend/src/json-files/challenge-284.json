@@ -1,5 +1,5 @@
 {
-"description": "### AdjacentElementsProduct\n\nGiven an array of integers, find the pair of adjacent elements that has the largest product and return that product.\n\nInput: An array of integers containing at least two elements.\nOutput: The largest product of adjacent elements in the array.\n\nExample:\n\n```js adjacentElementsProduct([3, 6, -2, -5, 7, 3]) // 21 ```",
+"description": "### AdjacentElementsProduct\n\nGiven an array of integers, find the pair of adjacent elements that has the largest product and return that product.\n\nInput: An array of integers containing at least two elements.\nOutput: The largest product of adjacent elements in the array.\n\nExample:\n\n``` adjacentElementsProduct([3, 6, -2, -5, 7, 3]) // 21 ```",
 "tests": [
   {
     "input": [[3, 6, -2, -5, 7, 3]],

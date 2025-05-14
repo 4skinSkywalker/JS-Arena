@@ -1,5 +1,5 @@
 {
-  "description": "### PhoneCall\n\nThe method phoneCall takes in four integers representing the costs of certain minutes of a phone call and the total amount of money and returns the total minutes of phone call that can be made within the budget.\n\nInput: Four integers min1, min2_10, min11, s where min1 represents cost of first minute, min2_10 is the cost of second to tenth minutes, min11 is the cost after tenth minute and s is the total amount of money. (0 ≤ min1 ≤ 10, 0 ≤ min2_10 ≤ 10, 0 ≤ min11 ≤ 10, 1 ≤ s ≤ 30)\nOutput: An integer represents the total minutes of phone call the user can make.\n\nExample:\n\n```js phoneCall(3, 1, 2, 20) // 14 ```",
+  "description": "### PhoneCall\n\nThe method phoneCall takes in four integers representing the costs of certain minutes of a phone call and the total amount of money and returns the total minutes of phone call that can be made within the budget.\n\nInput: Four integers min1, min2_10, min11, s where min1 represents cost of first minute, min2_10 is the cost of second to tenth minutes, min11 is the cost after tenth minute and s is the total amount of money. (0 ≤ min1 ≤ 10, 0 ≤ min2_10 ≤ 10, 0 ≤ min11 ≤ 10, 1 ≤ s ≤ 30)\nOutput: An integer represents the total minutes of phone call the user can make.\n\nExample:\n\n``` phoneCall(3, 1, 2, 20) // 14 ```",
   "tests": [
     {
       "input": [3, 1, 2, 20],

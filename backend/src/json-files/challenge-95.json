@@ -1,5 +1,5 @@
 {
-  "description": "### Mirror Bits\n\nThe function 'mirrorBits' receives an integer 'a' as parameter and returns the binary representation of 'a' reversed and converted back to integer.\n\nInput: An integer 'a' (1 ≤ a ≤ 10^5 )\nOutput: An integer which represents the mirrored bit version of 'a'.\n\nExample:\n\n```js mirrorBits(97) // 67 ```",
+  "description": "### Mirror Bits\n\nThe function 'mirrorBits' receives an integer 'a' as parameter and returns the binary representation of 'a' reversed and converted back to integer.\n\nInput: An integer 'a' (1 ≤ a ≤ 10^5 )\nOutput: An integer which represents the mirrored bit version of 'a'.\n\nExample:\n\n``` mirrorBits(97) // 67 ```",
   "tests": [
     {
       "input": 97,

@@ -1,5 +1,5 @@
 {
-  "description": "### Factorial\n\nThis challenge is about calculating a factorial of a number. Factorial of a non-negative integer n is the product of all positive integers less than or equal to n. Note that the factorial of zero is defined to be one.\n\nInput: A single integer 'n' representing the number (0 <= n <= 10).\nOutput: Should return an integer which is the factorial of the input number.\n\nExample:\n\n```js factorial(5) // 120 ```",
+  "description": "### Factorial\n\nThis challenge is about calculating a factorial of a number. Factorial of a non-negative integer n is the product of all positive integers less than or equal to n. Note that the factorial of zero is defined to be one.\n\nInput: A single integer 'n' representing the number (0 <= n <= 10).\nOutput: Should return an integer which is the factorial of the input number.\n\nExample:\n\n``` factorial(5) // 120 ```",
   "tests": [
     {
       "input": 5,

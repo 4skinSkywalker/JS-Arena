@@ -1,5 +1,5 @@
 {
-  "description": "### ColumnTitle\n\nThe program converts a given number into a title comprised of alphabets where 1 corresponds to 'A', 26 to 'Z', 27 to 'AA' and so on similar to the Excel column titles. The input number is in the range of [1, 1,000,000,000].\n\nInput: Single integer number.\nOutput: String representing the title.\n\nExample:\n\n```js columnTitle(27) // AA ```",
+  "description": "### ColumnTitle\n\nThe program converts a given number into a title comprised of alphabets where 1 corresponds to 'A', 26 to 'Z', 27 to 'AA' and so on similar to the Excel column titles. The input number is in the range of [1, 1,000,000,000].\n\nInput: Single integer number.\nOutput: String representing the title.\n\nExample:\n\n``` columnTitle(27) // AA ```",
   "tests": [
     {
       "input": 27,

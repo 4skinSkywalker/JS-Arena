@@ -1,5 +1,5 @@
 {
-  "description": "### SortByHeight\n\nThis problem requires you to sort an array, ignoring -1's. Any position in the array containing a -1 should be left unchanged.\n\nInput: An array of integers containing one or more -1's, and where non-negative numbers are not sorted.\nOutput: A sorted array where the -1's are in their original positions.\n\nExample:\n\n```js\nsortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]) // [-1, 150, 160, 170, -1, -1, 180, 190] ```",
+  "description": "### SortByHeight\n\nThis problem requires you to sort an array, ignoring -1's. Any position in the array containing a -1 should be left unchanged.\n\nInput: An array of integers containing one or more -1's, and where non-negative numbers are not sorted.\nOutput: A sorted array where the -1's are in their original positions.\n\nExample:\n\n```\nsortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]) // [-1, 150, 160, 170, -1, -1, 180, 190] ```",
   "tests": [
     {
       "input": [[-1, 150, 190, 170, -1, -1, 160, 180]],

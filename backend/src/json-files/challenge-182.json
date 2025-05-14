@@ -1,5 +1,5 @@
 {
-  "description": "### FindTheRemainder\n\nThe function `findTheRemainder` accepts two numbers as input and returns the remainder of the first number divided by the second number. It's implemented in Java and makes use of the modulo operator.\n\nInput: Two integers a and b\nOutput: An integer representing the calculated remainder.\n\nExample:\n\n```js findTheRemainder(5, 3); // 2 ```",
+  "description": "### FindTheRemainder\n\nThe function `findTheRemainder` accepts two numbers as input and returns the remainder of the first number divided by the second number. It's implemented in Java and makes use of the modulo operator.\n\nInput: Two integers a and b\nOutput: An integer representing the calculated remainder.\n\nExample:\n\n``` findTheRemainder(5, 3); // 2 ```",
   "tests": [
     {
       "input": {

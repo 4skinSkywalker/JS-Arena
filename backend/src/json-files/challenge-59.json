@@ -1,5 +1,5 @@
 {
-  "description": "### RegularMonths\n\nGiven a current month as a string (format MM-YYYY), you need to return the nearest future month(s) starting from the first day of the next month which will contain exactly 4 weeks (28 days). Mid leap years consider February not to have 28 days.\n\nInput: A string of the format 'MM-YYYY' \nOutput: A string of the format 'MM-YYYY'.\n\nExample:\n\n```js regularMonths(\"02-2016\") // \"08-2016\" ```",
+  "description": "### RegularMonths\n\nGiven a current month as a string (format MM-YYYY), you need to return the nearest future month(s) starting from the first day of the next month which will contain exactly 4 weeks (28 days). Mid leap years consider February not to have 28 days.\n\nInput: A string of the format 'MM-YYYY' \nOutput: A string of the format 'MM-YYYY'.\n\nExample:\n\n``` regularMonths(\"02-2016\") // \"08-2016\" ```",
   "tests": [
     {
       "input": "02-2016",

@@ -1,5 +1,5 @@
 {
-  "description": "### Elections Winners\n\nYour task is to find out how many potential winners there are amongst the candidates, given an array of candidates votes and the number of additional votes each candidate can get.\n\nInput: Two parameters, an array of integer votes, where votes[i] is the vote the i-th candidate received,  and an integer k, the number of additional votes.\nOutput: Return the number of candidates who still have a chance to win the election.\n\nExample:\n\n```js electionsWinners([2, 3, 5, 2], 3) // 2 ```",
+  "description": "### Elections Winners\n\nYour task is to find out how many potential winners there are amongst the candidates, given an array of candidates votes and the number of additional votes each candidate can get.\n\nInput: Two parameters, an array of integer votes, where votes[i] is the vote the i-th candidate received,  and an integer k, the number of additional votes.\nOutput: Return the number of candidates who still have a chance to win the election.\n\nExample:\n\n``` electionsWinners([2, 3, 5, 2], 3) // 2 ```",
   "tests": [
     {
       "input": [[2, 3, 5, 2], 3],

@@ -1,5 +1,5 @@
 {
-  "description": "### Add Two Numbers\n\nThis function takes two numbers as inputs and returns their sum.\n\nInput: Two integer or float numbers\nOutput: Sum of the two numbers\n\nExample:\n\n```js add(1, 2) // 3 ```",
+  "description": "### Add Two Numbers\n\nThis function takes two numbers as inputs and returns their sum.\n\nInput: Two integer or float numbers\nOutput: Sum of the two numbers\n\nExample:\n\n``` add(1, 2) // 3 ```",
   "tests": [
     {
       "input": [1, 2],

@@ -1,5 +1,5 @@
 {
-  "description": "### countSumOfTwoRepresentations3\n\nThe function countSumOfTwoRepresentations3 takes three integers as arguments `n`, `l`, and `r`. It returns the number of ways to represent `n` as a sum of two numbers that range between `l` and `r`.\n\nInput: Three integers, `n`, `l`, and `r`.\nOutput: An integer representing the count of ways to represent `n` as a sum.\n\nExample:\n\n```js countSumOfTwoRepresentations3(6, 2, 4) // 2 ```",
+  "description": "### countSumOfTwoRepresentations3\n\nThe function countSumOfTwoRepresentations3 takes three integers as arguments `n`, `l`, and `r`. It returns the number of ways to represent `n` as a sum of two numbers that range between `l` and `r`.\n\nInput: Three integers, `n`, `l`, and `r`.\nOutput: An integer representing the count of ways to represent `n` as a sum.\n\nExample:\n\n``` countSumOfTwoRepresentations3(6, 2, 4) // 2 ```",
   "tests": [
     {
       "input": [6, 2, 4],

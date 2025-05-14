@@ -1,5 +1,5 @@
 {
-  "description": "### Surpasser Count\n\nGiven an array of numbers, a 'surpasser' of a number is defined as the count of numbers to its right that are greater. Write a function 'surpasserCount' which takes an array of integers and returns the count of all surpassers in the array.\n\nInput: An array of integers.\nOutput: An integer representing the total count of surpassers.\n\nExample:\n\n```js surpasserCount([1, 2, 3, 4, 5]) // 10 ```",
+  "description": "### Surpasser Count\n\nGiven an array of numbers, a 'surpasser' of a number is defined as the count of numbers to its right that are greater. Write a function 'surpasserCount' which takes an array of integers and returns the count of all surpassers in the array.\n\nInput: An array of integers.\nOutput: An integer representing the total count of surpassers.\n\nExample:\n\n``` surpasserCount([1, 2, 3, 4, 5]) // 10 ```",
   "tests": [
     {
       "input": [1, 2, 3, 4, 5],

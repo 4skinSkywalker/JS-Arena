@@ -1,5 +1,5 @@
 {
-  "description": "### SumOfDivisors\n\nThis program calculates the sum of all divisors of a given number.\n\nInput: An integer n (1 <= n <= 10000).\nOutput: An integer that represents the sum of all divisors of the input n.\n\nExample:\n\n```js sumOfDivisors(12) // 28 ```",
+  "description": "### SumOfDivisors\n\nThis program calculates the sum of all divisors of a given number.\n\nInput: An integer n (1 <= n <= 10000).\nOutput: An integer that represents the sum of all divisors of the input n.\n\nExample:\n\n``` sumOfDivisors(12) // 28 ```",
   "tests": [
     {
       "input": 12,

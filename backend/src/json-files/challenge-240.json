@@ -1,5 +1,5 @@
 {
-  "description": "### Concatenate Arrays\n\nCreate a function that concatenates two arrays and return the resulting array. The function is expected to take in two integer arrays and will simply combine both into one array.\n\nInput: Two arrays (a, b)\nOutput: A new array containing all the elements from a and b\n\nExample:\n\n```js concatenateArrays([1, 2], [3, 4]) // [1, 2, 3, 4] ```",
+  "description": "### Concatenate Arrays\n\nCreate a function that concatenates two arrays and return the resulting array. The function is expected to take in two integer arrays and will simply combine both into one array.\n\nInput: Two arrays (a, b)\nOutput: A new array containing all the elements from a and b\n\nExample:\n\n``` concatenateArrays([1, 2], [3, 4]) // [1, 2, 3, 4] ```",
   "tests": [
     {
       "input": [[2, 2, 1], [10, 11]],

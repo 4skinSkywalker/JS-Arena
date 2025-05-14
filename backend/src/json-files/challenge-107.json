@@ -1,5 +1,5 @@
 {
-  "description": "### maxDigit\n\nFind the maximum digit in a given integer.\n\nInput: A non-negative integer n.\nOutput: The maximum digit in the given integer n.\n\nExample:\n\n```js maxDigit(132) // 3 ```",
+  "description": "### maxDigit\n\nFind the maximum digit in a given integer.\n\nInput: A non-negative integer n.\nOutput: The maximum digit in the given integer n.\n\nExample:\n\n``` maxDigit(132) // 3 ```",
   "tests": [
     {
       "input": 111,

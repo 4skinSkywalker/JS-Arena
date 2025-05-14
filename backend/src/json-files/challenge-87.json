@@ -1,5 +1,5 @@
 {
-  "description": "### No Odd Digits\n\nCreate a function that takes a number as an argument and returns a new number that has no odd digits.\n\nInput: A number containing even and odd digits.\nOutput: A new number that contains only the even digits from the input number. If the input number is odd, return 0.\n\nExample:\n\n```js noOddDigits(12345678) // 2468 ```",
+  "description": "### No Odd Digits\n\nCreate a function that takes a number as an argument and returns a new number that has no odd digits.\n\nInput: A number containing even and odd digits.\nOutput: A new number that contains only the even digits from the input number. If the input number is odd, return 0.\n\nExample:\n\n``` noOddDigits(12345678) // 2468 ```",
   "tests": [
     {
       "input": 12345678,

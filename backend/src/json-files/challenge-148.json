@@ -1,5 +1,5 @@
 {
-  "description": "### IsInRange\n\nThe problem requires to check if a number is within a certain range. The function `isInRange(input1, input2, input3)` takes 3 integers as input: `input1`, `input2` and `input3`. The function checks if `input2` is within the range [input1, input3] and returns a boolean result.\n\nInput: Three integers, `input1`, `input2`, and `input3`\nOutput: A boolean value\n\nExample:\n\n```js\nisInRange(2, 1, 22); // true\n```\n```js\nisInRange(3, 0, 12); // false\n```",
+  "description": "### IsInRange\n\nThe problem requires to check if a number is within a certain range. The function `isInRange(input1, input2, input3)` takes 3 integers as input: `input1`, `input2` and `input3`. The function checks if `input2` is within the range [input1, input3] and returns a boolean result.\n\nInput: Three integers, `input1`, `input2`, and `input3`\nOutput: A boolean value\n\nExample:\n\n```\nisInRange(2, 1, 22); // true\n```\n```\nisInRange(3, 0, 12); // false\n```",
   "tests": [
     {
       "input": [3, 0, 12],

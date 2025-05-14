@@ -1,5 +1,5 @@
 {
-  "description": "### PrimeFactors\n\nThis program receives an integer and returns an array of its prime factors.\n\nInput: An integer (n)\nOutput: An array with the prime factors of the input integer\n\nExample:\n\n```js primeFactors(100) // [2, 2, 5, 5] ```",
+  "description": "### PrimeFactors\n\nThis program receives an integer and returns an array of its prime factors.\n\nInput: An integer (n)\nOutput: An array with the prime factors of the input integer\n\nExample:\n\n``` primeFactors(100) // [2, 2, 5, 5] ```",
   "tests": [
     {
       "input": 100,

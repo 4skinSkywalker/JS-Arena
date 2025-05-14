@@ -1,5 +1,5 @@
 {
-  "description": "### Only Even Numbers\n\nWrite a function onlyEvenNumbers that takes two integers l and r as inputs. The function should generate an array of integers from l to r (inclusive) and return only the even numbers from this array.\n\nInput: Two integers l, r (1 ≤ l ≤ r ≤ 1000).\nOutput: An array of even integers from l to r (inclusive).\n\nExample:\n\n```js onlyEvenNumbers(5, 10); // [6, 8, 10] ```",
+  "description": "### Only Even Numbers\n\nWrite a function onlyEvenNumbers that takes two integers l and r as inputs. The function should generate an array of integers from l to r (inclusive) and return only the even numbers from this array.\n\nInput: Two integers l, r (1 ≤ l ≤ r ≤ 1000).\nOutput: An array of even integers from l to r (inclusive).\n\nExample:\n\n``` onlyEvenNumbers(5, 10); // [6, 8, 10] ```",
   "tests": [
     {
       "input": {

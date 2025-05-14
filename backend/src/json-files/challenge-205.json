@@ -1,5 +1,5 @@
 {
-  "description": "### DivNumber\n\nThe class DivNumber contains a method divNumber which takes three arguments, k (an integer), l (an integer), and r (an integer). It returns the count of numbers between l and r (inclusive) that have exactly k divisors.\n\nInput: Three integers k, l and r where (1 ≤ k < r ≤ 10000) and (1 ≤ l < r ≤ 10000).\nOutput: Returns an integer n, which is the count of numbers.\n\nExample:\n\n```js divNumber(3, 2, 49) // returns 4 ```",
+  "description": "### DivNumber\n\nThe class DivNumber contains a method divNumber which takes three arguments, k (an integer), l (an integer), and r (an integer). It returns the count of numbers between l and r (inclusive) that have exactly k divisors.\n\nInput: Three integers k, l and r where (1 ≤ k < r ≤ 10000) and (1 ≤ l < r ≤ 10000).\nOutput: Returns an integer n, which is the count of numbers.\n\nExample:\n\n``` divNumber(3, 2, 49) // returns 4 ```",
   "tests": [
     {
       "input": {"k": 3, "l": 2, "r": 49},

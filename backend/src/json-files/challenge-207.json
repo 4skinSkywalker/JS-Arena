@@ -1,5 +1,5 @@
 {
-  "description": "### DivisorsPairs\n\nGiven a sequence of non-zero positive integers. Your task is to find count of such pairs (A, B), in the given sequence, that there exists A, which can be evenly divided by B. Due to the problem condition it's guaranteed that A!=B.\n\nInput: A list of non-zero positive integers\nOutput: An integer representing the number of pairs.\n\nExample:\n\n```js divisorsPairs([1, 3, 2]) // 2 ```",
+  "description": "### DivisorsPairs\n\nGiven a sequence of non-zero positive integers. Your task is to find count of such pairs (A, B), in the given sequence, that there exists A, which can be evenly divided by B. Due to the problem condition it's guaranteed that A!=B.\n\nInput: A list of non-zero positive integers\nOutput: An integer representing the number of pairs.\n\nExample:\n\n``` divisorsPairs([1, 3, 2]) // 2 ```",
   "tests": [
     {
       "input": [1, 3, 2],

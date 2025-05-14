@@ -1,5 +1,5 @@
 {
-  "description": "### allLongestStrings\n\nGiven an array of strings, return an array containing all of the longest strings.\n\nInput: Array of Strings\nOutput: Array of Longest Strings\n\nExample:\n\n```js allLongestStrings([\"aba\", \"aa\", \"ad\", \"vcd\", \"aba\"]) // [\"aba\", \"vcd\",  \"aba\"] ```",
+  "description": "### allLongestStrings\n\nGiven an array of strings, return an array containing all of the longest strings.\n\nInput: Array of Strings\nOutput: Array of Longest Strings\n\nExample:\n\n``` allLongestStrings([\"aba\", \"aa\", \"ad\", \"vcd\", \"aba\"]) // [\"aba\", \"vcd\",  \"aba\"] ```",
   "tests": [
     {
       "input": ["aba", "aa", "ad", "vcd", "aba"],

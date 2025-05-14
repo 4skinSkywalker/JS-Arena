@@ -1,5 +1,5 @@
 {
-  "description": "### Crossing Sum\n\nCalculate the sum of the elements in the given matrix that belong to its `a`th row and `b`th column. The element at the intersection of the `a`th row and the `b`th column is counted twice.\n\nInput: A 2D list `matrix` represents the given matrix, two integers `a` and `b`(0 ≤ a < matrix.length, 0 ≤ b < matrix[0].length).\nOutput: Return the sum of the elements in its `a`th row and `b`th column including the intersection point twice.\n\nExample:\n\n```js crossingSum([[1,1,1,1], [2,2,2,2], [3,3,3,3]], 1, 3) // 12 ```",
+  "description": "### Crossing Sum\n\nCalculate the sum of the elements in the given matrix that belong to its `a`th row and `b`th column. The element at the intersection of the `a`th row and the `b`th column is counted twice.\n\nInput: A 2D list `matrix` represents the given matrix, two integers `a` and `b`(0 ≤ a < matrix.length, 0 ≤ b < matrix[0].length).\nOutput: Return the sum of the elements in its `a`th row and `b`th column including the intersection point twice.\n\nExample:\n\n``` crossingSum([[1,1,1,1], [2,2,2,2], [3,3,3,3]], 1, 3) // 12 ```",
   "tests": [
     {
       "input": [[[1,1,1,1], [2,2,2,2], [3,3,3,3]], 1, 3],

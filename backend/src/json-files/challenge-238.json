@@ -1,5 +1,5 @@
 {
-  "description": "### ContainsNearbyAlmostDuplicate\n\nThis java function checks if a given array of numbers, nums, has two indices i and j such that the absolute difference between nums[i] and nums[j] is less than or equals to t, and the absolute difference between i and j is less than or equals to k. It returns true in case such pair of indices exists, otherwise it returns false.\n\nInput: An array of integers nums, an integer k and another integer t.\nOutput: Returns boolean, true if the conditions are met, false otherwise.\n\nExample:\n\n```js containsNearbyAlmostDuplicate([1, 3, 1], 2, 1); // true ```",
+  "description": "### ContainsNearbyAlmostDuplicate\n\nThis java function checks if a given array of numbers, nums, has two indices i and j such that the absolute difference between nums[i] and nums[j] is less than or equals to t, and the absolute difference between i and j is less than or equals to k. It returns true in case such pair of indices exists, otherwise it returns false.\n\nInput: An array of integers nums, an integer k and another integer t.\nOutput: Returns boolean, true if the conditions are met, false otherwise.\n\nExample:\n\n``` containsNearbyAlmostDuplicate([1, 3, 1], 2, 1); // true ```",
   "tests": [
     {
       "input": {

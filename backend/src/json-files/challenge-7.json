@@ -1,5 +1,5 @@
 {
-  "description": "### VideoPart\n\nThe 'VideoPart' function receives as input the 'part' and 'total' of a video and calculates the proportion of the video you watched, expressing this proportion as a fraction reduced to lowest terms. In order to do so, it calculates the greatest common divisor (gcd) and uses it to simplify the fraction.\n\nInput: Two Strings, 'part' and 'total'. Both 'part' and 'total' are time strings of the 'hh:mm:ss' format.\nOutput: An array of two integers: the numerator and the denominator of the fraction (in that order).\n\nExample:\n\n```js videoPart(\"02:20:00\", \"07:00:00\") // [1,3] ```",
+  "description": "### VideoPart\n\nThe 'VideoPart' function receives as input the 'part' and 'total' of a video and calculates the proportion of the video you watched, expressing this proportion as a fraction reduced to lowest terms. In order to do so, it calculates the greatest common divisor (gcd) and uses it to simplify the fraction.\n\nInput: Two Strings, 'part' and 'total'. Both 'part' and 'total' are time strings of the 'hh:mm:ss' format.\nOutput: An array of two integers: the numerator and the denominator of the fraction (in that order).\n\nExample:\n\n``` videoPart(\"02:20:00\", \"07:00:00\") // [1,3] ```",
   "tests": [
     {
       "input": ["02:20:00", "07:00:00"],

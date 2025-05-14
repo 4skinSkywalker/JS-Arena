@@ -1,5 +1,5 @@
 {
-  "description": "### Halving Sum\n\nGiven a non-negative integer n, calculate the sum of all integers that result from the continuous halving of n until you reach 0.\n\nInput: n (a non-negative integer)\nOutput: The sum of the halved values.\n\nExample:\n\n```js halvingSum(25) // 47 ```",
+  "description": "### Halving Sum\n\nGiven a non-negative integer n, calculate the sum of all integers that result from the continuous halving of n until you reach 0.\n\nInput: n (a non-negative integer)\nOutput: The sum of the halved values.\n\nExample:\n\n``` halvingSum(25) // 47 ```",
   "tests": [
     {
       "input": 25,

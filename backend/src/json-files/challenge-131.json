@@ -1,5 +1,5 @@
 {
-  "description": "### KnapsackLight\n\nThis function takes as input five integers representing two different weights and their respective values, along with a maximum capacity (maximum weight that can be carried). The function then determines the maximum value that can be achieved, considering that the total weight shouldn't exceed the maximum capacity.\n\nInput: Five integers - value1, weight1, value2, weight2, maxW.\nOutput: The maximum value that can be achieved without exceeding the maximum capacity.\n\nExample:\n\n```js knapsackLight(10, 5, 6, 4, 8) // 10 ```",
+  "description": "### KnapsackLight\n\nThis function takes as input five integers representing two different weights and their respective values, along with a maximum capacity (maximum weight that can be carried). The function then determines the maximum value that can be achieved, considering that the total weight shouldn't exceed the maximum capacity.\n\nInput: Five integers - value1, weight1, value2, weight2, maxW.\nOutput: The maximum value that can be achieved without exceeding the maximum capacity.\n\nExample:\n\n``` knapsackLight(10, 5, 6, 4, 8) // 10 ```",
   "tests": [
     {
       "input": [10, 5, 6, 4, 8],

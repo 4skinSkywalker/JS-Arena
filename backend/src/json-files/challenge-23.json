@@ -1,5 +1,5 @@
 {
-  "description": "### Sum of Squares\n\nA problem that requires to compute the sum of squares from 1 to n.\n\nInput: a single integer n\nOutput: an integer, the sum of squares from 1 to n\n\nExample:\n\n```js sumOfSquares(5) // 55 ```",
+  "description": "### Sum of Squares\n\nA problem that requires to compute the sum of squares from 1 to n.\n\nInput: a single integer n\nOutput: an integer, the sum of squares from 1 to n\n\nExample:\n\n``` sumOfSquares(5) // 55 ```",
   "tests": [
     {
       "input": 5,

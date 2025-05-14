@@ -1,5 +1,5 @@
 {
-  "description": "### Sum Of Two\n\nThe function `sumOfTwo` takes in two arrays `a` and `b`, and a number `v`, it checks if there're any two numbers (one from each array) that sum equals to `v`.\n\nInput: Two integer arrays `a` and `b` and an integer `v`\nOutput: Boolean value which return true if any two numbers (one from each array) sum equals to `v`, return false otherwise.\n\nExample:\n\n```js\nsumOfTwo([1, 2, 3], [10, 20, 30, 40], 42) // True ```",
+  "description": "### Sum Of Two\n\nThe function `sumOfTwo` takes in two arrays `a` and `b`, and a number `v`, it checks if there're any two numbers (one from each array) that sum equals to `v`.\n\nInput: Two integer arrays `a` and `b` and an integer `v`\nOutput: Boolean value which return true if any two numbers (one from each array) sum equals to `v`, return false otherwise.\n\nExample:\n\n```\nsumOfTwo([1, 2, 3], [10, 20, 30, 40], 42) // True ```",
   "tests": [
     {
       "input": {

@@ -1,5 +1,5 @@
 {
-  "description": "### Second Rightmost Zero Bit\n\nThe problem is to find the position of the second rightmost zero bit in a binary representation of a given number.\n\nInput: A single integer number.\nOutput: The position of the second rightmost zero bit.\n\nExample:\n\n```js secondRightmostZeroBit(37) // 8 ```",
+  "description": "### Second Rightmost Zero Bit\n\nThe problem is to find the position of the second rightmost zero bit in a binary representation of a given number.\n\nInput: A single integer number.\nOutput: The position of the second rightmost zero bit.\n\nExample:\n\n``` secondRightmostZeroBit(37) // 8 ```",
   "tests": [
     {
       "input": 37,

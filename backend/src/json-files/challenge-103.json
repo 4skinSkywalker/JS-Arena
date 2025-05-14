@@ -1,5 +1,5 @@
 {
-  "description": "### MaxMultiple\n\nGiven a divisor and a bound, find the largest integer N such that: N is divisible by divisor, N is less than or equal to bound, N is greater than 0. The inputs are two integers: the divisor and the bound.\n\nInput: Two integers divisor (2 ≤ divisor ≤ 10), and bound (5 ≤ bound ≤ 100).\nOutput: A single integer: the largest number divisible by divisor that is less than or equal to bound.\n\nExample:\n\n```js maxMultiple(3, 10) // 9 ```",
+  "description": "### MaxMultiple\n\nGiven a divisor and a bound, find the largest integer N such that: N is divisible by divisor, N is less than or equal to bound, N is greater than 0. The inputs are two integers: the divisor and the bound.\n\nInput: Two integers divisor (2 ≤ divisor ≤ 10), and bound (5 ≤ bound ≤ 100).\nOutput: A single integer: the largest number divisible by divisor that is less than or equal to bound.\n\nExample:\n\n``` maxMultiple(3, 10) // 9 ```",
   "tests": [
     {
       "input": {

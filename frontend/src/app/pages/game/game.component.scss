@@ -138,6 +138,12 @@
                 ::ng-deep * {
                     all: revert;
                 }
+
+                ::ng-deep code {
+                    display: inline-block;
+                    background-color: #222;
+                    padding: 5px var(--tertiary-space);
+                }
             }
         }
     }

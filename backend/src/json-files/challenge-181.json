@@ -1,5 +1,5 @@
 {
-  "description": "### FirstDigit\n\nThis problem requires you to find the first digit that occurs in a given string.\n\nInput: A single string `s` in which we need to find the first digit.\nOutput: Returns the first digit that occurs in the given string.\n\nExample:\n\n```js firstDigit(\"var_1__Int\") // 1 ```",
+  "description": "### FirstDigit\n\nThis problem requires you to find the first digit that occurs in a given string.\n\nInput: A single string `s` in which we need to find the first digit.\nOutput: Returns the first digit that occurs in the given string.\n\nExample:\n\n``` firstDigit(\"var_1__Int\") // 1 ```",
   "tests": [
     {
       "input": "var_1__Int",

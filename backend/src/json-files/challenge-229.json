@@ -1,5 +1,5 @@
 {
-  "description": "### Count Ways\n\nThis problem involves defining a function `countWays(n, k)`. This function takes two arguments, `n` and `k`, and returns the factorial of `n` divided by the factorial of `k` and the factorial of the absolute difference between `n` and `k`. The result is then taken mod `10**9 + 7`.\n\nInput: Two integers `n` and `k`\nOutput: An integer representing the output of the calculation\n\nExample:\n\n```js countWays(5, 2) // 10 ```",
+  "description": "### Count Ways\n\nThis problem involves defining a function `countWays(n, k)`. This function takes two arguments, `n` and `k`, and returns the factorial of `n` divided by the factorial of `k` and the factorial of the absolute difference between `n` and `k`. The result is then taken mod `10**9 + 7`.\n\nInput: Two integers `n` and `k`\nOutput: An integer representing the output of the calculation\n\nExample:\n\n``` countWays(5, 2) // 10 ```",
   "tests": [
     {
       "input": {

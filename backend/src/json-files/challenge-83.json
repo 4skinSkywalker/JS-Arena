@@ -1,5 +1,5 @@
 {
-  "description": "### NumbersGrouping\n\nYou are given an array of integers a. A new array of integers b is formed while the following conditions are true:\n\n- find the maximum value of a and put it into b;\n- find the item which is equal to a[i] - 1 in a, put it into b, and remove the item from a;\n- repeat the previous step until it's impossible to perform.\n\nYour task is to return the size of b.\n\nInput: An array of integers.\nOutput: The size of the array b.\n\nExample:\n\n```js numbersGrouping([20000, 239, 10001, 999999, 10000, 20566, 29999]) // 11 ```",
+  "description": "### NumbersGrouping\n\nYou are given an array of integers a. A new array of integers b is formed while the following conditions are true:\n\n- find the maximum value of a and put it into b;\n- find the item which is equal to a[i] - 1 in a, put it into b, and remove the item from a;\n- repeat the previous step until it's impossible to perform.\n\nYour task is to return the size of b.\n\nInput: An array of integers.\nOutput: The size of the array b.\n\nExample:\n\n``` numbersGrouping([20000, 239, 10001, 999999, 10000, 20566, 29999]) // 11 ```",
   "tests": [
     {
       "input": [20000, 239, 10001, 999999, 10000, 20566, 29999],

@@ -1,5 +1,5 @@
 {
-  "description": "### ReverseInteger\n\nThis function reverse the input integer. For instance, 123 becomes 321, and -900 becomes -9.\n\nInput: A positive or negative integer.\nOutput: The input integer reversed.\n\nExample:\n\n```js\nreverseInteger(12345) // 54321\nreverseInteger(-4243) // -3424\n```",
+  "description": "### ReverseInteger\n\nThis function reverse the input integer. For instance, 123 becomes 321, and -900 becomes -9.\n\nInput: A positive or negative integer.\nOutput: The input integer reversed.\n\nExample:\n\n```\nreverseInteger(12345) // 54321\nreverseInteger(-4243) // -3424\n```",
   "tests": [
     {
       "input": 12345,

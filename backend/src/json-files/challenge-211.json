@@ -1,5 +1,5 @@
 {
-  "description": "### Digit Sum\n\nWrite a function that sums the digits of a given integer.\n\nInput: A single integer n (0 <= n <= 10^9)\nOutput: An integer representing the sum of the digits of n.\n\nExample:\n\n```js digitSum(111) // 3 ```",
+  "description": "### Digit Sum\n\nWrite a function that sums the digits of a given integer.\n\nInput: A single integer n (0 <= n <= 10^9)\nOutput: An integer representing the sum of the digits of n.\n\nExample:\n\n``` digitSum(111) // 3 ```",
   "tests": [
     {
       "input": 111,

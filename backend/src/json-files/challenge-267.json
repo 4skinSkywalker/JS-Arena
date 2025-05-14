@@ -1,5 +1,5 @@
 {
-  "description": "### ArrayMaximalAdjacentDifference\n\nGiven an array of integers, find the maximal absolute difference between any two of its adjacent elements.\n\nInput: An array of integers.\nOutput: The maximal absolute difference between any two adjacent elements.\n\nExample:\n\n```js arrayMaximalAdjacentDifference([2, 4, 1, 0]) // 3 ```",
+  "description": "### ArrayMaximalAdjacentDifference\n\nGiven an array of integers, find the maximal absolute difference between any two of its adjacent elements.\n\nInput: An array of integers.\nOutput: The maximal absolute difference between any two adjacent elements.\n\nExample:\n\n``` arrayMaximalAdjacentDifference([2, 4, 1, 0]) // 3 ```",
   "tests": [
     {
       "input": [2, 4, 1, 0],

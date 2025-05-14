@@ -1,5 +1,5 @@
 {
-  "description": "### CommonCharacterCount\n\nGiven two strings, find the number of common characters between them.\n\nInput: Two strings as input. Each string contains only lowercase characters.\nOutput: Return an integer.\n\nExample:\n\n```js commonCharacterCount(aabcc, adcaa) // 3 ```",
+  "description": "### CommonCharacterCount\n\nGiven two strings, find the number of common characters between them.\n\nInput: Two strings as input. Each string contains only lowercase characters.\nOutput: Return an integer.\n\nExample:\n\n``` commonCharacterCount(aabcc, adcaa) // 3 ```",
   "tests": [
     {
       "input": ["aabcc", "adcaa"],

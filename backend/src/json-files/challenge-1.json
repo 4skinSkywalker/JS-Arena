@@ -1,5 +1,5 @@
 {
-  "description": "### Will You\n\nA program that returns whether a situation is wrong based on three boolean parameters: young, beautiful, and loved. It considers a situation wrong if a person is young, beautiful and not loved, or if a person is loved but not young or not beautiful.\n\nInput: Three boolean values representing if the person is young, beautiful, and loved respectively.\nOutput: A boolean value - 'true' if the situation is wrong, 'false' otherwise.\n\nExample:\n\n```js willYou(true, true, true) // false ```",
+  "description": "### Will You\n\nA program that returns whether a situation is wrong based on three boolean parameters: young, beautiful, and loved. It considers a situation wrong if a person is young, beautiful and not loved, or if a person is loved but not young or not beautiful.\n\nInput: Three boolean values representing if the person is young, beautiful, and loved respectively.\nOutput: A boolean value - 'true' if the situation is wrong, 'false' otherwise.\n\nExample:\n\n``` willYou(true, true, true) // false ```",
   "tests": [
     {
       "input": [true, true, true],

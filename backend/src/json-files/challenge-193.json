@@ -1,5 +1,5 @@
 {
-  "description": "### Extract Each Kth\n\nGiven array of integers, remove each kth element from it.\n\nInput: Two arguments. List of integers and positive integer.\nOutput: Return List of integers.\n\nExample:\n\n```js extractEachKth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3) // [1, 2, 4, 5, 7, 8, 10] ```",
+  "description": "### Extract Each Kth\n\nGiven array of integers, remove each kth element from it.\n\nInput: Two arguments. List of integers and positive integer.\nOutput: Return List of integers.\n\nExample:\n\n``` extractEachKth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3) // [1, 2, 4, 5, 7, 8, 10] ```",
   "tests": [
     {
       "input": { 

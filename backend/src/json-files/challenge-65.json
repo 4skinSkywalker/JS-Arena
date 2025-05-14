@@ -1,5 +1,5 @@
 {
-  "description": "### Range Digit Sum\n\nA function that sums all the digits in a range of integers.\n\nInput: Two integers A and B representing the range (inclusive).\nOutput: An integer representing the sum of all digits in the range.\n\nExample:\n\n```js rangeDigitSum(1, 10) // 46 ```",
+  "description": "### Range Digit Sum\n\nA function that sums all the digits in a range of integers.\n\nInput: Two integers A and B representing the range (inclusive).\nOutput: An integer representing the sum of all digits in the range.\n\nExample:\n\n``` rangeDigitSum(1, 10) // 46 ```",
   "tests": [
     {
       "input": [1, 10],

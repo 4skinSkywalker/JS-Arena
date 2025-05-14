@@ -1,5 +1,5 @@
 {
-  "description": "### Rounders Function\n\nThe function receives a number and rounds off each digit from right to left, until we get to the leftmost digit. Then we return the final rounded number.\n\nInput: A positive integer\nOutput: A rounded integer\n\nExample:\n\n```js rounders(1234) // 1000 ```",
+  "description": "### Rounders Function\n\nThe function receives a number and rounds off each digit from right to left, until we get to the leftmost digit. Then we return the final rounded number.\n\nInput: A positive integer\nOutput: A rounded integer\n\nExample:\n\n``` rounders(1234) // 1000 ```",
   "tests": [
     {
       "input": 15,

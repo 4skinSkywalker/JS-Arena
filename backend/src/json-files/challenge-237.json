@@ -1,5 +1,5 @@
 {
-  "description": "### coolString\n\nA 'cool' string has the following properties:\n\n- Its characters are only lowercase or uppercase.\n- None of the neighboring characters are the same.\n- A string can only contain alphabetical (a-z, A-Z) characters.\n- The case of each character is different from its predecessor.\n\nInput: A string, s.\nOutput: A boolean value that indicates whether the input string is 'cool'.\n\nExample:\n\n```js coolString('aQwFdA') // true ```",
+  "description": "### coolString\n\nA 'cool' string has the following properties:\n\n- Its characters are only lowercase or uppercase.\n- None of the neighboring characters are the same.\n- A string can only contain alphabetical (a-z, A-Z) characters.\n- The case of each character is different from its predecessor.\n\nInput: A string, s.\nOutput: A boolean value that indicates whether the input string is 'cool'.\n\nExample:\n\n``` coolString('aQwFdA') // true ```",
   "tests": [
     {
       "input": "aQwFdA",

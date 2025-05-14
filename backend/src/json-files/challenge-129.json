@@ -1,5 +1,5 @@
 {
-  "description": "### KthDivisor\n\nA method that finds the kth divisor (1-indexed) of a given integer. If there are fewer than k divisors, it returns -1.\n\nInput: Two parameters, an integer n  (1 ≤ n ≤ 2048) representing the given number, and an integer k (1 ≤ k ≤ 2048) representing the divisor's index.\nOutput: An integer, representing the kth divisor of n or -1 if there are fewer than k divisors in total.\n\nExample:\n\n```js kthDivisor(63, 4) // 9 ```",
+  "description": "### KthDivisor\n\nA method that finds the kth divisor (1-indexed) of a given integer. If there are fewer than k divisors, it returns -1.\n\nInput: Two parameters, an integer n  (1 ≤ n ≤ 2048) representing the given number, and an integer k (1 ≤ k ≤ 2048) representing the divisor's index.\nOutput: An integer, representing the kth divisor of n or -1 if there are fewer than k divisors in total.\n\nExample:\n\n``` kthDivisor(63, 4) // 9 ```",
   "tests": [
     {
       "input": [63, 4],

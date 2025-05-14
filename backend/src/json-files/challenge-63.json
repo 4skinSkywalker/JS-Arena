@@ -1,5 +1,5 @@
 {
-  "description": "### ReduceString\n\nA program that reduces a string by removing the first and last character of the string if they are the same. This is repeated until the string either becomes empty or the first and last character of the string are not same.\n\nInput: String s - string to reduce (1 ≤ s.length ≤ 50)\nOutput: Return the result of reducing the string.\n\nExample:\n\n```js reduceString('abacaba') // '' ```",
+  "description": "### ReduceString\n\nA program that reduces a string by removing the first and last character of the string if they are the same. This is repeated until the string either becomes empty or the first and last character of the string are not same.\n\nInput: String s - string to reduce (1 ≤ s.length ≤ 50)\nOutput: Return the result of reducing the string.\n\nExample:\n\n``` reduceString('abacaba') // '' ```",
   "tests": [
     {
       "input": "abacaba",

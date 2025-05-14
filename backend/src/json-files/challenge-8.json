@@ -1,5 +1,5 @@
 {
-  "description": "### variableName\n\nThis function checks if a string is a valid variable name. A valid variable name starts with a letter or underscore, can only contain alphanumeric characters, and must not contain any symbols or spaces.\n\nInput: A string value\nOutput: A boolean value. Returns true if the string is a valid name, and false otherwise.\n\nExample:\n\n```js variableName('var_1__Int') // true ```",
+  "description": "### variableName\n\nThis function checks if a string is a valid variable name. A valid variable name starts with a letter or underscore, can only contain alphanumeric characters, and must not contain any symbols or spaces.\n\nInput: A string value\nOutput: A boolean value. Returns true if the string is a valid name, and false otherwise.\n\nExample:\n\n``` variableName('var_1__Int') // true ```",
   "tests": [
     {
       "input": "var_1__Int",

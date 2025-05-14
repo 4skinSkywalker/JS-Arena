@@ -1,5 +1,5 @@
 {
-  "description": "### Array Change\n\nYou are given an array of integers. On each move you are allowed to increase exactly one of its element by one. Find the minimal number of moves required to obtain a strictly increasing sequence from the input.\n\nInput: Array of integers\nOutput: An integer\n\nExample:\n\n```js arrayChange([1, 1, 1]); // 3 ```",
+  "description": "### Array Change\n\nYou are given an array of integers. On each move you are allowed to increase exactly one of its element by one. Find the minimal number of moves required to obtain a strictly increasing sequence from the input.\n\nInput: Array of integers\nOutput: An integer\n\nExample:\n\n``` arrayChange([1, 1, 1]); // 3 ```",
   "tests": [
     {
       "input": [1, 1, 1],

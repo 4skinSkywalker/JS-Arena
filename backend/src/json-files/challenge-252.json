@@ -1,5 +1,5 @@
 {
-  "description": "### Case Unification\n\nGiven a string `s`, the task is to decide whether the amount of its uppercase letters exceeds its length divided by 2. If it does, then the program should convert the string to uppercase, otherwise it should convert it to lowercase.\n\nInput: A string `s`.\nOutput: The string `s` after applying the transformation.\n\nExample:\n\n```js\ncaseUnification('Aba') // 'aba' \n\ncaseUnification('ABa') // 'ABA' \n\ncaseUnification('ZZZZZ') // 'ZZZZZ' ```",
+  "description": "### Case Unification\n\nGiven a string `s`, the task is to decide whether the amount of its uppercase letters exceeds its length divided by 2. If it does, then the program should convert the string to uppercase, otherwise it should convert it to lowercase.\n\nInput: A string `s`.\nOutput: The string `s` after applying the transformation.\n\nExample:\n\n```\ncaseUnification('Aba') // 'aba' \n\ncaseUnification('ABa') // 'ABA' \n\ncaseUnification('ZZZZZ') // 'ZZZZZ' ```",
   "tests": [
     {
       "input": "Aba",

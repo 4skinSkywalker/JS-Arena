@@ -1,5 +1,5 @@
 {
-  "description": "### isCorrectSentence\n\nA function that checks if a sentence is correctly formatted. A sentence is considered correct if it starts with a capital letter and ends with a period.\n\nInput: A string s which represents the sentence to be checked.\nOutput: A boolean value: true if the sentence starts with a capital letter and ends with a period, false otherwise.\n\nExample:\n\n```js isCorrectSentence('This is a correct sentence.') // true ```",
+  "description": "### isCorrectSentence\n\nA function that checks if a sentence is correctly formatted. A sentence is considered correct if it starts with a capital letter and ends with a period.\n\nInput: A string s which represents the sentence to be checked.\nOutput: A boolean value: true if the sentence starts with a capital letter and ends with a period, false otherwise.\n\nExample:\n\n``` isCorrectSentence('This is a correct sentence.') // true ```",
   "tests": [
     {
       "input": "This is a correct sentence.",

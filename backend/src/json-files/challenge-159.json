@@ -1,5 +1,5 @@
 {
-  "description": "### InsertDashes\n\nA code is written to insert dashes (-) between each two neighboring letters. If the string starts or ends with a space, it stays there.\n\nInput: A string 'input' (1 ≤ input's length ≤ 100)\nOutput: The same string but after removal of certain letters.\n\nExample:\n\n```js insertDashes(\"aba caba\") // \"a-b-a c-a-b-a\" ```\n\n```js insertDashes(\"x\") // \"x\" ```",
+  "description": "### InsertDashes\n\nA code is written to insert dashes (-) between each two neighboring letters. If the string starts or ends with a space, it stays there.\n\nInput: A string 'input' (1 ≤ input's length ≤ 100)\nOutput: The same string but after removal of certain letters.\n\nExample:\n\n``` insertDashes(\"aba caba\") // \"a-b-a c-a-b-a\" ```\n\n``` insertDashes(\"x\") // \"x\" ```",
   "tests": [
     {
       "input": "aba caba",
