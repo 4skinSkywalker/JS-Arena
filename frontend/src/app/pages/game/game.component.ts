@@ -2,7 +2,7 @@ import { Component, computed, HostListener, Signal, signal } from '@angular/core
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { check, debounce, deepCopy, delay, drag, equal, uncheck } from '../../../utils';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck } from '../../../utils';
 import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, IScore, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
@@ -73,6 +73,8 @@ export class GameComponent {
       }))
       .sort((a, b) => a.charCount - b.charCount);
   });
+  winnerName = signal("");
+  matrixInterval: any;
 
   handlers: Handlers = {
     "chatReceived": this.handleChatReceived.bind(this),
@@ -161,6 +163,8 @@ export class GameComponent {
           return pasteObj.text;
         } else {
           console.log("Paste forbidden:", pasteObj.text);
+          check("#cannot-copy-paste-modal-trigger");
+          focus(".cannot-copy-paste-modal button");
           setTimeout(() => {
             aceEditor.setValue(content);
             aceEditor.clearSelection();
@@ -386,7 +390,14 @@ export class GameComponent {
   }
 
   gameOver() {
-    // TODO
+    check("#game-over-trigger");
+    focus(".game-over-modal button");
+    this.matrixInterval = matrixRain("#matrix-canvas");
+  }
+
+  gameOverOk() {
+    clearInterval(this.matrixInterval);
+    uncheck("#game-over-trigger");
   }
 
   areYouSureNewGame() {
@@ -483,6 +494,12 @@ export class GameComponent {
     if (msg.room.id !== this.roomId) {
       return;
     }
+
+    if (!this.winnerName() && msg.testsPassed === this.problemTests().length) {
+      this.winnerName.set(msg.client.name);
+      this.gameOver();
+    }
+
     this.clientScoreMap.update(prev => ({
       ...prev,
       [msg.client.id]: {

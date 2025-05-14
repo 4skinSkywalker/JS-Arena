@@ -49,19 +49,20 @@
 </div>
 
 <div class="modal create-room-modal">
-  <input class="modal-trigger" type="checkbox" id="create-room-modal-trigger">
-  
-  <div class="modal-dialog" style="max-width: 500px; width: 98%;">
-    <h2 class="modal-title">What's your room name?</h2>
+    <input class="modal-trigger" type="checkbox" id="create-room-modal-trigger">
 
-    <div class="modal-body">
-        <div class="form-control-wrap">
-            <input type="text" class="form-control" [formControl]="roomName" placeholder="Insert your room name">
+    <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+        <h2 class="modal-title">What's your room name?</h2>
+
+        <div class="modal-body">
+            <div class="form-control-wrap">
+                <input type="text" class="form-control" [formControl]="roomName" placeholder="Insert your room name">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="uncheck('#create-room-modal-trigger')">Close</button>
+            <button class="btn btn-primary" (click)="roomNameModalOk()">Ok</button>
         </div>
     </div>
-
-    <div class="modal-footer">
-      <button class="btn btn-primary" (click)="roomNameModalOk()">Ok</button>
-    </div>
-  </div>
 </div>

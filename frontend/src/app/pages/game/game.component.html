@@ -213,34 +213,52 @@
     </div>
 </div>
 
-<div class="modal">
-  <input class="modal-trigger" type="checkbox" id="cannot-copy-paste-modal-trigger">
-  
-  <div class="modal-dialog" style="max-width: 500px; width: 98%;">
-    <h2 class="modal-title">Copy and paste are disabled</h2>
+<div class="modal cannot-copy-paste-modal">
+    <input class="modal-trigger" type="checkbox" id="cannot-copy-paste-modal-trigger">
 
-    <div class="modal-body">
-        <p class="text-center">You can't copy/paste here for obvious reasons.</p>
-    </div>
+    <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+        <h2 class="modal-title">Copy/Paste Disabled</h2>
 
-    <div class="modal-footer">
-        <button class="btn btn-primary" (click)="uncheck('#cannot-copy-paste-modal-trigger')">Ok</button>
+        <div class="modal-body">
+            <p class="text-center">Copying and pasting is not allowed.</p>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" (click)="uncheck('#cannot-copy-paste-modal-trigger')">Ok</button>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="modal">
-  <input class="modal-trigger" type="checkbox" id="are-you-sure-new-game">
+    <input class="modal-trigger" type="checkbox" id="are-you-sure-new-game">
+
+    <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+        <h2 class="modal-title">Start New Game</h2>
+
+        <div class="modal-body">
+            <p class="text-center">Are you sure you want to start a new game? All current progress will be lost. This action cannot be undone.</p>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="uncheck('#are-you-sure-new-game')">Cancel</button>
+            <button class="btn btn-primary" (click)="areYouSureNewGameOk()">Ok</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal game-over-modal" style="z-index: 999999;">
+  <canvas id="matrix-canvas"></canvas>
+  <input class="modal-trigger" type="checkbox" id="game-over-trigger">
   
-  <div class="modal-dialog" style="max-width: 500px; width: 98%;">
-    <h2 class="modal-title">Start New Game</h2>
+  <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
+    <h2 class="modal-title">{{ winnerName() }} is the Champion!</h2>
 
     <div class="modal-body">
-        <p class="text-center">Are you sure you want to start a new game? All current progress will be lost. This action cannot be undone.</p>
+        <p class="text-center">Kudos to {{ winnerName() }} for passing all the tests and leading the way to victory!</p>
     </div>
 
     <div class="modal-footer">
-        <button class="btn btn-primary" (click)="areYouSureNewGameOk()">Ok</button>
+        <button class="btn btn-primary" (click)="uncheck('#game-over-trigger')">Ok</button>
     </div>
   </div>
 </div>

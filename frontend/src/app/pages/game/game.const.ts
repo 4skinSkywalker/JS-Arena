@@ -1,6 +1,6 @@
 export const DEFAULT_EDITOR_CONTENT = `/**
  * How it works:
- * - You receive an \`input\` of any type.
+ * - You receive an <input> of any type.
  * - Return a value that matches the expected output.
  * - You can use console.log|warn|error to log messages.
  */
