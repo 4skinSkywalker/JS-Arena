@@ -54,7 +54,7 @@ export class GameComponent {
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.shiftKey && event.key === "Enter") {
       event.preventDefault();
-      this.runCode(this.problemTests[0].input || null);
+      this.runCode(this.problemTests[0]?.input || null);
     }
 
     if (event.ctrlKey && event.key === "Enter") {
@@ -82,7 +82,6 @@ export class GameComponent {
 
   async ngAfterViewInit() {
     await delay(0.2);
-    this.copyPasteProtection();
     this.initEditor();
     this.initGameResize();
     this.initEditorResize();
@@ -103,22 +102,16 @@ export class GameComponent {
     return this.alreadyStartedOnInit || (this.roomStarted && this.countdownExpired);
   }
 
-  copyPasteProtection() {
-    (document.querySelector(".nav-panel-description") as HTMLDivElement)
-      .addEventListener("copy", (e: any) => {
-        e.preventDefault();
-        check("#cannot-copy-paste-modal-trigger");
-      });
-  }
-
   initEditor() {
     const ace = (window as any).ace;
-    console.log("Initializing editor", ace);
-    const aceEditor = ace.edit("editor");
-    aceEditor.setTheme("ace/theme/monokai");
+    console.log('Initializing editor', ace);
+    const aceEditor = ace.edit('editor');
+    aceEditor.setTheme('ace/theme/monokai');
 
-    ace.require("ace/ext/emmet").setCore("ext/emmet_core");
-    ace.config.loadModule("ace/snippets/javascript", () => console.log("JS snippets loaded."));
+    ace.require('ace/ext/emmet').setCore('ext/emmet_core');
+    ace.config.loadModule('ace/snippets/javascript', () =>
+      console.log('JS snippets loaded.')
+    );
 
     aceEditor.setOptions({
       enableBasicAutocompletion: true,
@@ -128,21 +121,47 @@ export class GameComponent {
     });
 
     aceEditor.getSession().setUseWorker(false);
-    aceEditor.getSession().setMode("ace/mode/javascript");
+    aceEditor.getSession().setMode('ace/mode/javascript');
 
-    aceEditor.commands.addCommand({
-      name: "copyPasteProtection", 
-      bindKey: "ctrl-v|ctrl-x|ctrl-shift-v|cmd-v|cmd-x", 
-      exec: function() {
-        check("#cannot-copy-paste-modal-trigger");
-      } 
+    // Get the underlying text input element of Ace Editor
+    const textInput = aceEditor.textInput.getElement();
+
+    // textInput.addEventListener("paste", function (event: any) {
+    //   const editorContent = aceEditor.getValue();
+    //   const clipboardData = event.clipboardData || (window as any).clipboardData;
+    //   const pastedData = clipboardData.getData("text");
+
+    //   if (editorContent.includes(pastedData)) {
+    //     console.log("Paste allowed");
+    //   } else {
+    //     console.log("Paste blocked");
+    //     event.preventDefault();
+    //     check("#cannot-copy-paste-modal-trigger");
+    //   }
+    // });
+
+    aceEditor.on("paste", function(paste: any) {
+        const content = aceEditor.getValue();
+        console.log("Pasting", content, paste);
+
+        if (content.includes(paste.text)) {
+          console.log("Paste allowed", content, paste.text);
+          return paste.text;
+        } else {
+          console.log("Paste blocked", content, paste.text);
+          setTimeout(() => aceEditor.setValue(content), 0);
+          return "";
+        }
     });
 
-    aceEditor.getSession().on("change", debounce(() => {
-      this.onEditorValueChange(aceEditor.getSession().getValue());
-    }, 500));
+    aceEditor.getSession().on(
+      'change',
+      debounce(() => {
+        this.onEditorValueChange(aceEditor.getSession().getValue());
+      }, 500)
+    );
 
-    const lastEditorContent = localStorage.getItem(this.editorContentKey) || "";
+    const lastEditorContent = localStorage.getItem(this.editorContentKey) || '';
     if (lastEditorContent) {
       aceEditor.setValue(lastEditorContent);
     } else {
@@ -266,7 +285,7 @@ export class GameComponent {
       window.eval(tamperedContent);
       output = (window as any).solution(input);
     } catch (e: any) {
-      this.consoleLog("error")(e.message || e);
+      (window as any).lerror(e.message || e);
     }
     return output;
   }
@@ -356,8 +375,13 @@ export class GameComponent {
     // TODO
   }
 
-  newGame() {
+  areYouSureNewGame() {
+    check("#are-you-sure-new-game");
+  }
+
+  areYouSureNewGameOk() {
     alert("Not implemented yet"); // TODO
+    uncheck("#are-you-sure-new-game");
   }
 
   kickPlayer() {

@@ -5,7 +5,7 @@
                 <span>Editor</span>
                 <button
                     class="btn compact btn-primary"
-                    (click)="runCode(problemTests[0].input || null)"
+                    (click)="runCode(problemTests[0]?.input || null)"
                 >Run code (⇧ + ↵)</button>
                 <button
                     class="btn compact btn-primary"
@@ -127,7 +127,7 @@
                     <button
                         class="btn compact btn-primary"
                         [disabled]="!hasGameStarted()"
-                        (click)="newGame()"
+                        (click)="areYouSureNewGame()"
                     >New game</button>
                     <button
                         class="btn compact btn-primary"
@@ -225,6 +225,22 @@
 
     <div class="modal-footer">
         <button class="btn btn-primary" (click)="uncheck('#cannot-copy-paste-modal-trigger')">Ok</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal">
+  <input class="modal-trigger" type="checkbox" id="are-you-sure-new-game">
+  
+  <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+    <h2 class="modal-title">Start New Game</h2>
+
+    <div class="modal-body">
+        <p class="text-center">Are you sure you want to start a new game? All current progress will be lost. This action cannot be undone.</p>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="areYouSureNewGameOk()">Ok</button>
     </div>
   </div>
 </div>
