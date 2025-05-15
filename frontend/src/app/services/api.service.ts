@@ -81,7 +81,7 @@ export class ApiService {
 
   handlePong() {
     console.log("Pong received");
-    setTimeout(() => this.send("ping"), 5000);
+    setTimeout(() => this.send("ping"), 15000);
   }
 
   handleClientListed(msg: IClientsListedMessage) {
