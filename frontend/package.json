@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "gh-pages": "ng build --output-path docs --base-href /JS-Arena/ && node -e \"require('fs').copyFileSync('docs/browser/index.html', 'docs/browser/404.html')\" && node -e \"require('fs').copyFileSync('CNAME', 'docs/browser/NAME')\""
+    "gh-pages": "ng build --output-path docs --base-href / && node -e \"require('fs').copyFileSync('docs/browser/index.html', 'docs/browser/404.html')\" && node -e \"require('fs').copyFileSync('CNAME', 'docs/browser/CNAME')\""
   },
   "private": true,
   "dependencies": {
