@@ -474,16 +474,8 @@ export class GameComponent {
     this.countdownExpired.set(false);
     this.winnerName.set("");
 
-    Object.keys(this.clientScoreMap).forEach(clientId => {
-      this.clientScoreMap.update(prev => ({
-        ...prev,
-        [clientId]: {
-          testsPassed: 0,
-          charCount: DEFAULT_EDITOR_CONTENT.length
-        }
-      }));
-    });
-    this.room.set(this.room()); // Recompute dependant signals
+    this.api.send("progress", { roomId: this.roomId, testsPassed: 0 });
+    this.api.send("progress", { roomId: this.roomId, charCount: DEFAULT_EDITOR_CONTENT.length });
   }
 
   handleGameStarted() {

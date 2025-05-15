@@ -131,10 +131,16 @@ export function equal(a: any, b: any): boolean {
     return false;
 }
 
-export function matrixRain(canvasId: string, time = 35, initialWall = true) {
+export function matrixRain(canvasId: string, time = 35) {
     // Initialising the canvas
-    const canvas = document.querySelector("#matrix-canvas") as HTMLCanvasElement,
+    const canvas = document.querySelector(canvasId) as HTMLCanvasElement,
           ctx = canvas?.getContext("2d");
+    
+    if (!canvas || !ctx) {
+        return;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Setting the width and height of the canvas
     canvas.width = window.innerWidth;
@@ -155,7 +161,7 @@ export function matrixRain(canvasId: string, time = 35, initialWall = true) {
 
     // Setting up the draw function
     function draw() {
-        if (!ctx) {
+        if (!canvas || !ctx) {
             return;
         }
 
