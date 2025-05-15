@@ -2,14 +2,15 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "ws": "^8.18.1"
+    "ws": "^8.18.1",
+    "ts-node": "^10.9.2"
   },
   "name": "js-arena",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx ts-node ./src/server.ts",
+    "start": "ts-node ./src/server.ts",
     "watch": "nodemon --exec npx ts-node ./src/server.ts"
   },
   "keywords": [],
@@ -22,7 +23,6 @@
     "@types/node": "^22.15.14",
     "@types/ws": "^8.18.1",
     "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
