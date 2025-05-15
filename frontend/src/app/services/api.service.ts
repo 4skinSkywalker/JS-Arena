@@ -27,7 +27,7 @@ export class ApiService {
     this.ws.onmessage = (message: any) => this.handleMessage(message);
     this.ws.onopen = () => this.handleOpen();
     this.ws.onclose = () => this.handleClose();
-    // this.send("ping"); TODO Should I send pings?
+    this.send("ping"); // Keep alive
   }
 
   subscribe(topicHandler: Record<string, (msg: any) => void>) {
@@ -81,7 +81,7 @@ export class ApiService {
 
   handlePong() {
     console.log("Pong received");
-    setTimeout(() => this.send("ping"), 10000);
+    setTimeout(() => this.send("ping"), 5000);
   }
 
   handleClientListed(msg: IClientsListedMessage) {
