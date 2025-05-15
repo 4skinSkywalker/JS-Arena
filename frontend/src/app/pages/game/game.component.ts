@@ -390,6 +390,7 @@ export class GameComponent {
   }
 
   gameOver() {
+    this.generateSystemMessage(`Game over. User ${this.winnerName()} won the game!`);
     check("#game-over-trigger");
     focus(".game-over-modal button");
     this.matrixInterval = matrixRain("#matrix-canvas");
