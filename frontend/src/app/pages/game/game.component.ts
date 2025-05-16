@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck } from '../../../utils';
-import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, IScore, ITest } from '../../../../../backend/src/models';
+import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
@@ -11,7 +11,7 @@ import { LoaderService } from '../../components/loader/loader-service.service';
 import { DEFAULT_EDITOR_CONTENT } from './game.const';
 import { getFakeClient, getFakeRoom } from './game.util';
 
-interface IClientWithScore extends IClientJSON, IScore {}
+interface IClientWithScore extends IClientJSON, IProgressDetails {}
 interface ILoggerMethods {
   log?: () => void;
   warn?: () => void;
@@ -30,9 +30,12 @@ export class GameComponent {
   check = check;
   uncheck = uncheck;
   roomId;
-  aceEditor: any;
+  editor: any;
+  spyEditor: any;
   editorContentKey;
   editorContent = signal("");
+  consoleMode = signal<"console" | "spy">("console");
+  selectedSpyClient = signal("");
   navTab = signal<"instructions" | "benchmark">("instructions");
   consoleLogMessages = signal<ILogMessage[]>([]);
   chatMessages = signal<IChatReceivedMessage[]>([]);
@@ -54,13 +57,16 @@ export class GameComponent {
   );
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
-  clientScoreMap = signal<Record<string, IScore>>({});
+  clientProgressDataMap = signal<Record<string, IProgressDetails>>({});
+  clients = computed<IClientJSON[]>(() => {
+    return [...(this.room()?.clients || [])];
+  });
   clientsSortByScore = computed<IClientWithScore[]>(() => {
     return [...(this.room()?.clients || [])]
       .map(client => ({
         ...deepCopy(client),
-        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientScoreMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
+        testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
       }))
       .sort((a, b) => b.testsPassed - a.testsPassed);
   });
@@ -68,8 +74,8 @@ export class GameComponent {
     return [...(this.room()?.clients || [])]
       .map(client => ({
         ...deepCopy(client),
-        testsPassed: this.clientScoreMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientScoreMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
+        testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
       }))
       .sort((a, b) => a.charCount - b.charCount);
   });
@@ -124,6 +130,7 @@ export class GameComponent {
   async ngAfterViewInit() {
     await delay(0.2);
     this.initEditor();
+    this.initSpyEditor();
     this.initGameResize();
     this.initEditorResize();
     this.initContentResize();
@@ -133,31 +140,40 @@ export class GameComponent {
     this.api.unsubscribe(this.handlers);
   }
 
+  onEditorValueChange(value: string) {
+    this.editorContent.set(value);
+    localStorage.setItem(this.editorContentKey, value);
+    this.api.send("progress", {
+      roomId: this.roomId,
+      charCount: value.length,
+      editorContent: value
+    });
+  }
+
   initEditor() {
     const ace = (window as any).ace;
-    console.log("Initializing editor", ace);
-    const aceEditor = ace.edit("editor");
-    this.aceEditor = aceEditor;
-    aceEditor.setTheme("ace/theme/monokai");
+    const editor = ace.edit("editor");
+    this.editor = editor;
+    editor.setTheme("ace/theme/monokai");
 
     ace.require("ace/ext/emmet").setCore("ext/emmet_core");
     ace.config.loadModule("ace/snippets/javascript", () =>
       console.log("JS snippets loaded.")
     );
 
-    aceEditor.setOptions({
+    editor.setOptions({
       enableBasicAutocompletion: true,
       enableSnippets: true,
       enableLiveAutocompletion: true,
       enableEmmet: true,
     });
 
-    aceEditor.getSession().setUseWorker(false);
-    aceEditor.getSession().setMode("ace/mode/javascript");
+    editor.getSession().setUseWorker(false);
+    editor.getSession().setMode("ace/mode/javascript");
 
     let memory: string[] = [];
-    aceEditor.on("paste", function(pasteObj: any) {
-        const content = aceEditor.getValue();
+    editor.on("paste", function(pasteObj: any) {
+        const content = editor.getValue();
         if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
           console.log("Paste allowed:", pasteObj.text);
           return pasteObj.text;
@@ -166,15 +182,15 @@ export class GameComponent {
           check("#cannot-copy-paste-modal-trigger");
           focus(".cannot-copy-paste-modal button");
           setTimeout(() => {
-            aceEditor.setValue(content);
-            aceEditor.clearSelection();
+            editor.setValue(content);
+            editor.clearSelection();
           }, 100);
           return "";
         }
     });
 
-    aceEditor.getSession().on("change", debounce(() => {
-      const content = aceEditor.getSession().getValue();
+    editor.getSession().on("change", debounce(() => {
+      const content = editor.getSession().getValue();
       memory.push(content);
       if (memory.length > 100) {
         memory.shift();
@@ -184,18 +200,33 @@ export class GameComponent {
 
     const lastEditorContent = localStorage.getItem(this.editorContentKey) || '';
     if (lastEditorContent) {
-      aceEditor.setValue(lastEditorContent);
+      editor.setValue(lastEditorContent);
     } else {
-      aceEditor.setValue(DEFAULT_EDITOR_CONTENT);
+      editor.setValue(DEFAULT_EDITOR_CONTENT);
     }
 
-    aceEditor.clearSelection();
+    editor.clearSelection();
   }
 
-  onEditorValueChange(value: string) {
-    this.editorContent.set(value);
-    localStorage.setItem(this.editorContentKey, value);
-    this.api.send("progress", { roomId: this.roomId, charCount: value.length });
+  initSpyEditor() {
+    const ace = (window as any).ace;
+    const editor = ace.edit("spyEditor");
+    this.spyEditor = editor;
+    editor.setTheme("ace/theme/monokai");
+
+    editor.setOptions({
+      enableBasicAutocompletion: true,
+      enableSnippets: true,
+      enableLiveAutocompletion: true,
+      enableEmmet: true,
+    });
+
+    editor.keyBinding.$defaultHandler.commandKeyBinding = {}
+    editor.textInput.getElement().disabled = true;
+
+    editor.getSession().setUseWorker(false);
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.clearSelection();
   }
 
   initGameResize() {
@@ -460,8 +491,8 @@ export class GameComponent {
   }
 
   resetGame() {
-    this.aceEditor.setValue(DEFAULT_EDITOR_CONTENT);
-    this.aceEditor.clearSelection();
+    this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+    this.editor.clearSelection();
 
     this.navTab.set("instructions");
     
@@ -475,8 +506,11 @@ export class GameComponent {
     this.countdownExpired.set(false);
     this.winnerName.set("");
 
-    this.api.send("progress", { roomId: this.roomId, testsPassed: 0 });
-    this.api.send("progress", { roomId: this.roomId, charCount: DEFAULT_EDITOR_CONTENT.length });
+    this.api.send("progress", {
+      roomId: this.roomId,
+      testsPassed: 0,
+      charCount: DEFAULT_EDITOR_CONTENT.length
+    });
   }
 
   handleGameStarted() {
@@ -494,13 +528,34 @@ export class GameComponent {
       this.gameOver();
     }
 
-    this.clientScoreMap.update(prev => ({
+    if (this.selectedSpyClient() && msg.client.id === this.selectedSpyClient()) {
+      this.spyEditor.setValue(msg.editorContent);
+      this.spyEditor.clearSelection();
+    }
+
+    this.clientProgressDataMap.update(prev => ({
       ...prev,
       [msg.client.id]: {
         testsPassed: msg.testsPassed ?? prev[msg.client.id]?.testsPassed,
-        charCount: msg.charCount ?? prev[msg.client.id]?.charCount
+        charCount: msg.charCount ?? prev[msg.client.id]?.charCount,
+        editorContent: msg.editorContent ?? prev[msg.client.id]?.editorContent
       }
     }));
     this.room.set(this.room()); // Recompute dependant signals
+  }
+
+  changeSpyClient(clientId: string) {
+    this.selectedSpyClient.set(clientId);
+    if (clientId === "Select player") {
+      this.spyEditor.setValue("");
+      this.spyEditor.clearSelection();
+      return;
+    }
+
+    const editorContent = this.clientProgressDataMap()[clientId].editorContent;
+    if (editorContent) {
+      this.spyEditor.setValue(editorContent);
+      this.spyEditor.clearSelection();
+    }
   }
 }

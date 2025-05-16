@@ -16,16 +16,37 @@
         </div>
 
         <div class="console-container">
-            <div class="console-title">Console</div>
-            <div class="console">
-                @for (msg of consoleLogMessages(); track $index) {
-                <div 
-                    class="console-message" 
-                    [class.log-color]="msg.level === 'log'"
-                    [class.warn-color]="msg.level === 'warn'"
-                    [class.error-color]="msg.level === 'error'"
-                >{{msg.text}}</div>
+            <div class="console-title">
+                @if (consoleMode() === 'console') {
+                    <span>Console</span>
+                    <button class="btn compact btn-primary" (click)="consoleMode.set('spy')">Spy mode</button>
                 }
+                @if (consoleMode() === 'spy') {
+                    <span>Spy mode</span>
+                    <select class="form-select compact ms-auto" style="width: 150px;" (change)="changeSpyClient($any($event.target).value)">
+                        <option selected="">Select player</option>
+                        @for (client of clients(); track client.id) {
+                            <option [value]="client.id">{{ client.name }}</option>
+                        }
+                    </select>
+                    <button class="btn compact btn-primary" (click)="consoleMode.set('console')">Console mode</button>
+                }
+            </div>
+
+            <div class="console">
+                <div [hidden]="consoleMode() !== 'console'">
+                    @for (msg of consoleLogMessages(); track $index) {
+                    <div 
+                        class="console-message" 
+                        [class.log-color]="msg.level === 'log'"
+                        [class.warn-color]="msg.level === 'warn'"
+                        [class.error-color]="msg.level === 'error'"
+                    >{{msg.text}}</div>
+                    }
+                </div>
+                <div [hidden]="consoleMode() !== 'spy'" class="position: relative;">
+                    <div class="editor" id="spyEditor"></div>
+                </div>
             </div>
         </div>
         <div class="sections-divider"></div>
@@ -40,7 +61,7 @@
                     </li>
 
                     <li class="nav-item" [class.active]="navTab() === 'benchmark'">
-                        <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark</a>
+                        <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ clientProgressDataMap()[client()?.id || ""]?.testsPassed || 0 }}/{{ this.problemTests().length || 0 }})</a>
                     </li>
                 </ul>
 
@@ -77,7 +98,8 @@
                                 <label class="accordion-header" tabindex="0">
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-header">
-                                        <div>Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
+                                        <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
+                                        <button class="btn compact btn-secondary ms-auto me-2" style="pointer-events: none;">Details</button>
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
@@ -149,7 +171,7 @@
                         <tr>
                             <th>{{ $index + 1 }}</th>
                             <td>{{ client.name }}</td>
-                            <td>{{ client.testsPassed || "0" }} / {{ problemTests().length }}</td>
+                            <td>{{ client.testsPassed || "0" }}/{{ problemTests().length }}</td>
                         </tr>
                         }
                     </tbody>

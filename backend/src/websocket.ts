@@ -118,7 +118,7 @@ class Client {
             return console.error("Room not found");
         }
 
-        this.rooms[msg.roomId].sendProgress(this, msg.testsPassed, msg.charCount);
+        this.rooms[msg.roomId].sendProgress(this, msg.testsPassed, msg.charCount, msg.editorContent);
     }
 
     handleListClients() {
@@ -319,13 +319,14 @@ class Room {
         }
     }
 
-    sendProgress(client: Client, testsPassed?: number, charCount?: number) {
+    sendProgress(client: Client, testsPassed?: number, charCount?: number, editorContent?: string) {
         for (const _client of this.getClientsArray()) {
             _client.sendMsg("progressReceived", {
                 room: this.toJSON(),
                 client: client.toJSON(),
                 testsPassed,
-                charCount
+                charCount,
+                editorContent
             });
         }
     }
