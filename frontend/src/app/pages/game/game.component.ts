@@ -528,7 +528,7 @@ export class GameComponent {
       this.gameOver();
     }
 
-    if (this.selectedSpyClient() && msg.client.id === this.selectedSpyClient()) {
+    if (this.selectedSpyClient() && msg.client.id === this.selectedSpyClient() && msg.editorContent) {
       this.spyEditor.setValue(msg.editorContent);
       this.spyEditor.clearSelection();
     }
