@@ -361,7 +361,7 @@ export class GameComponent {
   }
 
   async runAllTests() {
-    if (this.testsRunning()) {
+    if (this.testsRunning() || this.problemTests().length === 0) {
       return;
     }
 
