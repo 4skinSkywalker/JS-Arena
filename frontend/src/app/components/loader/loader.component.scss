@@ -17,3 +17,8 @@
     opacity: 1;
     pointer-events: all;
 }
+
+.spinner {
+    width: 150px;
+    mask: radial-gradient(58px, #0000 98%, #000);
+}

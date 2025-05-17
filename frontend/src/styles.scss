@@ -1,5 +1,11 @@
 body {
     padding: 0;
+    --c0: 0,0,0;
+    --c1: 17,17,17;
+    --c2: 24,24,24;
+    --c3: 34,34,34;
+    --c4: 51,51,51;
+    --quaternary-space: 5px;
 }
 
 body::before {

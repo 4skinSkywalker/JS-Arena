@@ -13,7 +13,7 @@
 
 .editor-container {
     grid-template-rows: 1fr 200px;
-    border-right: 2px solid #333;
+    border-right: 2px solid rgba(var(--c4), 1);
 }
 
 .editor-wrap {
@@ -33,10 +33,10 @@
     justify-content: space-between;
     align-items: center;
     gap: var(--tertiary-space);
-    padding: 5px var(--tertiary-space);
+    padding: var(--quaternary-space) var(--tertiary-space);
     font-size: 0.9rem;
-    background-color: #181818;
-    border-block: 2px solid #333;
+    background-color: rgba(var(--c2), 1);
+    border-block: 2px solid rgba(var(--c4), 1);
 }
 
 .editor-title .btn:nth-child(2) {
@@ -45,7 +45,7 @@
 
 .console-container,
 .chat-container {
-    background-color: #222;
+    background-color: rgba(var(--c3), 1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -80,8 +80,8 @@
     z-index: 20;
     height: 100%;
     width: 25px;
-    background-color: #181818;
-    border-right: 2px solid #333;
+    background-color: rgba(var(--c2), 1);
+    border-right: 2px solid rgba(var(--c4), 1);
     cursor: grab;
 }
 
@@ -91,8 +91,8 @@
 
 .console-container {
     .console-message {
-        padding: 5px var(--tertiary-space);
-        border-bottom: 2px solid #333;
+        padding: var(--quaternary-space) var(--tertiary-space);
+        border-bottom: 2px solid rgba(var(--c4), 1);
 
         &.log-color {
             color: #fff !important;
@@ -125,10 +125,10 @@
         overflow: hidden;
 
         .nav {
-            background-color: #111;
+            background-color: rgba(var(--c1), 1);
             border: none;
             gap: var(--tertiary-space);
-            padding: 5px var(--tertiary-space);
+            padding: var(--quaternary-space) var(--tertiary-space);
 
             .nav-item {
                 cursor: pointer;
@@ -138,8 +138,8 @@
         .nav-panel {
             position: relative;
             overflow-y: auto;
-            border-top: 2px solid #333;
-            border-right: 2px solid #333;
+            border-top: 2px solid rgba(var(--c4), 1);
+            border-right: 2px solid rgba(var(--c4), 1);
 
             .nav-panel-description {
                 padding: var(--secondary-space);
@@ -150,8 +150,8 @@
 
                 ::ng-deep code {
                     display: inline-block;
-                    background-color: #222;
-                    padding: 5px var(--tertiary-space);
+                    background-color: rgba(var(--c3), 0.5);
+                    padding: var(--quaternary-space) var(--tertiary-space);
                 }
             }
         }
@@ -205,26 +205,26 @@
     .accordion-item {
         border: none;
         border-bottom: 2px solid rgba(var(--primary-color), 1) !important;
-        background-color: #181818;
+        background-color: rgba(var(--c2), 0.5);
 
         &.test-passed {
-            background-color: #1d3b29;
+            background-color: #1d3b29aa;
         }
         
         &.test-failed {
-            background-color: #3b2224;
+            background-color: #3b2224aa;
         }
 
         .accordion-body {
-            background: #222;
+            background: rgba(var(--c3), 0.5);
         }
         
         &.test-passed .accordion-body {
-            background-color: #162d20;
+            background-color: #162d20aa;
         }
         
         &.test-failed .accordion-body {
-            background-color: #2b1819;
+            background-color: #2b1819aa;
         }
     }
 
@@ -244,7 +244,7 @@
 
 .leaderboard-container {
     padding: 20px;
-    background-color: #111;
+    background-color: rgba(var(--c1), 1);
     display: grid;
     gap: 20px;
     align-content: start;
@@ -268,8 +268,8 @@
     
         .chat-message-wrap {
             width: 375px;
-            border: 2px solid #333;
-            background-color: #111;
+            border: 2px solid rgba(var(--c4), 1);
+            background-color: rgba(var(--c1), 1);
             padding: var(--tertiary-space);
     
             &.my-message {
@@ -277,7 +277,7 @@
             }
     
             &.system-message {
-                padding: 5px var(--tertiary-space);
+                padding: var(--quaternary-space) var(--tertiary-space);
                 background-color: #0000;
                 margin-inline: auto;
                 text-align: center;
@@ -291,7 +291,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 5px;
+            margin-bottom: var(--quaternary-space);
 
             .chat-author,
             .chat-time,
@@ -310,8 +310,8 @@
         display: flex;
         gap: var(--tertiary-space);
         align-items: center;
-        padding: 5px var(--tertiary-space);
-        border-top: 2px solid #333;
+        padding: var(--quaternary-space) var(--tertiary-space);
+        border-top: 2px solid rgba(var(--c4), 1);
     
         input {
             border: none;

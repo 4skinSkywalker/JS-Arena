@@ -7,6 +7,18 @@
     height: 100svh;
 }
 
+.form-control {
+    background-color: rgba(var(--c1), 0.5);
+}
+
+.list-group-item {
+    background-color: rgba(var(--c1), 0.5);
+}
+
+.list-group-item:last-child {
+    border-bottom: 2px solid rgba(var(--primary-color), 1);
+}
+
 .scrollable-toolbar {
     display: flex;
     justify-content: space-between;
@@ -21,45 +33,32 @@
 
 .scrollable  {
     height: 34svh;
-    overflow-y: scroll;
-    padding: var(--secondary-space);
+    overflow-y: auto;
     border: 2px solid rgba(var(--primary-color));
-
-    ul {
-        display: flex;
-        flex-direction: column;
-        gap: var(--secondary-space);
-    }
+    background-color: rgba(var(--c1), 0.5);
     
     &:has(> ul:empty)::after {
         content: "No lobbies found";
+        display: block;
+        text-align: center;
+        padding-top: var(--primary-space);
     }
 }
 
 .lobby {
     display: flex;
     align-items: center;
-    padding: var(--tertiary-space) var(--secondary-space);
-    border: 2px solid rgba(var(--primary-color));
     transition: all 0.4s ease;
-    
-    &.lobby-open {
-        box-shadow: 0 0 10px 0 rgba(var(--primary-color));
-
-        &:hover {
-            background-color: rgba(var(--primary-color), 0.2);
-        }
-    }
 
     &.lobby-close {
-        opacity: 0.85;
+        opacity: 0.66;
     }
 
     .lobby-content {
         flex-grow: 1;
         display: grid;
         grid-template-columns: auto 1fr;
-        gap: 0 var(--secondary-space);
+        gap: 0 var(--tertiary-space);
 
         > * {
             white-space: nowrap;

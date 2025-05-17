@@ -65,7 +65,7 @@
                     </li>
                 </ul>
 
-                <div class="nav-panel" [class.non-scrollable]="!hasGameStarted()">
+                <div class="nav-panel cyberground" [class.non-scrollable]="!hasGameStarted()">
                     <div class="prestart-overlay" [hidden]="hasGameStarted()">
                         @if (!countdownRunning()) {
                         @if (isHost()) {
@@ -99,7 +99,7 @@
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-header">
                                         <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
-                                        <button class="btn compact btn-secondary ms-auto me-2" style="pointer-events: none;">Details</button>
+                                        <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
