@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"table": "<table><tr><td>1</td><td>TWO</td></tr><tr><td>three</td><td>FoUr4</td></tr></table>", "row": 0, "column": 1},
+            "expectedOutput": "TWO"
+        },
+        {
+            "input": {"table": "<table><tr><td>1</td><td>TWO</td></tr></table>", "row": 1, "column": 0},
+            "expectedOutput": "No such cell"
+        },
+        {
+            "input": {"table": "<table><tr><td>1</td><td>TWO</td></tr><tr><td>three</td><td>FoUr4</td></tr></table>", "row": 1, "column": 0},
+            "expectedOutput": "three"
+        },
+        {
+            "input": {"table": "<table><tr><td>one</td><td>TWO</td></tr><tr><td>three</td><td>FOUR</td></tr></table>", "row": 0, "column": 0},
+            "expectedOutput": "one"
+        },
+        {
+            "input": {"table": "<table><tr><td>one</td><td>TWO</td></tr><tr><td>three</td><td>FOUR</td></tr></table>", "row": 2, "column": 1},
+            "expectedOutput": "No such cell"
+        }
+    ]
+}

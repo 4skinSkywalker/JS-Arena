@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"bishop": "a1", "pawn": "c3"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"bishop": "h1", "pawn": "h3"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"bishop": "e4", "pawn": "c2"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"bishop": "d4", "pawn": "f3"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"bishop": "b1", "pawn": "d3"},
+            "expectedOutput": true
+        }
+    ]
+}

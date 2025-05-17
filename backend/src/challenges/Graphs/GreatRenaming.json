@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"roadRegister": [[false, true, true, false], [true, false, true, false], [true, true, false, true], [false, false, true, false]]},
+            "expectedOutput": [[false, false, false, true], [false, false, true, true], [false, true, false, true], [true, true, true, false]]
+        },
+        {
+            "input": {"roadRegister": [[false, true, false], [true, false, true], [false, true, false]]},
+            "expectedOutput": [[false, false, true], [true, false, true], [true, true, false]]
+        },
+        {
+            "input": {"roadRegister": [[false, true], [true, false]]},
+            "expectedOutput": [[false, true], [true, false]]
+        },
+        {
+            "input": {"roadRegister": [[false, false, false, false, true], [false, false, false, true, false], [false, false, false, true, true], [false, false, true, false, false], [true, true, true, false, false]]},
+            "expectedOutput": [[false, true, false, false, false], [true, false, true, false, false], [false, true, false, true, false], [false, false, true, false, true], [false, false, false, true, false]]
+        },
+        {
+            "input": {"roadRegister": [[false]]},
+            "expectedOutput": [[false]]
+        }
+    ]
+}

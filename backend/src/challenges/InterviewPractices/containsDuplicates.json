@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"a": [1, 2, 3, 1]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"a": [3, 1]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"a": [2, 2, 2, 2, 2]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"a": [5, 4, 3, 2, 1]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"a": [10, 20, 30, 20, 10]},
+            "expectedOutput": true
+        }
+    ]
+}

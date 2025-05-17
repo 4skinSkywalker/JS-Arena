@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"s": "cabca"},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"s": "abcabc"},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"s": "aaaa"},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"s": "abacaba"},
+            "expectedOutput": 7
+        },
+        {
+            "input": {"s": "abcdabcdabcd"},
+            "expectedOutput": 4
+        }
+    ]
+}

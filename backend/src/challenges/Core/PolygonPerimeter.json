@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"matrix": [[false, true, true], [true, true, false], [true, false, false]]},
+            "expectedOutput": 12
+        },
+        {
+            "input": {"matrix": [[true, true, true], [true, false, true], [true, true, true]]},
+            "expectedOutput": 16
+        },
+        {
+            "input": {"matrix": [[true, false, false], [true, false, false], [true, false, false]]},
+            "expectedOutput": 10
+        },
+        {
+            "input": {"matrix": [[true, true, true, true], [true, false, false, true], [true, true, true, true]]},
+            "expectedOutput": 16
+        },
+        {
+            "input": {"matrix": [[true]]},
+            "expectedOutput": 4
+        }
+    ]
+}

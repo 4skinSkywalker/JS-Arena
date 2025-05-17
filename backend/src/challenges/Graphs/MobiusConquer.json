@@ -1,0 +1,63 @@
+{"tests": [
+  {
+    "input": {
+      "field": [4, 3],
+      "ratiorg": [0, 0, 0],
+      "enemy": [1, 3, 2],
+      "impassableCells": [
+        [0, 0, 1],
+        [0, 1, 1],
+        [0, 2, 1],
+        [0, 2, 2],
+        [1, 1, 0],
+        [1, 2, 1],
+        [1, 3, 0]
+      ]
+    },
+    "expectedOutput": [7, 6]
+  },
+  {
+    "input": {
+      "field": [5, 4],
+      "ratiorg": [0, 2, 2],
+      "enemy": [1, 2, 2],
+      "impassableCells": [
+        [0, 0, 0],
+        [0, 0, 1],
+        [0, 0, 2],
+        [0, 0, 3],
+        [1, 0, 0],
+        [1, 0, 1],
+        [1, 0, 3]
+      ]
+    },
+    "expectedOutput": [10, 12]
+  },
+  {
+    "input": {
+      "field": [2, 2],
+      "ratiorg": [0, 0, 0],
+      "enemy": [1, 1, 0],
+      "impassableCells": []
+    },
+    "expectedOutput": [2, 2]
+  },
+  {
+    "input": {
+      "field": [1, 1],
+      "ratiorg": [0, 0, 0],
+      "enemy": [1, 0, 0],
+      "impassableCells": []
+    },
+    "expectedOutput": [0, 0]
+  },
+  {
+    "input": {
+      "field": [3, 3],
+      "ratiorg": [0, 0, 0],
+      "enemy": [1, 2, 2],
+      "impassableCells": []
+    },
+    "expectedOutput": [4, 5]
+  }
+]}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"order": [200, 20, 15], "shoppers": [[300, 40, 5], [600, 40, 10]]},
+            "expectedOutput": [false, true]
+        },
+        {
+            "input": {"order": [500, 50, 10], "shoppers": [[300, 30, 5], [600, 60, 15]]},
+            "expectedOutput": [true, false]
+        },
+        {
+            "input": {"order": [300, 30, 15], "shoppers": [[600, 60, 10], [800, 80, 20]]},
+            "expectedOutput": [true, true]
+        },
+        {
+            "input": {"order": [100, 10, 5], "shoppers": [[500, 50, 5], [400, 40, 4]]},
+            "expectedOutput": [false, false]
+        },
+        {
+            "input": {"order": [1000, 100, 50], "shoppers": [[800, 80, 20], [700, 70, 30], [900, 90, 40], [1000, 100, 50], [1100, 110, 60]]},
+            "expectedOutput": [true, true, true, true, true]
+        }
+    ]
+}

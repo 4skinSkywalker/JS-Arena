@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"current": 1, "numberOfDigits": 5},
+            "expectedOutput": 5
+        },
+        {
+            "input": {"current": 21, "numberOfDigits": 5},
+            "expectedOutput": 22
+        },
+        {
+            "input": {"current": 8, "numberOfDigits": 4},
+            "expectedOutput": 10
+        },
+        {
+            "input": {"current": 100, "numberOfDigits": 5},
+            "expectedOutput": 102
+        },
+        {
+            "input": {"current": 200, "numberOfDigits": 10},
+            "expectedOutput": 204
+        }
+    ]
+}

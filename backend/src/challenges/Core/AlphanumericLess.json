@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"s1": "a", "s2": "a1"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"s1": "ab", "s2": "a1"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"s1": "b", "s2": "a1"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"s1": "ab42", "s2": "ab000144"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"s1": "x11y012", "s2": "x011y13"},
+            "expectedOutput": true
+        }
+    ]
+}

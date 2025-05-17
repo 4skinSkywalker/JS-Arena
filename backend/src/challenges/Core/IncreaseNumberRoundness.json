@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"n": 902200100}, 
+            "expectedOutput": true
+        },
+        {
+            "input": {"n": 11000}, 
+            "expectedOutput": false
+        },
+        {
+            "input": {"n": 1234567890}, 
+            "expectedOutput": false
+        },
+        {
+            "input": {"n": 10002000},
+            "expectedOutput": true
+        },
+        {
+            "input": {"n": 1010101010},
+            "expectedOutput": true
+        }
+    ]
+}

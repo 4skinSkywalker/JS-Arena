@@ -1,0 +1,44 @@
+{
+    "tests": [
+        {
+            "input": [[false, true, false, false, false],
+                      [true, false, true, true, false],
+                      [false, true, false, true, false],
+                      [false, true, true, false, true],
+                      [false, false, false, true, false]],
+            "expectedOutput": true
+        },
+        {
+            "input": [[false, true, false, false, false],
+                      [true, false, true, true, false],
+                      [false, true, false, true, true],
+                      [false, true, true, false, true],
+                      [false, false, true, true, false]],
+            "expectedOutput": false
+        },
+        {
+            "input": [[false, true, true, false, false],
+                      [true, false, true, true, false],
+                      [true, true, false, true, false],
+                      [false, true, true, false, true],
+                      [false, false, false, true, false]],
+            "expectedOutput": false
+        },
+        {
+            "input": [[false, true, false, false, false],
+                      [true, false, true, true, false],
+                      [false, true, false, true, false],
+                      [false, true, true, false, true],
+                      [false, false, false, true, true]],
+            "expectedOutput": true
+        },
+        {
+            "input": [[false, true, true, false, false],
+                      [true, false, false, true, false],
+                      [true, false, false, true, false],
+                      [false, true, true, false, true],
+                      [false, false, false, true, false]],
+            "expectedOutput": false
+        }
+    ]
+}

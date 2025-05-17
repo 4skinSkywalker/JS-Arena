@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"a": "abc", "b": "abccba"},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"a": "ab", "b": "abcbcb"},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"a": "abc", "b": "abc"},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"a": "abc", "b": "abcaaaa"},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"a": "abcd", "b": "abcddcba"},
+            "expectedOutput": 2
+        }
+    ]
+}

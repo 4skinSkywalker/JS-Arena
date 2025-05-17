@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"s": "abrarbra", "k": 1},
+            "expectedOutput": true
+        },
+        {
+            "input": {"s": "adbcdbacdb", "k": 2},
+            "expectedOutput": false
+        },
+        {
+            "input": {"s": "racecar", "k": 0},
+            "expectedOutput": true
+        },
+        {
+            "input": {"s": "racebars", "k": 2},
+            "expectedOutput": true
+        },
+        {
+            "input": {"s": "computers", "k": 4},
+            "expectedOutput": false
+        }
+    ]
+}

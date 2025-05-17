@@ -1,0 +1,52 @@
+{
+    "tests": [
+        {
+            "input": {"crypt": ["SEND", "MORE", "MONEY"], "solution": [["O", "0"],
+             ["M", "1"],
+             ["Y", "2"],
+             ["E", "5"],
+             ["N", "6"],
+             ["D", "7"],
+             ["R", "8"],
+             ["S", "9"]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"crypt": ["TEN", "TWO", "ONE"], "solution": [["O", "1"],
+             ["T", "0"],
+             ["W", "9"],
+             ["E", "5"],
+             ["N", "4"]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"crypt": ["HELLO", "WORLD", "PEACE"], "solution": [["H", "1"],
+             ["E", "2"],
+             ["L", "3"],
+             ["O", "4"],
+             ["W", "5"],
+             ["R", "6"],
+             ["D", "7"],
+             ["P", "8"],
+             ["A", "9"],
+             ["C", "0"]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"crypt": ["ONE", "ONE", "TWO"], "solution": [["O", "1"],
+             ["N", "0"],
+             ["E", "2"],
+             ["T", "2"],
+             ["W", "0"]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"crypt": ["TEN", "TEN", "TWENTY"], "solution": [["T", "1"],
+             ["E", "2"],
+             ["N", "3"],
+             ["W", "4"],
+             ["Y", "5"]]},
+            "expectedOutput": false
+        }
+    ]
+}

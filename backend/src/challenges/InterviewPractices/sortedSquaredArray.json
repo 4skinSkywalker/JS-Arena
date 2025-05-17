@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"array": [-6, -4, 1, 2, 3, 5]},
+            "expectedOutput": [1, 4, 9, 16, 25, 36]
+        },
+        {
+            "input": {"array": [-8, -3, 0, 4, 10]},
+            "expectedOutput": [0, 9, 16, 64, 100]
+        },
+        {
+            "input": {"array": [0, 0, 0, 0, 0]},
+            "expectedOutput": [0, 0, 0, 0, 0]
+        },
+        {
+            "input": {"array": [-2, -1, 0, 1, 2]},
+            "expectedOutput": [0, 1, 1, 4, 4]
+        },
+        {
+            "input": {"array": [-5, -4, -3, -2, -1]},
+            "expectedOutput": [1, 4, 9, 16, 25]
+        }
+    ]
+}

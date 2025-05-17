@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"inputArray": ["abc", "aaa", "aba", "bab"], "result": "bbb"},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"inputArray": ["abc", "def", "ghi", "jkl"], "result": "def"},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"inputArray": ["aaa", "aaa", "aaa"], "result": "aaa"},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"inputArray": ["abc", "bbb", "ccc", "ddd"], "result": "abc"},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"inputArray": ["xyz", "xzy", "zxy", "zzy"], "result": "xzy"},
+            "expectedOutput": 3
+        }
+    ]
+}

@@ -1,32 +1,10 @@
 import { getUid, parseEvent } from "./utils";
-import fs from "fs";
-import path from "path";
 import WebSocket from 'ws';
 import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions } from "./models";
+import { problems } from "./problems";
 
 const globalRooms: Record<string, Room> = {};
 const globalClients: Record<string, Client> = {};
-const problems: IProblem[] = [];
-
-function loadProblems() {
-    while (problems.length) {
-        problems.pop();
-    }
-
-    const files = fs.readdirSync(path.join(__dirname, "json-files"));
-    const jsonFiles = files.filter(file => file.endsWith(".json"));
-    for (const file of jsonFiles) {
-        try {
-            const filePath = path.join(__dirname, "json-files", file);
-            const fileContent = fs.readFileSync(filePath, "utf8");
-            const problem = JSON.parse(fileContent);
-            problems.push(problem);
-        } catch (e) {
-            console.error(file);
-        }
-    }
-}
-loadProblems();
 
 function sendEverybodyClients() {
     console.log("Sending clients to every client");

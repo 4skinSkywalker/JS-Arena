@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"n": 6, "roads": [[3, 0], [0, 4], [5, 0], [2, 1], [1, 4], [2, 3], [5, 2]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"n": 6, "roads": [[0, 4], [5, 0], [2, 1], [1, 4], [2, 3], [5, 2]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"n": 4, "roads": [[0, 1], [1, 2], [2, 3], [3, 0]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"n": 5, "roads": [[0, 1], [1, 2], [2, 3], [4, 0]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"n": 3, "roads": [[0, 1], [1, 2]]},
+            "expectedOutput": true
+        }
+    ]
+}

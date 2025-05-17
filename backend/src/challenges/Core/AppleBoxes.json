@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"k": 5},
+            "expectedOutput": -15
+        },
+        {
+            "input": {"k": 1},
+            "expectedOutput": -1
+        },
+        {
+            "input": {"k": 4},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"k": 6},
+            "expectedOutput": 12
+        },
+        {
+            "input": {"k": 10},
+            "expectedOutput": -80
+        }
+    ]
+}

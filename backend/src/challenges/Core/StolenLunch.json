@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"note": "you'll n4v4r 6u4ss 8t: cdja"},
+            "expectedOutput": "you'll never guess it: 2390"
+        },
+        {
+            "input": {"note": "b3 sur3 t0 s4v3 th3 l8st d8nc3 f0r m3"},
+            "expectedOutput": "be sure to save the last dance for me"
+        },
+        {
+            "input": {"note": "d0n't st0p b3l83v3n"},
+            "expectedOutput": "don't stop believing"
+        },
+        {
+            "input": {"note": "w3 w3r3 b0rn t0 m8k3 h3st0ry"},
+            "expectedOutput": "we were born to make history"
+        },
+        {
+            "input": {"note": "4ll you n33d 8s lov3"},
+            "expectedOutput": "all you need is love"
+        }
+    ]
+}

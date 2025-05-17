@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"message": "taiaiaertkixquxjnfxxdh"},
+            "expectedOutput": "thisisencryptedmessage"
+        },
+        {
+            "input": {"message": "abcdefghijklmnopqrstvwxyz"},
+            "expectedOutput": "abcdefghijklmnoooooooooo"
+        },
+        {
+            "input": {"message": "abc"},
+            "expectedOutput": "aba"
+        },
+        {
+            "input": {"message": "fdc"},
+            "expectedOutput": "fcc"
+        },
+        {
+            "input": {"message": "aoa"},
+            "expectedOutput": "aaa"
+        }
+    ]
+}

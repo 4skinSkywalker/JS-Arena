@@ -1,0 +1,49 @@
+{
+    "tests": [
+        {
+            "input": {
+                "h": 4,
+                "d": 2,
+                "start": [-1, 0, 2],
+                "finish": [2, 0, 0]
+            },
+            "expectedOutput": 6.7082039325
+        },
+        {
+            "input": {
+                "h": 5,
+                "d": 3,
+                "start": [0, -2, 3],
+                "finish": [-3, 0, 0]
+            },
+            "expectedOutput": 8.6055512755
+        },
+        {
+            "input": {
+                "h": 6,
+                "d": 4,
+                "start": [1, 0, 3],
+                "finish": [0, 3, 0]
+            },
+            "expectedOutput": 11.2426406871
+        },
+        {
+            "input": {
+                "h": 7,
+                "d": 2,
+                "start": [0, -1, 5],
+                "finish": [0, 2, 0]
+            },
+            "expectedOutput": 9.8994949366
+        },
+        {
+            "input": {
+                "h": 8,
+                "d": 3,
+                "start": [-2, 0, 4],
+                "finish": [3, 0, 0]
+            },
+            "expectedOutput": 13.4641016151
+        }
+    ]
+}

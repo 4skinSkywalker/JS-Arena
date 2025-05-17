@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"value1": 10, "weight1": 5, "value2": 6, "weight2": 4, "maxW": 8},
+            "expectedOutput": 10
+        },
+        {
+            "input": {"value1": 10, "weight1": 5, "value2": 6, "weight2": 4, "maxW": 9},
+            "expectedOutput": 16
+        },
+        {
+            "input": {"value1": 5, "weight1": 3, "value2": 7, "weight2": 4, "maxW": 6},
+            "expectedOutput": 7
+        },
+        {
+            "input": {"value1": 3, "weight1": 2, "value2": 15, "weight2": 8, "maxW": 4},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"value1": 20, "weight1": 10, "value2": 15, "weight2": 7, "maxW": 15},
+            "expectedOutput": 20
+        }
+    ]
+}

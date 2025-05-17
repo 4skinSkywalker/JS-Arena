@@ -1,0 +1,32 @@
+{"tests": [
+        {
+            "input": {"forest": [[true, true, true,  true],
+                      [true, true, false, true],
+                      [true, true, true,  true],
+                      [true, true, true,  true]]},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"forest": [[false, true, true],
+                      [true,  true, true]]},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"forest": [[true, true, true, true],
+                      [true, true, true, true],
+                      [true, true, true, true],
+                      [true, true, true, true]]},
+            "expectedOutput": 4
+        },
+        {
+            "input": {"forest": [[true]]},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"forest": [[true, false, true],
+                      [true,  false, true],
+                      [true,  true, true]]},
+            "expectedOutput": 1
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"inputArray": [1, 2, 1], "elemToReplace": 1, "substitutionElem": 3},
+            "expectedOutput": [3, 2, 3]
+        },
+        {
+            "input": {"inputArray": [4, 4, 4], "elemToReplace": 4, "substitutionElem": 0},
+            "expectedOutput": [0, 0, 0]
+        },
+        {
+            "input": {"inputArray": [7, 8, 9, 8], "elemToReplace": 8, "substitutionElem": 1},
+            "expectedOutput": [7, 1, 9, 1]
+        },
+        {
+            "input": {"inputArray": [1, 1, 2, 2, 3, 3], "elemToReplace": 2, "substitutionElem": 4},
+            "expectedOutput": [1, 1, 4, 4, 3, 3]
+        },
+        {
+            "input": {"inputArray": [5, 5, 5, 5, 5, 5, 5, 5], "elemToReplace": 5, "substitutionElem": 7},
+            "expectedOutput": [7, 7, 7, 7, 7, 7, 7, 7]
+        }
+    ]
+}

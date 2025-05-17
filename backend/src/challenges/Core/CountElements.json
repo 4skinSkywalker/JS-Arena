@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"inputString": "[[0, 20], [33, 99]]"},
+            "expectedOutput": 4
+        },
+        {
+            "input": {"inputString": "[ \"one\", 2, \"three\" ]"},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"inputString": "true"},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"inputString": "[[1, 2, [3]], 4]"},
+            "expectedOutput": 4
+        },
+        {
+            "input": {"inputString": "[[\"string\", false], [33, \"another string\"]]"},
+            "expectedOutput": 4
+        }
+    ]
+}

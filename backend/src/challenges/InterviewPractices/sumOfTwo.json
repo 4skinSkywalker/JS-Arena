@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"a": [1, 2, 3], "b": [10, 20, 30, 40], "v": 42},
+            "expectedOutput": true
+        },
+        {
+            "input": {"a": [5, 7, 9], "b": [1, 2, 3, 4], "v": 10},
+            "expectedOutput": true
+        },
+        {
+            "input": {"a": [6, 8, 10], "b": [5, 9, 13, 16], "v": 25},
+            "expectedOutput": false
+        },
+        {
+            "input": {"a": [1, 3, 5, 7], "b": [2, 4, 6, 8], "v": 15},
+            "expectedOutput": false
+        },
+        {
+            "input": {"a": [], "b": [2, 4, 6, 8], "v": 10},
+            "expectedOutput": false
+        }
+    ]
+}

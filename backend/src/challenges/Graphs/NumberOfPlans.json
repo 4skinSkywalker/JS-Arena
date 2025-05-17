@@ -1,0 +1,22 @@
+{"tests": [
+        {
+            "input": {"n": 4, "streets": [[0, 1, 1], [0, 3, 2], [1, 2, 2], [2, 3, 2]]}, 
+            "expectedOutput": 3
+        },
+        {
+            "input": {"n": 5, "streets": [[0, 1, 1], [0, 2, 1], [1, 3, 2], [2, 4, 2]]}, 
+            "expectedOutput": 1
+        },
+        {
+            "input": {"n": 6, "streets": [[0, 1, 1], [1, 2, 2], [2, 3, 2], [3, 4, 2], [4, 5, 3]]}, 
+            "expectedOutput": 2
+        },
+        {
+            "input": {"n": 4, "streets": [[0, 1, 2], [1, 2, 1], [2, 3, 1]]}, 
+            "expectedOutput": 1
+        },
+        {
+            "input": {"n": 3, "streets": [[0, 1, 1], [1, 2, 1]]},
+            "expectedOutput": 1
+        }
+    ]}

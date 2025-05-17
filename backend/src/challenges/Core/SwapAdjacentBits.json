@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"n": 13},
+            "expectedOutput": 14
+        },
+        {
+            "input": {"n": 74},
+            "expectedOutput": 133
+        },
+        {
+            "input": {"n": 0},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"n": 255},
+            "expectedOutput": 255
+        },
+        {
+            "input": {"n": 1024},
+            "expectedOutput": 512
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{"tests": [
+        {
+            "input": [
+                "               v",
+                "v  ,,,,,\"Hello\"<",
+                ">48*,          v",
+                "\"!dlroW\",,,,,,v>",
+                "25*,@         > "
+            ],
+            "expectedOutput": "Hello World!\n"
+        },
+        {
+            "input": [
+                ">987v",
+                "v   <",
+                ">+.@"
+            ],
+            "expectedOutput": "9 "
+        },
+        {
+            "input": [
+                ">25*,@"
+            ],
+            "expectedOutput": "\n"
+        },
+        {
+            "input": [
+                ">\"star\",,,,,@"
+            ],
+            "expectedOutput": "rats"
+        },
+        {
+            "input": [
+                ">97+25*3*2/,@"
+            ],
+            "expectedOutput": "A"
+        }
+    ]
+}

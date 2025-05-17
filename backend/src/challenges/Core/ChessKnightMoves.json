@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"cell": "a1"},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"cell": "c2"},
+            "expectedOutput": 6
+        },
+        {
+            "input": {"cell": "e5"},
+            "expectedOutput": 8
+        },
+        {
+            "input": {"cell": "h8"},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"cell": "d4"},
+            "expectedOutput": 8
+        }
+    ]
+}

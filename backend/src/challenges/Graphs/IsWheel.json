@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"adj": [[false, true, true, true, true], [true, false, true, false, true], [true, true, false, true, false], [true, false, true, false, true], [true, true, false, true, false]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"adj": [[false, true, true, false, true], [true, false, true, false, true], [true, true, false, true, false], [false, false, true, false, true], [true, true, false, true, false]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"adj": [[false, true, true, false], [true, false, true, true], [true, true, false, true], [false, true, true, false]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"adj": [[false, true, true, true], [true, false, true, true], [true, true, false, true], [true, true, true, false]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"adj": [[false, true], [true, false]]},
+            "expectedOutput": false
+        }
+    ]
+}

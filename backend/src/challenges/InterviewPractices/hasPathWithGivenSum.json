@@ -1,0 +1,124 @@
+{
+    "tests": [
+        {
+            "input": {
+                "t": {
+                    "value": 4,
+                    "left": {
+                        "value": 1,
+                        "left": {
+                            "value": -2,
+                            "right": {
+                                "value": 3
+                            }
+                        }
+                    },
+                    "right": {
+                        "value": 3,
+                        "left": {
+                            "value": 1
+                        },
+                        "right": {
+                            "value": 2,
+                            "left": {
+                                "value": -2
+                            },
+                            "right": {
+                                "value": -3
+                            }
+                        }
+                    }
+                },
+                "s": 7
+            },
+            "expectedOutput": true
+        },
+        {
+            "input": {
+                "t": {
+                    "value": 4,
+                    "left": {
+                        "value": 1,
+                        "left": {
+                            "value": -2,
+                            "right": {
+                                "value": 3
+                            }
+                        }
+                    },
+                    "right": {
+                        "value": 3,
+                        "left": {
+                            "value": 1
+                        },
+                        "right": {
+                            "value": 2,
+                            "left": {
+                                "value": -4
+                            },
+                            "right": {
+                                "value": -3
+                            }
+                        }
+                    }
+                },
+                "s": 7
+            },
+            "expectedOutput": false
+        },
+        {
+            "input": {
+                "t": {
+                    "value": 5,
+                    "left": {
+                        "value": 1,
+                        "left": {
+                            "value": -2,
+                            "right": {
+                                "value": 3
+                            }
+                        }
+                    },
+                    "right": {
+                        "value": 3
+                    }
+                },
+                "s": 9
+            },
+            "expectedOutput": true
+        },
+        {
+            "input": {
+                "t": {
+                    "value": 3,
+                    "left": {
+                        "value": 2
+                    },
+                    "right": {
+                        "value": 1,
+                        "left": {
+                            "value": -1
+                        },
+                        "right": {
+                            "value": -2
+                        }
+                    }
+                },
+                "s": 5
+            },
+            "expectedOutput": false
+        },
+        {
+            "input": {
+                "t": {
+                    "value": 1,
+                    "right": {
+                        "value": 2
+                    }
+                },
+                "s": 3
+            },
+            "expectedOutput": true
+        }
+    ]
+}

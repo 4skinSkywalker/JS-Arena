@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"words": ["crossword", "square", "formation", "something"]},
+            "expectedOutput": 6
+        },
+        {
+            "input": {"words": ["hello", "world", "nice", "day"]},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"words": ["brick", "brian", "border", "bar"]},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"words": ["python", "code", "syntax", "loops"]},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"words": ["crossword", "cross", "crossing", "crosstown"]},
+            "expectedOutput": 0
+        }
+    ]
+}

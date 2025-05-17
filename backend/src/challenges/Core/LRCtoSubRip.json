@@ -1,0 +1,75 @@
+{
+    "tests": [
+        {
+            "input": {
+                "lrcLyrics": ["[00:12.00] Happy birthday dear coder,", "[00:17.20] Happy birthday to you!"], 
+                "songLength": "00:00:20"
+            }, 
+            "expectedOutput": [
+                "1",
+                "00:00:12,000 --> 00:00:17,200",
+                "Happy birthday dear coder,",
+                "",
+                "2",
+                "00:00:17,200 --> 00:00:20,000",
+                "Happy birthday to you!"
+            ]
+        },
+        {
+            "input": {
+                "lrcLyrics": ["[00:10.00] Hello world,", "[00:15.20] How are you?"], 
+                "songLength": "00:00:30"
+            }, 
+            "expectedOutput": [
+                "1",
+                "00:00:10,000 --> 00:00:15,200",
+                "Hello world,",
+                "",
+                "2",
+                "00:00:15,200 --> 00:00:30,000",
+                "How are you?"
+            ]
+        },
+        {
+            "input": {
+                "lrcLyrics": ["[00:05.00] Hi,"], 
+                "songLength": "00:00:10"
+            }, 
+            "expectedOutput": [
+                "1",
+                "00:00:05,000 --> 00:00:10,000",
+                "Hi,"
+            ]
+        },
+        {
+            "input": {
+                "lrcLyrics": ["[00:01.00] Good morning,", "[00:03.00] Good afternoon,", "[00:05.00] Good evening,"], 
+                "songLength": "00:00:10"
+            }, 
+            "expectedOutput": [
+                "1",
+                "00:00:01,000 --> 00:00:03,000",
+                "Good morning,",
+                "",
+                "2",
+                "00:00:03,000 --> 00:00:05,000",
+                "Good afternoon,",
+                "",
+                "3",
+                "00:00:05,000 --> 00:00:10,000",
+                "Good evening,"
+            ]
+        },
+        {
+            "input": {
+                "lrcLyrics": ["[00:02.00] Programming is fun,"], 
+                "songLength": "00:00:50"
+            }, 
+            "expectedOutput": [
+                "1",
+                "00:00:02,000 --> 00:00:50,000",
+                "Programming is fun,"
+            ]
+        }
+    ]
+}

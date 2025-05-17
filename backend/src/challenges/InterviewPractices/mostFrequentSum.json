@@ -1,0 +1,92 @@
+{
+    "tests": [
+        {
+            "input": {
+                "t": {
+                    "value": 1,
+                    "left": {
+                        "value": 2
+                    },
+                    "right": {
+                        "value": 3
+                    }
+                }
+            }, 
+            "expectedOutput": [2, 3, 6]
+        },
+        {
+            "input": {
+                "t": {
+                    "value": -2,
+                    "left": {
+                        "value": -3
+                    },
+                    "right": {
+                        "value": 2
+                    }
+                }
+            }, 
+            "expectedOutput": [-3]
+        },
+        {
+            "input": {
+                "t": {
+                    "value": 1,
+                    "left": {
+                        "value": -2,
+                        "left": {
+                            "value": -3
+                        },
+                        "right": {
+                            "value": -1
+                        }
+                    },
+                    "right": {
+                        "value": 3
+                    }
+                }
+            }, 
+            "expectedOutput": [-2, -1, 2, 3]
+        },
+        {
+            "input": {
+                "t": {
+                    "value": 5,
+                    "left": {
+                        "value": 3,
+                        "left": {
+                            "value": 2
+                        },
+                        "right": {
+                            "value": 4
+                        }
+                    },
+                    "right": {
+                        "value": 7,
+                        "left": {
+                            "value": 6
+                        },
+                        "right": {
+                            "value": 8
+                        }
+                    }
+                }
+            }, 
+            "expectedOutput": [2, 4, 6, 8, 9, 14, 16, 31]
+        },
+        {
+            "input": {
+                "t": {
+                    "value": 0,
+                    "left": {
+                        "value": 0
+                    },
+                    "right": {
+                        "value": 0
+                    }
+                }
+            }, 
+            "expectedOutput": [0]
+        }
+    ]
+}

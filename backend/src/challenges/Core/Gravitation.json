@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"rows": ["#..##",".##.#",".#.##","....."]},
+            "expectedOutput": [1, 4]
+        },
+        {
+            "input": {"rows": ["...",".#.","...",".#.","...",".#."]},
+            "expectedOutput": [1]
+        },
+        {
+            "input": {"rows": ["#..","...",".#."]},
+            "expectedOutput": [1, 2]
+        },
+        {
+            "input": {"rows": ["##.","...",".#."]},
+            "expectedOutput": [2]
+        },
+        {
+            "input": {"rows": ["###","..#","..."]},
+            "expectedOutput": [2]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"notation": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR"},
+            "expectedOutput": "RP4pr/NP4pn/BP4pb/QP4pq/K2P2pk/BP4pb/NP4pn/RP4pr"
+        },
+        {
+            "input": {"notation": "rnbqkb1r/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR"},
+            "expectedOutput": "RP4pr/NP4pn/BP4pb/QP4pq/K2P2pk/BP4p8/NP4pn/RP4pr"
+        },
+        {
+            "input": {"notation": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"},
+            "expectedOutput": "RP4pr/NP4pn/BP4pb/QP4pq/KP4pk/BP4pb/NP4pn/RP4pr"
+        },
+        {
+            "input": {"notation": "rnbqkbnr/pppppppp/8/4P3/8/8/PPPP1PPP/RNBQKBNR"},
+            "expectedOutput": "RP4pr/NP4pn/BP4pb/Q3P1pq/KP4pk/BP4pb/NP4pn/RP4pr"
+        },
+        {
+            "input": {"notation": "rnbqkbnr/pppppppp/8/8/8/8/PPPP1PPP/RNBKQRNB"},
+            "expectedOutput": "RP3prp/NP3pnp/BP3pbp/QP3pqp/K1P3pk/BP3pbp/NP3pnp/RP3prp"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": { "path": "/home/a/./x/../b//c/" },
+            "expectedOutput": "/home/a/b/c"
+        },
+        {
+            "input": { "path": "/.././x/./y//z/" },
+            "expectedOutput": "/x/y/z"
+        },
+        {
+            "input": { "path": "/./.././" },
+            "expectedOutput": "/"
+        },
+        {
+            "input": { "path": "/home//user//downloads//" },
+            "expectedOutput": "/home/user/downloads"
+        },
+        {
+            "input": { "path": "/a/b/c/./../../g/" },
+            "expectedOutput": "/a/g"
+        }
+    ]
+}

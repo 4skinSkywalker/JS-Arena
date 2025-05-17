@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"bishop1": "d7", "bishop2": "f5"},
+            "expectedOutput": ["c8", "h3"]
+        },
+        {
+            "input": {"bishop1": "d8", "bishop2": "b5"},
+            "expectedOutput": ["b5", "d8"]
+        },
+        {
+            "input": {"bishop1": "a1", "bishop2": "e5"},
+            "expectedOutput": ["a1", "e5"]
+        },
+        {
+            "input": {"bishop1": "h1", "bishop2": "a8"},
+            "expectedOutput": ["a8", "h1"]
+        },
+        {
+            "input": {"bishop1": "b2", "bishop2": "g7"},
+            "expectedOutput": ["a1", "h8"]
+        }
+    ]
+}

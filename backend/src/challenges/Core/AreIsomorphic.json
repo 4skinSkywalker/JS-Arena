@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"array1": [[1, 1, 1], [0, 0]], "array2": [[2, 1, 1], [2, 1]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"array1": [[2], []], "array2": [[2]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"array1": [[1, 1, 1, 1], [0, 0, 0]], "array2": [[1, 1, 1, 1], [0, 0, 0]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"array1": [[1, 1], [0, 0, 0]], "array2": [[1, 1, 1, 1], [0, 0, 0]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"array1": [[1, 1, 1, 1], [0, 0]], "array2": [[1, 1, 1, 1], [0, 0, 0]]},
+            "expectedOutput": false
+        }
+    ]
+}

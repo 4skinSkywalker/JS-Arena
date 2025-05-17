@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"start_position": [1, 4, 2], "speed": [27, 18, 24]},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"start_position": [0, 5, 10], "speed": [5, 5, 5]},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"start_position": [1, 2, 3], "speed": [1, 2, 3]},
+            "expectedOutput": -1
+        },
+        {
+            "input": {"start_position": [1, 4, 7, 10], "speed": [10, 5, 10, 10]},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"start_position": [6, 2, 4], "speed": [3, 5, 4]},
+            "expectedOutput": 2
+        }
+    ]
+}

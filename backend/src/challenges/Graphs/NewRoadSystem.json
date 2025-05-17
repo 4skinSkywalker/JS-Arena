@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": [[[false, true, false, false], [false, false, true, false], [true, false, false, true ], [false, false, true, false]]],
+            "expectedOutput": true
+        },
+        {
+            "input": [[[false, true, false, false, false, false, false], [true, false, false, false, false, false, false], [false, false, false, true, false, false, false], [false, false, true, false, false, false, false], [false, false, false, false, false, false, true], [false, false, false, false, true, false, false], [false, false, false, false, false, true, false]]],
+            "expectedOutput": true
+        },
+        {
+            "input": [[[false, true, false], [false, false, false], [true, false, false]]],
+            "expectedOutput": false
+        },
+        {
+            "input": [[[false, true], [true, false]]],
+            "expectedOutput": true
+        },
+        {
+            "input": [[[false]]],
+            "expectedOutput": true
+        }
+    ]
+}

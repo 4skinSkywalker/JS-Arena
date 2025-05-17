@@ -1,0 +1,22 @@
+{"tests": [
+    {
+        "input": [["godaddy.net", "godaddy.com"], ["godaddy.org", "godaddycares.com"], ["godady.com", "godaddy.com"], ["godaddy.ne", "godaddy.net"]], 
+        "expectedOutput": [["godaddy.com", "godaddy.ne", "godaddy.net", "godady.com"], ["godaddy.org", "godaddycares.com"]]
+    },
+    {
+        "input": [["site1.com", "site2.com"], ["site2.com", "site3.com"], ["site4.com", "site5.com"]], 
+        "expectedOutput": [["site1.com", "site2.com", "site3.com"], ["site4.com", "site5.com"]]
+    },
+    {
+        "input": [["abc.com", "xyz.com"]], 
+        "expectedOutput": [["abc.com", "xyz.com"]]
+    },
+    {
+        "input": [["godaddy.org", "godaddynet.com"], ["godaddy.com", "godaddynet.com"]],
+        "expectedOutput": [["godaddy.com", "godaddy.org", "godaddynet.com"]]
+    },
+    {
+        "input": [["godaddy.co", "godaddy.es"], ["godaddy.com", "godaddynet.co"], ["godaddy.org", "godaddy.es"]],
+        "expectedOutput": [["godaddy.co", "godaddy.org", "godaddy.es"], ["godaddy.com", "godaddynet.co"]]
+    }
+]}

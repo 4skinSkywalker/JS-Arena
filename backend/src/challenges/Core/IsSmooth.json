@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"arr": [7, 2, 2, 5, 10, 7]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"arr": [-5, -5, 10]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"arr": [3]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"arr": [7, 3, 5, 5, 9, 7]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"arr": [10, 5, 5, 10]},
+            "expectedOutput": true
+        }
+    ]
+}

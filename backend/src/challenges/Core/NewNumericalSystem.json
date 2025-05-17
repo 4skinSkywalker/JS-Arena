@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"number": "G"},
+            "expectedOutput": ["A + G", "B + F", "C + E", "D + D"]
+        },
+        {
+            "input": {"number": "C"},
+            "expectedOutput": ["A + B", "A + B"]
+        },
+        {
+            "input": {"number": "D"},
+            "expectedOutput": ["A + C", "B + B"]
+        },
+        {
+            "input": {"number": "A"},
+            "expectedOutput": []
+        },
+        {
+            "input": {"number": "K"},
+            "expectedOutput": ["A + J", "B + I", "C + H", "D + G", "E + F", "F + E", "G + D", "H + C", "I + B", "J + A"]
+        }
+    ]
+}

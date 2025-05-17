@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"curr_month": "02-2016"},
+            "expectedOutput": "08-2016"
+        },
+        {
+            "input": {"curr_month": "08-2016"},
+            "expectedOutput": "05-2017"
+        },
+        {
+            "input": {"curr_month": "12-2020"},
+            "expectedOutput": "02-2021"
+        },
+        {
+            "input": {"curr_month": "01-2001"},
+            "expectedOutput": "10-2001"
+        },
+        {
+            "input": {"curr_month": "07-2022"},
+            "expectedOutput": "08-2022"
+        }
+    ]
+}

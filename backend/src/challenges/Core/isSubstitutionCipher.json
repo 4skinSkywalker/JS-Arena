@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"string1": "aacb", "string2": "aabc"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"string1": "aa", "string2": "bc"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"string1": "ab", "string2": "cd"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"string1": "abcdef", "string2": "fedcba"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"string1": "xyz", "string2": "zxy"},
+            "expectedOutput": true
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"legs": 6},
+            "expectedOutput": [1, 3]
+        },
+        {
+            "input": {"legs": 2},
+            "expectedOutput": [1]
+        },
+        {
+            "input": {"legs": 4},
+            "expectedOutput": [1, 2]
+        },
+        {
+            "input": {"legs": 10},
+            "expectedOutput": [1, 3, 5]
+        },
+        {
+            "input": {"legs": 12},
+            "expectedOutput": [1, 3, 5, 6]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"time": "13:58"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"time": "25:51"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"time": "02:76"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"time": "00:00"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"time": "23:59"},
+            "expectedOutput": true
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{"tests": [
+    {
+        "input": {"conversations": [["where", "are", "you", "live", "i", "live", "in", "new", "york"], ["are", "you", "going", "somewhere", "tonight", "no", "i", "am", "too", "tired", "today"], ["hello", "what", "is", "your", "name", "my", "name", "is", "john"]], "currentConversation": ["hello", "john", "do", "you", "have", "a", "favorite", "city", "to", "live", "in", "yes", "it", "is"]},
+        "expectedOutput": ["hello", "john", "do", "you", "have", "a", "favorite", "city", "to", "live", "in", "yes", "it", "is", "new", "york"]
+    },
+    {
+        "input": {"conversations": [["lets", "have", "some", "fun"], ["i", "never", "get", "it"], ["be", "aware", "of", "this", "house"], ["he", "will", "call", "her"]], "currentConversation": ["can", "you", "please"]},
+        "expectedOutput": ["can", "you", "please"]
+    },
+    {
+        "input": {"conversations": [["good", "morning", "have", "a", "nice", "day"], ["good", "night", "and", "sweet", "dreams"]], "currentConversation": ["good"]},
+        "expectedOutput": ["good", "morning", "have", "a", "nice", "day"]
+    },
+    {
+        "input": {"conversations": [["a", "b", "c", "d"], ["e", "f"], ["g", "h", "i"]], "currentConversation": ["g"]},
+        "expectedOutput": ["g", "h", "i"]
+    },
+    {
+        "input": {"conversations": [["do", "you", "like", "chocolate"], ["yes", "I", "do"]], "currentConversation": ["do"]},
+        "expectedOutput": ["do", "you", "like", "chocolate"]
+    }
+]}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"s": "effg"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"s": "cdce"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"s": "ace"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"s": "bxz"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"s": "helloai"},
+            "expectedOutput": false
+        }
+    ]
+}

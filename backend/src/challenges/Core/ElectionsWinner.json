@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"votes": [2, 3, 5, 2], "k": 3},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"votes": [1, 1, 1, 1], "k": 0},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"votes": [10, 1, 1, 0], "k": 0},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"votes": [5, 8, 2, 1], "k": 4},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"votes": [12, 4, 7, 9], "k": 10},
+            "expectedOutput": 3
+        }
+    ]
+}

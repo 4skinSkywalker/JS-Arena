@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"inputArray": [-2,2,5,-11,6]},
+            "expectedOutput": 7
+        },
+        {
+            "input": {"inputArray": [-1,-2,-3,-4,-5]},
+            "expectedOutput": -1
+        },
+        {
+            "input": {"inputArray": [1,2,3,4,5]},
+            "expectedOutput": 15
+        },
+        {
+            "input": {"inputArray": [-2,-3,4,-1,-2,1,5,-3]},
+            "expectedOutput": 7
+        },
+        {
+            "input": {"inputArray": [3,-2,5,-1]},
+            "expectedOutput": 6
+        }
+    ]
+}

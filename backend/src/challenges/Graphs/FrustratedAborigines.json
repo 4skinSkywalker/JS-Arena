@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"bridges": [[1], [2], [1]], "crowd": [4, 1, 2]},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"bridges": [[1], [], [1]], "crowd": [3, 0, 1]},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"bridges": [[], [0], [1]], "crowd": [1, 2, 1]},
+            "expectedOutput": 2
+        },
+        {
+            "input": {"bridges": [[1, 2], [2, 0], [0, 1]], "crowd": [2, 3, 1]},
+            "expectedOutput": 0
+        },
+        {
+            "input": {"bridges": [[], [], []], "crowd": [1, 1, 1]},
+            "expectedOutput": 6
+        }
+    ]
+}

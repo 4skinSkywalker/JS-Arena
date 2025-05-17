@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"items": [3, 5, 2, 4, 5]},
+            "expectedOutput": [-1, 3, -1, 2, 4]
+        },
+        {
+            "input": {"items": [1, 2, 3, 4, 5]},
+            "expectedOutput": [-1, 1, 2, 3, 4]
+        },
+        {
+            "input": {"items": [5, 4, 3, 2, 1]},
+            "expectedOutput": [-1, -1, -1, -1, -1]
+        },
+        {
+            "input": {"items": [1, 1, 1, 1, 1]},
+            "expectedOutput": [-1, -1, -1, -1, -1]
+        },
+        {
+            "input": {"items": [2, 1, 4, 3, 2]},
+            "expectedOutput": [-1, -1, 1, 2, 1]
+        }
+    ]
+}

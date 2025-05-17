@@ -1,15 +1,15 @@
 {
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "ws": "^8.18.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "nodemon": "^3.1.10",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.14",
-    "@types/ws": "^8.18.1"
+    "@types/ws": "^8.18.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "ws": "^8.18.1"
   },
   "name": "js-arena",
   "version": "1.0.0",
@@ -22,6 +22,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {}
+  "description": ""
 }

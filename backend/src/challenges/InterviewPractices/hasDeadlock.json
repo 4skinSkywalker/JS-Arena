@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"connections": [[1], [2], [3, 4], [4], [0]]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"connections": [[1, 2, 3], [2, 3], [3], []]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"connections": [[1, 3], [2], [1, 3], [4]]},
+            "expectedOutput": false
+        },
+        {
+            "input": {"connections": [[1, 2, 3], [2, 3], [3, 0], []]},
+            "expectedOutput": true
+        },
+        {
+            "input": {"connections": [[], []]},
+            "expectedOutput": false
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"inputString": "AaBaa"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"inputString": "abac"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"inputString": "MadaM"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"inputString": "PalindRome"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"inputString": "lEveL"},
+            "expectedOutput": true
+        }
+    ]
+}

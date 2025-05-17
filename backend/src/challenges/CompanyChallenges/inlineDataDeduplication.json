@@ -1,0 +1,23 @@
+{"tests": [
+        {
+            "input": ["WRITE Hello", "WRITE World", "READ 0", "READ 1", "DELETE 0", "WRITE World", "READ 0", "READ 1", "READ 2"],
+            "expectedOutput": ["0", "1", "Hello", "World", "Hello", "1", "None", "World", "None"]
+        },
+        {
+            "input": ["WRITE Python", "WRITE Java", "READ 0", "READ 1", "DELETE 1", "WRITE Python", "READ 0", "READ 1", "READ 2"],
+            "expectedOutput": ["0", "1", "Python", "Java", "Java", "0", "Python", "None", "None"]
+        },
+        {
+            "input": ["WRITE AI", "WRITE Assistant", "READ 0", "READ 1", "DELETE 0", "WRITE Assistant", "READ 0", "READ 1", "READ 2"],
+            "expectedOutput": ["0", "1", "AI", "Assistant", "AI", "1", "None", "Assistant", "None"]
+        },
+        {
+            "input": ["WRITE Test", "WRITE Case", "READ 0", "READ 1", "DELETE 0", "WRITE Case", "READ 0", "READ 1", "READ 2"],
+            "expectedOutput": ["0", "1", "Test", "Case", "Test", "1", "None", "Case", "None"]
+        },
+        {
+            "input": ["WRITE Python", "WRITE Java", "DELETE 0", "WRITE Java", "READ 0", "READ 1"],
+            "expectedOutput": ["0", "1", "Python", "1", "None", "Java"]
+        }
+    ]
+}

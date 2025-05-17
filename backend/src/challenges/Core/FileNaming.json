@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": ["doc", "doc", "image", "doc(1)", "doc"],
+            "expectedOutput": ["doc", "doc(1)", "image", "doc(1)(1)", "doc(2)"]
+        },
+        {
+            "input": ["file", "file", "file", "file"],
+            "expectedOutput": ["file", "file(1)", "file(2)", "file(3)"]
+        },
+        {
+            "input": ["image", "doc", "doc", "image", "image"],
+            "expectedOutput": ["image", "doc", "doc(1)", "image(1)", "image(2)"]
+        },
+        {
+            "input": ["file", "file(1)", "file"],
+            "expectedOutput": ["file", "file(1)", "file(2)"]
+        },
+        {
+            "input": ["a", "a", "b", "a", "c", "c", "b", "a", "c"],
+            "expectedOutput": ["a", "a(1)", "b", "a(2)", "c", "c(1)", "b(1)", "a(3)", "c(2)"]
+        }
+    ]
+}

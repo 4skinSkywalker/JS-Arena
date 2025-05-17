@@ -1,0 +1,22 @@
+{"tests": [
+    {
+        "input": {"white": "e2", "black": "e7", "to_move": "w"},
+        "expectedOutput": "draw"
+    },
+    {
+        "input": {"white": "e3", "black": "d7", "to_move": "b"},
+        "expectedOutput": "black"
+    },
+    {
+        "input": {"white": "a7", "black": "h2", "to_move": "w"},
+        "expectedOutput": "white"
+    },
+    {
+        "input": {"white": "d2", "black": "f7", "to_move": "b"},
+        "expectedOutput": "black"
+    },
+    {
+        "input": {"white": "a2", "black": "h7", "to_move": "w"},
+        "expectedOutput": "white"
+    }
+]}

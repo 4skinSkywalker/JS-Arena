@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"fileSystem": "user\f\tpictures\f\tdocuments\f\t\tnotes.txt"},
+            "expectedOutput": 24
+        },
+        {
+            "input": {"fileSystem": "user\f\tpictures\f\t\tphoto.png\f\t\tcamera\f\tdocuments\f\t\tlectures\f\t\t\tnotes.txt"},
+            "expectedOutput": 33
+        },
+        {
+            "input": {"fileSystem": "dir\f\tsubdir1\f\tsubdir2\f\t\tfile.ext"},
+            "expectedOutput": 20
+        },
+        {
+            "input": {"fileSystem": "a\f\tb\f\t\tc\f\t\t\td\f\t\t\t\te.txt"},
+            "expectedOutput": 20
+        },
+        {
+            "input": {"fileSystem": "dir\f\tsubdir1\f\t\ta.txt\f\tsubdir2\f\t\tb.txt"},
+            "expectedOutput": 13
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"s": "abdc", "pairs": [[1, 4], [3, 4]]},
+            "expectedOutput": "dbca"
+        },
+        {
+            "input": {"s": "acfrh", "pairs": [[1, 2], [3, 5], [1, 3]]},
+            "expectedOutput": "cfarh"
+        },
+        {
+            "input": {"s": "classic", "pairs": [[1, 2], [2, 3], [3, 4], [4, 7]]},
+            "expectedOutput": "sslacic"
+        },
+        {
+            "input": {"s": "problematic", "pairs": [[1, 4], [4, 9], [3, 7], [2, 8]]},
+            "expectedOutput": "rbolematic"
+        },
+        {
+            "input": {"s": "spaceship", "pairs": [[1, 6], [2, 4], [2, 9]]},
+            "expectedOutput": "spaecship"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{"tests": [
+    {
+        "input": {"points": [[0, 0], [2, 0], [2, 1], [0, 1]]},
+        "expectedOutput": true
+    },
+    {
+        "input": {"points": [[0, 0], [2, 1], [2, 0], [0, 1]]},
+        "expectedOutput": false
+    },
+    {
+        "input": {"points": [[0, 0], [1, 1], [0, 2], [-1, 1]]},
+        "expectedOutput": true
+    },
+    {
+        "input": {"points": [[10, 3], [6, 10], [2, 3], [6, -4]]},
+        "expectedOutput": true
+    },
+    {
+        "input": {"points": [[5, 7], [6, 4], [10, 4], [9, 7]]},
+        "expectedOutput": false
+    }
+]}

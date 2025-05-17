@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"n": 37, "k": 3},
+            "expectedOutput": 33
+        },
+        {
+            "input": {"n": 37, "k": 4},
+            "expectedOutput": 37
+        },
+        {
+            "input": {"n": 50, "k": 6},
+            "expectedOutput": 18
+        },
+        {
+            "input": {"n": 100, "k": 7},
+            "expectedOutput": 36
+        },
+        {
+            "input": {"n": 64, "k": 7},
+            "expectedOutput": 0
+        }
+    ]
+}

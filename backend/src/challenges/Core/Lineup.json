@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"commands": "LLARL"},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"commands": "AAA"},
+            "expectedOutput": 3
+        },
+        {
+            "input": {"commands": "RLRLA"},
+            "expectedOutput": 1
+        },
+        {
+            "input": {"commands": "LRLAL"},
+            "expectedOutput": 4
+        },
+        {
+            "input": {"commands": "LR"},
+            "expectedOutput": 0
+        }
+    ]
+}

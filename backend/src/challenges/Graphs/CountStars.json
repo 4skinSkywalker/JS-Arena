@@ -1,0 +1,64 @@
+{
+    "tests": [
+        {
+            "input": {
+                "edges": [
+                    [false, true, false, false, false],
+                    [true, false, false, false, false],
+                    [false, false, false, true, false],
+                    [false, false, true, false, false],
+                    [false, false, false, false, false]
+                ]
+            },
+            "expectedOutput": 2
+        },
+        {
+            "input": {
+                "edges": [
+                    [false, false, false, false, false],
+                    [false, false, false, false, false],
+                    [false, false, false, false, false],
+                    [false, false, false, false, false],
+                    [false, false, false, false, false]
+                ]
+            },
+            "expectedOutput": 0
+        },
+        {
+            "input": {
+                "edges": [
+                    [false, true, false, true, false],
+                    [true, false, false, false, false],
+                    [false, false, false, true, false],
+                    [true, false, true, false, false],
+                    [false, false, false, false, false]
+                ]
+            },
+            "expectedOutput": 1
+        },
+        {
+            "input": {
+                "edges": [
+                    [false, true, true, false, false],
+                    [true, false, false, false, false],
+                    [true, false, false, false, false],
+                    [false, false, false, false, false],
+                    [false, false, false, false, false]
+                ]
+            },
+            "expectedOutput": 1
+        },
+        {
+            "input": {
+                "edges": [
+                    [false, true, true, true, false],
+                    [true, false, false, false, false],
+                    [true, false, false, false, false],
+                    [true, false, false, false, false],
+                    [false, false, false, false, false]
+                ]
+            },
+            "expectedOutput": 1
+        }
+    ]
+}

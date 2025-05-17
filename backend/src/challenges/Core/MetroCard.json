@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"lastNumberOfDays": 30},
+            "expectedOutput": [31]
+        },
+        {
+            "input": {"lastNumberOfDays": 28},
+            "expectedOutput": [31]
+        },
+        {
+            "input": {"lastNumberOfDays": 31},
+            "expectedOutput": [28, 30, 31]
+        },
+        {
+            "input": {"lastNumberOfDays": 29},
+            "expectedOutput": []
+        },
+        {
+            "input": {"lastNumberOfDays": 24},
+            "expectedOutput": []
+        }
+    ]
+}

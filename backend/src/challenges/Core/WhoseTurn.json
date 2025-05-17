@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"p": "b1;g1;b8;g8"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"p": "b1;g2;b8;g8"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"p": "b1;g1;b7;g8"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"p": "a2;g1;b8;g8"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"p": "b1;h3;b8;g8"},
+            "expectedOutput": true
+        }
+    ]
+}

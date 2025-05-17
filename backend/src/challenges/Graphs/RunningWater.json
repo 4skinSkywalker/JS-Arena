@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"cap": [1, 1, 1], "volume": 2},
+            "expectedOutput": true
+        },
+        {
+            "input": {"cap": [16, 5, 3], "volume": 20},
+            "expectedOutput": false
+        },
+        {
+            "input": {"cap": [3, 3, 3], "volume": 6},
+            "expectedOutput": true
+        },
+        {
+            "input": {"cap": [2, 2, 2], "volume": 2},
+            "expectedOutput": true
+        },
+        {
+            "input": {"cap": [5, 7, 10], "volume": 15},
+            "expectedOutput": true
+        }
+    ]
+}

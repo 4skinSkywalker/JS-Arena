@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"inputString": "tandemtandem"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"inputString": "qqq"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"inputString": "2w2ww"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"inputString": "abcabc"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"inputString": "xyzxyzxyz"},
+            "expectedOutput": false
+        }
+    ]
+}

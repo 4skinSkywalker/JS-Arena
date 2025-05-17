@@ -1,0 +1,28 @@
+{
+    "tests": [
+        {
+            "input": {"line": "123_456_789"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"line": "16#123abc#"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"line": "10#123abc#"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"line": "10#10#123ABC#"},
+            "expectedOutput": false
+        },
+        {
+            "input": {"line": "10#0#"},
+            "expectedOutput": true
+        },
+        {
+            "input": {"line": "10##"},
+            "expectedOutput": false
+        }
+    ]
+}

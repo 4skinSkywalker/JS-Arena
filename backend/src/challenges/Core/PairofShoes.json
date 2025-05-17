@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": [[[0, 21], [1, 23], [1, 21], [0, 23]]],
+            "expectedOutput": true
+        },
+        {
+            "input": [[[0, 21], [1, 23], [1, 21], [1, 23]]],
+            "expectedOutput": false
+        },
+        {
+            "input": [[[0, 25], [1, 25], [0, 25], [1, 25]]],
+            "expectedOutput": true
+        },
+        {
+            "input": [[[0, 30], [0, 30], [0, 30], [1, 30]]],
+            "expectedOutput": false
+        },
+        {
+            "input": [[[0, 21]]],
+            "expectedOutput": false
+        }
+    ]
+}

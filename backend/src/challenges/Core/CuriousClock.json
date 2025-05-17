@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"some_time": "2016-08-26 22:40", "leaving_time": "2016-08-29 10:00"},
+            "expectedOutput": "2016-08-24 11:20"
+        },
+        {
+            "input": {"some_time": "2020-01-01 00:00", "leaving_time": "2020-01-01 01:00"},
+            "expectedOutput": "2019-12-31 23:00"
+        },
+        {
+            "input": {"some_time": "2022-06-01 07:00", "leaving_time": "2022-06-02 07:00"},
+            "expectedOutput": "2022-05-31 07:00"
+        },
+        {
+            "input": {"some_time": "2012-02-28 23:59", "leaving_time": "2012-02-29 23:59"},
+            "expectedOutput": "2012-02-27 23:59"
+        },
+        {
+            "input": {"some_time": "2022-12-01 12:00", "leaving_time": "2022-12-02 12:00"},
+            "expectedOutput": "2022-11-30 12:00"
+        }
+    ]
+}

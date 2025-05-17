@@ -1,0 +1,24 @@
+{
+    "tests": [
+        {
+            "input": {"inputArray": ["abc", "", "aaa", "a", "zz"]},
+            "expectedOutput": ["", "a", "zz", "abc", "aaa"]
+        },
+        {
+            "input": {"inputArray": ["hello", "world", "hi", "yes", "a"]},
+            "expectedOutput": ["a", "hi", "yes", "hello", "world"]
+        },
+        {
+            "input": {"inputArray": ["", "", "", "a"]},
+            "expectedOutput": ["", "", "", "a"]
+        },
+        {
+            "input": {"inputArray": ["abc", "abcd", "abcde", "abcdef"]},
+            "expectedOutput": ["abc", "abcd", "abcde", "abcdef"]
+        },
+        {
+            "input": {"inputArray": ["abc", "defg", "hijk", "lmn"]},
+            "expectedOutput": ["abc", "defg", "hijk", "lmn"]
+        }
+    ]
+}
