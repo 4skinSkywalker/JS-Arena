@@ -117,7 +117,7 @@
 
                                         <div class="mb-2">
                                             <div>Your output</div>
-                                            {{ test.output ? JSON.stringify(test.output) : "⠀" }}
+                                            {{ (test.output != null) ? JSON.stringify(test.output) : test.output }}
                                         </div>
 
                                         <div>
