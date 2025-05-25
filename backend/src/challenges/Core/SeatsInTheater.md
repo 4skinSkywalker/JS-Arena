@@ -6,8 +6,6 @@ The main problem is your shyness: you're afraid that you'll end up blocking the 
 
 Your task is to write a function `solution(nCols, nRows, col, row)` that, given the total number of rows and columns in the theater (nRows and nCols, respectively), and the row and column you're sitting in, return the number of people who sit strictly behind you and in your column or to the left, assuming all seats are occupied.
 
-Function signature: `def solution(nCols: int, nRows: int, col: int, row: int) -> int:`
-
 **Example**
 
 For `nCols = 16`, `nRows = 11`, `col = 5`, and `row = 3`, the output should be `solution(nCols, nRows, col, row)` = `96`.

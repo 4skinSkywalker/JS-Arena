@@ -8,13 +8,13 @@ You are expected to implement a function that, given `lrcLyrics` and `songLength
 
 For
 
-```python
+```
 lrcLyrics = ["[00:12.00] Happy birthday dear coder,",
              "[00:17.20] Happy birthday to you!"]
 ```
 and `songLength = "00:00:20"`, the output should be
 
-```python
+```
 solution(lrcLyrics, songLength) = [
   "1",
   "00:00:12,000 --> 00:00:17,200",

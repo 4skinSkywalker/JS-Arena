@@ -16,7 +16,7 @@ After being given the current formation of the team and the number of serves (k)
 
 1. If the formation is as follows:
 
-```python
+```
 formation = [
   ["empty",   "Player5", "empty"],
   ["Player4", "empty",   "Player2"],
@@ -25,7 +25,7 @@ formation = [
 ]
 ```
 and `k = 2`, the result should be:
-```python
+```
 [
   ["empty",   "Player1", "empty"],
   ["Player2", "empty",   "Player3"],
@@ -35,7 +35,7 @@ and `k = 2`, the result should be:
 ```
 2. If the formation is as follows:
 
-```python
+```
 formation = [
   ["empty", "Alice", "empty"],
   ["Bob",   "empty", "Charlie"],
@@ -45,7 +45,7 @@ formation = [
 ```
 and `k = 6`, the result should be:
 
-```python
+```
 [
   ["empty", "Alice", "empty"],
   ["Bob",   "empty", "Charlie"],

@@ -14,11 +14,11 @@
         },
         {
             "input": {"s": "mississippi", "t": "issm"},
-            "expectedOutput": "issiissippm"
+            "expectedOutput": "iiiissssm"
         },
         {
             "input": {"s": "abcabc", "t": "cab"},
-            "expectedOutput": "ccaaabb"
+            "expectedOutput": "ccaabb"
         }
     ]
 }

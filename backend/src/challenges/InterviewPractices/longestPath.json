@@ -14,11 +14,11 @@
         },
         {
             "input": {"fileSystem": "a\f\tb\f\t\tc\f\t\t\td\f\t\t\t\te.txt"},
-            "expectedOutput": 20
+            "expectedOutput": 13
         },
         {
             "input": {"fileSystem": "dir\f\tsubdir1\f\t\ta.txt\f\tsubdir2\f\t\tb.txt"},
-            "expectedOutput": 13
+            "expectedOutput": 17
         }
     ]
 }

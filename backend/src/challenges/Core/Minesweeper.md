@@ -13,5 +13,4 @@ the output should be
 solution(matrix) = [[1, 2, 1],
                     [2, 1, 1],
                     [1, 1, 1]]
-Check out the image below for better understanding:
 ```

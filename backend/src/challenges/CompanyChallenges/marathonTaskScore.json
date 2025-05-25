@@ -18,7 +18,7 @@
         },
         {
             "input": {"marathonLength": 200, "maxScore": 300, "submissions": 3, "successfulSubmissionTime": 50},
-            "expectedOutput": 225
+            "expectedOutput": 243
         }
     ]
 }

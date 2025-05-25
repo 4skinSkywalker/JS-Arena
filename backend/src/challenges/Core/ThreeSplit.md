@@ -6,7 +6,7 @@ It is guaranteed that the sum of all elements in the array is divisible by 3.
 
 **Example:**
 
-```python
+```
 For a = [0, -1, 0, -1, 0, -1], the output should be
 solution(a) = 4.
 ```

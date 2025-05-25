@@ -48,7 +48,7 @@ If the stack is empty and it is necessary to pop a value, no exception is raised
 
 Program:
 
-```python
+```
 program = [
 "               v",
 "v  ,,,,,"Hello"<",

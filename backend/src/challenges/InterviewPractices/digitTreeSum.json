@@ -67,7 +67,7 @@
                     }
                 }
             },
-            "expectedOutput": 26
+            "expectedOutput": 25
         },
         {
             "input": {
@@ -85,7 +85,7 @@
                     }
                 }
             },
-            "expectedOutput": 137
+            "expectedOutput": 113
         },
         {
             "input": {

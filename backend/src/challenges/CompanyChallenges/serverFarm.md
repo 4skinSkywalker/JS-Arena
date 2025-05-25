@@ -21,7 +21,3 @@ solution(jobs, servers) = [[1],
 - Job with index 2 goes to server 2.
 - Server 1 is going to be available next, since it got the job with the shortest processing time (15). Thus job 4 goes to server 1.
 - Finally, job 3 goes to server 2.
-
-Check out the image below for better understanding:
-
-![Job Distribution](image_url)

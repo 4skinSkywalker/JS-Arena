@@ -14,7 +14,7 @@
         },
         {
             "input": {"s": "abacaba"},
-            "expectedOutput": 7
+            "expectedOutput": 4
         },
         {
             "input": {"s": "abcdabcdabcd"},

@@ -14,11 +14,11 @@
         },
         {
             "input": {"s": "abcdef"},
-            "expectedOutput": 987654
+            "expectedOutput": 937024
         },
         {
             "input": {"s": "abcabc"},
-            "expectedOutput": 998001
+            "expectedOutput": 797449
         }
     ]
 }

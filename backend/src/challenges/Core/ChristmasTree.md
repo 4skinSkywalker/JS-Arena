@@ -34,7 +34,7 @@ Given `levelNum` and `levelHeight`, your task is to return the Christmas tree of
 
 For `levelNum = 1` and `levelHeight = 3`, the output should be:
 
-```python
+```
 solution(levelNum, levelHeight) =
     ["    *",
      "    *",
@@ -60,7 +60,7 @@ Which represents the following tree:
 
 For `levelNum = 2` and `levelHeight = 4`, the output should be:
 
-```python
+```
 solution(levelNum, levelHeight) = 
     ["      *", 
      "      *", 

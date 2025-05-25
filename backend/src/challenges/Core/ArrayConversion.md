@@ -2,7 +2,7 @@
 
 You are given an array of 2k integers (for some integer k). You need to perform the following operations until the array contains only one element:
 
-1. On the 1st, 3rd, 5th, etc. iterations (1-based), replace each pair of consecutive elements with their sum.
+1. On the 1st, 3rd, 5th, etc. iterations, replace each pair of consecutive elements with their sum.
 2. On the 2nd, 4th, 6th, etc. iterations, replace each pair of consecutive elements with their product.
 
 After the algorithm has finished, there will be a single element left in the array. You should return that element.

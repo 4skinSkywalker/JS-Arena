@@ -6,7 +6,7 @@
         },
         {
             "input": {"n": 8, "l": 2, "r": 4},
-            "expectedOutput": 0
+            "expectedOutput": 1
         },
         {
             "input": {"n": 10, "l": 3, "r": 8},

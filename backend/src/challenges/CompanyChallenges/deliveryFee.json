@@ -5,11 +5,11 @@
             "expectedOutput": true
         },
         {
-            "input": {"intervals": [0, 12, 18], "fees": [2, 4, 2], "deliveries": [[4, 21], [13, 37], [17, 51], [20, 32], [23,19]]},
+            "input": {"intervals": [0, 12, 18], "fees": [8, 4, 8], "deliveries": [[4, 21], [6, 27], [17, 32], [20,20], [23,19]]},
             "expectedOutput": true
         },
         {
-            "input": {"intervals": [0, 6, 12, 18], "fees": [1, 2, 3, 4], "deliveries": [[2, 45], [8, 17], [13, 33], [20, 55]]},
+            "input": {"intervals": [0, 6, 12], "fees": [1, 2, 3, 4], "deliveries": [[2, 45], [8, 17], [13, 33], [22, 55]]},
             "expectedOutput": false
         },
         {
@@ -17,7 +17,7 @@
             "expectedOutput": false
         },
         {
-            "input": {"intervals": [0, 8, 16], "fees": [3, 6, 3], "deliveries": [[4, 0], [12, 0], [20, 0]]},
+            "input": {"intervals": [0, 8, 16], "fees": [3, 6, 3], "deliveries": [[4, 0], [9, 0], [12, 0], [22, 0]]},
             "expectedOutput": true
         }
     ]

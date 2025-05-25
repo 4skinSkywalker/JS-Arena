@@ -18,7 +18,7 @@
         },
         {
             "input": {"inputArray": ["abc", "defg", "hijk", "lmn"]},
-            "expectedOutput": ["abc", "defg", "hijk", "lmn"]
+            "expectedOutput": ["abc", "lmn", "defg", "hijk"]
         }
     ]
 }

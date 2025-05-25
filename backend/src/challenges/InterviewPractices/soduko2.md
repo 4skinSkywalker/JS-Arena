@@ -8,7 +8,7 @@ Implement an algorithm that will check whether the given grid of numbers represe
 **Example:**  
 
 For
-```python
+```
 grid = [
     ['.', '.', '.', '1', '4', '.', '.', '2', '.'],
     ['.', '.', '6', '.', '.', '.', '.', '.', '.'],
@@ -25,7 +25,7 @@ the output should be
 `solution(grid) = true;`
 
 For
-```python
+```
 grid = [
     ['.', '.', '.', '.', '2', '.', '.', '9', '.'],
     ['.', '.', '.', '.', '6', '.', '.', '.', '.'],

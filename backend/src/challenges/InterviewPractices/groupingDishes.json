@@ -1,24 +1,227 @@
 {
     "tests": [
         {
-            "input": {"dishes": [["Salad", "Tomato", "Cucumber", "Salad", "Sauce"], ["Pizza", "Tomato", "Sausage", "Sauce", "Dough"], ["Quesadilla", "Chicken", "Cheese", "Sauce"], ["Sandwich", "Salad", "Bread", "Tomato", "Cheese"]]},
-            "expectedOutput": [["Cheese", "Quesadilla", "Sandwich"], ["Salad", "Salad", "Sandwich"], ["Sauce", "Pizza", "Quesadilla", "Salad"], ["Tomato", "Pizza", "Salad", "Sandwich"]]
+            "input": {
+                "dishes": [
+                    [
+                        "Salad",
+                        "Tomato",
+                        "Cucumber",
+                        "Salad",
+                        "Sauce"
+                    ],
+                    [
+                        "Pizza",
+                        "Tomato",
+                        "Sausage",
+                        "Sauce",
+                        "Dough"
+                    ],
+                    [
+                        "Quesadilla",
+                        "Chicken",
+                        "Cheese",
+                        "Sauce"
+                    ],
+                    [
+                        "Sandwich",
+                        "Salad",
+                        "Bread",
+                        "Tomato",
+                        "Cheese"
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    "Cheese",
+                    "Quesadilla",
+                    "Sandwich"
+                ],
+                [
+                    "Salad",
+                    "Salad",
+                    "Sandwich"
+                ],
+                [
+                    "Sauce",
+                    "Pizza",
+                    "Quesadilla",
+                    "Salad"
+                ],
+                [
+                    "Tomato",
+                    "Pizza",
+                    "Salad",
+                    "Sandwich"
+                ]
+            ]
         },
         {
-            "input": {"dishes": [["Pasta", "Tomato Sauce", "Onions", "Garlic"], ["Chicken Curry", "Chicken", "Curry Sauce"], ["Fried Rice", "Rice", "Onions", "Nuts"], ["Salad", "Spinach", "Nuts"], ["Sandwich", "Cheese", "Bread"], ["Quesadilla", "Chicken", "Cheese"]]},
-            "expectedOutput": [["Cheese", "Quesadilla", "Sandwich"], ["Chicken", "Chicken Curry", "Quesadilla"], ["Nuts", "Fried Rice", "Salad"], ["Onions", "Fried Rice", "Pasta"]]
+            "input": {
+                "dishes": [
+                    [
+                        "Pasta",
+                        "Tomato Sauce",
+                        "Onions",
+                        "Garlic"
+                    ],
+                    [
+                        "Chicken Curry",
+                        "Chicken",
+                        "Curry Sauce"
+                    ],
+                    [
+                        "Fried Rice",
+                        "Rice",
+                        "Onions",
+                        "Nuts"
+                    ],
+                    [
+                        "Salad",
+                        "Spinach",
+                        "Nuts"
+                    ],
+                    [
+                        "Sandwich",
+                        "Cheese",
+                        "Bread"
+                    ],
+                    [
+                        "Quesadilla",
+                        "Chicken",
+                        "Cheese"
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    "Cheese",
+                    "Quesadilla",
+                    "Sandwich"
+                ],
+                [
+                    "Chicken",
+                    "Chicken Curry",
+                    "Quesadilla"
+                ],
+                [
+                    "Nuts",
+                    "Fried Rice",
+                    "Salad"
+                ],
+                [
+                    "Onions",
+                    "Fried Rice",
+                    "Pasta"
+                ]
+            ]
         },
         {
-            "input": {"dishes": [["Tacos", "Beef", "Cheese"], ["Burger", "Beef", "Cheese"], ["Pizza", "Cheese", "Tomato", "Bread"]]},
-            "expectedOutput": [["Beef", "Burger", "Tacos"], ["Cheese", "Burger", "Pizza", "Tacos"], ["Tomato", "Pizza"]]
+            "input": {
+                "dishes": [
+                    [
+                        "Tacos",
+                        "Beef",
+                        "Cheese"
+                    ],
+                    [
+                        "Burger",
+                        "Beef",
+                        "Cheese"
+                    ],
+                    [
+                        "Pizza",
+                        "Cheese",
+                        "Tomato",
+                        "Bread"
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    "Beef",
+                    "Burger",
+                    "Tacos"
+                ],
+                [
+                    "Cheese",
+                    "Burger",
+                    "Pizza",
+                    "Tacos"
+                ]
+            ]
         },
         {
-            "input": {"dishes": [["Noodles", "Soy Sauce", "Garlic"], ["Rice", "Soy Sauce", "Eggs", "Chicken"], ["Soup", "Chicken", "Noodles"]]},
-            "expectedOutput": [["Chicken", "Rice", "Soup"], ["Noodles", "Noodles", "Soup"], ["Soy Sauce", "Noodles", "Rice"]]
+            "input": {
+                "dishes": [
+                    [
+                        "Noodles",
+                        "Soy Sauce",
+                        "Garlic"
+                    ],
+                    [
+                        "Rice",
+                        "Soy Sauce",
+                        "Eggs",
+                        "Chicken"
+                    ],
+                    [
+                        "Soup",
+                        "Chicken",
+                        "Noodles"
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    "Chicken",
+                    "Rice",
+                    "Soup"
+                ],
+                [
+                    "Soy Sauce",
+                    "Noodles",
+                    "Rice"
+                ]
+            ]
         },
         {
-            "input": {"dishes": [["Pasta", "Tomato Sauce", "Cheese"], ["Lasagna", "Cheese", "Ground Beef", "Tomato Sauce"], ["Pizza", "Cheese", "Tomato Sauce", "Pepperoni"]]},
-            "expectedOutput": [["Cheese", "Lasagna", "Pasta", "Pizza"], ["Tomato Sauce", "Lasagna", "Pasta", "Pizza"]]
+            "input": {
+                "dishes": [
+                    [
+                        "Pasta",
+                        "Tomato Sauce",
+                        "Cheese"
+                    ],
+                    [
+                        "Lasagna",
+                        "Cheese",
+                        "Ground Beef",
+                        "Tomato Sauce"
+                    ],
+                    [
+                        "Pizza",
+                        "Cheese",
+                        "Tomato Sauce",
+                        "Pepperoni"
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    "Cheese",
+                    "Lasagna",
+                    "Pasta",
+                    "Pizza"
+                ],
+                [
+                    "Tomato Sauce",
+                    "Lasagna",
+                    "Pasta",
+                    "Pizza"
+                ]
+            ]
         }
     ]
 }

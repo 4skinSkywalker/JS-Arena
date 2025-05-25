@@ -46,13 +46,3 @@ t = {
 
 The output should be `solution(t) = [-3]`.
 **There are 3 subtree sums for this tree: -2 + (-3) + 2 = -3, -3, and -2. The most frequent sum is -3 since it appears twice.**
-
-Binary trees are already defined with this interface:
-
-```python
-class Tree(object):
-  def __init__(self, x):
-    self.value = x
-    self.left = None
-    self.right = None
-```

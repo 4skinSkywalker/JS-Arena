@@ -8,7 +8,7 @@ You decide to write a function that will decipher these notes for your nephew on
 
 ## Example
 
-```python
+```
 For note = "you'll n4v4r 6u4ss 8t: cdja", the output should be
 solution(note) = "you'll never guess it: 2390".
 ```

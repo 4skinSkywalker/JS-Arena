@@ -1,4 +1,3 @@
----
 **Code Challenge Description:**
 
 In CodeSignal marathons, each task score is calculated independently using a specific set of rules. Your task is to implement an algorithm that calculates the score based on these rules and given some initial parameters.
@@ -9,10 +8,6 @@ Here's an explainer on how the exact number of points is calculated:
 2. Each additional minute you spend on the task adds a penalty of `(maxScore / 2) * (1 / marathonLength)` to your final score.
 3. Each unsuccessful attempt adds a penalty of 10 to your final score.
 4. After all the penalties are deducted, if the score is less than `maxScore / 2`, you still get `maxScore / 2` points.
-
-**Function Signature:**
-
-`def solution(marathonLength, maxScore, submissions, successfulSubmissionTime):`
 
 **Input:**
 
@@ -27,7 +22,7 @@ The function returns an integer - the final score of a task.
 
 **Examples:**
 
-```python
+```
 print(solution(100, 400, 4, 30))   # Output: 310
 print(solution(100, 400, 95, 30))  # Output: 200
 print(solution(100, 400, 95, -1))  # Output: 0

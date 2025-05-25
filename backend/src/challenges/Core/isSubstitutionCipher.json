@@ -14,7 +14,7 @@
         },
         {
             "input": {"string1": "abcdef", "string2": "fedcba"},
-            "expectedOutput": false
+            "expectedOutput": true
         },
         {
             "input": {"string1": "xyz", "string2": "zxy"},

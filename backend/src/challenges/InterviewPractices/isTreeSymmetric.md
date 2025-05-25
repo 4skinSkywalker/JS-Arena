@@ -8,7 +8,7 @@ Given a binary tree `t`, determine whether it is symmetric around its center, i.
 
 For
 
-```json
+```
 t = {
     "value": 1,
     "left": {
@@ -58,7 +58,7 @@ As you can see, it is symmetric.
 
 For
 
-```json
+```
 t = {
     "value": 1,
     "left": {
@@ -99,15 +99,10 @@ As you can see, it is not symmetric.
 ## Note
 
 Binary trees are already defined with this interface:
-```python
+```
 class Tree(object):
   def __init__(self, x):
     self.value = x
     self.left = None
     self.right = None
-```
-
-## Function Signature
-```python
-def solution(t):
 ```

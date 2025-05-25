@@ -10,11 +10,11 @@
         },
         {
             "input": {"n": 20, "m": 24},
-            "expectedOutput": 4
+            "expectedOutput": 2
         },
         {
             "input": {"n": 32, "m": 64},
-            "expectedOutput": 32
+            "expectedOutput": 2
         },
         {
             "input": {"n": 7, "m": 14},

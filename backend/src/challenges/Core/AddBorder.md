@@ -6,14 +6,14 @@
 
 For
 
-```python
+```
 picture = ["abc",
            "ded"]
 ```
 
 the output should be
 
-```python
+```
 solution(picture) = ["*****",
                      "*abc*",
                      "*ded*",

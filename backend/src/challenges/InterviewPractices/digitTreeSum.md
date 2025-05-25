@@ -60,18 +60,3 @@ For t = {
 }
 
 the output should be solution(t) = 193. Because 09 + 091 + 093 = 193
-
-Binary trees are already defined with this interface:
-```python
-class Tree(object):
-  def __init__(self, x):
-    self.value = x
-    self.left = None
-    self.right = None
-```
-The function to implement:
-```python
-def solution(t):
-    pass
-```
-It is expected to perform depth-first search on the tree.

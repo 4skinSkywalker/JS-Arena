@@ -6,14 +6,14 @@
         },
         {
             "input": {"coins": [1, 5, 20, 100], "price": 73},
-            "expectedOutput": 5
+            "expectedOutput": 8
         },
         {
             "input": {"coins": [1, 3, 9, 27, 81], "price": 320},
-            "expectedOutput": 6
+            "expectedOutput": 10
         },
         {
-            "input": {"coins": [1, 4, 16, 64], "price": 122},
+            "input": {"coins": [10, 5, 1], "price": 18},
             "expectedOutput": 5
         },
         {

@@ -18,12 +18,3 @@ You may not alter the values in the nodes - only the nodes themselves can be cha
 **Note**
 
 Your solution should have `O(n)` time complexity, where `n` is the number of elements in `l`, and `O(1)` additional space complexity, since this is what you would be asked to accomplish in an interview.
-
-**Linked List Definition**
-
-```python
-class ListNode:
-    def __init__(self, x):
-        self.value = x
-        self.next = None
-```

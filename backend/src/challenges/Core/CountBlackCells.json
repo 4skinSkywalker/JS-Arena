@@ -14,7 +14,7 @@
         },
         {
             "input": {"n": 5, "m": 10},
-            "expectedOutput": 14
+            "expectedOutput": 18
         },
         {
             "input": {"n": 7, "m": 4},

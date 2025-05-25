@@ -10,7 +10,7 @@
         },
         {
             "input": {"names": ["leadX", "leadY", "leadZ"], "time": [200, 300, 250], "netValue": [1200, 700, 800], "isOnVacation": [false, true, false]},
-            "expectedOutput": ["leadZ", "leadX"]
+            "expectedOutput": ["leadX","leadZ"]
         },
         {
             "input": {"names": ["Howard", "Chandler", "Joey", "Ross"], "time": [220, 300, 250, 260], "netValue": [2000, 1800, 1000, 900], "isOnVacation": [false, true, false, false]},

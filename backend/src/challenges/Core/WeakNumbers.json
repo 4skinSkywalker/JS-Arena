@@ -2,23 +2,23 @@
     "tests": [
         {
             "input": {"n": 9},
-            "expectedOutput": [2, 2]
+            "expectedOutput": [ 2, 2 ]
         },
         {
             "input": {"n": 5},
-            "expectedOutput": [1, 2]
+            "expectedOutput": [ 1, 1 ]
         },
         {
             "input": {"n": 10},
-            "expectedOutput": [2, 3]
+            "expectedOutput": [ 2, 2 ]
         },
         {
             "input": {"n": 1},
-            "expectedOutput": [0, 1]
+            "expectedOutput": [ 0, 1 ]
         },
         {
             "input": {"n": 15},
-            "expectedOutput": [3, 2]
+            "expectedOutput": [ 6, 1 ]
         }
     ]
 }

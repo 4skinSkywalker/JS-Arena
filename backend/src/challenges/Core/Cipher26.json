@@ -6,19 +6,19 @@
         },
         {
             "input": {"message": "abcdefghijklmnopqrstvwxyz"},
-            "expectedOutput": "abcdefghijklmnoooooooooo"
+            "expectedOutput": "abbbbbbbbbbbbbbbbbbbcbbbb"
         },
         {
-            "input": {"message": "abc"},
-            "expectedOutput": "aba"
+            "input": {"message": "thebrowserisaverygoodbrowser"},
+            "expectedOutput": "toxxqxiwmnrkivjnhiiapyqxiwmn"
         },
         {
-            "input": {"message": "fdc"},
-            "expectedOutput": "fcc"
+            "input": {"message": "likeicecream"},
+            "expectedOutput": "lxcueucypnwm"
         },
         {
-            "input": {"message": "aoa"},
-            "expectedOutput": "aaa"
+            "input": {"message": "thequickbrownfoxjumpsoverthelazydog"},
+            "expectedOutput": "toxmeouirqxirsjjmlsddwhjncoxhpzzfls"
         }
     ]
 }

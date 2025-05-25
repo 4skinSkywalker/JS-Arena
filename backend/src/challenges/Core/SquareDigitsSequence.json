@@ -14,11 +14,11 @@
         },
         {
             "input": {"a0": 5},
-            "expectedOutput": 3
+            "expectedOutput": 13
         },
         {
             "input": {"a0": 123},
-            "expectedOutput": 8
+            "expectedOutput": 16
         }
     ]
 }

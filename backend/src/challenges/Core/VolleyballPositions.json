@@ -45,10 +45,10 @@
                 "k": 1
             },
             "expectedOutput": [
-                ["empty", "P6", "empty"],
-                ["P1", "empty", "P2"],
-                ["empty", "P3", "empty"],
-                ["P4", "empty", "P5"]
+                [ "empty", "P3", "empty" ],
+                [ "P1", "empty", "P6" ],
+                [ "empty", "P5", "empty" ],
+                [ "P2", "empty", "P4" ]
             ]
         },
         {
@@ -62,10 +62,10 @@
                 "k": 4
             },
             "expectedOutput": [
-                ["empty", "D", "empty"],
-                ["E", "empty", "A"],
-                ["empty", "B", "empty"],
-                ["C", "empty", "F"]
+                [ "empty", "E", "empty" ],
+                [ "D", "empty", "B" ],
+                [ "empty", "C", "empty" ],
+                [ "F", "empty", "A" ]
             ]
         },
         {
@@ -79,10 +79,10 @@
                 "k": 5
             },
             "expectedOutput": [
-                ["empty", "BB", "empty"],
-                ["CC", "empty", "AA"],
-                ["empty", "EE", "empty"],
-                ["FF", "empty", "DD"]
+                [ "empty", "BB", "empty" ],
+                [ "EE", "empty", "AA" ],
+                [ "empty", "FF", "empty" ],
+                [ "DD", "empty", "CC" ]
             ]
         }
     ]

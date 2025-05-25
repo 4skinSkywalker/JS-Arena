@@ -11,14 +11,14 @@ Given a square matrix, your task is to reverse the order of elements on both of 
 
 For
 
-```python
+```
 matrix = [[1, 2, 3],
           [4, 5, 6],
           [7, 8, 9]]
 ```
 the output should be
 
-```python
+```
 solution(matrix) = [[9, 2, 7],
                     [4, 5, 6],
                     [3, 8, 1]]

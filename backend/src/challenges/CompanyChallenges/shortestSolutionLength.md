@@ -3,14 +3,14 @@
 In the "Challenges" section on CodeSignal a user can solve one of the existing challenges or submit their own. Each challenge has its own scoreboard organized by programming language. Solutions in these scoreboards are sorted according to their length. When the length of a solution is calculated, all comments and spaces are ignored. Your task is to implement a simplified version of this length calculator.
 
 Assume that there are only two types of comments:
-1. line-comment: starting with '//' and ending at the end of the line;
-2. block-comment: starting with '/*', and ending with the first occurrence of '*/'. It may span several lines.
+1. line-comment: starting with `//` and ending at the end of the line;
+2. block-comment: starting with `/*`, and ending with the first occurrence of `*/`. It may span several lines.
 
 Each non-space character outside comments adds 1 to the total length.
 
 Note that all characters inside each comment are ignored, so they don't introduce nested comments. 
 
-Also note that outside any other comment both '//' and '/*' start a new comment (i.e. in this task you don't have to consider the cases where '//', '/*' or '*/' appear inside a string literal).
+Also note that outside any other comment both `//` and `/*` start a new comment (i.e. in this task you don't have to consider the cases where `//`, `/*` or `*/` appear inside a string literal).
 
 ### Example
 

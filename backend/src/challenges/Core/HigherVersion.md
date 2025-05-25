@@ -15,12 +15,12 @@ There are no leading zeros in any of the numeric fields, i.e. you do not have to
 
 For `ver1 = "1.2.2"` and `ver2 = "1.2.0"`, the output should be
 
-```python
+```
 solution(ver1, ver2) = true;
 ```
  
 For `ver1 = "1.0.5"` and `ver2 = "1.1.0"`, the output should be
 
-```python
+```
 solution(ver1, ver2) = false.
 ```

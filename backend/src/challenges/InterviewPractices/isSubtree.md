@@ -6,7 +6,7 @@ Given two binary trees `t1` and `t2`, determine whether the second tree is a sub
 
 For
 
-```python
+```
 t1 = {
     "value": 5,
     "left": {
@@ -44,7 +44,7 @@ t1 = {
 
 and
 
-```python
+```
 t2 = {
     "value": 10,
     "left": {
@@ -76,7 +76,7 @@ the output should be `solution(t1, t2) = true`.
 
 This is what these trees look like:
 
-```plaintext
+```
   t1:             t2:
    5              10
   / \            /  \
@@ -91,7 +91,7 @@ As you can see, `t2` is a subtree of `t1` (the vertex in `t1` with value `10`).
 
 For
 
-```python
+```
 t1 = {
     "value": 5,
     "left": {
@@ -129,7 +129,7 @@ t1 = {
 
 and
 
-```python
+```
 t2 = {
     "value": 10,
     "left": {
@@ -161,7 +161,7 @@ the output should be `solution(t1, t2) = false`.
 
 This is what these trees look like:
 
-```plaintext
+```
     t1:            t2:
      5             10
    /   \          /  \
@@ -176,7 +176,7 @@ As you can see, there is no vertex `v` such that the subtree of `t1` for vertex 
 
 For
 
-```python
+```
 t1 = {
     "value": 1,
     "left": {
@@ -194,7 +194,7 @@ t1 = {
 
 and
 
-```python
+```
 t2 = {
     "value": 2,
     "left": {
@@ -207,14 +207,3 @@ t2 = {
 ```
 
 the output should be `solution(t1, t2) = false`.
-
----
-*Binary trees are already defined with this interface:*
-
-```python
-class Tree(object):
-  def __init__(self, x):
-    self.value = x
-    self.left = None
-    self.right = None
-```

@@ -16,7 +16,7 @@
                 "cost_per_minute": [0.3, 0.4, 0.5, 0.6],
                 "cost_per_mile": [2, 3, 4, 5]
             },
-            "expectedOutput": [26, 34, 42, 50]
+            "expectedOutput": [32, 46, 60, 74]
         },
         {
             "input": {
@@ -34,7 +34,7 @@
                 "cost_per_minute": [0.3, 0.5, 0.7, 0.9],
                 "cost_per_mile": [1.5, 2, 2.5, 3]
             },
-            "expectedOutput": [22.5, 29.5, 36.5, 43.5]
+            "expectedOutput": [28.5, 41.5, 54.5, 67.5]
         },
         {
             "input": {
@@ -43,7 +43,7 @@
                 "cost_per_minute": [0.4, 0.5, 0.6, 0.7],
                 "cost_per_mile": [2, 2.5, 3, 3.5]
             },
-            "expectedOutput": [36, 42.5, 49, 55.5]
+            "expectedOutput": [58, 72.5, 87, 101.5]
         }
     ]
 }

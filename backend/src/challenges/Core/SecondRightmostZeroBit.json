@@ -6,15 +6,15 @@
         },
         {
             "input": {"n": 44},
-            "expectedOutput": 1
+            "expectedOutput": 2
         },
         {
             "input": {"n": 52},
             "expectedOutput": 2
         },
         {
-            "input": {"n": 125},
-            "expectedOutput": 64
+            "input": {"n": 381},
+            "expectedOutput": 128
         },
         {
             "input": {"n": 255},

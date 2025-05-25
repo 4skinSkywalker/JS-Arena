@@ -5,19 +5,19 @@
             "expectedOutput": ["Apple", "Me[lon]", "Or[a]nge", "Water[mel]on"]
         },
         {
-            "input": {"words": ["Pineapple", "Grape", "Banana", "Peach"],"parts": ["pine", "pe", "na"]},
+            "input": {"words": ["Pineapple", "Grape", "Banana", "Peach"],"parts": ["Pine", "Pe", "na"]},
             "expectedOutput": ["[Pine]apple", "Grape", "Ba[na]na", "[Pe]ach"]
         },
         {
-            "input": {"words": ["Strawberry", "Blueberry", "Raspberry", "Cherry"],"parts": ["straw", "blue", "rasp", "cher"]},
-            "expectedOutput": ["[Straw]berry", "[Blue]berry", "R[asp]berry", "[Cher]ry"]
+            "input": {"words": ["Strawberry", "Blueberry", "Raspberry", "Cherry"],"parts": ["traw", "lue", "asp", "Cher"]},
+            "expectedOutput": ["S[traw]berry", "B[lue]berry", "R[asp]berry", "[Cher]ry"]
         },
         {
-            "input": {"words": ["Apricot", "Blackberry", "Coconut", "Fig", "Guava"], "parts": ["apri", "black", "co", "fig", "gua"]},
-            "expectedOutput": ["[Apri]cot", "[Black]berry", "[Co]conut", "[Fig]", "[Gua]va"]
+            "input": {"words": ["Apricot", "Blackberry", "Coconut", "Fig", "Guava"], "parts": ["Apri", "Black", "co", "ig", "ua"]},
+            "expectedOutput": ["[Apri]cot", "[Black]berry", "Co[co]nut", "F[ig]", "G[ua]va"]
         },
         {
-            "input": {"words": ["Mango", "Lemon", "Pomegranate", "Kiwi", "Avocado"], "parts": ["man", "lem", "pome", "kiwi", "av"]},
+            "input": {"words": ["Mango", "Lemon", "Pomegranate", "Kiwi", "Avocado"], "parts": ["Man", "Lem", "Pome", "Kiwi", "Av"]},
             "expectedOutput": ["[Man]go", "[Lem]on", "[Pome]granate", "[Kiwi]", "[Av]ocado"]
         }
     ]

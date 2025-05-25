@@ -11,7 +11,3 @@ Your task is to find out the maximum meeting cardinality given the starting posi
 For `startPosition = [1, 4, 2]` and `speed = [27, 18, 24]`, the output should be `solution(startPosition, speed) = 3`.
 
 This is because, in 20 seconds after the runners start running, they end up at the same point.
-
-```
-function solution(start_position, speed)
-```

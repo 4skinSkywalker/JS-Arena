@@ -14,11 +14,11 @@
         },
         {
             "input": {"a": 10, "b": 15},
-            "expectedOutput": 22
+            "expectedOutput": 17
         },
         {
             "input": {"a": 6, "b": 9},
-            "expectedOutput": 12
+            "expectedOutput": 8
         }
     ]
 }

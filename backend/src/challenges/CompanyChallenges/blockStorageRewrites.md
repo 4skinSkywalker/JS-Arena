@@ -9,7 +9,7 @@ Given blockCount (an integer representing the total number of blocks), writes (t
 ## Example
 
 For blockCount = 10, writes = [[0, 4], [3, 5], [2, 6]], and threshold = 2, the output should be
-```python
+```
 solution(blockCount, writes, threshold) = [[2, 5]]
 ```
 After the first write, the blocks 0, 1, 2, 3 and 4 were written in once;
@@ -17,10 +17,10 @@ After the second write, the blocks 0, 1, 2 and 5 were written in once, and the b
 After the final write, the blocks 2 and 5 reached the rewrite threshold as well, so the blocks that should be diagnosed are 2, 3, 4 and 5.
 Blocks 2, 3, 4 and 5 form one consequent segment [2, 5].
 For blockCount = 10, writes = [[0, 4], [3, 5], [2, 6]], and threshold = 3, the output should be
-```python
+```
 solution(blockCount, writes, threshold) = [[3, 4]]
 ```
 For blockCount = 10, writes = [[3, 4], [0, 1], [6, 6]], and threshold = 1, the output should be
-```python
+```
 solution(blockCount, writes, threshold) = [[0, 1], [3, 4], [6, 6]]
 ```

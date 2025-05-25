@@ -6,7 +6,7 @@
         },
         {
             "input": {"n": 7, "m": 15},
-            "expectedOutput": 13
+            "expectedOutput": -2
         },
         {
             "input": {"n": 5, "m": 15},

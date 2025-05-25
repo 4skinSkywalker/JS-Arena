@@ -16,10 +16,10 @@ Your task is to obtain a list of nodes, that are the most distant from the tree 
 ## Example
 
 For
-```python
+```
 tree = "(2 (7 (2 () ()) (6 (5 () ()) (11 () ()))) (5 () (9 (4 () ()) ())))"
 ```
 the output should be
-```python
+```
 solution(tree) = [5, 11, 4]
 ```

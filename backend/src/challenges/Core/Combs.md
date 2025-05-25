@@ -9,5 +9,3 @@ Note, that the combs can not be rotated/reversed.
 ### Example
 For `comb1 = "*..*"` and `comb2 = "*.*"`, the output should be
 `solution(comb1, comb2) = 5`.
-
-Although it is possible to place the combs like on the first picture, the best way to do this is either picture 2 or picture 3.

@@ -13,7 +13,7 @@ Implement a function that does exactly what Mark wants to do to his matrix.
 
 For
 
-```python
+```
 matrix = [[ 1,  2,  3,  4],
           [ 5,  6,  7,  8],
           [ 9, 10, 11, 12],
@@ -23,7 +23,7 @@ matrix = [[ 1,  2,  3,  4],
 
 the output should be
 
-```python
+```
 solution(matrix) = [[ 5,  1,  2,  3],
                     [ 9,  7, 11,  4],
                     [13,  6, 15,  8],
@@ -37,7 +37,7 @@ Note, that if a contour is represented by a 1 × n array, its center is consider
 
 For
 
-```python
+```
 matrix = [[238],
           [239],
           [240],
@@ -50,7 +50,7 @@ matrix = [[238],
 
 the output should be
 
-```python
+```
 solution(matrix) = [[245],
                     [238],
                     [239],

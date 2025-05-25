@@ -10,15 +10,15 @@
         },
         {
             "input": {"a": 5, "b": 6, "n": 3},
-            "expectedOutput": 110
+            "expectedOutput": 128
         },
         {
             "input": {"a": 7, "b": 8, "n": 4},
-            "expectedOutput": 240
+            "expectedOutput": 328
         },
         {
             "input": {"a": 2, "b": 3, "n": 5},
-            "expectedOutput": 80
+            "expectedOutput": 110
         }
     ]
 }

@@ -14,11 +14,11 @@
         },
         {
             "input": {"current": 100, "numberOfDigits": 5},
-            "expectedOutput": 102
+            "expectedOutput": 100
         },
         {
             "input": {"current": 200, "numberOfDigits": 10},
-            "expectedOutput": 204
+            "expectedOutput": 202
         }
     ]
 }

@@ -14,7 +14,7 @@ Note: `kth` smallest element means `kth` element in increasing order.
 
 Consider the following tree:
 
-```json
+```
 t = {
     "value": 3,
     "left": {
@@ -52,7 +52,7 @@ The values of `t` are [1, 3, 4, 5, 6], and the 4th smallest is 5.
 
 Consider another tree:
 
-```json
+```
 t = {
     "value": 1,
     "left": {

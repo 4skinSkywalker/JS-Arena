@@ -14,11 +14,11 @@
         },
         {
             "input": {"n": 120},
-            "expectedOutput": 3
+            "expectedOutput": 2
         },
         {
             "input": {"n": 525},
-            "expectedOutput": 9
+            "expectedOutput": 17
         }
     ]
 }

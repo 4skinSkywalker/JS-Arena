@@ -18,7 +18,7 @@
         },
         {
             "input": {"a": [45, 67, 120, 200]},
-            "expectedOutput": 3358306549
+            "expectedOutput": 3363324717
         }
     ]
 }

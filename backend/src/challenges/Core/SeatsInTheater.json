@@ -14,11 +14,11 @@
         },
         {
             "input": {"nCols": 30, "nRows": 5, "col": 2, "row": 1},
-            "expectedOutput": 120
+            "expectedOutput": 116
         },
         {
             "input": {"nCols": 50, "nRows": 30, "col": 25, "row": 15},
-            "expectedOutput": 825
+            "expectedOutput": 390
         }
     ]
 }

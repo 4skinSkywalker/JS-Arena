@@ -10,10 +10,3 @@ For `n = 10` and `m = 11`, the output should be `solution(n, m) = 2`.
 
 `10` in binary is `1010` (1010<sub>2</sub>), `11` in binary is `1011` (1011<sub>2</sub>), the position of the rightmost pair of equal bits is the bit at position `1` (0-based) from the right in the binary representations.
 So the answer is `2^1 = 2`. 
-
-Here is your function signature:
-
-```python
-def solution(n, m):
-    return ~(n^m) & ((n^m) + 1)
-```

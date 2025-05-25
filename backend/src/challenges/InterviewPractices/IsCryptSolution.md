@@ -14,7 +14,7 @@ Note that number 0 doesn't contain leading zeroes (while for example 00 or 0123 
 
 - For `crypt = ["SEND", "MORE", "MONEY"]` and
 
-```python
+```
 solution = [['O', '0'],
             ['M', '1'],
             ['Y', '2'],
@@ -30,7 +30,7 @@ solution = [['O', '0'],
 
 - For `crypt = ["TEN", "TWO", "ONE"]` and
 
-```python
+```
 solution = [['O', '1'],
             ['T', '0'],
             ['W', '9'],

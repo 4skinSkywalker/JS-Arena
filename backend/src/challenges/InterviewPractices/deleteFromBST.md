@@ -15,7 +15,7 @@ Removing a value x from a BST t is done in the following way:
 
 For example, removing 4 from the following tree has no effect because there is no such value in the tree:
 
-```plaintext
+```
     5
    / \
   2   6
@@ -27,7 +27,7 @@ For example, removing 4 from the following tree has no effect because there is n
 
 Removing 5 causes 3 (the rightmost node in left subtree) to move to the root:
 
-```plaintext
+```
     3
    / \
   2   6
@@ -39,7 +39,7 @@ Removing 5 causes 3 (the rightmost node in left subtree) to move to the root:
 
 And removing 6 after that creates the following tree:
 
-```plaintext
+```
     3
    / \
   2   8
@@ -48,16 +48,3 @@ And removing 6 after that creates the following tree:
 ```
 
 You're given a binary search tree t and an array of numbers queries. Your task is to remove queries[0], queries[1], etc., from t, step by step, following the algorithm above. Return the resulting BST. 
-
-For usage you can refer to the code below:
-
-```python
-t = TreeNode(3)
-t.left = TreeNode(2)
-t.right = TreeNode(5)
-
-queries = [2, 3, 0, 5]
-result = solution(t, queries)
-print(result)  # Output: None
-```
-Here, the binary tree elements and queries for removal actions are passed to a function "solution" which then removes the queries from binary tree and the modified binary tree t is then returned.

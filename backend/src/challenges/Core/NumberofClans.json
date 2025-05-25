@@ -6,7 +6,7 @@
         },
         {
             "input": {"divisors": [2, 5], "k": 10},
-            "expectedOutput": 3
+            "expectedOutput": 4
         },
         {
             "input": {"divisors": [3, 4], "k": 12},
@@ -18,7 +18,7 @@
         },
         {
             "input": {"divisors": [2, 3, 5, 7], "k": 14},
-            "expectedOutput": 6
+            "expectedOutput": 9
         }
     ]
 }

@@ -14,7 +14,7 @@
         },
         {
             "input": {"matrix": [[true, false], [false, true]]},
-            "expectedOutput": [[1, 1], [1, 1]]
+            "expectedOutput":  [[1, 2], [2, 1]]
         },
         {
             "input": {"matrix": [[true], [true], [true]]},

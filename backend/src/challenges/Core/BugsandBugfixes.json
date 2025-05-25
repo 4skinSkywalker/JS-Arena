@@ -6,7 +6,7 @@
         },
         {
             "input": {"rules": "Attack with 2d8+2 and defend with 1d6-1"}, 
-            "expectedOutput": 22
+            "expectedOutput": 23
         },
         {
             "input": {"rules": "Solve the puzzle with 3d3+5"}, 

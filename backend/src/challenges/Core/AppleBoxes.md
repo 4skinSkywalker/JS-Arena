@@ -9,5 +9,5 @@ Your task is to calculate the difference between the number of red apples and th
 **Example**
 
 For `k = 5`, the output should be `solution(k) = -15`.
-There are 1 + 3 * 3 + 5 * 5 = 35 yellow apples and 2 * 2 + 4 * 4 = 20 red apples, making the answer 20 - 35 = -15.
+There are 1 * 1 + 3 * 3 + 5 * 5 = 35 yellow apples and 2 * 2 + 4 * 4 = 20 red apples, making the answer 20 - 35 = -15.
 ```

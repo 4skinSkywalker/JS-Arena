@@ -13,7 +13,7 @@
     },
     {
         "input": {"points": [[10, 3], [6, 10], [2, 3], [6, -4]]},
-        "expectedOutput": true
+        "expectedOutput": false
     },
     {
         "input": {"points": [[5, 7], [6, 4], [10, 4], [9, 7]]},

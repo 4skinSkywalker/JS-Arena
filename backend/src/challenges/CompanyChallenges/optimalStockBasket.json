@@ -6,7 +6,7 @@
         },
         {
             "input": {"stocks": [[100, 50], [20, 10], [10, 5]], "riskBudget": 50}, 
-            "expectedOutput": 120
+            "expectedOutput": 100
         },
         {
             "input": {"stocks": [[10, 10], [20, 20], [30, 30]], "riskBudget": 50}, 

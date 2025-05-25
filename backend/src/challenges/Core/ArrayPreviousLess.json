@@ -18,7 +18,7 @@
         },
         {
             "input": {"items": [2, 1, 4, 3, 2]},
-            "expectedOutput": [-1, -1, 1, 2, 1]
+            "expectedOutput": [-1, -1, 1, 1, 1]
         }
     ]
 }

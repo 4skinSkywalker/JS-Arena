@@ -5,14 +5,14 @@ Determine whether the given string can be obtained by one concatenation of some 
 **Example**
 
 - For `inputString = "tandemtandem"`, the output should be
-```python
+```
 solution(inputString) = true
 ```
 - For `inputString = "qqq"`, the output should be
-```python
+```
 solution(inputString) = false
 ```
 - For `inputString = "2w2ww"`, the output should be
-```python
+```
 solution(inputString) = false
 ```

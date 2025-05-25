@@ -18,7 +18,7 @@
         },
         {
             "input": {"s": 100, "arr": [10, 20, 30, 40, 50]},
-            "expectedOutput": [-1]
+            "expectedOutput": [1, 4]
         }
     ]
 }

@@ -14,7 +14,7 @@
         },
         {
             "input": {"a": [1, 3, 5, 7], "b": [2, 4, 6, 8], "v": 15},
-            "expectedOutput": false
+            "expectedOutput": true
         },
         {
             "input": {"a": [], "b": [2, 4, 6, 8], "v": 10},

@@ -6,19 +6,19 @@
         },
         {
             "input": {"inputArray": ["abc", "def", "ghi", "jkl"], "result": "def"},
-            "expectedOutput": 0
+            "expectedOutput": 3
         },
         {
             "input": {"inputArray": ["aaa", "aaa", "aaa"], "result": "aaa"},
             "expectedOutput": 3
         },
         {
-            "input": {"inputArray": ["abc", "bbb", "ccc", "ddd"], "result": "abc"},
-            "expectedOutput": 0
+            "input": {"inputArray": ["abd", "bbc", "ccc", "ddd"], "result": "abc"},
+            "expectedOutput": 2
         },
         {
             "input": {"inputArray": ["xyz", "xzy", "zxy", "zzy"], "result": "xzy"},
-            "expectedOutput": 3
+            "expectedOutput": 4
         }
     ]
 }

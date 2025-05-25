@@ -15,7 +15,7 @@ skyMap = [['0', '1', '1', '0', '1'],
 
 The output should be:
 
-```python
+```
 solution(skyMap) = 2
 ```
 
@@ -31,6 +31,6 @@ skyMap = [['0', '1', '0', '0', '1'],
 
 The output should be:
 
-```python
+```
 solution(skyMap) = 5
 ```

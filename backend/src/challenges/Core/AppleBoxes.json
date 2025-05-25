@@ -10,15 +10,15 @@
         },
         {
             "input": {"k": 4},
-            "expectedOutput": 0
+            "expectedOutput": 10
         },
         {
             "input": {"k": 6},
-            "expectedOutput": 12
+            "expectedOutput": 21
         },
         {
             "input": {"k": 10},
-            "expectedOutput": -80
+            "expectedOutput": 55
         }
     ]
 }

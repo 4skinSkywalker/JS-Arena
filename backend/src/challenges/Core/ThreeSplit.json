@@ -5,20 +5,20 @@
             "expectedOutput": 4
         },
         {
-            "input": {"a": [3, 3, 3, 3]},
+            "input": {"a": [1, 1, 2, 1, 2, 1, 2, 1, 1]},
             "expectedOutput": 1
         },
         {
-            "input": {"a": [1, 2, 3, 0, 0, 0]},
-            "expectedOutput": 0
+            "input": {"a": [1, 2, 3, 2, 0, 1]},
+            "expectedOutput": 1
         },
         {
             "input": {"a": [0, 0, 0, 0, 0, 0, 0, 0, 0]},
             "expectedOutput": 28
         },
         {
-            "input": {"a": [4, 2, 2, 2, 4]},
-            "expectedOutput": 2
+            "input": {"a": [4, 2, 2, 2, 4, 1]},
+            "expectedOutput": 0
         }
     ]
 }

@@ -17,6 +17,6 @@
     },
     {
         "input": [["godaddy.co", "godaddy.es"], ["godaddy.com", "godaddynet.co"], ["godaddy.org", "godaddy.es"]],
-        "expectedOutput": [["godaddy.co", "godaddy.org", "godaddy.es"], ["godaddy.com", "godaddynet.co"]]
+        "expectedOutput": [["godaddy.co","godaddy.es","godaddy.org"],["godaddy.com","godaddynet.co"]]
     }
 ]}

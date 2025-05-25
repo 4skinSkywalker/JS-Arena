@@ -12,13 +12,13 @@ Your task is, given `g` and the index of a start vertex `s`, to find the minimal
 
 For
 
-```python
+```
 g = [[-1, 3, 2],
      [2, -1, 0],
      [-1, 0, -1]]
 ```
 and `s = 0`, the output should be
-```python
+```
 solution(g, s) = [0, 2, 2]
 ```
 
@@ -30,7 +30,7 @@ Reasoning:
 
 Example usage:
 
-```python
+```
 g = [[-1, 3, 2],
      [2, -1, 0],
      [-1, 0, -1]]

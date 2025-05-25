@@ -18,7 +18,7 @@
         },
         {
             "input": {"nums": [1,1,1,1,1,1,1,1], "k": 0},
-            "expectedOutput": true
+            "expectedOutput": false
         }
     ]
 }

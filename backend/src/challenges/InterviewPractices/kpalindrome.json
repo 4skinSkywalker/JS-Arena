@@ -14,7 +14,7 @@
         },
         {
             "input": {"s": "racebars", "k": 2},
-            "expectedOutput": true
+            "expectedOutput": false
         },
         {
             "input": {"s": "computers", "k": 4},

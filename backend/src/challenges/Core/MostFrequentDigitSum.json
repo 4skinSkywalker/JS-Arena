@@ -10,15 +10,15 @@
         },
         {
             "input": {"n": 123},
-            "expectedOutput": 8
+            "expectedOutput": 9
         },
         {
             "input": {"n": 321},
-            "expectedOutput": 10
+            "expectedOutput": 9
         },
         {
             "input": {"n": 999},
-            "expectedOutput": 27
+            "expectedOutput": 9
         }
     ]
 }

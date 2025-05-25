@@ -6,19 +6,19 @@
         },
         {
             "input": {"s": "acfrh", "pairs": [[1, 2], [3, 5], [1, 3]]},
-            "expectedOutput": "cfarh"
+            "expectedOutput": "hfcra"
         },
         {
             "input": {"s": "classic", "pairs": [[1, 2], [2, 3], [3, 4], [4, 7]]},
-            "expectedOutput": "sslacic"
+            "expectedOutput": "slccsia"
         },
         {
             "input": {"s": "problematic", "pairs": [[1, 4], [4, 9], [3, 7], [2, 8]]},
-            "expectedOutput": "rbolematic"
+            "expectedOutput": "troplemabic"
         },
         {
             "input": {"s": "spaceship", "pairs": [[1, 6], [2, 4], [2, 9]]},
-            "expectedOutput": "spaecship"
+            "expectedOutput": "spapeshic"
         }
     ]
 }

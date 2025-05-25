@@ -18,7 +18,7 @@
         },
         {
             "input": {"s": "abc", "p": "abc*"},
-            "expectedOutput": false
+            "expectedOutput": true
         }
     ]
 }

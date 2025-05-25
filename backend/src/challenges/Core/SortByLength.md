@@ -6,13 +6,13 @@ Given an array of strings, the task is to sort these strings in the order of inc
 
 The function `solution(inputArray)` takes an array of strings as input and returns the sorted array.
 
-```python
+```
 inputArray = ["abc","","aaa","a","zz"]
 ```
 
 The output should be:
 
-```python
+```
 solution(inputArray) = ["","a","zz","abc","aaa"]
 ```
 

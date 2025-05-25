@@ -13,9 +13,9 @@
             "input": [
                 ">987v",
                 "v   <",
-                ">+.@"
+                ">+. @"
             ],
-            "expectedOutput": "9 "
+            "expectedOutput": "15 "
         },
         {
             "input": [
@@ -25,15 +25,15 @@
         },
         {
             "input": [
-                ">\"star\",,,,,@"
+                ">\"star\",,,,@"
             ],
             "expectedOutput": "rats"
         },
         {
             "input": [
-                ">97+25*3*2/,@"
+                ">96+25*3*2/.@"
             ],
-            "expectedOutput": "A"
+            "expectedOutput": "15 "
         }
     ]
 }

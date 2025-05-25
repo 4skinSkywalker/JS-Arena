@@ -6,19 +6,19 @@
         },
         {
             "input": {"l": 15, "fares": [0.5, 1, 1.5, 2, 2.5]},
-            "expectedOutput": "UberPlus"
+            "expectedOutput": "UberXL"
         },
         {
             "input": {"l": 20, "fares": [0.4, 0.6, 0.8, 1, 1.2]},
-            "expectedOutput": "UberPlus"
+            "expectedOutput": "UberBlack"
         },
         {
             "input": {"l": 19, "fares": [0.7, 1, 1.3, 1.6, 1.9]},
             "expectedOutput": "UberXL"
         },
         {
-            "input": {"l": 25, "fares": [0.2, 0.4, 0.6, 0.8, 1]},
-            "expectedOutput": "UberXL"
+            "input": {"l": 2, "fares": [0.2, 0.4, 0.6, 0.8, 1]},
+            "expectedOutput": "UberSUV"
         }
     ]
 }

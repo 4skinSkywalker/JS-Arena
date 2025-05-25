@@ -29,7 +29,7 @@ Given the inorder and preorder traversals of a binary tree `t`, but not `t` itse
 For `inorder = [4, 2, 1, 5, 3, 6]` and `preorder = [1, 2, 4, 3, 5, 6]`, the output should be
 `solution(inorder, preorder)` which returns the following structure:
 
-```python
+```
 {
  "value": 1,
  "left": {
@@ -61,7 +61,7 @@ For `inorder = [4, 2, 1, 5, 3, 6]` and `preorder = [1, 2, 4, 3, 5, 6]`, the outp
 
 For `inorder = [2, 5]` and `preorder = [5, 2]`, the output should be `solution(inorder, preorder)` which returns the following structure:
 
-```python
+```
 {
  "value": 5,
  "left": {
