@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": { "operations": ["push 10", "min", "push 5", "min", "push 8", "min", "pop", "min", "pop", "min"]},

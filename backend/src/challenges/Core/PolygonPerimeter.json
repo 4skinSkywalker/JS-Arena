@@ -1,4 +1,5 @@
 {
+    "rating": 5,
     "tests": [
         {
             "input": {"matrix": [[false, true, true], [true, true, false], [true, false, false]]},

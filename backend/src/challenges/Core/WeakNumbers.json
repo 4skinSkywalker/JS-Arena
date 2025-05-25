@@ -1,4 +1,5 @@
 {
+    "rating": 8,
     "tests": [
         {
             "input": {"n": 9},

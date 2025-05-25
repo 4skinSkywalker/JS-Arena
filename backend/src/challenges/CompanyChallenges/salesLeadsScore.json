@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"names": ["lead1", "lead2", "lead3", "lead4", "lead5"], "time": [250, 300, 250, 260, 310], "netValue": [1000, 800, 1100, 1200, 1000], "isOnVacation": [true, false, true, false, false]},

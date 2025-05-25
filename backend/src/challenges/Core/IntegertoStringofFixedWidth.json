@@ -1,4 +1,5 @@
 {
+    "rating": 4,
     "tests": [
         {
             "input": {"number": 1234, "width": 2},

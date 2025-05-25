@@ -1,4 +1,5 @@
 {
+    "rating": 8,
     "tests": [
         {
             "input": {"fileSystem": "user\f\tpictures\f\tdocuments\f\t\tnotes.txt"},

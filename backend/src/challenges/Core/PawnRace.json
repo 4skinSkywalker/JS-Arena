@@ -1,4 +1,5 @@
-{"tests": [
+{"rating": 7,
+    "tests": [
     {
         "input": {"white": "e2", "black": "e7", "toMove": "w"},
         "expectedOutput": "draw"

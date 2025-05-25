@@ -1,4 +1,5 @@
 {
+    "rating": 3,
     "tests": [
         {
             "input": {"domains": ["en.wiki.org", "codesignal.com", "happy.net", "code.info"]}, 

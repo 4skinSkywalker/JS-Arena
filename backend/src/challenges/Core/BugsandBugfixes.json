@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"rules": "Roll d6-3 and 4d4+3 to pick a weapon, and finish the boss with 3d7!"}, 

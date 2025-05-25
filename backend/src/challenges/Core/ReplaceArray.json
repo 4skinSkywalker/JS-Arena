@@ -1,4 +1,5 @@
 {
+    "rating": 2,
     "tests": [
         {
             "input": {"inputArray": [1, 2, 1], "elemToReplace": 1, "substitutionElem": 3},

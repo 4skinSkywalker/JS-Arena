@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"t": {"value": 3, "left": {"value": 1}, "right": {"value": 5, "left": {"value": 4}, "right": {"value": 6}}}, "k": 4},

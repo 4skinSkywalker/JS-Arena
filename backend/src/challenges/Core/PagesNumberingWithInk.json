@@ -1,4 +1,5 @@
 {
+    "rating": 4,
     "tests": [
         {
             "input": {"current": 1, "numberOfDigits": 5},

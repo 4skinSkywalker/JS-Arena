@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"coins": [1, 2, 10], "price": 28},

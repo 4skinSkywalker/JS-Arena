@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 10,
+    "tests": [
         {
             "input": [
                 "               v",

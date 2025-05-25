@@ -1,4 +1,5 @@
 {
+    "rating": 8,
     "tests": [
         {
             "input": {"s": "abrarbra", "k": 1},

@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 8,
+    "tests": [
     {
         "input": {"conversations": [["where", "are", "you", "live", "i", "live", "in", "new", "york"], ["are", "you", "going", "somewhere", "tonight", "no", "i", "am", "too", "tired", "today"], ["hello", "what", "is", "your", "name", "my", "name", "is", "john"]], "currentConversation": ["hello", "john", "do", "you", "have", "a", "favorite", "city", "to", "live", "in", "yes", "it", "is"]},
         "expectedOutput": ["hello", "john", "do", "you", "have", "a", "favorite", "city", "to", "live", "in", "yes", "it", "is", "new", "york"]

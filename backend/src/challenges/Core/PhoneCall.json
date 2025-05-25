@@ -1,4 +1,5 @@
 {
+    "rating": 3,
     "tests": [
         {
             "input": {"min1": 3, "min2_10": 1, "min11": 2, "s": 20},

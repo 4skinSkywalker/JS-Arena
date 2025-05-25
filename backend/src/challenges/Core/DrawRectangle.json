@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 6,
+    "tests": [
     {
         "input": {
             "canvas": [["a", "a", "a", "a", "a", "a", "a", "a"],

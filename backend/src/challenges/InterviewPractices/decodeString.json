@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 7,
+    "tests": [
     {
         "input": {"s": "4[ab]"},
         "expectedOutput": "abababab"

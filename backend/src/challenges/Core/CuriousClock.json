@@ -1,4 +1,5 @@
 {
+    "rating": 8,
     "tests": [
         {
             "input": {"some_time": "2016-08-26 22:40", "leaving_time": "2016-08-29 10:00"},

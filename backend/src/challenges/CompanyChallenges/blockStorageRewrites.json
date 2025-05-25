@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 6,
+    "tests": [
     {
         "input": {"blockCount": 10, "writes": [[0, 4], [3, 5], [2, 6]], "threshold": 2},
         "expectedOutput": [[2, 5]]

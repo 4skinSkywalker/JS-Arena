@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 8,
+    "tests": [
     {
         "input": {
             "resource": 4,

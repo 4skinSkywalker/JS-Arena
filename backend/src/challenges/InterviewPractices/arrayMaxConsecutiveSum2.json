@@ -1,4 +1,5 @@
 {
+    "rating": 3,
     "tests": [
         {
             "input": {"inputArray": [-2,2,5,-11,6]},

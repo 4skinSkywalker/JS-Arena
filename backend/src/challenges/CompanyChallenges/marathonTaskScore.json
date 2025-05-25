@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"marathonLength": 100, "maxScore": 400, "submissions": 4, "successfulSubmissionTime": 30},

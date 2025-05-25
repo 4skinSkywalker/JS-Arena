@@ -1,4 +1,5 @@
 {
+    "rating": 6,
     "tests": [
         {
             "input": {"string1": "aacb", "string2": "aabc"},

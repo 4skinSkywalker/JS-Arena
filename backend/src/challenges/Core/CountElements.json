@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"inputString": "[[0, 20], [33, 99]]"},

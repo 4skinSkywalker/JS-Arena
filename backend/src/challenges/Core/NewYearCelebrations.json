@@ -1,4 +1,5 @@
 {
+    "rating": 8,
     "tests": [
         {
             "input": {"takeOffTime": "23:35", "minutes": [60, 90, 140]},

@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"comb1": "*..*", "comb2": "*.*"},

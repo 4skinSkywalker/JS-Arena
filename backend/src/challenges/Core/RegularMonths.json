@@ -1,4 +1,5 @@
 {
+    "rating": 5,
     "tests": [
         {
             "input": {"currMonth": "02-2016"},

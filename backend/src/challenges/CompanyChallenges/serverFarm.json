@@ -1,4 +1,5 @@
 {
+    "rating": 8,
     "tests": [
         {
             "input": {"jobs": [15, 30, 15, 5, 10], "servers": 3},

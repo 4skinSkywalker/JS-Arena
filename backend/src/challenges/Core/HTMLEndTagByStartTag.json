@@ -1,4 +1,5 @@
 {
+    "rating": 3,
     "tests": [
         {
             "input": {"startTag": "<button type=\"button\" disabled>"},

@@ -1,4 +1,5 @@
 {
+    "rating": 2,
     "tests": [
         {
             "input": {"bishop": "a1", "pawn": "c3"},

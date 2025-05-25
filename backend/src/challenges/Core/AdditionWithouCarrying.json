@@ -1,4 +1,5 @@
 {
+    "rating": 3,
     "tests": [
         {
             "input": {"param1": 456, "param2": 1734},

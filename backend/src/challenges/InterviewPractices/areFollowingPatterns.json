@@ -1,4 +1,5 @@
 {
+    "rating": 5,
     "tests": [
         {
             "input": {"strings": ["cat", "dog", "dog"], "patterns": ["a", "b", "b"]},

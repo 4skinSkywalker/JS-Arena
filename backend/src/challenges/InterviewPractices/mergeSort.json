@@ -1,4 +1,5 @@
 {
+    "rating": 3,
     "tests": [
         {
             "input": {"sequence": [3, 6, 1, 5, 3, 6]},

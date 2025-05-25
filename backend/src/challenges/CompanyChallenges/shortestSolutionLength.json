@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 8,
+    "tests": [
     {
         "input": {"source": ["int a = 2;", "int b = 47;/*37;*///41;", "int c = 3/*4//5*/;", "return a / b * c/*a /* b / c*/;"]}, 
         "expectedOutput": 34

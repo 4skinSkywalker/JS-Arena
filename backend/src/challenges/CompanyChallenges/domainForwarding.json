@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 7,
+    "tests": [
     {
         "input": [["godaddy.net", "godaddy.com"], ["godaddy.org", "godaddycares.com"], ["godady.com", "godaddy.com"], ["godaddy.ne", "godaddy.net"]], 
         "expectedOutput": [["godaddy.com", "godaddy.ne", "godaddy.net", "godady.com"], ["godaddy.org", "godaddycares.com"]]

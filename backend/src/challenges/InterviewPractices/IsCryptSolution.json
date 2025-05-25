@@ -1,4 +1,5 @@
 {
+    "rating": 9,
     "tests": [
         {
             "input": {"crypt": ["SEND", "MORE", "MONEY"], "solution": [["O", "0"],

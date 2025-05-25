@@ -1,4 +1,6 @@
-{"tests": [
+{
+    "rating": 4,
+    "tests": [
     {
         "input": {"numerator": 3, "denominator": 6},
         "expectedOutput": [1, 2]

@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"x": 3, "week_day": "Wednesday", "month": "November", "year_number": 2016},

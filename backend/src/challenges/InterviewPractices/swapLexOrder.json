@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"s": "abdc", "pairs": [[1, 4], [3, 4]]},

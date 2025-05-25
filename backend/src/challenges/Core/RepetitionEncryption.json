@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"letter": "Hi, hi Jane! I'm so. So glad to to finally be able to write - WRITE!! - to you!"},

@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"words": ["Apple", "Melon", "Orange", "Watermelon"],"parts": ["a", "mel", "lon", "el", "An"]},

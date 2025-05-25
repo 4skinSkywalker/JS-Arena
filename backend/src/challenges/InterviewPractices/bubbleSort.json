@@ -1,4 +1,5 @@
 {
+    "rating": 2,
     "tests": [
         {
             "input": {"items": [2, 4, 1, 5]},

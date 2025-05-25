@@ -1,4 +1,5 @@
 {
+    "rating": 8,
     "tests": [
         {
             "input": {"boardSize": [3, 7], "initPosition": [1, 2], "initDirection": [-1, 1], "k": 13},

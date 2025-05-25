@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": { "path": "/home/a/./x/../b//c/" },

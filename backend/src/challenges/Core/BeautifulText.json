@@ -1,4 +1,5 @@
 {
+    "rating": 7,
     "tests": [
         {
             "input": {"inputString": "Look at this example of a correct text", "l": 5, "r": 15},
