@@ -99,10 +99,16 @@
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-header">
                                         <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
+                                        @if ($index < 3) {
                                         <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
+                                        }
+                                        @else {
+                                        <span class="ms-auto me-2"><i class="bi bi-lock-fill" style="font-size: 1.25rem;"></i> (Locked)</span>
+                                        }
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
+                                @if ($index < 3) {
                                 <div class="accordion-body">
                                     <div class="p-2">
                                         <div class="mb-2">
@@ -135,6 +141,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                }
                             </div>
                             }
                         </div>
@@ -157,6 +164,10 @@
                     >Kick player</button>
                 </div>
                 }
+
+                <h3 class="m-0 text-center">Difficulty: {{ room()?.problem?.rating || "--" }}</h3>
+
+                <button id="share-link" class="btn btn-primary" (click)="shareLink()">Share link</button>
 
                 <table class="table table-striped">
                     <thead>

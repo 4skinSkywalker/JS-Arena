@@ -2,7 +2,7 @@ import { Component, computed, HostListener, Signal, signal } from '@angular/core
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck } from '../../../utils';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard } from '../../../utils';
 import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
@@ -138,6 +138,17 @@ export class GameComponent {
 
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
+  }
+
+  shareLink() {
+    const linkEl = document.getElementById("share-link")!;
+    const prevText = linkEl.innerText;
+    if (prevText === "Copied!") {
+      return;
+    }
+    copyToClipboard(window.location.href);
+    linkEl.innerText = "Copied!"
+    setTimeout(() => linkEl.innerText = prevText, 2000);
   }
 
   onEditorValueChange(value: string) {

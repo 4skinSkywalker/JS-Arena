@@ -29,6 +29,7 @@ export interface ITest {
 export interface IProblem {
     description: string;
     tests: ITest[];
+    rating: number;
 }
 
 export interface IClientJSON {
