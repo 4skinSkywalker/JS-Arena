@@ -1,4 +1,3 @@
-```markdown
 You have an array `nums`. We determine two functions to perform on `nums`. In both cases, `n` is the length of `nums`:
 
 - `fi(nums)` = `nums[0]` · `nums[1]` · ... · `nums[i - 1]` · `nums[i + 1]` · ... · `nums[n - 1]`. (In other words, `fi(nums)` is the product of all array elements except the `i`th.)
@@ -12,4 +11,3 @@ For `nums` = [1, 2, 3, 4] and `m` = 12, the output should be `solution(nums, m) 
 
 The array of the values of `f` is: [24, 12, 8, 6]. If we take all the elements modulo `m`, we get:
 [0, 0, 8, 6]. The sum of those values is 8 + 6 = 14, making the answer 14 % 12 = 2.
-```
