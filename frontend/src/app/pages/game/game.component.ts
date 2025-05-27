@@ -322,26 +322,65 @@ export class GameComponent {
     };
   }
 
+  runInWorker(scr: string) {
+    const w = new Worker(new URL("w.js", import.meta.url));
+    return new Promise((resolve, reject) => {
+      let timedout = false;
+      const timer = setTimeout(() => {
+        timedout = true;
+        w.terminate();
+        reject("Timeout");
+      }, 1000);
+
+      w.onmessage = (e: any) => {
+        if (!timedout) {
+          clearTimeout(timer);
+          resolve(e.data);
+        }
+      }
+
+      w.onerror = (e: any) => {
+        if (!timedout) {
+          clearTimeout(timer);
+          reject(e);
+        }
+      }
+
+      w.postMessage(scr);
+    });
+  }
+
   async runCode(input: any, loggers?: ILoggerMethods) {
     this.consoleLogMessages.set([]);
     await delay(0.1);
 
-    (window as any).llog = !loggers?.log ? this.consoleLog("log") : loggers.log;
-    (window as any).lwarn = !loggers?.warn ? this.consoleLog("warn") : loggers.warn;
-    (window as any).lerror = !loggers?.error ? this.consoleLog("error") : loggers.error;
+    // Save console
+    let logTemp = console.log;
+    let warnTemp = console.warn;
+    let errorTemp = console.error;
 
-    const modifiedContent = this.editorContent()
-      .replace(/console\.log/g, "llog")
-      .replace(/console\.warn/g, "lwarn")
-      .replace(/console\.error/g, "lerror");
+    // Modify console
+    console.log = !loggers?.log ? this.consoleLog("log") : loggers.log;
+    console.warn = !loggers?.warn ? this.consoleLog("warn") : loggers.warn;
+    console.error = !loggers?.error ? this.consoleLog("error") : loggers.error;
     
     let output;
     try {
-      window.eval(modifiedContent);
-      output = (window as any).solution(input);
+      const modifiedContent = `${this.editorContent()}\nsolution(${JSON.stringify(input)});`;
+      if (window.Worker) {
+        output = await this.runInWorker(modifiedContent);
+      } else {
+        output = window.eval(modifiedContent);
+      }
     } catch (e: any) {
-      (window as any).lerror(e.message || e);
+      console.error(e.message || e);
     }
+
+    // Restore console
+    console.log = logTemp;
+    console.warn = warnTemp;
+    console.error = errorTemp;
+
     return output;
   }
 

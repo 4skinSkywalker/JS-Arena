@@ -1,0 +1,1 @@
+onmessage = (e) => postMessage(eval(e.data));

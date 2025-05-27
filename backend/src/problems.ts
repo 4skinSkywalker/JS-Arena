@@ -8,11 +8,13 @@ const jsonPaths = findJsonFiles(__dirname + "/challenges");
 for (const jsonPath of jsonPaths) {
     try {
         const jsonFileContent = fs.readFileSync(jsonPath, "utf8");
-        const mdPath = jsonPath.split(".")[0] + ".md";
+        const mdPath = jsonPath.replace(".json", ".md");
         const mdFileContent = fs.readFileSync(mdPath, "utf8");
         const problem = JSON.parse(jsonFileContent);
         problem.description = mdFileContent;
-        problems.push(problem);
+        if (jsonPath.includes("chatBot")) {
+            problems.push(problem);
+        }
     } catch (e) {
         console.error(jsonPath, e);
     }

@@ -9,8 +9,8 @@ export type Handlers  = Record<string, (msg: any) => void>;
 })
 export class ApiService {
   ready = false;
-  // ws = new WebSocket("ws://localhost:5000");
-  ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
+  ws = new WebSocket("ws://localhost:5000");
+  // ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
   client$ = new BehaviorSubject<IClientJSON | null>(null);
   rooms$ = new BehaviorSubject<IRoomJSON[]>([]);
   clients$ = new BehaviorSubject<IClientJSON[]>([]);
@@ -75,12 +75,12 @@ export class ApiService {
   }
 
   handleWhoAmIReceived(msg: IWhoAmIReceivedMessage) {
-    console.log("Received client object", msg.client);
+    // console.log("Received client object", msg.client);
     this.client$.next(msg.client);
   }
 
   handlePong() {
-    console.log("Pong received");
+    // console.log("Pong received");
     setTimeout(() => this.send("ping"), 15000);
   }
 
@@ -94,7 +94,7 @@ export class ApiService {
 
   handleMessage(event: any) {
     const { topic, message } = JSON.parse(event.data);
-    console.log(topic, message);
+    // console.log(topic, message);
 
     if (this.handlers[topic]) {
       for (const handler of this.handlers[topic]) {
