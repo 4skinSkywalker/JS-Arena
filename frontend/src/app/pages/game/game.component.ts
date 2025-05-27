@@ -363,7 +363,8 @@ export class GameComponent {
         [output, logs] = window.eval(modifiedContent);
       }
     } catch (e: any) {
-      console.error(e.message || e);
+      logs = logs || [];
+      logs.push({ type: "error", args: [e.message || e] });
     }
 
     logs.forEach((line: { type: "log" | "warn" | "error", args: any }) => {
