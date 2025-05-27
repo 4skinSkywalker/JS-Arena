@@ -18,8 +18,8 @@
             "expectedOutput": 128
         },
         {
-            "input": {"n": 255},
-            "expectedOutput": 256
+            "input": {"n": 250},
+            "expectedOutput": 4
         }
     ]
 }
