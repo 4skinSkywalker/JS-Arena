@@ -99,7 +99,7 @@
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-header">
                                         <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
-                                        @if ($index < 3) {
+                                        @if ($index < 4) {
                                         <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
                                         }
                                         @else {
@@ -108,7 +108,7 @@
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
-                                @if ($index < 3) {
+                                @if ($index < 4) {
                                 <div class="accordion-body" style="overflow: auto;">
                                     <div class="p-2">
                                         <div class="mb-2">
