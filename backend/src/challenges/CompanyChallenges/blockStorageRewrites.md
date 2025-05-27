@@ -12,14 +12,24 @@ For blockCount = 10, writes = [[0, 4], [3, 5], [2, 6]], and threshold = 2, the o
 ```
 solution(blockCount, writes, threshold) = [[2, 5]]
 ```
-After the first write, the blocks 0, 1, 2, 3 and 4 were written in once;
-After the second write, the blocks 0, 1, 2 and 5 were written in once, and the blocks 3 and 4 reached the rewrite threshold;
-After the final write, the blocks 2 and 5 reached the rewrite threshold as well, so the blocks that should be diagnosed are 2, 3, 4 and 5.
+Track how many times each block is written to:
+- After write [0, 4] → blocks 0, 1, 2, 3, 4 → count += 1
+- After write [3, 5] → blocks 3, 4, 5 → count += 1
+- After write [2, 6] → blocks 2, 3, 4, 5, 6 → count += 1
+
+```
+[1, 1, 2, 3, 3, 2, 1, 0, 0, 0]
+       ↑  ↑  ↑  ↑
+       2  3  3  2  → These blocks meet or exceed the threshold of 2
+```
+
 Blocks 2, 3, 4 and 5 form one consequent segment [2, 5].
+
 For blockCount = 10, writes = [[0, 4], [3, 5], [2, 6]], and threshold = 3, the output should be
 ```
 solution(blockCount, writes, threshold) = [[3, 4]]
 ```
+
 For blockCount = 10, writes = [[3, 4], [0, 1], [6, 6]], and threshold = 1, the output should be
 ```
 solution(blockCount, writes, threshold) = [[0, 1], [3, 4], [6, 6]]
