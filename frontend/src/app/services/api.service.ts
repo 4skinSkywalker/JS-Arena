@@ -9,8 +9,8 @@ export type Handlers  = Record<string, (msg: any) => void>;
 })
 export class ApiService {
   ready = false;
-  ws = new WebSocket("ws://localhost:5000");
-  // ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
+  // ws = new WebSocket("ws://localhost:5000");
+  ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
   client$ = new BehaviorSubject<IClientJSON | null>(null);
   rooms$ = new BehaviorSubject<IRoomJSON[]>([]);
   clients$ = new BehaviorSubject<IClientJSON[]>([]);

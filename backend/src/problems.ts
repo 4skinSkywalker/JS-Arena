@@ -12,9 +12,7 @@ for (const jsonPath of jsonPaths) {
         const mdFileContent = fs.readFileSync(mdPath, "utf8");
         const problem = JSON.parse(jsonFileContent);
         problem.description = mdFileContent;
-        if (jsonPath.includes("chatBot")) {
-            problems.push(problem);
-        }
+        problems.push(problem);
     } catch (e) {
         console.error(jsonPath, e);
     }
