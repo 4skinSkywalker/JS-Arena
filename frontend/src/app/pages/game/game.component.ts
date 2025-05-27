@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { DEFAULT_EDITOR_CONTENT, getExecutableStr } from './game.const';
-import { getFakeClient, getFakeRoom } from './game.util';
+import { getFakeClient, getFakeRoom, solutionLength } from './game.util';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 interface ILoggerMethods {
@@ -66,7 +66,7 @@ export class GameComponent {
       .map(client => ({
         ...deepCopy(client),
         testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_EDITOR_CONTENT)
       }))
       .sort((a, b) => b.testsPassed - a.testsPassed);
   });
@@ -75,7 +75,7 @@ export class GameComponent {
       .map(client => ({
         ...deepCopy(client),
         testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || DEFAULT_EDITOR_CONTENT.length
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_EDITOR_CONTENT)
       }))
       .sort((a, b) => a.charCount - b.charCount);
   });
@@ -156,7 +156,7 @@ export class GameComponent {
     localStorage.setItem(this.editorContentKey, value);
     this.api.send("progress", {
       roomId: this.roomId,
-      charCount: value.length,
+      charCount: solutionLength(value),
       editorContent: value
     });
   }
@@ -552,7 +552,7 @@ export class GameComponent {
     this.api.send("progress", {
       roomId: this.roomId,
       testsPassed: 0,
-      charCount: DEFAULT_EDITOR_CONTENT.length
+      charCount: solutionLength(DEFAULT_EDITOR_CONTENT)
     });
   }
 
