@@ -38,6 +38,8 @@ export class GameComponent {
   selectedSpyClient = signal("");
   navTab = signal<"instructions" | "benchmark">("instructions");
   consoleLogMessages = signal<ILogMessage[]>([]);
+  consoleEval = new FormControl("", { nonNullable: true });
+  chatMuted = signal(false);
   chatMessages = signal<IChatReceivedMessage[]>([]);
   chatMessage = new FormControl("", { nonNullable: true });
   initializedRoom = signal(false);
@@ -149,6 +151,23 @@ export class GameComponent {
     copyToClipboard(window.location.href);
     linkEl.innerText = "Copied!"
     setTimeout(() => linkEl.innerText = prevText, 2000);
+  }
+
+  toggleMuteChat() {
+    this.chatMuted.set(!this.chatMuted());
+  }
+
+  evalExpr(expr: string) {
+    try {
+      const output = eval(expr);
+      if (output) {
+        this.consoleLog("log")(JSON.stringify(output));
+      }
+    } catch (e: any) {
+      this.consoleLog("error")(e.message || e);
+    } finally {
+      this.consoleEval.setValue("");
+    }
   }
 
   onEditorValueChange(value: string) {
@@ -318,7 +337,7 @@ export class GameComponent {
   consoleLog(level: "log" | "warn" | "error") {
     return (...args: any) => {
       this.consoleLogMessages.update(prev => [...prev, this.createLog(level, args)]);
-      this.scrollToBottom(".console");
+      this.scrollToBottom(".console-logs");
     };
   }
 
@@ -490,7 +509,7 @@ export class GameComponent {
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {
-    if (msg.room.id !== this.roomId) {
+    if (msg.room.id !== this.roomId || this.chatMuted()) {
       return;
     }
     this.chatMessages.update(prev => [...prev, msg]);

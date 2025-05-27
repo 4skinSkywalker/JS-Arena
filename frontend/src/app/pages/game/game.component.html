@@ -4,7 +4,7 @@
             <div class="editor-title">
                 <span>Editor</span>
                 <button
-                    class="btn compact btn-primary"
+                    class="btn compact btn-secondary"
                     (click)="runCode(problemTests()[0]?.input || null)"
                 >Run code (⇧ + ↵)</button>
                 <button
@@ -19,22 +19,22 @@
             <div class="console-title">
                 @if (consoleMode() === 'console') {
                     <span>Console</span>
-                    <button class="btn compact btn-primary" (click)="consoleMode.set('spy')">Spy mode</button>
+                    <button class="btn compact" (click)="consoleMode.set('spy')">Spy mode</button>
                 }
                 @if (consoleMode() === 'spy') {
-                    <span>Spy mode</span>
+                    <span>Spy</span>
                     <select class="form-select compact ms-auto" style="width: 150px;" (change)="changeSpyClient($any($event.target).value)">
                         <option selected="">Select player</option>
                         @for (client of clients(); track client.id) {
                             <option [value]="client.id">{{ client.name }}</option>
                         }
                     </select>
-                    <button class="btn compact btn-primary" (click)="consoleMode.set('console')">Console mode</button>
+                    <button class="btn compact" (click)="consoleMode.set('console')">Console mode</button>
                 }
             </div>
 
-            <div class="console">
-                <div [hidden]="consoleMode() !== 'console'">
+            <div class="console" [hidden]="consoleMode() !== 'console'">
+                <div class="console-logs">
                     @for (msg of consoleLogMessages(); track $index) {
                     <div 
                         class="console-message" 
@@ -44,9 +44,24 @@
                     >{{msg.text}}</div>
                     }
                 </div>
-                <div [hidden]="consoleMode() !== 'spy'" class="position: relative;">
-                    <div class="editor" id="spyEditor"></div>
+    
+                <div class="console-composer" hidden>
+                    <input 
+                        type="text" 
+                        class="form-control compact"
+                        placeholder="Test expression here..."
+                        [formControl]="consoleEval"
+                        (keydown.enter)="evalExpr(consoleEval.value)"
+                    >
+                    <button 
+                        class="btn compact"
+                        (click)="evalExpr(consoleEval.value)"
+                    >Run (↵)</button>
                 </div>
+            </div>
+
+            <div class="spy-editor-wrap" [hidden]="consoleMode() !== 'spy'">
+                <div class="editor" id="spyEditor"></div>
             </div>
         </div>
         <div class="sections-divider"></div>
@@ -210,7 +225,10 @@
         </div>
 
         <div class="chat-container">
-            <div class="chat-title">Chat</div>
+            <div class="chat-title">
+                <span>Chat</span>
+                <button class="btn compact" (click)="toggleMuteChat()">{{ chatMuted() ? "Unmute" : "Mute" }}</button>
+            </div>
             <div class="chat">
                 @for (msg of chatMessages(); track $index) {
                 <div 
@@ -229,7 +247,7 @@
                 }
             </div>
 
-            <div class="chat-composer">
+            <div class="chat-composer" [hidden]="chatMuted()">
                 <input 
                     type="text" 
                     class="form-control compact"
@@ -238,7 +256,7 @@
                     (keydown.enter)="sendChatMessage(chatMessage.value)"
                 >
                 <button 
-                    class="btn compact btn-primary"
+                    class="btn compact"
                     (click)="sendChatMessage(chatMessage.value)"
                 >Send (↵)</button>
             </div>
