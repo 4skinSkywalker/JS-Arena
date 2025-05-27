@@ -8,14 +8,14 @@ import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
-import { DEFAULT_EDITOR_CONTENT } from './game.const';
+import { DEFAULT_EDITOR_CONTENT, getExecutableStr } from './game.const';
 import { getFakeClient, getFakeRoom } from './game.util';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 interface ILoggerMethods {
-  log?: () => void;
-  warn?: () => void;
-  error?: () => void;
+  log?: (...l: any) => void;
+  warn?: (...l: any) => void;
+  error?: (...l: any) => void;
 }
 
 @Component({
@@ -324,7 +324,7 @@ export class GameComponent {
 
   runInWorker(scr: string) {
     const w = new Worker(new URL("w.js", import.meta.url));
-    return new Promise((resolve, reject) => {
+    return new Promise<any>((resolve, reject) => {
       let timedout = false;
       const timer = setTimeout(() => {
         timedout = true;
@@ -353,33 +353,26 @@ export class GameComponent {
   async runCode(input: any, loggers?: ILoggerMethods) {
     this.consoleLogMessages.set([]);
     await delay(0.1);
-
-    // Save console
-    let logTemp = console.log;
-    let warnTemp = console.warn;
-    let errorTemp = console.error;
-
-    // Modify console
-    console.log = !loggers?.log ? this.consoleLog("log") : loggers.log;
-    console.warn = !loggers?.warn ? this.consoleLog("warn") : loggers.warn;
-    console.error = !loggers?.error ? this.consoleLog("error") : loggers.error;
     
-    let output;
+    let output, logs;
     try {
-      const modifiedContent = `${this.editorContent()}\nsolution(${JSON.stringify(input)});`;
+      const modifiedContent = getExecutableStr(this.editorContent(), input);
       if (window.Worker) {
-        output = await this.runInWorker(modifiedContent);
+        [output, logs] = await this.runInWorker(modifiedContent);
       } else {
-        output = window.eval(modifiedContent);
+        [output, logs] = window.eval(modifiedContent);
       }
     } catch (e: any) {
       console.error(e.message || e);
     }
 
-    // Restore console
-    console.log = logTemp;
-    console.warn = warnTemp;
-    console.error = errorTemp;
+    logs.forEach((line: { type: "log" | "warn" | "error", args: any }) => {
+      if (loggers && loggers[line.type]) {
+        loggers[line.type]!(...line.args);
+      } else {
+        this.consoleLog(line.type)(...line.args);
+      }
+    });
 
     return output;
   }

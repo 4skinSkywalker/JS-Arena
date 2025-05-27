@@ -11,3 +11,12 @@ function solution(input) {
     console.log(input);
     return input;
 }`;
+
+export const getExecutableStr = (userContent: string, testInput: any) => `
+const __logs = [];
+console.log = (...args) => __logs.push({ type: "log", args });
+console.warn = (...args) => __logs.push({ type: "warn", args });
+console.error = (...args) => __logs.push({ type: "error", args });
+${userContent}
+const __output = solution(${JSON.stringify(testInput)});
+[__output, __logs];`;
