@@ -204,7 +204,8 @@ export class GameComponent {
 
     let memory: string[] = [];
     editor.on("paste", (pasteObj: any) => {
-      const content = `${this.problemDescription()}\n${JSON.stringify(this.problemTests())}\n${editor.getValue()}`;
+      const editorContent = editor.getValue();
+      const content = `${this.problemDescription()}\n${JSON.stringify(this.problemTests())}\n${editorContent}`;
       if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
         console.log("Paste allowed:", pasteObj.text);
         return pasteObj.text;
@@ -214,7 +215,7 @@ export class GameComponent {
       check("#cannot-copy-paste-modal-trigger");
       focus(".cannot-copy-paste-modal button");
       setTimeout(() => {
-        editor.setValue(content);
+        editor.setValue(editorContent);
         editor.clearSelection();
       }, 100);
       return "";
