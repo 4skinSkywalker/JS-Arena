@@ -121,6 +121,7 @@ class Client {
         const room = new Room({
             id: msg.roomId,
             name: msg.name,
+            enableLateJoin: msg.enableLateJoin,
             client: this
         });
         room.host = this;
@@ -136,7 +137,8 @@ class Client {
             console.error("Room not found, creating it");
             return this.handleCreateRoom({
                 roomId: msg.roomId,
-                name: "Untitled room"
+                name: "Untitled room",
+                enableLateJoin: true
             });
         }
         
@@ -239,6 +241,7 @@ class Client {
 class Room {
     id: string;
     name: string;
+    enableLateJoin: boolean;
     started: boolean;
     problem: IProblem;
     host: Client;
@@ -247,10 +250,12 @@ class Room {
     constructor(opts: {
         id?: string,
         name: string,
+        enableLateJoin: boolean,
         client: Client
     }) {
         this.id = opts.id || getUid();
         this.name = opts.name;
+        this.enableLateJoin = opts.enableLateJoin;
         this.started = false;
         this.problem = this.getRandomProblem();
         this.host = opts.client;
@@ -384,6 +389,7 @@ class Room {
         return {
             id: this.id,
             name: this.name,
+            enableLateJoin: this.enableLateJoin,
             started: this.started,
             problem: (this.started && opts.includeProblem) ? this.problem : undefined,
             host: this.host.toJSON({ includeRooms: false }),

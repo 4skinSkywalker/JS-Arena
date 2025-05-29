@@ -50,7 +50,7 @@
     align-items: center;
     transition: all 0.4s ease;
 
-    &.lobby-close {
+    &.lobby-close:not(.lobby-late-join) {
         opacity: 0.66;
     }
 

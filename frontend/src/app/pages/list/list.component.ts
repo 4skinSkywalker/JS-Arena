@@ -20,6 +20,7 @@ export class ListComponent {
   closedRooms$;
   filterByName = new FormControl("", { nonNullable: true });
   roomName = new FormControl("", { nonNullable: true });
+  enableLateJoin = new FormControl(false, { nonNullable: true });
 
   handlers: Handlers = {};
 
@@ -73,7 +74,7 @@ export class ListComponent {
       return console.error("Room name is empty");
     }
 
-    const createRoom = { name: roomName };
+    const createRoom = { name: roomName, enableLateJoin: this.enableLateJoin.value };
     uncheck("#create-room-modal-trigger");
 
     this.api.one("roomCreated", async ({ room }) => {

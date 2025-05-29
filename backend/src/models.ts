@@ -41,6 +41,7 @@ export interface IClientJSON {
 export interface IRoomJSON {
     id: string;
     name: string;
+    enableLateJoin: boolean;
     started: boolean;
     problem?: IProblem;
     host: IClientJSON;
@@ -69,6 +70,7 @@ export interface IProgressMessage extends IProgressDetails {
 export interface ICreateRoomMessage {
     roomId?: string;
     name: string;
+    enableLateJoin: boolean;
 }
 
 export interface IJoinRoomMessage {

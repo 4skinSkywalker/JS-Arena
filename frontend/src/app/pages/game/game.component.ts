@@ -185,7 +185,8 @@ export class GameComponent {
     const editor = ace.edit("editor");
     this.editor = editor;
     editor.setTheme("ace/theme/monokai");
-
+    
+    ace.require("ace/ext/language_tools");
     ace.require("ace/ext/emmet").setCore("ext/emmet_core");
     ace.config.loadModule("ace/snippets/javascript", () =>
       console.log("JS snippets loaded.")
@@ -202,21 +203,21 @@ export class GameComponent {
     editor.getSession().setMode("ace/mode/javascript");
 
     let memory: string[] = [];
-    editor.on("paste", function(pasteObj: any) {
-        const content = editor.getValue();
-        if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
-          console.log("Paste allowed:", pasteObj.text);
-          return pasteObj.text;
-        } else {
-          console.log("Paste forbidden:", pasteObj.text);
-          check("#cannot-copy-paste-modal-trigger");
-          focus(".cannot-copy-paste-modal button");
-          setTimeout(() => {
-            editor.setValue(content);
-            editor.clearSelection();
-          }, 100);
-          return "";
-        }
+    editor.on("paste", (pasteObj: any) => {
+      const content = `${this.problemDescription()}\n${JSON.stringify(this.problemTests())}\n${editor.getValue()}`;
+      if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
+        console.log("Paste allowed:", pasteObj.text);
+        return pasteObj.text;
+      }
+
+      console.log("Paste forbidden:", pasteObj.text);
+      check("#cannot-copy-paste-modal-trigger");
+      focus(".cannot-copy-paste-modal button");
+      setTimeout(() => {
+        editor.setValue(content);
+        editor.clearSelection();
+      }, 100);
+      return "";
     });
 
     editor.getSession().on("change", debounce(() => {
@@ -393,6 +394,10 @@ export class GameComponent {
         this.consoleLog(line.type)(...line.args);
       }
     });
+
+    if (!loggers) {
+      this.consoleLog("log")(output);
+    }
 
     return output;
   }

@@ -1,9 +1,22 @@
-export function getFakeClient() {
-    return { id: "-1", name: "", rooms: [] };
+import { IClientJSON, IRoomJSON } from "../../../../../backend/src/models";
+
+export function getFakeClient(): IClientJSON {
+    return {
+        id: "-1",
+        name: "",
+        rooms: []
+    };
 }
 
-export function getFakeRoom() {
-    return { id: "-1", name: "", started: false, host: getFakeClient(), clients: [] };
+export function getFakeRoom(): IRoomJSON {
+    return {
+        id: "-1",
+        name: "",
+        enableLateJoin: true,
+        started: false,
+        host: getFakeClient(),
+        clients: []
+    };
 }
 
 export function solutionLength(_source: string) {

@@ -1,8 +1,6 @@
 ## Task
 
-You need to implement the missing code, denoted by ellipses. You are not allowed to modify the pre-existing code.
-
-You task is to sort an array of integers.
+Your task is to sort an array of integers. If you can avoid using a built-in sort function.
 
 **Example:**
 
