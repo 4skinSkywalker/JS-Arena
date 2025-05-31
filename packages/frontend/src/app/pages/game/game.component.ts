@@ -10,6 +10,7 @@ import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { DEFAULT_EDITOR_CONTENT, getExecutableStr } from './game.const';
 import { getFakeClient, getFakeRoom, solutionLength } from './game.util';
+import { VoipService } from '../../services/voip.service';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 interface ILoggerMethods {
@@ -21,6 +22,7 @@ interface ILoggerMethods {
 @Component({
   selector: 'app-game',
   imports: [BasicModule],
+  providers: [VoipService],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
@@ -111,8 +113,10 @@ export class GameComponent {
     public markdownService: MarkdownService,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
+    private voipService: VoipService,
   ) {
-    this.roomId = this.route.snapshot.paramMap.get("id");
+    this.roomId = this.route.snapshot.paramMap.get("id")!;
+    this.voipService.setRoomId(this.roomId);
     this.editorContentKey = `editor-content-${this.roomId}`;
     this.client = toSignal(this.api.client$);
     this.isHost = computed(() => {

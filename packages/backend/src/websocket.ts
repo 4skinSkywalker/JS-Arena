@@ -1,6 +1,6 @@
 import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioOfferMessage } from "./models";
 import { problems } from "./problems";
 
 const globalRooms: Record<string, Room> = {};
@@ -32,6 +32,7 @@ class Client {
     name: string;
     rooms: Record<string, Room>;
     handlers: Record<string, (msg: any) => void> = {
+        "audioOffer": this.handleAudioOffer.bind(this),
         "whoAmI": this.handleWhoAmI.bind(this),
         "clientInfo": this.handleClientInfo.bind(this),
         "ping": this.handlePing.bind(this),
@@ -63,6 +64,14 @@ class Client {
 
     sendMsg(topic: string, message?: {}) {
         this.ws.send(JSON.stringify({ topic, message }));
+    }
+
+    handleAudioOffer(msg: IAudioOfferMessage) {
+        if (!this.rooms[msg.roomId]) {
+            return console.error("Room not found");
+        }
+
+        this.rooms[msg.roomId].signalAudioOffer(msg);
     }
 
     handleWhoAmI() {
@@ -263,6 +272,12 @@ class Room {
             [opts.client.id]: opts.client
         };
         globalRooms[this.id] = this;
+    }
+
+    signalAudioOffer(msg: IAudioOfferMessage) {
+        for (const client of this.getClientsArray()) {
+            client.sendMsg("audioOfferReceived", msg);
+        }
     }
 
     getRandomProblem() {

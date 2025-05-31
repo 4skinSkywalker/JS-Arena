@@ -1,10 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs';
+import { ApiService } from './api.service';
+import { IAudioOfferMessage } from '../../../../backend/src/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VoipService {
+  private roomId!: string; // TODO: Remove ! and take it from route
   private peerConnection?: RTCPeerConnection;
   private localStream?: MediaStream;
   private remoteStream = new Subject<MediaStream>();
@@ -13,11 +16,19 @@ export class VoipService {
   public onCallEnded = new EventEmitter<void>();
   public onError = new EventEmitter<string>();
 
+  constructor(
+    private api: ApiService,
+  ) {
+    (window as any).voip = this;
+  }
+  
+  setRoomId(roomId: string) {
+    this.roomId = roomId;
+  }
+
   async startCall(): Promise<MediaStream> {
     try {
-      this.localStream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-      });
+      this.localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
       this.setupPeerConnection();
       return this.localStream;
     } catch (error) {
@@ -26,7 +37,29 @@ export class VoipService {
     }
   }
 
-  async signalStartCall() {}
+  async signalStartCall() {
+    if (!this.peerConnection || !this.roomId || !this.api.client$.value) {
+      return console.error("Missing required data");
+    }
+
+    const { sdp, type } = await this.peerConnection.createOffer();
+    await this.peerConnection.setLocalDescription({ sdp, type });
+    console.log("Ready!", { sdp, type });
+
+    const audioOfferPayload = {
+      clientId: this.api.client$.value.id,
+      roomId: this.roomId,
+      sdp,
+      type
+    };
+    console.log({ audioOfferPayload });
+    this.api.send("audioOffer", audioOfferPayload);
+    this.api.subscribe({ // TODO: This must be moved from here elsewhere but it's fine for now
+      "audioOfferReceived": (msg: IAudioOfferMessage) => {
+        console.log("Received audio offer", msg);
+      }
+    });
+  }
 
   endCall(): void {
     this.localStream?.getTracks().forEach((track) => track.stop());
