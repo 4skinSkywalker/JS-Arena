@@ -13,11 +13,10 @@ export interface IRoomToJSONOptions {
     includeProblem?: boolean;
 }
 
-export interface IAudioOfferMessage {
-    clientId: string;
+export interface IAudioMessage {
     roomId: string;
-    sdp: string;
-    type: string;
+    clientId: string;
+    data: number[];
 }
 
 export interface ILogMessage {

@@ -19,10 +19,9 @@ app.use(express.json());
 app.use(express.static(__dirname + "/"));
 
 const server = http.createServer(app);
-server.listen(port);
-console.log("http server listening on %d", port);
 
-const wss = new WebSocketServer({ server: server });
-console.log("websocket server created");
-
+const wss = new WebSocketServer({ server });
 wss.on("connection", ws => handleConnection(ws));
+console.log("websocket server created!");
+
+server.listen(port, () => console.log(`Server is listening on port ${port}`));

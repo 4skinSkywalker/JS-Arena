@@ -1,6 +1,6 @@
 import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioOfferMessage } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage } from "./models";
 import { problems } from "./problems";
 
 const globalRooms: Record<string, Room> = {};
@@ -32,7 +32,7 @@ class Client {
     name: string;
     rooms: Record<string, Room>;
     handlers: Record<string, (msg: any) => void> = {
-        "audioOffer": this.handleAudioOffer.bind(this),
+        "voice": this.handleVoice.bind(this),
         "whoAmI": this.handleWhoAmI.bind(this),
         "clientInfo": this.handleClientInfo.bind(this),
         "ping": this.handlePing.bind(this),
@@ -66,12 +66,12 @@ class Client {
         this.ws.send(JSON.stringify({ topic, message }));
     }
 
-    handleAudioOffer(msg: IAudioOfferMessage) {
+    handleVoice(msg: IAudioMessage) {
         if (!this.rooms[msg.roomId]) {
             return console.error("Room not found");
         }
 
-        this.rooms[msg.roomId].signalAudioOffer(msg);
+        this.rooms[msg.roomId].sendVoice(msg);
     }
 
     handleWhoAmI() {
@@ -197,12 +197,9 @@ class Client {
 
     handleMessage(event: any) {
         const { topic, message } = parseEvent(event);
-        console.log(topic, message);
-
         if (!this.handlers[topic]) {
             return console.error("Topic not recognized");
         }
-
         this.handlers[topic](message);
     }
 
@@ -274,9 +271,11 @@ class Room {
         globalRooms[this.id] = this;
     }
 
-    signalAudioOffer(msg: IAudioOfferMessage) {
-        for (const client of this.getClientsArray()) {
-            client.sendMsg("audioOfferReceived", msg);
+    sendVoice(msg: IAudioMessage) {
+        for (const clientId in this.clients) {
+            if (clientId !== msg.clientId) {
+                this.clients[clientId].sendMsg("voiceReceived", msg);
+            }
         }
     }
 
@@ -284,18 +283,14 @@ class Room {
         return problems[Math.floor(Math.random() * problems.length)];
     }
 
-    getClientsArray() {
-        return Object.values(this.clients);
-    }
-
     setStarted(value: boolean) {
         console.log("Game starting in room", this.id);
         this.started = value;
         this.problem = this.getRandomProblem();
 
-        for (const client of this.getClientsArray()) {
-            client.sendMsg("gameStarted");
-            this.sendRoomDetails(client);
+        for (const clientId in this.clients) {
+            this.clients[clientId].sendMsg("gameStarted");
+            this.sendRoomDetails(this.clients[clientId]);
         }
 
         sendEverybodyRooms();
@@ -303,8 +298,8 @@ class Room {
 
     sendChatMessage(text: string, client: Client) {
         console.log(`Client "${client.name}" (${client.id}) sent chat message "${text}" in room "${this.name}" (${this.id})`);
-        for (const _client of this.getClientsArray()) {
-            _client.sendMsg(
+        for (const clientId in this.clients) {
+            this.clients[clientId].sendMsg(
                 "chatReceived",
                 {
                     id: getUid(),
@@ -318,8 +313,8 @@ class Room {
     }
 
     sendProgress(client: Client, testsPassed?: number, charCount?: number, editorContent?: string) {
-        for (const _client of this.getClientsArray()) {
-            _client.sendMsg("progressReceived", {
+        for (const clientId in this.clients) {
+            this.clients[clientId].sendMsg("progressReceived", {
                 room: this.toJSON(),
                 client: client.toJSON(),
                 testsPassed,
@@ -337,8 +332,8 @@ class Room {
             });
         } else {
             // Send to all clients in the room
-            for (const client of this.getClientsArray()) {
-                client.sendMsg("roomDetailsReceived", {
+            for (const clientId in this.clients) {
+                this.clients[clientId].sendMsg("roomDetailsReceived", {
                     room: this.toJSON({ includeProblem: true })
                 });
             }
@@ -346,7 +341,7 @@ class Room {
     }
 
     passHostToNextClient() {
-        const clients = this.getClientsArray();
+        const clients = Object.values(this.clients);
         if (!clients.length) {
             return console.error("Room has no clients");
         }
@@ -363,8 +358,8 @@ class Room {
             return console.error("Client already in room");
         }
         this.clients[client.id] = client;
-        for (const _client of this.getClientsArray()) {
-            _client.sendMsg("clientJoined", {
+        for (const clientId in this.clients) {
+            this.clients[clientId].sendMsg("clientJoined", {
                 room: this.toJSON({ includeClients: false }),
                 client: client.toJSON({ includeRooms: false })
             });
@@ -377,8 +372,8 @@ class Room {
             return false;
         }
         delete this.clients[client.id];
-        for (const _client of this.getClientsArray()) {
-            _client.sendMsg("clientLeft", {
+        for (const clientId in this.clients) {
+            this.clients[clientId].sendMsg("clientLeft", {
                 room: this.toJSON({ includeClients: false }),
                 client: client.toJSON({ includeRooms: false })
             });
@@ -410,7 +405,7 @@ class Room {
             host: this.host.toJSON({ includeRooms: false }),
             clients: !opts.includeClients
                 ? []
-                : this.getClientsArray()
+                : Object.values(this.clients)
                     .map(client => client.toJSON({ includeRooms: false })),
         };
     }

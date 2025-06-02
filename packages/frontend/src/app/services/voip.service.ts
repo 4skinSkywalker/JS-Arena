@@ -1,90 +1,69 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { IAudioOfferMessage } from '../../../../backend/src/models';
+import { IAudioMessage } from '../../../../backend/src/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VoipService {
-  private roomId!: string; // TODO: Remove ! and take it from route
-  private peerConnection?: RTCPeerConnection;
-  private localStream?: MediaStream;
-  private remoteStream = new Subject<MediaStream>();
-
-  public onRemoteStream = this.remoteStream.asObservable();
-  public onCallEnded = new EventEmitter<void>();
-  public onError = new EventEmitter<string>();
+  roomId: string | null = null;
+  myClientId: string | null = null;
+  context = new AudioContext();
+  time = 0;
 
   constructor(
     private api: ApiService,
   ) {
     (window as any).voip = this;
-  }
-  
-  setRoomId(roomId: string) {
-    this.roomId = roomId;
-  }
-
-  async startCall(): Promise<MediaStream> {
-    try {
-      this.localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.setupPeerConnection();
-      return this.localStream;
-    } catch (error) {
-      this.onError.emit('Failed to access microphone');
-      throw error;
-    }
-  }
-
-  async signalStartCall() {
-    if (!this.peerConnection || !this.roomId || !this.api.client$.value) {
-      return console.error("Missing required data");
-    }
-
-    const { sdp, type } = await this.peerConnection.createOffer();
-    await this.peerConnection.setLocalDescription({ sdp, type });
-    console.log("Ready!", { sdp, type });
-
-    const audioOfferPayload = {
-      clientId: this.api.client$.value.id,
-      roomId: this.roomId,
-      sdp,
-      type
-    };
-    console.log({ audioOfferPayload });
-    this.api.send("audioOffer", audioOfferPayload);
-    this.api.subscribe({ // TODO: This must be moved from here elsewhere but it's fine for now
-      "audioOfferReceived": (msg: IAudioOfferMessage) => {
-        console.log("Received audio offer", msg);
-      }
+    this.api.subscribe({
+      "voiceReceived": this.handleVoiceReceived.bind(this),
     });
   }
 
-  endCall(): void {
-    this.localStream?.getTracks().forEach((track) => track.stop());
-    this.peerConnection?.close();
-    this.onCallEnded.emit();
+  handleVoiceReceived(msg: IAudioMessage) {
+    if (msg.roomId !== this.roomId || msg.data.length === 0) {
+      return;
+    }
+    
+    this.time = Math.max(this.context.currentTime, this.time);
+    const buffer = this.context.createBuffer(1, msg.data.length, 16000);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < data.length; i++) {
+      data[i] = msg.data[i] / 32767;
+    }
+    const source = this.context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(this.context.destination);
+    source.start(this.time += buffer.duration);
   }
 
-  private setupPeerConnection(): void {
-    this.peerConnection = new RTCPeerConnection();
-    this.localStream?.getTracks().forEach((track) => {
-      this.peerConnection?.addTrack(track, this.localStream!);
-    });
-
-    this.peerConnection.ontrack = (event) => {
-      this.remoteStream.next(event.streams[0]);
-    };
-
-    this.peerConnection.onicecandidate = (event) => {
-      console.log({ event });
-      if (event.candidate) {
-        // Send ICE candidate to remote peer (implementation depends on your signaling)
+  initialize(roomId: string) {
+    this.api.client$.subscribe(client => {
+      if (client) {
+        this.roomId = roomId;
+        this.myClientId = client.id;
       }
-    };
+    }); // TODO: Should unsubscribe to prevent memory leaks
   }
 
-  // Add methods for handling signaling (offer/answer/ICE candidates)
-  // These would depend on your backend signaling implementation
+  async captureUserMedia() {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const source = this.context.createMediaStreamSource(stream);
+
+    if (this.context.state === "suspended") {
+      await this.context.resume();
+    }
+
+    await this.context.audioWorklet.addModule("/assets/downsample-processor.js");
+    const processorNode = new AudioWorkletNode(this.context, "downsample-processor");
+    processorNode.port.onmessage = event => {
+      this.api.send("voice", {
+        roomId: this.roomId,
+        clientId: this.myClientId,
+        data: event.data
+      });
+    };
+
+    source.connect(processorNode).connect(this.context.destination);
+  }
 }

@@ -116,7 +116,7 @@ export class GameComponent {
     private voipService: VoipService,
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id")!;
-    this.voipService.setRoomId(this.roomId);
+    this.voipService.initialize(this.roomId);
     this.editorContentKey = `editor-content-${this.roomId}`;
     this.client = toSignal(this.api.client$);
     this.isHost = computed(() => {
