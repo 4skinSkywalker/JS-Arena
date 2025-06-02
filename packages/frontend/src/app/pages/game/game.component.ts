@@ -1,4 +1,4 @@
-import { Component, computed, HostListener, Signal, signal } from '@angular/core';
+import { Component, computed, effect, HostListener, Signal, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
@@ -41,7 +41,8 @@ export class GameComponent {
   navTab = signal<"instructions" | "benchmark">("instructions");
   consoleLogMessages = signal<ILogMessage[]>([]);
   consoleEval = new FormControl("", { nonNullable: true });
-  chatMuted = signal(false);
+  exprHistory: string[] = [];
+  exprHistoryIndex = 0;
   chatMessages = signal<IChatReceivedMessage[]>([]);
   chatMessage = new FormControl("", { nonNullable: true });
   initializedRoom = signal(false);
@@ -111,18 +112,30 @@ export class GameComponent {
   constructor(
     public api: ApiService,
     public markdownService: MarkdownService,
+    public voip: VoipService,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
-    private voipService: VoipService,
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id")!;
-    this.voipService.initialize(this.roomId);
     this.editorContentKey = `editor-content-${this.roomId}`;
     this.client = toSignal(this.api.client$);
     this.isHost = computed(() => {
       const room = this.room();
       const client = this.client();
       return !!room && !!room.host && !!client && room.host.id === client.id;
+    });
+
+    // Initialize Voip
+    this.voip.initialize(this.roomId);
+    let voipCalling = this.voip.calling();
+    effect(() => {
+      const username = this.client()?.name || "Anonymous";
+      if (voipCalling && !this.voip.calling()) {
+        this.generateSystemMessage(`${username} disconnected from voice chat`);
+      } else if (this.voip.calling()) {
+        this.generateSystemMessage(`${username} connected to voice chat`);
+      }
+      voipCalling = this.voip.calling();
     });
   }
 
@@ -157,11 +170,9 @@ export class GameComponent {
     setTimeout(() => linkEl.innerText = prevText, 2000);
   }
 
-  toggleMuteChat() {
-    this.chatMuted.set(!this.chatMuted());
-  }
-
   evalExpr(expr: string) {
+    this.exprHistory.push(expr);
+    this.exprHistoryIndex = this.exprHistory.length;
     try {
       const output = eval(expr);
       if (output) {
@@ -172,6 +183,14 @@ export class GameComponent {
     } finally {
       this.consoleEval.setValue("");
     }
+  }
+  historyBack() {
+    this.exprHistoryIndex = Math.max(0, this.exprHistoryIndex - 1);
+    this.consoleEval.setValue(this.exprHistory[this.exprHistoryIndex]);
+  }
+  historyForward() {
+    this.exprHistoryIndex = Math.min(this.exprHistory.length - 1, this.exprHistoryIndex + 1);
+    this.consoleEval.setValue(this.exprHistory[this.exprHistoryIndex]);
   }
 
   onEditorValueChange(value: string) {
@@ -519,7 +538,7 @@ export class GameComponent {
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {
-    if (msg.room.id !== this.roomId || this.chatMuted()) {
+    if (msg.room.id !== this.roomId) {
       return;
     }
     this.chatMessages.update(prev => [...prev, msg]);

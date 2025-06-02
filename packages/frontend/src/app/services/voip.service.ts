@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { ApiService } from './api.service';
 import { IAudioMessage } from '../../../../backend/src/models';
+import { skipWhile, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,14 +9,17 @@ import { IAudioMessage } from '../../../../backend/src/models';
 export class VoipService {
   roomId: string | null = null;
   myClientId: string | null = null;
+
+  stream: MediaStream | null = null;
+  source: MediaStreamAudioSourceNode | null = null;
+  processorNode: AudioWorkletNode | null = null;
   context = new AudioContext();
-  calling = false;
+  calling = signal(false);
   time = 0;
 
   constructor(
     private api: ApiService,
   ) {
-    (window as any).voip = this;
     this.api.subscribe({
       "voiceReceived": this.handleVoiceReceived.bind(this),
     });
@@ -39,25 +43,29 @@ export class VoipService {
   }
 
   initialize(roomId: string) {
-    this.api.client$.subscribe(client => {
-      if (client) {
-        this.roomId = roomId;
-        this.myClientId = client.id;
-      }
-    }); // TODO: Should unsubscribe to prevent memory leaks
+    this.roomId = roomId;
+    this.api.client$
+      .pipe(
+        skipWhile(client => !client),
+        take(1)
+      )
+      .subscribe(client => {
+        this.myClientId = client!.id;
+      });
   }
 
-  async captureUserMedia() {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const source = this.context.createMediaStreamSource(stream);
+  async startCall() {
+    this.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    this.source = this.context.createMediaStreamSource(this.stream);
 
     if (this.context.state === "suspended") {
       await this.context.resume();
     }
 
     await this.context.audioWorklet.addModule("/assets/downsample-processor.js");
-    const processorNode = new AudioWorkletNode(this.context, "downsample-processor");
-    processorNode.port.onmessage = event => {
+    this.processorNode = new AudioWorkletNode(this.context, "downsample-processor");
+
+    this.processorNode.port.onmessage = event => {
       this.api.send("voice", {
         roomId: this.roomId,
         clientId: this.myClientId,
@@ -65,8 +73,28 @@ export class VoipService {
       });
     };
 
-    this.calling = true;
+    this.source.connect(this.processorNode).connect(this.context.destination);
+    this.calling.set(true);
+  }
 
-    source.connect(processorNode).connect(this.context.destination);
+  stopCall() {
+    try {
+      if (this.source) {
+        this.source.disconnect();
+      }
+      if (this.processorNode) {
+        this.processorNode.disconnect();
+        this.processorNode.port.onmessage = null;
+      }
+    } catch (error) {
+      console.error("Error disconnecting nodes:", error);
+    }
+
+    if (this.stream) {
+      this.stream.getTracks().forEach(track => track.stop());
+      this.stream = null;
+    }
+    
+    this.calling.set(false);
   }
 }

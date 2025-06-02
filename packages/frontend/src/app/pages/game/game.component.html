@@ -18,18 +18,18 @@
         <div class="console-container">
             <div class="console-title">
                 @if (consoleMode() === 'console') {
-                    <span>Console</span>
-                    <button class="btn compact" (click)="consoleMode.set('spy')">Spy mode</button>
+                <span>Console</span>
+                <button class="btn btn-secondary compact" (click)="consoleMode.set('spy')">Spy mode <i class="bi bi-incognito"></i></button>
                 }
                 @if (consoleMode() === 'spy') {
-                    <span>Spy</span>
-                    <select class="form-select compact ms-auto" style="width: 150px;" (change)="changeSpyClient($any($event.target).value)">
-                        <option selected="">Select player</option>
-                        @for (client of clients(); track client.id) {
-                            <option [value]="client.id">{{ client.name }}</option>
-                        }
-                    </select>
-                    <button class="btn compact" (click)="consoleMode.set('console')">Console mode</button>
+                <span>Spy</span>
+                <select class="form-select compact ms-auto" style="width: 150px;" (change)="changeSpyClient($any($event.target).value)">
+                    <option selected="">Select player</option>
+                    @for (client of clients(); track client.id) {
+                        <option [value]="client.id">{{ client.name }}</option>
+                    }
+                </select>
+                <button class="btn btn-primary compact" (click)="consoleMode.set('console')">Console mode <i class="bi bi-terminal"></i></button>
                 }
             </div>
 
@@ -45,13 +45,15 @@
                     }
                 </div>
     
-                <div class="console-composer" hidden>
+                <div class="console-composer">
                     <input 
                         type="text" 
                         class="form-control compact"
                         placeholder="Test expression here..."
                         [formControl]="consoleEval"
                         (keydown.enter)="evalExpr(consoleEval.value)"
+                        (keydown.ArrowUp)="historyBack()"
+                        (keydown.ArrowDown)="historyForward()"
                     >
                     <button 
                         class="btn compact"
@@ -227,7 +229,16 @@
         <div class="chat-container">
             <div class="chat-title">
                 <span>Chat</span>
-                <button class="btn compact" (click)="toggleMuteChat()">{{ chatMuted() ? "Unmute" : "Mute" }}</button>
+                @if (voip.calling()) {
+                <button class="btn btn-primary compact" (click)="voip.stopCall()">
+                    Stop call <i class="bi bi-mic-mute"></i>
+                </button>
+                }
+                @else {
+                <button class="btn btn-secondary compact" (click)="voip.startCall()">
+                    Start call <i class="bi bi-mic"></i>
+                </button>
+                }
             </div>
             <div class="chat">
                 @for (msg of chatMessages(); track $index) {
@@ -247,7 +258,7 @@
                 }
             </div>
 
-            <div class="chat-composer" [hidden]="chatMuted()">
+            <div class="chat-composer">
                 <input 
                     type="text" 
                     class="form-control compact"

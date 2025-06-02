@@ -12,7 +12,7 @@
 }
 
 .editor-container {
-    grid-template-rows: 1fr 200px;
+    grid-template-rows: 1fr 250px;
     border-right: 2px solid rgba(var(--c4), 1);
 }
 
@@ -358,6 +358,10 @@
     line-height: 1;
     white-space: nowrap;
     box-shadow: none;
+
+    * {
+        line-height: 1 !important;
+    }
 }
 
 .form-select.compact {
