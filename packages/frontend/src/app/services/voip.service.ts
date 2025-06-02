@@ -9,6 +9,7 @@ export class VoipService {
   roomId: string | null = null;
   myClientId: string | null = null;
   context = new AudioContext();
+  calling = false;
   time = 0;
 
   constructor(
@@ -21,7 +22,7 @@ export class VoipService {
   }
 
   handleVoiceReceived(msg: IAudioMessage) {
-    if (msg.roomId !== this.roomId || msg.data.length === 0) {
+    if (msg.roomId !== this.roomId || msg.data.length === 0 || !this.calling) {
       return;
     }
     
@@ -63,6 +64,8 @@ export class VoipService {
         data: event.data
       });
     };
+
+    this.calling = true;
 
     source.connect(processorNode).connect(this.context.destination);
   }
