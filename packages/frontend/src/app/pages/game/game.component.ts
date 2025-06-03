@@ -170,11 +170,12 @@ export class GameComponent {
     setTimeout(() => linkEl.innerText = prevText, 2000);
   }
 
+  evalCtx = {};
   evalExpr(expr: string) {
     this.exprHistory.push(expr);
     this.exprHistoryIndex = this.exprHistory.length;
     try {
-      const output = eval(expr);
+      const output = eval.bind(this.evalCtx)(expr);
       if (output) {
         this.consoleLog("log")(JSON.stringify(output));
       }
@@ -488,7 +489,7 @@ export class GameComponent {
       text,
       isSystem,
     });
-    
+
     if (!isSystem) {
       this.chatMessage.setValue("");
     }
