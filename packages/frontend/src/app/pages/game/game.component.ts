@@ -125,15 +125,15 @@ export class GameComponent {
       return !!room && !!room.host && !!client && room.host.id === client.id;
     });
 
-    // Initialize Voip
+    // Initialize voip
     this.voip.initialize(this.roomId);
     let voipCalling = this.voip.calling();
     effect(() => {
       const username = this.client()?.name || "Anonymous";
       if (voipCalling && !this.voip.calling()) {
-        this.generateSystemMessage(`${username} disconnected from voice chat`);
+        this.sendChatMessage(`${username} disconnected from voice chat`, true);
       } else if (this.voip.calling()) {
-        this.generateSystemMessage(`${username} connected to voice chat`);
+        this.sendChatMessage(`${username} connected to voice chat`, true);
       }
       voipCalling = this.voip.calling();
     });
@@ -147,7 +147,7 @@ export class GameComponent {
   }
 
   async ngAfterViewInit() {
-    await delay(0.2);
+    await delay(0.2); // TODO: I don't remember why I need this delay
     this.initEditor();
     this.initSpyEditor();
     this.initGameResize();
@@ -475,15 +475,23 @@ export class GameComponent {
       room: getFakeRoom(),
       client: getFakeClient(),
       time: "00:00:00",
-      text
+      text,
+      isSystem: true,
     };
     this.chatMessages.update(prev => [...prev, chatMsg]);
     this.scrollToBottom(".chat");
   }
 
-  sendChatMessage(message: string) {
-    this.api.send("chat", { roomId: this.roomId, text: message });
-    this.chatMessage.setValue("");
+  sendChatMessage(text: string, isSystem = false) {
+    this.api.send("chat", {
+      roomId: this.roomId,
+      text,
+      isSystem,
+    });
+    
+    if (!isSystem) {
+      this.chatMessage.setValue("");
+    }
   }
 
   async flickAnimation(el: Element | null) {
@@ -556,7 +564,7 @@ export class GameComponent {
       this.loaderService.isLoading.set(false);
       if (msg.room.started) {
         this.alreadyStartedOnInit.set(true);
-        this.generateSystemMessage(`Game already started`);
+        this.generateSystemMessage("Game already started");
       }
     }
     this.initializedRoom.set(true);

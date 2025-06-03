@@ -97,7 +97,7 @@ class Client {
             return console.error("Room not found");
         }
 
-        this.rooms[msg.roomId].sendChatMessage(msg.text, this);
+        this.rooms[msg.roomId].sendChatMessage(msg.text, this, msg.isSystem);
     }
     
     handleProgress(msg: IProgressMessage) {
@@ -296,19 +296,17 @@ class Room {
         sendEverybodyRooms();
     }
 
-    sendChatMessage(text: string, client: Client) {
+    sendChatMessage(text: string, client: Client, isSystem = false) {
         console.log(`Client "${client.name}" (${client.id}) sent chat message "${text}" in room "${this.name}" (${this.id})`);
         for (const clientId in this.clients) {
-            this.clients[clientId].sendMsg(
-                "chatReceived",
-                {
-                    id: getUid(),
-                    room: this.toJSON(),
-                    client: client.toJSON(),
-                    time: new Date().toLocaleTimeString(),
-                    text
-                }
-            );
+            this.clients[clientId].sendMsg("chatReceived", {
+                id: getUid(),
+                room: this.toJSON(),
+                client: client.toJSON(),
+                time: new Date().toLocaleTimeString(),
+                text,
+                isSystem,
+            });
         }
     }
 

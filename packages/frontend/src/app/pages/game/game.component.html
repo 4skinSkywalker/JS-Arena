@@ -29,7 +29,7 @@
                         <option [value]="client.id">{{ client.name }}</option>
                     }
                 </select>
-                <button class="btn btn-primary compact" (click)="consoleMode.set('console')">Console mode <i class="bi bi-terminal"></i></button>
+                <button class="btn btn-secondary compact" (click)="consoleMode.set('console')">Console mode <i class="bi bi-terminal"></i></button>
                 }
             </div>
 
@@ -230,7 +230,7 @@
             <div class="chat-title">
                 <span>Chat</span>
                 @if (voip.calling()) {
-                <button class="btn btn-primary compact" (click)="voip.stopCall()">
+                <button class="btn btn-secondary compact" (click)="voip.stopCall()">
                     Stop call <i class="bi bi-mic-mute"></i>
                 </button>
                 }
@@ -245,9 +245,9 @@
                 <div 
                     class="chat-message-wrap" 
                     [class.my-message]="msg.client.id === (api.client$ | async)?.id"
-                    [class.system-message]="msg.client.id === '-1'"
+                    [class.system-message]="msg.isSystem"
                 >
-                    @if (msg.client.id !== '-1') {
+                    @if (!msg.isSystem) {
                     <div class="chat-header">
                         <div class="chat-author">{{msg.client.name}}</div>
                         <div class="chat-time">{{msg.time}}</div>

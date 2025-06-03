@@ -61,6 +61,7 @@ export interface IClientInfoMessage {
 export interface IChatMessage {
     roomId: string;
     text: string;
+    isSystem?: boolean;
 }
 
 export interface IProgressDetails {
@@ -120,6 +121,7 @@ export interface IChatReceivedMessage {
     client: IClientJSON;
     time: string;
     text: string;
+    isSystem?: boolean;
 }
 
 export interface IRoomDetailsReceivedMessage {

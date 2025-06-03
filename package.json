@@ -8,6 +8,7 @@
   "scripts": {
     "start:be": "npm run start --workspace=@js-arena/be",
     "start:fe": "npm run start --workspace=@js-arena/fe",
+    "prepare-deploy": "npm run prepare-deploy --workspace=@js-arena/fe",
     "dev": "npm run start --ws",
     "build": "npm run build --workspaces",
     "test": "npm run test --workspaces"
