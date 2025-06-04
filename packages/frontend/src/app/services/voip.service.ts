@@ -14,12 +14,14 @@ export class VoipService {
   source: MediaStreamAudioSourceNode | null = null;
   processorNode: AudioWorkletNode | null = null;
   context = new AudioContext();
+  compressorNode = this.context.createDynamicsCompressor(); // <- Connect to AudioContext
   calling = signal(false);
   time = 0;
 
   constructor(
     private api: ApiService,
   ) {
+    this.compressorNode.connect(this.context.destination);
     this.api.subscribe({
       "voiceReceived": this.handleVoiceReceived.bind(this),
     });
@@ -29,7 +31,7 @@ export class VoipService {
     if (msg.roomId !== this.roomId || msg.data.length === 0 || !this.calling) {
       return;
     }
-    
+
     this.time = Math.max(this.context.currentTime, this.time);
     const buffer = this.context.createBuffer(1, msg.data.length, 16000);
     const data = buffer.getChannelData(0);
@@ -38,7 +40,7 @@ export class VoipService {
     }
     const source = this.context.createBufferSource();
     source.buffer = buffer;
-    source.connect(this.context.destination);
+    source.connect(this.compressorNode); // <- Connect to DynamicsCompressorNode
     source.start(this.time += buffer.duration);
   }
 
@@ -88,13 +90,13 @@ export class VoipService {
       }
     } catch (error) {
       console.error("Error disconnecting nodes:", error);
+    } finally {
+      if (this.stream) {
+        this.stream.getTracks().forEach(track => track.stop());
+        this.stream = null;
+      }
+      
+      this.calling.set(false);
     }
-
-    if (this.stream) {
-      this.stream.getTracks().forEach(track => track.stop());
-      this.stream = null;
-    }
-    
-    this.calling.set(false);
   }
 }
