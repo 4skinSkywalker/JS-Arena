@@ -5,7 +5,7 @@
 //      ██╔╝     ██████╔╝██║  ██║╚██████╗██║  ██╗███████╗██║ ╚████║██████╔╝
 //      ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═════╝                                                                                                                           
 export interface IClientToJSONOptions {
-    includeRooms?: boolean;
+    includeRoom?: boolean;
 }
 
 export interface IRoomToJSONOptions {
@@ -41,7 +41,7 @@ export interface IProblem {
 export interface IClientJSON {
     id: string;
     name: string;
-    rooms: IRoomJSON[];
+    room?: IRoomJSON;
 }
 
 export interface IRoomJSON {

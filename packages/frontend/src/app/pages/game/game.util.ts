@@ -4,7 +4,7 @@ export function getFakeClient(): IClientJSON {
     return {
         id: "-1",
         name: "",
-        rooms: []
+        room: undefined
     };
 }
 
