@@ -179,18 +179,19 @@ class Client {
     }
 
     handleClose() {
-        const room = this.getRoom();
-        console.log(`Client "${this.name}" (${this.id}) is leaving the room "${room.name}" (${room.id})`);
-        room.removeClient(this);
-    
-        if (!room.deleteFromGlobalIfEmpty() && room.host.id === this.id) {
-            room.passHostToNextClient();
-        }
+        if (this.room) {
+            console.log(`Client "${this.name}" (${this.id}) is leaving the room "${this.room.name}" (${this.room.id})`);
+            this.room.removeClient(this);
+        
+            if (!this.room.deleteFromGlobalIfEmpty() && this.room.host.id === this.id) {
+                this.room.passHostToNextClient();
+            }
 
+            sendEverybodyRooms();
+        }
+        
         console.log(`Client "${this.name}" (${this.id}) disconnected`);
         globalClients.delete(this.id); 
-
-        sendEverybodyRooms();
         sendEverybodyClients();
     }
 
