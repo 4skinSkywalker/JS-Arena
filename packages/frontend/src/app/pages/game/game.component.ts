@@ -547,18 +547,11 @@ export class GameComponent {
   }
 
   handleChatReceived(msg: IChatReceivedMessage) {
-    if (msg.room.id !== this.roomId) {
-      return;
-    }
     this.chatMessages.update(prev => [...prev, msg]);
     this.scrollToBottom(".chat");
   }
 
   handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
-    if (msg.room.id !== this.roomId) {
-      return;
-    }
-
     this.room.set(msg.room);
 
     if (!this.initializedRoom()) {
@@ -578,16 +571,10 @@ export class GameComponent {
   }
 
   handleClientJoined(msg: IClientWithRoomMessage) {
-    if (msg.room.id !== this.roomId) {
-      return;
-    }
     this.generateSystemMessage(`Client ${msg.client.name} joined the room`);
   }
 
   handleClientLeft(msg: IClientWithRoomMessage) {
-    if (msg.room.id !== this.roomId) {
-      return;
-    }
     this.generateSystemMessage(`Client ${msg.client.name} left the room`);
   }
 
@@ -620,10 +607,6 @@ export class GameComponent {
   }
 
   handleProgressReceived(msg: IProgressReceivedMessage) {
-    if (msg.room.id !== this.roomId) {
-      return;
-    }
-
     if (!this.winnerName() && msg.testsPassed === this.problemTests().length) {
       this.winnerName.set(msg.client.name);
       this.gameOver();

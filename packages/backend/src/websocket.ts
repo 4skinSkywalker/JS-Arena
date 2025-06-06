@@ -9,7 +9,7 @@ const globalClients = new Map<string, Client>();
 function sendEverybodyClients() {
     console.log("Sending clients to every client");
     for (const client of globalClients.values()) {
-        client.sendMsg("clientsListed", {
+        client.send("clientsListed", {
             clients: Array.from(globalClients.values())
                 .map(item => item.toJSON())
         });
@@ -19,7 +19,7 @@ function sendEverybodyClients() {
 function sendEverybodyRooms() {
     console.log("Sending rooms to every client");
     for (const client of globalClients.values()) {
-        client.sendMsg("roomsListed", {
+        client.send("roomsListed", {
             rooms: Array.from(globalRooms.values())
                 .map(item => item.toJSON())
         });
@@ -61,7 +61,7 @@ class Client {
         return this.room;
     }
 
-    sendMsg(topic: string, message?: {}) {
+    send(topic: string, message?: {}) {
         this.ws.send(JSON.stringify({ topic, message }));
     }
 
@@ -71,7 +71,7 @@ class Client {
 
     handleWhoAmI() {
         console.log("Sending client his/her info");
-        this.sendMsg("whoAmIReceived", { client: this.toJSON({ includeRoom: true }) });
+        this.send("whoAmIReceived", { client: this.toJSON({ includeRoom: true }) });
     }
 
     handleClientInfo(msg: IClientInfoMessage) {
@@ -82,7 +82,7 @@ class Client {
     }
 
     handlePing() {
-        this.sendMsg("pong");
+        this.send("pong");
     }
     
     handleChat(msg: IChatMessage) {
@@ -95,14 +95,14 @@ class Client {
 
     handleListClients() {
         console.log("Sending clients to requester");
-        this.sendMsg("clientsListed", {
+        this.send("clientsListed", {
             clients: Array.from(globalClients.values()).map(item => item.toJSON())
         });
     }
     
     handleListRooms() {
         console.log("Sending rooms to requester");
-        this.sendMsg("roomsListed", {
+        this.send("roomsListed", {
             rooms: Array.from(globalRooms.values()).map(item => item.toJSON())
         });
     }
@@ -115,7 +115,7 @@ class Client {
             enableLateJoin: msg.enableLateJoin,
             host: this
         });
-        this.sendMsg("roomCreated", { room: this.room.toJSON() });
+        this.send("roomCreated", { room: this.room.toJSON() });
         sendEverybodyRooms();
     }
 
@@ -234,7 +234,7 @@ class Room {
     sendVoice(msg: IAudioMessage) {
         for (const [clientId, client] of this.clients.entries()) {
             if (clientId !== msg.clientId) {
-                client.sendMsg("voiceReceived", msg);
+                client.send("voiceReceived", msg);
             }
         }
     }
@@ -249,7 +249,7 @@ class Room {
         this.problem = this.getRandomProblem();
 
         for (const client of this.clients.values()) {
-            client.sendMsg("gameStarted");
+            client.send("gameStarted");
             this.sendRoomDetails(client);
         }
 
@@ -259,7 +259,7 @@ class Room {
     sendChatMessage(text: string, client: Client, isSystem = false) {
         console.log(`Client "${client.name}" (${client.id}) sent chat message "${text}" in room "${this.name}" (${this.id})`);
         for (const _client of this.clients.values()) {
-            _client.sendMsg("chatReceived", {
+            _client.send("chatReceived", {
                 id: getUid(),
                 room: this.toJSON(),
                 client: client.toJSON(),
@@ -272,7 +272,7 @@ class Room {
 
     sendProgress(client: Client, testsPassed?: number, charCount?: number, editorContent?: string) {
         for (const _client of this.clients.values()) {
-            _client.sendMsg("progressReceived", {
+            _client.send("progressReceived", {
                 room: this.toJSON(),
                 client: client.toJSON(),
                 testsPassed,
@@ -285,13 +285,13 @@ class Room {
     sendRoomDetails(client?: Client) {
         if (client) {
             // Send to the client that requested the details
-            client.sendMsg("roomDetailsReceived", {
+            client.send("roomDetailsReceived", {
                 room: this.toJSON({ includeProblem: true })
             });
         } else {
             // Send to all clients in the room
             for (const _client of this.clients.values()) {
-                _client.sendMsg("roomDetailsReceived", {
+                _client.send("roomDetailsReceived", {
                     room: this.toJSON({ includeProblem: true })
                 });
             }
@@ -317,7 +317,7 @@ class Room {
         }
         this.clients.set(client.id, client);
         for (const _client of this.clients.values()) {
-            _client.sendMsg("clientJoined", {
+            _client.send("clientJoined", {
                 room: this.toJSON({ includeClients: false }),
                 client: client.toJSON({ includeRoom: false })
             });
@@ -332,7 +332,7 @@ class Room {
 
         this.clients.delete(client.id);
         for (const _client of this.clients.values()) {
-            _client.sendMsg("clientLeft", {
+            _client.send("clientLeft", {
                 room: this.toJSON({ includeClients: false }),
                 client: client.toJSON({ includeRoom: false })
             });

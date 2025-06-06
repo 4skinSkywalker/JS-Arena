@@ -27,7 +27,7 @@ export class VoipService {
   }
 
   handleVoiceReceived(msg: IAudioMessage) {
-    if (msg.roomId !== this.roomId || !msg.data.length || !this.calling()) {
+    if (!msg.data.length || !this.calling()) {
       return;
     }
 
