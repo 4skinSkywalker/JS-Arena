@@ -1,7 +1,7 @@
 function solution({divisors, k}) {
     const s = new Set();
 
-    for(let i = 1; i <= k+1; i++) {
+    for(let i = 1; i < k+1; i++) {
         let temp = "";
         for(const d of divisors) {
             if(i % d == 0) {

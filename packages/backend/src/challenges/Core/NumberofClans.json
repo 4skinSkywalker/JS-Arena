@@ -19,7 +19,7 @@
         },
         {
             "input": {"divisors": [2, 3, 5, 7], "k": 14},
-            "expectedOutput": 9
+            "expectedOutput": 8
         }
     ]
 }
