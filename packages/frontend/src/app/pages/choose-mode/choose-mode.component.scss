@@ -1,0 +1,31 @@
+.choose-grid-wrap {
+    display: grid;
+    height: 100svh;
+    padding: 2rem;
+    place-items: center;
+}
+
+.choose-grid {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    gap: 2rem;
+}
+
+.choose-card {
+    padding: 2rem;
+    place-items: center;
+    background: #0008;
+    width: 400px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.choose-card:hover {
+    box-shadow: 0 0 12px 04px rgba(var(--primary-color), 1);
+    background: #000a;
+}
+
+.bi, .lbl {
+    font-size: 2rem;
+}

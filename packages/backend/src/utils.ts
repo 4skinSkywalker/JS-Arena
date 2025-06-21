@@ -48,3 +48,11 @@ export function findJsonFiles(directoryPath: string) {
   });
   return jsonFiles;
 }
+
+export function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export function decamelize(str: string) {
+  return str.replace(/([a-zA-Z])(?=[A-Z0-9])/g, "$1 ").toLowerCase();
+}

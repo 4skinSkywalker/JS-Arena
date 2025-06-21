@@ -33,6 +33,7 @@ export interface ITest {
 }
 
 export interface IProblem {
+    title: string;
     description: string;
     tests: ITest[];
     rating: number;
