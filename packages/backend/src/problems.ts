@@ -4,7 +4,7 @@ import { IProblem } from "./models";
 import { capitalize, decamelize, findJsonFiles } from "./utils";
 
 export const problems: IProblem[] = [];
-export const titleProblemMap: Map<string, IProblem> = new Map();
+export const filenameProblemMap: Map<string, IProblem> = new Map();
 
 function adjustTitle(title: string) {
     switch (title) {
@@ -34,12 +34,14 @@ function adjustTitle(title: string) {
 const jsonPaths = findJsonFiles(__dirname + "/challenges");
 for (const jsonPath of jsonPaths) {
     try {
+        const filename = path.basename(jsonPath, ".json");
         const jsonFileContent = fs.readFileSync(jsonPath, "utf8");
         const mdPath = jsonPath.replace(".json", ".md");
         const mdFileContent = fs.readFileSync(mdPath, "utf8");
         const problem = JSON.parse(jsonFileContent);
+        problem.filename = filename;
+        problem.title = adjustTitle(capitalize(decamelize(filename)));
         problem.description = mdFileContent;
-        problem.title = adjustTitle(capitalize(decamelize(path.basename(jsonPath, ".json"))));
         problems.push(problem);
     } catch (e) {
         console.error(jsonPath, e);
@@ -47,4 +49,4 @@ for (const jsonPath of jsonPaths) {
 }
 
 problems.sort((a, b) => a.rating - b.rating);
-problems.forEach(p => titleProblemMap.set(p.title, p));
+problems.forEach(p => filenameProblemMap.set(p.filename, p));

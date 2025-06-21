@@ -1,7 +1,7 @@
 import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
 import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage } from "./models";
-import { problems, titleProblemMap } from "./problems";
+import { problems, filenameProblemMap } from "./problems";
 
 const globalRooms = new Map<string, Room>();
 const globalClients = new Map<string, Client>();
@@ -165,7 +165,12 @@ class Client {
 
     handleGetProblemTitles() {
         this.send("getProblemTitlesReceived", {
-            problemsTitles: problems.map(p => p.title)
+            problemTitles: Array.from(filenameProblemMap.entries())
+                .map(([filename, problem]) => ({
+                    filename,
+                    title: problem.title,
+                    rating: problem.rating,
+                }))
         });
     }
 

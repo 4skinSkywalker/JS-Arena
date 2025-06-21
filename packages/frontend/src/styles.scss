@@ -16,6 +16,15 @@ body::before {
     width: 10px;
 }
 
+.container {
+    padding-inline: var(--secondary-space);
+    max-width: 1024px;
+    margin: 0 auto;
+    display: grid;
+    align-content: space-evenly;
+    min-height: 100svh;
+}
+
 .ace_editor {
     font: inherit;
     height: 100%;

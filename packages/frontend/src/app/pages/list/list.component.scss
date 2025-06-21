@@ -1,12 +1,3 @@
-.container {
-    padding-inline: var(--secondary-space);
-    max-width: 1024px;
-    margin: 0 auto;
-    display: grid;
-    align-content: space-evenly;
-    height: 100svh;
-}
-
 .form-control {
     background-color: rgba(var(--c1), 0.5);
 }

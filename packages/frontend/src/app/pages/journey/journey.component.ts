@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
+import { IProblemSnippet, IProblemTitlesReceivedMessage } from '../../../../../backend/src/models';
 
 @Component({
   selector: 'app-journey',
@@ -9,6 +10,8 @@ import { ApiService, Handlers } from '../../services/api.service';
   styleUrl: './journey.component.scss'
 })
 export class JourneyComponent {
+  problemTitles = signal<Array<IProblemSnippet>>([]);
+
   handlers: Handlers = {
     "getProblemTitlesReceived": this.handleProblemTitlesReceived.bind(this),
   };
@@ -20,7 +23,7 @@ export class JourneyComponent {
     this.api.send("getProblemTitles");
   }
 
-  handleProblemTitlesReceived(msg: any) {
-    console.log(msg);
+  handleProblemTitlesReceived(msg: IProblemTitlesReceivedMessage) {
+    this.problemTitles.set(msg.problemTitles);
   }
 }

@@ -33,6 +33,7 @@ export interface ITest {
 }
 
 export interface IProblem {
+    filename: string;
     title: string;
     description: string;
     tests: ITest[];
@@ -135,3 +136,13 @@ export interface IClientWithRoomMessage {
 }
 
 export interface IProgressReceivedMessage extends IClientWithRoomMessage, IProgressDetails {}
+
+export interface IProblemSnippet {
+    filename: string;
+    title: string;
+    rating: number;
+}
+
+export interface IProblemTitlesReceivedMessage {
+    problemTitles: Array<IProblemSnippet>;
+}
