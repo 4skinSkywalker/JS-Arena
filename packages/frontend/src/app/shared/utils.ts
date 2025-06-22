@@ -43,28 +43,28 @@ export function copyToClipboard(text: string) {
     document.body.removeChild(dummy);
 }
 
-export function focus(id: string) {
-    const el = document.querySelector(id) as HTMLElement;
+export function focus(sel: string) {
+    const el = document.querySelector(sel) as HTMLElement;
     if (el) {
         el.focus();
     }
 }
 
-export function check(id: string) {
-    const el = document.querySelector(id) as HTMLInputElement;
+export function check(sel: string) {
+    const el = document.querySelector(sel) as HTMLInputElement;
     if (el && "checked" in el) {
         el.checked = true;
     } else {
-        console.error("Element not found", id);
+        console.error("Element not found", sel);
     }
 }
 
-export function uncheck(id: string) {
-    const el = document.querySelector(id) as HTMLInputElement;
+export function uncheck(sel: string) {
+    const el = document.querySelector(sel) as HTMLInputElement;
     if (el && "checked" in el) {
         el.checked = false;
     } else {
-        console.error("Element not found", id);
+        console.error("Element not found", sel);
     }
 }
 
@@ -180,4 +180,11 @@ export function matrixRain(canvasId: string, time = 35) {
 
     // Loop the animation
     return setInterval(draw, time);
+}
+
+export function scrollElIntoView(sel: string) {
+    const el = document.querySelector(sel) as HTMLElement;
+    if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+    }
 }

@@ -2,7 +2,7 @@ import { Component, HostListener, signal } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck } from '../../../utils';
+import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck } from '../../shared/utils';
 import { IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';

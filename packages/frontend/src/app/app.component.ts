@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { LoaderComponent } from './components/loader/loader.component';
 import { FormControl } from '@angular/forms';
 import { ApiService, Handlers } from './services/api.service';
-import { check, latinize, loadFromLS, saveIntoLS, uncheck } from '../utils';
+import { check, latinize, loadFromLS, saveIntoLS, uncheck } from './shared/utils';
 import { BasicModule } from './basic.module';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, computed, effect, HostListener, Signal, signal } from '@angu
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard } from '../../../utils';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard } from '../../shared/utils';
 import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';

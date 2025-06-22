@@ -3,7 +3,7 @@ import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
 import { map, startWith, switchMap } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { check, latinize, uncheck } from '../../../utils';
+import { check, latinize, uncheck } from '../../shared/utils';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { Router } from '@angular/router';
 
