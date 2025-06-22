@@ -1,0 +1,173 @@
+<div class="game-container">
+    <div class="editor-container">
+        <div class="editor-wrap">
+            <div class="editor-title">
+                <span>Editor</span>
+                <button
+                    class="btn compact btn-secondary"
+                    (click)="runCode(problemTests()[0]?.input || null)"
+                >Run code (⇧ + ↵)</button>
+                <button
+                    class="btn compact btn-primary"
+                    (click)="runAllTests()"
+                >Run tests (⌘ + ↵)</button>
+            </div>
+            <div class="editor" id="editor"></div>
+        </div>
+
+        <div class="console-container">
+            <div class="console-title">
+                <span>Console</span>
+            </div>
+
+            <div class="console">
+                <div class="console-logs">
+                    @for (msg of consoleLogMessages(); track $index) {
+                    <div 
+                        class="console-message" 
+                        [class.log-color]="msg.level === 'log'"
+                        [class.warn-color]="msg.level === 'warn'"
+                        [class.error-color]="msg.level === 'error'"
+                    >{{msg.text}}</div>
+                    }
+                </div>
+    
+                <div class="console-composer">
+                    <input 
+                        type="text" 
+                        class="form-control compact"
+                        placeholder="Test expression here..."
+                        [formControl]="consoleEval"
+                        (keydown.enter)="evalExpr(consoleEval.value)"
+                        (keydown.ArrowUp)="historyBack()"
+                        (keydown.ArrowDown)="historyForward()"
+                    >
+                    <button 
+                        class="btn compact"
+                        (click)="evalExpr(consoleEval.value)"
+                    >Run (↵)</button>
+                </div>
+            </div>
+        </div>
+        <div class="sections-divider"></div>
+    </div>
+
+    <div class="instructions-container">
+        <div class="instructions">
+            <ul class="nav">
+                <li class="nav-item" [class.active]="navTab() === 'instructions'">
+                    <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
+                </li>
+
+                <li class="nav-item" [class.active]="navTab() === 'benchmark'">
+                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ 0 }}/{{ this.problemTests().length || 0 }})</a>
+                </li>
+            </ul>
+
+            <div class="nav-panel cyberground">
+                <div
+                    class="nav-panel-description"
+                    [class.hidden]="navTab() !== 'instructions'"
+                    [innerHTML]="markdownService.render(problemDescription() || '').trim()"
+                ></div>
+
+                <div
+                    class="nav-panel-benchmark"
+                    [class.hidden]="navTab() !== 'benchmark'"
+                >
+                    <div class="accordion benchmark-accordion">
+                        @for (test of problemTests(); track $index) {
+                        <div 
+                            class="accordion-item"
+                            [class.test-passed]="test.status === 'passed'"
+                            [class.test-failed]="test.status === 'failed'"
+                        >
+                            <label class="accordion-header" tabindex="0">
+                                <input class="accordion-trigger" type="checkbox">
+                                <div class="benchmark-header">
+                                    <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
+                                    @if (!$last) {
+                                    <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
+                                    }
+                                    @else {
+                                    <span class="ms-auto me-2"><i class="bi bi-lock-fill" style="font-size: 1.25rem;"></i> (Locked)</span>
+                                    }
+                                    <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
+                                </div>
+                            </label>
+                            @if (!$last) {
+                            <div class="accordion-body" style="overflow: auto;">
+                                <div class="p-2">
+                                    <div class="mb-2">
+                                        <div>Input</div>
+                                        {{ JSON.stringify(test.input) }}
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <div>Expected output</div>
+                                        {{ JSON.stringify(test.expectedOutput) }}
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <div>Your output</div>
+                                        {{ (test.output != null) ? JSON.stringify(test.output) : test.output }}
+                                    </div>
+
+                                    <div>
+                                        <div>Your logs</div>
+                                        @for (msg of test.logs; track $index) {
+                                        <div
+                                            [class.log-color]="msg.level === 'log'"
+                                            [class.warn-color]="msg.level === 'warn'"
+                                            [class.error-color]="msg.level === 'error'"
+                                        >{{msg.text}}</div>
+                                        }
+                                        @if (!test.logs?.length) {
+                                        ⠀
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <input class="modal-trigger" type="checkbox" id="are-you-sure-new-game">
+
+    <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+        <h2 class="modal-title">Start New Game</h2>
+
+        <div class="modal-body">
+            <p class="text-center">Are you sure you want to start a new game? All current progress will be lost. This action cannot be undone.</p>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="uncheck('#are-you-sure-new-game')">Cancel</button>
+            <button class="btn btn-primary" (click)="areYouSureNewGameOk()">Ok</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal game-over-modal" style="z-index: 999999;">
+  <canvas id="matrix-canvas"></canvas>
+  <input class="modal-trigger" type="checkbox" id="game-over-trigger">
+  
+  <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
+    <h2 class="modal-title">{{ "TODO" }} is the Champion!</h2>
+
+    <div class="modal-body">
+        <p class="text-center">Kudos to {{ "TODO" }} for passing all the tests and leading the way to victory!</p>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="uncheck('#game-over-trigger')">Ok</button>
+    </div>
+  </div>
+</div>

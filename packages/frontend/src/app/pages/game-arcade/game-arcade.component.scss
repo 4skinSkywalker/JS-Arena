@@ -1,0 +1,243 @@
+.game-container {
+    display: grid;
+    grid-template-columns: 640px 1fr;
+    overflow: hidden;
+}
+
+.editor-container,
+.instruction-container {
+    position: relative;
+    display: grid;
+    height: 100svh;
+}
+
+.editor-container {
+    grid-template-rows: 1fr 250px;
+    border-right: 2px solid rgba(var(--c4), 1);
+}
+
+.editor-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-title,
+.console-title {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--tertiary-space);
+    padding: var(--quaternary-space) var(--tertiary-space);
+    font-size: 0.9rem;
+    background-color: rgba(var(--c2), 1);
+    border-block: 2px solid rgba(var(--c4), 1);
+}
+
+.editor-title .btn:nth-child(2) {
+    margin-left: auto;
+}
+
+.console-container {
+    background-color: rgba(var(--c3), 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sections-divider,
+.console-title {
+    cursor: grab;
+}
+
+.sections-divider:active,
+.console-title:active {
+  cursor: grabbing;
+}
+
+.sections-divider:hover,
+.console-title:hover {
+    background: #282828;
+}
+
+.console-logs {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.console {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .console-logs {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .console-composer {
+        background-color: #000;
+        display: flex;
+        gap: var(--tertiary-space);
+        align-items: center;
+        padding: var(--quaternary-space) var(--tertiary-space);
+        border-top: 2px solid rgba(var(--c4), 1);
+    
+        input {
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.sections-divider {
+    position: absolute;
+    top: 0;
+    left: calc(2px + 100%);
+    z-index: 20;
+    height: 100%;
+    width: 25px;
+    background-color: rgba(var(--c2), 1);
+    border-right: 2px solid rgba(var(--c4), 1);
+}
+
+.console-container {
+    .console-message {
+        padding: var(--quaternary-space) var(--tertiary-space);
+        border-bottom: 2px solid rgba(var(--c4), 1);
+
+        &.log-color {
+            color: #fff !important;
+        }
+        
+        &.warn-color {
+            color: #fd0 !important;
+        }
+        
+        &.error-color {
+            color: #f00 !important;
+        }
+    }
+}
+
+.instructions-container {
+    padding-left: 25px;
+    z-index: 10;
+    display: grid;
+    overflow: hidden;
+    background: #000;
+
+    .instructions {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        overflow: hidden;
+
+        .nav {
+            background-color: rgba(var(--c1), 1);
+            border: none;
+            gap: var(--tertiary-space);
+            padding: var(--quaternary-space) var(--tertiary-space);
+
+            .nav-item {
+                cursor: pointer;
+            }
+        }
+
+        .nav-panel {
+            position: relative;
+            overflow-y: auto;
+            border-top: 2px solid rgba(var(--c4), 1);
+            border-right: 2px solid rgba(var(--c4), 1);
+
+            .nav-panel-description {
+                padding: var(--secondary-space);
+
+                ::ng-deep * {
+                    all: revert;
+                }
+
+                ::ng-deep code {
+                    display: inline-block;
+                    background-color: rgba(var(--c3), 0.5);
+                    padding: var(--quaternary-space) var(--tertiary-space);
+                }
+            }
+        }
+    }
+}
+
+.benchmark-accordion {
+    box-shadow: none;
+
+    .accordion-item {
+        border: none;
+        border-bottom: 2px solid rgba(var(--primary-color), 1) !important;
+        background-color: rgba(var(--c2), 0.5);
+
+        &.test-passed {
+            background-color: #1d3b29aa;
+        }
+        
+        &.test-failed {
+            background-color: #3b2224aa;
+        }
+
+        .accordion-body {
+            background: rgba(var(--c3), 0.5);
+        }
+        
+        &.test-passed .accordion-body {
+            background-color: #162d20aa;
+        }
+        
+        &.test-failed .accordion-body {
+            background-color: #2b1819aa;
+        }
+    }
+
+    .benchmark-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.compact {
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: none;
+
+    * {
+        line-height: 1 !important;
+    }
+}
+
+.form-select.compact {
+    background-position:
+        calc(100% - 15px) calc(12px),
+        calc(100% - 10px) calc(12px);
+}
+
+.non-scrollable {
+    overflow: hidden !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0.66;
+}

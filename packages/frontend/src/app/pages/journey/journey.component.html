@@ -14,7 +14,7 @@
                 <span>Rating:</span><b>{{ item.rating }}</b>
             </div>
             <div class="list-item-action">
-                <button class="btn btn-primary" (click)="playProblem(item)">
+                <button class="btn btn-primary" [routerLink]="['/game-arcade', item.filename]">
                     <i class="bi bi-play-fill"></i>
                 </button>
             </div>

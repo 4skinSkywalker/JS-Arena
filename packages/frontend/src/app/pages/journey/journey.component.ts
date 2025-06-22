@@ -26,8 +26,4 @@ export class JourneyComponent {
   handleProblemTitlesReceived(msg: IProblemTitlesReceivedMessage) {
     this.problemTitles.set(msg.problemTitles);
   }
-
-  playProblem(problem: IProblemSnippet) {
-    console.log(problem);
-  }
 }

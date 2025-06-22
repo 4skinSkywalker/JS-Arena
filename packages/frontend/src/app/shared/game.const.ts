@@ -1,3 +1,9 @@
+export interface ILoggerMethods {
+  log?: (...l: any) => void;
+  warn?: (...l: any) => void;
+  error?: (...l: any) => void;
+}
+
 export const DEFAULT_EDITOR_CONTENT = `/**
  * How it works:
  * - You receive an <input> of any type.
