@@ -1,4 +1,5 @@
 import { Component, HostListener, signal } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck } from '../../../utils';
@@ -8,6 +9,7 @@ import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../shared/game.const';
+import { ArcadeService } from '../../services/arcade.service';
 
 @Component({
   selector: 'app-game-arcade',
@@ -31,7 +33,7 @@ export class GameArcadeComponent {
 
   testsRunning = signal(false);
   testsPassed = signal(0);
-  problemFilename;
+  problemFilename = signal<string>("");
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
   nextProblemFilename = signal<string | undefined | null>(null);
@@ -58,18 +60,20 @@ export class GameArcadeComponent {
     public api: ApiService,
     public markdownService: MarkdownService,
     private router: Router,
+    private location: Location,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
+    private arcadeService: ArcadeService,
   ) {
-    this.problemFilename = this.route.snapshot.paramMap.get("id")!;
-    this.editorContentKey = `arcade-editor-content-${this.problemFilename}`;
+    this.problemFilename.set(this.route.snapshot.paramMap.get("id")!);
+    this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
   }
 
   ngOnInit() {
     (window as any).game = this;
     this.api.subscribe(this.handlers);
     this.loaderService.isLoading.set(true);
-    this.api.send("getProblem", { filename: this.problemFilename });
+    this.api.send("getProblem", { filename: this.problemFilename() });
   }
 
   async ngAfterViewInit() {
@@ -85,10 +89,19 @@ export class GameArcadeComponent {
     clearInterval(this.matrixInterval);
   }
 
+  updateUrl(newId: string) {
+    const segments = this.route.snapshot.url.map(s => s.path);
+    segments[segments.length - 1] = newId;
+    this.location.replaceState("/" + segments.join("/"));
+  }
+
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
+    this.problemFilename.set(msg.problem.filename);
     this.problemDescription.set(msg.problem.description);
     this.problemTests.set(msg.problem.tests);
     this.nextProblemFilename.set(msg.problem.nextProblemFilename);
+    this.updateUrl(this.problemFilename());
+    this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
     this.loaderService.isLoading.set(false);
   }
 
@@ -320,6 +333,11 @@ export class GameArcadeComponent {
     }
     
     if (testsPassed === this.problemTests().length) {
+      // Save state into local storage
+      const state = this.arcadeService.getState();
+      state[this.problemFilename()] = true;
+      this.arcadeService.setState(state);
+
       if (this.nextProblemFilename()) {
         this.challengeCompleted();
       } else {
@@ -341,7 +359,7 @@ export class GameArcadeComponent {
 
   challengeCompleted() {
     check("#challenge-completed-trigger");
-    focus(".challenge-completed-modal button");
+    focus(".challenge-completed-modal button.btn-primary");
     this.matrixInterval = matrixRain("#matrix-canvas");
   }
 
@@ -352,25 +370,22 @@ export class GameArcadeComponent {
 
   journeyEnd() {
     check("#journey-end-trigger");
-    focus(".journey-end-modal button");
+    focus(".journey-end-modal button.btn-primary");
     this.matrixInterval = matrixRain("#matrix-canvas");
   }
 
   goToNextProblem() {
-    uncheck('#challenge-completed-trigger');
+    uncheck("#challenge-completed-trigger");
     clearInterval(this.matrixInterval);
     this.resetGame();
-    this.api.send("getProblem", { filename: this.nextProblemFilename });
+    this.api.send("getProblem", { filename: this.nextProblemFilename() });
   }
 
   resetGame() {
     this.editor.setValue(DEFAULT_EDITOR_CONTENT);
     this.editor.clearSelection();
-
     this.navTab.set("instructions");
-    
     this.consoleLogMessages.set([]);
-
     this.problemDescription.set("");
     this.problemTests.set([]);
   }
