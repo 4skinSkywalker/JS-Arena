@@ -112,7 +112,7 @@ export class GameMultiplayerComponent {
     private loaderService: LoaderService,
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id")!;
-    this.editorContentKey = `editor-content-${this.roomId}`;
+    this.editorContentKey = `multiplayer-editor-content-${this.roomId}`;
     this.client = toSignal(this.api.client$);
     this.isHost = computed(() => {
       const room = this.room();
@@ -137,9 +137,9 @@ export class GameMultiplayerComponent {
   ngOnInit() {
     (window as any).game = this;
     this.api.subscribe(this.handlers);
+    this.loaderService.isLoading.set(true);
     this.api.send("joinRoom", { roomId: this.roomId });
     this.api.send("roomDetails", { roomId: this.roomId });
-    this.loaderService.isLoading.set(true);
   }
 
   async ngAfterViewInit() {

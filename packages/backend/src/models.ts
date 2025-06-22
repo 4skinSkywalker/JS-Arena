@@ -151,6 +151,10 @@ export interface IProblemTitlesReceivedMessage {
     problemTitles: Array<IProblemSnippet>;
 }
 
+export interface IProblemWithNext extends IProblem {
+    nextProblemFilename?: string | null;
+}
+
 export interface IGetProblemReceivedMessage {
-    problem: IProblem;
+    problem: IProblemWithNext;
 }

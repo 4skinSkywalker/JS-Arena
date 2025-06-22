@@ -1,6 +1,6 @@
-import { getUid, parseEvent } from "./utils";
+import { getNextEntry, getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage, IProblemWithNext } from "./models";
 import { problems, filenameProblemMap } from "./problems";
 
 const globalRooms = new Map<string, Room>();
@@ -176,6 +176,8 @@ class Client {
     }
 
     handleGetProblem(msg: IGetProblemMessage) {
+        const problem = filenameProblemMap.get(msg.filename) as IProblemWithNext;
+        problem.nextProblemFilename = getNextEntry(filenameProblemMap, msg.filename)?.filename;
         this.send("getProblemReceived", {
             problem: filenameProblemMap.get(msg.filename)
         });

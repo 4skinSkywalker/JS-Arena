@@ -34,6 +34,7 @@ export class GameArcadeComponent {
   problemFilename;
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
+  nextProblemFilename = signal<string | undefined | null>(null);
   matrixInterval: any;
 
   handlers: Handlers = {
@@ -61,14 +62,14 @@ export class GameArcadeComponent {
     private loaderService: LoaderService,
   ) {
     this.problemFilename = this.route.snapshot.paramMap.get("id")!;
-    this.editorContentKey = `editor-content-${this.problemFilename}`;
+    this.editorContentKey = `arcade-editor-content-${this.problemFilename}`;
   }
 
   ngOnInit() {
     (window as any).game = this;
     this.api.subscribe(this.handlers);
-    this.api.send("getProblem", { filename: this.problemFilename });
     this.loaderService.isLoading.set(true);
+    this.api.send("getProblem", { filename: this.problemFilename });
   }
 
   async ngAfterViewInit() {
@@ -87,6 +88,7 @@ export class GameArcadeComponent {
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
     this.problemDescription.set(msg.problem.description);
     this.problemTests.set(msg.problem.tests);
+    this.nextProblemFilename.set(msg.problem.nextProblemFilename);
     this.loaderService.isLoading.set(false);
   }
 
@@ -318,7 +320,11 @@ export class GameArcadeComponent {
     }
     
     if (testsPassed === this.problemTests().length) {
-      this.gameEnd();
+      if (this.nextProblemFilename()) {
+        this.challengeCompleted();
+      } else {
+        this.journeyEnd();
+      }
     }
 
     this.testsPassed.set(testsPassed);
@@ -333,23 +339,28 @@ export class GameArcadeComponent {
     }
   }
 
-  gameEnd() {
-    check("#game-end-trigger");
-    focus(".game-end-modal button");
+  challengeCompleted() {
+    check("#challenge-completed-trigger");
+    focus(".challenge-completed-modal button");
     this.matrixInterval = matrixRain("#matrix-canvas");
   }
 
   backToJourney() {
-    uncheck('#game-end-trigger');
     clearInterval(this.matrixInterval);
     this.router.navigate(['/journey']);
   }
 
-  nextProblem() {
-    uncheck('#game-end-trigger');
+  journeyEnd() {
+    check("#journey-end-trigger");
+    focus(".journey-end-modal button");
+    this.matrixInterval = matrixRain("#matrix-canvas");
+  }
+
+  goToNextProblem() {
+    uncheck('#challenge-completed-trigger');
     clearInterval(this.matrixInterval);
     this.resetGame();
-    // TODO: Load next problem
+    this.api.send("getProblem", { filename: this.nextProblemFilename });
   }
 
   resetGame() {

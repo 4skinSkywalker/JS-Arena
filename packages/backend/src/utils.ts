@@ -56,3 +56,12 @@ export function capitalize(str: string) {
 export function decamelize(str: string) {
   return str.replace(/([a-zA-Z])(?=[A-Z0-9])/g, "$1 ").toLowerCase();
 }
+
+export function getNextEntry<T>(map: Map<string, T>, currentKey: string) {
+  let found = false;
+  for (const [key, value] of map) {
+    if (found) return value;
+    if (key === currentKey) found = true;
+  }
+  return undefined; // No next element found
+}

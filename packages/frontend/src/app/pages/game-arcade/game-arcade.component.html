@@ -138,9 +138,9 @@
     </div>
 </div>
 
-<div class="modal game-end-modal" style="z-index: 999999;">
+<div class="modal challenge-completed-modal" style="z-index: 999999;">
   <canvas id="matrix-canvas"></canvas>
-  <input class="modal-trigger" type="checkbox" id="game-end-trigger">
+  <input class="modal-trigger" type="checkbox" id="challenge-completed-trigger">
   
   <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
     <h2 class="modal-title">Congratulations you completed this challenge!</h2>
@@ -151,7 +151,24 @@
 
     <div class="modal-footer">
         <button class="btn btn-secondary" (click)="backToJourney()">Back to journey</button>
-        <button class="btn btn-primary" (click)="nextProblem()">Next problem</button>
+        <button class="btn btn-primary" (click)="goToNextProblem()">Next problem</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal journey-end-modal" style="z-index: 999999;">
+  <canvas id="matrix-canvas"></canvas>
+  <input class="modal-trigger" type="checkbox" id="journey-end-trigger">
+  
+  <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
+    <h2 class="modal-title">Congratulations you completed the last challenge!</h2>
+
+    <div class="modal-body">
+        <p class="text-center">This was a though one, but you're a champion!</p>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="backToJourney()">Back to journey</button>
     </div>
   </div>
 </div>
