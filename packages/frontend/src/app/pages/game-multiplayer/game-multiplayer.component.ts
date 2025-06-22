@@ -142,7 +142,7 @@ export class GameMultiplayerComponent {
   }
 
   async ngAfterViewInit() {
-    await delay(0.2); // TODO: I don't remember why I need this delay
+    await delay(0.2);
     this.initEditor();
     this.initSpyEditor();
     this.initGameResize();
@@ -152,6 +152,7 @@ export class GameMultiplayerComponent {
 
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
+    this.loaderService.isLoading.set(false);
   }
 
   shareLink() {

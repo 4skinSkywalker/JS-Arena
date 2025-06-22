@@ -1,6 +1,6 @@
 import { getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage } from "./models";
 import { problems, filenameProblemMap } from "./problems";
 
 const globalRooms = new Map<string, Room>();
@@ -46,6 +46,7 @@ class Client {
         "startGame": this.handleStartGame.bind(this),
         "restartGame": this.handleRestartGame.bind(this),
         "getProblemTitles": this.handleGetProblemTitles.bind(this),
+        "getProblem": this.handleGetProblem.bind(this),
     };
 
     constructor(ws: WebSocket) {
@@ -171,6 +172,12 @@ class Client {
                     title: problem.title,
                     rating: problem.rating,
                 }))
+        });
+    }
+
+    handleGetProblem(msg: IGetProblemMessage) {
+        this.send("getProblemReceived", {
+            problem: filenameProblemMap.get(msg.filename)
         });
     }
 

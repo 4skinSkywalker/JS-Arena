@@ -94,6 +94,10 @@ export interface IStartGameMessage {
     roomId: string;
 }
 
+export interface IGetProblemMessage {
+    filename: string;
+}
+
 //      ██╗      ███████╗██████╗  ██████╗ ███╗   ██╗████████╗███████╗███╗   ██╗██████╗ 
 //      ╚██╗     ██╔════╝██╔══██╗██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝████╗  ██║██╔══██╗
 // █████╗╚██╗    █████╗  ██████╔╝██║   ██║██╔██╗ ██║   ██║   █████╗  ██╔██╗ ██║██║  ██║
@@ -145,4 +149,8 @@ export interface IProblemSnippet {
 
 export interface IProblemTitlesReceivedMessage {
     problemTitles: Array<IProblemSnippet>;
+}
+
+export interface IGetProblemReceivedMessage {
+    problem: IProblem;
 }

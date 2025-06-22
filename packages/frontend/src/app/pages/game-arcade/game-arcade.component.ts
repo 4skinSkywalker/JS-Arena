@@ -1,14 +1,12 @@
-import { Component, computed, effect, HostListener, Signal, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Component, HostListener, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard } from '../../../utils';
-import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
+import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck } from '../../../utils';
+import { IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
-import { VoipService } from '../../services/voip.service';
 import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../shared/game.const';
 
 @Component({
@@ -32,12 +30,13 @@ export class GameArcadeComponent {
   exprHistoryIndex = 0;
 
   testsRunning = signal(false);
+  problemFilename;
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
   matrixInterval: any;
 
   handlers: Handlers = {
-    // TODO
+    "getProblemReceived": this.handleGetProblemReceived.bind(this),
   };
 
   @HostListener("document:keydown", ["$event"])
@@ -59,17 +58,18 @@ export class GameArcadeComponent {
     private route: ActivatedRoute,
     private loaderService: LoaderService,
   ) {
-    this.editorContentKey = `editor-content-${"TODO"}`;
+    this.problemFilename = this.route.snapshot.paramMap.get("id")!;
+    this.editorContentKey = `editor-content-${this.problemFilename}`;
   }
 
   ngOnInit() {
     this.api.subscribe(this.handlers);
-    // TODO
+    this.api.send("getProblem", { filename: this.problemFilename });
     this.loaderService.isLoading.set(true);
   }
 
   async ngAfterViewInit() {
-    await delay(0.2); // TODO: I don't remember why I need this delay
+    await delay(0.2);
     this.initEditor();
     this.initGameResize();
     this.initEditorResize();
@@ -77,6 +77,11 @@ export class GameArcadeComponent {
 
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
+    this.loaderService.isLoading.set(false);
+  }
+
+  handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
+    console.warn(msg);
   }
 
   evalCtx = {};
