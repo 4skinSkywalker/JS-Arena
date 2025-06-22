@@ -8,8 +8,8 @@ import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../services/markdown.service';
 import { LoaderService } from '../../components/loader/loader-service.service';
-import { DEFAULT_EDITOR_CONTENT, getExecutableStr } from './game.const';
-import { getFakeClient, getFakeRoom, solutionLength } from './game.util';
+import { DEFAULT_EDITOR_CONTENT, getExecutableStr } from './game-multiplayer.const';
+import { getFakeClient, getFakeRoom, solutionLength } from './game-multiplayer.util';
 import { VoipService } from '../../services/voip.service';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
@@ -23,10 +23,10 @@ interface ILoggerMethods {
   selector: 'app-game',
   imports: [BasicModule],
   providers: [VoipService],
-  templateUrl: './game.component.html',
-  styleUrl: './game.component.scss'
+  templateUrl: './game-multiplayer.component.html',
+  styleUrl: './game-multiplayer.component.scss'
 })
-export class GameComponent {
+export class GameMultiplayerComponent {
   DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
   JSON = JSON;
   check = check;

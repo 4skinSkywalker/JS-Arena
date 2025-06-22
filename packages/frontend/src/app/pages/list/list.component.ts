@@ -78,7 +78,7 @@ export class ListComponent {
     uncheck("#create-room-modal-trigger");
 
     this.api.one("roomCreated", async ({ room }) => {
-      await this.router.navigate(["/game", room.id]);
+      await this.router.navigate(["/game-multiplayer", room.id]);
       this.loaderService.isLoading.set(false);
     });
 
