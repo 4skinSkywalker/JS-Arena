@@ -135,6 +135,7 @@ export class GameMultiplayerComponent {
   }
 
   ngOnInit() {
+    (window as any).game = this;
     this.api.subscribe(this.handlers);
     this.api.send("joinRoom", { roomId: this.roomId });
     this.api.send("roomDetails", { roomId: this.roomId });
@@ -153,6 +154,7 @@ export class GameMultiplayerComponent {
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
     this.loaderService.isLoading.set(false);
+    clearInterval(this.matrixInterval);
   }
 
   shareLink() {

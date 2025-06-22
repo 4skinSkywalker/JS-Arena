@@ -1,5 +1,5 @@
 import { Component, HostListener, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
 import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck } from '../../../utils';
 import { IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../backend/src/models';
@@ -30,6 +30,7 @@ export class GameArcadeComponent {
   exprHistoryIndex = 0;
 
   testsRunning = signal(false);
+  testsPassed = signal(0);
   problemFilename;
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
@@ -55,6 +56,7 @@ export class GameArcadeComponent {
   constructor(
     public api: ApiService,
     public markdownService: MarkdownService,
+    private router: Router,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
   ) {
@@ -63,6 +65,7 @@ export class GameArcadeComponent {
   }
 
   ngOnInit() {
+    (window as any).game = this;
     this.api.subscribe(this.handlers);
     this.api.send("getProblem", { filename: this.problemFilename });
     this.loaderService.isLoading.set(true);
@@ -78,10 +81,13 @@ export class GameArcadeComponent {
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
     this.loaderService.isLoading.set(false);
+    clearInterval(this.matrixInterval);
   }
 
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
-    console.warn(msg);
+    this.problemDescription.set(msg.problem.description);
+    this.problemTests.set(msg.problem.tests);
+    this.loaderService.isLoading.set(false);
   }
 
   evalCtx = {};
@@ -111,7 +117,6 @@ export class GameArcadeComponent {
   onEditorValueChange(value: string) {
     this.editorContent.set(value);
     localStorage.setItem(this.editorContentKey, value);
-    // TODO
   }
 
   initEditor() {
@@ -311,7 +316,12 @@ export class GameArcadeComponent {
         testsPassed++;
       }
     }
-    // TODO
+    
+    if (testsPassed === this.problemTests().length) {
+      this.gameEnd();
+    }
+
+    this.testsPassed.set(testsPassed);
     this.testsRunning.set(false);
   }
 
@@ -323,29 +333,27 @@ export class GameArcadeComponent {
     }
   }
 
-  gameOver() {
-    // TODO
-    check("#game-over-trigger");
-    focus(".game-over-modal button");
+  gameEnd() {
+    check("#game-end-trigger");
+    focus(".game-end-modal button");
     this.matrixInterval = matrixRain("#matrix-canvas");
   }
 
-  gameOverOk() {
+  backToJourney() {
+    uncheck('#game-end-trigger');
     clearInterval(this.matrixInterval);
-    uncheck("#game-over-trigger");
+    this.router.navigate(['/journey']);
   }
 
-  areYouSureNewGame() {
-    check("#are-you-sure-new-game");
-  }
-
-  areYouSureNewGameOk() {
-    // TODO
-    uncheck("#are-you-sure-new-game");
+  nextProblem() {
+    uncheck('#game-end-trigger');
+    clearInterval(this.matrixInterval);
+    this.resetGame();
+    // TODO: Load next problem
   }
 
   resetGame() {
-    /*this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+    this.editor.setValue(DEFAULT_EDITOR_CONTENT);
     this.editor.clearSelection();
 
     this.navTab.set("instructions");
@@ -354,20 +362,5 @@ export class GameArcadeComponent {
 
     this.problemDescription.set("");
     this.problemTests.set([]);
-
-    this.alreadyStartedOnInit.set(false);
-    this.roomStarted.set(false);
-    this.countdownExpired.set(false);
-    this.winnerName.set("");
-
-    this.api.send("progress", {
-      roomId: this.roomId,
-      testsPassed: 0,
-      charCount: solutionLength(DEFAULT_EDITOR_CONTENT)
-    });*/
-  }
-
-  handleGameStarted() {
-    this.resetGame();
   }
 }

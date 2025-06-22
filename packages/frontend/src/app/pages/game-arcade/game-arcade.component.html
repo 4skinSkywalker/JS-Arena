@@ -60,7 +60,7 @@
                 </li>
 
                 <li class="nav-item" [class.active]="navTab() === 'benchmark'">
-                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ 0 }}/{{ this.problemTests().length || 0 }})</a>
+                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ this.problemTests().length || 0 }})</a>
                 </li>
             </ul>
 
@@ -138,36 +138,20 @@
     </div>
 </div>
 
-<div class="modal">
-    <input class="modal-trigger" type="checkbox" id="are-you-sure-new-game">
-
-    <div class="modal-dialog" style="max-width: 500px; width: 98%;">
-        <h2 class="modal-title">Start New Game</h2>
-
-        <div class="modal-body">
-            <p class="text-center">Are you sure you want to start a new game? All current progress will be lost. This action cannot be undone.</p>
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn btn-secondary" (click)="uncheck('#are-you-sure-new-game')">Cancel</button>
-            <button class="btn btn-primary" (click)="areYouSureNewGameOk()">Ok</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal game-over-modal" style="z-index: 999999;">
+<div class="modal game-end-modal" style="z-index: 999999;">
   <canvas id="matrix-canvas"></canvas>
-  <input class="modal-trigger" type="checkbox" id="game-over-trigger">
+  <input class="modal-trigger" type="checkbox" id="game-end-trigger">
   
   <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
-    <h2 class="modal-title">{{ "TODO" }} is the Champion!</h2>
+    <h2 class="modal-title">Congratulations you completed this challenge!</h2>
 
     <div class="modal-body">
-        <p class="text-center">Kudos to {{ "TODO" }} for passing all the tests and leading the way to victory!</p>
+        <p class="text-center">Kudos to you for passing all the tests!</p>
     </div>
 
     <div class="modal-footer">
-        <button class="btn btn-primary" (click)="uncheck('#game-over-trigger')">Ok</button>
+        <button class="btn btn-secondary" (click)="backToJourney()">Back to journey</button>
+        <button class="btn btn-primary" (click)="nextProblem()">Next problem</button>
     </div>
   </div>
 </div>
