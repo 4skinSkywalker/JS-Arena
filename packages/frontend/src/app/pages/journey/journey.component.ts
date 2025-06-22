@@ -4,6 +4,7 @@ import { ApiService, Handlers } from '../../services/api.service';
 import { IProblemSnippet, IProblemTitlesReceivedMessage } from '../../../../../backend/src/models';
 import { ArcadeService } from '../../services/arcade.service';
 import { check, delay, scrollElIntoView } from '../../shared/utils';
+import { LoaderService } from '../../components/loader/loader-service.service';
 
 @Component({
   selector: 'app-journey',
@@ -22,12 +23,20 @@ export class JourneyComponent {
   constructor(
     private api: ApiService,
     private arcadeService: ArcadeService,
+    private loaderService: LoaderService,
   ) {
     this.api.subscribe(this.handlers);
     this.api.send("getProblemTitles");
+    this.loaderService.isLoading.set(true);
   }
 
-  async ngAfterViewInit() {
+  ngOnDestroy() {
+    this.api.unsubscribe(this.handlers);
+    this.loaderService.isLoading.set(false);
+  }
+
+  async handleProblemTitlesReceived(msg: IProblemTitlesReceivedMessage) {
+    this.problemTitles.set(msg.problemTitles);
     await delay(0.2);
     const state = this.arcadeService.getState();
     let lastKey;
@@ -35,10 +44,8 @@ export class JourneyComponent {
       check(`#${key}`);
       lastKey = key;
     }
+    this.loaderService.isLoading.set(false);
+    await delay(0.2);
     scrollElIntoView(`#${lastKey}`);
-  }
-
-  handleProblemTitlesReceived(msg: IProblemTitlesReceivedMessage) {
-    this.problemTitles.set(msg.problemTitles);
   }
 }

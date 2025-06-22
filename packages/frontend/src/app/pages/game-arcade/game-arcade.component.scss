@@ -124,47 +124,41 @@
     }
 }
 
-.instructions-container {
+.instructions {
     padding-left: 25px;
-    z-index: 10;
+    height: 100svh;
     display: grid;
+    grid-template-rows: auto 1fr;
     overflow: hidden;
-    background: #000;
 
-    .instructions {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        overflow: hidden;
+    .nav {
+        background-color: rgba(var(--c1), 1);
+        border: none;
+        gap: var(--tertiary-space);
+        padding: var(--quaternary-space) var(--tertiary-space);
 
-        .nav {
-            background-color: rgba(var(--c1), 1);
-            border: none;
-            gap: var(--tertiary-space);
-            padding: var(--quaternary-space) var(--tertiary-space);
-
-            .nav-item {
-                cursor: pointer;
-            }
+        .nav-item {
+            cursor: pointer;
         }
+    }
 
-        .nav-panel {
-            position: relative;
-            overflow-y: auto;
-            border-top: 2px solid rgba(var(--c4), 1);
-            border-right: 2px solid rgba(var(--c4), 1);
+    .nav-panel {
+        position: relative;
+        overflow-y: auto;
+        border-top: 2px solid rgba(var(--c4), 1);
+        border-right: 2px solid rgba(var(--c4), 1);
 
-            .nav-panel-description {
-                padding: var(--secondary-space);
+        .nav-panel-description {
+            padding: var(--secondary-space);
 
-                ::ng-deep * {
-                    all: revert;
-                }
+            ::ng-deep * {
+                all: revert;
+            }
 
-                ::ng-deep code {
-                    display: inline-block;
-                    background-color: rgba(var(--c3), 0.5);
-                    padding: var(--quaternary-space) var(--tertiary-space);
-                }
+            ::ng-deep code {
+                display: inline-block;
+                background-color: rgba(var(--c3), 0.5);
+                padding: var(--quaternary-space) var(--tertiary-space);
             }
         }
     }

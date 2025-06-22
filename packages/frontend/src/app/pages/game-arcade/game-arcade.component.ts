@@ -59,11 +59,11 @@ export class GameArcadeComponent {
   constructor(
     public api: ApiService,
     public markdownService: MarkdownService,
+    private arcadeService: ArcadeService,
     private router: Router,
     private location: Location,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
-    private arcadeService: ArcadeService,
   ) {
     this.problemFilename.set(this.route.snapshot.paramMap.get("id")!);
     this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
@@ -173,7 +173,7 @@ export class GameArcadeComponent {
   initGameResize() {
     const gameContainer = document.querySelector(".game-container") as HTMLDivElement;
     const editorContainer = document.querySelector(".editor-container");
-    const contentContainer = document.querySelector(".instructions-container");
+    const contentContainer = document.querySelector(".instructions");
     const sectionsDivider = document.querySelector(".sections-divider");
     drag({
       target: sectionsDivider,
