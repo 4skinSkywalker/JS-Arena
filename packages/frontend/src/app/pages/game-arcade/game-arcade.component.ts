@@ -383,6 +383,7 @@ export class GameArcadeComponent {
   }
 
   resetGame() {
+    this.testsPassed.set(0);
     this.setDefaultEditorContent();
     this.navTab.set("instructions");
     this.consoleLogMessages.set([]);
