@@ -204,29 +204,25 @@ export class GameMultiplayerComponent {
 
   initEditor() {
     const ace = (window as any).ace;
-    const editor = ace.edit("editor");
-    this.editor = editor;
-    editor.setTheme("ace/theme/monokai");
-    
     ace.require("ace/ext/language_tools");
     ace.require("ace/ext/emmet").setCore("ext/emmet_core");
-    ace.config.loadModule("ace/snippets/javascript", () =>
-      console.log("JS snippets loaded.")
-    );
-
-    editor.setOptions({
+    ace.config.loadModule("ace/snippets/javascript", () => console.log("JS snippets loaded."));
+    
+    this.editor = ace.edit("editor");
+    this.editor.setTheme("ace/theme/monokai");
+    this.editor.setOptions({
       enableBasicAutocompletion: true,
       enableSnippets: true,
       enableLiveAutocompletion: true,
       enableEmmet: true,
     });
 
-    editor.getSession().setUseWorker(false);
-    editor.getSession().setMode("ace/mode/javascript");
+    this.editor.getSession().setUseWorker(false);
+    this.editor.getSession().setMode("ace/mode/javascript");
 
     let memory: string[] = [];
-    editor.on("paste", (pasteObj: any) => {
-      const editorContent = editor.getValue();
+    this.editor.on("paste", (pasteObj: any) => {
+      const editorContent = this.editor.getValue();
       const content = `${this.problemDescription()}\n${JSON.stringify(this.problemTests())}\n${editorContent}`;
       if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
         console.log("Paste allowed:", pasteObj.text);
@@ -237,14 +233,14 @@ export class GameMultiplayerComponent {
       check("#cannot-copy-paste-modal-trigger");
       focus(".cannot-copy-paste-modal button");
       setTimeout(() => {
-        editor.setValue(editorContent);
-        editor.clearSelection();
+        this.editor.setValue(editorContent);
+        this.editor.clearSelection();
       }, 100);
       return "";
     });
 
-    editor.getSession().on("change", debounce(() => {
-      const content = editor.getSession().getValue();
+    this.editor.getSession().on("change", debounce(() => {
+      const content = this.editor.getSession().getValue();
       memory.push(content);
       if (memory.length > 100) {
         memory.shift();
@@ -254,33 +250,31 @@ export class GameMultiplayerComponent {
 
     const lastEditorContent = localStorage.getItem(this.editorContentKey) || '';
     if (lastEditorContent) {
-      editor.setValue(lastEditorContent);
+      this.editor.setValue(lastEditorContent);
     } else {
-      editor.setValue(DEFAULT_EDITOR_CONTENT);
+      this.editor.setValue(DEFAULT_EDITOR_CONTENT);
     }
 
-    editor.clearSelection();
+    this.editor.clearSelection();
   }
 
   initSpyEditor() {
     const ace = (window as any).ace;
-    const editor = ace.edit("spyEditor");
-    this.spyEditor = editor;
-    editor.setTheme("ace/theme/monokai");
-
-    editor.setOptions({
+    this.spyEditor = ace.edit("spyEditor");
+    this.spyEditor.setTheme("ace/theme/monokai");
+    this.spyEditor.setOptions({
       enableBasicAutocompletion: true,
       enableSnippets: true,
       enableLiveAutocompletion: true,
       enableEmmet: true,
     });
 
-    editor.keyBinding.$defaultHandler.commandKeyBinding = {}
-    editor.textInput.getElement().disabled = true;
+    this.spyEditor.keyBinding.$defaultHandler.commandKeyBinding = {}
+    this.spyEditor.textInput.getElement().disabled = true;
 
-    editor.getSession().setUseWorker(false);
-    editor.getSession().setMode("ace/mode/javascript");
-    editor.clearSelection();
+    this.spyEditor.getSession().setUseWorker(false);
+    this.spyEditor.getSession().setMode("ace/mode/javascript");
+    this.spyEditor.clearSelection();
   }
 
   initGameResize() {

@@ -138,10 +138,8 @@ export class GameArcadeComponent {
     const ace = (window as any).ace;
     ace.require("ace/ext/language_tools");
     ace.require("ace/ext/emmet").setCore("ext/emmet_core");
-    ace.config.loadModule("ace/snippets/javascript", () =>
-      console.log("JS snippets loaded.")
-    );
-
+    ace.config.loadModule("ace/snippets/javascript", () => console.log("JS snippets loaded."));
+    
     this.editor = ace.edit("editor");
     this.editor.setTheme("ace/theme/monokai");
     this.editor.setOptions({
