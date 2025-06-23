@@ -138,8 +138,6 @@ export class GameMultiplayerComponent {
     (window as any).game = this;
     this.api.subscribe(this.handlers);
     this.loaderService.isLoading.set(true);
-    this.api.send("joinRoom", { roomId: this.roomId });
-    this.api.send("roomDetails", { roomId: this.roomId });
   }
 
   async ngAfterViewInit() {
@@ -149,6 +147,8 @@ export class GameMultiplayerComponent {
     this.initGameResize();
     this.initEditorResize();
     this.initContentResize();
+    this.api.send("joinRoom", { roomId: this.roomId });
+    this.api.send("roomDetails", { roomId: this.roomId });
   }
 
   ngOnDestroy() {

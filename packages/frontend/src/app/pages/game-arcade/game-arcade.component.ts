@@ -73,7 +73,6 @@ export class GameArcadeComponent {
     (window as any).game = this;
     this.api.subscribe(this.handlers);
     this.loaderService.isLoading.set(true);
-    this.api.send("getProblem", { filename: this.problemFilename() });
   }
 
   async ngAfterViewInit() {
@@ -81,6 +80,7 @@ export class GameArcadeComponent {
     this.initEditor();
     this.initGameResize();
     this.initEditorResize();
+    this.api.send("getProblem", { filename: this.problemFilename() });
   }
 
   ngOnDestroy() {
