@@ -26,6 +26,8 @@ function adjustTitle(title: string) {
             return "K-Palindrome";
         case "Count sumof two representation2":
             return "Count sum of two representation 2";
+        case "Houseof cats":
+            return "House of cats";
         default:
             return title;
     }
