@@ -48,5 +48,9 @@ for (const jsonPath of jsonPaths) {
     }
 }
 
-problems.sort((a, b) => a.rating - b.rating);
+problems.sort((a, b) =>
+    (a.rating  === b.rating)
+        ? a.filename.localeCompare(b.filename)
+        : a.rating - b.rating
+);
 problems.forEach(p => filenameProblemMap.set(p.filename, p));
