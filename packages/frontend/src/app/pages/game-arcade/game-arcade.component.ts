@@ -95,16 +95,6 @@ export class GameArcadeComponent {
     this.location.replaceState("/" + segments.join("/"));
   }
 
-  handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
-    this.problemFilename.set(msg.problem.filename);
-    this.problemDescription.set(msg.problem.description);
-    this.problemTests.set(msg.problem.tests);
-    this.nextProblemFilename.set(msg.problem.nextProblemFilename);
-    this.updateUrl(this.problemFilename());
-    this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
-    this.loaderService.isLoading.set(false);
-  }
-
   evalCtx = {};
   evalExpr(expr: string) {
     this.exprHistory.push(expr);
@@ -134,40 +124,42 @@ export class GameArcadeComponent {
     localStorage.setItem(this.editorContentKey, value);
   }
 
+  setDefaultEditorContent() {
+    const lastEditorContent = localStorage.getItem(this.editorContentKey) || '';
+    if (lastEditorContent) {
+      this.editor.setValue(lastEditorContent);
+    } else {
+      this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+    }
+    this.editor.clearSelection();
+  }
+
   initEditor() {
     const ace = (window as any).ace;
-    const editor = ace.edit("editor");
-    this.editor = editor;
-    editor.setTheme("ace/theme/monokai");
-    
     ace.require("ace/ext/language_tools");
     ace.require("ace/ext/emmet").setCore("ext/emmet_core");
     ace.config.loadModule("ace/snippets/javascript", () =>
       console.log("JS snippets loaded.")
     );
 
-    editor.setOptions({
+    this.editor = ace.edit("editor");
+    this.editor.setTheme("ace/theme/monokai");
+    this.editor.setOptions({
       enableBasicAutocompletion: true,
       enableSnippets: true,
       enableLiveAutocompletion: true,
       enableEmmet: true,
     });
 
-    editor.getSession().setUseWorker(false);
-    editor.getSession().setMode("ace/mode/javascript");
+    this.editor.getSession().setUseWorker(false);
+    this.editor.getSession().setMode("ace/mode/javascript");
 
-    editor.getSession().on("change", debounce(() => {
-      this.onEditorValueChange(editor.getSession().getValue());
+    this.editor.getSession().on("change", debounce(() => {
+      const editorValue = this.editor.getSession().getValue();
+      this.onEditorValueChange(editorValue);
     }, 500));
 
-    const lastEditorContent = localStorage.getItem(this.editorContentKey) || '';
-    if (lastEditorContent) {
-      editor.setValue(lastEditorContent);
-    } else {
-      editor.setValue(DEFAULT_EDITOR_CONTENT);
-    }
-
-    editor.clearSelection();
+    this.setDefaultEditorContent();
   }
 
   initGameResize() {
@@ -357,6 +349,17 @@ export class GameArcadeComponent {
     }
   }
 
+  handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
+    this.problemFilename.set(msg.problem.filename);
+    this.problemDescription.set(msg.problem.description);
+    this.problemTests.set(msg.problem.tests);
+    this.nextProblemFilename.set(msg.problem.nextProblemFilename);
+    this.updateUrl(this.problemFilename());
+    this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
+    this.setDefaultEditorContent();
+    this.loaderService.isLoading.set(false);
+  }
+
   challengeCompleted() {
     check("#challenge-completed-trigger");
     focus(".challenge-completed-modal button.btn-primary");
@@ -382,8 +385,7 @@ export class GameArcadeComponent {
   }
 
   resetGame() {
-    this.editor.setValue(DEFAULT_EDITOR_CONTENT);
-    this.editor.clearSelection();
+    this.setDefaultEditorContent();
     this.navTab.set("instructions");
     this.consoleLogMessages.set([]);
     this.problemDescription.set("");
