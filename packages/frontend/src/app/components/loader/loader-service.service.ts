@@ -5,6 +5,7 @@ import { Injectable, signal } from '@angular/core';
 })
 export class LoaderService {
   isLoading = signal(false);
+  loadingMessage = signal("");
   
   constructor() { }
 }

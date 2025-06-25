@@ -36,6 +36,7 @@ export class GameArcadeComponent {
   problemFilename = signal<string>("");
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
+  problemSolved = signal(false);
   nextProblemFilename = signal<string | undefined | null>(null);
   matrixInterval: any;
 
@@ -327,16 +328,17 @@ export class GameArcadeComponent {
       const state = this.arcadeService.getState();
       state[this.problemFilename()] = true;
       this.arcadeService.setState(state);
-
+      
       if (this.nextProblemFilename()) {
         this.challengeCompleted();
       } else {
         this.journeyEnd();
       }
     }
-
+    
     this.testsPassed.set(testsPassed);
     this.testsRunning.set(false);
+    this.problemSolved.set(true);
   }
 
   async flickAnimation(el: Element | null) {
@@ -359,20 +361,28 @@ export class GameArcadeComponent {
   }
 
   challengeCompleted() {
+    if (this.problemSolved()) {
+      return;
+    }
+
     check("#challenge-completed-trigger");
     focus(".challenge-completed-modal button.btn-primary");
+    this.matrixInterval = matrixRain("#matrix-canvas");
+  }
+
+  journeyEnd() {
+    if (this.problemSolved()) {
+      return;
+    }
+    
+    check("#journey-end-trigger");
+    focus(".journey-end-modal button.btn-primary");
     this.matrixInterval = matrixRain("#matrix-canvas");
   }
 
   backToJourney() {
     clearInterval(this.matrixInterval);
     this.router.navigate(['/journey']);
-  }
-
-  journeyEnd() {
-    check("#journey-end-trigger");
-    focus(".journey-end-modal button.btn-primary");
-    this.matrixInterval = matrixRain("#matrix-canvas");
   }
 
   goToNextProblem() {
@@ -383,6 +393,7 @@ export class GameArcadeComponent {
   }
 
   resetGame() {
+    this.problemSolved.set(false);
     this.testsPassed.set(0);
     this.setDefaultEditorContent();
     this.navTab.set("instructions");

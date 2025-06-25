@@ -364,8 +364,13 @@ class Room {
 
     deleteFromGlobalIfEmpty() {
         if (!this.clients.size) {
-            globalRooms.delete(this.id);
-            sendEverybodyRooms();
+            // Wait 15 minutes before deleting the room
+            setTimeout(() => {
+                if (!this.clients.size) {
+                    globalRooms.delete(this.id);
+                    sendEverybodyRooms();
+                }
+            }, 15 * 60 * 1000);
             return true;
         }
         return false;

@@ -38,14 +38,34 @@ export class JourneyComponent {
   async handleProblemTitlesReceived(msg: IProblemTitlesReceivedMessage) {
     this.problemTitles.set(msg.problemTitles);
     await delay(0.2);
-    const state = this.arcadeService.getState();
-    let lastKey;
-    for (const key of Object.keys(state)) {
+    for (const key of Object.keys(this.arcadeService.getState())) {
       check(`#${key}`);
-      lastKey = key;
     }
     this.loaderService.isLoading.set(false);
     await delay(0.2);
-    scrollElIntoView(`#${lastKey}`);
+    scrollElIntoView(`#${this.getLastKey()}`);
+  }
+
+  getLastKey() {
+    const streaks: string[][] = [];
+    let currStreak: string[] = [];
+    const state = this.arcadeService.getState();
+    const nameAndDone = this.problemTitles().map(p => ({ name: p.filename, done: state[p.filename] }));
+
+    for (const {name, done} of nameAndDone) {
+      if (done) {
+        currStreak.push(name);
+      } else if (currStreak.length) {
+        streaks.push(currStreak);
+        currStreak = [];
+      }
+    }
+
+    if (currStreak.length) {
+      streaks.push(currStreak);
+      currStreak = [];
+    }
+
+    return streaks.find(s => s.length === Math.max(...streaks.map(s => s.length)))?.pop();
   }
 }

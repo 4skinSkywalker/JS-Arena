@@ -1,3 +1,4 @@
 <div class="loader-wrap" [class.active]="loaderService.isLoading()">
     <div class="spinner"></div>
+    <div class="loader-text">{{ loaderService.loadingMessage() }}</div>
 </div>
