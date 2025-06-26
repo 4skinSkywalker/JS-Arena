@@ -334,11 +334,12 @@ export class GameArcadeComponent {
       } else {
         this.journeyEnd();
       }
+      
+      this.problemSolved.set(true);
     }
     
     this.testsPassed.set(testsPassed);
     this.testsRunning.set(false);
-    this.problemSolved.set(true);
   }
 
   async flickAnimation(el: Element | null) {
