@@ -53,15 +53,19 @@
     </div>
 
     <div class="instructions">
-        <ul class="nav">
-            <li class="nav-item" [class.active]="navTab() === 'instructions'">
-                <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
-            </li>
+        <div class="nav-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item" [class.active]="navTab() === 'instructions'">
+                    <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
+                </li>
+                
+                <li class="nav-item" [class.active]="navTab() === 'benchmark'">
+                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ this.problemTests().length || 0 }})</a>
+                </li>
+            </ul>
 
-            <li class="nav-item" [class.active]="navTab() === 'benchmark'">
-                <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ this.problemTests().length || 0 }})</a>
-            </li>
-        </ul>
+            <button class="btn btn-secondary compact" (click)="goToNextProblem()">Next problem <i class="bi bi-arrow-right"></i></button>
+        </div>
 
         <div class="nav-panel cyberground">
             <div
@@ -148,7 +152,7 @@
     </div>
 
     <div class="modal-footer">
-        <button class="btn btn-secondary" (click)="backToJourney()">Goto journey</button>
+        <button class="btn btn-secondary" (click)="backToJourney()">Go to journey</button>
         <button class="btn btn-secondary" (click)="uncheck('#challenge-completed-trigger')">Stay here</button>
         <button class="btn btn-primary" (click)="goToNextProblem()">Next problem</button>
     </div>
@@ -167,7 +171,7 @@
     </div>
 
     <div class="modal-footer">
-        <button class="btn btn-primary" (click)="backToJourney()">Goto journey</button>
+        <button class="btn btn-primary" (click)="backToJourney()">Go to journey</button>
         <button class="btn btn-secondary" (click)="uncheck('#journey-end-trigger')">Stay here</button>
     </div>
   </div>

@@ -131,14 +131,22 @@
     grid-template-rows: auto 1fr;
     overflow: hidden;
 
-    .nav {
+    .nav-wrap {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         background-color: rgba(var(--c1), 1);
-        border: none;
-        gap: var(--tertiary-space);
         padding: var(--quaternary-space) var(--tertiary-space);
-
-        .nav-item {
-            cursor: pointer;
+        
+        .nav {
+            display: inline-flex;
+            border: none;
+            gap: var(--tertiary-space);
+            padding: 0;
+    
+            .nav-item {
+                cursor: pointer;
+            }
         }
     }
 

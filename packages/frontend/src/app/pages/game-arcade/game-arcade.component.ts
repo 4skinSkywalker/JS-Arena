@@ -35,6 +35,8 @@ export class GameArcadeComponent {
   testsPassed = signal(0);
   problemFilename = signal<string>("");
   problemDescription = signal("");
+  problemTitle = signal("");
+  problemRating = signal("");
   problemTests = signal<ITest[]>([]);
   problemSolved = signal(false);
   nextProblemFilename = signal<string | undefined | null>(null);
@@ -334,7 +336,7 @@ export class GameArcadeComponent {
       } else {
         this.journeyEnd();
       }
-      
+
       this.problemSolved.set(true);
     }
     
@@ -353,6 +355,8 @@ export class GameArcadeComponent {
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
     this.problemFilename.set(msg.problem.filename);
     this.problemDescription.set(msg.problem.description);
+    this.problemTitle.set(msg.problem.title);
+    this.problemRating.set(String(msg.problem.rating));
     this.problemTests.set(msg.problem.tests);
     this.nextProblemFilename.set(msg.problem.nextProblemFilename);
     this.updateUrl(this.problemFilename());
@@ -400,6 +404,8 @@ export class GameArcadeComponent {
     this.navTab.set("instructions");
     this.consoleLogMessages.set([]);
     this.problemDescription.set("");
+    this.problemTitle.set("");
+    this.problemRating.set("");
     this.problemTests.set([]);
   }
 }
