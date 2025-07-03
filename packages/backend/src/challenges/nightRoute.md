@@ -33,9 +33,7 @@ The shortest path is 0 -> 1 -> 3 which costs 5 + 3 = 8.
 
 ### Input/Output
 
-**[execution time limit]** 4 seconds (py3)
-
-**[memory limit]** 1 GB
+**[execution time limit]** 1 second
 
 **[input]** array.array.integer city
 

@@ -31,8 +31,7 @@ And here's how data should be transfered within it:
 
 ## Input/Output
 
-- **[execution time limit] 4 seconds (py3)**
-- **[memory limit] 1 GB**
+- **[execution time limit] 1 second**
 
 - **[input] integer resource**
 

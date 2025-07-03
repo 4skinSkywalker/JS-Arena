@@ -10,8 +10,7 @@ For `l = 30` and `fares = [0.3, 0.5, 0.7, 1, 1.3]`, the output should be `soluti
 
 ### Input/Output
 
-- **[execution time limit]** 4 seconds (py3)
-- **[memory limit]** 1 GB
+- **[execution time limit]** 1 second
 - **[input]** integer `l`
     - A positive number representing the length of the ride.
     - **Guaranteed constraints:** 4 ≤ l ≤ 30.

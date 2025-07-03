@@ -34,8 +34,7 @@ The day is divided into 3 intervals:
 ### Input/Output
 
 
-- **[execution time limit] 4 seconds (py3)**
-- **[memory limit] 1 GB**
+- **[execution time limit] 1 second**
 
 - **[input] array.integer intervals**
 

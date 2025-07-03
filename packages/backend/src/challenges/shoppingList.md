@@ -11,9 +11,7 @@ Sara asked for your help, so it is up to you to devise an algorithm that calcula
 
 ## Input/Output
 
-- [execution time limit] 4 seconds (py3)
-
-- [memory limit] 1 GB
+- [execution time limit] 1 second
 
 - [input] string items
 

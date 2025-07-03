@@ -13,7 +13,7 @@ For points = [[0, 0], [1, 1], [0, 2], [-1, 1]], the output should be `true`. In 
 
 #### Input/Output
 
-The execution time limit is 4 seconds with a memory limit of 1GB.
+The execution time limit is 1 second.
 
 The input is an array of integer arrays, signifying coordinate points. It follows the format [[x1, y1], [x2, y2], [x3, y3], [x4, y4]].
 

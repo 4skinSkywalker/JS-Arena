@@ -11,8 +11,7 @@ solution(domains) = ["organization", "commercial", "network", "information"].
 
 ### Input/Output
 
-- [execution time limit] 4 seconds (py3)
-- [memory limit] 1 GB
+- [execution time limit] 1 second
 
 - [input] array.string domains: A list of domains, where each domain contains at least one dot. It is guaranteed that each top-level domain of these domains belongs to one of the types described above.
 

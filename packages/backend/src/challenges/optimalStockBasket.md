@@ -10,9 +10,7 @@ It's a bad idea to pick the first stock because its expected future return is ne
 
 ## Input/Output
 
-- **[execution time limit]** 4 seconds (py3)
-  
-- **[memory limit]** 1 GB
+- **[execution time limit]** 1 second
   
 - **[input]** array.array.integer stocks
   
