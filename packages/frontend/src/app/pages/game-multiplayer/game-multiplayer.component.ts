@@ -2,7 +2,7 @@ import { Component, computed, effect, HostListener, Signal, signal } from '@angu
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard } from '../../shared/utils';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, runInWorker } from '../../shared/utils';
 import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
 import { BasicModule } from '../../basic.module';
 import { FormControl } from '@angular/forms';
@@ -359,45 +359,17 @@ export class GameMultiplayerComponent {
     };
   }
 
-  runInWorker(scr: string) {
-    const w = new Worker(new URL("../../shared/w.js", import.meta.url));
-    return new Promise<any>((resolve, reject) => {
-      let timedout = false;
-      const timer = setTimeout(() => {
-        timedout = true;
-        w.terminate();
-        reject("Timeout");
-      }, 1000);
-
-      w.onmessage = (e: any) => {
-        if (!timedout) {
-          clearTimeout(timer);
-          resolve(e.data);
-        }
-      }
-
-      w.onerror = (e: any) => {
-        if (!timedout) {
-          clearTimeout(timer);
-          reject(e);
-        }
-      }
-
-      w.postMessage(scr);
-    });
-  }
-
   async runCode(input: any, loggers?: ILoggerMethods) {
     this.consoleLogMessages.set([]);
     await delay(0.1);
     
-    let output, logs;
+    let output, logs = [];
     try {
       const modifiedContent = getExecutableStr(this.editorContent(), input);
       if (window.Worker) {
-        [output, logs] = await this.runInWorker(modifiedContent);
+        [output, logs] = await runInWorker(modifiedContent);
       } else {
-        [output, logs] = window.eval(modifiedContent);
+        output = window.eval(modifiedContent);
       }
     } catch (e: any) {
       logs = logs || [];

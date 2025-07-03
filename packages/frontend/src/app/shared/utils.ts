@@ -188,3 +188,33 @@ export function scrollElIntoView(sel: string) {
         el.scrollIntoView({ behavior: "smooth" });
     }
 }
+
+export function runInWorker(src: string) {
+    const w = new Worker(new URL("./w.js", import.meta.url));
+    return new Promise<any>((resolve, reject) => {
+        let timedout = false;
+        const timer = setTimeout(() => {
+            timedout = true;
+            w.terminate();
+            reject("Timeout");
+        }, 1000);
+
+        w.onmessage = (e: any) => {
+            if (!timedout) {
+                clearTimeout(timer);
+                resolve(e.data);
+                w.terminate();
+            }
+        }
+
+        w.onerror = (e: any) => {
+            if (!timedout) {
+                clearTimeout(timer);
+                reject(e);
+                w.terminate();
+            }
+        }
+
+        w.postMessage(src);
+    });
+}
