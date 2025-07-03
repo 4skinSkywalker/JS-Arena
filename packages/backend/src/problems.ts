@@ -30,6 +30,8 @@ function adjustTitle(title: string) {
             return "House of cats";
         case "Is casein sensitive palindrome":
             return "Is case insensitive palindrome";
+        case "Is m a c 48address":
+            return "Is MAC-48 address";
         default:
             return title;
     }
