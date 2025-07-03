@@ -9,10 +9,10 @@ import { GameArcadeComponent } from './pages/game-arcade/game-arcade.component';
 export const routes: Routes = [
     { path: "", redirectTo: "choose", pathMatch: "full" },
     { path: "choose", component: ChooseModeComponent },
-    { path: "journey", component: JourneyComponent },
-    { path: "list", component: ListComponent },
-    { path: "game-arcade/:id", component: GameArcadeComponent },
-    { path: "game-multiplayer/:id", component: GameMultiplayerComponent },
+    { path: "arcade", component: JourneyComponent },
+    { path: "arcade/:id", component: GameArcadeComponent },
+    { path: "multiplayer", component: ListComponent },
+    { path: "multiplayer/:id", component: GameMultiplayerComponent },
     { path: "not-found", component: NotFoundComponent  },
     { path: "**", redirectTo: "not-found", pathMatch: "full" }
 ];

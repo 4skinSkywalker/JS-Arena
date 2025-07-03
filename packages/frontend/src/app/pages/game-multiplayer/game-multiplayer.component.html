@@ -26,7 +26,7 @@
                 <select class="form-select compact ms-auto" style="width: 150px;" (change)="changeSpyClient($any($event.target).value)">
                     <option selected="">Select player</option>
                     @for (client of clients(); track client.id) {
-                        <option [value]="client.id">{{ client.name }}</option>
+                    <option [value]="client.id">{{ client.name }}</option>
                     }
                 </select>
                 <button class="btn btn-secondary compact" (click)="consoleMode.set('console')">Console mode <i class="bi bi-terminal"></i></button>
