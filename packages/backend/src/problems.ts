@@ -28,6 +28,8 @@ function adjustTitle(title: string) {
             return "Count sum of two representation 2";
         case "Houseof cats":
             return "House of cats";
+        case "Is casein sensitive palindrome":
+            return "Is case insensitive palindrome";
         default:
             return title;
     }
