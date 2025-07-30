@@ -32,6 +32,8 @@ function adjustTitle(title: string) {
             return "Is case insensitive palindrome";
         case "Is m a c 48address":
             return "Is MAC-48 address";
+        case "Removek from list":
+            return "Remove k from list";
         default:
             return title;
     }
