@@ -299,9 +299,9 @@ export class GameArcadeComponent {
     
     if (testsPassed === this.problemTests().length) {
       // Save state into local storage
-      const state = this.arcadeService.getState();
+      const state = this.arcadeService.getStates();
       state[this.problemFilename()] = true;
-      this.arcadeService.setState(state);
+      this.arcadeService.setStates(state);
       
       if (this.nextProblemFilename()) {
         this.challengeCompleted();

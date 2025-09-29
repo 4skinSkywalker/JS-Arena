@@ -9,16 +9,27 @@ export class ArcadeService {
 
   constructor() { }
 
-  getState(): Record<string, boolean> {
-    const strState = localStorage.getItem(LS_KEY);
-    if (strState) {
-      return JSON.parse(strState);
+  getStates(): Record<string, boolean> {
+    const val = localStorage.getItem(LS_KEY);
+    if (val) {
+      return JSON.parse(val);
     } else {
       return {};
     }
   }
+  setStates(val: Record<string, boolean>) {
+    localStorage.setItem(LS_KEY, JSON.stringify(val));
+  }
 
-  setState(state: Record<string, boolean>) {
-    localStorage.setItem(LS_KEY, JSON.stringify(state));
+  getFavorites(): Record<string, boolean> {
+    const val = localStorage.getItem(LS_KEY + "-favorite");
+    if (val) {
+      return JSON.parse(val);
+    } else {
+      return {};
+    }
+  }
+  setFavorites(val: Record<string, boolean>) {
+    localStorage.setItem(LS_KEY + "-favorite", JSON.stringify(val));
   }
 }

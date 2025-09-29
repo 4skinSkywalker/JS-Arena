@@ -45,3 +45,26 @@ body::before {
 [hidden] {
     display: none !important;
 }
+
+.star,
+.star:before {
+    aspect-ratio: 1;
+    clip-path: polygon(
+        50% 0,
+        calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
+        calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+        calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+        calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
+    );
+}
+.star {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    background: #fa8b06;
+}
+.star:not(.starred):before {
+    content: "";
+    width: 75%;
+    background: #000;
+}

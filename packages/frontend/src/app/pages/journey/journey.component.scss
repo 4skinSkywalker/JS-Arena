@@ -25,7 +25,22 @@
 }
 
 .list-item-completed {
-    pointer-events: none;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .star-wrap {
+        padding: 4px;
+        cursor: pointer;
+
+        .star {
+            width: 32px;
+        }
+    }
+
+    .form-check {
+        pointer-events: none;
+    }
 }
 
 .solved-indicator {
