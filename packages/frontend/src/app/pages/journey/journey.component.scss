@@ -27,3 +27,13 @@
 .list-item-completed {
     pointer-events: none;
 }
+
+.solved-indicator {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0.5rem;
+    background: #0008;
+}

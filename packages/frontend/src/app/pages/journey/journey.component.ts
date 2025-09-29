@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
 import { IProblemSnippet, IProblemTitlesReceivedMessage } from '../../../../../backend/src/models';
@@ -15,6 +15,10 @@ import { LoaderService } from '../../components/loader/loader-service.service';
 export class JourneyComponent {
   check = check;
   problemTitles = signal<Array<IProblemSnippet>>([]);
+  solvedProblems = computed(() => {
+    const arcadeState = this.arcadeService.getState();
+    return this.problemTitles().filter(p => arcadeState[p.filename]);
+  });
 
   handlers: Handlers = {
     "getProblemTitlesReceived": this.handleProblemTitlesReceived.bind(this),

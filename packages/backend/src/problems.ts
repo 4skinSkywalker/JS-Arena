@@ -34,6 +34,8 @@ function adjustTitle(title: string) {
             return "Is MAC-48 address";
         case "Removek from list":
             return "Remove k from list";
+        case "Integerto stringof fixed width":
+            return "Integer to string of fixed width";
         default:
             return title;
     }
