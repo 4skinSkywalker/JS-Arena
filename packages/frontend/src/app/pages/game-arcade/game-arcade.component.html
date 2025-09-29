@@ -58,13 +58,29 @@
                 <li class="nav-item" [class.active]="navTab() === 'instructions'">
                     <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
                 </li>
-                
                 <li class="nav-item" [class.active]="navTab() === 'benchmark'">
-                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ this.problemTests().length || 0 }})</a>
+                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ problemTests().length || 0 }})</a>
                 </li>
             </ul>
-
-            <button class="btn btn-secondary compact" (click)="goToNextProblem()">Next problem <i class="bi bi-arrow-right"></i></button>
+            <div class="d-flex gap-1">
+                <button
+                    class="btn btn-secondary compact"
+                    (click)="backToJourney()"
+                >
+                    <i class="bi bi-box-arrow-left"></i> Back to list
+                </button>
+                <button
+                    class="btn btn-secondary compact"
+                    [class.btn-primary]="
+                        testsPassed() != null
+                     && testsPassed() != 0
+                     && testsPassed() === problemTests().length
+                    "
+                    (click)="goToNextProblem()"
+                >
+                    Next problem <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
         </div>
 
         <div class="nav-panel cyberground">
