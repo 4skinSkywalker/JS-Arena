@@ -36,6 +36,12 @@ function adjustTitle(title: string) {
             return "Remove k from list";
         case "Integerto stringof fixed width":
             return "Integer to string of fixed width";
+        case "Is sumof consecutive":
+            return "Is sum of consecutive";
+        case "Minimal numberof coins":
+            return "Minimal number of coins";
+        case "Numberof clans":
+            return "Number of clans";
         default:
             return title;
     }
