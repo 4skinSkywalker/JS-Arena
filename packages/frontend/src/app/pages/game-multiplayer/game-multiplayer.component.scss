@@ -352,32 +352,6 @@
     }
 }
 
-.compact {
-    font-size: 0.95rem;
-    padding: 6px 12px;
-    line-height: 1;
-    white-space: nowrap;
-    box-shadow: none;
-
-    * {
-        line-height: 1 !important;
-    }
-}
-
-.form-select.compact {
-    background-position:
-        calc(100% - 15px) calc(12px),
-        calc(100% - 10px) calc(12px);
-}
-
-.non-scrollable {
-    overflow: hidden !important;
-}
-
-.hidden {
-    display: none !important;
-}
-
 #matrix-canvas {
     position: fixed;
     top: 0;

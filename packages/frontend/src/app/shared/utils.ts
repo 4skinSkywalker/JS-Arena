@@ -134,8 +134,8 @@ export function equal(a: any, b: any): boolean {
 export function matrixRain(canvasId: string, time = 35) {
     // Initialising the canvas
     const canvas = document.querySelector(canvasId) as HTMLCanvasElement,
-          ctx = canvas?.getContext("2d");
-    
+        ctx = canvas?.getContext("2d");
+
     if (!canvas || !ctx) {
         return;
     }
@@ -151,7 +151,7 @@ export function matrixRain(canvasId: string, time = 35) {
 
     // Setting up the columns
     const fontSize = 10,
-          columns = canvas.width / fontSize;
+        columns = canvas.width / fontSize;
 
     // Setting up the drops
     const drops: number[] = [];
@@ -216,5 +216,43 @@ export function runInWorker(src: string) {
         }
 
         w.postMessage(src);
+    });
+}
+
+export function saveFile(content: any, name: string, ext = "txt") {
+    const blob = new Blob([JSON.stringify(content)], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${name}${ext ? ("." + ext) : ""}`;
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+export async function loadFile(acceptedExtensions: string[]) {
+    return new Promise((res, rej) => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = acceptedExtensions.map(ext => `.${ext}`).join(',');
+
+        input.onchange = function (event) {
+            const file = (event as any).target.files[0];
+            if (!file) {
+                rej('No file selected.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const fileContent = (e as any).target.result;
+                res(fileContent);
+            };
+
+            reader.readAsText(file);
+        };
+
+        input.click();
     });
 }

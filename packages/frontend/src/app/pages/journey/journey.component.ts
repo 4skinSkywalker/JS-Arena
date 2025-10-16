@@ -3,7 +3,7 @@ import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
 import { IProblemSnippet, IProblemTitlesReceivedMessage } from '../../../../../backend/src/models';
 import { ArcadeService } from '../../services/arcade.service';
-import { check, delay, scrollElIntoView } from '../../shared/utils';
+import { check, delay, loadFile, saveFile, scrollElIntoView } from '../../shared/utils';
 import { LoaderService } from '../../components/loader/loader-service.service';
 
 interface IProblemSnippetWithDoneAndFavorite extends IProblemSnippet {
@@ -91,5 +91,21 @@ export class JourneyComponent {
       ...favorites,
       [p.filename]: p.favorite
     })
+  }
+
+  saveData() {
+    saveFile(
+      Object.entries(localStorage)
+        .filter(([k, v]) => k.match(/^(arcade-state-favorite|arcade-editor-content|clientInfo|arcade-state)/)),
+      `savedata_${(new Date().toLocaleDateString("sv"))}`,
+      "jsar"
+    );
+  }
+
+  async loadData() {
+    const content = JSON.parse(await loadFile(["jsar"]) as string)
+    localStorage.clear();
+    content.forEach((tuple: [string, string]) => localStorage.setItem(tuple[0], tuple[1]));
+    window.location.reload();
   }
 }
