@@ -6,7 +6,7 @@ You need to decipher an encrypted message which contains several numbers that wi
 
 - For `n = 37` and `k = 3`, the output should be `solution(n, k) = 33`.
 
-`3710 = 1001012 ~> 1000012 = 3310`.
+`37 = 100101 ~> 100001 = 33`.
 
 - For `n = 37` and `k = 4`, the output should be `solution(n, k) = 37`.
 
