@@ -11,3 +11,5 @@ The players take turns in making moves, starting with the white player. Given th
 For `p` = "b1;g1;b8;g8", the output should be `solution(p)` = true.
 
 The configuration corresponds to the initial state of the game. Thus, it's white's turn.
+
+Return `true` if white is to move, `false` otherwise.
