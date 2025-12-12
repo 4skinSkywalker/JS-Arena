@@ -1,27 +1,27 @@
 import { Component, computed, effect, HostListener, Signal, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, Handlers } from '../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, runInWorker } from '../../shared/utils';
-import { IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../backend/src/models';
-import { BasicModule } from '../../basic.module';
+import { ApiService, Handlers } from '../../../services/api.service';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, runInWorker } from '../../../shared/utils';
+import { EnumLang, IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../../backend/src/models';
+import { BasicModule } from '../../../basic.module';
 import { FormControl } from '@angular/forms';
-import { MarkdownService } from '../../services/markdown.service';
-import { LoaderService } from '../../components/loader/loader-service.service';
+import { MarkdownService } from '../../../services/markdown.service';
+import { LoaderService } from '../../../components/loader/loader-service.service';
 import { getFakeClient, getFakeRoom, solutionLength } from './game-multiplayer.util';
-import { VoipService } from '../../services/voip.service';
-import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../shared/game.const';
+import { VoipService } from '../../../services/voip.service';
+import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 
 @Component({
-  selector: 'app-game-multiplayer',
+  selector: 'app-sql-game-multiplayer',
   imports: [BasicModule],
   providers: [VoipService],
   templateUrl: './game-multiplayer.component.html',
   styleUrl: './game-multiplayer.component.scss'
 })
-export class GameMultiplayerComponent {
+export class SQLGameMultiplayerComponent {
   DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
   JSON = JSON;
   check = check;
@@ -437,7 +437,7 @@ export class GameMultiplayerComponent {
   generateSystemMessage(text: string) {
     const chatMsg = {
       id: "-1",
-      room: getFakeRoom(),
+      room: getFakeRoom(EnumLang.SQL),
       client: getFakeClient(),
       time: "00:00:00",
       text,

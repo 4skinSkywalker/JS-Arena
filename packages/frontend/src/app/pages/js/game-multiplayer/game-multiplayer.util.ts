@@ -1,4 +1,4 @@
-import { IClientJSON, IRoomJSON } from "../../../../../backend/src/models";
+import { EnumLang, IClientJSON, IRoomJSON } from "../../../../../../backend/src/models";
 
 export function getFakeClient(): IClientJSON {
     return {
@@ -8,11 +8,12 @@ export function getFakeClient(): IClientJSON {
     };
 }
 
-export function getFakeRoom(): IRoomJSON {
+export function getFakeRoom(lang: EnumLang): IRoomJSON {
     return {
         id: "-1",
         name: "",
         enableLateJoin: true,
+        lang,
         started: false,
         host: getFakeClient(),
         clients: []

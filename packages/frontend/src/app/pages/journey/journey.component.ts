@@ -1,10 +1,11 @@
 import { Component, computed, signal } from '@angular/core';
 import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
-import { IProblemSnippet, IProblemTitlesReceivedMessage } from '../../../../../backend/src/models';
+import { EnumLang, IProblemSnippet, IProblemTitlesReceivedMessage } from '../../../../../backend/src/models';
 import { ArcadeService } from '../../services/arcade.service';
 import { check, delay, loadFile, saveFile, scrollElIntoView } from '../../shared/utils';
 import { LoaderService } from '../../components/loader/loader-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 interface IProblemSnippetWithDoneAndFavorite extends IProblemSnippet {
   done: boolean;
@@ -24,7 +25,8 @@ export class JourneyComponent {
     const arcadeState = this.arcadeService.getStates();
     return this.problemTitles().filter(p => arcadeState[p.filename]);
   });
-
+  lang: EnumLang;
+  
   handlers: Handlers = {
     "getProblemTitlesReceived": this.handleProblemTitlesReceived.bind(this),
   };
@@ -33,9 +35,11 @@ export class JourneyComponent {
     private api: ApiService,
     private arcadeService: ArcadeService,
     private loaderService: LoaderService,
+    private route: ActivatedRoute
   ) {
+    this.lang = (this.route.snapshot.data as { lang: EnumLang }).lang;
     this.api.subscribe(this.handlers);
-    this.api.send("getProblemTitles");
+    this.api.send("getProblemTitles", { lang: this.lang });
     this.loaderService.isLoading.set(true);
   }
 

@@ -1,23 +1,23 @@
 import { Component, HostListener, signal } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService, Handlers } from '../../services/api.service';
-import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck, runInWorker } from '../../shared/utils';
-import { IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../backend/src/models';
-import { BasicModule } from '../../basic.module';
+import { ApiService, Handlers } from '../../../services/api.service';
+import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck, runInWorker } from '../../../shared/utils';
+import { IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../../backend/src/models';
+import { BasicModule } from '../../../basic.module';
 import { FormControl } from '@angular/forms';
-import { MarkdownService } from '../../services/markdown.service';
-import { LoaderService } from '../../components/loader/loader-service.service';
-import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../shared/game.const';
-import { ArcadeService } from '../../services/arcade.service';
+import { MarkdownService } from '../../../services/markdown.service';
+import { LoaderService } from '../../../components/loader/loader-service.service';
+import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
+import { ArcadeService } from '../../../services/arcade.service';
 
 @Component({
-  selector: 'app-game-arcade',
+  selector: 'app-sql-game-arcade',
   imports: [BasicModule],
   templateUrl: './game-arcade.component.html',
   styleUrl: './game-arcade.component.scss'
 })
-export class GameArcadeComponent {
+export class SQLGameArcadeComponent {
   DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
   JSON = JSON;
   check = check;
