@@ -1,0 +1,29 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS projects;",
+                "CREATE TABLE projects (internal_id integer, project_name text, team_size integer, team_lead text, income integer);",
+                "INSERT INTO projects VALUES (1384,'MapReduce',100,'Jeffrey Dean',0), (2855,'Windows',1000,'Bill Gates',100500), (5961,'Snapchat',3,'Evan Spiegel',2000);"
+            ],
+            "expectedOutput": [
+                {
+                    "project_name": "MapReduce",
+                    "team_lead": "Jeffrey Dean",
+                    "income": 0
+                },
+                {
+                    "project_name": "Windows",
+                    "team_lead": "Bill Gates",
+                    "income": 100500
+                },
+                {
+                    "project_name": "Snapchat",
+                    "team_lead": "Evan Spiegel",
+                    "income": 2000
+                }
+            ]
+        }
+    ]
+}

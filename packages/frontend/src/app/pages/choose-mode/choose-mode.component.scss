@@ -3,11 +3,13 @@
     height: 100svh;
     padding: 2rem;
     place-items: center;
+    align-content: center;
 }
 
 .choose-grid {
-    display: inline-grid;
-    grid-template-columns: auto auto;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
@@ -15,8 +17,10 @@
     padding: 2rem;
     display: inline-grid;
     place-items: center;
+    align-content: center;
     background: #0008;
-    width: 400px;
+    width: 320px;
+    aspect-ratio: 16/10;
     margin: 0 auto;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -27,6 +31,11 @@
     background: #000a;
 }
 
-.bi, .lbl {
+.bi {
+    font-size: 3rem;
+}
+
+.lbl {
     font-size: 2rem;
+    text-align: center;
 }

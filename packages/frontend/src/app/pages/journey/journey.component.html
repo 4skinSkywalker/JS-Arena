@@ -1,4 +1,6 @@
-<div class="container py-3">
+<div class="container py-3" style="align-content: center;">
+    <h1 class="text-center"><app-langicon [lang]="lang.toLowerCase()" [size]="32"></app-langicon> {{lang}} Arena</h1>
+
     <div class="list">
         @for (item of problemTitles(); track $index) {
         <div class="list-item">
@@ -8,7 +10,7 @@
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" [id]="item.filename" type="checkbox" [checked]="item.done">
+                        <input class="form-check-input" [id]="'id-' + item.filename" type="checkbox" [checked]="item.done">
                     </label>
                 </div>
             </div>
@@ -17,7 +19,7 @@
                 <span>Rating:</span><b>{{ item.rating }}</b>
             </div>
             <div class="list-item-action">
-                <button class="btn btn-primary" [routerLink]="['/arcade', item.filename]">
+                <button class="btn btn-primary" [routerLink]="['/' + lang.toLowerCase() + '-arcade', item.filename]">
                     <i class="bi bi-play-fill"></i>
                 </button>
             </div>

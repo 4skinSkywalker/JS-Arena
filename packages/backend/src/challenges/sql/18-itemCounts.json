@@ -1,0 +1,65 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS availableItems;",
+                "CREATE TABLE availableItems (id integer, item_name text, item_type text);",
+                "INSERT INTO availableItems VALUES (1, 'SafeDisk 4GB', 'USB drive');",
+                "INSERT INTO availableItems VALUES (2, 'SafeDisk 8GB', 'USB drive');",
+                "INSERT INTO availableItems VALUES (3, 'Cinco 50-Pack', 'DVD');",
+                "INSERT INTO availableItems VALUES (4, 'SafeDisk 4GB', 'Memory card');",
+                "INSERT INTO availableItems VALUES (5, 'SafeDisk 8GB', 'Memory card');",
+                "INSERT INTO availableItems VALUES (6, 'Cinco 30-Pack', 'DVD');",
+                "INSERT INTO availableItems VALUES (7, 'SafeDisk 4GB', 'Memory card');",
+                "INSERT INTO availableItems VALUES (8, 'SafeDisk 4GB', 'Memory card');",
+                "INSERT INTO availableItems VALUES (9, 'DiskHolder', 'Misc');",
+                "INSERT INTO availableItems VALUES (10, 'Cinco 50-Pack', 'DVD');",
+                "INSERT INTO availableItems VALUES (11, 'SafeDisk 4GB', 'USB drive');",
+                "INSERT INTO availableItems VALUES (12, 'DiskCleaner Pro', 'Misc');"
+            ],
+            "expectedOutput": [
+                {
+                    "item_name": "Cinco 30-Pack",
+                    "item_type": "DVD",
+                    "item_count": 1
+                },
+                {
+                    "item_name": "Cinco 50-Pack",
+                    "item_type": "DVD",
+                    "item_count": 2
+                },
+                {
+                    "item_name": "SafeDisk 4GB",
+                    "item_type": "Memory card",
+                    "item_count": 3
+                },
+                {
+                    "item_name": "SafeDisk 8GB",
+                    "item_type": "Memory card",
+                    "item_count": 1
+                },
+                {
+                    "item_name": "DiskCleaner Pro",
+                    "item_type": "Misc",
+                    "item_count": 1
+                },
+                {
+                    "item_name": "DiskHolder",
+                    "item_type": "Misc",
+                    "item_count": 1
+                },
+                {
+                    "item_name": "SafeDisk 4GB",
+                    "item_type": "USB drive",
+                    "item_count": 2
+                },
+                {
+                    "item_name": "SafeDisk 8GB",
+                    "item_type": "USB drive",
+                    "item_count": 1
+                }
+            ]
+        }
+    ]
+}

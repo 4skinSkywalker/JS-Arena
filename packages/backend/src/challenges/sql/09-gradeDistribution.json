@@ -1,0 +1,17 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Grades;",
+                "CREATE TABLE Grades (Name text, ID integer, Midterm1 integer, Midterm2 integer, Final integer);",
+                "INSERT INTO Grades VALUES ('David', 42334, 34, 54, 124), ('Anthony', 54528, 100, 10, 50), ('Jonathan', 58754, 49, 58, 121), ('Jonty', 11000, 25, 30, 180);"
+            ],
+            "expectedOutput": [
+                { "Name": "David", "ID": 42334 },
+                { "Name": "Jonty", "ID": 11000 },
+                { "Name": "Jonathan", "ID": 58754 }
+            ]
+        }
+    ]
+}

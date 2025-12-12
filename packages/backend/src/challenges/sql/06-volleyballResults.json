@@ -1,0 +1,42 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS results;",
+                "CREATE TABLE results (name text, country text, scored integer, missed integer, wins integer);",
+                "INSERT INTO results VALUES ('FC Tokyo', 'Japan', 26, 28, 1), ('Fujian', 'China', 24, 26, 0), ('Jesus Maria', 'Argentina', 25, 23, 3), ('University Blues', 'Australia', 16, 25, 2);"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Fujian",
+                    "country": "China",
+                    "scored": 24,
+                    "missed": 26,
+                    "wins": 0
+                },
+                {
+                    "name": "FC Tokyo",
+                    "country": "Japan",
+                    "scored": 26,
+                    "missed": 28,
+                    "wins": 1
+                },
+                {
+                    "name": "University Blues",
+                    "country": "Australia",
+                    "scored": 16,
+                    "missed": 25,
+                    "wins": 2
+                },
+                {
+                    "name": "Jesus Maria",
+                    "country": "Argentina",
+                    "scored": 25,
+                    "missed": 23,
+                    "wins": 3
+                }
+            ]
+        }
+    ]
+}

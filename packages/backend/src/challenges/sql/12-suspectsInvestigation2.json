@@ -1,0 +1,22 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Suspect;",
+                "CREATE TABLE Suspect (id integer, name text, surname text, height integer, weight integer);",
+                "INSERT INTO Suspect VALUES (1, 'John', 'Doe', 165, 60);",
+                "INSERT INTO Suspect VALUES (2, 'Bill', 'Green', 170, 67);",
+                "INSERT INTO Suspect VALUES (3, 'Baelfire', 'Grehn', 172, 70);",
+                "INSERT INTO Suspect VALUES (4, 'Bill', 'Gretan', 185, 55);",
+                "INSERT INTO Suspect VALUES (5, 'Brendon', 'Grewn', 180, 50);",
+                "INSERT INTO Suspect VALUES (6, 'bill', 'Green', 172, 50);"
+            ],
+            "expectedOutput": [
+                { "id": 1, "name": "John", "surname": "Doe" },
+                { "id": 2, "name": "Bill", "surname": "Green" },
+                { "id": 4, "name": "Bill", "surname": "Gretan" }
+            ]
+        }
+    ]
+}

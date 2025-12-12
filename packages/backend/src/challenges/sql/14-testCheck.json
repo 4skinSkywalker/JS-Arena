@@ -1,0 +1,28 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS answers;",
+                "CREATE TABLE answers (id integer, correct_answer text, given_answer text);",
+                "INSERT INTO answers VALUES (1, 'a', 'a');",
+                "INSERT INTO answers VALUES (2, 'b', NULL);",
+                "INSERT INTO answers VALUES (3, 'c', 'b');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "checks": "correct"
+                },
+                {
+                    "id": 2,
+                    "checks": "no answer"
+                },
+                {
+                    "id": 3,
+                    "checks": "incorrect"
+                }
+            ]
+        }
+    ]
+}

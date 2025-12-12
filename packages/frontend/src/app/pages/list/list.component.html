@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="mb-1 text-center">Players connected {{ (api.clients$ | async)?.length }}</h2>
+    <h2 class="mb-1 text-center"><app-langicon [lang]="lang.toLowerCase()" [size]="24"></app-langicon> {{lang}} Arena - Players connected {{ (api.clients$ | async)?.length }}</h2>
 
     <div>
         <div class="scrollable-toolbar mb-1">
@@ -18,7 +18,7 @@
                         <div>{{ item.host.name }}</div>
                     </div>
                     
-                    <button class="btn btn-primary" [routerLink]="['/multiplayer', item.id]">Join</button>
+                    <button class="btn btn-primary" [routerLink]="['/' + lang.toLowerCase() + '-multiplayer', item.id]">Join</button>
                 </li>
                 }
             </ul>
@@ -39,7 +39,7 @@
                     </div>
 
                     @if (item.enableLateJoin) {
-                    <button class="btn btn-primary" [routerLink]="['/multiplayer', item.id]">Join</button>
+                    <button class="btn btn-primary" [routerLink]="['/' + lang.toLowerCase() + '-multiplayer', item.id]">Join</button>
                     }
                 </li>
                 }

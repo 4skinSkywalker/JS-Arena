@@ -1,0 +1,22 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS soccer_team;",
+                "CREATE TABLE soccer_team (id integer, first_name text, surname text, player_number integer);",
+                "INSERT INTO soccer_team VALUES (1, 'Alexis', 'Sanchez', 7);",
+                "INSERT INTO soccer_team VALUES (2, 'Petr', 'Cech', 33);",
+                "INSERT INTO soccer_team VALUES (3, 'Hector', 'Bellerin', 24);",
+                "INSERT INTO soccer_team VALUES (4, 'Olivier', 'Giroud', 12);",
+                "INSERT INTO soccer_team VALUES (5, 'Theo', 'Walcott', 14);",
+                "INSERT INTO soccer_team VALUES (6, 'Santi', 'Cazorla', 19);"
+            ],
+            "expectedOutput": [
+                {
+                    "players": "Alexis Sanchez #7; Olivier Giroud #12; Theo Walcott #14; Santi Cazorla #19; Hector Bellerin #24; Petr Cech #33"
+                }
+            ]
+        }
+    ]
+}

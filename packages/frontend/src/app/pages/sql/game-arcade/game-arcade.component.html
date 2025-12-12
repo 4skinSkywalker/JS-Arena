@@ -1,0 +1,174 @@
+<div class="game-container">
+    <div class="editor-container">
+        <div class="editor-wrap">
+            <div class="editor-title">
+                <span>Editor</span>
+                <button
+                    class="btn compact btn-primary"
+                    (click)="runAllTests()"
+                >Run tests (⌘ + ↵)</button>
+            </div>
+            <div class="editor" id="editor"></div>
+        </div>
+        <div class="sections-divider"></div>
+    </div>
+
+    <div class="instructions">
+        <div class="nav-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item" [class.active]="navTab() === 'instructions'">
+                    <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
+                </li>
+                <li class="nav-item" [class.active]="navTab() === 'benchmark'">
+                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ problemTests().length || 0 }})</a>
+                </li>
+            </ul>
+            <div class="d-flex gap-1">
+                <button
+                    class="btn btn-secondary compact"
+                    (click)="backToJourney()"
+                >
+                    <i class="bi bi-box-arrow-left"></i> Back to list
+                </button>
+                <button
+                    class="btn btn-secondary compact"
+                    [class.btn-primary]="
+                        testsPassed() != null
+                     && testsPassed() != 0
+                     && testsPassed() === problemTests().length
+                    "
+                    (click)="goToNextProblem()"
+                >
+                    Next problem <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-panel cyberground">
+            <div
+                class="nav-panel-description"
+                [class.hidden]="navTab() !== 'instructions'"
+                [innerHTML]="problemDescription() || ''"
+            ></div>
+
+            <div
+                class="nav-panel-benchmark"
+                [class.hidden]="navTab() !== 'benchmark'"
+            >
+                <div class="accordion benchmark-accordion">
+                    @for (test of problemTests(); track $index) {
+                    <div 
+                        class="accordion-item"
+                        [class.test-passed]="test.status === 'passed'"
+                        [class.test-failed]="test.status === 'failed'"
+                    >
+                        <label class="accordion-header" tabindex="0">
+                            <input class="accordion-trigger" type="checkbox">
+                            <div class="benchmark-header">
+                                <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
+                                <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
+                                <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
+                            </div>
+                        </label>
+                        <div class="accordion-body" style="overflow: auto;">
+                            <div class="p-2">
+                                <div class="mb-2">
+                                    <div>Expected</div>
+                                    <table class="table table-striped my-3">
+                                        <thead>
+                                            <tr>
+                                                @for (key of Object.keys(test.expectedOutput[0]); track $index) {
+                                                <th>{{key}}</th>
+                                                }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (row of test.expectedOutput; track $index) {
+                                            <tr>
+                                                @for (key of Object.keys(test.expectedOutput[0]); track $index) {
+                                                <td>{{row[key]}}</td>
+                                                }
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="mb-2">
+                                    <div>Received</div>
+                                    @if(test.output != null) {
+                                    <table class="table table-striped my-3">
+                                        <thead>
+                                            <tr>
+                                                @for (key of Object.keys(test.output[0]); track $index) {
+                                                <th>{{key}}</th>
+                                                }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (row of test.output; track $index) {
+                                            <tr>
+                                                @for (key of Object.keys(test.output[0]); track $index) {
+                                                <td>{{row[key]}}</td>
+                                                }
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    }
+                                </div>
+
+                                <div class="mb-2">
+                                    <div>Logs</div>
+                                    @if(test.logs?.length) {
+                                    @for (log of test.logs; track $index) {
+                                    <div class="mb-1">{{log.level}}: {{log.text}}</div>
+                                    }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal challenge-completed-modal" style="z-index: 999999;">
+  <canvas id="matrix-canvas"></canvas>
+  <input class="modal-trigger" type="checkbox" id="challenge-completed-trigger">
+  
+  <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
+    <h2 class="modal-title">Congratulations you completed this challenge!</h2>
+
+    <div class="modal-body">
+        <p class="text-center">Kudos to you for passing all the tests!</p>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="backToJourney()">Go to journey</button>
+        <button class="btn btn-secondary" (click)="uncheck('#challenge-completed-trigger')">Stay here</button>
+        <button class="btn btn-primary" (click)="goToNextProblem()">Next problem</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal journey-end-modal" style="z-index: 999999;">
+  <canvas id="matrix-canvas"></canvas>
+  <input class="modal-trigger" type="checkbox" id="journey-end-trigger">
+  
+  <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
+    <h2 class="modal-title">Congratulations you completed the last challenge!</h2>
+
+    <div class="modal-body">
+        <p class="text-center">This was a though one, but you're a champion!</p>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="backToJourney()">Go to journey</button>
+        <button class="btn btn-secondary" (click)="uncheck('#journey-end-trigger')">Stay here</button>
+    </div>
+  </div>
+</div>

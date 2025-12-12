@@ -1,0 +1,17 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS users;",
+                "CREATE TABLE users (id integer, username text, role text, email text);",
+                "INSERT INTO users VALUES (6, 'fasalytch', 'premium', 'much.premium@role.com'), (13, 'luckygirl', 'regular', 'fun@meh.com'), (16, 'todayhumor', 'guru', 'today@humor.com'), (23, 'Felix', 'admin', 'felix@codesignal.com'), (52, 'admin666', 'AdmiN', 'iamtheadmin@admin.admin'), (87, 'solver100500', 'regular', 'email@notbot.com');"
+            ],
+            "expectedOutput": [
+                { "email": "email@notbot.com" },
+                { "email": "fun@meh.com" },
+                { "email": "today@humor.com" }
+            ]
+        }
+    ]
+}

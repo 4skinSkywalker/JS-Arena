@@ -4,6 +4,11 @@
 // ╚════╝██╔╝    ██╔══██╗██╔══██║██║     ██╔═██╗ ██╔══╝  ██║╚██╗██║██║  ██║
 //      ██╔╝     ██████╔╝██║  ██║╚██████╗██║  ██╗███████╗██║ ╚████║██████╔╝
 //      ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═════╝                                                                                                                           
+export enum EnumLang {
+    JS = 'JS',
+    SQL = 'SQL'
+}
+
 export interface IClientToJSONOptions {
     includeRoom?: boolean;
 }
@@ -27,6 +32,7 @@ export interface ILogMessage {
 export interface ITest {
     input: any;
     expectedOutput: any;
+    scripts?: string[];
     status?: "running" | "passed" | "failed";
     output?: any;
     logs?: ILogMessage[];
@@ -50,6 +56,7 @@ export interface IRoomJSON {
     id: string;
     name: string;
     enableLateJoin: boolean;
+    lang: EnumLang;
     started: boolean;
     problem?: IProblem;
     host: IClientJSON;
@@ -80,10 +87,12 @@ export interface ICreateRoomMessage {
     roomId?: string;
     name: string;
     enableLateJoin: boolean;
+    lang: EnumLang;
 }
 
 export interface IJoinRoomMessage {
     roomId: string;
+    lang: EnumLang;
 }
 
 export interface IRoomDetailsMessage {
@@ -96,6 +105,15 @@ export interface IStartGameMessage {
 
 export interface IGetProblemMessage {
     filename: string;
+    lang: EnumLang;
+}
+
+export interface IGetProblemTitlesMessage {
+    lang: EnumLang;
+}
+
+export interface IListRoomsMessage {
+    lang: EnumLang;
 }
 
 //      ██╗      ███████╗██████╗  ██████╗ ███╗   ██╗████████╗███████╗███╗   ██╗██████╗ 

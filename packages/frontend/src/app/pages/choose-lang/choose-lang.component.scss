@@ -1,0 +1,45 @@
+.choose-grid-wrap {
+    display: grid;
+    height: 100svh;
+    padding: 2rem;
+    place-items: center;
+    align-content: center;
+}
+
+.choose-grid {
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.choose-card {
+    padding: 2rem;
+    display: inline-grid;
+    place-items: center;
+    background: #0008;
+    width: 320px;
+    aspect-ratio: 16/10;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.choose-card:hover {
+    box-shadow: 0 0 12px 04px rgba(var(--primary-color), 1);
+    background: #000a;
+}
+
+.bi {
+    font-size: 3rem;
+}
+
+.lbl {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.choose-img {
+    height: 64px;
+    margin: 20px 10px;
+}

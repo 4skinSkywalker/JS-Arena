@@ -3,13 +3,15 @@ import { BasicModule } from '../../basic.module';
 import { ApiService, Handlers } from '../../services/api.service';
 import { map, startWith, switchMap } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { check, latinize, uncheck } from '../../shared/utils';
+import { check, getUid, latinize, uncheck } from '../../shared/utils';
 import { LoaderService } from '../../components/loader/loader-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EnumLang } from '../../../../../backend/src/models';
+import { LangiconComponent } from '../../components/langicon/langicon.component';
 
 @Component({
   selector: 'app-list',
-  imports: [BasicModule],
+  imports: [BasicModule, LangiconComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
@@ -21,14 +23,18 @@ export class ListComponent {
   filterByName = new FormControl("", { nonNullable: true });
   roomName = new FormControl("", { nonNullable: true });
   enableLateJoin = new FormControl(false, { nonNullable: true });
+  lang: EnumLang;
 
   handlers: Handlers = {};
 
   constructor(
     public api: ApiService,
     private loaderService: LoaderService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
+    this.lang = (this.route.snapshot.data as { lang: EnumLang }).lang;
+
     this.openedRooms$ = this.filterByName.valueChanges
       .pipe(
         startWith(""),
@@ -48,7 +54,7 @@ export class ListComponent {
         )
       );
 
-    this.api.send("listRooms");
+    this.api.send("listRooms", { lang: this.lang });
   }
 
   openCreateRoomModal() {
@@ -74,11 +80,21 @@ export class ListComponent {
       return console.error("Room name is empty");
     }
 
-    const createRoom = { name: roomName, enableLateJoin: this.enableLateJoin.value };
     uncheck("#create-room-modal-trigger");
 
+    const createRoom = {
+      roomId: getUid(),
+      name: roomName,
+      enableLateJoin: this.enableLateJoin.value,
+      lang: this.lang
+    };
+
     this.api.one("roomCreated", async ({ room }) => {
-      await this.router.navigate(["/multiplayer", room.id]);
+      if (room.id !== createRoom.roomId) {
+        return;
+      }
+
+      await this.router.navigate([`/${this.lang.toLowerCase()}-multiplayer`, room.id]);
       this.loaderService.isLoading.set(false);
     });
 

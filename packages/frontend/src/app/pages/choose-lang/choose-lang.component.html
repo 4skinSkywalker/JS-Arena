@@ -1,0 +1,17 @@
+<div class="choose-grid-wrap">
+    <h1 class="mb-xl text-center">Choose Language</h1>
+
+    <div class="choose-grid">
+        <div class="choose-card card card-body" [routerLink]="['/languages', 'sql']">
+            <app-langicon lang="sql" [size]="96"></app-langicon>
+        </div>
+        <div class="choose-card card card-body" [routerLink]="['/languages', 'js']">
+            <app-langicon lang="js" [size]="96"></app-langicon>
+        </div>
+        <div class="choose-card card card-body">
+            <a href="https://css-arena.dev/" style="position: absolute; height: 100%; width: 100%; top: 0; left: 0; z-index: 100;"></a>
+            <app-langicon lang="css" [size]="96"></app-langicon>
+        </div>
+    </div>
+</div>
+

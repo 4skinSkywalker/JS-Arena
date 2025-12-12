@@ -23,5 +23,10 @@
 </head>
 <body class="cyberground">
   <app-root></app-root>
+
+  <script type="module">
+    import { PGlite } from 'https://cdn.jsdelivr.net/npm/@electric-sql/pglite/dist/index.js';
+    window.db = new PGlite();
+  </script>
 </body>
 </html>

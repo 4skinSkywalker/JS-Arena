@@ -1,0 +1,22 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS countries;",
+                "CREATE TABLE countries (name text, continent text, population integer);",
+                "INSERT INTO countries VALUES ('Grenada', 'North America', 103328);",
+                "INSERT INTO countries VALUES ('Monaco', 'Europe', 38400);",
+                "INSERT INTO countries VALUES ('San Marino', 'Europe', 33005);",
+                "INSERT INTO countries VALUES ('Vanuatu', 'Australia', 277500);"
+            ],
+            "expectedOutput": [
+                {
+                    "number": 4,
+                    "average_population": 113058.25,
+                    "total_population": 452233
+                }
+            ]
+        }
+    ]
+}

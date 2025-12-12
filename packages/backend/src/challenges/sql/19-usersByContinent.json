@@ -1,0 +1,25 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS countries;",
+                "CREATE TABLE countries (country text, continent text, users integer);",
+                "INSERT INTO countries VALUES ('Armenia', 'Europe', 1000);",
+                "INSERT INTO countries VALUES ('France', 'Europe', 1300);",
+                "INSERT INTO countries VALUES ('Russia', 'Europe', 3000);",
+                "INSERT INTO countries VALUES ('USA', 'North America', 5000);"
+            ],
+            "expectedOutput": [
+                {
+                    "continent": "Europe",
+                    "users": 5300
+                },
+                {
+                    "continent": "North America",
+                    "users": 5000
+                }
+            ]
+        }
+    ]
+}

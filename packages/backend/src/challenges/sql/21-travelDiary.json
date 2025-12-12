@@ -1,0 +1,22 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS diary;",
+                "CREATE TABLE diary (id integer, travel_date text, country text);",
+                "INSERT INTO diary VALUES (1, '2008-05-12', 'Ireland');",
+                "INSERT INTO diary VALUES (2, '2010-11-04', 'France');",
+                "INSERT INTO diary VALUES (3, '2005-10-02', 'Australia');",
+                "INSERT INTO diary VALUES (4, '2008-06-08', 'Japan');",
+                "INSERT INTO diary VALUES (5, '2010-08-27', 'Austria');",
+                "INSERT INTO diary VALUES (6, '2009-02-15', 'France');"
+            ],
+            "expectedOutput": [
+                {
+                    "countries": "Australia;Austria;France;Ireland;Japan"
+                }
+            ]
+        }
+    ]
+}

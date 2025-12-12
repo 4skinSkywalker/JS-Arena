@@ -1,0 +1,28 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS expressions;",
+                "CREATE TABLE expressions (id integer, a integer, b integer, operation text, c integer);",
+                "INSERT INTO expressions VALUES (1, 2, 3, '+', 5), (2, 2, 3, '+', 6), (3, 3, 2, '/', 1), (4, 4, 7, '*', 28), (5, 54, 2, '-', 27), (6, 3, 0, '/', 0);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "a": 2,
+                    "b": 3,
+                    "operation": "+",
+                    "c": 5
+                },
+                {
+                    "id": 4,
+                    "a": 4,
+                    "b": 7,
+                    "operation": "*",
+                    "c": 28
+                }
+            ]
+        }
+    ]
+}

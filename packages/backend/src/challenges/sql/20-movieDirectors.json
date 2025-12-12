@@ -1,0 +1,26 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS moviesInfo;",
+                "CREATE TABLE moviesInfo (title text, director text, year integer, oscars integer);",
+                "INSERT INTO moviesInfo VALUES ('BoBoiBoy: The Movie', 'Nizam Razak', 2016, 0);",
+                "INSERT INTO moviesInfo VALUES ('Inception', 'Christopher Nolan', 2010, 4);",
+                "INSERT INTO moviesInfo VALUES ('Interstellar', 'Christopher Nolan', 2014, 1);",
+                "INSERT INTO moviesInfo VALUES ('Munna Bhai M.B.B.S.', 'Rajkumar Hirani', 2003, 0);",
+                "INSERT INTO moviesInfo VALUES ('My Dear Brother', 'Ertem Egilmez', 1973, 0);",
+                "INSERT INTO moviesInfo VALUES ('Rocky John', 'G. Avildsen', 1976, 3);",
+                "INSERT INTO moviesInfo VALUES ('The Nights of Cabiria', 'Federico Fellini', 1957, 1);",
+                "INSERT INTO moviesInfo VALUES ('The Sixth Sense', 'M. Night Shyamalan', 1999, 6);",
+                "INSERT INTO moviesInfo VALUES ('Tokyo Story', 'Yasujirô Ozu', 1953, 0);",
+                "INSERT INTO moviesInfo VALUES ('Yojimbo', 'Akira Kurosawa', 1961, 1);"
+            ],
+            "expectedOutput": [
+                {
+                    "director": "Christopher Nolan"
+                }
+            ]
+        }
+    ]
+}

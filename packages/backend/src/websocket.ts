@@ -1,7 +1,7 @@
 import { getNextEntry, getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IProblem, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage, IProblemWithNext } from "./models";
-import { problems, filenameProblemMap } from "./problems";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage, IProblemWithNext, IListRoomsMessage, EnumLang, IProblem, IGetProblemTitlesMessage } from "./models";
+import { languages } from "./problems";
 
 const globalRooms = new Map<string, Room>();
 const globalClients = new Map<string, Client>();
@@ -102,11 +102,12 @@ class Client {
         });
     }
     
-    handleListRooms() {
+    handleListRooms(msg: IListRoomsMessage) {
         console.log("Sending rooms to requester");
-        this.send("roomsListed", {
-            rooms: Array.from(globalRooms.values()).map(item => item.toJSON())
-        });
+        const rooms = Array.from(globalRooms.values())
+            .map(room => room.toJSON())
+            .filter(room => room.lang === msg.lang);
+        this.send("roomsListed", { rooms });
     }
 
     handleCreateRoom(msg: ICreateRoomMessage) {
@@ -115,6 +116,7 @@ class Client {
             id: msg.roomId,
             name: msg.name,
             enableLateJoin: msg.enableLateJoin,
+            lang: msg.lang,
             host: this
         });
         this.send("roomCreated", { room: this.room.toJSON() });
@@ -132,7 +134,8 @@ class Client {
             this.handleCreateRoom({
                 roomId: msg.roomId,
                 name: "Untitled room",
-                enableLateJoin: true
+                enableLateJoin: true,
+                lang: msg.lang
             });
         }
     }
@@ -164,7 +167,8 @@ class Client {
         this.handleStartGame(msg, true);
     }
 
-    handleGetProblemTitles() {
+    handleGetProblemTitles(msg: IGetProblemTitlesMessage) {
+        const filenameProblemMap = languages[msg.lang].filenameProblemMap;
         this.send("getProblemTitlesReceived", {
             problemTitles: Array.from(filenameProblemMap.entries())
                 .map(([filename, problem]) => ({
@@ -176,6 +180,7 @@ class Client {
     }
 
     handleGetProblem(msg: IGetProblemMessage) {
+        const filenameProblemMap = languages[msg.lang].filenameProblemMap;
         const problem = filenameProblemMap.get(msg.filename) as IProblemWithNext;
         problem.nextProblemFilename = getNextEntry(filenameProblemMap, msg.filename)?.filename;
         this.send("getProblemReceived", {
@@ -233,8 +238,9 @@ class Room {
     id: string;
     name: string;
     enableLateJoin: boolean;
+    lang: EnumLang;
     started = false;
-    problem = this.getRandomProblem();
+    problem: IProblem;
     host: Client;
     clients = new Map<string, Client>();
 
@@ -242,11 +248,14 @@ class Room {
         id?: string,
         name: string,
         enableLateJoin: boolean,
+        lang: EnumLang,
         host: Client
     }) {
         this.id = opts.id || getUid();
         this.name = opts.name;
         this.enableLateJoin = opts.enableLateJoin;
+        this.lang = opts.lang;
+        this.problem = this.getRandomProblem({ lang: this.lang });
         this.host = opts.host;
         this.clients.set(opts.host.id, opts.host);
         globalRooms.set(this.id, this);
@@ -260,14 +269,15 @@ class Room {
         }
     }
 
-    getRandomProblem() {
+    getRandomProblem(opts: { lang: EnumLang }) {
+        const problems = languages[opts.lang].problems;
         return problems[Math.floor(Math.random() * problems.length)];
     }
 
     setStarted(value: boolean) {
         console.log("Game starting in room", this.id);
         this.started = value;
-        this.problem = this.getRandomProblem();
+        this.problem = this.getRandomProblem({ lang: this.lang });
 
         for (const client of this.clients.values()) {
             client.send("gameStarted");
@@ -384,6 +394,7 @@ class Room {
             id: this.id,
             name: this.name,
             enableLateJoin: this.enableLateJoin,
+            lang: this.lang,
             started: this.started,
             problem: (this.started && includeProblem) ? this.problem : undefined,
             host: this.host.toJSON({ includeRoom: false }),

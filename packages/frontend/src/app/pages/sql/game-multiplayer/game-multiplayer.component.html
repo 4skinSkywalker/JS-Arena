@@ -1,0 +1,305 @@
+<div class="game-container">
+    <div class="editor-container">
+        <div class="editor-wrap">
+            <div class="editor-title">
+                <span>Editor</span>
+                <button
+                    class="btn compact btn-primary"
+                    (click)="runAllTests()"
+                >Run tests (⌘ + ↵)</button>
+            </div>
+            <div class="editor" id="editor"></div>
+        </div>
+
+        <div class="console-container">
+            <div class="console-title">
+                <span>Spy</span>
+                <select class="form-select compact ms-auto" style="width: 150px;" (change)="changeSpyClient($any($event.target).value)">
+                    <option selected="">Select player</option>
+                    @for (client of clients(); track client.id) {
+                    <option [value]="client.id">{{ client.name }}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="spy-editor-wrap">
+                <div class="editor" id="spyEditor"></div>
+            </div>
+        </div>
+        <div class="sections-divider"></div>
+    </div>
+
+    <div class="content-container">
+        <div class="instructions-container">
+            <div class="instructions">
+                <ul class="nav">
+                    <li class="nav-item" [class.active]="navTab() === 'instructions'">
+                        <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
+                    </li>
+
+                    <li class="nav-item" [class.active]="navTab() === 'benchmark'">
+                        <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ clientProgressDataMap()[client()?.id || ""]?.testsPassed || 0 }}/{{ this.problemTests().length || 0 }})</a>
+                    </li>
+                </ul>
+
+                <div class="nav-panel cyberground" [class.non-scrollable]="!hasGameStarted()">
+                    <div class="prestart-overlay" [hidden]="hasGameStarted()">
+                        @if (!countdownRunning()) {
+                        @if (isHost()) {
+                        <button class="btn btn-primary" (click)="startGame()">Start game</button>
+                        }
+                        @else {
+                        <p>Waiting for host to start the game...</p>
+                        }
+                        }
+                        <div class="countdown">{{ countdown() }}</div>
+                    </div>
+
+                    <div
+                        class="nav-panel-description"
+                        [class.hidden]="navTab() !== 'instructions'"
+                        [innerHTML]="problemDescription() || ''"
+                    ></div>
+
+                    <div
+                        class="nav-panel-benchmark"
+                        [class.hidden]="navTab() !== 'benchmark'"
+                    >
+                        <div class="accordion benchmark-accordion">
+                            @for (test of problemTests(); track $index) {
+                            <div 
+                                class="accordion-item"
+                                [class.test-passed]="test.status === 'passed'"
+                                [class.test-failed]="test.status === 'failed'"
+                            >
+                                <label class="accordion-header" tabindex="0">
+                                    <input class="accordion-trigger" type="checkbox">
+                                    <div class="benchmark-header">
+                                        <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
+                                        <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
+                                        <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
+                                    </div>
+                                </label>
+                                <div class="accordion-body" style="overflow: auto;">
+                                    <div class="p-2">
+                                        <div class="mb-2">
+                                            <div>Expected</div>
+                                            <table class="table table-striped my-3">
+                                                <thead>
+                                                    <tr>
+                                                        @for (key of Object.keys(test.expectedOutput[0]); track $index) {
+                                                        <th>{{key}}</th>
+                                                        }
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for (row of test.expectedOutput; track $index) {
+                                                    <tr>
+                                                        @for (key of Object.keys(test.expectedOutput[0]); track $index) {
+                                                        <td>{{row[key]}}</td>
+                                                        }
+                                                    </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <div>Received</div>
+                                            @if(test.output != null) {
+                                            <table class="table table-striped my-3">
+                                                <thead>
+                                                    <tr>
+                                                        @for (key of Object.keys(test.output[0]); track $index) {
+                                                        <th>{{key}}</th>
+                                                        }
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for (row of test.output; track $index) {
+                                                    <tr>
+                                                        @for (key of Object.keys(test.output[0]); track $index) {
+                                                        <td>{{row[key]}}</td>
+                                                        }
+                                                    </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            }
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <div>Logs</div>
+                                            @if(test.logs?.length) {
+                                            @for (log of test.logs; track $index) {
+                                            <div class="mb-1">{{log.level}}: {{log.text}}</div>
+                                            }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="leaderboard-container">
+                @if (isHost()) {
+                <div class="host-commands">
+                    <h3 class="m-0">Host commands</h3>
+                    <button
+                        class="btn compact btn-primary"
+                        [disabled]="!hasGameStarted()"
+                        (click)="areYouSureNewGame()"
+                    >New game</button>
+                    <button
+                        class="btn compact btn-primary"
+                        (click)="kickPlayer()"
+                    >Kick player</button>
+                </div>
+                }
+
+                <h3 class="m-0 text-center">Difficulty: {{ room()?.problem?.rating || "--" }}</h3>
+
+                <button id="share-link" class="btn btn-primary" (click)="shareLink()">Share link</button>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Passed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (client of clientsSortByScore(); track client.id) {
+                        <tr>
+                            <th>{{ $index + 1 }}</th>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.testsPassed || "0" }}/{{ problemTests().length }}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Chars</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (client of clientsSortByCharCount(); track client.id) {
+                        <tr>
+                            <th>{{ $index + 1 }}</th>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.charCount == null ? DEFAULT_EDITOR_CONTENT.length : client.charCount }}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-title">
+                <span>Chat</span>
+                @if (voip.calling()) {
+                <button class="btn btn-secondary compact" (click)="voip.stopCall()">
+                    Stop call <i class="bi bi-mic-mute"></i>
+                </button>
+                }
+                @else {
+                <button class="btn btn-secondary compact" (click)="voip.startCall()">
+                    Start call <i class="bi bi-mic"></i>
+                </button>
+                }
+            </div>
+            <div class="chat">
+                @for (msg of chatMessages(); track $index) {
+                <div 
+                    class="chat-message-wrap" 
+                    [class.my-message]="msg.client.id === (api.client$ | async)?.id"
+                    [class.system-message]="msg.isSystem"
+                >
+                    @if (!msg.isSystem) {
+                    <div class="chat-header">
+                        <div class="chat-author">{{msg.client.name}}</div>
+                        <div class="chat-time">{{msg.time}}</div>
+                    </div>
+                    }
+                    <div class="chat-message">{{msg.text}}</div>
+                </div>
+                }
+            </div>
+
+            <div class="chat-composer">
+                <input 
+                    type="text" 
+                    class="form-control compact"
+                    placeholder="Type your message here..."
+                    [formControl]="chatMessage"
+                    (keydown.enter)="sendChatMessage(chatMessage.value)"
+                >
+                <button 
+                    class="btn compact"
+                    (click)="sendChatMessage(chatMessage.value)"
+                >Send (↵)</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal cannot-copy-paste-modal">
+    <input class="modal-trigger" type="checkbox" id="cannot-copy-paste-modal-trigger">
+
+    <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+        <h2 class="modal-title">Copy/Paste Disabled</h2>
+
+        <div class="modal-body">
+            <p class="text-center">Copying and pasting is not allowed.</p>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" (click)="uncheck('#cannot-copy-paste-modal-trigger')">Ok</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <input class="modal-trigger" type="checkbox" id="are-you-sure-new-game">
+
+    <div class="modal-dialog" style="max-width: 500px; width: 98%;">
+        <h2 class="modal-title">Start New Game</h2>
+
+        <div class="modal-body">
+            <p class="text-center">Are you sure you want to start a new game? All current progress will be lost. This action cannot be undone.</p>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="uncheck('#are-you-sure-new-game')">Cancel</button>
+            <button class="btn btn-primary" (click)="areYouSureNewGameOk()">Ok</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal game-over-modal" style="z-index: 999999;">
+  <canvas id="matrix-canvas"></canvas>
+  <input class="modal-trigger" type="checkbox" id="game-over-trigger">
+  
+  <div class="modal-dialog" style="max-width: 500px; width: 98%; z-index: 20;">
+    <h2 class="modal-title">{{ winnerName() }} is the Champion!</h2>
+
+    <div class="modal-body">
+        <p class="text-center">Kudos to {{ winnerName() }} for passing all the tests and leading the way to victory!</p>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" (click)="uncheck('#game-over-trigger')">Ok</button>
+    </div>
+  </div>
+</div>
