@@ -1,0 +1,22 @@
+{
+    "rating": 0,
+    "tests": [
+        [
+            {
+                "project_name": "MapReduce",
+                "team_lead": "Jeffrey Dean",
+                "income": 0
+            },
+            {
+                "project_name": "Windows",
+                "team_lead": "Bill Gates",
+                "income": 100500
+            },
+            {
+                "project_name": "Snapchat",
+                "team_lead": "Evan Spiegel",
+                "income": 2000
+            }
+        ]
+    ]
+}
