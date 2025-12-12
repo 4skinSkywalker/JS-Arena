@@ -1,4 +1,6 @@
 <div class="container py-3">
+    <h1 class="text-center"><app-langicon [lang]="lang.toLowerCase()" [size]="32"></app-langicon> {{lang}} Arena</h1>
+
     <div class="list">
         @for (item of problemTitles(); track $index) {
         <div class="list-item">

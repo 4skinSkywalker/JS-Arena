@@ -1,6 +1,6 @@
 import { getNextEntry, getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage, IProblemWithNext, IListRoomsMessage, EnumLang, IProblem } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage, IProblemWithNext, IListRoomsMessage, EnumLang, IProblem, IGetProblemTitlesMessage } from "./models";
 import { languages } from "./problems";
 
 const globalRooms = new Map<string, Room>();
@@ -167,7 +167,8 @@ class Client {
         this.handleStartGame(msg, true);
     }
 
-    handleGetProblemTitles() {
+    handleGetProblemTitles(msg: IGetProblemTitlesMessage) {
+        const filenameProblemMap = languages[msg.lang].filenameProblemMap;
         this.send("getProblemTitlesReceived", {
             problemTitles: Array.from(filenameProblemMap.entries())
                 .map(([filename, problem]) => ({
@@ -179,6 +180,7 @@ class Client {
     }
 
     handleGetProblem(msg: IGetProblemMessage) {
+        const filenameProblemMap = languages[msg.lang].filenameProblemMap;
         const problem = filenameProblemMap.get(msg.filename) as IProblemWithNext;
         problem.nextProblemFilename = getNextEntry(filenameProblemMap, msg.filename)?.filename;
         this.send("getProblemReceived", {
@@ -275,7 +277,7 @@ class Room {
     setStarted(value: boolean) {
         console.log("Game starting in room", this.id);
         this.started = value;
-        this.problem = this.getRandomProblem();
+        this.problem = this.getRandomProblem({ lang: this.lang });
 
         for (const client of this.clients.values()) {
             client.send("gameStarted");

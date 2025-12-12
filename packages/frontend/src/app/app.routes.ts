@@ -11,9 +11,9 @@ import { SQLGameMultiplayerComponent } from './pages/sql/game-multiplayer/game-m
 import { EnumLang } from '../../../backend/src/models';
 
 export const routes: Routes = [
-    { path: "", redirectTo: "choose-lang", pathMatch: "full" },
-    { path: "choose-lang", component: ChooseLangComponent },
-    { path: "choose/:id", component: ChooseModeComponent },
+    { path: "", redirectTo: "languages", pathMatch: "full" },
+    { path: "languages", component: ChooseLangComponent },
+    { path: "languages/:id", component: ChooseModeComponent },
 
     // JS paths
     { path: "js-arcade", component: JourneyComponent, data: { lang: EnumLang.JS } },

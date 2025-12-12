@@ -6,6 +6,7 @@ import { ArcadeService } from '../../services/arcade.service';
 import { check, delay, loadFile, saveFile, scrollElIntoView } from '../../shared/utils';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { LangiconComponent } from '../../components/langicon/langicon.component';
 
 interface IProblemSnippetWithDoneAndFavorite extends IProblemSnippet {
   done: boolean;
@@ -14,7 +15,7 @@ interface IProblemSnippetWithDoneAndFavorite extends IProblemSnippet {
 
 @Component({
   selector: 'app-journey',
-  imports: [BasicModule],
+  imports: [BasicModule, LangiconComponent],
   templateUrl: './journey.component.html',
   styleUrl: './journey.component.scss'
 })

@@ -7,10 +7,11 @@ import { check, getUid, latinize, uncheck } from '../../shared/utils';
 import { LoaderService } from '../../components/loader/loader-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnumLang } from '../../../../../backend/src/models';
+import { LangiconComponent } from '../../components/langicon/langicon.component';
 
 @Component({
   selector: 'app-list',
-  imports: [BasicModule],
+  imports: [BasicModule, LangiconComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
@@ -93,7 +94,7 @@ export class ListComponent {
         return;
       }
 
-      await this.router.navigate(["/multiplayer", room.id]);
+      await this.router.navigate([`/${this.lang.toLowerCase()}-multiplayer`, room.id]);
       this.loaderService.isLoading.set(false);
     });
 

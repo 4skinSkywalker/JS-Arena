@@ -104,6 +104,11 @@ export interface IStartGameMessage {
 
 export interface IGetProblemMessage {
     filename: string;
+    lang: EnumLang;
+}
+
+export interface IGetProblemTitlesMessage {
+    lang: EnumLang;
 }
 
 export interface IListRoomsMessage {
