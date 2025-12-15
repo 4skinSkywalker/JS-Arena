@@ -10,7 +10,7 @@ import { MarkdownService } from '../../../services/markdown.service';
 import { LoaderService } from '../../../components/loader/loader-service.service';
 import { getFakeClient, getFakeRoom, solutionLength } from './game-multiplayer.util';
 import { VoipService } from '../../../services/voip.service';
-import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
+import { DEFAULT_JS_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 
@@ -22,7 +22,7 @@ interface IClientWithScore extends IClientJSON, IProgressDetails {}
   styleUrl: './game-multiplayer.component.scss'
 })
 export class JSGameMultiplayerComponent {
-  DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
+  DEFAULT_EDITOR_CONTENT = DEFAULT_JS_EDITOR_CONTENT;
   JSON = JSON;
   check = check;
   uncheck = uncheck;
@@ -66,7 +66,7 @@ export class JSGameMultiplayerComponent {
       .map(client => ({
         ...deepCopy(client),
         testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_EDITOR_CONTENT)
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_JS_EDITOR_CONTENT)
       }))
       .sort((a, b) => b.testsPassed - a.testsPassed);
   });
@@ -75,7 +75,7 @@ export class JSGameMultiplayerComponent {
       .map(client => ({
         ...deepCopy(client),
         testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_EDITOR_CONTENT)
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_JS_EDITOR_CONTENT)
       }))
       .sort((a, b) => a.charCount - b.charCount);
   });
@@ -252,7 +252,7 @@ export class JSGameMultiplayerComponent {
     if (lastEditorContent) {
       this.editor.setValue(lastEditorContent);
     } else {
-      this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+      this.editor.setValue(DEFAULT_JS_EDITOR_CONTENT);
     }
 
     this.editor.clearSelection();
@@ -543,7 +543,7 @@ export class JSGameMultiplayerComponent {
   }
 
   resetGame() {
-    this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+    this.editor.setValue(DEFAULT_JS_EDITOR_CONTENT);
     this.editor.clearSelection();
 
     this.navTab.set("instructions");
@@ -561,7 +561,7 @@ export class JSGameMultiplayerComponent {
     this.api.send("progress", {
       roomId: this.roomId,
       testsPassed: 0,
-      charCount: solutionLength(DEFAULT_EDITOR_CONTENT)
+      charCount: solutionLength(DEFAULT_JS_EDITOR_CONTENT)
     });
   }
 

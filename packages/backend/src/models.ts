@@ -38,6 +38,7 @@ export interface ITest {
 }
 
 export interface IProblem {
+    script: string;
     filename: string;
     title: string;
     description: string;

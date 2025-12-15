@@ -3,12 +3,12 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, Handlers } from '../../../services/api.service';
 import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck, runInWorker } from '../../../shared/utils';
-import { IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../../backend/src/models';
+import { EnumLang, IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../../backend/src/models';
 import { BasicModule } from '../../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../../services/markdown.service';
 import { LoaderService } from '../../../components/loader/loader-service.service';
-import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
+import { DEFAULT_SQL_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
 import { ArcadeService } from '../../../services/arcade.service';
 
 @Component({
@@ -18,7 +18,7 @@ import { ArcadeService } from '../../../services/arcade.service';
   styleUrl: './game-arcade.component.scss'
 })
 export class SQLGameArcadeComponent {
-  DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
+  DEFAULT_EDITOR_CONTENT = DEFAULT_SQL_EDITOR_CONTENT;
   JSON = JSON;
   check = check;
   uncheck = uncheck;
@@ -33,6 +33,7 @@ export class SQLGameArcadeComponent {
 
   testsRunning = signal(false);
   testsPassed = signal(0);
+  problemScript = signal("");
   problemFilename = signal<string>("");
   problemDescription = signal("");
   problemTitle = signal("");
@@ -82,8 +83,10 @@ export class SQLGameArcadeComponent {
     await delay(0.2);
     this.initEditor();
     this.initGameResize();
-    this.initEditorResize();
-    this.api.send("getProblem", { filename: this.problemFilename() });
+    this.api.send("getProblem", {
+      lang: EnumLang.SQL,
+      filename: this.problemFilename()
+    });
   }
 
   ngOnDestroy() {
@@ -132,7 +135,7 @@ export class SQLGameArcadeComponent {
     if (lastEditorContent) {
       this.editor.setValue(lastEditorContent);
     } else {
-      this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+      this.editor.setValue(DEFAULT_SQL_EDITOR_CONTENT);
     }
     this.editor.clearSelection();
   }
@@ -141,7 +144,7 @@ export class SQLGameArcadeComponent {
     const ace = (window as any).ace;
     ace.require("ace/ext/language_tools");
     ace.require("ace/ext/emmet").setCore("ext/emmet_core");
-    ace.config.loadModule("ace/snippets/javascript", () => console.log("JS snippets loaded."));
+    ace.config.loadModule("ace/snippets/sql", () => console.log("SQL snippets loaded."));
     
     this.editor = ace.edit("editor");
     this.editor.setTheme("ace/theme/monokai");
@@ -153,7 +156,7 @@ export class SQLGameArcadeComponent {
     });
 
     this.editor.getSession().setUseWorker(false);
-    this.editor.getSession().setMode("ace/mode/javascript");
+    this.editor.getSession().setMode("ace/mode/sql");
 
     this.editor.getSession().on("change", debounce(() => {
       const editorValue = this.editor.getSession().getValue();
@@ -183,26 +186,6 @@ export class SQLGameArcadeComponent {
     });
   }
 
-  initEditorResize() {
-    const editorContainer = document.querySelector(".editor-container") as HTMLDivElement;
-    const editorWrap = document.querySelector(".editor-wrap");
-    const consoleContainer = document.querySelector(".console-container");
-    const consoleTitle = document.querySelector(".console-title");
-    drag({
-      target: consoleTitle,
-      downCb: (evt: any, ctx: any) => {
-        ctx.editorWrapHeight = editorWrap?.clientHeight;
-        ctx.consoleContainerHeight = consoleContainer?.clientHeight;
-      },
-      moveCb: (evt: any, ctx: any) => {
-        if (editorContainer) {
-          editorContainer.style.gridTemplateRows = `${ctx.editorWrapHeight + ctx.pos}px ${ctx.consoleContainerHeight - ctx.pos}px`;
-        }
-      },
-      direction: "y"
-    });
-  }
-
   async scrollToBottom(selector: string) {
     await delay(0.15);
     const el = document.querySelector(selector) as HTMLDivElement;
@@ -223,6 +206,13 @@ export class SQLGameArcadeComponent {
       this.consoleLogMessages.update(prev => [...prev, this.createLog(level, args)]);
       this.scrollToBottom(".console-logs");
     };
+  }
+
+  async runAlas() {
+    // return deepCompare(
+    //   window.alasql(this.editorContent()),
+    //   window.alasql(this.problemScript)
+    // );
   }
 
   async runCode(input: any, loggers?: ILoggerMethods) {
@@ -325,6 +315,7 @@ export class SQLGameArcadeComponent {
   }
 
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
+    this.problemScript.set(msg.problem.script);
     this.problemFilename.set(msg.problem.filename);
     this.problemDescription.set(msg.problem.description);
     this.problemTitle.set(msg.problem.title);
@@ -366,7 +357,10 @@ export class SQLGameArcadeComponent {
     uncheck("#challenge-completed-trigger");
     clearInterval(this.matrixInterval);
     this.resetGame();
-    this.api.send("getProblem", { filename: this.nextProblemFilename() });
+    this.api.send("getProblem", {
+      lang: EnumLang.SQL,
+      filename: this.nextProblemFilename()
+    });
   }
 
   resetGame() {

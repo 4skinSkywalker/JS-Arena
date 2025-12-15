@@ -12,7 +12,7 @@
 }
 
 .editor-container {
-    grid-template-rows: 1fr 250px;
+    grid-template-rows: 1fr;
     border-right: 2px solid rgba(var(--c4), 1);
 }
 
@@ -21,8 +21,7 @@
     flex-direction: column;
 }
 
-.editor-title,
-.console-title {
+.editor-title {
     flex-shrink: 0;
     display: flex;
     justify-content: space-between;
@@ -38,60 +37,16 @@
     margin-left: auto;
 }
 
-.console-container {
-    background-color: rgba(var(--c3), 1);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.sections-divider,
-.console-title {
+.sections-divider {
     cursor: grab;
 }
 
-.sections-divider:active,
-.console-title:active {
+.sections-divider:active {
   cursor: grabbing;
 }
 
-.sections-divider:hover,
-.console-title:hover {
+.sections-divider:hover {
     background: #282828;
-}
-
-.console-logs {
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.console {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-
-    .console-logs {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .console-composer {
-        background-color: #000;
-        display: flex;
-        gap: var(--tertiary-space);
-        align-items: center;
-        padding: var(--quaternary-space) var(--tertiary-space);
-        border-top: 2px solid rgba(var(--c4), 1);
-    
-        input {
-            border: none;
-            box-shadow: none;
-        }
-    }
 }
 
 .sections-divider {
@@ -103,25 +58,6 @@
     width: 25px;
     background-color: rgba(var(--c2), 1);
     border-right: 2px solid rgba(var(--c4), 1);
-}
-
-.console-container {
-    .console-message {
-        padding: var(--quaternary-space) var(--tertiary-space);
-        border-bottom: 2px solid rgba(var(--c4), 1);
-
-        &.log-color {
-            color: #fff !important;
-        }
-        
-        &.warn-color {
-            color: #fd0 !important;
-        }
-        
-        &.error-color {
-            color: #f00 !important;
-        }
-    }
 }
 
 .instructions {
@@ -158,10 +94,6 @@
 
         .nav-panel-description {
             padding: var(--secondary-space);
-
-            ::ng-deep * {
-                all: revert;
-            }
 
             ::ng-deep code {
                 display: inline-block;

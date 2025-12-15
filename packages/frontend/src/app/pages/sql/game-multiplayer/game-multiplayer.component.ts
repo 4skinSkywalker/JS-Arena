@@ -10,7 +10,7 @@ import { MarkdownService } from '../../../services/markdown.service';
 import { LoaderService } from '../../../components/loader/loader-service.service';
 import { getFakeClient, getFakeRoom, solutionLength } from './game-multiplayer.util';
 import { VoipService } from '../../../services/voip.service';
-import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
+import { DEFAULT_SQL_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 
@@ -22,7 +22,7 @@ interface IClientWithScore extends IClientJSON, IProgressDetails {}
   styleUrl: './game-multiplayer.component.scss'
 })
 export class SQLGameMultiplayerComponent {
-  DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
+  DEFAULT_EDITOR_CONTENT = DEFAULT_SQL_EDITOR_CONTENT;
   JSON = JSON;
   check = check;
   uncheck = uncheck;
@@ -31,7 +31,6 @@ export class SQLGameMultiplayerComponent {
   spyEditor: any;
   editorContentKey;
   editorContent = signal("");
-  consoleMode = signal<"console" | "spy">("console");
   selectedSpyClient = signal("");
   navTab = signal<"instructions" | "benchmark">("instructions");
   consoleLogMessages = signal<ILogMessage[]>([]);
@@ -66,7 +65,7 @@ export class SQLGameMultiplayerComponent {
       .map(client => ({
         ...deepCopy(client),
         testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_EDITOR_CONTENT)
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_SQL_EDITOR_CONTENT)
       }))
       .sort((a, b) => b.testsPassed - a.testsPassed);
   });
@@ -75,7 +74,7 @@ export class SQLGameMultiplayerComponent {
       .map(client => ({
         ...deepCopy(client),
         testsPassed: this.clientProgressDataMap()?.[client.id]?.testsPassed || 0,
-        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_EDITOR_CONTENT)
+        charCount: this.clientProgressDataMap()?.[client.id]?.charCount || solutionLength(DEFAULT_SQL_EDITOR_CONTENT)
       }))
       .sort((a, b) => a.charCount - b.charCount);
   });
@@ -206,7 +205,7 @@ export class SQLGameMultiplayerComponent {
     const ace = (window as any).ace;
     ace.require("ace/ext/language_tools");
     ace.require("ace/ext/emmet").setCore("ext/emmet_core");
-    ace.config.loadModule("ace/snippets/javascript", () => console.log("JS snippets loaded."));
+    ace.config.loadModule("ace/snippets/sql", () => console.log("SQL snippets loaded."));
     
     this.editor = ace.edit("editor");
     this.editor.setTheme("ace/theme/monokai");
@@ -218,7 +217,7 @@ export class SQLGameMultiplayerComponent {
     });
 
     this.editor.getSession().setUseWorker(false);
-    this.editor.getSession().setMode("ace/mode/javascript");
+    this.editor.getSession().setMode("ace/mode/sql");
 
     let memory: string[] = [];
     this.editor.on("paste", (pasteObj: any) => {
@@ -252,7 +251,7 @@ export class SQLGameMultiplayerComponent {
     if (lastEditorContent) {
       this.editor.setValue(lastEditorContent);
     } else {
-      this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+      this.editor.setValue(DEFAULT_SQL_EDITOR_CONTENT);
     }
 
     this.editor.clearSelection();
@@ -543,7 +542,7 @@ export class SQLGameMultiplayerComponent {
   }
 
   resetGame() {
-    this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+    this.editor.setValue(DEFAULT_SQL_EDITOR_CONTENT);
     this.editor.clearSelection();
 
     this.navTab.set("instructions");
@@ -561,7 +560,7 @@ export class SQLGameMultiplayerComponent {
     this.api.send("progress", {
       roomId: this.roomId,
       testsPassed: 0,
-      charCount: solutionLength(DEFAULT_EDITOR_CONTENT)
+      charCount: solutionLength(DEFAULT_SQL_EDITOR_CONTENT)
     });
   }
 

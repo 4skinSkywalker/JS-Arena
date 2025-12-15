@@ -17,11 +17,6 @@
 
         <div class="console-container">
             <div class="console-title">
-                @if (consoleMode() === 'console') {
-                <span>Console</span>
-                <button class="btn btn-secondary compact" (click)="consoleMode.set('spy')">Spy mode <i class="bi bi-incognito"></i></button>
-                }
-                @if (consoleMode() === 'spy') {
                 <span>Spy</span>
                 <select class="form-select compact ms-auto" style="width: 150px;" (change)="changeSpyClient($any($event.target).value)">
                     <option selected="">Select player</option>
@@ -29,40 +24,9 @@
                     <option [value]="client.id">{{ client.name }}</option>
                     }
                 </select>
-                <button class="btn btn-secondary compact" (click)="consoleMode.set('console')">Console mode <i class="bi bi-terminal"></i></button>
-                }
             </div>
 
-            <div class="console" [hidden]="consoleMode() !== 'console'">
-                <div class="console-logs">
-                    @for (msg of consoleLogMessages(); track $index) {
-                    <div 
-                        class="console-message" 
-                        [class.log-color]="msg.level === 'log'"
-                        [class.warn-color]="msg.level === 'warn'"
-                        [class.error-color]="msg.level === 'error'"
-                    >{{msg.text}}</div>
-                    }
-                </div>
-    
-                <div class="console-composer">
-                    <input 
-                        type="text" 
-                        class="form-control compact"
-                        placeholder="Test expression here..."
-                        [formControl]="consoleEval"
-                        (keydown.enter)="evalExpr(consoleEval.value)"
-                        (keydown.ArrowUp)="historyBack()"
-                        (keydown.ArrowDown)="historyForward()"
-                    >
-                    <button 
-                        class="btn compact"
-                        (click)="evalExpr(consoleEval.value)"
-                    >Run (↵)</button>
-                </div>
-            </div>
-
-            <div class="spy-editor-wrap" [hidden]="consoleMode() !== 'spy'">
+            <div class="spy-editor-wrap">
                 <div class="editor" id="spyEditor"></div>
             </div>
         </div>
@@ -116,16 +80,10 @@
                                     <input class="accordion-trigger" type="checkbox">
                                     <div class="benchmark-header">
                                         <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
-                                        @if (!$last) {
                                         <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
-                                        }
-                                        @else {
-                                        <span class="ms-auto me-2"><i class="bi bi-lock-fill" style="font-size: 1.25rem;"></i> (Locked)</span>
-                                        }
                                         <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                                     </div>
                                 </label>
-                                @if (!$last) {
                                 <div class="accordion-body" style="overflow: auto;">
                                     <div class="p-2">
                                         <div class="mb-2">
@@ -158,7 +116,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                }
                             </div>
                             }
                         </div>

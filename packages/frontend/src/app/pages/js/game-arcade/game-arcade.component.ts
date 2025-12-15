@@ -3,12 +3,12 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, Handlers } from '../../../services/api.service';
 import { focus, check, debounce, delay, drag, equal, matrixRain, uncheck, runInWorker } from '../../../shared/utils';
-import { IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../../backend/src/models';
+import { EnumLang, IGetProblemReceivedMessage, ILogMessage, ITest } from '../../../../../../backend/src/models';
 import { BasicModule } from '../../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../../services/markdown.service';
 import { LoaderService } from '../../../components/loader/loader-service.service';
-import { DEFAULT_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
+import { DEFAULT_JS_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
 import { ArcadeService } from '../../../services/arcade.service';
 
 @Component({
@@ -18,7 +18,7 @@ import { ArcadeService } from '../../../services/arcade.service';
   styleUrl: './game-arcade.component.scss'
 })
 export class JSGameArcadeComponent {
-  DEFAULT_EDITOR_CONTENT = DEFAULT_EDITOR_CONTENT;
+  DEFAULT_EDITOR_CONTENT = DEFAULT_JS_EDITOR_CONTENT;
   JSON = JSON;
   check = check;
   uncheck = uncheck;
@@ -83,7 +83,10 @@ export class JSGameArcadeComponent {
     this.initEditor();
     this.initGameResize();
     this.initEditorResize();
-    this.api.send("getProblem", { filename: this.problemFilename() });
+    this.api.send("getProblem", {
+      lang: EnumLang.JS,
+      filename: this.problemFilename()
+    });
   }
 
   ngOnDestroy() {
@@ -132,7 +135,7 @@ export class JSGameArcadeComponent {
     if (lastEditorContent) {
       this.editor.setValue(lastEditorContent);
     } else {
-      this.editor.setValue(DEFAULT_EDITOR_CONTENT);
+      this.editor.setValue(DEFAULT_JS_EDITOR_CONTENT);
     }
     this.editor.clearSelection();
   }
@@ -366,7 +369,10 @@ export class JSGameArcadeComponent {
     uncheck("#challenge-completed-trigger");
     clearInterval(this.matrixInterval);
     this.resetGame();
-    this.api.send("getProblem", { filename: this.nextProblemFilename() });
+    this.api.send("getProblem", {
+      lang: EnumLang.JS,
+      filename: this.nextProblemFilename()
+    });
   }
 
   resetGame() {

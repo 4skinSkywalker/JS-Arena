@@ -175,10 +175,6 @@
             .nav-panel-description {
                 padding: var(--secondary-space);
 
-                ::ng-deep * {
-                    all: revert;
-                }
-
                 ::ng-deep code {
                     display: inline-block;
                     background-color: rgba(var(--c3), 0.5);
