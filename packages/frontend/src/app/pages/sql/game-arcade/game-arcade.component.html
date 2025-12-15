@@ -4,10 +4,6 @@
             <div class="editor-title">
                 <span>Editor</span>
                 <button
-                    class="btn compact btn-secondary"
-                    (click)="runCode(problemTests()[0]?.input || null)"
-                >Run code (⇧ + ↵)</button>
-                <button
                     class="btn compact btn-primary"
                     (click)="runAllTests()"
                 >Run tests (⌘ + ↵)</button>
@@ -77,31 +73,48 @@
                         <div class="accordion-body" style="overflow: auto;">
                             <div class="p-2">
                                 <div class="mb-2">
-                                    <div>Input</div>
-                                    {{ JSON.stringify(test.input) }}
+                                    <div>Expected</div>
+                                    <table class="table table-striped my-3">
+                                        <thead>
+                                            <tr>
+                                                @for (key of Object.keys(test.expectedOutput[0]); track $index) {
+                                                <th>{{key}}</th>
+                                                }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (row of test.expectedOutput; track $index) {
+                                            <tr>
+                                                @for (key of Object.keys(test.expectedOutput[0]); track $index) {
+                                                <td>{{row[key]}}</td>
+                                                }
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
                                 </div>
 
                                 <div class="mb-2">
-                                    <div>Expected output</div>
-                                    {{ JSON.stringify(test.expectedOutput) }}
-                                </div>
-
-                                <div class="mb-2">
-                                    <div>Your output</div>
-                                    {{ (test.output != null) ? JSON.stringify(test.output) : test.output }}
-                                </div>
-
-                                <div>
-                                    <div>Your logs</div>
-                                    @for (msg of test.logs; track $index) {
-                                    <div
-                                        [class.log-color]="msg.level === 'log'"
-                                        [class.warn-color]="msg.level === 'warn'"
-                                        [class.error-color]="msg.level === 'error'"
-                                    >{{msg.text}}</div>
-                                    }
-                                    @if (!test.logs?.length) {
-                                    ⠀
+                                    <div>Received</div>
+                                    @if(test.output != null) {
+                                    <table class="table table-striped my-3">
+                                        <thead>
+                                            <tr>
+                                                @for (key of Object.keys(test.output[0]); track $index) {
+                                                <th>{{key}}</th>
+                                                }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for (row of test.output; track $index) {
+                                            <tr>
+                                                @for (key of Object.keys(test.output[0]); track $index) {
+                                                <td>{{row[key]}}</td>
+                                                }
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
                                     }
                                 </div>
                             </div>

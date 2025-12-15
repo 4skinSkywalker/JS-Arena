@@ -2,15 +2,15 @@ import { Component, computed, effect, HostListener, Signal, signal } from '@angu
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, runInWorker } from '../../../shared/utils';
-import { EnumLang, IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../../backend/src/models';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard } from '../../../shared/utils';
+import { EnumLang, IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../../backend/src/models';
 import { BasicModule } from '../../../basic.module';
 import { FormControl } from '@angular/forms';
 import { MarkdownService } from '../../../services/markdown.service';
 import { LoaderService } from '../../../components/loader/loader-service.service';
 import { getFakeClient, getFakeRoom, solutionLength } from './game-multiplayer.util';
 import { VoipService } from '../../../services/voip.service';
-import { DEFAULT_SQL_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
+import { DEFAULT_SQL_EDITOR_CONTENT } from '../../../shared/game.const';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 
@@ -22,6 +22,7 @@ interface IClientWithScore extends IClientJSON, IProgressDetails {}
   styleUrl: './game-multiplayer.component.scss'
 })
 export class SQLGameMultiplayerComponent {
+  Object = Object;
   DEFAULT_EDITOR_CONTENT = DEFAULT_SQL_EDITOR_CONTENT;
   JSON = JSON;
   check = check;
@@ -33,10 +34,6 @@ export class SQLGameMultiplayerComponent {
   editorContent = signal("");
   selectedSpyClient = signal("");
   navTab = signal<"instructions" | "benchmark">("instructions");
-  consoleLogMessages = signal<ILogMessage[]>([]);
-  consoleEval = new FormControl("", { nonNullable: true });
-  exprHistory: string[] = [];
-  exprHistoryIndex = 0;
   chatMessages = signal<IChatReceivedMessage[]>([]);
   chatMessage = new FormControl("", { nonNullable: true });
   initializedRoom = signal(false);
@@ -54,6 +51,7 @@ export class SQLGameMultiplayerComponent {
     this.alreadyStartedOnInit() || 
     (this.roomStarted() && this.countdownExpired())
   );
+  problemScript = signal("");
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
   clientProgressDataMap = signal<Record<string, IProgressDetails>>({});
@@ -92,11 +90,6 @@ export class SQLGameMultiplayerComponent {
 
   @HostListener("document:keydown", ["$event"])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.shiftKey && event.key === "Enter") {
-      event.preventDefault();
-      this.runCode(this.problemTests()[0]?.input || null);
-    }
-
     if (event.ctrlKey && event.key === "Enter") {
       event.preventDefault();
       this.runAllTests();
@@ -165,30 +158,6 @@ export class SQLGameMultiplayerComponent {
     copyToClipboard(window.location.href);
     linkEl.innerText = "Copied!"
     setTimeout(() => linkEl.innerText = prevText, 2000);
-  }
-
-  evalCtx = {};
-  evalExpr(expr: string) {
-    this.exprHistory.push(expr);
-    this.exprHistoryIndex = this.exprHistory.length;
-    try {
-      const output = eval.bind(this.evalCtx)(expr);
-      if (output) {
-        this.consoleLog("log")(JSON.stringify(output));
-      }
-    } catch (e: any) {
-      this.consoleLog("error")(e.message || e);
-    } finally {
-      this.consoleEval.setValue("");
-    }
-  }
-  historyBack() {
-    this.exprHistoryIndex = Math.max(0, this.exprHistoryIndex - 1);
-    this.consoleEval.setValue(this.exprHistory[this.exprHistoryIndex]);
-  }
-  historyForward() {
-    this.exprHistoryIndex = Math.min(this.exprHistory.length - 1, this.exprHistoryIndex + 1);
-    this.consoleEval.setValue(this.exprHistory[this.exprHistoryIndex]);
   }
 
   onEditorValueChange(value: string) {
@@ -272,7 +241,7 @@ export class SQLGameMultiplayerComponent {
     this.spyEditor.textInput.getElement().disabled = true;
 
     this.spyEditor.getSession().setUseWorker(false);
-    this.spyEditor.getSession().setMode("ace/mode/javascript");
+    this.spyEditor.getSession().setMode("ace/mode/sql");
     this.spyEditor.clearSelection();
   }
 
@@ -342,76 +311,30 @@ export class SQLGameMultiplayerComponent {
     el.scrollTop = el.scrollHeight;
   }
 
-  createLog(level: "log" | "warn" | "error", args: any) {
-    return {
-      level,
-      text: args.map((arg: any) =>
-        (typeof arg === "string") ? arg : JSON.stringify(arg)
-      ).join(" ")
-    };
-  }
-
-  consoleLog(level: "log" | "warn" | "error") {
-    return (...args: any) => {
-      this.consoleLogMessages.update(prev => [...prev, this.createLog(level, args)]);
-      this.scrollToBottom(".console-logs");
-    };
-  }
-
-  async runCode(input: any, loggers?: ILoggerMethods) {
-    this.consoleLogMessages.set([]);
-    await delay(0.1);
-    
-    let output, logs = [];
-    try {
-      const modifiedContent = getExecutableStr(this.editorContent(), input);
-      if (window.Worker) {
-        [output, logs] = await runInWorker(modifiedContent);
-      } else {
-        output = window.eval(modifiedContent);
-      }
-    } catch (e: any) {
-      logs = logs || [];
-      logs.push({ type: "error", args: [e.message || e] });
-    }
-
-    logs.forEach((line: { type: "log" | "warn" | "error", args: any }) => {
-      if (loggers && loggers[line.type]) {
-        loggers[line.type]!(...line.args);
-      } else {
-        this.consoleLog(line.type)(...line.args);
-      }
-    });
-
-    if (!loggers) {
-      this.consoleLog("log")(output);
-    }
-
-    return output;
+  get sql() {
+    return (window as any).alasql;
   }
 
   async runSingleTest(test: ITest) {
     test.output = null;
-    test.logs = [];
     test.status = "running";
 
-    await delay(0.1);
-    const output = await this.runCode(
-      test.input,
-      {
-        log: (...args: any) => test.logs?.push(this.createLog("log", args)),
-        warn: (...args: any) => test.logs?.push(this.createLog("warn", args)),
-        error: (...args: any) => test.logs?.push(this.createLog("error", args))
-      }
-    );
+    this.sql(this.problemScript());
+    let received;
+    try {
+      received = this.sql(this.editorContent());
+    } catch (e: any) {
+      test.status = "failed";
+      return;
+    }
 
-    if (equal(output, test.expectedOutput)) {
+    if (equal(test.expectedOutput, received)) {
       test.status = "passed";
     } else {
       test.status = "failed";
     }
 
-    test.output = output;
+    test.output = received;
     this.problemTests.set(this.problemTests().map(t => t === test ? test : t));
     return test.status === "passed";
   }
@@ -528,6 +451,7 @@ export class SQLGameMultiplayerComponent {
 
     if (msg.room.problem && !this.roomStarted()) {
       this.roomStarted.set(msg.room.started);
+      this.problemScript.set(msg.room.problem.script);
       this.problemDescription.set(msg.room.problem.description);
       this.problemTests.set(msg.room.problem.tests);
     }
@@ -546,9 +470,8 @@ export class SQLGameMultiplayerComponent {
     this.editor.clearSelection();
 
     this.navTab.set("instructions");
-    
-    this.consoleLogMessages.set([]);
 
+    this.problemScript.set("");
     this.problemDescription.set("");
     this.problemTests.set([]);
 
