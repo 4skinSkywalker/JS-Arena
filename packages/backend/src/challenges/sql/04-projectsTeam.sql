@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS projectLog;
 CREATE TABLE projectLog (
-    id NUMBER PRIMARY KEY AUTOINCREMENT,
+    id NUMBER,
     name TEXT,
     description TEXT,
     timestamp TEXT
