@@ -3,7 +3,21 @@
     "tests": [
         {
             "expectedOutput": [
-                {}
+                {
+                    "name": "James Smith"
+                },
+                {
+                    "name": "John Johnson"
+                },
+                {
+                    "name": "Mary Troppins"
+                },
+                {
+                    "name": "Michael Williams"
+                },
+                {
+                    "name": "Richard Young"
+                }
             ]
         }
     ]
