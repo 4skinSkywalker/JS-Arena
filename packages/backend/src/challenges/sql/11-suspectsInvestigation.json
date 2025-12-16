@@ -1,0 +1,21 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+            
+            ],
+            "expectedOutput": [
+                {}
+            ]
+        },
+        {
+            "scripts": [
+            
+            ],
+            "expectedOutput": [
+                {}
+            ]
+        }
+    ]
+}
