@@ -317,6 +317,7 @@ export class SQLGameMultiplayerComponent {
   async runSingleTest(test: ITest) {
     test.output = null;
     test.status = "running";
+    test.logs = [];
 
     await delay(0.1);
 
@@ -326,7 +327,9 @@ export class SQLGameMultiplayerComponent {
       received = this.sql(this.editorContent());
       console.log({ results: received });
     } catch (e: any) {
-      console.error(e);
+      if (e?.message) {
+        test.logs?.push({ level: "error", text: e.message });
+      }
       test.status = "failed";
       return;
     }

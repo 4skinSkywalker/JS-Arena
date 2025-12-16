@@ -117,6 +117,15 @@
                                     </table>
                                     }
                                 </div>
+
+                                <div class="mb-2">
+                                    <div>Logs</div>
+                                    @if(test.logs?.length) {
+                                    @for (log of test.logs; track $index) {
+                                    <div class="mb-1">{{log.level}}: {{log.text}}</div>
+                                    }
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
