@@ -3,18 +3,14 @@
     "tests": [
         {
             "scripts": [
-            
+                "DROP TABLE IF EXISTS Grades;",
+                "CREATE TABLE Grades (Name text, ID number, Midterm1 number, Midterm2 number, Final number);",
+                "INSERT INTO Grades VALUES ('David', 42334, 34, 54, 124), ('Anthony', 54528, 100, 10, 50), ('Jonathan', 58754, 49, 58, 121), ('Jonty', 11000, 25, 30, 180);"
             ],
             "expectedOutput": [
-                {}
-            ]
-        },
-        {
-            "scripts": [
-            
-            ],
-            "expectedOutput": [
-                {}
+                { "Name": "David", "ID": 42334 },
+                { "Name": "Jonty", "ID": 11000 },
+                { "Name": "Jonathan", "ID": 58754 }
             ]
         }
     ]

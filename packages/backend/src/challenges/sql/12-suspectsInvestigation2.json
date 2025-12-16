@@ -3,18 +3,14 @@
     "tests": [
         {
             "scripts": [
-            
+                "DROP TABLE IF EXISTS Suspect;",
+                "CREATE TABLE Suspect (id number, name text, surname text, height number, weight number);",
+                "INSERT INTO Suspect VALUES (1, 'John', 'Doe', 165, 60), (2, 'Bill', 'Green', 170, 67), (3, 'Baelfire', 'Grehn', 172, 70), (4, 'Bill', 'Gretan', 185, 55), (5, 'Brendon', 'Grewn', 180, 50), (6, 'bill', 'Green', 172, 50);"
             ],
             "expectedOutput": [
-                {}
-            ]
-        },
-        {
-            "scripts": [
-            
-            ],
-            "expectedOutput": [
-                {}
+                { "id": 1, "name": "John", "surname": "Doe" },
+                { "id": 2, "name": "Bill", "surname": "Green" },
+                { "id": 4, "name": "Bill", "surname": "Gretan" }
             ]
         }
     ]
