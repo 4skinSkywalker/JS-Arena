@@ -95,6 +95,10 @@
         .nav-panel-description {
             padding: var(--secondary-space);
 
+            ::ng-deep p {
+                padding-bottom: 1rem;
+            }
+
             ::ng-deep code {
                 display: inline-block;
                 background-color: rgba(var(--c3), 0.5);
