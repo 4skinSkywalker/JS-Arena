@@ -18,7 +18,10 @@ function solution(input) {
     return input;
 }`;
 
-export const DEFAULT_SQL_EDITOR_CONTENT = `SELECT * FROM <table>;`;
+export const DEFAULT_SQL_EDITOR_CONTENT = `# By default, this SQL is case-insensitive to all standard keywords (like SELECT) and standard functions (like ABS()).
+# All database names, table names, column names, and user-defined functions are case sensitive. 
+# Use the LOWER() function to convert a string to lowercase.
+SELECT * FROM <table>;`;
 
 export const getExecutableStr = (userContent: string, testInput: any) => `
 const __logs = [];
