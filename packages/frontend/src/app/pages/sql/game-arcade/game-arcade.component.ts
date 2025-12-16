@@ -168,6 +168,7 @@ export class SQLGameArcadeComponent {
       received = this.sql(this.editorContent());
       console.log({ results: received });
     } catch (e: any) {
+      console.error(e);
       test.status = "failed";
       return;
     }
