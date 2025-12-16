@@ -2,7 +2,11 @@
     "rating": 0,
     "tests": [
         {
-            "expectedOutput": [{}]
+            "expectedOutput": [
+                { "email": "email@notbot.com" },
+                { "email": "fun@meh.com" },
+                { "email": "today@humor.com" }
+            ]
         }
     ]
 }
