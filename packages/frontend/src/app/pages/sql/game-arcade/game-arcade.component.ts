@@ -160,6 +160,8 @@ export class SQLGameArcadeComponent {
     test.output = null;
     test.status = "running";
 
+    await delay(0.1);
+
     console.log({ db: this.sql(test.scripts?.join("\n")) });
     let received;
     try {
