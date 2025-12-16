@@ -18,8 +18,8 @@ function solution(input) {
     return input;
 }`;
 
-export const DEFAULT_SQL_EDITOR_CONTENT = `-- This SQL is case-insensitive to all standard keywords and functions (like SELECT and ABS()).
--- All database names, table names, column names, and user-defined functions are case sensitive. 
+export const DEFAULT_SQL_EDITOR_CONTENT = `-- This SQL is case-insensitive to all standard keywords and functions.
+-- All table and column names, and user-defined functions are case sensitive. 
 -- Use the LOWER() function to convert a string to lowercase.
 SELECT * FROM <table>;`;
 
