@@ -25,9 +25,9 @@ function solution(input) {
     console.warn("Solution not implemented");
     console.log(input);
     return input;
-}`,Bn=`# This SQL is case-insensitive to all standard keywords and functions (like SELECT and ABS()).
-# All database names, table names, column names, and user-defined functions are case sensitive. 
-# Use the LOWER() function to convert a string to lowercase.
+}`,Bn=`-- This SQL is case-insensitive to all standard keywords and functions (like SELECT and ABS()).
+-- All database names, table names, column names, and user-defined functions are case sensitive. 
+-- Use the LOWER() function to convert a string to lowercase.
 SELECT * FROM <table>;`,kc=(e,t)=>`
 const __logs = [];
 console.log = (...args) => __logs.push({ type: "log", args });
