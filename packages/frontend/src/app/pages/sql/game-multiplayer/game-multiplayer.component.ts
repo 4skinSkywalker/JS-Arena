@@ -51,7 +51,6 @@ export class SQLGameMultiplayerComponent {
     this.alreadyStartedOnInit() || 
     (this.roomStarted() && this.countdownExpired())
   );
-  problemScript = signal("");
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
   clientProgressDataMap = signal<Record<string, IProgressDetails>>({});
@@ -319,7 +318,7 @@ export class SQLGameMultiplayerComponent {
     test.output = null;
     test.status = "running";
 
-    console.log({ db: this.sql(this.problemScript()) });
+    console.log({ db: this.sql(test.scripts?.join("\n")) });
     let received;
     try {
       received = this.sql(this.editorContent());
@@ -452,7 +451,6 @@ export class SQLGameMultiplayerComponent {
 
     if (msg.room.problem && !this.roomStarted()) {
       this.roomStarted.set(msg.room.started);
-      this.problemScript.set(msg.room.problem.script);
       this.problemDescription.set(msg.room.problem.description);
       this.problemTests.set(msg.room.problem.tests);
     }
@@ -472,7 +470,6 @@ export class SQLGameMultiplayerComponent {
 
     this.navTab.set("instructions");
 
-    this.problemScript.set("");
     this.problemDescription.set("");
     this.problemTests.set([]);
 

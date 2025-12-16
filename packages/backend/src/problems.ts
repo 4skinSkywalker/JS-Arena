@@ -64,7 +64,6 @@ function popuplateProblemsByLanguage(lang: EnumLang) {
             const jsonFileContent = fs.readFileSync(jsonPath, "utf8");
             const problem = JSON.parse(jsonFileContent);
             let descrContent = "";
-            let scriptContent = "";
             switch (lang) {
                 case EnumLang.JS: {
                     descrContent = fs.readFileSync(jsonPath.replace(".json", ".md"), "utf8");
@@ -72,14 +71,12 @@ function popuplateProblemsByLanguage(lang: EnumLang) {
                 }
                 case EnumLang.SQL: {
                     descrContent = fs.readFileSync(jsonPath.replace(".json", ".html"), "utf8");
-                    scriptContent = fs.readFileSync(jsonPath.replace(".json", ".sql"), "utf8");
                     break;
                 }
             }
             problem.filename = filename;
             problem.title = languages[lang].adjustTitle(capitalize(decamelize(filename)));
             problem.description = descrContent;
-            problem.script = scriptContent;
             languages[lang].problems.push(problem);
         } catch (e) {
             console.error(jsonPath, e);

@@ -32,13 +32,13 @@ export interface ILogMessage {
 export interface ITest {
     input: any;
     expectedOutput: any;
+    scripts?: string[];
     status?: "running" | "passed" | "failed";
     output?: any;
     logs?: ILogMessage[];
 }
 
 export interface IProblem {
-    script: string;
     filename: string;
     title: string;
     description: string;

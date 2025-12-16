@@ -1,3 +1,0 @@
-DROP TABLE IF EXISTS projects;
-CREATE TABLE projects (internal_id number, project_name string, team_size number, team_lead string, income number);
-INSERT INTO projects VALUES (1384,'MapReduce',100,'Jeffrey Dean',0), (2855,'Windows',1000,'Bill Gates',100500), (5961,'Snapchat',3,'Evan Spiegel',2000);

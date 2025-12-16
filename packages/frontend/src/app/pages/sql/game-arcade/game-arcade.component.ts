@@ -29,7 +29,6 @@ export class SQLGameArcadeComponent {
 
   testsRunning = signal(false);
   testsPassed = signal(0);
-  problemScript = signal("");
   problemFilename = signal<string>("");
   problemDescription = signal("");
   problemTitle = signal("");
@@ -161,7 +160,7 @@ export class SQLGameArcadeComponent {
     test.output = null;
     test.status = "running";
 
-    console.log({ db: this.sql(this.problemScript()) });
+    console.log({ db: this.sql(test.scripts?.join("\n")) });
     let received;
     try {
       received = this.sql(this.editorContent());
@@ -224,7 +223,6 @@ export class SQLGameArcadeComponent {
   }
 
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
-    this.problemScript.set(msg.problem.script);
     this.problemFilename.set(msg.problem.filename);
     this.problemDescription.set(msg.problem.description);
     this.problemTitle.set(msg.problem.title);
@@ -277,7 +275,6 @@ export class SQLGameArcadeComponent {
     this.testsPassed.set(0);
     this.setDefaultEditorContent();
     this.navTab.set("instructions");
-    this.problemScript.set("");
     this.problemDescription.set("");
     this.problemTitle.set("");
     this.problemRating.set("");
