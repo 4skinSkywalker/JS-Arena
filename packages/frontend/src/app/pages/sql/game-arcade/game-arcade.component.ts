@@ -161,10 +161,11 @@ export class SQLGameArcadeComponent {
     test.output = null;
     test.status = "running";
 
-    this.sql(this.problemScript());
+    console.log({ db: this.sql(this.problemScript()) });
     let received;
     try {
       received = this.sql(this.editorContent());
+      console.log({ results: received });
     } catch (e: any) {
       test.status = "failed";
       return;
