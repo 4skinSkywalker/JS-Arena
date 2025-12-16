@@ -63,7 +63,7 @@ export class JourneyComponent {
     await delay(0.2);
     this.loaderService.isLoading.set(false);
     await delay(0.2);
-    scrollElIntoView(`#${this.getLastKey()}`);
+    scrollElIntoView(`#id-${this.getLastKey()}`);
   }
 
   getLastKey() {
