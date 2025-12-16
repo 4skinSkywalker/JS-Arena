@@ -5,11 +5,11 @@
         database, which you are going to use to find out the names of your new colleagues.</p>
     <p>Information about the project's activity is stored in table <strong>projectLog</strong>, which has the following
         structure:</p>
-    <ul>
-        <li><code>id</code>: unique action id;</li>
-        <li><code>name</code>: the name of the person who performed the action;</li>
-        <li><code>description</code>: the description of the action;</li>
-        <li><code>timestamp</code>: the timestamp of the action.</li>
+    <ul class="list-group list-group-flush my-3">
+        <li class="list-group-item"><code>id</code>: unique action id;</li>
+        <li class="list-group-item"><code>name</code>: the name of the person who performed the action;</li>
+        <li class="list-group-item"><code>description</code>: the description of the action;</li>
+        <li class="list-group-item"><code>timestamp</code>: the timestamp of the action.</li>
     </ul>
     <p>You only have access to the project's most recent history, but this should be enough for you. You've decided that
         finding everyone who interacted with the project in this period is the best way to start.</p>
@@ -17,7 +17,7 @@
         that contains the names of the project's contributors sorted in ascending order.</p>
     <p><span style="color:#44BFA3;font-size:1.4em">Example</span></p>
     <p>For the following table <strong>projectLog</strong></p>
-    <table>
+    <table class="table table-striped my-3">
         <thead>
             <tr>
                 <th>id</th>
@@ -90,7 +90,7 @@
         </tbody>
     </table>
     <p>the output should be</p>
-    <table>
+    <table class="table table-striped my-3">
         <thead>
             <tr>
                 <th>name</th>
