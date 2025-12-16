@@ -1,0 +1,19 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "expectedOutput": [
+                {
+                    "name": "Botswana",
+                    "continent": "Africa",
+                    "population": 2230905
+                },
+                {
+                    "name": "Cameroon",
+                    "continent": "Africa",
+                    "population": 22709892
+                }
+            ]
+        }
+    ]
+}

@@ -258,7 +258,7 @@ export class SQLGameArcadeComponent {
 
   backToJourney() {
     clearInterval(this.matrixInterval);
-    this.router.navigate(['/arcade']);
+    this.router.navigate(['/sql-arcade']);
   }
 
   goToNextProblem() {

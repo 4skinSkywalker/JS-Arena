@@ -362,7 +362,7 @@ export class JSGameArcadeComponent {
 
   backToJourney() {
     clearInterval(this.matrixInterval);
-    this.router.navigate(['/arcade']);
+    this.router.navigate(['/js-arcade']);
   }
 
   goToNextProblem() {
