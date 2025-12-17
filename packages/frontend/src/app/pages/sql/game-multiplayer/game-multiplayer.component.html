@@ -58,7 +58,7 @@
                     <div
                         class="nav-panel-description"
                         [class.hidden]="navTab() !== 'instructions'"
-                        [innerHTML]="markdownService.render(problemDescription() || '').trim()"
+                        [innerHTML]="problemDescription() || ''"
                     ></div>
 
                     <div
