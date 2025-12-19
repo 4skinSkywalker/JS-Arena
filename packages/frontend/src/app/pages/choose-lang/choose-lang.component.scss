@@ -6,8 +6,9 @@
 }
 
 .choose-grid {
-    display: inline-grid;
-    grid-template-columns: auto auto;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
