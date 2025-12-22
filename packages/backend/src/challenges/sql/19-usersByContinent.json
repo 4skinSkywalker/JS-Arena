@@ -1,0 +1,12 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS availableItems;"],
+            "expectedOutput": [
+                {}
+            ]
+        }
+    ]
+}
