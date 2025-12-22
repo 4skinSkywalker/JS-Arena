@@ -19,8 +19,7 @@ function solution(input) {
 }`;
 
 export const DEFAULT_SQL_EDITOR_CONTENT = `-- This SQL is case-insensitive to all standard keywords and functions.
--- All table and column names, and user-defined functions are case sensitive. 
--- Use the LOWER() function to convert a string to lowercase.
+-- All table and column names, and user-defined functions are case sensitive.
 SELECT * FROM <table>;`;
 
 export const getExecutableStr = (userContent: string, testInput: any) => `
