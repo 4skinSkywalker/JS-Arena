@@ -18,6 +18,7 @@
     place-items: center;
     background: #0008;
     width: 320px;
+    aspect-ratio: 16/10;
     margin: 0 auto;
     cursor: pointer;
     transition: all 0.4s ease;
@@ -28,8 +29,12 @@
     background: #000a;
 }
 
+.bi {
+    font-size: 3.5rem;
+}
+
 .lbl {
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: center;
 }
 
