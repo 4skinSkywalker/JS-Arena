@@ -1,0 +1,45 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS foreignCompetitors;",
+                "CREATE TABLE foreignCompetitors (competitor text, country text);",
+                "INSERT INTO foreignCompetitors VALUES ('Acme Corp', 'USA');",
+                "INSERT INTO foreignCompetitors VALUES ('GLOBEX', 'USA');",
+                "INSERT INTO foreignCompetitors VALUES ('Openmedia', 'France');",
+                "INSERT INTO foreignCompetitors VALUES ('K-bam', 'USA');",
+                "INSERT INTO foreignCompetitors VALUES ('Hatdrill', 'UK');",
+                "INSERT INTO foreignCompetitors VALUES ('Hexgreen', 'Germany');",
+                "INSERT INTO foreignCompetitors VALUES ('D-ranron', 'France');",
+                "INSERT INTO foreignCompetitors VALUES ('Faxla', 'Spain');"
+            ],
+            "expectedOutput": [
+                {
+                    "country": "France",
+                    "competitors": 2
+                },
+                {
+                    "country": "Germany",
+                    "competitors": 1
+                },
+                {
+                    "country": "Spain",
+                    "competitors": 1
+                },
+                {
+                    "country": "UK",
+                    "competitors": 1
+                },
+                {
+                    "country": "USA",
+                    "competitors": 3
+                },
+                {
+                    "country": "Total:",
+                    "competitors": 8
+                }
+            ]
+        }
+    ]
+}
