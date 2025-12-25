@@ -24,7 +24,7 @@
     <p>It is guaranteed that all entries of <strong>mischief</strong> are unique.</p>
     
     <h2>Tips</h2>
-    <p>You can use <code>EXTRACT(DOW FROM column_name)</code> to extract the day of the week from the <code>mischief_date</code> column.</p>
+    <p>You can use <code>EXTRACT(DOW FROM mischief_date::date)</code> to extract the day of the week from the <code>mischief_date</code> column. Here, <code>::date</code> is a type cast, converting <code>mischief_date</code> from text to a date type.</p>
     
     <h2>Example</h2>
     <p>For the following table <strong>mischief</strong></p>
