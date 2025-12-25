@@ -11,15 +11,8 @@
     <p>Create a semicolon-separated list of all the players, sorted by their numbers, and put this list in a table under
         a column called <code>players</code>. The information about each player should have the following format:
         <code>first_name surname #number</code>.</p>
-
-    <h2>Tips</h2>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><strong>GROUP_CONCAT:</strong> This function concatenates values from multiple rows into a single string with a default comma (",") separator.</li>
-        <li class="list-group-item"><strong>REPLACE:</strong> Once you have the comma-separated list, apply the REPLACE function to substitute commas with semicolons.</li>
-        <li class="list-group-item"><strong>CONCAT:</strong> This function can be used to join multiple column values and characters. For example, CONCAT(first_name, ' ', surname, ' #', player_number) creates a formatted string like "Alexis Sanchez #7".</li>
-    </ul>
     
-    <h2>Example</h2>
+    <h3>Example</h3>
     <p>For the following table <strong>soccer_team</strong></p>
     <table class="table table-striped my-3">
         <thead>

@@ -1,0 +1,39 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS emails CASCADE;",
+                "CREATE TABLE emails (id INTEGER, email_title TEXT, size INTEGER);",
+                "INSERT INTO emails VALUES (1, 'You won 1M dollars!', 21432432), (2, 'You are fired', 312342), (3, 'Black Friday is coming', 323), (4, 'Spam email', 23532), (5, 'Your requested backup', 234234324);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 5,
+                    "email_title": "Your requested backup",
+                    "short_size": "223 Mb"
+                },
+                { 
+                    "id": 1,
+                    "email_title": "You won 1M dollars!",
+                    "short_size": "20 Mb"
+                },
+                { 
+                    "id": 2,
+                    "email_title": "You are fired",
+                    "short_size": "305 Kb"
+                },
+                { 
+                    "id": 4,
+                    "email_title": "Spam email",
+                    "short_size": "22 Kb"
+                },
+                { 
+                    "id": 3,
+                    "email_title": "Black Friday is coming",
+                    "short_size": "0 Kb"
+                }
+            ]
+        }
+    ]
+}

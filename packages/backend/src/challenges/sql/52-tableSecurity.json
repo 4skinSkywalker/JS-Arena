@@ -1,0 +1,44 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS employees CASCADE CASCADE;",
+                "CREATE TABLE employees (id INTEGER, name TEXT, date_joined TEXT, salary INTEGER);",
+                "INSERT INTO employees VALUES (1, 'Farah Dahlquist', '2006-03-05', 2000), (2, 'Yessenia Lininger', '2008-04-11', 2500), (3, 'Justin Penrose', '2009-12-12', 2400), (4, 'Josphine Clickner', '2007-07-25', 3000), (5, 'Linwood Mcquiston', '2011-01-15', 4000);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "name": "Farah Dahlquist",
+                    "date_joined": 2006,
+                    "salary": "-"
+                },
+                {
+                    "id": 2,
+                    "name": "Yessenia Lininger",
+                    "date_joined": 2008,
+                    "salary": "-"
+                },
+                {
+                    "id": 3,
+                    "name": "Justin Penrose",
+                    "date_joined": 2009,
+                    "salary": "-"
+                },
+                {
+                    "id": 4,
+                    "name": "Josphine Clickner",
+                    "date_joined": 2007,
+                    "salary": "-"
+                },
+                {
+                    "id": 5,
+                    "name": "Linwood Mcquiston",
+                    "date_joined": 2011,
+                    "salary": "-"
+                }
+            ]
+        }
+    ]
+}

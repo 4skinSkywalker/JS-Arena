@@ -1,6 +1,6 @@
-import { getNextEntry, getUid, parseEvent } from "./utils";
+import { getNearEntry, getUid, parseEvent } from "./utils";
 import WebSocket from 'ws';
-import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage, IProblemWithNext, IListRoomsMessage, EnumLang, IProblem, IGetProblemTitlesMessage } from "./models";
+import { IChatMessage, IClientJSON, IRoomJSON, IProgressMessage, ICreateRoomMessage, IJoinRoomMessage, IRoomDetailsMessage, IStartGameMessage, IClientInfoMessage, IRoomToJSONOptions, IClientToJSONOptions, IAudioMessage, IGetProblemMessage, IProblemWithSurrounding, IListRoomsMessage, EnumLang, IProblem, IGetProblemTitlesMessage } from "./models";
 import { languages } from "./problems";
 
 const globalRooms = new Map<string, Room>();
@@ -181,8 +181,9 @@ class Client {
 
     handleGetProblem(msg: IGetProblemMessage) {
         const filenameProblemMap = languages[msg.lang].filenameProblemMap;
-        const problem = filenameProblemMap.get(msg.filename) as IProblemWithNext;
-        problem.nextProblemFilename = getNextEntry(filenameProblemMap, msg.filename)?.filename;
+        const problem = filenameProblemMap.get(msg.filename) as IProblemWithSurrounding;
+        problem.prevProblemFilename = getNearEntry(filenameProblemMap, msg.filename, "previous")?.filename;
+        problem.nextProblemFilename = getNearEntry(filenameProblemMap, msg.filename, "next")?.filename;
         this.send("getProblemReceived", {
             problem: filenameProblemMap.get(msg.filename)
         });
@@ -390,13 +391,19 @@ class Room {
         opts = opts || {};
         const includeClients = opts.includeClients == null ? true : opts.includeClients;
         const includeProblem = opts.includeProblem == null ? false : opts.includeProblem;
+        const problem = (this.started && includeProblem)
+            ? {
+                ...this.problem,
+                solution: 'not available while multiplayer'
+            }
+            : undefined;
         return {
             id: this.id,
             name: this.name,
             enableLateJoin: this.enableLateJoin,
             lang: this.lang,
             started: this.started,
-            problem: (this.started && includeProblem) ? this.problem : undefined,
+            problem,
             host: this.host.toJSON({ includeRoom: false }),
             clients: includeClients
                 ? Array.from(this.clients.values())

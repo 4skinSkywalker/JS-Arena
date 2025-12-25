@@ -11,6 +11,8 @@ import { LoaderService } from '../../../components/loader/loader-service.service
 import { DEFAULT_JS_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
 import { ArcadeService } from '../../../services/arcade.service';
 
+const SOLUTION_COUNTDOWN_TIME = 300;
+
 @Component({
   selector: 'app-js-game-arcade',
   imports: [BasicModule],
@@ -25,7 +27,8 @@ export class JSGameArcadeComponent {
   editor: any;
   editorContentKey;
   editorContent = signal("");
-  navTab = signal<"instructions" | "benchmark">("instructions");
+  solutionEditor: any;
+  navTab = signal<"instructions" | "benchmark" | "solution">("instructions");
   consoleLogMessages = signal<ILogMessage[]>([]);
   consoleEval = new FormControl("", { nonNullable: true });
   exprHistory: string[] = [];
@@ -35,10 +38,14 @@ export class JSGameArcadeComponent {
   testsPassed = signal(0);
   problemFilename = signal<string>("");
   problemDescription = signal("");
+  revealSolutionCountdown: ReturnType<typeof setInterval> | null = null;
+  problemSolutionUnlockCountdown = signal("--");
+  bypassSolutionLock = signal(false);
   problemTitle = signal("");
   problemRating = signal("");
   problemTests = signal<ITest[]>([]);
   problemSolved = signal(false);
+  prevProblemFilename = signal<string | undefined | null>(null);
   nextProblemFilename = signal<string | undefined | null>(null);
   matrixInterval: any;
 
@@ -56,6 +63,10 @@ export class JSGameArcadeComponent {
     if (event.ctrlKey && event.key === "Enter") {
       event.preventDefault();
       this.runAllTests();
+    }
+
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+      event.preventDefault(); // stop browser Save dialog
     }
   }
 
@@ -81,6 +92,7 @@ export class JSGameArcadeComponent {
   async ngAfterViewInit() {
     await delay(0.2);
     this.initEditor();
+    this.initSolutionEditor();
     this.initGameResize();
     this.initEditorResize();
     this.api.send("getProblem", {
@@ -164,6 +176,59 @@ export class JSGameArcadeComponent {
     }, 500));
 
     this.setDefaultEditorContent();
+  }
+
+  clearRevealSolutionCountdown() {
+    if (this.revealSolutionCountdown) {
+      clearInterval(this.revealSolutionCountdown);
+    }
+  }
+
+  startProblemSolutionUnlockCountdown() {
+    const setTimeLabel = (sec: number) => {
+      if (sec <= 0) {
+        return this.problemSolutionUnlockCountdown.set("");
+      }
+
+      const minutes = Math.ceil(sec / 60);
+      this.problemSolutionUnlockCountdown.set(`(${minutes} ${minutes > 1 ? "minutes" : "minute"})`);
+    };
+
+    let countdown = SOLUTION_COUNTDOWN_TIME;
+    setTimeLabel(countdown);
+
+    this.revealSolutionCountdown = setInterval(() => {
+      countdown--;
+      if (countdown < 0) {
+        return this.clearRevealSolutionCountdown();
+      }
+
+      setTimeLabel(countdown);
+    }, 1000);
+  }
+
+  forceSolutionEditorRefresh() {
+    setTimeout(() => this.solutionEditor.resize(), 25);
+  }
+
+  setSolutionEditorContent(content: string) {
+    content = content.split("\n").slice(0, -1).join("\n");
+    this.solutionEditor.setValue(`// This is the author's solution to this JS challenge\n${content}`);
+    this.solutionEditor.clearSelection();
+    this.forceSolutionEditorRefresh();
+    this.startProblemSolutionUnlockCountdown();
+  }
+
+  initSolutionEditor() {
+    const ace = (window as any).ace;
+    
+    this.solutionEditor = ace.edit("solution-editor");
+    this.solutionEditor.setTheme("ace/theme/monokai");
+    this.solutionEditor.setShowPrintMargin(false);
+    this.solutionEditor.setReadOnly(true);
+
+    this.solutionEditor.getSession().setUseWorker(false);
+    this.solutionEditor.getSession().setMode("ace/mode/javascript");
   }
 
   initGameResize() {
@@ -317,6 +382,7 @@ export class JSGameArcadeComponent {
     
     this.testsPassed.set(testsPassed);
     this.testsRunning.set(false);
+    this.bypassSolutionLock.set(true);
   }
 
   async flickAnimation(el: Element | null) {
@@ -328,11 +394,14 @@ export class JSGameArcadeComponent {
   }
 
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
+    console.log({ msg });
     this.problemFilename.set(msg.problem.filename);
-    this.problemDescription.set(msg.problem.description);
+    this.problemDescription.set(msg.problem.description);    
+    this.setSolutionEditorContent(msg.problem.solution);
     this.problemTitle.set(msg.problem.title);
     this.problemRating.set(String(msg.problem.rating));
     this.problemTests.set(msg.problem.tests);
+    this.prevProblemFilename.set(msg.problem.prevProblemFilename);
     this.nextProblemFilename.set(msg.problem.nextProblemFilename);
     this.updateUrl(this.problemFilename());
     this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
@@ -365,19 +434,23 @@ export class JSGameArcadeComponent {
     this.router.navigate(['/js-arcade']);
   }
 
-  goToNextProblem() {
+  goToProblem(which: "previous" | "next") {
     uncheck("#challenge-completed-trigger");
     clearInterval(this.matrixInterval);
     this.resetGame();
     this.api.send("getProblem", {
       lang: EnumLang.JS,
-      filename: this.nextProblemFilename()
+      filename: (which === "previous")
+        ? this.prevProblemFilename()
+        : this.nextProblemFilename()
     });
   }
 
   resetGame() {
     this.problemSolved.set(false);
     this.testsPassed.set(0);
+    this.bypassSolutionLock.set(false);
+    this.clearRevealSolutionCountdown();
     this.setDefaultEditorContent();
     this.navTab.set("instructions");
     this.consoleLogMessages.set([]);

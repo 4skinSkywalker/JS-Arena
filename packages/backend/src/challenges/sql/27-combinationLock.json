@@ -1,0 +1,33 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS discs CASCADE;",
+                "CREATE TABLE discs (id INTEGER, characters TEXT, color TEXT);",
+                "INSERT INTO discs VALUES (1, 'code', 'blue');",
+                "INSERT INTO discs VALUES (2, 'fights', 'white');"
+            ],
+            "expectedOutput": [
+                {
+                    "combinations": 24
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS discs CASCADE;",
+                "CREATE TABLE discs (id INTEGER, characters TEXT, color TEXT);",
+                "INSERT INTO discs VALUES (1, 'test', 'red');",
+                "INSERT INTO discs VALUES (2, 'ofcourse', 'green');",
+                "INSERT INTO discs VALUES (3, 'abc', 'blue');",
+                "INSERT INTO discs VALUES (4, 'freddy', 'yellow');"
+            ],
+            "expectedOutput": [
+                {
+                    "combinations": 576
+                }
+            ]
+        }
+    ]
+}

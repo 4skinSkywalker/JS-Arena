@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS availableItems;",
-                "CREATE TABLE availableItems (id integer, item_name text, item_type text);",
+                "DROP TABLE IF EXISTS availableItems CASCADE;",
+                "CREATE TABLE availableItems (id INTEGER, item_name TEXT, item_type TEXT);",
                 "INSERT INTO availableItems VALUES (1, 'SafeDisk 4GB', 'USB drive');",
                 "INSERT INTO availableItems VALUES (2, 'SafeDisk 8GB', 'USB drive');",
                 "INSERT INTO availableItems VALUES (3, 'Cinco 50-Pack', 'DVD');",

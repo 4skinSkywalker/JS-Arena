@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { getUid } from '../shared/utils';
 
 export type QueryResult = {
   rows: any[]
@@ -21,11 +22,26 @@ export class DBService {
     };
   }
 
-  async exec(str: string) {
-    return await this.db.exec(str);
+  private _prepareScript(str: string) {
+    // Remove comments
+    str = str.replaceAll(/--.*/g, "");
+    const matches = [...str.matchAll(/CREATE\s+OR\s+REPLACE\s+FUNCTION\s+([^\(\)]+)()/ig)];
+    if (matches.length) {
+      for (const [full, captured] of matches) {
+        // Mangling function names
+        str = str.replaceAll(captured, `${captured}_${getUid()}`);
+      }
+    }
+    return str;
   }
 
-  async query(str: string) {
-    return await this.db.query(str);
+  async exec(userScript: string) {
+    const prepared = this._prepareScript(userScript);
+    console.log({ prepared });
+    return await this.db.exec(prepared);
+  }
+
+  async query(query: string) {
+    return await this.db.query(query);
   }
 }

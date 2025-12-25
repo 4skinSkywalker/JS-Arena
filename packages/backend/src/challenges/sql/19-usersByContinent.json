@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS countries;",
-                "CREATE TABLE countries (country text, continent text, users integer);",
+                "DROP TABLE IF EXISTS countries CASCADE;",
+                "CREATE TABLE countries (country TEXT, continent TEXT, users INTEGER);",
                 "INSERT INTO countries VALUES ('Armenia', 'Europe', 1000);",
                 "INSERT INTO countries VALUES ('France', 'Europe', 1300);",
                 "INSERT INTO countries VALUES ('Russia', 'Europe', 3000);",

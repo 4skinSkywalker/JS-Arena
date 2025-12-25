@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS moviesInfo;",
-                "CREATE TABLE moviesInfo (title text, director text, year integer, oscars integer);",
+                "DROP TABLE IF EXISTS moviesInfo CASCADE;",
+                "CREATE TABLE moviesInfo (title TEXT, director TEXT, year INTEGER, oscars INTEGER);",
                 "INSERT INTO moviesInfo VALUES ('BoBoiBoy: The Movie', 'Nizam Razak', 2016, 0);",
                 "INSERT INTO moviesInfo VALUES ('Inception', 'Christopher Nolan', 2010, 4);",
                 "INSERT INTO moviesInfo VALUES ('Interstellar', 'Christopher Nolan', 2014, 1);",

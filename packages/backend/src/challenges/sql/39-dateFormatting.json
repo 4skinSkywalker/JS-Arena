@@ -1,0 +1,29 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS documents CASCADE;",
+                "CREATE TABLE documents (id INTEGER, date_str TEXT);",
+                "INSERT INTO documents VALUES (1, '2000-1-1'), (2, '2014-8-21'), (3, '2002-03-07'), (4, '2008-10-5'), (5, '2016-12-17');"
+            ],
+            "expectedOutput": [
+                {
+                    "date_iso": "2000-01-01"
+                },
+                {
+                    "date_iso": "2014-08-21"
+                },
+                {
+                    "date_iso": "2002-03-07"
+                },
+                {
+                    "date_iso": "2008-10-05"
+                },
+                {
+                    "date_iso": "2016-12-17"
+                }
+            ]
+        }
+    ]
+}

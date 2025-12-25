@@ -102,6 +102,10 @@ export class JSGameMultiplayerComponent {
       event.preventDefault();
       this.runAllTests();
     }
+
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+      event.preventDefault(); // stop browser Save dialog
+    }
   }
 
   constructor(

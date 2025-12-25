@@ -1,0 +1,87 @@
+<h1>Closest Cells</h1>
+<div>
+    <p>You are playing a game on a rectangular checkerboard with a specific set of rules.<br>
+        Each game piece has a unique <code>id</code> and each cell on the board is defined by its <code>x</code> and
+        <code>y</code> coordinates.</p>
+    <p>The current positions of your pieces on the board are stored in the <strong>positions</strong> table with the
+        following structure:</p>
+    <ul class="list-group list-group-flush my-3">
+        <li class="list-group-item"><code>id</code>: unique piece id;</li>
+        <li class="list-group-item"><code>x</code>: x coordinate of the cell that the piece occupies;</li>
+        <li class="list-group-item"><code>y</code>: y coordinate of the cell that the piece occupies.</li>
+    </ul>
+    <p>In this game each piece on the board is said to <em>defend</em> its nearest neighbor. The distance between two
+        pieces is calculated simply as the distance between the points <code>(x1, y1)</code> and <code>(x2, y2)</code>,
+        where <code>(x1, y1)</code> and <code>(x2, y2)</code> are the coordinates of the cells occupied by the first and
+        the second piece, respectively.<br>
+        You thought it might be good idea to find what piece each of the game pieces <em>defends</em>.</p>
+    <p>Given the <strong>positions</strong> table, compose the resulting table with two columns: <code>id1</code> and
+        <code>id2</code>, such that on each row the piece with id <code>id1</code> <em>defends</em> the piece with
+        <code>id2</code> (i.e. <code>id2</code> is the closest to <code>id1</code> piece).<br>
+        The table should be sorted by the values of <code>id1</code> in <em>ascending</em> order.<br>
+        It's guaranteed that for each piece there is only one other piece closest to it.</p>
+
+    <h3>Tips</h3>
+    <p>An idea would be to join the table with itself, to get each pair of pieces, and then use <code>OVER (PARTITION BY ...)</code> to calculate the minimum distance for each piece.</p>
+
+    <h3>Example</h3>
+    <p>For the following table <strong>positions</strong></p>
+    <table class="table table-striped my-3">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>x</th>
+                <th>y</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>the output should be</p>
+    <table class="table table-striped my-3">
+        <thead>
+            <tr>
+                <th>id1</th>
+                <th>id2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

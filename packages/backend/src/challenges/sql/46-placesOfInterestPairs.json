@@ -1,0 +1,26 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS sights CASCADE;",
+                "CREATE TABLE sights (id INTEGER, name TEXT, x DOUBLE PRECISION, y DOUBLE PRECISION);",
+                "INSERT INTO sights VALUES (1, 'Tower of London', 51508.026, -7.5939), (2, 'Trafalgar Square', 51508.040, -12.7899), (3, 'London Eye', 51503.538, -11.9371), (4, 'The Shard', 51504.533, -8.6028);"
+            ],
+            "expectedOutput": [
+                {
+                    "place1": "London Eye",
+                    "place2": "The Shard"
+                },
+                {
+                    "place1": "London Eye",
+                    "place2": "Trafalgar Square"
+                },
+                {
+                    "place1": "The Shard",
+                    "place2": "Tower of London"
+                }
+            ]
+        }
+    ]
+}

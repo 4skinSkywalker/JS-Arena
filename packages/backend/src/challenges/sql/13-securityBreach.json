@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS users;",
-                "CREATE TABLE users (first_name text, second_name text, attribute text);",
+                "DROP TABLE IF EXISTS users CASCADE;",
+                "CREATE TABLE users (first_name TEXT, second_name TEXT, attribute TEXT);",
                 "INSERT INTO users VALUES ('Mikel', 'Cover', '%Mikel_Cover%');",
                 "INSERT INTO users VALUES ('Vicenta', 'Kravitz', '0%Vicenta_Kravitz%');",
                 "INSERT INTO users VALUES ('Tosha', 'Cover', '02VO1aJ767GF7L186lpIfBR0fQ5406Q02YcpG42LDF4Bv26');",

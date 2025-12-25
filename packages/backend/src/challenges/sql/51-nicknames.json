@@ -1,0 +1,38 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS reservedNicknames CASCADE;",
+                "CREATE TABLE reservedNicknames (id TEXT, nickname TEXT);",
+                "INSERT INTO reservedNicknames VALUES ('id001', 'alex1990'), ('id142', 'killer007'), ('id15674', 'prohunter'), ('id4242', 'acc0rdin'), ('id616', 'Zoneg'), ('id9999', 'butch');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": "id001",
+                    "nickname": "alex1990"
+                },
+                {
+                    "id": "id4242",
+                    "nickname": "acc0rdin"
+                },
+                {
+                    "id": "rename - id142",
+                    "nickname": "rename - killer007"
+                },
+                {
+                    "id": "rename - id15674",
+                    "nickname": "rename - prohunter"
+                },
+                {
+                    "id": "rename - id616",
+                    "nickname": "rename - Zoneg"
+                },
+                {
+                    "id": "rename - id9999",
+                    "nickname": "rename - butch"
+                }
+            ]
+        }
+    ]
+}

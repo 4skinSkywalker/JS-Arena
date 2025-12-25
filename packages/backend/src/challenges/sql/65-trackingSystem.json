@@ -1,0 +1,29 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS tracks CASCADE;",
+                "CREATE TABLE tracks (received_at TEXT, event_name TEXT, anonymous_id INTEGER, user_id INTEGER);",
+                "INSERT INTO tracks VALUES ('2016-01-01 12:13:12', 'buttonClicked', 1, NULL), ('2016-01-02 12:14:15', 'pageReloaded', 3, NULL), ('2016-02-02 13:15:13', 'pageRendered', 2, NULL), ('2016-02-03 13:15:23', 'commentWritten', 3, NULL), ('2016-03-03 14:15:15', 'avatarUpdated', 2, 2), ('2016-03-04 14:15:24', 'statusUpdated', 1, 1);"
+            ],
+            "expectedOutput": [
+                {
+                    "anonym_id": 1,
+                    "last_null": "buttonClicked",
+                    "first_notnull": "statusUpdated"
+                },
+                {
+                    "anonym_id": 2,
+                    "last_null": "pageRendered",
+                    "first_notnull": "avatarUpdated"
+                },
+                {
+                    "anonym_id": 3,
+                    "last_null": "commentWritten",
+                    "first_notnull": null
+                }
+            ]
+        }
+    ]
+}

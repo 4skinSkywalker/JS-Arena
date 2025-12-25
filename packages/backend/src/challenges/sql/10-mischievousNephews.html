@@ -7,26 +7,33 @@
     <p>You decided to track and analyze their behavior, so you created the <strong>mischief</strong> table in your local
         database. The table has the following columns:</p>
     <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><code>mischief_date</code>: the date of the mischief (of the <code>date</code> type);</li>
-        <li class="list-group-item"><code>author</code>: the nephew who caused the mischief (<code>"Huey"</code>, <code>"Dewey"</code> or
-            <code>"Louie"</code>);</li>
+        <li class="list-group-item"><code>mischief_date</code>: the date of the mischief (of the <code>date</code>
+            type);</li>
+        <li class="list-group-item"><code>author</code>: the nephew who caused the mischief (<code>"Huey"</code>,
+            <code>"Dewey"</code> or
+            <code>"Louie"</code>);
+        </li>
         <li class="list-group-item"><code>title</code>: the title of the mischief.</li>
     </ul>
     <p>It looks like each of your nephews is active on a specific day of the week. You decide to check your theory by
         creating another table as follows:<br>
         The resulting table should contain four columns, <code>weekday</code>, <code>mischief_date</code>,
         <code>author</code>, and <code>title</code>, where <code>weekday</code> is the weekday of
-        <code>mischief_date</code> (<code>0</code> for Sunday, <code>1</code> for Monday, and so on). The table should be sorted by the <code>weekday</code> column, and for each
+        <code>mischief_date</code> (<code>0</code> for Sunday, <code>1</code> for Monday, and so on). The table should
+        be sorted by the <code>weekday</code> column, and for each
         <code>weekday</code> Huey's mischief should go first, Dewey's should go next, and Louie's should go last. In
         case of a tie, <code>mischief_date</code> should be a tie-breaker. If there's still a tie, the record with the
-        <a href="keyword://lexicographical-order-for-strings" target="_blank">lexicographically smallest</a>
-        <code>title</code> should go first.</p>
+        lexicographically smallest
+        <code>title</code> should go first.
+    </p>
     <p>It is guaranteed that all entries of <strong>mischief</strong> are unique.</p>
-    
-    <h2>Tips</h2>
-    <p>You can use the <a href="keyword://date-functions" target="_blank">WEEKDAY()</a> function to extract the day of the week from the <code>mischief_date</code> column.</p>
-    
-    <h2>Example</h2>
+
+    <h3>Tips</h3>
+    <p>You can use <code>EXTRACT(DOW FROM mischief_date::date)</code> to extract the day of the week from the
+        <code>mischief_date</code> column. Here, <code>::date</code> is a type cast, converting
+        <code>mischief_date</code> from text to a date type.</p>
+
+    <h3>Example</h3>
     <p>For the following table <strong>mischief</strong></p>
     <table class="table table-striped my-3">
         <thead>

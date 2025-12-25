@@ -1,0 +1,49 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS users CASCADE;",
+                "CREATE TABLE users (id INTEGER, login TEXT, name TEXT, user_type TEXT);",
+                "INSERT INTO users VALUES (1, 'Ann92', 'Ann', 'user');",
+                "INSERT INTO users VALUES (2, 'Bob88', 'Bob', 'user');",
+                "INSERT INTO users VALUES (3, 'Carol412', 'Carol', 'admin');",
+                "INSERT INTO users VALUES (4, 'Dave123', 'Dave', 'admin');",
+                "INSERT INTO users VALUES (5, 'Eve555', 'Eve', 'user');"
+            ],
+            "expectedOutput": [
+                {
+                    "stats": "There are 3 users"
+                },
+                {
+                    "stats": "There are 2 admins"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS users CASCADE;",
+                "CREATE TABLE users (id INTEGER, login TEXT, name TEXT, user_type TEXT);",
+                "INSERT INTO users VALUES (1, 'Ann92', 'Ann', 'user');",
+                "INSERT INTO users VALUES (2, 'Bob88', 'Bob', 'moderator');",
+                "INSERT INTO users VALUES (3, 'Carol412', 'Carol', 'editor');",
+                "INSERT INTO users VALUES (4, 'Dave123', 'Dave', 'admin');",
+                "INSERT INTO users VALUES (5, 'Eve555', 'Eve', 'admin');"
+            ],
+            "expectedOutput": [
+                {
+                    "stats": "There are 2 admins"
+                },
+                {
+                    "stats": "There is 1 editor"
+                },
+                {
+                    "stats": "There is 1 moderator"
+                },
+                {
+                    "stats": "There is 1 user"
+                }
+            ]
+        }
+    ]
+}

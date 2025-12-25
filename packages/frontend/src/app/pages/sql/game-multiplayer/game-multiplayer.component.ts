@@ -94,6 +94,10 @@ export class SQLGameMultiplayerComponent {
       event.preventDefault();
       this.runAllTests();
     }
+
+    if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+      event.preventDefault(); // stop browser Save dialog
+    }
   }
 
   constructor(
@@ -319,15 +323,25 @@ export class SQLGameMultiplayerComponent {
 
     await delay(0.1);
 
-    console.log({ execResult: await this.db.exec(test.scripts?.join("\n") || "") });
     let received;
     try {
-      received = (await this.db.query(this.editorContent())).rows;
+      try {
+        console.log({ execResult: await this.db.exec(test.scripts?.join("\n") || "") });
+      } catch (e: any) {
+        throw new Error(`System error - ${e?.message || "Unknown error"}`);
+      }
+
+      let execResult;
+      try {
+        execResult = await this.db.exec(this.editorContent());
+      } catch (e: any) {
+        throw new Error(`User script error - ${e?.message || "Unknown error"}`);
+      }
+
+      received = execResult.pop().rows;
       console.log({ results: received });
     } catch (e: any) {
-      if (e?.message) {
-        test.logs?.push({ level: "error", text: e.message });
-      }
+      test.logs?.push({ level: "error", text: e?.message || "Unknown error" });
       test.status = "failed";
       return;
     }

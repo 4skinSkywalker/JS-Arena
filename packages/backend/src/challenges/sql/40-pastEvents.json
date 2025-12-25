@@ -1,0 +1,22 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Events CASCADE;",
+                "CREATE TABLE Events (id INTEGER, name TEXT, event_date TEXT);",
+                "INSERT INTO Events VALUES (1, 'TGIF', '2016-11-18'), (2, 'TGIF', '2016-11-11'), (3, 'Weekly team meeting', '2016-11-07'), (4, 'Weekly team meeting', '2016-11-14');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Weekly team meeting",
+                    "event_date": "2016-11-14"
+                },
+                {
+                    "name": "TGIF",
+                    "event_date": "2016-11-11"
+                }
+            ]
+        }
+    ]
+}

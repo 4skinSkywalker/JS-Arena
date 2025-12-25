@@ -1,0 +1,161 @@
+<h1>Courses Distribution</h1>
+<div>
+    <p>You work with a professor of applied mathematics and informatics to create and distribute this year's plan of
+        courses for students.<br>
+        You were almost finished when you noticed that a couple of fixes yet need to be done. There are courses which
+        names' are marked as <code>'-toremove'</code>, so you decided to remove them permanently. Prior to removing
+        them, you'd like to make sure that deleting a course would also remove it from all the related tables
+        automatically.</p>
+    <p>All courses are stored in <strong>courses</strong> table that has the following structure:</p>
+    <ul class="list-group list-group-flush my-3">
+        <li class="list-group-item"><code>id</code>: unique id of the course;</li>
+        <li class="list-group-item"><code>name</code>: unique name of the course that may end with
+            <code>'-toremove'</code>, which means that
+            the course is about to be removed;</li>
+        <li class="list-group-item"><code>description</code>: description of the course.</li>
+    </ul>
+    <p>There are also <strong>groupcourses</strong> and <strong>groupexams</strong> tables which represent courses
+        assigned to groups and examination dates of courses for each group, respectively. Here are their structures:</p>
+    <ul class="list-group list-group-flush my-3">
+        <li class="list-group-item"><strong>groupcourses</strong>:
+            <ul class="list-group list-group-flush my-3">
+                <li class="list-group-item"><code>group_id</code>: group id;</li>
+                <li class="list-group-item"><code>course_id</code>: course id;</li>
+            </ul>
+        </li>
+        <li class="list-group-item"><strong>groupexams</strong>:
+            <ul class="list-group list-group-flush my-3">
+                <li class="list-group-item"><code>date</code>: the date of the exam;</li>
+                <li class="list-group-item"><code>group_id</code>: id of the group taking the exam;</li>
+                <li class="list-group-item"><code>course_id</code>: id of the course.</li>
+            </ul>
+        </li>
+    </ul>
+    <p>Given <strong>courses</strong>, <strong>groupcourses</strong> and <strong>groupexams</strong> tables you need to
+        properly set up foreign keys, so that after a record is deleted from the <strong>courses</strong> table, records
+        that correspond to the deleted course are also deleted from <strong>groupcourses</strong> and
+        <strong>groupexams</strong>.
+    </p>
+    <p>Your task is to concatenate the results from two tables, <strong>groupcourses</strong> and <strong>groupexams</strong>, each
+        containing <strong>group_id</strong> and <strong>course_id</strong> columns. Your goal is to return a unified list of group-course combinations
+        from these tables, sorted by <strong>group_id</strong> and <strong>course_id</strong>.</p>
+
+    <h3>Example</h3>
+    <p>For the following tables <strong>courses</strong></p>
+    <table class="table table-striped my-3">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Linear algebra</td>
+                <td>Basis of matrix theory and linear algebra</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Geometry</td>
+                <td>NULL</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Determinants and matrices</td>
+                <td>NULL</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Matlab-toremove</td>
+                <td>Matlab 7</td>
+            </tr>
+        </tbody>
+    </table>
+    <p><strong>groupcourses</strong></p>
+    <table class="table table-striped my-3">
+        <thead>
+            <tr>
+                <th>group_id</th>
+                <th>course_id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>and <strong>groupexams</strong></p>
+    <table class="table table-striped my-3">
+        <thead>
+            <tr>
+                <th>date</th>
+                <th>group_id</th>
+                <th>course_id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2010-01-10</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>2010-01-11</td>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>2010-01-12</td>
+                <td>2</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>the final result should be</p>
+    <table class="table table-striped my-3">
+        <thead>
+            <tr>
+                <th>group_id</th>
+                <th>course_id</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

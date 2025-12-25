@@ -1,0 +1,30 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS positions CASCADE;",
+                "CREATE TABLE positions (id INTEGER, x INTEGER, y INTEGER);",
+                "INSERT INTO positions VALUES (1, 0, 0), (2, 2, 0), (3, 4, 3), (4, 2, 1);"
+            ],
+            "expectedOutput": [
+                {
+                    "id1": 1,
+                    "id2": 2
+                },
+                {
+                    "id1": 2,
+                    "id2": 4
+                },
+                {
+                    "id1": 3,
+                    "id2": 4
+                },
+                {
+                    "id1": 4,
+                    "id2": 2
+                }
+            ]
+        }
+    ]
+}

@@ -23,8 +23,11 @@
         <strong>expressions</strong>, build the resulting table as follows: The table should have the same columns as
         the initial table does, but it should only contain those rows that represent correct expressions. The rows
         should be ordered by <code>id</code>.</p>
+
+    <h3>Tips</h3>
+    <p>You can use the <code>NULLIF(column_name, 0)</code> to replace all the zeroes in a column with NULL. Dividing by NULL in PostgreSQL yields NULL, effectively bypassing the division by 0 error.</p>
     
-    <h2>Example</h2>
+    <h3>Example</h3>
     <p>For the following table <strong>expressions</strong></p>
     <table class="table table-striped my-3">
         <thead>

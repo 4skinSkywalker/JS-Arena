@@ -11,16 +11,14 @@
         <li class="list-group-item"><code>country</code>: the country to which you traveled.</li>
     </ul>
     <p>Given this <strong>diary</strong> table, create a semicolon-separated list of all the distinct countries you've
-        visited, sorted <a href="keyword://lexicographical-order-for-strings" target="_blank">lexicographically</a>, and
+        visited, sorted lexicographically, and
         put the list in a table that has a single <code>countries</code> column.</p>
-    
-    <h2>Tips</h2>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><strong>GROUP_CONCAT:</strong> This function concatenates values from multiple rows into a single string with a default comma (",") separator.</li>
-        <li class="list-group-item"><strong>REPLACE:</strong> Once you have the comma-separated list, apply the REPLACE function to substitute commas with semicolons.</li>
-    </ul>
 
-    <h2>Example</h2>
+    <h3>Tips</h3>
+    <p>You can use <code>string_agg(expression, separator ORDER BY sort_expression)</code> to concatenate values from
+        multiple rows into a single string with a custom separator.</p>
+
+    <h3>Example</h3>
     <p>For the following table <strong>diary</strong></p>
     <table class="table table-striped my-3">
         <thead>

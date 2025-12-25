@@ -1,0 +1,17 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS employees CASCADE;",
+                "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);",
+                "INSERT INTO employees VALUES (1, 'John', 1200), (2, 'Bill', 1000), (3, 'Mike', 1300), (4, 'Katy', 1200), (5, 'Brendon', 1300), (6, 'Amanda', 900);"
+            ],
+            "expectedOutput": [
+                {
+                    "difference": 1700
+                }
+            ]
+        }
+    ]
+}

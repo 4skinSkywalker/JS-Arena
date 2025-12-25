@@ -1,0 +1,59 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS pr_department CASCADE;",
+                "CREATE TABLE pr_department (id INTEGER, name TEXT, date_joined TEXT);",
+                "INSERT INTO pr_department VALUES (2, 'Bertha Neiman', '2010-12-15'), (3, 'Melissa Chace', '2012-08-14'), (4, 'Doyle Wiste', '2015-01-02'), (8, 'Libbie Troy', '2016-03-04'), (15, 'Noreen Bonner', '2012-07-07'), (42, 'Farah Dahlquist', '2006-12-12');",
+                "DROP TABLE IF EXISTS it_department CASCADE;",
+                "CREATE TABLE it_department (id INTEGER, name TEXT, date_joined TEXT);",
+                "INSERT INTO it_department VALUES (1, 'Farah Dahlquist', '2017-01-15'), (2, 'Mohammed Claycomb', '2016-06-11'), (3, 'Allen Reger', '2015-08-12'), (5, 'Jacque Fuhr', '2013-04-01'), (4, 'Joya Buss', '2011-11-11'), (6, 'Leonia Maultsby', '2009-02-02'), (7, 'Oliva Mcgarry', '2008-05-05');",
+                "DROP TABLE IF EXISTS sales_department CASCADE;",
+                "CREATE TABLE sales_department (id INTEGER, name TEXT, date_joined TEXT);",
+                "INSERT INTO sales_department VALUES (3, 'Jayne Kravitz', '2009-09-09'), (4, 'Joya Buss', '2008-08-08'), (7, 'Edmond Kind', '2007-07-07');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Bertha Neiman"
+                },
+                {
+                    "name": "Doyle Wiste"
+                },
+                {
+                    "name": "Libbie Troy"
+                },
+                {
+                    "name": "Melissa Chace"
+                },
+                {
+                    "name": "Noreen Bonner"
+                },
+                {
+                    "name": "Allen Reger"
+                },
+                {
+                    "name": "Farah Dahlquist"
+                },
+                {
+                    "name": "Jacque Fuhr"
+                },
+                {
+                    "name": "Joya Buss"
+                },
+                {
+                    "name": "Mohammed Claycomb"
+                },
+                {
+                    "name": "Edmond Kind"
+                },
+                {
+                    "name": "Jayne Kravitz"
+                },
+                {
+                    "name": "Joya Buss"
+                }
+            ]
+        }
+    ]
+}

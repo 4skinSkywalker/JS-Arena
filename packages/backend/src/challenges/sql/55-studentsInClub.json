@@ -1,0 +1,32 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS students CASCADE;",
+                "CREATE TABLE students (id INTEGER, name TEXT, club_id INTEGER);",
+                "INSERT INTO students VALUES (3, 'Richard Gear', 23), (6, 'Jennifer Offencerence', 11), (14, 'Obiten Kenobi', 87), (36, 'Closece', 87);",
+                "DROP TABLE IF EXISTS clubs CASCADE;",
+                "CREATE TABLE clubs (id INTEGER, name TEXT);",
+                "INSERT INTO clubs VALUES (23, 'Theater club'), (64, 'Soccer club'), (87, 'Glee club');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 3,
+                    "name": "Richard Gear",
+                    "club_id": 23
+                },
+                {
+                    "id": 14,
+                    "name": "Obiten Kenobi",
+                    "club_id": 87
+                },
+                {
+                    "id": 36,
+                    "name": "Closece",
+                    "club_id": 87
+                }
+            ]
+        }
+    ]
+}

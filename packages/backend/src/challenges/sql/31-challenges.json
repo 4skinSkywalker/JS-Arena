@@ -1,0 +1,60 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Hackers CASCADE;",
+                "CREATE TABLE Hackers (hacker_id INTEGER, name TEXT);",
+                "INSERT INTO Hackers VALUES (5077, 'Rose');",
+                "INSERT INTO Hackers VALUES (21283, 'Angela');",
+                "INSERT INTO Hackers VALUES (62643, 'Frank');",
+                "INSERT INTO Hackers VALUES (88255, 'Patrick');",
+                "INSERT INTO Hackers VALUES (96196, 'Lisa');",
+                "DROP TABLE IF EXISTS Challenges CASCADE;",
+                "CREATE TABLE Challenges (challenge_id INTEGER, hacker_id INTEGER);",
+                "INSERT INTO Challenges VALUES (61654, 5077);",
+                "INSERT INTO Challenges VALUES (58302, 21283);",
+                "INSERT INTO Challenges VALUES (40587, 88255);",
+                "INSERT INTO Challenges VALUES (29477, 5077);",
+                "INSERT INTO Challenges VALUES (1220, 21283);",
+                "INSERT INTO Challenges VALUES (69514, 21283);",
+                "INSERT INTO Challenges VALUES (46561, 62743);",
+                "INSERT INTO Challenges VALUES (58077, 62743);",
+                "INSERT INTO Challenges VALUES (18483, 88255);",
+                "INSERT INTO Challenges VALUES (76766, 21283);",
+                "INSERT INTO Challenges VALUES (52382, 5077);",
+                "INSERT INTO Challenges VALUES (74467, 21283);",
+                "INSERT INTO Challenges VALUES (33625, 96196);",
+                "INSERT INTO Challenges VALUES (26053, 88255);",
+                "INSERT INTO Challenges VALUES (42665, 62743);",
+                "INSERT INTO Challenges VALUES (12859, 62743);",
+                "INSERT INTO Challenges VALUES (70094, 21283);",
+                "INSERT INTO Challenges VALUES (34599, 88255);",
+                "INSERT INTO Challenges VALUES (54680, 88255);",
+                "INSERT INTO Challenges VALUES (61881, 5077);"
+            ],
+            "expectedOutput": [
+                {
+                    "hacker_id": 21283,
+                    "name": "Angela",
+                    "count": 6
+                },
+                {
+                    "hacker_id": 88255,
+                    "name": "Patrick",
+                    "count": 5
+                },
+                {
+                    "hacker_id": 5077,
+                    "name": "Rose",
+                    "count": 4
+                },
+                {
+                    "hacker_id": 96196,
+                    "name": "Lisa",
+                    "count": 1
+                }
+            ]
+        }
+    ]
+}

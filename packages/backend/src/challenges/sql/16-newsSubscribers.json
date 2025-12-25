@@ -3,10 +3,10 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS full_year;",
-                "DROP TABLE IF EXISTS half_year;",
-                "CREATE TABLE full_year (id integer, newspaper text, subscriber text);",
-                "CREATE TABLE half_year (id integer, newspaper text, subscriber text);",
+                "DROP TABLE IF EXISTS full_year CASCADE;",
+                "DROP TABLE IF EXISTS half_year CASCADE;",
+                "CREATE TABLE full_year (id INTEGER, newspaper TEXT, subscriber TEXT);",
+                "CREATE TABLE half_year (id INTEGER, newspaper TEXT, subscriber TEXT);",
                 "INSERT INTO full_year VALUES (1, 'The Paragon Herald', 'Crissy Sepe');",
                 "INSERT INTO full_year VALUES (2, 'The Daily Reporter', 'Tonie Moreton');",
                 "INSERT INTO full_year VALUES (3, 'Morningtide Daily', 'Erwin Chitty');",

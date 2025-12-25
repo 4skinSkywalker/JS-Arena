@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS diary;",
-                "CREATE TABLE diary (id integer, travel_date text, country text);",
+                "DROP TABLE IF EXISTS diary CASCADE;",
+                "CREATE TABLE diary (id INTEGER, travel_date TEXT, country TEXT);",
                 "INSERT INTO diary VALUES (1, '2008-05-12', 'Ireland');",
                 "INSERT INTO diary VALUES (2, '2010-11-04', 'France');",
                 "INSERT INTO diary VALUES (3, '2005-10-02', 'Australia');",

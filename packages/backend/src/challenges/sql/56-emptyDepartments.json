@@ -1,0 +1,38 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS departments CASCADE;",
+                "CREATE TABLE departments (id INTEGER, dep_name TEXT);",
+                "INSERT INTO departments VALUES (1, 'IT'), (2, 'HR'), (3, 'Sales'), (4, 'Warehousing');",
+                "DROP TABLE IF EXISTS employees CASCADE;",
+                "CREATE TABLE employees (id INTEGER, full_name TEXT, department INTEGER);",
+                "INSERT INTO employees VALUES (1, 'James Miller', 1), (2, 'Joseph Harvey', 1), (3, 'Anna Lawson', 2), (4, 'Arthur Saunders', 3);"
+            ],
+            "expectedOutput": [
+                {
+                    "dep_name": "Warehousing"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS departments CASCADE;",
+                "CREATE TABLE departments (id INTEGER, dep_name TEXT);",
+                "INSERT INTO departments VALUES (1, 'Locomotive Industry'), (2, 'Robotics'), (3, 'French Fries'), (4, 'Wormhole'), (5, 'Spare Parts');",
+                "DROP TABLE IF EXISTS employees CASCADE;",
+                "CREATE TABLE employees (id INTEGER, full_name TEXT, department INTEGER);",
+                "INSERT INTO employees VALUES (1, 'Barricade French', 1), (2, 'English Star', 1), (3, 'Jodie Lawless', 2), (4, 'Befunge Sandman', 3);"
+            ],
+            "expectedOutput": [
+                {
+                    "dep_name": "Wormhole"
+                },
+                {
+                    "dep_name": "Spare Parts"
+                }
+            ]
+        }
+    ]
+}

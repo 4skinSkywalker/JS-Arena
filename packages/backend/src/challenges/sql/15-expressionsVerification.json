@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS expressions;",
-                "CREATE TABLE expressions (id integer, a integer, b integer, operation text, c integer);",
+                "DROP TABLE IF EXISTS expressions CASCADE;",
+                "CREATE TABLE expressions (id INTEGER, a DOUBLE PRECISION, b DOUBLE PRECISION, operation TEXT, c DOUBLE PRECISION);",
                 "INSERT INTO expressions VALUES (1, 2, 3, '+', 5), (2, 2, 3, '+', 6), (3, 3, 2, '/', 1), (4, 4, 7, '*', 28), (5, 54, 2, '-', 27), (6, 3, 0, '/', 0);"
             ],
             "expectedOutput": [

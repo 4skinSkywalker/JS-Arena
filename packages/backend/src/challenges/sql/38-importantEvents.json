@@ -1,0 +1,38 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS events CASCADE;",
+                "CREATE TABLE events (id INTEGER, name TEXT, event_date TEXT, participants INTEGER);",
+                "INSERT INTO events VALUES (1, 'Dinner', '2016-11-27', 3), (2, 'Comic-con', '2016-10-25', 100), (3, 'Christmas', '2016-12-31', 5000), (4, 'Meeting', '2016-10-18', 300);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 4,
+                    "name": "Meeting",
+                    "event_date": "2016-10-18",
+                    "participants": 300
+                },
+                {
+                    "id": 2,
+                    "name": "Comic-con",
+                    "event_date": "2016-10-25",
+                    "participants": 100
+                },
+                {
+                    "id": 3,
+                    "name": "Christmas",
+                    "event_date": "2016-12-31",
+                    "participants": 5000
+                },
+                {
+                    "id": 1,
+                    "name": "Dinner",
+                    "event_date": "2016-11-27",
+                    "participants": 3
+                }
+            ]
+        }
+    ]
+}

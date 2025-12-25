@@ -1,0 +1,44 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS userInput CASCADE;",
+                "CREATE TABLE userInput (input_date TEXT);",
+                "INSERT INTO userInput VALUES ('2016-10-23 22:00:00');"
+            ],
+            "expectedOutput": [
+                {
+                    "alarm_date": "2016-10-23 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-10-30 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-11-06 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-11-13 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-11-20 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-11-27 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-12-04 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-12-11 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-12-18 22:00:00"
+                },
+                {
+                    "alarm_date": "2016-12-25 22:00:00"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS people_interests CASCADE;",
+                "CREATE TABLE people_interests (name TEXT, interests TEXT);",
+                "INSERT INTO people_interests VALUES ('August', 'cooking,juggling');",
+                "INSERT INTO people_interests VALUES ('Buddy', 'reading,swimming,drawing,acting,dancing,videogaming');",
+                "INSERT INTO people_interests VALUES ('David', 'juggling,sculpting');",
+                "INSERT INTO people_interests VALUES ('Dennis', 'swimming,cooking,fishkeeping');",
+                "INSERT INTO people_interests VALUES ('James', 'reading,drawing');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Buddy"
+                },
+                {
+                    "name": "James"
+                }
+            ]
+        }
+    ]
+}

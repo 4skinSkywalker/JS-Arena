@@ -2,7 +2,14 @@
     <div class="editor-container">
         <div class="editor-wrap">
             <div class="editor-title">
-                <span>Editor</span>
+                <div class="d-flex gap-1">
+                    <a routerLink="/" class="btn compact btn-secondary">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                    <a routerLink="../" class="btn compact btn-secondary">
+                        <i class="bi bi-list-task"></i> Challenges
+                    </a>
+                </div>
                 <button
                     class="btn compact btn-secondary"
                     (click)="runCode(problemTests()[0]?.input || null)"
@@ -12,7 +19,7 @@
                     (click)="runAllTests()"
                 >Run tests (⌘ + ↵)</button>
             </div>
-            <div class="editor" id="editor"></div>
+            <div id="editor"></div>
         </div>
 
         <div class="console-container">
@@ -55,30 +62,54 @@
     <div class="instructions">
         <div class="nav-wrap">
             <ul class="nav me-auto">
-                <li class="nav-item" [class.active]="navTab() === 'instructions'">
-                    <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
+                <li
+                    class="nav-item"
+                    [class.active]="navTab() === 'instructions'"
+                >
+                    <button
+                        class="nav-link compact"
+                        (click)="navTab.set('instructions')"
+                    >Instructions</button>
                 </li>
-                <li class="nav-item" [class.active]="navTab() === 'benchmark'">
-                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ problemTests().length || 0 }})</a>
+                <li
+                    class="nav-item"
+                    [class.active]="navTab() === 'benchmark'"
+                >
+                    <button
+                        class="nav-link compact"
+                        (click)="navTab.set('benchmark')"
+                    >Benchmark ({{ testsPassed() }}/{{ problemTests().length || 0 }})</button>
+                </li>
+                <li
+                    class="nav-item"
+                    [class.active]="navTab() === 'solution'"
+                    [class.disabled]="!bypassSolutionLock() && problemSolutionUnlockCountdown() !== ''"
+                >
+                    <button
+                        class="nav-link compact"
+                        (click)="navTab.set('solution'); forceSolutionEditorRefresh();"
+                    >Solution {{ bypassSolutionLock() ? '' : problemSolutionUnlockCountdown() }}</button>
                 </li>
             </ul>
             <div class="d-flex gap-1">
                 <button
                     class="btn btn-secondary compact"
-                    (click)="backToJourney()"
+                    (click)="goToProblem('previous')"
+                    [disabled]="!prevProblemFilename()"
                 >
-                    <i class="bi bi-box-arrow-left"></i> Back to list
+                    <i class="bi bi-arrow-left"></i> Prev
                 </button>
                 <button
                     class="btn btn-secondary compact"
                     [class.btn-primary]="
                         testsPassed() != null
-                     && testsPassed() != 0
-                     && testsPassed() === problemTests().length
+                        && testsPassed() != 0
+                        && testsPassed() === problemTests().length
                     "
-                    (click)="goToNextProblem()"
+                    (click)="goToProblem('next')"
+                    [disabled]="!nextProblemFilename()"
                 >
-                    Next problem <i class="bi bi-arrow-right"></i>
+                    Next <i class="bi bi-arrow-right"></i>
                 </button>
             </div>
         </div>
@@ -106,7 +137,7 @@
                             <div class="benchmark-header">
                                 <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
                                 @if (!$last) {
-                                <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
+                                <button class="btn compact ms-auto me-2" style="pointer-events: none;">Click for Details</button>
                                 }
                                 @else {
                                 <span class="ms-auto me-2"><i class="bi bi-lock-fill" style="font-size: 1.25rem;"></i> (Locked)</span>
@@ -152,6 +183,13 @@
                     }
                 </div>
             </div>
+
+            <div
+                class="nav-panel-solution"
+                [class.hidden]="navTab() !== 'solution'"
+            >
+                <div id="solution-editor"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -170,7 +208,7 @@
     <div class="modal-footer">
         <button class="btn btn-secondary" (click)="backToJourney()">Go to journey</button>
         <button class="btn btn-secondary" (click)="uncheck('#challenge-completed-trigger')">Stay here</button>
-        <button class="btn btn-primary" (click)="goToNextProblem()">Next problem</button>
+        <button class="btn btn-primary" (click)="goToProblem('next')" [disabled]="!nextProblemFilename()">Next problem</button>
     </div>
   </div>
 </div>

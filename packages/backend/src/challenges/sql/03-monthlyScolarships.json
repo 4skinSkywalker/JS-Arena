@@ -3,8 +3,8 @@
     "tests": [
         {
 			"scripts": [
-				"DROP TABLE IF EXISTS scholarships;",
-				"CREATE TABLE scholarships (id integer, scholarship integer);",
+				"DROP TABLE IF EXISTS scholarships CASCADE;",
+				"CREATE TABLE scholarships (id INTEGER, scholarship DOUBLE PRECISION);",
 				"INSERT INTO scholarships VALUES (1,12000), (2,18000), (3,24000), (4,15000), (5,21000), (6,13000);"
 			],
             "expectedOutput": [

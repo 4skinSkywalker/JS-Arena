@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS foreignCompetitors;",
-                "CREATE TABLE foreignCompetitors (competitor text, country text);",
+                "DROP TABLE IF EXISTS foreignCompetitors CASCADE;",
+                "CREATE TABLE foreignCompetitors (competitor TEXT, country TEXT);",
                 "INSERT INTO foreignCompetitors VALUES ('Acme Corp', 'USA');",
                 "INSERT INTO foreignCompetitors VALUES ('GLOBEX', 'USA');",
                 "INSERT INTO foreignCompetitors VALUES ('Openmedia', 'France');",

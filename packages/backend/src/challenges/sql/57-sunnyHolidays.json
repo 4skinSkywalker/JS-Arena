@@ -1,0 +1,23 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS holidays CASCADE;",
+                "CREATE TABLE holidays (holiday_date TEXT);",
+                "INSERT INTO holidays VALUES ('2016-12-31'), ('2017-01-02'), ('2017-01-03'), ('2017-01-20');",
+                "DROP TABLE IF EXISTS weather CASCADE;",
+                "CREATE TABLE weather (sunny_date TEXT);",
+                "INSERT INTO weather VALUES ('2016-12-31'), ('2016-12-25'), ('2017-02-01'), ('2017-01-02'), ('2016-11-27'), ('2017-01-01');"
+            ],
+            "expectedOutput": [
+                {
+                    "ski_date": "2016-12-31"
+                },
+                {
+                    "ski_date": "2017-01-02"
+                }
+            ]
+        }
+    ]
+}

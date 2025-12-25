@@ -1,0 +1,309 @@
+<h2>15 Days of Learning SQL - Part 1</h2>
+
+<p>
+  Julia conducted a <strong>15 days of learning SQL</strong> contest.
+</p>
+
+<p>
+  Write a query to find the <code>hacker_id</code> and
+  <code>name</code> of the hacker who made the maximum number of submissions each day.
+  If more than one hacker has the maximum number of submissions, print the
+  <strong>lowest hacker_id</strong>.
+</p>
+
+<p>
+  The query should print this information for each day of the contest, sorted by the date.
+</p>
+
+<h3>Input Format</h3>
+
+<p>The following tables hold contest data:</p>
+
+<ul class="list-group list-group-flush my-3">
+  <li class="list-group-item">
+    <strong>Hackers</strong>:
+    <ul class="list-group list-group-flush my-3">
+      <li class="list-group-item"><code>id</code> – the id of the hacker</li>
+      <li class="list-group-item"><code>name</code> – the name of the hacker</li>
+    </ul>
+  </li>
+  <li class="list-group-item">
+    <strong>Submissions</strong>:
+    <ul class="list-group list-group-flush my-3">
+      <li class="list-group-item"><code>date</code> – the date of the submission</li>
+      <li class="list-group-item"><code>id</code> – the id of the submission</li>
+      <li class="list-group-item"><code>hacker_id</code> – the id of the hacker who made the submission</li>
+      <li class="list-group-item"><code>score</code> – the score of the submission</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Sample Input</h3>
+
+<h4>Hackers Table</h4>
+<table class="table table-striped my-3">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>15758</td>
+      <td>Rose</td>
+    </tr>
+    <tr>
+      <td>20703</td>
+      <td>Angela</td>
+    </tr>
+    <tr>
+      <td>36396</td>
+      <td>Frank</td>
+    </tr>
+    <tr>
+      <td>38289</td>
+      <td>Patrick</td>
+    </tr>
+    <tr>
+      <td>44065</td>
+      <td>Lisa</td>
+    </tr>
+    <tr>
+      <td>53473</td>
+      <td>Kimberly</td>
+    </tr>
+    <tr>
+      <td>62529</td>
+      <td>Bonnie</td>
+    </tr>
+    <tr>
+      <td>79722</td>
+      <td>Michael</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Submissions Table</h4>
+<table class="table table-striped my-3">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>id</th>
+      <th>hacker_id</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>'2016-03-01'</td>
+      <td>8494</td>
+      <td>20703</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>'2016-03-01'</td>
+      <td>22403</td>
+      <td>53473</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>'2016-03-01'</td>
+      <td>23965</td>
+      <td>79722</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>'2016-03-01'</td>
+      <td>30173</td>
+      <td>36396</td>
+      <td>70</td>
+    </tr>
+
+    <tr>
+      <td>'2016-03-02'</td>
+      <td>34928</td>
+      <td>20703</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>'2016-03-02'</td>
+      <td>38740</td>
+      <td>15758</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>'2016-03-02'</td>
+      <td>42769</td>
+      <td>79722</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>'2016-03-02'</td>
+      <td>44364</td>
+      <td>79722</td>
+      <td>60</td>
+    </tr>
+
+    <tr>
+      <td>'2016-03-03'</td>
+      <td>45440</td>
+      <td>20703</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>'2016-03-03'</td>
+      <td>49050</td>
+      <td>36396</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>'2016-03-03'</td>
+      <td>50273</td>
+      <td>79722</td>
+      <td>5</td>
+    </tr>
+
+    <tr>
+      <td>'2016-03-04'</td>
+      <td>50344</td>
+      <td>20703</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>'2016-03-04'</td>
+      <td>51360</td>
+      <td>44065</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>'2016-03-04'</td>
+      <td>54404</td>
+      <td>53473</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <td>'2016-03-04'</td>
+      <td>61533</td>
+      <td>79722</td>
+      <td>45</td>
+    </tr>
+
+    <tr>
+      <td>'2016-03-05'</td>
+      <td>72852</td>
+      <td>20703</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>'2016-03-05'</td>
+      <td>74546</td>
+      <td>38289</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>'2016-03-05'</td>
+      <td>76487</td>
+      <td>62529</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>'2016-03-05'</td>
+      <td>82439</td>
+      <td>36396</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>'2016-03-05'</td>
+      <td>90006</td>
+      <td>36396</td>
+      <td>40</td>
+    </tr>
+
+    <tr>
+      <td>'2016-03-06'</td>
+      <td>90404</td>
+      <td>20703</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Sample Output</h3>
+
+<table class="table table-striped my-3">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>hacker_id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>'2016-03-01'</td>
+      <td>20703</td>
+      <td>Angela</td>
+    </tr>
+    <tr>
+      <td>'2016-03-02'</td>
+      <td>79722</td>
+      <td>Michael</td>
+    </tr>
+    <tr>
+      <td>'2016-03-03'</td>
+      <td>20703</td>
+      <td>Angela</td>
+    </tr>
+    <tr>
+      <td>'2016-03-04'</td>
+      <td>20703</td>
+      <td>Angela</td>
+    </tr>
+    <tr>
+      <td>'2016-03-05'</td>
+      <td>36396</td>
+      <td>Frank</td>
+    </tr>
+    <tr>
+      <td>'2016-03-06'</td>
+      <td>20703</td>
+      <td>Angela</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Explanation</h3>
+
+<p>
+  On March 01, 2016 hackers made submissions. <strong>20703</strong> is considered to be the hacker
+  who made the maximum number of submissions on this day. The name of the hacker is
+  <strong>Angela</strong>.
+</p>
+
+<p>
+  On March 02, 2016 hackers made submissions. <strong>79722</strong> made the maximum number of submissions, and the
+  name of the hacker is
+  <strong>Michael</strong>.
+</p>
+
+<p>
+  On March 03, 2016 hackers made submissions. <strong>20703</strong> is considered the hacker with the maximum
+  number of submissions. The name is <strong>Angela</strong>.
+</p>
+
+<p>
+  On March 04, 2016 hackers made submissions. <strong>20703</strong> is chosen again.
+  The name is <strong>Angela</strong>.
+</p>
+
+<p>
+  On March 05, 2016 hackers made submissions. <strong>36396</strong> made the maximum number of submissions and the name
+  is
+  <strong>Frank</strong>.
+</p>
+
+<p>
+  On March 06, 2016 only one hacker made a submission. <strong>20703</strong> made the submission and the name is
+  <strong>Angela</strong>.
+</p>

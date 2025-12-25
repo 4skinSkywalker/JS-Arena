@@ -53,15 +53,34 @@ export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export function decamelize(str: string) {
-  return str.replace(/([a-zA-Z])(?=[A-Z0-9])/g, "$1 ").toLowerCase();
+export function decamelize(camelStr: string) {
+  return camelStr
+    .replace(/([a-zA-Z](?=[A-Z0-9])|[0-9](?=[a-zA-Z]))/g, "$1 ")
+    .toLowerCase();
 }
 
-export function getNextEntry<T>(map: Map<string, T>, currentKey: string) {
-  let found = false;
-  for (const [key, value] of map) {
-    if (found) return value;
-    if (key === currentKey) found = true;
+export function titlecase(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/\b(.)/g, (_, captured) =>
+      (captured === '-')
+        ? ' - '
+        : captured.toUpperCase()
+    );
+}
+
+export function getNearEntry<T>(
+  map: Map<string, T>,
+  currentKey: string,
+  which: "previous" | "next"
+) {
+  const entries = [...map.entries()];
+  for (let i = 0; i < entries.length; i++) {
+    if (entries[i][0] === currentKey) {
+      return (which === "previous")
+        ? entries[i - 1]?.[1]
+        : entries[i + 1]?.[1];
+    }
   }
-  return undefined; // No next element found
+  return undefined; // No element found
 }

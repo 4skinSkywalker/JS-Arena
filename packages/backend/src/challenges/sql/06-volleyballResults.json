@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS results;",
-                "CREATE TABLE results (name text, country text, scored integer, missed integer, wins integer);",
+                "DROP TABLE IF EXISTS results CASCADE;",
+                "CREATE TABLE results (name TEXT, country TEXT, scored INTEGER, missed INTEGER, wins INTEGER);",
                 "INSERT INTO results VALUES ('FC Tokyo', 'Japan', 26, 28, 1), ('Fujian', 'China', 24, 26, 0), ('Jesus Maria', 'Argentina', 25, 23, 3), ('University Blues', 'Australia', 16, 25, 2);"
             ],
             "expectedOutput": [

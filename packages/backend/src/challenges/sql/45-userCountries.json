@@ -1,0 +1,45 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS users CASCADE;",
+                "CREATE TABLE users (id INTEGER, city TEXT);",
+                "INSERT INTO users VALUES (1, 'San Francisco'), (2, 'Moscow'), (3, 'London'), (4, 'Washington'), (5, 'New York'), (6, 'Saint Petersburg'), (7, 'Helsinki');",
+                "DROP TABLE IF EXISTS cities CASCADE;",
+                "CREATE TABLE cities (city TEXT, country TEXT);",
+                "INSERT INTO cities VALUES ('Moscow', 'Russia'), ('Saint Petersburg', 'Russia'), ('San Francisco', 'USA'), ('Washington', 'USA'), ('New York', 'USA'), ('London', 'England');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "country": "USA"
+                },
+                {
+                    "id": 2,
+                    "country": "Russia"
+                },
+                {
+                    "id": 3,
+                    "country": "England"
+                },
+                {
+                    "id": 4,
+                    "country": "USA"
+                },
+                {
+                    "id": 5,
+                    "country": "USA"
+                },
+                {
+                    "id": 6,
+                    "country": "Russia"
+                },
+                {
+                    "id": 7,
+                    "country": "unknown"
+                }
+            ]
+        }
+    ]
+}

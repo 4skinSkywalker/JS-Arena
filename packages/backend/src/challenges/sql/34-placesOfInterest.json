@@ -1,0 +1,35 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS countryActivities CASCADE;",
+                "CREATE TABLE countryActivities (id INTEGER, country TEXT, region TEXT, leisure_activity_type TEXT, number_of_places INTEGER);",
+                "INSERT INTO countryActivities VALUES (1, 'France', 'Normandy', 'River cruise', 2), (2, 'Germany', 'Bavaria', 'Golf', 5), (3, 'Germany', 'Berlin', 'Adventure park', 2), (4, 'France', 'Ile-de-France', 'River cruise', 1), (5, 'Sweden', 'Stockholm', 'River cruise', 3), (6, 'France', 'Normandy', 'Kart racing', 4);"
+            ],
+            "expectedOutput": [
+                {
+                    "country": "France",
+                    "adventure_park": 0,
+                    "golf": 0,
+                    "river_cruise": 3,
+                    "kart_racing": 4
+                },
+                {
+                    "country": "Germany",
+                    "adventure_park": 2,
+                    "golf": 5,
+                    "river_cruise": 0,
+                    "kart_racing": 0
+                },
+                {
+                    "country": "Sweden",
+                    "adventure_park": 0,
+                    "golf": 0,
+                    "river_cruise": 3,
+                    "kart_racing": 0
+                }
+            ]
+        }
+    ]
+}

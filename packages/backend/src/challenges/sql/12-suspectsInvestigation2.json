@@ -3,8 +3,8 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS Suspect;",
-                "CREATE TABLE Suspect (id integer, name text, surname text, height integer, weight integer);",
+                "DROP TABLE IF EXISTS Suspect CASCADE;",
+                "CREATE TABLE Suspect (id INTEGER, name TEXT, surname TEXT, height INTEGER, weight INTEGER);",
                 "INSERT INTO Suspect VALUES (1, 'John', 'Doe', 165, 60);",
                 "INSERT INTO Suspect VALUES (2, 'Bill', 'Green', 170, 67);",
                 "INSERT INTO Suspect VALUES (3, 'Baelfire', 'Grehn', 172, 70);",

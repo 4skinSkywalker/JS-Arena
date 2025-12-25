@@ -1,0 +1,33 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS events CASCADE;",
+                "CREATE TABLE events (event_id INTEGER, date TEXT, user_id INTEGER);",
+                "INSERT INTO events VALUES (1, '2011-11-11 13:37:00', 4242), (2, '2012-12-12 04:04:00', 4987), (3, '2016-01-01 11:19:00', 4242), (4, '2011-11-11 13:37:00', 4987);",
+                "DROP TABLE IF EXISTS settings CASCADE;",
+                "CREATE TABLE settings (user_id INTEGER, timeshift INTEGER, hours INTEGER);",
+                "INSERT INTO settings VALUES (1, 30, 24), (4242, 0, 24), (4987, 60, 12);"
+            ],
+            "expectedOutput": [
+                {
+                    "event_id": 1,
+                    "formatted_date": "2011-11-11 13:37"
+                },
+                {
+                    "event_id": 2,
+                    "formatted_date": "2012-12-12 05:04 AM"
+                },
+                {
+                    "event_id": 3,
+                    "formatted_date": "2016-01-01 11:19"
+                },
+                {
+                    "event_id": 4,
+                    "formatted_date": "2011-11-11 02:37 PM"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS creatures CASCADE;",
+                "CREATE TABLE creatures (id INTEGER, name TEXT, type TEXT);",
+                "INSERT INTO creatures VALUES (1, 'Mike', 'human');",
+                "INSERT INTO creatures VALUES (2, 'Misty', 'cat');",
+                "INSERT INTO creatures VALUES (3, 'Max', 'dog');",
+                "INSERT INTO creatures VALUES (4, 'Piquez', 'human');"
+            ],
+            "expectedOutput": [
+                {
+                    "summary_legs": 12
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS creatures CASCADE;",
+                "CREATE TABLE creatures (id INTEGER, name TEXT, type TEXT);",
+                "INSERT INTO creatures VALUES (1, 'Sniffle', 'dog');",
+                "INSERT INTO creatures VALUES (2, 'Misty', 'cat');",
+                "INSERT INTO creatures VALUES (3, 'Max', 'dog');",
+                "INSERT INTO creatures VALUES (4, 'Piquez', 'human');",
+                "INSERT INTO creatures VALUES (5, 'Marta', 'human');",
+                "INSERT INTO creatures VALUES (6, 'Daisy', 'cat');"
+            ],
+            "expectedOutput": [
+                {
+                    "summary_legs": 20
+                }
+            ]
+        }
+    ]
+}

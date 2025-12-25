@@ -1,0 +1,44 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS restaurants CASCADE;",
+                "CREATE TABLE restaurants (id INTEGER, name TEXT);",
+                "INSERT INTO restaurants VALUES (1, 'The Big City Barbecue'), (2, 'Roadhouse'), (3, 'Hibiscus'), (4, 'The Waterfront Courtyard'), (5, 'The Royal Spices');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "name": "The Big City Barbecue",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 2,
+                    "name": "Roadhouse",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 3,
+                    "name": "Hibiscus",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 4,
+                    "name": "The Waterfront Courtyard",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 5,
+                    "name": "The Royal Spices",
+                    "description": "TBD",
+                    "active": 1
+                }
+            ]
+        }
+    ]
+}

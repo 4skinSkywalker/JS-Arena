@@ -1,0 +1,41 @@
+{
+    "rating": 0,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Successors CASCADE;",
+                "CREATE TABLE Successors (name TEXT, birthday TEXT, gender TEXT);",
+                "INSERT INTO Successors VALUES ('Amelia', '1711-06-10', 'F');",
+                "INSERT INTO Successors VALUES ('Anne', '1709-11-02', 'F');",
+                "INSERT INTO Successors VALUES ('Caroline', '1713-06-10', 'F');",
+                "INSERT INTO Successors VALUES ('Frederick', '1707-02-01', 'M');",
+                "INSERT INTO Successors VALUES ('Loisa', '1724-12-18', 'F');",
+                "INSERT INTO Successors VALUES ('Mary', '1723-03-05', 'F');",
+                "INSERT INTO Successors VALUES ('William', '1721-04-26', 'M');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "King Frederick"
+                },
+                {
+                    "name": "Queen Anne"
+                },
+                {
+                    "name": "Queen Amelia"
+                },
+                {
+                    "name": "Queen Caroline"
+                },
+                {
+                    "name": "King William"
+                },
+                {
+                    "name": "Queen Mary"
+                },
+                {
+                    "name": "Queen Loisa"
+                }
+            ]
+        }
+    ]
+}

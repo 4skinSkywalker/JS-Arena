@@ -42,6 +42,7 @@ export interface IProblem {
     filename: string;
     title: string;
     description: string;
+    solution: string;
     tests: ITest[];
     rating: number;
 }
@@ -169,10 +170,11 @@ export interface IProblemTitlesReceivedMessage {
     problemTitles: Array<IProblemSnippet>;
 }
 
-export interface IProblemWithNext extends IProblem {
+export interface IProblemWithSurrounding extends IProblem {
+    prevProblemFilename?: string | null;
     nextProblemFilename?: string | null;
 }
 
 export interface IGetProblemReceivedMessage {
-    problem: IProblemWithNext;
+    problem: IProblemWithSurrounding;
 }
