@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS countries;",
-                "CREATE TABLE countries (name TEXT, continent TEXT, population NUMERIC);",
+                "CREATE TABLE countries (name TEXT, continent TEXT, population INTEGER);",
                 "INSERT INTO countries VALUES ('Grenada', 'North America', 103328);",
                 "INSERT INTO countries VALUES ('Monaco', 'Europe', 38400);",
                 "INSERT INTO countries VALUES ('San Marino', 'Europe', 33005);",

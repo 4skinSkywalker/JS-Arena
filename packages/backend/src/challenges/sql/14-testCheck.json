@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS answers;",
-                "CREATE TABLE answers (id NUMERIC, correct_answer TEXT, given_answer TEXT);",
+                "CREATE TABLE answers (id INTEGER, correct_answer TEXT, given_answer TEXT);",
                 "INSERT INTO answers VALUES (1, 'a', 'a');",
                 "INSERT INTO answers VALUES (2, 'b', NULL);",
                 "INSERT INTO answers VALUES (3, 'c', 'b');"
