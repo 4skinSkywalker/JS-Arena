@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS moviesInfo;",
-                "CREATE TABLE moviesInfo (title text, director text, year number, oscars number);",
+                "CREATE TABLE moviesInfo (title text, director text, year integer, oscars integer);",
                 "INSERT INTO moviesInfo VALUES ('BoBoiBoy: The Movie', 'Nizam Razak', 2016, 0);",
                 "INSERT INTO moviesInfo VALUES ('Inception', 'Christopher Nolan', 2010, 4);",
                 "INSERT INTO moviesInfo VALUES ('Interstellar', 'Christopher Nolan', 2014, 1);",
