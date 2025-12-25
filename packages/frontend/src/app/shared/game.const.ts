@@ -18,8 +18,7 @@ function solution(input) {
     return input;
 }`;
 
-export const DEFAULT_SQL_EDITOR_CONTENT = `
--- This site utilizes PGlite as an efficient in-browser database.
+export const DEFAULT_SQL_EDITOR_CONTENT = `-- This site utilizes PGlite as an efficient in-browser database.
 -- More info can be found in the docs: https://pglite.dev/docs/
 SELECT * FROM <table>;`;
 

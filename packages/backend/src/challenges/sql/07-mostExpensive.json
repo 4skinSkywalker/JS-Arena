@@ -16,7 +16,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS Products;",
-                "CREATE TABLE Products (id number, name TEXT, price number, quantity number);",
+                "CREATE TABLE Products (id INTEGER, name TEXT, price NUMERIC, quantity INTEGER);",
                 "INSERT INTO Products VALUES (1, 'Tomato', 10, 4), (2, 'Cucumber', 8, 5), (3, 'Red Pepper', 20, 2), (4, 'Feta', 40, 1);"
             ],
             "expectedOutput": [

@@ -25,8 +25,7 @@ function solution(input) {
     console.warn("Solution not implemented");
     console.log(input);
     return input;
-}`,Bn=`
--- This site utilizes PGlite as an efficient in-browser database.
+}`,Bn=`-- This site utilizes PGlite as an efficient in-browser database.
 -- More info can be found in the docs: https://pglite.dev/docs/
 SELECT * FROM <table>;`,Fc=(e,t)=>`
 const __logs = [];
