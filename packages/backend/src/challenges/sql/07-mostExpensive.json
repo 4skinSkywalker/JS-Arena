@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS Products;",
-                "CREATE TABLE Products (id integer, name text, price integer, quantity integer);",
+                "CREATE TABLE Products (id NUMERIC, name TEXT, price NUMERIC, quantity NUMERIC);",
                 "INSERT INTO Products VALUES (1, 'MacBook Air', 1500, 1), (2, 'Magic Mouse', 79, 1), (3, 'Spray cleaner', 10, 3);"
             ],
             "expectedOutput": [
@@ -16,7 +16,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS Products;",
-                "CREATE TABLE Products (id number, name text, price number, quantity number);",
+                "CREATE TABLE Products (id number, name TEXT, price number, quantity number);",
                 "INSERT INTO Products VALUES (1, 'Tomato', 10, 4), (2, 'Cucumber', 8, 5), (3, 'Red Pepper', 20, 2), (4, 'Feta', 40, 1);"
             ],
             "expectedOutput": [

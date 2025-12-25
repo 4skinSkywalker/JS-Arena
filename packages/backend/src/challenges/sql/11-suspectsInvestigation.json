@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS Suspect;",
-                "CREATE TABLE Suspect (id integer, name text, surname text, height integer, weight integer);",
+                "CREATE TABLE Suspect (id NUMERIC, name TEXT, surname TEXT, height NUMERIC, weight NUMERIC);",
                 "INSERT INTO Suspect VALUES (1, 'John', 'Doe', 165, 60);",
                 "INSERT INTO Suspect VALUES (2, 'Bill', 'Green', 170, 67);",
                 "INSERT INTO Suspect VALUES (3, 'Baelfire', 'Grehn', 172, 70);",
