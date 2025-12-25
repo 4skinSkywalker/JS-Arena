@@ -18,8 +18,9 @@ function solution(input) {
     return input;
 }`;
 
-export const DEFAULT_SQL_EDITOR_CONTENT = `-- This SQL is case-insensitive to all standard keywords and functions.
--- All table and column names, and user-defined functions are case sensitive.
+export const DEFAULT_SQL_EDITOR_CONTENT = `
+-- This site utilizes PGlite as an efficient in-browser database.
+-- More info can be found in the docs: https://pglite.dev/docs/
 SELECT * FROM <table>;`;
 
 export const getExecutableStr = (userContent: string, testInput: any) => `

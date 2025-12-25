@@ -9,6 +9,7 @@ import { MarkdownService } from '../../../services/markdown.service';
 import { LoaderService } from '../../../components/loader/loader-service.service';
 import { DEFAULT_SQL_EDITOR_CONTENT } from '../../../shared/game.const';
 import { ArcadeService } from '../../../services/arcade.service';
+import { DBService } from '../../../services/db.service';
 
 @Component({
   selector: 'app-sql-game-arcade',
@@ -58,6 +59,7 @@ export class SQLGameArcadeComponent {
     private location: Location,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
+    private db: DBService,
   ) {
     this.problemFilename.set(this.route.snapshot.paramMap.get("id")!);
     this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
@@ -152,10 +154,6 @@ export class SQLGameArcadeComponent {
     });
   }
 
-  get sql() {
-    return (window as any).alasql;
-  }
-
   async runSingleTest(test: ITest) {
     test.output = null;
     test.status = "running";
@@ -163,10 +161,10 @@ export class SQLGameArcadeComponent {
 
     await delay(0.1);
 
-    console.log({ db: this.sql(test.scripts?.join("\n")) });
+    console.log({ execResult: await this.db.exec(test.scripts?.join("\n") || "") });
     let received;
     try {
-      received = this.sql(this.editorContent());
+      received = (await this.db.query(this.editorContent())).rows;
       console.log({ results: received });
     } catch (e: any) {
       if (e?.message) {

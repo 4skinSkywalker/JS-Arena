@@ -11,6 +11,7 @@ import { LoaderService } from '../../../components/loader/loader-service.service
 import { getFakeClient, getFakeRoom, solutionLength } from './game-multiplayer.util';
 import { VoipService } from '../../../services/voip.service';
 import { DEFAULT_SQL_EDITOR_CONTENT } from '../../../shared/game.const';
+import { DBService } from '../../../services/db.service';
 
 interface IClientWithScore extends IClientJSON, IProgressDetails {}
 
@@ -101,6 +102,7 @@ export class SQLGameMultiplayerComponent {
     public voip: VoipService,
     private route: ActivatedRoute,
     private loaderService: LoaderService,
+    private db: DBService,
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id")!;
     this.editorContentKey = `multiplayer-editor-content-${this.roomId}`;
@@ -310,10 +312,6 @@ export class SQLGameMultiplayerComponent {
     el.scrollTop = el.scrollHeight;
   }
 
-  get sql() {
-    return (window as any).alasql;
-  }
-
   async runSingleTest(test: ITest) {
     test.output = null;
     test.status = "running";
@@ -321,10 +319,10 @@ export class SQLGameMultiplayerComponent {
 
     await delay(0.1);
 
-    console.log({ db: this.sql(test.scripts?.join("\n")) });
+    console.log({ execResult: await this.db.exec(test.scripts?.join("\n") || "") });
     let received;
     try {
-      received = this.sql(this.editorContent());
+      received = (await this.db.query(this.editorContent())).rows;
       console.log({ results: received });
     } catch (e: any) {
       if (e?.message) {
