@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS mischief;",
-                "CREATE TABLE mischief (mischief_date DATE, author TEXT, title TEXT);",
+                "CREATE TABLE mischief (mischief_date TEXT, author TEXT, title TEXT);",
                 "INSERT INTO mischief VALUES ('2016-12-01', 'Dewey', 'Cook the golden fish in a bucket'), ('2016-12-01', 'Dewey', 'Paint the walls pink'), ('2016-12-01', 'Huey', 'Eat all the candies'), ('2016-12-01', 'Louie', 'Wrap the cat in toilet paper'), ('2016-12-08', 'Louie', 'Play hockey on linoleum'), ('2017-01-01', 'Huey', 'Smash a window'), ('2017-02-06', 'Dewey', 'Create a rink on the porch');"
             ],
             "expectedOutput": [
