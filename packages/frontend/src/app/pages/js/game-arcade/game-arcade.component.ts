@@ -39,6 +39,7 @@ export class JSGameArcadeComponent {
   problemRating = signal("");
   problemTests = signal<ITest[]>([]);
   problemSolved = signal(false);
+  prevProblemFilename = signal<string | undefined | null>(null);
   nextProblemFilename = signal<string | undefined | null>(null);
   matrixInterval: any;
 
@@ -333,6 +334,7 @@ export class JSGameArcadeComponent {
     this.problemTitle.set(msg.problem.title);
     this.problemRating.set(String(msg.problem.rating));
     this.problemTests.set(msg.problem.tests);
+    this.prevProblemFilename.set(msg.problem.prevProblemFilename);
     this.nextProblemFilename.set(msg.problem.nextProblemFilename);
     this.updateUrl(this.problemFilename());
     this.editorContentKey = `arcade-editor-content-${this.problemFilename()}`;
@@ -365,13 +367,15 @@ export class JSGameArcadeComponent {
     this.router.navigate(['/js-arcade']);
   }
 
-  goToNextProblem() {
+  goToProblem(which: "previous" | "next") {
     uncheck("#challenge-completed-trigger");
     clearInterval(this.matrixInterval);
     this.resetGame();
     this.api.send("getProblem", {
       lang: EnumLang.JS,
-      filename: this.nextProblemFilename()
+      filename: (which === "previous")
+        ? this.prevProblemFilename()
+        : this.nextProblemFilename()
     });
   }
 

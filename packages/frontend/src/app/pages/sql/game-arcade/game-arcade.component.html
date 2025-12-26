@@ -2,7 +2,14 @@
     <div class="editor-container">
         <div class="editor-wrap">
             <div class="editor-title">
-                <span>Editor</span>
+                <div class="d-flex gap-1">
+                    <a routerLink="/" class="btn compact btn-secondary">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                    <a routerLink="../" class="btn compact btn-secondary">
+                        <i class="bi bi-list-task"></i> Challenges
+                    </a>
+                </div>
                 <button
                     class="btn compact btn-primary"
                     (click)="runAllTests()"
@@ -26,20 +33,22 @@
             <div class="d-flex gap-1">
                 <button
                     class="btn btn-secondary compact"
-                    (click)="backToJourney()"
+                    (click)="goToProblem('previous')"
+                    [disabled]="!prevProblemFilename()"
                 >
-                    <i class="bi bi-box-arrow-left"></i> Back to list
+                    <i class="bi bi-arrow-left"></i> Prev
                 </button>
                 <button
                     class="btn btn-secondary compact"
                     [class.btn-primary]="
                         testsPassed() != null
-                     && testsPassed() != 0
-                     && testsPassed() === problemTests().length
+                        && testsPassed() != 0
+                        && testsPassed() === problemTests().length
                     "
-                    (click)="goToNextProblem()"
+                    (click)="goToProblem('next')"
+                    [disabled]="!nextProblemFilename()"
                 >
-                    Next problem <i class="bi bi-arrow-right"></i>
+                    Next <i class="bi bi-arrow-right"></i>
                 </button>
             </div>
         </div>
@@ -150,7 +159,7 @@
     <div class="modal-footer">
         <button class="btn btn-secondary" (click)="backToJourney()">Go to journey</button>
         <button class="btn btn-secondary" (click)="uncheck('#challenge-completed-trigger')">Stay here</button>
-        <button class="btn btn-primary" (click)="goToNextProblem()">Next problem</button>
+        <button class="btn btn-primary" (click)="goToProblem('next')" [disabled]="!nextProblemFilename()">Next problem</button>
     </div>
   </div>
 </div>

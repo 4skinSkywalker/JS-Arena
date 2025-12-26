@@ -77,6 +77,10 @@ body::before {
     }
 }
 
+.btn {
+    text-decoration: none;
+}
+
 .form-select.compact {
     background-position:
         calc(100% - 15px) calc(12px),

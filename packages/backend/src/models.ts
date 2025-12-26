@@ -169,10 +169,11 @@ export interface IProblemTitlesReceivedMessage {
     problemTitles: Array<IProblemSnippet>;
 }
 
-export interface IProblemWithNext extends IProblem {
+export interface IProblemWithSurrounding extends IProblem {
+    prevProblemFilename?: string | null;
     nextProblemFilename?: string | null;
 }
 
 export interface IGetProblemReceivedMessage {
-    problem: IProblemWithNext;
+    problem: IProblemWithSurrounding;
 }

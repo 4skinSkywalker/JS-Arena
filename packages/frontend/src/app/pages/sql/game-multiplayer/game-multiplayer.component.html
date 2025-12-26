@@ -2,7 +2,14 @@
     <div class="editor-container">
         <div class="editor-wrap">
             <div class="editor-title">
-                <span>Editor</span>
+                <div class="d-flex gap-1">
+                    <a routerLink="/" class="btn compact btn-secondary">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                    <a routerLink="../" class="btn compact btn-secondary">
+                        <i class="bi bi-door-open"></i> Rooms
+                    </a>
+                </div>
                 <button
                     class="btn compact btn-primary"
                     (click)="runAllTests()"
