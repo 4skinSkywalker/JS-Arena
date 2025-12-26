@@ -22,23 +22,26 @@ export class DBService {
     };
   }
 
-  private _functionMangling(str: string) {
+  private _prepareScript(str: string) {
+    // Remove comments
+    str = str.replaceAll(/--.*/g, "");
     const matches = [...str.matchAll(/CREATE\s+OR\s+REPLACE\s+FUNCTION\s+([^\(\)]+)()/ig)];
     if (matches.length) {
       for (const [full, captured] of matches) {
+        // Mangling function names
         str = str.replaceAll(captured, `${captured}_${getUid()}`);
       }
     }
     return str;
   }
 
-  async exec(str: string) {
-    const mangled = this._functionMangling(str);
-    console.log({ mangled });
-    return await this.db.exec(mangled);
+  async exec(userScript: string) {
+    const prepared = this._prepareScript(userScript);
+    console.log({ prepared });
+    return await this.db.exec(prepared);
   }
 
-  async query(str: string) {
-    return await this.db.query(str);
+  async query(query: string) {
+    return await this.db.query(query);
   }
 }
