@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS users;",
-                "CREATE TABLE users (id INTEGER, login TEXT, name TEXT, type TEXT);",
+                "CREATE TABLE users (id INTEGER, login TEXT, name TEXT, user_type TEXT);",
                 "INSERT INTO users VALUES (1, 'Ann92', 'Ann', 'user');",
                 "INSERT INTO users VALUES (2, 'Bob88', 'Bob', 'user');",
                 "INSERT INTO users VALUES (3, 'Carol412', 'Carol', 'admin');",
@@ -23,7 +23,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS users;",
-                "CREATE TABLE users (id INTEGER, login TEXT, name TEXT, type TEXT);",
+                "CREATE TABLE users (id INTEGER, login TEXT, name TEXT, user_type TEXT);",
                 "INSERT INTO users VALUES (1, 'Ann92', 'Ann', 'user');",
                 "INSERT INTO users VALUES (2, 'Bob88', 'Bob', 'moderator');",
                 "INSERT INTO users VALUES (3, 'Carol412', 'Carol', 'editor');",
