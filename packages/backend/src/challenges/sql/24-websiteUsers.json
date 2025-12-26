@@ -13,10 +13,10 @@
             ],
             "expectedOutput": [
                 {
-                    "stats": "There are 3 admins"
+                    "stats": "There are 3 users"
                 },
                 {
-                    "stats": "There are 2 users"
+                    "stats": "There are 2 admins"
                 }
             ]
         },
