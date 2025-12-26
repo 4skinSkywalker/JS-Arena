@@ -322,7 +322,8 @@ export class SQLGameMultiplayerComponent {
     console.log({ execResult: await this.db.exec(test.scripts?.join("\n") || "") });
     let received;
     try {
-      received = (await this.db.query(this.editorContent())).rows;
+      const execResult = await this.db.exec(this.editorContent());
+      received = execResult.pop().rows;
       console.log({ results: received });
     } catch (e: any) {
       if (e?.message) {
