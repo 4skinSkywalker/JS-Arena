@@ -35,17 +35,22 @@
             ],
             "expectedOutput": [
                 {
-                    "hacker_id": "21283",
+                    "hacker_id": 21283,
                     "name": "Angela",
                     "count": 6
                 },
                 {
-                    "hacker_id": "88255",
+                    "hacker_id": 88255,
                     "name": "Patrick",
                     "count": 5
                 },
                 {
-                    "hacker_id": "96196",
+                    "hacker_id": 5077,
+                    "name": "Rose",
+                    "count": 4
+                },
+                {
+                    "hacker_id": 96196,
                     "name": "Lisa",
                     "count": 1
                 }
