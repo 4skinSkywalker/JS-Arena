@@ -28,6 +28,9 @@
     <p>Given the <strong>catalogs</strong> table, you want to find out which authors you have represented in your
         library. Your task is to create a new table with the <code>author</code> column that will contain all the
         distinct authors, sorted by their names.</p>
+
+    <h2>Tips</h2>
+    <p>You can use <code>(regexp_matches(xml_doc, pattern, 'g'))[1]</code> to extract the author from the xml_doc.</p>
         
     <h2>Example</h2>
     <p>For given table <strong>catalogs</strong></p>
