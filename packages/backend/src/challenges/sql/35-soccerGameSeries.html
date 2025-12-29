@@ -10,11 +10,9 @@
     <p>The <strong>scores</strong> table contains the following columns:</p>
     <ul class="list-group list-group-flush my-3">
         <li class="list-group-item"><code>match_id</code> - the unique ID of the match;</li>
-        <li class="list-group-item"><code>first_team_score</code> - the score of the <code>1<sup>st</sup></code> team in the current match;</li>
-        <li class="list-group-item"><code>second_team_score</code> - the score of the <code>2<sup>nd</sup></code> team in the current match;
-        </li>
-        <li class="list-group-item"><code>match_host</code> - the team that is the host of the match (can be <code>1</code> or <code>2</code>).
-        </li>
+        <li class="list-group-item"><code>team_1_score</code> - the score of the team with id '1';</li>
+        <li class="list-group-item"><code>team_2_score</code> - the score of the team with id '2';</li>
+        <li class="list-group-item"><code>match_host</code> - the id of the team that hosted the game (plays at home). This value can be either '1' or '2'.</li>
     </ul>
     <p>Your task is to return a new table with a single column <code>winner</code>, which can contain <code>1</code>,
         <code>2</code>, or <code>0</code>.</p>
@@ -25,8 +23,8 @@
         <thead>
             <tr>
                 <th>match_id</th>
-                <th>first_team_score</th>
-                <th>second_team_score</th>
+                <th>team_1_score</th>
+                <th>team_2_score</th>
                 <th>match_host</th>
             </tr>
         </thead>
@@ -61,7 +59,7 @@
     <table class="table table-striped my-3">
         <thead>
             <tr>
-                <th>winner</th>
+                <th>winner_team</th>
             </tr>
         </thead>
         <tbody>
