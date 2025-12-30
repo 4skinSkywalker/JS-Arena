@@ -11,7 +11,7 @@ import { LoaderService } from '../../../components/loader/loader-service.service
 import { DEFAULT_JS_EDITOR_CONTENT, getExecutableStr, ILoggerMethods } from '../../../shared/game.const';
 import { ArcadeService } from '../../../services/arcade.service';
 
-const SOLUTION_COUNTDOWN_TIME = 120;
+const SOLUTION_COUNTDOWN_TIME = 300;
 
 @Component({
   selector: 'app-js-game-arcade',
@@ -38,7 +38,8 @@ export class JSGameArcadeComponent {
   testsPassed = signal(0);
   problemFilename = signal<string>("");
   problemDescription = signal("");
-  problemSolutionUnlockCountdown = signal("--:--");
+  problemSolutionUnlockCountdown = signal("--");
+  bypassSolutionLock = signal(false);
   problemTitle = signal("");
   problemRating = signal("");
   problemTests = signal<ITest[]>([]);
@@ -173,13 +174,13 @@ export class JSGameArcadeComponent {
   }
 
   startProblemSolutionUnlockCountdown() {
-    const getFormattedTime = (sec: number) => {
-      const minutes = String(~~(sec / 60));
-      const seconds = String(sec % 60);
-      return `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
-    };
     const setTimeLabel = (sec: number) => {
-      this.problemSolutionUnlockCountdown.set(getFormattedTime(sec));
+      if (sec <= 0) {
+        return this.problemSolutionUnlockCountdown.set("");
+      }
+
+      const minutes = Math.ceil(sec / 60);
+      this.problemSolutionUnlockCountdown.set(`(${minutes} ${minutes > 1 ? "minutes" : "minute"})`);
     };
 
     let countdown = SOLUTION_COUNTDOWN_TIME;
@@ -404,6 +405,7 @@ export class JSGameArcadeComponent {
     check("#challenge-completed-trigger");
     focus(".challenge-completed-modal button.btn-primary");
     this.matrixInterval = matrixRain("#matrix-canvas");
+    this.bypassSolutionLock.set(true);
   }
 
   journeyEnd() {
@@ -436,6 +438,7 @@ export class JSGameArcadeComponent {
   resetGame() {
     this.problemSolved.set(false);
     this.testsPassed.set(0);
+    this.bypassSolutionLock.set(false);
     this.setDefaultEditorContent();
     this.navTab.set("instructions");
     this.consoleLogMessages.set([]);

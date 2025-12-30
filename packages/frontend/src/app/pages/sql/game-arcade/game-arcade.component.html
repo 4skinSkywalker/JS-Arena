@@ -44,12 +44,12 @@
                 <li
                     class="nav-item"
                     [class.active]="navTab() === 'solution'"
-                    [class.disabled]="problemSolutionUnlockCountdown() !== '00:00'"
+                    [class.disabled]="!bypassSolutionLock() && problemSolutionUnlockCountdown() !== ''"
                 >
                     <button
                         class="nav-link compact"
                         (click)="navTab.set('solution'); forceSolutionEditorRefresh();"
-                    >Solution ({{ problemSolutionUnlockCountdown() }})</button>
+                    >Solution {{ bypassSolutionLock() ? '' : problemSolutionUnlockCountdown() }}</button>
                 </li>
             </ul>
             <div class="d-flex gap-1">
