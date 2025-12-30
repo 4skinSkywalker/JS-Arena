@@ -1,0 +1,5 @@
+SELECT name
+FROM leaderboard
+ORDER BY score DESC
+OFFSET 3
+LIMIT 5;

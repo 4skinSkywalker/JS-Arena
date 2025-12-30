@@ -391,13 +391,19 @@ class Room {
         opts = opts || {};
         const includeClients = opts.includeClients == null ? true : opts.includeClients;
         const includeProblem = opts.includeProblem == null ? false : opts.includeProblem;
+        const problem = (this.started && includeProblem)
+            ? {
+                ...this.problem,
+                solution: 'not available while multiplayer'
+            }
+            : undefined;
         return {
             id: this.id,
             name: this.name,
             enableLateJoin: this.enableLateJoin,
             lang: this.lang,
             started: this.started,
-            problem: (this.started && includeProblem) ? this.problem : undefined,
+            problem,
             host: this.host.toJSON({ includeRoom: false }),
             clients: includeClients
                 ? Array.from(this.clients.values())

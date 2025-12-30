@@ -42,6 +42,7 @@ export interface IProblem {
     filename: string;
     title: string;
     description: string;
+    solution: string;
     tests: ITest[];
     rating: number;
 }
