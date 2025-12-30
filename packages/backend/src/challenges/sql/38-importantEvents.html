@@ -18,6 +18,9 @@
         <code>event_date</code> and the same number of <code>participants</code>.</p>
     <p>Given the table <strong>events</strong>, sort it as described above and return the resulting table.</p>
     
+    <h2>Tips</h2>
+    <p>You can use <code>EXTRACT(DOW FROM event_date::date -1)</code> function to extract the day of the week from the <code>event_date</code> field, -1 is used to turn monday into the smallest value (otherwise it would be sunday).</p>
+
     <h2>Example</h2>
     <p>For the following table <strong>events</strong></p>
     <table class="table table-striped my-3">
