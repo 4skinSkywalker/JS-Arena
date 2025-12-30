@@ -15,7 +15,7 @@
                     (click)="runAllTests()"
                 >Run tests (⌘ + ↵)</button>
             </div>
-            <div class="editor" id="editor"></div>
+            <div id="editor"></div>
         </div>
         <div class="sections-divider"></div>
     </div>
@@ -23,11 +23,33 @@
     <div class="instructions">
         <div class="nav-wrap">
             <ul class="nav me-auto">
-                <li class="nav-item" [class.active]="navTab() === 'instructions'">
-                    <a class="nav-link compact" (click)="navTab.set('instructions')">Instructions</a>
+                <li
+                    class="nav-item"
+                    [class.active]="navTab() === 'instructions'"
+                >
+                    <button
+                        class="nav-link compact"
+                        (click)="navTab.set('instructions')"
+                    >Instructions</button>
                 </li>
-                <li class="nav-item" [class.active]="navTab() === 'benchmark'">
-                    <a class="nav-link compact" (click)="navTab.set('benchmark')">Benchmark ({{ testsPassed() }}/{{ problemTests().length || 0 }})</a>
+                <li
+                    class="nav-item"
+                    [class.active]="navTab() === 'benchmark'"
+                >
+                    <button
+                        class="nav-link compact"
+                        (click)="navTab.set('benchmark')"
+                    >Benchmark ({{ testsPassed() }}/{{ problemTests().length || 0 }})</button>
+                </li>
+                <li
+                    class="nav-item"
+                    [class.active]="navTab() === 'solution'"
+                    [class.disabled]="problemSolutionUnlockCountdown() !== '00:00'"
+                >
+                    <button
+                        class="nav-link compact"
+                        (click)="navTab.set('solution'); forceSolutionEditorRefresh();"
+                    >Solution ({{ problemSolutionUnlockCountdown() }})</button>
                 </li>
             </ul>
             <div class="d-flex gap-1">
@@ -75,7 +97,7 @@
                             <input class="accordion-trigger" type="checkbox">
                             <div class="benchmark-header">
                                 <div style="align-self: center;">Test {{ $index + 1 }} / {{ problemTests().length }} ({{ !test.status ? "Not run" : test.status }})</div>
-                                <button class="btn compact ms-auto me-2" style="pointer-events: none;">Details</button>
+                                <button class="btn compact ms-auto me-2" style="pointer-events: none;">Click for Details</button>
                                 <button class="btn compact btn-primary" (click)="runSingleTest(test)">Run</button>
                             </div>
                         </label>
@@ -140,6 +162,13 @@
                     </div>
                     }
                 </div>
+            </div>
+
+            <div
+                class="nav-panel-solution"
+                [class.hidden]="navTab() !== 'solution'"
+            >
+                <div id="solution-editor"></div>
             </div>
         </div>
     </div>

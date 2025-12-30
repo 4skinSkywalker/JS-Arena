@@ -79,10 +79,6 @@
             border: none;
             gap: var(--tertiary-space);
             padding: 0;
-    
-            .nav-item {
-                cursor: pointer;
-            }
         }
     }
 
@@ -104,6 +100,10 @@
                 background-color: rgba(var(--c3), 0.5);
                 padding: var(--quaternary-space) var(--tertiary-space);
             }
+        }
+
+        .nav-panel-solution {
+            height: 100%;
         }
     }
 }

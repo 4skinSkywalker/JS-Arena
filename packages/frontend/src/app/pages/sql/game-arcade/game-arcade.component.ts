@@ -11,6 +11,8 @@ import { DEFAULT_SQL_EDITOR_CONTENT } from '../../../shared/game.const';
 import { ArcadeService } from '../../../services/arcade.service';
 import { DBService } from '../../../services/db.service';
 
+const SOLUTION_COUNTDOWN_TIME = 120;
+
 @Component({
   selector: 'app-sql-game-arcade',
   imports: [BasicModule],
@@ -26,12 +28,14 @@ export class SQLGameArcadeComponent {
   editor: any;
   editorContentKey;
   editorContent = signal("");
-  navTab = signal<"instructions" | "benchmark">("instructions");
+  solutionEditor: any;
+  navTab = signal<"instructions" | "benchmark" | "solution">("instructions");
 
   testsRunning = signal(false);
   testsPassed = signal(0);
   problemFilename = signal<string>("");
   problemDescription = signal("");
+  problemSolutionUnlockCountdown = signal("--:--");
   problemTitle = signal("");
   problemRating = signal("");
   problemTests = signal<ITest[]>([]);
@@ -75,6 +79,7 @@ export class SQLGameArcadeComponent {
   async ngAfterViewInit() {
     await delay(0.2);
     this.initEditor();
+    this.initSolutionEditor();
     this.initGameResize();
     this.api.send("getProblem", {
       lang: EnumLang.SQL,
@@ -133,6 +138,52 @@ export class SQLGameArcadeComponent {
     }, 500));
 
     this.setDefaultEditorContent();
+  }
+
+  startProblemSolutionUnlockCountdown() {
+    const getFormattedTime = (sec: number) => {
+      const minutes = String(~~(sec / 60));
+      const seconds = String(sec % 60);
+      return `${minutes.padStart(2, '0')}:${seconds.padStart(2, '0')}`;
+    };
+    const setTimeLabel = (sec: number) => {
+      this.problemSolutionUnlockCountdown.set(getFormattedTime(sec));
+    };
+
+    let countdown = SOLUTION_COUNTDOWN_TIME;
+    setTimeLabel(countdown);
+
+    const interval = setInterval(() => {
+      countdown--;
+      if (countdown < 0) {
+        return clearInterval(interval);
+      }
+
+      setTimeLabel(countdown);
+    }, 1000);
+  }
+
+  forceSolutionEditorRefresh() {
+    setTimeout(() => this.solutionEditor.resize(), 25);
+  }
+
+  setSolutionEditorContent(content: string) {
+    this.solutionEditor.setValue(`--This is the author's solution to this SQL challenge\n${content}`);
+    this.solutionEditor.clearSelection();
+    this.forceSolutionEditorRefresh();
+    this.startProblemSolutionUnlockCountdown();
+  }
+
+  initSolutionEditor() {
+    const ace = (window as any).ace;
+    
+    this.solutionEditor = ace.edit("solution-editor");
+    this.solutionEditor.setTheme("ace/theme/monokai");
+    this.solutionEditor.setShowPrintMargin(false);
+    this.solutionEditor.setReadOnly(true);
+
+    this.solutionEditor.getSession().setUseWorker(false);
+    this.solutionEditor.getSession().setMode("ace/mode/sql");
   }
 
   initGameResize() {
@@ -232,6 +283,7 @@ export class SQLGameArcadeComponent {
     console.log({ msg })
     this.problemFilename.set(msg.problem.filename);
     this.problemDescription.set(msg.problem.description);
+    this.setSolutionEditorContent(msg.problem.solution);
     this.problemTitle.set(msg.problem.title);
     this.problemRating.set(String(msg.problem.rating));
     this.problemTests.set(msg.problem.tests);
