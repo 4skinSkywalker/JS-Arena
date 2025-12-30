@@ -270,6 +270,7 @@ export class SQLGameArcadeComponent {
     
     this.testsPassed.set(testsPassed);
     this.testsRunning.set(false);
+    this.bypassSolutionLock.set(true);
   }
 
   async flickAnimation(el: Element | null) {
@@ -304,7 +305,6 @@ export class SQLGameArcadeComponent {
     check("#challenge-completed-trigger");
     focus(".challenge-completed-modal button.btn-primary");
     this.matrixInterval = matrixRain("#matrix-canvas");
-    this.bypassSolutionLock.set(true);
   }
 
   journeyEnd() {
