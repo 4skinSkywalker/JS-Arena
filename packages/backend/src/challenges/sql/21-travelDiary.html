@@ -11,11 +11,12 @@
         <li class="list-group-item"><code>country</code>: the country to which you traveled.</li>
     </ul>
     <p>Given this <strong>diary</strong> table, create a semicolon-separated list of all the distinct countries you've
-        visited, sorted <a href="keyword://lexicographical-order-for-strings" target="_blank">lexicographically</a>, and
+        visited, sorted lexicographically, and
         put the list in a table that has a single <code>countries</code> column.</p>
-    
+
     <h2>Tips</h2>
-    <p>You can use <code>string_agg(expression, separator ORDER BY sort_expression)</code> to concatenate values from multiple rows into a single string with a custom separator.</p>
+    <p>You can use <code>string_agg(expression, separator ORDER BY sort_expression)</code> to concatenate values from
+        multiple rows into a single string with a custom separator.</p>
 
     <h2>Example</h2>
     <p>For the following table <strong>diary</strong></p>
