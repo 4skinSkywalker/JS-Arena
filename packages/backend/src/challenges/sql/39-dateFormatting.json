@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS documents;",
-                "CREATE TABLE documents (id INTEGER, date VARCHAR(10));",
+                "CREATE TABLE documents (id INTEGER, date_str TEXT);",
                 "INSERT INTO documents VALUES (1, '2000-1-1'), (2, '2014-8-21'), (3, '2002-03-07'), (4, '2008-10-5'), (5, '2016-12-17');"
             ],
             "expectedOutput": [
