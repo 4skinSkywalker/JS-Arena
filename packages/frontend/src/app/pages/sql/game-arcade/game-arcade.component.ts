@@ -35,6 +35,7 @@ export class SQLGameArcadeComponent {
   testsPassed = signal(0);
   problemFilename = signal<string>("");
   problemDescription = signal("");
+  revealSolutionCountdown: ReturnType<typeof setInterval> | null = null;
   problemSolutionUnlockCountdown = signal("--");
   bypassSolutionLock = signal(false);
   problemTitle = signal("");
@@ -141,6 +142,12 @@ export class SQLGameArcadeComponent {
     this.setDefaultEditorContent();
   }
 
+  clearRevealSolutionCountdown() {
+    if (this.revealSolutionCountdown) {
+      clearInterval(this.revealSolutionCountdown);
+    }
+  }
+
   startProblemSolutionUnlockCountdown() {
     const setTimeLabel = (sec: number) => {
       if (sec <= 0) {
@@ -154,10 +161,10 @@ export class SQLGameArcadeComponent {
     let countdown = SOLUTION_COUNTDOWN_TIME;
     setTimeLabel(countdown);
 
-    const interval = setInterval(() => {
+    this.revealSolutionCountdown = setInterval(() => {
       countdown--;
       if (countdown < 0) {
-        return clearInterval(interval);
+        return this.clearRevealSolutionCountdown();
       }
 
       setTimeLabel(countdown);
@@ -338,6 +345,7 @@ export class SQLGameArcadeComponent {
     this.problemSolved.set(false);
     this.testsPassed.set(0);
     this.bypassSolutionLock.set(false);
+    this.clearRevealSolutionCountdown();
     this.setDefaultEditorContent();
     this.navTab.set("instructions");
     this.problemDescription.set("");
