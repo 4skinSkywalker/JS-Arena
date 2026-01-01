@@ -30,7 +30,7 @@
         distinct authors, sorted by their names.</p>
 
     <h2>Tips</h2>
-    <p>You can use <code>(regexp_matches(xml_doc, pattern, 'g'))[1]</code> to extract the author from the xml_doc.</p>
+    <p>You can use <code>SUBSTRING(xml_doc FROM '[[regex_pattern]]')</code> to extract the author from the xml_doc.</p>
         
     <h2>Example</h2>
     <p>For given table <strong>catalogs</strong></p>
