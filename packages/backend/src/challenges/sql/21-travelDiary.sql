@@ -1,2 +1,2 @@
-SELECT string_agg(DISTINCT country, ';' ORDER BY country) AS countries
+SELECT STRING_AGG(DISTINCT country, ';' ORDER BY country) AS countries
 FROM diary;

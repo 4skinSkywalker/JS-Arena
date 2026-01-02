@@ -1,3 +1,3 @@
-SELECT continent, sum(users) AS users
+SELECT continent, SUM(users) AS users
 FROM countries
 GROUP BY continent;
