@@ -18,6 +18,9 @@
     <p>Return the table with a single <code>total</code> column containing only one row which contains the total length
         of your route, calculated as described above.</p>
 
+    <h2>Tips</h2>
+    <p>Use <code>LEFT JOIN</code> with <code>ON t1.id+1 = t2.id</code> to create consecutive pairs of cities.</p>
+
     <h2>Example</h2>
     <p>For the following table <strong>cities</strong></p>
     <table class="table table-striped my-3">

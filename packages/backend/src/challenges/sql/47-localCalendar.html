@@ -30,6 +30,9 @@
         resulting table should have two columns, <code>event_id</code> and <code>formatted_date</code>, that contain the
         event IDs and the formatted event dates according to settings of the user who scheduled that event,
         respectively. The table should be sorted in ascending order by the event IDs.</p>
+
+    <h2>Tips</h2>
+    <p>You can use <code>TO_CHAR(timestamp, 'YYYY-MM-DD HH12:MI PM')</code> to format the date in 12-hour format.</p>
     
     <h2>Example</h2>
     <p>The following tables <strong>events</strong></p>

@@ -5,10 +5,10 @@ DECLARE
     end_year TIMESTAMP;
 BEGIN
     SELECT input_date INTO curr_alarm FROM userInput;
-    end_year := DATE_TRUNC('year', curr_alarm) + INTERVAL '1 year';
+    end_year := DATE_TRUNC('year', curr_alarm) + '1 year'::INTERVAL;
     WHILE curr_alarm < end_year LOOP
         RETURN QUERY SELECT curr_alarm::TEXT;
-        curr_alarm := curr_alarm + INTERVAL '1 week';
+        curr_alarm := curr_alarm + '1 week'::INTERVAL;
     END LOOP;
 END
 $$ LANGUAGE plpgsql;

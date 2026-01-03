@@ -17,6 +17,9 @@
     <p>Given the <strong>sights</strong> table, find all pairs of places that are less than <code>5</code> km from each
         other and return them as a table with the columns <code>place1</code> and <code>place2</code>. Sort them in
         lexicographical order. The places in the pairs should also be sorted lexicographically.</p>
+
+    <h2>Tips</h2>
+    <p>You can <code>JOIN</code> the table to itself to find all pairs of places that are less than <code>5</code> km from each other. Use a condition with &lt; or &gt; in the <code>ON</code> clause to avoid the same pair being returned twice.</p>
     
     <h2>Example</h2>
     <p>For the following table <strong>sights</strong></p>
