@@ -9,7 +9,8 @@
     <p>All courses are stored in <strong>courses</strong> table that has the following structure:</p>
     <ul class="list-group list-group-flush my-3">
         <li class="list-group-item"><code>id</code>: unique id of the course;</li>
-        <li class="list-group-item"><code>name</code>: unique name of the course that may end with <code>'-toremove'</code>, which means that
+        <li class="list-group-item"><code>name</code>: unique name of the course that may end with
+            <code>'-toremove'</code>, which means that
             the course is about to be removed;</li>
         <li class="list-group-item"><code>description</code>: description of the course.</li>
     </ul>
@@ -33,10 +34,11 @@
     <p>Given <strong>courses</strong>, <strong>groupcourses</strong> and <strong>groupexams</strong> tables you need to
         properly set up foreign keys, so that after a record is deleted from the <strong>courses</strong> table, records
         that correspond to the deleted course are also deleted from <strong>groupcourses</strong> and
-        <strong>groupexams</strong>. Please note that <code>groupexams</code> can only contain pairs from
-        <code>groupcourses</code> and there can be multiple exam dates for the same <code>group_id</code>,
-        <code>course_id</code> combination. It is guaranteed that adding correct foreign keys won't raise any errors.
+        <strong>groupexams</strong>.
     </p>
+    <p>Your task is to concatenate the results from two tables, <strong>groupcourses</strong> and <strong>groupexams</strong>, each
+        containing <strong>group_id</strong> and <strong>course_id</strong> columns. Your goal is to return a unified list of group-course combinations
+        from these tables, sorted by <code>group_id</code> and <code>course_id</code>.</p>
 
     <h2>Example</h2>
     <p>For the following tables <strong>courses</strong></p>
