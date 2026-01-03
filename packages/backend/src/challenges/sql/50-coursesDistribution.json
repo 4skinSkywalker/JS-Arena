@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS courses;",
-                "CREATE TABLE courses (id INTEGER, name TEXT, description TEXT);",
+                "CREATE TABLE courses (id INTEGER UNIQUE, name TEXT, description TEXT);",
                 "INSERT INTO courses VALUES (1, 'Linear algebra', 'Basis of matrix theory and linear algebra'), (2, 'Geometry', NULL), (3, 'Determinants and matrices', NULL), (4, 'Matlab-toremove', 'Matlab 7');",
                 "DROP TABLE IF EXISTS groupcourses;",
                 "CREATE TABLE groupcourses (group_id INTEGER, course_id INTEGER);",
