@@ -1,2 +1,2 @@
-SELECT date_str::date::text AS date_iso
+SELECT date_str::DATE::TEXT AS date_iso
 FROM documents;

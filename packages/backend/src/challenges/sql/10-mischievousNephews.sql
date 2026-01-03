@@ -1,5 +1,5 @@
 SELECT
-    extract(DOW FROM mischief_date::date) AS weekday,
+    extract(DOW FROM mischief_date::DATE) AS weekday,
     mischief_date,
     author,
     title

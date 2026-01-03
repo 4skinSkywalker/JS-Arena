@@ -4,7 +4,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS sights;",
-                "CREATE TABLE sights (id INTEGER, name TEXT, x DOUBLE, y DOUBLE);",
+                "CREATE TABLE sights (id INTEGER, name TEXT, x DOUBLE PRECISION, y DOUBLE PRECISION);",
                 "INSERT INTO sights VALUES (1, 'Tower of London', 51508.026, -7.5939), (2, 'Trafalgar Square', 51508.040, -12.7899), (3, 'London Eye', 51503.538, -11.9371), (4, 'The Shard', 51504.533, -8.6028);"
             ],
             "expectedOutput": [
