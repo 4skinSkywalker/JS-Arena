@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -34,6 +34,32 @@
                     "first_name": "Mikel",
                     "second_name": "Kravitz",
                     "attribute": "PBX86iw1Ied87Z9OarE6sdSLdt%Mikel_Kravitz%W73XOY9YaOgi060r2x12D2EmD7"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS users CASCADE;",
+                "CREATE TABLE users (first_name TEXT, second_name TEXT, attribute TEXT);",
+                "INSERT INTO users VALUES ('Alice', 'Smith', '12%Alice_Smith%34');",
+                "INSERT INTO users VALUES ('Bob', 'Johnson', '0%Bob_Johnson%');",
+                "INSERT INTO users VALUES ('Charlie', 'Brown', '45%Charlie_Brown%67');"
+            ],
+            "expectedOutput": [
+                {
+                    "first_name": "Alice",
+                    "second_name": "Smith",
+                    "attribute": "12%Alice_Smith%34"
+                },
+                {
+                    "first_name": "Bob",
+                    "second_name": "Johnson",
+                    "attribute": "0%Bob_Johnson%"
+                },
+                {
+                    "first_name": "Charlie",
+                    "second_name": "Brown",
+                    "attribute": "45%Charlie_Brown%67"
                 }
             ]
         }

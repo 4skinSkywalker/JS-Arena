@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -29,6 +29,38 @@
                 {
                     "branch_id": 4,
                     "name": "Madrid branch",
+                    "branchtype_id": null
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS branches CASCADE;",
+                "CREATE TABLE branches (branch_id INTEGER, name TEXT, branchtype_id INTEGER);",
+                "INSERT INTO branches VALUES (1, 'Branch A', 1), (2, 'Branch B', 2), (3, 'Branch C', 3), (4, 'Branch D', 1);",
+                "DROP TABLE IF EXISTS branch_types CASCADE;",
+                "CREATE TABLE branch_types (id INTEGER, name TEXT);",
+                "INSERT INTO branch_types VALUES (1, 'Type A'), (2, 'Type B'), (3, 'Type C');"
+            ],
+            "expectedOutput": [
+                {
+                    "branch_id": 1,
+                    "name": "Branch A",
+                    "branchtype_id": null
+                },
+                {
+                    "branch_id": 2,
+                    "name": "Branch B",
+                    "branchtype_id": 2
+                },
+                {
+                    "branch_id": 3,
+                    "name": "Branch C",
+                    "branchtype_id": 3
+                },
+                {
+                    "branch_id": 4,
+                    "name": "Branch D",
                     "branchtype_id": null
                 }
             ]

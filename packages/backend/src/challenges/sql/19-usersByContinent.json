@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 5,
     "tests": [
         {
             "scripts": [
@@ -18,6 +18,30 @@
                 {
                     "continent": "North America",
                     "users": 5000
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS countries CASCADE;",
+                "CREATE TABLE countries (country TEXT, continent TEXT, users INTEGER);",
+                "INSERT INTO countries VALUES ('Brazil', 'South America', 2000);",
+                "INSERT INTO countries VALUES ('Argentina', 'South America', 1500);",
+                "INSERT INTO countries VALUES ('Canada', 'North America', 4000);",
+                "INSERT INTO countries VALUES ('Australia', 'Oceania', 3000);"
+            ],
+            "expectedOutput": [
+                {
+                    "continent": "North America",
+                    "users": 4000
+                },
+                {
+                    "continent": "South America",
+                    "users": 3500
+                },
+                {
+                    "continent": "Oceania",
+                    "users": 3000
                 }
             ]
         }

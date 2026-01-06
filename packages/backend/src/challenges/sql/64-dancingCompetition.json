@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -25,6 +25,33 @@
                     "first_criterion": 2,
                     "second_criterion": 5,
                     "third_criterion": 9
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS scores CASCADE;",
+                "CREATE TABLE scores (arbiter_id INTEGER, first_criterion INTEGER, second_criterion INTEGER, third_criterion INTEGER);",
+                "INSERT INTO scores VALUES (1, 5, 4, 3), (2, 3, 4, 5), (3, 1, 2, 10), (4, 10, 2, 1), (5, 3, 3, 3);"
+            ],
+            "expectedOutput": [
+                {
+                    "arbiter_id": 1,
+                    "first_criterion": 5,
+                    "second_criterion": 4,
+                    "third_criterion": 3
+                },
+                {
+                    "arbiter_id": 2,
+                    "first_criterion": 3,
+                    "second_criterion": 4,
+                    "third_criterion": 5
+                },
+                {
+                    "arbiter_id": 5,
+                    "first_criterion": 3,
+                    "second_criterion": 3,
+                    "third_criterion": 3
                 }
             ]
         }

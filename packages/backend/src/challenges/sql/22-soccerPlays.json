@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -15,6 +15,21 @@
             "expectedOutput": [
                 {
                     "players": "Alexis Sanchez #7; Olivier Giroud #12; Theo Walcott #14; Santi Cazorla #19; Hector Bellerin #24; Petr Cech #33"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS soccer_team CASCADE;",
+                "CREATE TABLE soccer_team (id INTEGER, first_name TEXT, surname TEXT, player_number INTEGER);",
+                "INSERT INTO soccer_team VALUES (1, 'Jingle', 'Bell', 1);",
+                "INSERT INTO soccer_team VALUES (2, 'Pelaz', 'Coabarb', 2);",
+                "INSERT INTO soccer_team VALUES (3, 'Megusta', 'Losgelatos', 3);",
+                "INSERT INTO soccer_team VALUES (4, 'Yeah', 'No', 4);"
+            ],
+            "expectedOutput": [
+                {
+                    "players": "Jingle Bell #1; Pelaz Coabarb #2; Megusta Losgelatos #3; Yeah No #4"
                 }
             ]
         }

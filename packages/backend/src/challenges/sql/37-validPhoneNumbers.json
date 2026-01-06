@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -17,6 +17,25 @@
                     "name": "Cornelius",
                     "surname": "Walsh",
                     "phone_number": "1-234-567-8910"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS phone_numbers CASCADE;",
+                "CREATE TABLE phone_numbers (name TEXT, surname TEXT, phone_number TEXT);",
+                "INSERT INTO phone_numbers VALUES ('Alice', 'Johnson', '1-123-456-7890'), ('Bob', 'Smith', '1-987-654-3210'), ('Charlie', 'Brown', '(555)123-4567'), ('David', 'Lee', '555-987-6543');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Alice",
+                    "surname": "Johnson",
+                    "phone_number": "1-123-456-7890"
+                },
+                {
+                    "name": "Bob",
+                    "surname": "Smith",
+                    "phone_number": "1-987-654-3210"
                 }
             ]
         }

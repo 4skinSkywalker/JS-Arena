@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 5,
     "tests": [
         {
             "scripts": [
@@ -34,6 +34,36 @@
                     "country": "Argentina",
                     "scored": 25,
                     "missed": 23,
+                    "wins": 3
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS results CASCADE;",
+                "CREATE TABLE results (name TEXT, country TEXT, scored INTEGER, missed INTEGER, wins INTEGER);",
+                "INSERT INTO results VALUES ('Team A', 'Country A', 20, 15, 2), ('Team B', 'Country B', 18, 22, 1), ('Team C', 'Country C', 23, 20, 3);"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Team B",
+                    "country": "Country B",
+                    "scored": 18,
+                    "missed": 22,
+                    "wins": 1
+                },
+                {
+                    "name": "Team A",
+                    "country": "Country A",
+                    "scored": 20,
+                    "missed": 15,
+                    "wins": 2
+                },
+                {
+                    "name": "Team C",
+                    "country": "Country C",
+                    "scored": 23,
+                    "missed": 20,
                     "wins": 3
                 }
             ]

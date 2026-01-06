@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 4,
     "tests": [
         {
             "scripts": [
@@ -22,6 +22,25 @@
                     "project_name": "Snapchat",
                     "team_lead": "Evan Spiegel",
                     "income": "2000"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS projects CASCADE;",
+                "CREATE TABLE projects (internal_id INTEGER, project_name TEXT, team_size INTEGER, team_lead TEXT, income NUMERIC);",
+                "INSERT INTO projects VALUES (1234,'AI Chatbot',5,'Alex Smith',5000), (5678,'E-commerce Platform',20,'Emily Johnson',15000);"
+            ],
+            "expectedOutput": [
+                {
+                    "project_name": "AI Chatbot",
+                    "team_lead": "Alex Smith",
+                    "income": "5000"
+                },
+                {
+                    "project_name": "E-commerce Platform",
+                    "team_lead": "Emily Johnson",
+                    "income": "15000"
                 }
             ]
         }

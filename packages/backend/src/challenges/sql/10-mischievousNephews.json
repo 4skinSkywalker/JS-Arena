@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -8,13 +8,81 @@
                 "INSERT INTO mischief VALUES ('2016-12-01', 'Dewey', 'Cook the golden fish in a bucket'), ('2016-12-01', 'Dewey', 'Paint the walls pink'), ('2016-12-01', 'Huey', 'Eat all the candies'), ('2016-12-01', 'Louie', 'Wrap the cat in toilet paper'), ('2016-12-08', 'Louie', 'Play hockey on linoleum'), ('2017-01-01', 'Huey', 'Smash a window'), ('2017-02-06', 'Dewey', 'Create a rink on the porch');"
             ],
             "expectedOutput": [
-                { "weekday": "0", "mischief_date": "2017-01-01", "author": "Huey", "title": "Smash a window" },
-                { "weekday": "1", "mischief_date": "2017-02-06", "author": "Dewey", "title": "Create a rink on the porch" },
-                { "weekday": "4", "mischief_date": "2016-12-01", "author": "Huey", "title": "Eat all the candies" },
-                { "weekday": "4", "mischief_date": "2016-12-01", "author": "Dewey", "title": "Cook the golden fish in a bucket" },
-                { "weekday": "4", "mischief_date": "2016-12-01", "author": "Dewey", "title": "Paint the walls pink" },
-                { "weekday": "4", "mischief_date": "2016-12-01", "author": "Louie", "title": "Wrap the cat in toilet paper" },
-                { "weekday": "4", "mischief_date": "2016-12-08", "author": "Louie", "title": "Play hockey on linoleum" }
+                {
+                    "weekday": "0",
+                    "mischief_date": "2017-01-01",
+                    "author": "Huey",
+                    "title": "Smash a window"
+                },
+                {
+                    "weekday": "1",
+                    "mischief_date": "2017-02-06",
+                    "author": "Dewey",
+                    "title": "Create a rink on the porch"
+                },
+                {
+                    "weekday": "4",
+                    "mischief_date": "2016-12-01",
+                    "author": "Huey",
+                    "title": "Eat all the candies"
+                },
+                {
+                    "weekday": "4",
+                    "mischief_date": "2016-12-01",
+                    "author": "Dewey",
+                    "title": "Cook the golden fish in a bucket"
+                },
+                {
+                    "weekday": "4",
+                    "mischief_date": "2016-12-01",
+                    "author": "Dewey",
+                    "title": "Paint the walls pink"
+                },
+                {
+                    "weekday": "4",
+                    "mischief_date": "2016-12-01",
+                    "author": "Louie",
+                    "title": "Wrap the cat in toilet paper"
+                },
+                {
+                    "weekday": "4",
+                    "mischief_date": "2016-12-08",
+                    "author": "Louie",
+                    "title": "Play hockey on linoleum"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS mischief CASCADE;",
+                "CREATE TABLE mischief (mischief_date TEXT, author TEXT, title TEXT);",
+                "INSERT INTO mischief VALUES ('2016-11-15', 'Huey', 'Hide all the shoes'), ('2016-11-15', 'Dewey', 'Turn the milk blue'), ('2016-11-15', 'Louie', 'Replace sugar with salt'), ('2016-11-15', 'Huey', 'Put a frog in the toilet');"
+            ],
+            "expectedOutput": [
+                {
+                    "weekday": "2",
+                    "mischief_date": "2016-11-15",
+                    "author": "Huey",
+                    "title": "Hide all the shoes"
+                },
+                {
+                    "weekday": "2",
+                    "mischief_date": "2016-11-15",
+                    "author": "Huey",
+                    "title": "Put a frog in the toilet"
+                },
+                {
+                    "weekday": "2",
+                    "mischief_date": "2016-11-15",
+                    "author": "Dewey",
+                    "title": "Turn the milk blue"
+                },
+                {
+                    "weekday": "2",
+                    "mischief_date": "2016-11-15",
+                    "author": "Louie",
+                    "title": "Replace sugar with salt"
+                }
             ]
         }
     ]

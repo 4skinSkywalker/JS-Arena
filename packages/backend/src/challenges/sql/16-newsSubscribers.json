@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -20,6 +20,46 @@
                 "INSERT INTO half_year VALUES (6, 'Nova Daily', 'Joya Buss');"
             ],
             "expectedOutput": [
+                {
+                    "subscriber": "Erwin Chitty"
+                },
+                {
+                    "subscriber": "Joya Buss"
+                },
+                {
+                    "subscriber": "Lavelle Phu"
+                },
+                {
+                    "subscriber": "Lia Cover"
+                },
+                {
+                    "subscriber": "Tonie Moreton"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS full_year CASCADE;",
+                "DROP TABLE IF EXISTS half_year CASCADE;",
+                "CREATE TABLE full_year (id INTEGER, newspaper TEXT, subscriber TEXT);",
+                "CREATE TABLE half_year (id INTEGER, newspaper TEXT, subscriber TEXT);",
+                "INSERT INTO full_year VALUES (1, 'The Paragon Herald', 'Crissy Sepe');",
+                "INSERT INTO full_year VALUES (2, 'The Daily Reporter', 'Tonie Moreton');",
+                "INSERT INTO full_year VALUES (3, 'Morningtide Daily', 'Erwin Chitty');",
+                "INSERT INTO full_year VALUES (4, 'Daily Breakfast', 'Tonie Moreton');",
+                "INSERT INTO full_year VALUES (5, 'Independent Weekly', 'Lavelle Phu');",
+                "INSERT INTO half_year VALUES (1, 'The Daily Reporter', 'Lavelle Phu');",
+                "INSERT INTO half_year VALUES (2, 'Daily Breakfast', 'Tonie Moreton');",
+                "INSERT INTO half_year VALUES (3, 'The Paragon Herald', 'Lia Cover');",
+                "INSERT INTO half_year VALUES (4, 'The Community Gazette', 'Lavelle Phu');",
+                "INSERT INTO half_year VALUES (5, 'Nova Daily', 'Lia Cover');",
+                "INSERT INTO half_year VALUES (6, 'Nova Daily', 'Joya Buss');",
+                "INSERT INTO half_year VALUES (7, 'The Daily Reporter', 'Crissy Sepe');"
+            ],
+            "expectedOutput": [
+                {
+                    "subscriber": "Crissy Sepe"
+                },
                 {
                     "subscriber": "Erwin Chitty"
                 },

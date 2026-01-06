@@ -1,6 +1,39 @@
 {
-    "rating": 0,
+    "rating": 6,
     "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS currencies CASCADE;",
+                "CREATE TABLE currencies (code TEXT, country TEXT);",
+                "INSERT INTO currencies VALUES ('AD', 'Andorra'), ('AUD', 'Australia'), ('BRL', 'Brazil'), ('MXN', 'Mexico'), ('RUB', 'Russia'), ('RUR', 'Russia'), ('SEKR', 'Sweden'), ('USD', 'USA');"
+            ],
+            "expectedOutput": [
+                {
+                    "code": "AUD",
+                    "country": "Australia"
+                },
+                {
+                    "code": "BRL",
+                    "country": "Brazil"
+                },
+                {
+                    "code": "MXN",
+                    "country": "Mexico"
+                },
+                {
+                    "code": "RUB",
+                    "country": "Russia"
+                },
+                {
+                    "code": "RUR",
+                    "country": "Russia"
+                },
+                {
+                    "code": "USD",
+                    "country": "USA"
+                }
+            ]
+        },
         {
             "scripts": [
                 "DROP TABLE IF EXISTS currencies CASCADE;",

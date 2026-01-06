@@ -1,0 +1,35 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS purchases CASCADE;",
+                "CREATE TABLE purchases (timestamp TEXT, buyer_name TEXT);",
+                "INSERT INTO purchases VALUES ('2014-11-09 15:23:05', 'Frank West'), ('2014-11-09 20:11:02', 'Terrence Alexander'), ('2014-11-10 12:10:00', 'Sandy Cohen'), ('2014-11-10 13:00:11', 'Frank West'), ('2014-11-10 14:09:10', 'Sandy Cohen'), ('2014-11-10 14:15:15', 'Leonard Grant'), ('2014-11-10 17:09:10', 'Frank West'), ('2014-11-10 19:09:10', 'Diane Tucker'), ('2014-11-11 18:09:11', 'Pauline Ross'), ('2014-11-11 20:00:00', 'Jasmine Gibson'), ('2014-11-12 10:12:00', 'Kim Neal'), ('2014-11-12 10:12:01', 'Frank West'), ('2014-11-12 15:14:42', 'Sean Kim');"
+            ],
+            "expectedOutput": [
+                {
+                    "winners": "Diane Tucker"
+                },
+                {
+                    "winners": "Frank West"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS purchases CASCADE;",
+                "CREATE TABLE purchases (timestamp TEXT, buyer_name TEXT);",
+                "INSERT INTO purchases VALUES ('2020-01-01 10:00:00', 'Alice'), ('2020-01-01 10:01:00', 'Bob'), ('2020-01-01 10:02:00', 'Charlie'), ('2020-01-01 10:03:00', 'Alice'), ('2020-01-01 10:04:00', 'Bob'), ('2020-01-01 10:05:00', 'Charlie'), ('2020-01-01 10:06:00', 'Diana'), ('2020-01-01 10:07:00', 'Bob');"
+            ],
+            "expectedOutput": [
+                {
+                    "winners": "Alice"
+                },
+                {
+                    "winners": "Bob"
+                }
+            ]
+        }
+    ]
+}

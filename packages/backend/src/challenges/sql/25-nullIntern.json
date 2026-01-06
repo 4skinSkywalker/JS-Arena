@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -9,6 +9,35 @@
                 "INSERT INTO departments VALUES (2, 'marketing', '    NULL');",
                 "INSERT INTO departments VALUES (3, 'IT', 'not nil');",
                 "INSERT INTO departments VALUES (4, 'accounting', '-');"
+            ],
+            "expectedOutput": [
+                {
+                    "number_of_nulls": 3
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS departments CASCADE;",
+                "CREATE TABLE departments (id INTEGER, name TEXT, description TEXT);",
+                "INSERT INTO departments VALUES (1, 'finance', 'NULL');",
+                "INSERT INTO departments VALUES (2, 'marketing', '    NULL');",
+                "INSERT INTO departments VALUES (3, 'IT', ' nil ');",
+                "INSERT INTO departments VALUES (4, 'accounting', '-');"
+            ],
+            "expectedOutput": [
+                {
+                    "number_of_nulls": 4
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS departments CASCADE;",
+                "CREATE TABLE departments (id INTEGER, name TEXT, description TEXT);",
+                "INSERT INTO departments VALUES (1, 'finance', 'NULL');",
+                "INSERT INTO departments VALUES (2, 'marketing', '    null');",
+                "INSERT INTO departments VALUES (3, 'IT', ' NiL ');"
             ],
             "expectedOutput": [
                 {

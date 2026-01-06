@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -38,6 +38,36 @@
                 {
                     "country": "Total:",
                     "competitors": 8
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS foreignCompetitors CASCADE;",
+                "CREATE TABLE foreignCompetitors (competitor TEXT, country TEXT);",
+                "INSERT INTO foreignCompetitors VALUES ('Company A', 'Japan');",
+                "INSERT INTO foreignCompetitors VALUES ('Company B', 'Japan');",
+                "INSERT INTO foreignCompetitors VALUES ('Company C', 'China');",
+                "INSERT INTO foreignCompetitors VALUES ('Company D', 'India');",
+                "INSERT INTO foreignCompetitors VALUES ('Company E', 'China');",
+                "INSERT INTO foreignCompetitors VALUES ('Company F', 'India');"
+            ],
+            "expectedOutput": [
+                {
+                    "country": "China",
+                    "competitors": 2
+                },
+                {
+                    "country": "India",
+                    "competitors": 2
+                },
+                {
+                    "country": "Japan",
+                    "competitors": 2
+                },
+                {
+                    "country": "Total:",
+                    "competitors": 6
                 }
             ]
         }

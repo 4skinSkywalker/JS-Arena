@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 8,
     "tests": [
         {
             "scripts": [
@@ -9,7 +9,6 @@
                 "DROP TABLE IF EXISTS Submissions CASCADE;",
                 "CREATE TABLE Submissions (date TEXT, id INTEGER, hacker_id INTEGER, score INTEGER);",
                 "INSERT INTO Submissions (date, id, hacker_id, score) VALUES ('2016-03-01', 8494, 20703, 0), ('2016-03-01', 22403, 53473, 15), ('2016-03-01', 23965, 79722, 60), ('2016-03-01', 30173, 36396, 70), ('2016-03-02', 34928, 20703, 0), ('2016-03-02', 38740, 15758, 60), ('2016-03-02', 42769, 79722, 25), ('2016-03-02', 44364, 79722, 60), ('2016-03-03', 45440, 20703, 0), ('2016-03-03', 49050, 36396, 70), ('2016-03-03', 50273, 79722, 5), ('2016-03-04', 50344, 20703, 0), ('2016-03-04', 51360, 44065, 90), ('2016-03-04', 54404, 53473, 65), ('2016-03-04', 61533, 79722, 45), ('2016-03-05', 72852, 20703, 0), ('2016-03-05', 74546, 38289, 0), ('2016-03-05', 76487, 62529, 0), ('2016-03-05', 82439, 36396, 10), ('2016-03-05', 90006, 36396, 40), ('2016-03-06', 90404, 20703, 0)"
-
             ],
             "expectedOutput": [
                 {
@@ -34,6 +33,30 @@
                 },
                 {
                     "date": "2016-03-06",
+                    "hackers": 1
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Hackers CASCADE;",
+                "CREATE TABLE Hackers (id INTEGER, name TEXT);",
+                "INSERT INTO Hackers VALUES (1, 'Alice'), (2, 'Bob'), (3, 'Charlie');",
+                "DROP TABLE IF EXISTS Submissions CASCADE;",
+                "CREATE TABLE Submissions (date TEXT, id INTEGER, hacker_id INTEGER, score INTEGER);",
+                "INSERT INTO Submissions VALUES ('2020-01-01', 1, 1, 50), ('2020-01-01', 2, 2, 30), ('2020-01-02', 3, 1, 40), ('2020-01-02', 4, 2, 20), ('2020-01-03', 5, 1, 60);"
+            ],
+            "expectedOutput": [
+                {
+                    "date": "2020-01-01",
+                    "hackers": 2
+                },
+                {
+                    "date": "2020-01-02",
+                    "hackers": 2
+                },
+                {
+                    "date": "2020-01-03",
                     "hackers": 1
                 }
             ]

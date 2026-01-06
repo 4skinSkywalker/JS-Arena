@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 4,
     "tests": [
         {
             "scripts": [
@@ -57,6 +57,48 @@
                 {
                     "item_name": "SafeDisk 8GB",
                     "item_type": "USB drive",
+                    "item_count": 1
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS availableItems CASCADE;",
+                "CREATE TABLE availableItems (id INTEGER, item_name TEXT, item_type TEXT);",
+                "INSERT INTO availableItems VALUES (3, 'Vergibatimur 40 disks', 'DVD');",
+                "INSERT INTO availableItems VALUES (4, 'Omega Santodisk', 'Memory card');",
+                "INSERT INTO availableItems VALUES (5, 'PS1 Memory Storage', 'Memory card');",
+                "INSERT INTO availableItems VALUES (6, 'Vergibatimur 20 disks', 'DVD');",
+                "INSERT INTO availableItems VALUES (7, 'Omega Santodisk', 'Memory card');",
+                "INSERT INTO availableItems VALUES (8, 'Omega Santodisk', 'Memory card');",
+                "INSERT INTO availableItems VALUES (9, 'Mouse Jiggler', 'Misc');",
+                "INSERT INTO availableItems VALUES (10, 'Vergibatimur 40 disks', 'DVD');",
+                "INSERT INTO availableItems VALUES (14, 'Vergibatimur 20 disks', 'DVD');"
+            ],
+            "expectedOutput": [
+                {
+                    "item_name": "Vergibatimur 20 disks",
+                    "item_type": "DVD",
+                    "item_count": 2
+                },
+                {
+                    "item_name": "Vergibatimur 40 disks",
+                    "item_type": "DVD",
+                    "item_count": 2
+                },
+                {
+                    "item_name": "Omega Santodisk",
+                    "item_type": "Memory card",
+                    "item_count": 3
+                },
+                {
+                    "item_name": "PS1 Memory Storage",
+                    "item_type": "Memory card",
+                    "item_count": 1
+                },
+                {
+                    "item_name": "Mouse Jiggler",
+                    "item_type": "Misc",
                     "item_count": 1
                 }
             ]

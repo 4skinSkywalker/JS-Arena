@@ -19,7 +19,7 @@
     <p>Given the table <strong>events</strong>, sort it as described above and return the resulting table.</p>
     
     <h3>Tips</h3>
-    <p>You can use <code>EXTRACT(DOW FROM event_date::date -1)</code> function to extract the day of the week from the <code>event_date</code> field, -1 is used to turn monday into the smallest value (otherwise it would be sunday).</p>
+    <p>You can use <code>EXTRACT(DOW FROM event_date::DATE -1)</code> function to extract the day of the week from the <code>event_date</code> field, -1 is used to turn monday into the smallest value (otherwise it would be sunday).</p>
 
     <h3>Example</h3>
     <p>For the following table <strong>events</strong></p>

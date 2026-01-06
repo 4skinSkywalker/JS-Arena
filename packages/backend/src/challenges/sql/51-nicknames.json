@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 6,
     "tests": [
         {
             "scripts": [
@@ -31,6 +31,35 @@
                 {
                     "id": "rename - id9999",
                     "nickname": "rename - butch"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS reservedNicknames CASCADE;",
+                "CREATE TABLE reservedNicknames (id TEXT, nickname TEXT);",
+                "INSERT INTO reservedNicknames VALUES ('id1234', 'invalid1'), ('id5678', 'invalid2'), ('id91011', 'invalid3'), ('id121314', 'invalid4'), ('id151617', 'invalid5');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": "rename - id1234",
+                    "nickname": "rename - invalid1"
+                },
+                {
+                    "id": "rename - id5678",
+                    "nickname": "rename - invalid2"
+                },
+                {
+                    "id": "rename - id91011",
+                    "nickname": "rename - invalid3"
+                },
+                {
+                    "id": "rename - id121314",
+                    "nickname": "rename - invalid4"
+                },
+                {
+                    "id": "rename - id151617",
+                    "nickname": "rename - invalid5"
                 }
             ]
         }

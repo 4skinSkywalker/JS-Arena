@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 6,
     "tests": [
         {
             "scripts": [
@@ -8,9 +8,27 @@
                 "INSERT INTO users VALUES (6, 'fasalytch', 'premium', 'much.premium@role.com'), (13, 'luckygirl', 'regular', 'fun@meh.com'), (16, 'todayhumor', 'guru', 'today@humor.com'), (23, 'Felix', 'admin', 'felix@codesignal.com'), (52, 'admin666', 'AdmiN', 'iamtheadmin@admin.admin'), (87, 'solver100500', 'regular', 'email@notbot.com');"
             ],
             "expectedOutput": [
-                { "email": "email@notbot.com" },
-                { "email": "fun@meh.com" },
-                { "email": "today@humor.com" }
+                {
+                    "email": "email@notbot.com"
+                },
+                {
+                    "email": "fun@meh.com"
+                },
+                {
+                    "email": "today@humor.com"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS users CASCADE;",
+                "CREATE TABLE users (id INTEGER, username TEXT, role TEXT, email TEXT);",
+                "INSERT INTO users VALUES (1, 'john_doe', 'admin', 'john.doe@example.com'), (2, 'jane_smith', 'premium', 'jane.smith@example.com'), (3, 'bob_jones', 'regular', 'bob.jones@example.com'), (4, 'alice_williams', 'premium', 'alice.williams@example.com');"
+            ],
+            "expectedOutput": [
+                {
+                    "email": "bob.jones@example.com"
+                }
             ]
         }
     ]

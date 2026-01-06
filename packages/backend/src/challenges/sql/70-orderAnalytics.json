@@ -1,0 +1,72 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS orders CASCADE;",
+                "CREATE TABLE orders (id INTEGER, order_date TEXT, type TEXT, quantity INTEGER, price INTEGER);",
+                "INSERT INTO orders VALUES (1, '2015-08-15', 'Pizza', 2, 25), (2, '2016-05-11', 'Sushi', 1, 37), (3, '2015-01-01', 'Wok', 5, 8), (4, '2016-12-31', 'Cake', 1, 49);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "year": 2015,
+                    "quarter": 3,
+                    "type": "Pizza",
+                    "total_price": 50
+                },
+                {
+                    "id": 2,
+                    "year": 2016,
+                    "quarter": 2,
+                    "type": "Sushi",
+                    "total_price": 37
+                },
+                {
+                    "id": 3,
+                    "year": 2015,
+                    "quarter": 1,
+                    "type": "Wok",
+                    "total_price": 40
+                },
+                {
+                    "id": 4,
+                    "year": 2016,
+                    "quarter": 4,
+                    "type": "Cake",
+                    "total_price": 49
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS orders CASCADE;",
+                "CREATE TABLE orders (id INTEGER, order_date TEXT, type TEXT, quantity INTEGER, price INTEGER);",
+                "INSERT INTO orders VALUES (10, '2020-01-10', 'Burger', 3, 12), (11, '2020-03-31', 'Burger', 0, 12), (12, '2020-04-01', 'Salad', 2, 7);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 10,
+                    "year": 2020,
+                    "quarter": 1,
+                    "type": "Burger",
+                    "total_price": 36
+                },
+                {
+                    "id": 11,
+                    "year": 2020,
+                    "quarter": 1,
+                    "type": "Burger",
+                    "total_price": 0
+                },
+                {
+                    "id": 12,
+                    "year": 2020,
+                    "quarter": 2,
+                    "type": "Salad",
+                    "total_price": 14
+                }
+            ]
+        }
+    ]
+}

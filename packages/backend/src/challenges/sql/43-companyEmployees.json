@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -34,6 +34,42 @@
                 {
                     "dep_name": "PD",
                     "emp_name": "John Tucker"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS departments CASCADE;",
+                "CREATE TABLE departments (dep_name TEXT);",
+                "INSERT INTO departments VALUES ('HR'), ('SALES');",
+                "DROP TABLE IF EXISTS employees CASCADE;",
+                "CREATE TABLE employees (emp_name TEXT);",
+                "INSERT INTO employees VALUES ('Alice Smith'), ('Bob Johnson'), ('Eve Brown');"
+            ],
+            "expectedOutput": [
+                {
+                    "dep_name": "HR",
+                    "emp_name": "Alice Smith"
+                },
+                {
+                    "dep_name": "HR",
+                    "emp_name": "Bob Johnson"
+                },
+                {
+                    "dep_name": "HR",
+                    "emp_name": "Eve Brown"
+                },
+                {
+                    "dep_name": "SALES",
+                    "emp_name": "Alice Smith"
+                },
+                {
+                    "dep_name": "SALES",
+                    "emp_name": "Bob Johnson"
+                },
+                {
+                    "dep_name": "SALES",
+                    "emp_name": "Eve Brown"
                 }
             ]
         }

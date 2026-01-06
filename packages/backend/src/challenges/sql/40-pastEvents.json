@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -15,6 +15,23 @@
                 {
                     "name": "TGIF",
                     "event_date": "2016-11-11"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Events CASCADE;",
+                "CREATE TABLE Events (id INTEGER, name TEXT, event_date TEXT);",
+                "INSERT INTO Events VALUES (1, 'Hackathon', '2017-05-20'), (2, 'Demo Day', '2017-05-15'), (3, 'Hackathon', '2017-05-01'), (4, 'Demo Day', '2017-05-21'), (5, 'Demo Day', '2017-05-10');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Hackathon",
+                    "event_date": "2017-05-20"
+                },
+                {
+                    "name": "Damo Day",
+                    "event_date": "2017-05-15"
                 }
             ]
         }

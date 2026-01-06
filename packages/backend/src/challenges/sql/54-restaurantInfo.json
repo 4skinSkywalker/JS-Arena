@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -35,6 +35,45 @@
                 {
                     "id": 5,
                     "name": "The Royal Spices",
+                    "description": "TBD",
+                    "active": 1
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS restaurants CASCADE;",
+                "CREATE TABLE restaurants (id INTEGER, name TEXT);",
+                "INSERT INTO restaurants VALUES (1, 'Cafe Paris'), (2, 'Pizzeria Italia'), (3, 'Sushi Palace'), (4, 'Taco Fiesta'), (5, 'Burger Joint');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "name": "Cafe Paris",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 2,
+                    "name": "Pizzeria Italia",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 3,
+                    "name": "Sushi Palace",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 4,
+                    "name": "Taco Fiesta",
+                    "description": "TBD",
+                    "active": 1
+                },
+                {
+                    "id": 5,
+                    "name": "Burger Joint",
                     "description": "TBD",
                     "active": 1
                 }

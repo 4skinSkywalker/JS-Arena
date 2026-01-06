@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 4,
     "tests": [
         {
             "scripts": [
@@ -17,6 +17,25 @@
                     "name": "Cameroon",
                     "continent": "Africa",
                     "population": 22709892
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS countries CASCADE;",
+                "CREATE TABLE countries (name TEXT, continent TEXT, population INTEGER);",
+                "INSERT INTO countries VALUES ('Egypt','Africa',100388073), ('France','Europe',65273511), ('Ghana','Africa',31072940), ('India','Asia',1380004385), ('Italy','Europe',60461826);"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Egypt",
+                    "continent": "Africa",
+                    "population": 100388073
+                },
+                {
+                    "name": "Ghana",
+                    "continent": "Africa",
+                    "population": 31072940
                 }
             ]
         }

@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -19,6 +19,17 @@
                 {
                     "place1": "The Shard",
                     "place2": "Tower of London"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "INSERT INTO sights VALUES (5, 'Buckingham Palace', 51506.123, -10.4567), (6, 'Big Ben', 51507.789, -9.8765);"
+            ],
+            "expectedOutput": [
+                {
+                    "place1": "Big Ben",
+                    "place2": "Buckingham Palace"
                 }
             ]
         }

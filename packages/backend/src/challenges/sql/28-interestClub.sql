@@ -1,6 +1,5 @@
 SELECT DISTINCT name
-FROM (
-    SELECT name, UNNEST(STRING_TO_ARRAY(interests, ',')) AS interest
-    FROM people_interests
-)
-WHERE interest = 'reading' OR interest = 'drawing';
+FROM cte
+WHERE 
+    'reading' = ANY(STRING_TO_ARRAY(interests, ',')) AND
+    'drawing' = ANY(STRING_TO_ARRAY(interests, ','));

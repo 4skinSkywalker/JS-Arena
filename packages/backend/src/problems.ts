@@ -44,7 +44,7 @@ function popuplateProblemsByLanguage(lang: EnumLang) {
         }
     }
 
-    languages[lang].problems.sort((a, b) =>
+    languages['JS'].problems.sort((a, b) =>
         (a.rating  === b.rating)
             ? a.filename.localeCompare(b.filename)
             : a.rating - b.rating

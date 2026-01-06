@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 6,
     "tests": [
         {
             "scripts": [
@@ -17,6 +17,21 @@
                 },
                 {
                     "name": "James"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS people_interests CASCADE;",
+                "CREATE TABLE people_interests (name TEXT, interests TEXT);",
+                "INSERT INTO people_interests VALUES ('Alice', 'reading,drawing');",
+                "INSERT INTO people_interests VALUES ('Bob', 'drawing,cooking');",
+                "INSERT INTO people_interests VALUES ('Charlie', 'reading,cooking');",
+                "INSERT INTO people_interests VALUES ('David', 'drawing,cooking');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Alice"
                 }
             ]
         }

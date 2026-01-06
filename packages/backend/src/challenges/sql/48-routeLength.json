@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -10,6 +10,18 @@
             "expectedOutput": [
                 {
                     "total": 4.828427125
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS cities CASCADE;",
+                "CREATE TABLE cities (id INTEGER, x DOUBLE PRECISION, y DOUBLE PRECISION);",
+                "INSERT INTO cities VALUES (1, 0, 0), (2, 1, 1), (3, 2, 2), (4, 4, 2), (5, 5, 5);"
+            ],
+            "expectedOutput": [
+                {
+                    "total": 7.414213562
                 }
             ]
         }

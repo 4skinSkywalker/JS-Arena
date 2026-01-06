@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 4,
     "tests": [
         {
             "scripts": [
@@ -22,6 +22,24 @@
                 },
                 {
                     "name": "Richard Young"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS projectLog CASCADE;",
+                "CREATE TABLE projectLog (id INTEGER, name TEXT, description TEXT, timestamp TEXT);",
+                "INSERT INTO projectLog VALUES (1, 'Alice Brown', 'add new feature', '2022-01-10 08:30:00'), (2, 'Bob Green', 'update design', '2022-01-10 09:45:00'), (3, 'Alice Brown', 'fix bugs', '2022-01-10 10:15:00'), (4, 'Charlie White', 'implement feature', '2022-01-10 11:30:00'), (5, 'Alice Brown', 'optimize code', '2022-01-10 12:00:00');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Alice Brown"
+                },
+                {
+                    "name": "Bob Green"
+                },
+                {
+                    "name": "Charlie White"
                 }
             ]
         }

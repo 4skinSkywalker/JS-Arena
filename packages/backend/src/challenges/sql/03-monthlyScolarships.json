@@ -1,38 +1,71 @@
 {
-    "rating": 0,
+    "rating": 4,
     "tests": [
         {
-			"scripts": [
-				"DROP TABLE IF EXISTS scholarships CASCADE;",
-				"CREATE TABLE scholarships (id INTEGER, scholarship DOUBLE PRECISION);",
-				"INSERT INTO scholarships VALUES (1,12000), (2,18000), (3,24000), (4,15000), (5,21000), (6,13000);"
-			],
+            "scripts": [
+                "DROP TABLE IF EXISTS scholarships CASCADE;",
+                "CREATE TABLE scholarships (id INTEGER, scholarship DOUBLE PRECISION);",
+                "INSERT INTO scholarships VALUES (1,12000), (2,18000), (3,24000), (4,15000), (5,21000), (6,13000);"
+            ],
             "expectedOutput": [
-				{
-					"id": 1,
-					"scholarship": 1000
-				},
-				{
-					"id": 2,
-					"scholarship": 1500
-				},
-				{
-					"id": 3,
-					"scholarship": 2000
-				},
-				{
-					"id": 4,
-					"scholarship": 1250
-				},
-				{
-					"id": 5,
-					"scholarship": 1750
-				},
-				{
-					"id": 6,
-					"scholarship": 1083.3333333333333
-				}
-			]
+                {
+                    "id": 1,
+                    "scholarship": 1000
+                },
+                {
+                    "id": 2,
+                    "scholarship": 1500
+                },
+                {
+                    "id": 3,
+                    "scholarship": 2000
+                },
+                {
+                    "id": 4,
+                    "scholarship": 1250
+                },
+                {
+                    "id": 5,
+                    "scholarship": 1750
+                },
+                {
+                    "id": 6,
+                    "scholarship": 1083.3333333333333
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS scholarships CASCADE;",
+                "CREATE TABLE scholarships (id INTEGER, scholarship DOUBLE PRECISION);",
+                "INSERT INTO scholarships VALUES (1,10000), (2,16000), (3,22000), (4,13000), (5,19000), (6,14000);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "scholarship": 833.3333333333334
+                },
+                {
+                    "id": 2,
+                    "scholarship": 1333.3333333333333
+                },
+                {
+                    "id": 3,
+                    "scholarship": 1833.3333333333333
+                },
+                {
+                    "id": 4,
+                    "scholarship": 1083.3333333333333
+                },
+                {
+                    "id": 5,
+                    "scholarship": 1583.3333333333333
+                },
+                {
+                    "id": 6,
+                    "scholarship": 1166.6666666666667
+                }
+            ]
         }
     ]
 }

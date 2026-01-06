@@ -19,8 +19,8 @@
 
     <h3>Tips</h3>
     <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><code>WITH temporary_table AS (SELECT ...)</code> can be used to create a temporary table to be referenced in the query;</li>
-        <li class="list-group-item"><code>UNNEST(STRING_TO_ARRAY(interests, ','))</code> can be used to split the <code>interests</code> column into a set of rows.</li>
+        <li class="list-group-item"><code>STRING_TO_ARRAY(interests, ',')</code> can be used to turn a column into an array.</li>
+        <li class="list-group-item"><code>value = ANY(array)</code> can be used to check if any item of an array is equal to a given value.</li>
     </ul>
         
     <h3>Example</h3>

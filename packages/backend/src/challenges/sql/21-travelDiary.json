@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 6,
     "tests": [
         {
             "scripts": [
@@ -15,6 +15,23 @@
             "expectedOutput": [
                 {
                     "countries": "Australia;Austria;France;Ireland;Japan"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS diary CASCADE;",
+                "CREATE TABLE diary (id INTEGER, travel_date TEXT, country TEXT);",
+                "INSERT INTO diary VALUES (1, '2015-03-20', 'Spain');",
+                "INSERT INTO diary VALUES (2, '2017-09-10', 'Italy');",
+                "INSERT INTO diary VALUES (3, '2018-11-30', 'Greece');",
+                "INSERT INTO diary VALUES (4, '2016-07-14', 'Spain');",
+                "INSERT INTO diary VALUES (5, '2019-05-02', 'Italy');",
+                "INSERT INTO diary VALUES (6, '2017-12-25', 'Greece');"
+            ],
+            "expectedOutput": [
+                {
+                    "countries": "Greece;Italy;Spain"
                 }
             ]
         }

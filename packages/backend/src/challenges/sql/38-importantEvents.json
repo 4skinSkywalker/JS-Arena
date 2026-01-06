@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -31,6 +31,33 @@
                     "name": "Dinner",
                     "event_date": "2016-11-27",
                     "participants": 3
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS events CASCADE;",
+                "CREATE TABLE events (id INTEGER, name TEXT, event_date TEXT, participants INTEGER);",
+                "INSERT INTO events VALUES (1, 'Birthday Party', '2016-09-15', 50), (2, 'Conference', '2016-08-10', 200), (3, 'Graduation', '2016-07-05', 3000);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 3,
+                    "name": "Graduation",
+                    "event_date": "2016-07-05",
+                    "participants": 3000
+                },
+                {
+                    "id": 2,
+                    "name": "Conference",
+                    "event_date": "2016-08-10",
+                    "participants": 200
+                },
+                {
+                    "id": 1,
+                    "name": "Birthday Party",
+                    "event_date": "2016-09-15",
+                    "participants": 50
                 }
             ]
         }

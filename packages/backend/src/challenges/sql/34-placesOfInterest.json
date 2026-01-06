@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -28,6 +28,36 @@
                     "golf": 0,
                     "river_cruise": 3,
                     "kart_racing": 0
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS countryActivities CASCADE;",
+                "CREATE TABLE countryActivities (id INTEGER, country TEXT, region TEXT, leisure_activity_type TEXT, number_of_places INTEGER);",
+                "INSERT INTO countryActivities VALUES (1, 'Italy', 'Tuscany', 'River cruise', 4), (2, 'Italy', 'Lombardy', 'Golf', 2), (3, 'Spain', 'Madrid', 'Adventure park', 3), (4, 'Spain', 'Valencia', 'Kart racing', 1), (5, 'Portugal', 'Lisbon', 'River cruise', 5);"
+            ],
+            "expectedOutput": [
+                {
+                    "country": "Italy",
+                    "adventure_park": 0,
+                    "golf": 2,
+                    "river_cruise": 4,
+                    "kart_racing": 0
+                },
+                {
+                    "country": "Portugal",
+                    "adventure_park": 0,
+                    "golf": 0,
+                    "river_cruise": 5,
+                    "kart_racing": 0
+                },
+                {
+                    "country": "Spain",
+                    "adventure_park": 3,
+                    "golf": 0,
+                    "river_cruise": 0,
+                    "kart_racing": 1
                 }
             ]
         }

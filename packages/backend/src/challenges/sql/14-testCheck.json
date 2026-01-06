@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -25,6 +25,39 @@
                 },
                 {
                     "id": 4,
+                    "checks": "no answer"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS answers CASCADE;",
+                "CREATE TABLE answers (id INTEGER, correct_answer TEXT, given_answer TEXT);",
+                "INSERT INTO answers VALUES (1, 'a', 'a');",
+                "INSERT INTO answers VALUES (2, 'b', NULL);",
+                "INSERT INTO answers VALUES (3, 'c', 'b');",
+                "INSERT INTO answers VALUES (4, 'd', '');",
+                "INSERT INTO answers VALUES (5, 'e', NULL);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "checks": "correct"
+                },
+                {
+                    "id": 2,
+                    "checks": "no answer"
+                },
+                {
+                    "id": 3,
+                    "checks": "incorrect"
+                },
+                {
+                    "id": 4,
+                    "checks": "no answer"
+                },
+                {
+                    "id": 5,
                     "checks": "no answer"
                 }
             ]

@@ -103,7 +103,7 @@
                                                     @for (row of test.expectedOutput; track $index) {
                                                     <tr>
                                                         @for (key of Object.keys(test.expectedOutput[0]); track $index) {
-                                                        <td>{{row[key]}}</td>
+                                                        <td>{{row[key] | quoteWrap}}</td>
                                                         }
                                                     </tr>
                                                     }
@@ -126,7 +126,7 @@
                                                     @for (row of test.output; track $index) {
                                                     <tr>
                                                         @for (key of Object.keys(test.output[0]); track $index) {
-                                                        <td>{{row[key]}}</td>
+                                                        <td>{{row[key] | quoteWrap}}</td>
                                                         }
                                                     </tr>
                                                     }

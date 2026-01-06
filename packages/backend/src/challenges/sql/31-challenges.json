@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -18,16 +18,12 @@
                 "INSERT INTO Challenges VALUES (29477, 5077);",
                 "INSERT INTO Challenges VALUES (1220, 21283);",
                 "INSERT INTO Challenges VALUES (69514, 21283);",
-                "INSERT INTO Challenges VALUES (46561, 62743);",
-                "INSERT INTO Challenges VALUES (58077, 62743);",
                 "INSERT INTO Challenges VALUES (18483, 88255);",
                 "INSERT INTO Challenges VALUES (76766, 21283);",
                 "INSERT INTO Challenges VALUES (52382, 5077);",
                 "INSERT INTO Challenges VALUES (74467, 21283);",
                 "INSERT INTO Challenges VALUES (33625, 96196);",
                 "INSERT INTO Challenges VALUES (26053, 88255);",
-                "INSERT INTO Challenges VALUES (42665, 62743);",
-                "INSERT INTO Challenges VALUES (12859, 62743);",
                 "INSERT INTO Challenges VALUES (70094, 21283);",
                 "INSERT INTO Challenges VALUES (34599, 88255);",
                 "INSERT INTO Challenges VALUES (54680, 88255);",
@@ -53,6 +49,42 @@
                     "hacker_id": 96196,
                     "name": "Lisa",
                     "count": 1
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Hackers CASCADE;",
+                "CREATE TABLE Hackers (hacker_id INTEGER, name TEXT);",
+                "INSERT INTO Hackers VALUES (10, 'Alice');",
+                "INSERT INTO Hackers VALUES (20, 'Bob');",
+                "INSERT INTO Hackers VALUES (30, 'Charlie');",
+                "INSERT INTO Hackers VALUES (40, 'Diana');",
+                "DROP TABLE IF EXISTS Challenges CASCADE;",
+                "CREATE TABLE Challenges (challenge_id INTEGER, hacker_id INTEGER);",
+                "INSERT INTO Challenges VALUES (1, 10);",
+                "INSERT INTO Challenges VALUES (2, 10);",
+                "INSERT INTO Challenges VALUES (3, 20);",
+                "INSERT INTO Challenges VALUES (4, 20);",
+                "INSERT INTO Challenges VALUES (5, 30);",
+                "INSERT INTO Challenges VALUES (6, 30);",
+                "INSERT INTO Challenges VALUES (7, 30);"
+            ],
+            "expectedOutput": [
+                {
+                    "hacker_id": 30,
+                    "name": "Charlie",
+                    "count": 3
+                },
+                {
+                    "hacker_id": 10,
+                    "name": "Alice",
+                    "count": 2
+                },
+                {
+                    "hacker_id": 20,
+                    "name": "Bob",
+                    "count": 2
                 }
             ]
         }

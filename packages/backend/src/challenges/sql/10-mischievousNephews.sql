@@ -1,13 +1,14 @@
 SELECT
-    extract(DOW FROM mischief_date::DATE) AS weekday,
+    EXTRACT(DOW FROM mischief_date::DATE) AS weekday,
     mischief_date,
     author,
     title
 FROM mischief
-ORDER BY 
-    weekday,
-    CASE
+ORDER BY weekday,
+    case
         WHEN author = 'Huey' THEN 1
         WHEN author = 'Dewey' THEN 2
         ELSE 3
-    END;
+    END,
+    mischief_date,
+    title;

@@ -1,0 +1,88 @@
+{
+    "rating": 8,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS workers_info CASCADE;",
+                "CREATE TABLE workers_info (id INTEGER, name TEXT, date_of_birth TEXT, salary INTEGER);",
+                "INSERT INTO workers_info VALUES (1, 'Justin Penrose', '1969-03-01', 3000), (2, NULL, NULL, NULL), (3, 'Robt Claire', NULL, NULL), (10, NULL, '1970-12-12', NULL), (11, NULL, NULL, 5000), (12, 'Yuk Kluge', NULL, 4500);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "column_name": "name",
+                    "value": "Justin Penrose"
+                },
+                {
+                    "id": 1,
+                    "column_name": "date_of_birth",
+                    "value": "1969-03-01"
+                },
+                {
+                    "id": 1,
+                    "column_name": "salary",
+                    "value": "3000"
+                },
+                {
+                    "id": 3,
+                    "column_name": "name",
+                    "value": "Robt Claire"
+                },
+                {
+                    "id": 10,
+                    "column_name": "date_of_birth",
+                    "value": "1970-12-12"
+                },
+                {
+                    "id": 11,
+                    "column_name": "salary",
+                    "value": "5000"
+                },
+                {
+                    "id": 12,
+                    "column_name": "name",
+                    "value": "Yuk Kluge"
+                },
+                {
+                    "id": 12,
+                    "column_name": "salary",
+                    "value": "4500"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS workers_info CASCADE;",
+                "CREATE TABLE workers_info (id INTEGER, name TEXT, date_of_birth TEXT, salary INTEGER);",
+                "INSERT INTO workers_info VALUES (20, 'Alice Brown', '1985-06-15', 6000), (21, NULL, NULL, 4200), (22, 'Mark Stone', NULL, NULL);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 20,
+                    "column_name": "name",
+                    "value": "Alice Brown"
+                },
+                {
+                    "id": 20,
+                    "column_name": "date_of_birth",
+                    "value": "1985-06-15"
+                },
+                {
+                    "id": 20,
+                    "column_name": "salary",
+                    "value": "6000"
+                },
+                {
+                    "id": 21,
+                    "column_name": "salary",
+                    "value": "4200"
+                },
+                {
+                    "id": 22,
+                    "column_name": "name",
+                    "value": "Mark Stone"
+                }
+            ]
+        }
+    ]
+}

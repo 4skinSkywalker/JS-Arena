@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -13,25 +13,54 @@
                     "email_title": "Your requested backup",
                     "short_size": "223 Mb"
                 },
-                { 
+                {
                     "id": 1,
                     "email_title": "You won 1M dollars!",
                     "short_size": "20 Mb"
                 },
-                { 
+                {
                     "id": 2,
                     "email_title": "You are fired",
                     "short_size": "305 Kb"
                 },
-                { 
+                {
                     "id": 4,
                     "email_title": "Spam email",
                     "short_size": "22 Kb"
                 },
-                { 
+                {
                     "id": 3,
                     "email_title": "Black Friday is coming",
                     "short_size": "0 Kb"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS emails CASCADE;",
+                "CREATE TABLE emails (id INTEGER, email_title TEXT, size INTEGER);",
+                "INSERT INTO emails VALUES (1, 'Important document', 1024), (2, 'Vacation photos', 5120), (3, 'Meeting agenda', 20480), (4, 'Funny cat video', 30720);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 4,
+                    "email_title": "Funny cat video",
+                    "short_size": "30 Kb"
+                },
+                {
+                    "id": 3,
+                    "email_title": "Meeting agenda",
+                    "short_size": "20 Kb"
+                },
+                {
+                    "id": 2,
+                    "email_title": "Vacation photos",
+                    "short_size": "5 Kb"
+                },
+                {
+                    "id": 1,
+                    "email_title": "Important document",
+                    "short_size": "1 Kb"
                 }
             ]
         }

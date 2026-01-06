@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -34,6 +34,34 @@
                 },
                 {
                     "name": "Queen Loisa"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Successors CASCADE;",
+                "CREATE TABLE Successors (name TEXT, birthday TEXT, gender TEXT);",
+                "INSERT INTO Successors VALUES ('Edward', '1680-01-12', 'M');",
+                "INSERT INTO Successors VALUES ('Victoria', '1681-05-03', 'F');",
+                "INSERT INTO Successors VALUES ('Henry', '1685-09-20', 'M');",
+                "INSERT INTO Successors VALUES ('Charlotte', '1687-07-11', 'F');",
+                "INSERT INTO Successors VALUES ('George', '1690-02-02', 'M');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "King Edward"
+                },
+                {
+                    "name": "Queen Victoria"
+                },
+                {
+                    "name": "King Henry"
+                },
+                {
+                    "name": "Queen Charlotte"
+                },
+                {
+                    "name": "King George"
                 }
             ]
         }

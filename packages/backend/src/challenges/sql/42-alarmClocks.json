@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -37,6 +37,30 @@
                 },
                 {
                     "alarm_date": "2016-12-25 22:00:00"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS userInput CASCADE;",
+                "CREATE TABLE userInput (input_date TEXT);",
+                "INSERT INTO userInput VALUES ('2017-12-01 11:00:00');"
+            ],
+            "expectedOutput": [
+                {
+                    "alarm_date": "2017-12-01 11:00:00"
+                },
+                {
+                    "alarm_date": "2017-12-08 11:00:00"
+                },
+                {
+                    "alarm_date": "2017-12-15 11:00:00"
+                },
+                {
+                    "alarm_date": "2017-12-22 11:00:00"
+                },
+                {
+                    "alarm_date": "2017-12-29 11:00:00"
                 }
             ]
         }

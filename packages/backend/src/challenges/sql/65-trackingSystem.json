@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 8,
     "tests": [
         {
             "scripts": [
@@ -21,6 +21,30 @@
                 {
                     "anonym_id": 3,
                     "last_null": "commentWritten",
+                    "first_notnull": null
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS tracks CASCADE;",
+                "CREATE TABLE tracks (received_at TEXT, event_name TEXT, anonymous_id INTEGER, user_id INTEGER);",
+                "INSERT INTO tracks VALUES ('2017-01-01 09:00:00', 'pageViewed', 10, 5), ('2017-01-01 09:05:00', 'buttonClicked', 11, NULL), ('2017-01-01 09:06:00', 'formOpened', 11, NULL), ('2017-01-01 09:10:00', 'loggedIn', 11, 7), ('2017-01-01 10:00:00', 'pageViewed', 12, NULL);"
+            ],
+            "expectedOutput": [
+                {
+                    "anonym_id": 10,
+                    "last_null": null,
+                    "first_notnull": "pageViewed"
+                },
+                {
+                    "anonym_id": 11,
+                    "last_null": "formOpened",
+                    "first_notnull": "loggedIn"
+                },
+                {
+                    "anonym_id": 12,
+                    "last_null": "pageViewed",
                     "first_notnull": null
                 }
             ]

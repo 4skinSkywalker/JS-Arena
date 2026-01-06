@@ -1,8 +1,10 @@
-SELECT name
-FROM (
-    SELECT name, UNNEST(STRING_TO_ARRAY(hobbies, ',')) AS hobby
+WITH cte AS (
+    SELECT
+        name,
+        'reading' = ANY(STRING_TO_ARRAY(hobbies, ',')) AS reading,
+        'sports' = ANY(STRING_TO_ARRAY(hobbies, ',')) AS sports
     FROM people_hobbies
 )
-WHERE hobby IN ('reading', 'sports')
-GROUP BY name
-HAVING COUNT(*) = 2;
+SELECT DISTINCT name 
+FROM cte
+WHERE (reading OR sports) AND NOT (reading AND sports);

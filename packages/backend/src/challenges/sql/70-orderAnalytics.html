@@ -1,0 +1,140 @@
+<h2>Description</h2>
+
+<p>
+    You're working in a big delivery company that has to handle a lot of orders.
+</p>
+
+<p>
+    The information about all orders is stored in the table <strong>orders</strong>.
+    Here is its structure:
+</p>
+
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>id</strong>: unique order id;</li>
+    <li class="list-group-item"><strong>order_date</strong>: order date (having DATE type) in the format YYYY-MM-DD;</li>
+    <li class="list-group-item"><strong>type</strong>: the type of the product in the order;</li>
+    <li class="list-group-item"><strong>quantity</strong>: the quantity of the product in the order;</li>
+    <li class="list-group-item"><strong>price</strong>: the price of one item of the product.</li>
+</ul>
+
+<p>
+    In order to get a better view of your data you decided to create a new table
+    called <strong>orders_analytics</strong>. It should contain the same orders as
+    the <strong>orders</strong> and consist of the following columns:
+</p>
+
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>id</strong>: order id;</li>
+    <li class="list-group-item"><strong>year</strong>: the year of the order;</li>
+    <li class="list-group-item"><strong>quarter</strong>: the quarter of the year in which the order was taken;</li>
+    <li class="list-group-item"><strong>type</strong>: the type of the product in the order;</li>
+    <li class="list-group-item">
+        <strong>total_price</strong>: the total price of the order
+        (<code>total_price = price * quantity</code>).
+    </li>
+</ul>
+
+<p>The <em>quarter</em> of the year is defined as follows:</p>
+
+<ul>
+    <li>01 January till 31 March refers to the <code>1<sup>st</sup></code> quarter;</li>
+    <li>01 April till 30 June refers to the <code>2<sup>nd</sup></code> quarter;</li>
+    <li>01 July till 30 September refers to the <code>3<sup>rd</sup></code> quarter;</li>
+    <li>01 October till 31 December refers to the <code>4<sup>th</sup></code> quarter.</li>
+</ul>
+
+<p>
+    Given the table <strong>orders</strong>, build the new table
+    <strong>order_analytics</strong> and print all its rows ordered by
+    order <code>id</code>s.
+</p>
+
+<h3>Example</h3>
+
+<p>For the following table <strong>orders</strong></p>
+
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>order_date</th>
+            <th>type</th>
+            <th>quantity</th>
+            <th>price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>2015-08-15</td>
+            <td>Pizza</td>
+            <td>2</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2016-05-11</td>
+            <td>Sushi</td>
+            <td>1</td>
+            <td>37</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2015-01-01</td>
+            <td>Wok</td>
+            <td>5</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2016-12-31</td>
+            <td>Cake</td>
+            <td>1</td>
+            <td>49</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>the output should be</p>
+
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>year</th>
+            <th>quarter</th>
+            <th>type</th>
+            <th>total_price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>2015</td>
+            <td>3</td>
+            <td>Pizza</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2016</td>
+            <td>2</td>
+            <td>Sushi</td>
+            <td>37</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2015</td>
+            <td>1</td>
+            <td>Wok</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>2016</td>
+            <td>4</td>
+            <td>Cake</td>
+            <td>49</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,19 +1,16 @@
 {
-    "rating": 0,
+    "rating": 6,
     "tests": [
         {
             "scripts": [
                 "DROP TABLE IF EXISTS people_hobbies CASCADE;",
                 "CREATE TABLE people_hobbies (name TEXT, hobbies TEXT);",
                 "INSERT INTO people_hobbies VALUES ('Adam', 'swimming');",
-                "INSERT INTO people_hobbies VALUES ('Amy', 'reading,sports,swimming');",
+                "INSERT INTO people_hobbies VALUES ('Amy', 'reading,swimming');",
                 "INSERT INTO people_hobbies VALUES ('Carl', 'filmwatching,writing');",
-                "INSERT INTO people_hobbies VALUES ('Carol', 'reading,swimming');",
-                "INSERT INTO people_hobbies VALUES ('Deril', 'sports');",
-                "INSERT INTO people_hobbies VALUES ('Jake', 'reading,sports,swimming');",
-                "INSERT INTO people_hobbies VALUES ('Lola', 'reading,sports,painting');",
-                "INSERT INTO people_hobbies VALUES ('Nina', 'sports,painting');",
-                "INSERT INTO people_hobbies VALUES ('Sam', 'sports');"
+                "INSERT INTO people_hobbies VALUES ('Jake', 'reading,filmwatching,swimming');",
+                "INSERT INTO people_hobbies VALUES ('Lola', 'swimming,sports,painting');",
+                "INSERT INTO people_hobbies VALUES ('Nina', 'sports,reading');"
             ],
             "expectedOutput": [
                 {
@@ -24,6 +21,24 @@
                 },
                 {
                     "name": "Lola"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS people_hobbies CASCADE;",
+                "CREATE TABLE people_hobbies (name TEXT, hobbies TEXT);",
+                "INSERT INTO people_hobbies VALUES ('Terence', 'reading,swimming');",
+                "INSERT INTO people_hobbies VALUES ('Wallace', 'sports,swimming');",
+                "INSERT INTO people_hobbies VALUES ('Carl', 'filmwatching,writing');",
+                "INSERT INTO people_hobbies VALUES ('Jake', 'reading,sports,swimming');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Terence"
+                },
+                {
+                    "name": "Wallace"
                 }
             ]
         }

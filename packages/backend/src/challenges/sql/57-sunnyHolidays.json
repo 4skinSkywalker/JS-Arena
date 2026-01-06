@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -16,6 +16,30 @@
                 },
                 {
                     "ski_date": "2017-01-02"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS holidays CASCADE;",
+                "CREATE TABLE holidays (holiday_date TEXT);",
+                "INSERT INTO holidays VALUES ('2018-03-15'), ('2018-03-16'), ('2018-03-17'), ('2018-03-18');",
+                "DROP TABLE IF EXISTS weather CASCADE;",
+                "CREATE TABLE weather (sunny_date TEXT);",
+                "INSERT INTO weather VALUES ('2018-03-15'), ('2018-03-16'), ('2018-03-17'), ('2018-03-18'), ('2018-03-19');"
+            ],
+            "expectedOutput": [
+                {
+                    "ski_date": "2018-03-15"
+                },
+                {
+                    "ski_date": "2018-03-16"
+                },
+                {
+                    "ski_date": "2018-03-17"
+                },
+                {
+                    "ski_date": "2018-03-18"
                 }
             ]
         }

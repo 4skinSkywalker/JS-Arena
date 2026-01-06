@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -16,6 +16,24 @@
                 },
                 {
                     "author": "Chuck Palahniuk"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS catalogs CASCADE;",
+                "CREATE TABLE catalogs (doc_id INTEGER, xml_doc TEXT);",
+                "INSERT INTO catalogs VALUES (1, '<catalog><book id=\"11\"><author>Isaac Asimov</author><title>Foundation</title></book><book id=\"12\"><author>Isaac Asimov</author><title>I, Robot</title></book></catalog>'), (2, '<catalog><book id=\"21\"><author>Arthur C. Clarke</author><title>2001: A Space Odyssey</title></book></catalog>'), (3, '<catalog><book id=\"31\"><author>Philip K. Dick</author><title>Do Androids Dream of Electric Sheep?</title></book><book id=\"32\"><author>Philip K. Dick</author><title>Ubik</title></book><book id=\"33\"><author>Philip K. Dick</author><title>The Man in the High Castle</title></book></catalog>');"
+            ],
+            "expectedOutput": [
+                {
+                    "author": "Arthur C. Clarke"
+                },
+                {
+                    "author": "Isaac Asimov"
+                },
+                {
+                    "author": "Philip K. Dick"
                 }
             ]
         }

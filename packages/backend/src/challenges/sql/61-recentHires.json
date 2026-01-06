@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -52,6 +52,39 @@
                 },
                 {
                     "name": "Joya Buss"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS pr_department CASCADE;",
+                "CREATE TABLE pr_department (id INTEGER, name TEXT, date_joined TEXT);",
+                "INSERT INTO pr_department VALUES (1, 'Alice Smith', '2022-01-01'), (2, 'Bob Jones', '2022-02-15');",
+                "DROP TABLE IF EXISTS it_department CASCADE;",
+                "CREATE TABLE it_department (id INTEGER, name TEXT, date_joined TEXT);",
+                "INSERT INTO it_department VALUES (1, 'Charlie Brown', '2022-03-01'), (2, 'Diana Prince', '2022-03-05'), (3, 'Evan Stone', '2022-02-20');",
+                "DROP TABLE IF EXISTS sales_department CASCADE;",
+                "CREATE TABLE sales_department (id INTEGER, name TEXT, date_joined TEXT);",
+                "INSERT INTO sales_department VALUES (1, 'Fiona Apple', '2022-01-15');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Alice Smith"
+                },
+                {
+                    "name": "Bob Jones"
+                },
+                {
+                    "name": "Charlie Brown"
+                },
+                {
+                    "name": "Diana Prince"
+                },
+                {
+                    "name": "Evan Stone"
+                },
+                {
+                    "name": "Fiona Apple"
                 }
             ]
         }

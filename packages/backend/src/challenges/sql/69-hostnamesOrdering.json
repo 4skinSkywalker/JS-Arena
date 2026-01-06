@@ -1,0 +1,63 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS hostnames CASCADE;",
+                "CREATE TABLE hostnames (id INTEGER, hostname TEXT);",
+                "INSERT INTO hostnames VALUES (1, 'workbench.mysql.com'), (2, 'codesignal.slack.com'), (3, 'codesignal.com'), (4, 'snarknews.info'), (5, 'sololearn.com'), (6, 'dev.mysql.com');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 3,
+                    "hostname": "codesignal.com"
+                },
+                {
+                    "id": 6,
+                    "hostname": "dev.mysql.com"
+                },
+                {
+                    "id": 1,
+                    "hostname": "workbench.mysql.com"
+                },
+                {
+                    "id": 2,
+                    "hostname": "codesignal.slack.com"
+                },
+                {
+                    "id": 5,
+                    "hostname": "sololearn.com"
+                },
+                {
+                    "id": 4,
+                    "hostname": "snarknews.info"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS hostnames CASCADE;",
+                "CREATE TABLE hostnames (id INTEGER, hostname TEXT);",
+                "INSERT INTO hostnames VALUES (10, 'a.b.c.com'), (11, 'b.com'), (12, 'a.com'), (13, 'c.b.com');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 12,
+                    "hostname": "a.com"
+                },
+                {
+                    "id": 11,
+                    "hostname": "b.com"
+                },
+                {
+                    "id": 13,
+                    "hostname": "c.b.com"
+                },
+                {
+                    "id": 10,
+                    "hostname": "a.b.c.com"
+                }
+            ]
+        }
+    ]
+}

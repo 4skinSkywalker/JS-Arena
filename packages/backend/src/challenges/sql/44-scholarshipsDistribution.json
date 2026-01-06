@@ -1,6 +1,24 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS candidates CASCADE;",
+                "CREATE TABLE candidates (candidate_id INTEGER, candidate_name TEXT);",
+                "INSERT INTO candidates VALUES (12, 'Gerlinde Addens'), (35, 'Gerbern Abbey'), (44, 'Edmond Ramsay'), (58, 'Svanhild Lacey'), (103, 'Nita Simons');",
+                "DROP TABLE IF EXISTS detentions CASCADE;",
+                "CREATE TABLE detentions (detention_date TEXT, student_id INTEGER);",
+                "INSERT INTO detentions VALUES ('2015-10-21', 12), ('2015-11-19', 91), ('2016-02-11', 87), ('2015-12-26', 44), ('2016-01-19', 91), ('2015-09-10', 91), ('2015-12-30', 12), ('2016-05-19', 58);"
+            ],
+            "expectedOutput": [
+                {
+                    "student_id": 35
+                },
+                {
+                    "student_id": 103
+                }
+            ]
+        },
         {
             "scripts": [
                 "DROP TABLE IF EXISTS candidates CASCADE;",

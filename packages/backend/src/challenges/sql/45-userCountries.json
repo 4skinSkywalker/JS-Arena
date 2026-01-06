@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 6,
     "tests": [
         {
             "scripts": [
@@ -37,6 +37,34 @@
                 },
                 {
                     "id": 7,
+                    "country": "unknown"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS users CASCADE;",
+                "CREATE TABLE users (id INTEGER, city TEXT);",
+                "INSERT INTO users VALUES (1, 'Tokyo'), (2, 'Paris'), (3, 'Berlin'), (4, 'Sydney');",
+                "DROP TABLE IF EXISTS cities CASCADE;",
+                "CREATE TABLE cities (city TEXT, country TEXT);",
+                "INSERT INTO cities VALUES ('Tokyo', 'Japan'), ('Paris', 'France'), ('Berlin', 'Germany');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "country": "Japan"
+                },
+                {
+                    "id": 2,
+                    "country": "France"
+                },
+                {
+                    "id": 3,
+                    "country": "Germany"
+                },
+                {
+                    "id": 4,
                     "country": "unknown"
                 }
             ]

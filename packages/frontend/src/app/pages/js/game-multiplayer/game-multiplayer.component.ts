@@ -227,7 +227,7 @@ export class JSGameMultiplayerComponent {
     let memory: string[] = [];
     this.editor.on("paste", (pasteObj: any) => {
       const editorContent = this.editor.getValue();
-      const content = `${this.problemDescription()}\n${JSON.stringify(this.problemTests())}\n${editorContent}`;
+      const content = `${this.problemDescription()}\n${JSON.stringify(this.problemTests())}\n${editorContent}\n~\``;
       if (content.includes(pasteObj.text) || memory.some(content => content.includes(pasteObj.text))) {
         console.log("Paste allowed:", pasteObj.text);
         return pasteObj.text;

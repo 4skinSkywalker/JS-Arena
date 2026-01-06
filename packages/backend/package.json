@@ -17,7 +17,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./src/server.ts",
-    "watch": "nodemon --exec npx ts-node ./src/server.ts"
+    "watch": "nodemon --exec npx ts-node ./src/server.ts",
+    "agent": "ts-node ./src/agent/agents.ts"
   },
   "keywords": [],
   "author": "",

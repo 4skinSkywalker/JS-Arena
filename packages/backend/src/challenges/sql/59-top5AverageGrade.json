@@ -1,5 +1,5 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
@@ -10,6 +10,18 @@
             "expectedOutput": [
                 {
                     "average_grade": 3.48
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS students CASCADE;",
+                "CREATE TABLE students (student_id INTEGER, student_name TEXT, grade DOUBLE PRECISION);",
+                "INSERT INTO students VALUES (1, 'Alice Brown', 3.7), (2, 'Ethan Wilson', 3.9), (3, 'Ava Davis', 4.0), (4, 'Mason Rodriguez', 3.8), (5, 'Sophia Martinez', 3.6), (6, 'Logan Garcia', 3.5), (7, 'Isabella Hernandez', 3.4);"
+            ],
+            "expectedOutput": [
+                {
+                    "average_grade": 3.8
                 }
             ]
         }

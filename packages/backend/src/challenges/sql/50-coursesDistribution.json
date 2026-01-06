@@ -1,9 +1,9 @@
 {
-    "rating": 0,
+    "rating": 7,
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS courses CASCADE CASCADE;",
+                "DROP TABLE IF EXISTS courses CASCADE;",
                 "CREATE TABLE courses (id INTEGER UNIQUE, name TEXT, description TEXT);",
                 "INSERT INTO courses VALUES (1, 'Linear algebra', 'Basis of matrix theory and linear algebra'), (2, 'Geometry', NULL), (3, 'Determinants and matrices', NULL), (4, 'Matlab-toremove', 'Matlab 7');",
                 "DROP TABLE IF EXISTS groupcourses CASCADE;",
@@ -25,6 +25,35 @@
                 {
                     "group_id": 1,
                     "course_id": 3
+                },
+                {
+                    "group_id": 2,
+                    "course_id": 1
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "INSERT INTO courses VALUES (5, 'Statistics', 'Introduction to statistics');",
+                "INSERT INTO groupcourses VALUES (1, 5);",
+                "INSERT INTO groupexams VALUES ('2010-01-13', 1, 5);"
+            ],
+            "expectedOutput": [
+                {
+                    "group_id": 1,
+                    "course_id": 1
+                },
+                {
+                    "group_id": 1,
+                    "course_id": 2
+                },
+                {
+                    "group_id": 1,
+                    "course_id": 3
+                },
+                {
+                    "group_id": 1,
+                    "course_id": 5
                 },
                 {
                     "group_id": 2,
