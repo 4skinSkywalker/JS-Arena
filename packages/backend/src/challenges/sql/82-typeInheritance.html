@@ -1,0 +1,125 @@
+<h2>Type Inheritance</h2>
+
+<p>
+    You are writing a <em>transcompiler</em> that will be able to translate programs from one programming language to
+    another. Your transcompiler needs to be able to analyze a program to understand what data types it uses and how they
+    should be mapped to the types of the output language.
+</p>
+
+<p>
+    In order to handle this, you created an <strong>inheritance</strong> table, which has the following structure:
+</p>
+
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>derived</strong>: a unique data type in the original language;</li>
+    <li class="list-group-item"><strong>base</strong>: the base data type from which the <code>derived</code> type is inherited.</li>
+</ul>
+
+<p>It's guaranteed that there are no cyclic dependencies.</p>
+
+<p>
+    For each translated program a <strong>variables</strong> table is created, which has the following structure:
+</p>
+
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>var_name</strong>: the unique variable name;</li>
+    <li class="list-group-item"><strong>type</strong>: the variable type.</li>
+</ul>
+
+<p>
+    Your task is to write a query that will find the variables of types that are <strong>inherited</strong> from the
+    <code>Number</code> type. The resulting table should contain <code>var_name</code> and <code>var_type</code> columns
+    and be sorted by <code>var_name</code>.
+</p>
+
+<h3>Example</h3>
+
+<p>Table <strong>inheritance</strong>:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>derived</th>
+            <th>base</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Double</td>
+            <td>Number</td>
+        </tr>
+        <tr>
+            <td>Int</td>
+            <td>Number</td>
+        </tr>
+        <tr>
+            <td>Int64</td>
+            <td>Int</td>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td>Object</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Table <strong>variables</strong>:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>var_name</th>
+            <th>type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>A</td>
+            <td>Int</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>Object</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>Double</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>Int64</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>Number</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Expected output:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>var_name</th>
+            <th>var_type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>A</td>
+            <td>Int</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>Double</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>Int64</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    Type <code>Int64</code> is inherited from type <code>Int</code>, which in turn is inherited from <code>Number</code>
+    type, so both variables <code>A</code> and <code>D</code> should be included in the result. <code>Double</code> type
+    is also inherited from <code>Number</code>, so <code>C</code> is also present in the resulting table.
+</p>

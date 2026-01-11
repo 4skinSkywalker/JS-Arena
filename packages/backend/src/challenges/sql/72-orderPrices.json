@@ -1,0 +1,32 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS orders CASCADE;",
+                "CREATE TABLE orders (id INTEGER, buyer TEXT, items TEXT);",
+                "INSERT INTO orders VALUES (1, 'Justin Penrose', '1;14;15'), (2, 'Bertha Neiman', '1;2;14'), (3, 'John Doe', '1;14;15');",
+                "DROP TABLE IF EXISTS item_prices CASCADE;",
+                "CREATE TABLE item_prices (id INTEGER, price INTEGER);",
+                "INSERT INTO item_prices VALUES (1, 100), (2, 200), (3, 500), (4, 250), (14, 50), (15, 75), (16, 100);"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "buyer": "Justin Penrose",
+                    "total_price": 100
+                },
+                {
+                    "id": 2,
+                    "buyer": "Bertha Neiman",
+                    "total_price": 350
+                },
+                {
+                    "id": 3,
+                    "buyer": "John Doe",
+                    "total_price": 225
+                }
+            ]
+        }
+    ]
+}

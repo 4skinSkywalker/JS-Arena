@@ -1,0 +1,48 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS movies CASCADE;",
+                "CREATE TABLE movies (movie TEXT, genre TEXT);",
+                "INSERT INTO movies VALUES ('Don''t Breathe', 'crime movie'), ('Drive', 'crime movie'), ('Enemy', 'thriller'), ('Mulholland Drive', 'mystery'), ('Nocturnal Animals', 'thriller'), ('The Neon Demon', 'thriller');",
+                "DROP TABLE IF EXISTS starring_actors CASCADE;",
+                "CREATE TABLE starring_actors (id INTEGER, movie_name TEXT, actor TEXT);",
+                "INSERT INTO starring_actors VALUES (1, 'Drive', 'Ryan Gosling'), (2, 'Drive', 'Carey Mulligan'), (3, 'Don''t Breathe', 'Dylan Minnette'), (4, 'Enemy', 'Jake Gyllenhaal'), (5, 'Enemy', 'Sarah Gadon'), (6, 'Mulholland Drive', 'Naomi Watts'), (7, 'Mulholland Drive', 'Laura Harring'), (8, 'Nocturnal Animals', 'Amy Adams'), (9, 'Nocturnal Animals', 'Aaron Taylor-Johnson'), (10, 'Nocturnal Animals', 'Michael Shannon'), (11, 'The Neon Demon', 'Elle Fanning'), (12, 'The Neon Demon', 'Keanu Reeves');",
+                "DROP TABLE IF EXISTS actor_ages CASCADE;",
+                "CREATE TABLE actor_ages (actor TEXT, age INTEGER);",
+                "INSERT INTO actor_ages VALUES ('Aaron Taylor-Johnson', 26), ('Amy Adams', 42), ('Carey Mulligan', 31), ('Dylan Minnette', 19), ('Elle Fanning', 18), ('Jake Gyllenhaal', 36), ('Keanu Reeves', 52), ('Laura Harring', 52), ('Michael Shannon', 42), ('Naomi Watts', 48), ('Ryan Gosling', 36), ('Sarah Gadon', 29);"
+            ],
+            "expectedOutput": [
+                {
+                    "actor": "Keanu Reeves",
+                    "age": 52
+                },
+                {
+                    "actor": "Amy Adams",
+                    "age": 42
+                },
+                {
+                    "actor": "Michael Shannon",
+                    "age": 42
+                },
+                {
+                    "actor": "Jake Gyllenhaal",
+                    "age": 36
+                },
+                {
+                    "actor": "Sarah Gadon",
+                    "age": 29
+                },
+                {
+                    "actor": "Aaron Taylor-Johnson",
+                    "age": 26
+                },
+                {
+                    "actor": "Elle Fanning",
+                    "age": 18
+                }
+            ]
+        }
+    ]
+}

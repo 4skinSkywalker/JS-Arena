@@ -38,28 +38,24 @@
             "scripts": [
                 "DROP TABLE IF EXISTS reservedNicknames CASCADE;",
                 "CREATE TABLE reservedNicknames (id TEXT, nickname TEXT);",
-                "INSERT INTO reservedNicknames VALUES ('id1234', 'invalid1'), ('id5678', 'invalid2'), ('id91011', 'invalid3'), ('id121314', 'invalid4'), ('id151617', 'invalid5');"
+                "INSERT INTO reservedNicknames VALUES ('id1234', 'isvalid1'), ('id5678', 'a'), ('id91011', 'b'), ('id121314', 'c');"
             ],
             "expectedOutput": [
                 {
-                    "id": "rename - id1234",
-                    "nickname": "rename - invalid1"
+                    "id": "id1234",
+                    "nickname": "isvalid1"
                 },
                 {
                     "id": "rename - id5678",
-                    "nickname": "rename - invalid2"
+                    "nickname": "rename - a"
                 },
                 {
                     "id": "rename - id91011",
-                    "nickname": "rename - invalid3"
+                    "nickname": "rename - b"
                 },
                 {
                     "id": "rename - id121314",
-                    "nickname": "rename - invalid4"
-                },
-                {
-                    "id": "rename - id151617",
-                    "nickname": "rename - invalid5"
+                    "nickname": "rename - c"
                 }
             ]
         }

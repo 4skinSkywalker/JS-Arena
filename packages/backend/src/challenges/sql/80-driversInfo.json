@@ -1,0 +1,38 @@
+{
+    "rating": 8,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS inspections CASCADE;",
+                "CREATE TABLE inspections (inspection_id INTEGER, driver_name TEXT, date TEXT, miles_logged INTEGER);",
+                "INSERT INTO inspections VALUES (1, 'Gary', '2014-03-15', 256), (2, 'Dave', '2014-01-18', 231), (3, 'Dave', '2014-01-16', 45), (4, 'Gary', '2014-02-03', 30), (5, 'Dave', '2014-01-17', 180);"
+            ],
+            "expectedOutput": [
+                {
+                    "summary": "Total miles driven by all drivers combined: 742"
+                },
+                {
+                    "summary": "Name: Dave; number of inspections: 3; miles driven: 456"
+                },
+                {
+                    "summary": " date: 2014-01-16; miles covered: 45"
+                },
+                {
+                    "summary": " date: 2014-01-17; miles covered: 180"
+                },
+                {
+                    "summary": " date: 2014-01-18; miles covered: 231"
+                },
+                {
+                    "summary": "Name: Gary; number of inspections: 2; miles driven: 286"
+                },
+                {
+                    "summary": " date: 2014-02-03; miles covered: 30"
+                },
+                {
+                    "summary": " date: 2014-03-15; miles covered: 256"
+                }
+            ]
+        }
+    ]
+}

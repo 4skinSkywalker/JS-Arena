@@ -1,0 +1,35 @@
+{
+    "rating": 9,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS locations_of_ships CASCADE;",
+                "CREATE TABLE locations_of_ships (id INTEGER, upper_left_x INTEGER, upper_left_y INTEGER, bottom_right_x INTEGER, bottom_right_y INTEGER);",
+                "INSERT INTO locations_of_ships VALUES (1, 1, 1, 2, 1), (2, 4, 1, 4, 3), (3, 7, 1, 10, 1), (4, 10, 3, 10, 4);",
+                "DROP TABLE IF EXISTS opponents_shots CASCADE;",
+                "CREATE TABLE opponents_shots (id INTEGER, target_x INTEGER, target_y INTEGER);",
+                "INSERT INTO opponents_shots VALUES (1, 1, 1), (2, 2, 1), (3, 4, 2);"
+            ],
+            "expectedOutput": [
+                {
+                    "size": 2,
+                    "undamaged": 1,
+                    "partly_damaged": 0,
+                    "sunk": 1
+                },
+                {
+                    "size": 3,
+                    "undamaged": 0,
+                    "partly_damaged": 1,
+                    "sunk": 0
+                },
+                {
+                    "size": 4,
+                    "undamaged": 1,
+                    "partly_damaged": 0,
+                    "sunk": 0
+                }
+            ]
+        }
+    ]
+}

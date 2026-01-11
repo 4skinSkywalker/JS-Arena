@@ -1,0 +1,41 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS book_chapters CASCADE;",
+                "CREATE TABLE book_chapters (chapter_name TEXT, chapter_number INTEGER);",
+                "INSERT INTO book_chapters VALUES ('A Dead Man', LVI), ('Behaviour in General', I), ('Cast Up', XLIX), ('Imitation', IX), ('Nemesis', L), ('Paste', XXIII), ('The Cub', XXI), ('The Oxenham Arms', XXIV), ('Two Bequests', XLVII);"
+            ],
+            "expectedOutput": [
+                {
+                    "chapter_name": "Behaviour in General"
+                },
+                {
+                    "chapter_name": "Imitation"
+                },
+                {
+                    "chapter_name": "The Cub"
+                },
+                {
+                    "chapter_name": "Paste"
+                },
+                {
+                    "chapter_name": "The Oxenham Arms"
+                },
+                {
+                    "chapter_name": "Two Bequests"
+                },
+                {
+                    "chapter_name": "Cast Up"
+                },
+                {
+                    "chapter_name": "Nemesis"
+                },
+                {
+                    "chapter_name": "A Dead Man"
+                }
+            ]
+        }
+    ]
+}

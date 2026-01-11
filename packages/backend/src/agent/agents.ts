@@ -96,9 +96,9 @@ async function addRating() {
     const filename = problem.filename;
     const fileNumber = Number(filename.split("-")[0]);
 
-    // if (problem.rating > 0) {
-    //   continue;
-    // }
+    if (problem.rating > 0) {
+      continue;
+    }
 
     console.log(fileNumber);
 

@@ -1,0 +1,28 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS strs CASCADE;",
+                "CREATE TABLE strs (str TEXT);",
+                "INSERT INTO strs VALUES ('aa'), ('aaaa'), ('aab'), ('abaaba'), ('bbbbb');"
+            ],
+            "expectedOutput": [
+                {
+                    "letter": "a",
+                    "total": 12,
+                    "occurrence": 4,
+                    "max_occurrence": 4,
+                    "max_occurrence_reached": 2
+                },
+                {
+                    "letter": "b",
+                    "total": 8,
+                    "occurrence": 3,
+                    "max_occurrence": 5,
+                    "max_occurrence_reached": 1
+                }
+            ]
+        }
+    ]
+}

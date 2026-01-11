@@ -5,12 +5,11 @@ Summarize this problem in 3 lines:
 Do not include any extra text or commentary just the summary
 `;
 
-export const getProblemRating = (problem: string, solution: string) => `
+export const getProblemRating = (problem: string, solution?: string) => `
 How would you rate this problem in terms of difficulty from 1 to 10?
 """${problem}"""
 
-For the reating keep in consideration the solution:
-"""${solution}"""
+${solution ? 'For the reating keep in consideration the solution:\n"""' + solution + '"""' : ''}
 
 Only output the rating number.
 Do not include any extra text or commentary just the summary

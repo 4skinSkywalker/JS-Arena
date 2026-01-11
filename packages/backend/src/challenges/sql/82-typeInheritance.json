@@ -1,0 +1,29 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS inheritance CASCADE;",
+                "CREATE TABLE inheritance (derived TEXT, base TEXT);",
+                "INSERT INTO inheritance VALUES ('Double', 'Number'), ('Int', 'Number'), ('Int64', 'Int'), ('Number', 'Object');",
+                "DROP TABLE IF EXISTS variables CASCADE;",
+                "CREATE TABLE variables (var_name TEXT, type TEXT);",
+                "INSERT INTO variables VALUES ('A', 'Int'), ('B', 'Object'), ('C', 'Double'), ('D', 'Int64'), ('E', 'Number');"
+            ],
+            "expectedOutput": [
+                {
+                    "var_name": "A",
+                    "var_type": "Int"
+                },
+                {
+                    "var_name": "C",
+                    "var_type": "Double"
+                },
+                {
+                    "var_name": "D",
+                    "var_type": "Int64"
+                }
+            ]
+        }
+    ]
+}

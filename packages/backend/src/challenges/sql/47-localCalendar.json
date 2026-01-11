@@ -41,19 +41,19 @@
             "expectedOutput": [
                 {
                     "event_id": 1,
-                    "formatted_date": "2023-03-03 03:15 PM"
+                    "formatted_date": "2023-03-03 16:00"
                 },
                 {
                     "event_id": 2,
-                    "formatted_date": "2024-04-04 06:06 AM"
+                    "formatted_date": "2024-04-04 07:36 AM"
                 },
                 {
                     "event_id": 3,
-                    "formatted_date": "2025-05-05 12:12"
+                    "formatted_date": "2025-05-05 12:57"
                 },
                 {
                     "event_id": 4,
-                    "formatted_date": "2026-06-06 06:18 PM"
+                    "formatted_date": "2026-06-06 07:48 PM"
                 }
             ]
         }

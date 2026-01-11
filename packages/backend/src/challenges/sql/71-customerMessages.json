@@ -1,0 +1,24 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS customers CASCADE;",
+                "CREATE TABLE customers (id INTEGER, name TEXT);",
+                "INSERT INTO customers VALUES (1, 'JOHN GaLT'), (2, 'SANDY COHEN');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "name": "JOHN GaLT",
+                    "response": "Dear John Galt! We received your message and will process it as soon as possible. Thanks for using our service. FooBar On! - FooBarIO team."
+                },
+                {
+                    "id": 2,
+                    "name": "SANDY COHEN",
+                    "response": "Dear Sandy Cohen! We received your message and will process it as soon as possible. Thanks for using our service. FooBar On! - FooBarIO team."
+                }
+            ]
+        }
+    ]
+}

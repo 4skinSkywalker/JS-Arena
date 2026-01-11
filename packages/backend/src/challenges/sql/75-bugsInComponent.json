@@ -1,0 +1,40 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Bug CASCADE;",
+                "CREATE TABLE Bug (num INTEGER, title TEXT);",
+                "INSERT INTO Bug VALUES (1, 'Quotes don''t work'), (2, 'Highlighting looks weird'), (3, 'Posts are not automatically updated'), (4, 'Author link doesn''t work');",
+                "DROP TABLE IF EXISTS Component CASCADE;",
+                "CREATE TABLE Component (id INTEGER, title TEXT);",
+                "INSERT INTO Component VALUES (1, 'Forum'), (2, 'Code editor');",
+                "DROP TABLE IF EXISTS BugComponent CASCADE;",
+                "CREATE TABLE BugComponent (bug_num INTEGER, component_id INTEGER);",
+                "INSERT INTO BugComponent VALUES (1, 1), (2, 1), (2, 2), (3, 1), (4, 2), (4, 1);"
+            ],
+            "expectedOutput": [
+                {
+                    "bug_title": "Highlighting looks weird",
+                    "component_title": "Forum",
+                    "bugs_in_component": 4
+                },
+                {
+                    "bug_title": "Author link doesn't work",
+                    "component_title": "Forum",
+                    "bugs_in_component": 4
+                },
+                {
+                    "bug_title": "Highlighting looks weird",
+                    "component_title": "Code editor",
+                    "bugs_in_component": 2
+                },
+                {
+                    "bug_title": "Author link doesn't work",
+                    "component_title": "Code editor",
+                    "bugs_in_component": 2
+                }
+            ]
+        }
+    ]
+}

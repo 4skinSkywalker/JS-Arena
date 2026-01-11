@@ -40,7 +40,7 @@
                 "INSERT INTO branches VALUES (1, 'Branch A', 1), (2, 'Branch B', 2), (3, 'Branch C', 3), (4, 'Branch D', 1);",
                 "DROP TABLE IF EXISTS branch_types CASCADE;",
                 "CREATE TABLE branch_types (id INTEGER, name TEXT);",
-                "INSERT INTO branch_types VALUES (1, 'Type A'), (2, 'Type B'), (3, 'Type C');"
+                "INSERT INTO branch_types VALUES (1, 'Type A-outdated'), (2, 'Type B'), (3, 'Type C');"
             ],
             "expectedOutput": [
                 {
