@@ -19,6 +19,25 @@
                     "response": "Dear Sandy Cohen! We received your message and will process it as soon as possible. Thanks for using our service. FooBar On! - FooBarIO team."
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS customers CASCADE;",
+                "CREATE TABLE customers (id INTEGER, name TEXT);",
+                "INSERT INTO customers VALUES (1, 'Cacolflower Gymbro Stu'), (2, 'FOOby red ScOOby');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 1,
+                    "name": "Cacolflower Gymbro",
+                    "response": "Dear Cacolflower Gymbro! We received your message and will process it as soon as possible. Thanks for using our service. FooBar On! - FooBarIO team."
+                },
+                {
+                    "id": 2,
+                    "name": "FOOby red ScOOby",
+                    "response": "Dear Fooby Red Scooby! We received your message and will process it as soon as possible. Thanks for using our service. FooBar On! - FooBarIO team."
+                }
+            ]
         }
     ]
 }
