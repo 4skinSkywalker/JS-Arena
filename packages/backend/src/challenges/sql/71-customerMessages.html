@@ -34,6 +34,10 @@ Dear &lt;Firstname&gt; &lt;Lastname&gt;! We received your message and will proce
     customer, with the first letter in uppercase and all other letters in lowercase.
 </p>
 
+<h3>Tips</h3>
+<p>You can use <code>UNNEST(STRING_TO_ARRAY(...))</code> to split the name into first and last names into multiple rows.</p>
+<p>You can use <code>STRING_AGG(...)</code> to concatenate the first and last names from multiple rows back into a single name in a single row.</p>
+
 <h3>Example</h3>
 
 <p>For the following table <strong>customers</strong>:</p>
