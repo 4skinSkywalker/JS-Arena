@@ -5,7 +5,7 @@
             "scripts": [
                 "DROP TABLE IF EXISTS flights CASCADE;",
                 "CREATE TABLE flights (flight_id INTEGER, plane_id INTEGER);",
-                "INSERT INTO flights VALUES (111, 128), (87, 157), (100, 23), (121, 23), (87, 157), (100, 23), (121, 23), (87, 157), (100, 23), (121, 23), (87, 157), (100, 23), (121, 23);",
+                "INSERT INTO flights VALUES (111, 128), (87, 157), (100, 23), (121, 23);",
                 "DROP TABLE IF EXISTS planes CASCADE;",
                 "CREATE TABLE planes (plane_id INTEGER, number_of_seats INTEGER);",
                 "INSERT INTO planes VALUES (128, 5), (23, 7), (157, 4), (239, 2);",
