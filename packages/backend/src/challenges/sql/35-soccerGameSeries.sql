@@ -14,7 +14,7 @@ FROM (
             CASE WHEN team_1_score > team_2_score THEN 1 ELSE 0 END
         ) AS team_1_wins,
         SUM(
-            CASE WHEN team_2_score > team_1_score THEN 1 ELSE 0END
+            CASE WHEN team_2_score > team_1_score THEN 1 ELSE 0 END
         ) AS team_2_wins,
         SUM(team_1_score) AS team_1_goals,
         SUM(team_2_score) AS team_2_goals,
