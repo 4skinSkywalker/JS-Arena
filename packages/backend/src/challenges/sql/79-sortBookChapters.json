@@ -4,8 +4,8 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS book_chapters CASCADE;",
-                "CREATE TABLE book_chapters (chapter_name TEXT, chapter_number INTEGER);",
-                "INSERT INTO book_chapters VALUES ('A Dead Man', LVI), ('Behaviour in General', I), ('Cast Up', XLIX), ('Imitation', IX), ('Nemesis', L), ('Paste', XXIII), ('The Cub', XXI), ('The Oxenham Arms', XXIV), ('Two Bequests', XLVII);"
+                "CREATE TABLE book_chapters (chapter_name TEXT, chapter_number TEXT);",
+                "INSERT INTO book_chapters VALUES ('A Dead Man', 'LVI'), ('Behaviour in General', 'I'), ('Cast Up', 'XLIX'), ('Imitation', 'IX'), ('Nemesis', 'L'), ('Paste', 'XXIII'), ('The Cub', 'XXI'), ('The Oxenham Arms', 'XXIV'), ('Two Bequests', 'XLVII');"
             ],
             "expectedOutput": [
                 {
