@@ -26,9 +26,9 @@ integer_chapter_number AS (
         t1.chapter_name,
         SUM(
             CASE
-                WHEN (SELECT value FROM roman_to_integer WHERE roman = t1.symbol) < (SELECT value FROM roman_to_integer WHERE roman = t2.symbol) THEN -1 * (SELECT value FROM roman_to_integer WHERE roman = t1.symbol)
-                ELSE (SELECT value FROM roman_to_integer WHERE roman = t1.symbol)
-            END
+                WHEN (SELECT value FROM roman_to_integer WHERE roman = t1.symbol) < (SELECT value FROM roman_to_integer WHERE roman = t2.symbol) THEN -1
+                ELSE 1
+            END * (SELECT value FROM roman_to_integer WHERE roman = t1.symbol)
         ) AS chapter_number
     FROM numbered AS t1
     LEFT JOIN numbered AS t2 ON t1.chapter_name = t2.chapter_name AND t1.rn+1 = t2.rn
