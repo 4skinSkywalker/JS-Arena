@@ -1,0 +1,45 @@
+{
+    "rating": 8,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS results CASCADE;",
+                "CREATE TABLE results (timestamp TEXT, name_naughts TEXT, name_crosses TEXT, board TEXT);",
+                "INSERT INTO results VALUES ('2017-05-01 08:06:00', 'Georgine Greely', 'Earnestine Kunzman', 'XO.X.OXXO');",
+                "INSERT INTO results VALUES ('2017-05-01 11:20:00', 'Earnestine Kunzman', 'Georgine Greely', '.O.OOXXXX');",
+                "INSERT INTO results VALUES ('2017-05-01 16:48:00', 'Renee Fortenberry', 'Georgine Greely', 'XOOXXO..X');",
+                "INSERT INTO results VALUES ('2017-05-02 10:57:00', 'Renee Fortenberry', 'Georgine Greely', 'OXXXOOXOX');",
+                "INSERT INTO results VALUES ('2017-05-03 01:55:00', 'Georgine Greely', 'Renee Fortenberry', '.X.OX.OX.');",
+                "INSERT INTO results VALUES ('2017-05-03 04:29:00', 'Earnestine Kunzman', 'Renee Fortenberry', 'OOXXXOXXO');",
+                "INSERT INTO results VALUES ('2017-05-04 14:29:00', 'Renee Fortenberry', 'Earnestine Kunzman', 'OOX.X.X..');",
+                "INSERT INTO results VALUES ('2017-05-04 16:00:00', 'Earnestine Kunzman', 'Renee Fortenberry', 'OXOOXXXOX');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Renee Fortenberry",
+                    "points": 6,
+                    "played": 6,
+                    "won": 2,
+                    "draw": 2,
+                    "lost": 2
+                },
+                {
+                    "name": "Earnestine Kunzman",
+                    "points": 5,
+                    "played": 5,
+                    "won": 2,
+                    "draw": 1,
+                    "lost": 2
+                },
+                {
+                    "name": "Georgine Greely",
+                    "points": 5,
+                    "played": 5,
+                    "won": 2,
+                    "draw": 1,
+                    "lost": 2
+                }
+            ]
+        }
+    ]
+}
