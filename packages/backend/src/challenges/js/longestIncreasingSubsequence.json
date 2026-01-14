@@ -1,24 +1,73 @@
 {
-    "rating": 5,
+    "rating": 7,
     "tests": [
         {
-            "input": {"sequence": [1, 231, 2, 4, 89, 32, 12, 234, 33, 90, 34, 100]},
+            "input": {
+                "sequence": [
+                    1,
+                    231,
+                    2,
+                    4,
+                    89,
+                    32,
+                    12,
+                    234,
+                    33,
+                    90,
+                    34,
+                    100
+                ]
+            },
             "expectedOutput": 7
         },
         {
-            "input": {"sequence": [10, 22, 9, 33, 21, 50, 41, 60, 80]},
+            "input": {
+                "sequence": [
+                    10,
+                    22,
+                    9,
+                    33,
+                    21,
+                    50,
+                    41,
+                    60,
+                    80
+                ]
+            },
             "expectedOutput": 6
         },
         {
-            "input": {"sequence": [3, 10, 2, 1, 20]},
+            "input": {
+                "sequence": [
+                    3,
+                    10,
+                    2,
+                    1,
+                    20
+                ]
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"sequence": [3, 2]},
+            "input": {
+                "sequence": [
+                    3,
+                    2
+                ]
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"sequence": [50, 3, 10, 7, 40, 80]},
+            "input": {
+                "sequence": [
+                    50,
+                    3,
+                    10,
+                    7,
+                    40,
+                    80
+                ]
+            },
             "expectedOutput": 4
         }
     ]

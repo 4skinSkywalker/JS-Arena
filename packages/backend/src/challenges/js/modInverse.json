@@ -1,24 +1,39 @@
 {
-    "rating": 7,
+    "rating": 5,
     "tests": [
         {
-            "input": {"n": 4, "m": 15},
+            "input": {
+                "n": 4,
+                "m": 15
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"n": 7, "m": 15},
+            "input": {
+                "n": 7,
+                "m": 15
+            },
             "expectedOutput": -2
         },
         {
-            "input": {"n": 5, "m": 15},
+            "input": {
+                "n": 5,
+                "m": 15
+            },
             "expectedOutput": -1
         },
         {
-            "input": {"n": 13, "m": 17},
+            "input": {
+                "n": 13,
+                "m": 17
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"n": 21, "m": 91},
+            "input": {
+                "n": 21,
+                "m": 91
+            },
             "expectedOutput": -1
         }
     ]

@@ -1,24 +1,34 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"letter": "Hi, hi Jane! I'm so. So glad to to finally be able to write - WRITE!! - to you!"},
+            "input": {
+                "letter": "Hi, hi Jane! I'm so. So glad to to finally be able to write - WRITE!! - to you!"
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"letter": "No no repeated words words here, just just some random sentences."},
+            "input": {
+                "letter": "No no repeated words words here, just just some random sentences."
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"letter": "I don't know what what you are talking about."},
+            "input": {
+                "letter": "I don't know what what you are talking about."
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"letter": "Nothing NOTHING to to see here."},
+            "input": {
+                "letter": "Nothing NOTHING to to see here."
+            },
             "expectedOutput": 2
         },
         {
-            "input": {"letter": "Hello. How are you?"},
+            "input": {
+                "letter": "Hello. How are you?"
+            },
             "expectedOutput": 0
         }
     ]

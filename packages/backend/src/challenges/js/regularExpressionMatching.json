@@ -1,24 +1,39 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"s": "bb", "p": "b"},
+            "input": {
+                "s": "bb",
+                "p": "b"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"s": "zab", "p": "z.*"},
+            "input": {
+                "s": "zab",
+                "p": "z.*"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"s": "caab", "p": "d*c*x*a*b"},
+            "input": {
+                "s": "caab",
+                "p": "d*c*x*a*b"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"s": "abcdefg", "p": "a.*g"},
+            "input": {
+                "s": "abcdefg",
+                "p": "a.*g"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"s": "abc", "p": "abc*"},
+            "input": {
+                "s": "abc",
+                "p": "abc*"
+            },
             "expectedOutput": true
         }
     ]

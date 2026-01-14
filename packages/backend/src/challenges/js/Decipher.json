@@ -1,24 +1,34 @@
 {
-    "rating": 7,
+    "rating": 8,
     "tests": [
         {
-            "input": {"cipher": "10197115121"},
+            "input": {
+                "cipher": "10197115121"
+            },
             "expectedOutput": "easy"
         },
         {
-            "input": {"cipher": "104101108108111"},
+            "input": {
+                "cipher": "104101108108111"
+            },
             "expectedOutput": "hello"
         },
         {
-            "input": {"cipher": "119111114108100"},
+            "input": {
+                "cipher": "119111114108100"
+            },
             "expectedOutput": "world"
         },
         {
-            "input": {"cipher": "112121116104111110"},
+            "input": {
+                "cipher": "112121116104111110"
+            },
             "expectedOutput": "python"
         },
         {
-            "input": {"cipher": "109121115116101114121"},
+            "input": {
+                "cipher": "109121115116101114121"
+            },
             "expectedOutput": "mystery"
         }
     ]

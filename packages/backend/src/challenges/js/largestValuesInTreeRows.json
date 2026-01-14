@@ -1,5 +1,5 @@
 {
-    "rating": 6,
+    "rating": 7,
     "tests": [
         {
             "input": {
@@ -21,7 +21,11 @@
                     }
                 }
             },
-            "expectedOutput": [-1, 7, 1]
+            "expectedOutput": [
+                -1,
+                7,
+                1
+            ]
         },
         {
             "input": {
@@ -31,7 +35,9 @@
                     "right": null
                 }
             },
-            "expectedOutput": [1]
+            "expectedOutput": [
+                1
+            ]
         },
         {
             "input": {
@@ -49,7 +55,10 @@
                     }
                 }
             },
-            "expectedOutput": [2, 3]
+            "expectedOutput": [
+                2,
+                3
+            ]
         },
         {
             "input": {
@@ -71,7 +80,11 @@
                     }
                 }
             },
-            "expectedOutput": [3, 5, 0]
+            "expectedOutput": [
+                3,
+                5,
+                0
+            ]
         },
         {
             "input": {

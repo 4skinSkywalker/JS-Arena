@@ -1,24 +1,39 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"s": "CodefightsIsAwesome", "x": "IA"},
+            "input": {
+                "s": "CodefightsIsAwesome",
+                "x": "IA"
+            },
             "expectedOutput": -1
         },
         {
-            "input": {"s": "CodefightsIsAwesome", "x": "IsA"},
+            "input": {
+                "s": "CodefightsIsAwesome",
+                "x": "IsA"
+            },
             "expectedOutput": 10
         },
         {
-            "input": {"s": "Hello World", "x": "World"},
+            "input": {
+                "s": "Hello World",
+                "x": "World"
+            },
             "expectedOutput": 6
         },
         {
-            "input": {"s": "Hello World", "x": "hello"},
+            "input": {
+                "s": "Hello World",
+                "x": "hello"
+            },
             "expectedOutput": -1
         },
         {
-            "input": {"s": "Python is a programming language", "x": "Python"},
+            "input": {
+                "s": "Python is a programming language",
+                "x": "Python"
+            },
             "expectedOutput": 0
         }
     ]

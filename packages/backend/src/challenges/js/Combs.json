@@ -1,24 +1,39 @@
 {
-    "rating": 7,
+    "rating": 8,
     "tests": [
         {
-            "input": {"comb1": "*..*", "comb2": "*.*"},
+            "input": {
+                "comb1": "*..*",
+                "comb2": "*.*"
+            },
             "expectedOutput": 5
         },
         {
-            "input": {"comb1": "*.*..*", "comb2": "*..*.*"},
+            "input": {
+                "comb1": "*.*..*",
+                "comb2": "*..*.*"
+            },
             "expectedOutput": 7
         },
         {
-            "input": {"comb1": "*.*.*.*", "comb2": "*.*.*.*"},
+            "input": {
+                "comb1": "*.*.*.*",
+                "comb2": "*.*.*.*"
+            },
             "expectedOutput": 8
         },
         {
-            "input": {"comb1": "*.*.*.*", "comb2": "*.*"},
+            "input": {
+                "comb1": "*.*.*.*",
+                "comb2": "*.*"
+            },
             "expectedOutput": 7
         },
         {
-            "input": {"comb1": "*.*.*...*", "comb2": "*.*.*"},
+            "input": {
+                "comb1": "*.*.*...*",
+                "comb2": "*.*.*"
+            },
             "expectedOutput": 9
         }
     ]

@@ -1,25 +1,85 @@
 {
-    "rating": 3,
+    "rating": 4,
     "tests": [
         {
-            "input": {"domains": ["en.wiki.org", "codesignal.com", "happy.net", "code.info"]}, 
-            "expectedOutput": ["organization", "commercial", "network", "information"]
+            "input": {
+                "domains": [
+                    "en.wiki.org",
+                    "codesignal.com",
+                    "happy.net",
+                    "code.info"
+                ]
+            },
+            "expectedOutput": [
+                "organization",
+                "commercial",
+                "network",
+                "information"
+            ]
         },
         {
-            "input": {"domains": ["google.com", "microsoft.net", "gov.org", "info.info"]}, 
-            "expectedOutput": ["commercial", "network", "organization", "information"]
+            "input": {
+                "domains": [
+                    "google.com",
+                    "microsoft.net",
+                    "gov.org",
+                    "info.info"
+                ]
+            },
+            "expectedOutput": [
+                "commercial",
+                "network",
+                "organization",
+                "information"
+            ]
         },
         {
-            "input": {"domains": ["example.com", "example.org", "example.net", "example.info"]}, 
-            "expectedOutput": ["commercial", "organization", "network", "information"]
+            "input": {
+                "domains": [
+                    "example.com",
+                    "example.org",
+                    "example.net",
+                    "example.info"
+                ]
+            },
+            "expectedOutput": [
+                "commercial",
+                "organization",
+                "network",
+                "information"
+            ]
         },
         {
-            "input": {"domains": ["yahoo.com", "fb.com", "amazon.net", "linkedin.org"]}, 
-            "expectedOutput": ["commercial", "commercial", "network", "organization"]
+            "input": {
+                "domains": [
+                    "yahoo.com",
+                    "fb.com",
+                    "amazon.net",
+                    "linkedin.org"
+                ]
+            },
+            "expectedOutput": [
+                "commercial",
+                "commercial",
+                "network",
+                "organization"
+            ]
         },
         {
-            "input": {"domains": ["apple.com", "ibm.net", "oracle.org", "wikipedia.info"]},
-            "expectedOutput": ["commercial", "network", "organization", "information"]
+            "input": {
+                "domains": [
+                    "apple.com",
+                    "ibm.net",
+                    "oracle.org",
+                    "wikipedia.info"
+                ]
+            },
+            "expectedOutput": [
+                "commercial",
+                "network",
+                "organization",
+                "information"
+            ]
         }
     ]
 }

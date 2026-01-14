@@ -1,25 +1,81 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"picture": ["abc", "ded"]},
-            "expectedOutput": ["*****", "*abc*", "*ded*", "*****"]
+            "input": {
+                "picture": [
+                    "abc",
+                    "ded"
+                ]
+            },
+            "expectedOutput": [
+                "*****",
+                "*abc*",
+                "*ded*",
+                "*****"
+            ]
         },
         {
-            "input": {"picture": ["abcd", "efgh"]},
-            "expectedOutput": ["******", "*abcd*", "*efgh*", "******"]
+            "input": {
+                "picture": [
+                    "abcd",
+                    "efgh"
+                ]
+            },
+            "expectedOutput": [
+                "******",
+                "*abcd*",
+                "*efgh*",
+                "******"
+            ]
         },
         {
-            "input": {"picture": ["a"]},
-            "expectedOutput": ["***", "*a*", "***"]
+            "input": {
+                "picture": [
+                    "a"
+                ]
+            },
+            "expectedOutput": [
+                "***",
+                "*a*",
+                "***"
+            ]
         },
         {
-            "input": {"picture": ["1234", "5678", "91011"]},
-            "expectedOutput": ["******", "*1234*", "*5678*", "*91011*", "******"]
+            "input": {
+                "picture": [
+                    "1234",
+                    "5678",
+                    "91011"
+                ]
+            },
+            "expectedOutput": [
+                "******",
+                "*1234*",
+                "*5678*",
+                "*91011*",
+                "******"
+            ]
         },
         {
-            "input": {"picture": ["abcde", "fghij", "klmno","pqrst","uvwxy"]},
-            "expectedOutput": ["*******", "*abcde*", "*fghij*", "*klmno*", "*pqrst*", "*uvwxy*", "*******"]
+            "input": {
+                "picture": [
+                    "abcde",
+                    "fghij",
+                    "klmno",
+                    "pqrst",
+                    "uvwxy"
+                ]
+            },
+            "expectedOutput": [
+                "*******",
+                "*abcde*",
+                "*fghij*",
+                "*klmno*",
+                "*pqrst*",
+                "*uvwxy*",
+                "*******"
+            ]
         }
     ]
 }

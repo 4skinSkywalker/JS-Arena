@@ -1,24 +1,34 @@
 {
-    "rating": 7,
+    "rating": 8,
     "tests": [
         {
-            "input": {"message": "123"},
+            "input": {
+                "message": "123"
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"message": "111"},
+            "input": {
+                "message": "111"
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"message": "261"},
+            "input": {
+                "message": "261"
+            },
             "expectedOutput": 2
         },
         {
-            "input": {"message": "10"},
+            "input": {
+                "message": "10"
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"message": "2020"},
+            "input": {
+                "message": "2020"
+            },
             "expectedOutput": 1
         }
     ]

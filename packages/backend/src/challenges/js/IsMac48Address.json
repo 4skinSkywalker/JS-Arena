@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"inputString": "00-1B-63-84-45-E6"},
+            "input": {
+                "inputString": "00-1B-63-84-45-E6"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "Z1-1B-63-84-45-E6"},
+            "input": {
+                "inputString": "Z1-1B-63-84-45-E6"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "not a MAC-48 address"},
+            "input": {
+                "inputString": "not a MAC-48 address"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "FF-FF-FF-FF-FF-FF"},
+            "input": {
+                "inputString": "FF-FF-FF-FF-FF-FF"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "00-00-00-00-00-00"},
+            "input": {
+                "inputString": "00-00-00-00-00-00"
+            },
             "expectedOutput": true
         }
     ]

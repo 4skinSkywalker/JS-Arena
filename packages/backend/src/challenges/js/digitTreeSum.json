@@ -1,5 +1,5 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
             "input": {
@@ -19,7 +19,7 @@
                         }
                     },
                     "right": {
-                        "value": 4, 
+                        "value": 4,
                         "left": null,
                         "right": null
                     }

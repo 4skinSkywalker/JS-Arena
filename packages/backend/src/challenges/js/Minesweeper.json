@@ -1,25 +1,169 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"matrix": [[true, false, false], [false, true, false], [false, false, false]]},
-            "expectedOutput": [[1, 2, 1], [2, 1, 1], [1, 1, 1]]
+            "input": {
+                "matrix": [
+                    [
+                        true,
+                        false,
+                        false
+                    ],
+                    [
+                        false,
+                        true,
+                        false
+                    ],
+                    [
+                        false,
+                        false,
+                        false
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    1,
+                    2,
+                    1
+                ],
+                [
+                    2,
+                    1,
+                    1
+                ],
+                [
+                    1,
+                    1,
+                    1
+                ]
+            ]
         },
         {
-            "input": {"matrix": [[true, true, true], [true, true, true], [true, true, true]]},
-            "expectedOutput": [[3, 5, 3], [5, 8, 5], [3, 5, 3]]
+            "input": {
+                "matrix": [
+                    [
+                        true,
+                        true,
+                        true
+                    ],
+                    [
+                        true,
+                        true,
+                        true
+                    ],
+                    [
+                        true,
+                        true,
+                        true
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    3,
+                    5,
+                    3
+                ],
+                [
+                    5,
+                    8,
+                    5
+                ],
+                [
+                    3,
+                    5,
+                    3
+                ]
+            ]
         },
         {
-            "input": {"matrix": [[false, false, false], [false, false, false], [false, false, false]]},
-            "expectedOutput": [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+            "input": {
+                "matrix": [
+                    [
+                        false,
+                        false,
+                        false
+                    ],
+                    [
+                        false,
+                        false,
+                        false
+                    ],
+                    [
+                        false,
+                        false,
+                        false
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0
+                ]
+            ]
         },
         {
-            "input": {"matrix": [[true, false], [false, true]]},
-            "expectedOutput":  [[1, 2], [2, 1]]
+            "input": {
+                "matrix": [
+                    [
+                        true,
+                        false
+                    ],
+                    [
+                        false,
+                        true
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    1,
+                    2
+                ],
+                [
+                    2,
+                    1
+                ]
+            ]
         },
         {
-            "input": {"matrix": [[true], [true], [true]]},
-            "expectedOutput": [[1], [2], [1]]
+            "input": {
+                "matrix": [
+                    [
+                        true
+                    ],
+                    [
+                        true
+                    ],
+                    [
+                        true
+                    ]
+                ]
+            },
+            "expectedOutput": [
+                [
+                    1
+                ],
+                [
+                    2
+                ],
+                [
+                    1
+                ]
+            ]
         }
     ]
 }

@@ -1,25 +1,164 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"names": ["lead1", "lead2", "lead3", "lead4", "lead5"], "time": [250, 300, 250, 260, 310], "netValue": [1000, 800, 1100, 1200, 1000], "isOnVacation": [true, false, true, false, false]},
-            "expectedOutput": ["lead4", "lead5", "lead2"]
+            "input": {
+                "names": [
+                    "lead1",
+                    "lead2",
+                    "lead3",
+                    "lead4",
+                    "lead5"
+                ],
+                "time": [
+                    250,
+                    300,
+                    250,
+                    260,
+                    310
+                ],
+                "netValue": [
+                    1000,
+                    800,
+                    1100,
+                    1200,
+                    1000
+                ],
+                "isOnVacation": [
+                    true,
+                    false,
+                    true,
+                    false,
+                    false
+                ]
+            },
+            "expectedOutput": [
+                "lead4",
+                "lead5",
+                "lead2"
+            ]
         },
         {
-            "input": {"names": ["leadA", "leadB", "leadC"], "time": [180, 290, 300], "netValue": [1500, 1000, 2000], "isOnVacation": [false, false, true]},
-            "expectedOutput": ["leadB", "leadA"]
+            "input": {
+                "names": [
+                    "leadA",
+                    "leadB",
+                    "leadC"
+                ],
+                "time": [
+                    180,
+                    290,
+                    300
+                ],
+                "netValue": [
+                    1500,
+                    1000,
+                    2000
+                ],
+                "isOnVacation": [
+                    false,
+                    false,
+                    true
+                ]
+            },
+            "expectedOutput": [
+                "leadB",
+                "leadA"
+            ]
         },
         {
-            "input": {"names": ["leadX", "leadY", "leadZ"], "time": [200, 300, 250], "netValue": [1200, 700, 800], "isOnVacation": [false, true, false]},
-            "expectedOutput": ["leadX","leadZ"]
+            "input": {
+                "names": [
+                    "leadX",
+                    "leadY",
+                    "leadZ"
+                ],
+                "time": [
+                    200,
+                    300,
+                    250
+                ],
+                "netValue": [
+                    1200,
+                    700,
+                    800
+                ],
+                "isOnVacation": [
+                    false,
+                    true,
+                    false
+                ]
+            },
+            "expectedOutput": [
+                "leadX",
+                "leadZ"
+            ]
         },
         {
-            "input": {"names": ["Howard", "Chandler", "Joey", "Ross"], "time": [220, 300, 250, 260], "netValue": [2000, 1800, 1000, 900], "isOnVacation": [false, true, false, false]},
-            "expectedOutput": ["Howard", "Joey", "Ross"]
+            "input": {
+                "names": [
+                    "Howard",
+                    "Chandler",
+                    "Joey",
+                    "Ross"
+                ],
+                "time": [
+                    220,
+                    300,
+                    250,
+                    260
+                ],
+                "netValue": [
+                    2000,
+                    1800,
+                    1000,
+                    900
+                ],
+                "isOnVacation": [
+                    false,
+                    true,
+                    false,
+                    false
+                ]
+            },
+            "expectedOutput": [
+                "Howard",
+                "Joey",
+                "Ross"
+            ]
         },
         {
-            "input": {"names": ["Ann", "Luke", "Zoe", "Tom"], "time": [250, 290, 300, 260], "netValue": [1500, 1000, 2000, 800], "isOnVacation": [false, false, false, true]},
-            "expectedOutput": ["Zoe", "Ann", "Luke"]
+            "input": {
+                "names": [
+                    "Ann",
+                    "Luke",
+                    "Zoe",
+                    "Tom"
+                ],
+                "time": [
+                    250,
+                    290,
+                    300,
+                    260
+                ],
+                "netValue": [
+                    1500,
+                    1000,
+                    2000,
+                    800
+                ],
+                "isOnVacation": [
+                    false,
+                    false,
+                    false,
+                    true
+                ]
+            },
+            "expectedOutput": [
+                "Zoe",
+                "Ann",
+                "Luke"
+            ]
         }
     ]
 }

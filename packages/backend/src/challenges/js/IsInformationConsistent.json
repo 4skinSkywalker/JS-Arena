@@ -1,44 +1,111 @@
 {
-    "rating": 3,
+    "rating": 6,
     "tests": [
         {
-            "input": {"evidences": [
-                [0, 1, 0, 1],
-                [-1, 1, 0, 0],
-                [-1, 0, 0, 1]
-            ]},
+            "input": {
+                "evidences": [
+                    [
+                        0,
+                        1,
+                        0,
+                        1
+                    ],
+                    [
+                        -1,
+                        1,
+                        0,
+                        0
+                    ],
+                    [
+                        -1,
+                        0,
+                        0,
+                        1
+                    ]
+                ]
+            },
             "expectedOutput": true
         },
         {
-            "input": {"evidences": [
-                [1, 0],
-                [-1, 0],
-                [1, 1],
-                [1, 1]
-            ]},
+            "input": {
+                "evidences": [
+                    [
+                        1,
+                        0
+                    ],
+                    [
+                        -1,
+                        0
+                    ],
+                    [
+                        1,
+                        1
+                    ],
+                    [
+                        1,
+                        1
+                    ]
+                ]
+            },
             "expectedOutput": false
         },
         {
-            "input": {"evidences": [
-                [0, 0, 0],
-                [0, 0, 0],
-                [0, 0, 0]
-            ]},
+            "input": {
+                "evidences": [
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        0
+                    ]
+                ]
+            },
             "expectedOutput": true
         },
         {
-            "input": {"evidences": [
-                [1, 1],
-                [-1, -1]
-            ]},
+            "input": {
+                "evidences": [
+                    [
+                        1,
+                        1
+                    ],
+                    [
+                        -1,
+                        -1
+                    ]
+                ]
+            },
             "expectedOutput": false
         },
         {
-            "input": {"evidences": [
-                [-1, 0, -1],
-                [0, 1, -1],
-                [-1, 1, 0]
-            ]},
+            "input": {
+                "evidences": [
+                    [
+                        -1,
+                        0,
+                        -1
+                    ],
+                    [
+                        0,
+                        1,
+                        -1
+                    ],
+                    [
+                        -1,
+                        1,
+                        0
+                    ]
+                ]
+            },
             "expectedOutput": true
         }
     ]

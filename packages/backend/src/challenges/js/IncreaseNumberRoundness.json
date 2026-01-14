@@ -1,24 +1,34 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"n": 902200100}, 
+            "input": {
+                "n": 902200100
+            },
             "expectedOutput": true
         },
         {
-            "input": {"n": 11000}, 
+            "input": {
+                "n": 11000
+            },
             "expectedOutput": false
         },
         {
-            "input": {"n": 1234567890}, 
+            "input": {
+                "n": 1234567890
+            },
             "expectedOutput": false
         },
         {
-            "input": {"n": 10002000},
+            "input": {
+                "n": 10002000
+            },
             "expectedOutput": true
         },
         {
-            "input": {"n": 1010101010},
+            "input": {
+                "n": 1010101010
+            },
             "expectedOutput": true
         }
     ]

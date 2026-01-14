@@ -1,24 +1,49 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"x": 3, "week_day": "Wednesday", "month": "November", "year_number": 2016},
+            "input": {
+                "x": 3,
+                "week_day": "Wednesday",
+                "month": "November",
+                "year_number": 2016
+            },
             "expectedOutput": 16
         },
         {
-            "input": {"x": 5, "week_day": "Thursday", "month": "November", "year_number": 2016},
+            "input": {
+                "x": 5,
+                "week_day": "Thursday",
+                "month": "November",
+                "year_number": 2016
+            },
             "expectedOutput": -1
         },
         {
-            "input": {"x": 1, "week_day": "Monday", "month": "January", "year_number": 2022},
+            "input": {
+                "x": 1,
+                "week_day": "Monday",
+                "month": "January",
+                "year_number": 2022
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"x": 4, "week_day": "Sunday", "month": "February", "year_number": 2020},
+            "input": {
+                "x": 4,
+                "week_day": "Sunday",
+                "month": "February",
+                "year_number": 2020
+            },
             "expectedOutput": 23
         },
         {
-            "input": {"x": 2, "week_day": "Tuesday", "month": "April", "year_number": 2021},
+            "input": {
+                "x": 2,
+                "week_day": "Tuesday",
+                "month": "April",
+                "year_number": 2021
+            },
             "expectedOutput": 13
         }
     ]

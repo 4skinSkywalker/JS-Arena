@@ -1,24 +1,39 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"param1": 456, "param2": 1734},
+            "input": {
+                "param1": 456,
+                "param2": 1734
+            },
             "expectedOutput": 1180
         },
         {
-            "input": {"param1": 123, "param2": 456},
+            "input": {
+                "param1": 123,
+                "param2": 456
+            },
             "expectedOutput": 579
         },
         {
-            "input": {"param1": 789, "param2": 1000},
+            "input": {
+                "param1": 789,
+                "param2": 1000
+            },
             "expectedOutput": 1789
         },
         {
-            "input": {"param1": 314, "param2": 220},
+            "input": {
+                "param1": 314,
+                "param2": 220
+            },
             "expectedOutput": 534
         },
         {
-            "input": {"param1": 1111, "param2": 2222},
+            "input": {
+                "param1": 1111,
+                "param2": 2222
+            },
             "expectedOutput": 3333
         }
     ]

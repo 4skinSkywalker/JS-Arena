@@ -1,25 +1,78 @@
 {
-    "rating": 3,
+    "rating": 6,
     "tests": [
         {
-            "input": {"arr": [7, 2, 2, 5, 10, 7]}, 
-            "expectedOutput": [7, 2, 7, 10, 7]
+            "input": {
+                "arr": [
+                    7,
+                    2,
+                    2,
+                    5,
+                    10,
+                    7
+                ]
+            },
+            "expectedOutput": [
+                7,
+                2,
+                7,
+                10,
+                7
+            ]
         },
         {
-            "input": {"arr": [-5, -5, 10]}, 
-            "expectedOutput": [-5, -5, 10]
+            "input": {
+                "arr": [
+                    -5,
+                    -5,
+                    10
+                ]
+            },
+            "expectedOutput": [
+                -5,
+                -5,
+                10
+            ]
         },
         {
-            "input": {"arr": [1]}, 
-            "expectedOutput": [1]
+            "input": {
+                "arr": [
+                    1
+                ]
+            },
+            "expectedOutput": [
+                1
+            ]
         },
         {
-            "input": {"arr": [1, 2, 3, 4]}, 
-            "expectedOutput": [1, 5, 4]
+            "input": {
+                "arr": [
+                    1,
+                    2,
+                    3,
+                    4
+                ]
+            },
+            "expectedOutput": [
+                1,
+                5,
+                4
+            ]
         },
         {
-            "input": {"arr": [1, 2, 2, 3]}, 
-            "expectedOutput": [1, 4, 3]
+            "input": {
+                "arr": [
+                    1,
+                    2,
+                    2,
+                    3
+                ]
+            },
+            "expectedOutput": [
+                1,
+                4,
+                3
+            ]
         }
     ]
 }

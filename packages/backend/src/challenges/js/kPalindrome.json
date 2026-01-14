@@ -1,24 +1,39 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"s": "abrarbra", "k": 1},
+            "input": {
+                "s": "abrarbra",
+                "k": 1
+            },
             "expectedOutput": true
         },
         {
-            "input": {"s": "adbcdbacdb", "k": 2},
+            "input": {
+                "s": "adbcdbacdb",
+                "k": 2
+            },
             "expectedOutput": false
         },
         {
-            "input": {"s": "racecar", "k": 0},
+            "input": {
+                "s": "racecar",
+                "k": 0
+            },
             "expectedOutput": true
         },
         {
-            "input": {"s": "racebars", "k": 2},
+            "input": {
+                "s": "racebars",
+                "k": 2
+            },
             "expectedOutput": false
         },
         {
-            "input": {"s": "computers", "k": 4},
+            "input": {
+                "s": "computers",
+                "k": 4
+            },
             "expectedOutput": false
         }
     ]

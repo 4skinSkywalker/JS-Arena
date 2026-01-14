@@ -1,24 +1,34 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"n": 9},
+            "input": {
+                "n": 9
+            },
             "expectedOutput": 2
         },
         {
-            "input": {"n": 8},
+            "input": {
+                "n": 8
+            },
             "expectedOutput": 0
         },
         {
-            "input": {"n": 15},
+            "input": {
+                "n": 15
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"n": 10},
+            "input": {
+                "n": 10
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"n": 24},
+            "input": {
+                "n": 24
+            },
             "expectedOutput": 1
         }
     ]

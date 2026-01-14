@@ -1,17 +1,31 @@
 {
-    "rating": 7,
+    "rating": 5,
     "tests": [
         {
-            "input": {"lastNumberOfDays": 30},
-            "expectedOutput": [31]
+            "input": {
+                "lastNumberOfDays": 30
+            },
+            "expectedOutput": [
+                31
+            ]
         },
         {
-            "input": {"lastNumberOfDays": 28},
-            "expectedOutput": [31]
+            "input": {
+                "lastNumberOfDays": 28
+            },
+            "expectedOutput": [
+                31
+            ]
         },
         {
-            "input": {"lastNumberOfDays": 31},
-            "expectedOutput": [28, 30, 31]
+            "input": {
+                "lastNumberOfDays": 31
+            },
+            "expectedOutput": [
+                28,
+                30,
+                31
+            ]
         }
     ]
 }

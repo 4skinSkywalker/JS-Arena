@@ -1,25 +1,50 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"n": 9},
-            "expectedOutput": [ 2, 2 ]
+            "input": {
+                "n": 9
+            },
+            "expectedOutput": [
+                2,
+                2
+            ]
         },
         {
-            "input": {"n": 5},
-            "expectedOutput": [ 1, 1 ]
+            "input": {
+                "n": 5
+            },
+            "expectedOutput": [
+                1,
+                1
+            ]
         },
         {
-            "input": {"n": 10},
-            "expectedOutput": [ 2, 2 ]
+            "input": {
+                "n": 10
+            },
+            "expectedOutput": [
+                2,
+                2
+            ]
         },
         {
-            "input": {"n": 1},
-            "expectedOutput": [ 0, 1 ]
+            "input": {
+                "n": 1
+            },
+            "expectedOutput": [
+                0,
+                1
+            ]
         },
         {
-            "input": {"n": 15},
-            "expectedOutput": [ 6, 1 ]
+            "input": {
+                "n": 15
+            },
+            "expectedOutput": [
+                6,
+                1
+            ]
         }
     ]
 }

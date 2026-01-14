@@ -1,25 +1,110 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"boardSize": [3, 7], "initPosition": [1, 2], "initDirection": [-1, 1], "k": 13},
-            "expectedOutput": [0, 1]
+            "input": {
+                "boardSize": [
+                    3,
+                    7
+                ],
+                "initPosition": [
+                    1,
+                    2
+                ],
+                "initDirection": [
+                    -1,
+                    1
+                ],
+                "k": 13
+            },
+            "expectedOutput": [
+                0,
+                1
+            ]
         },
         {
-            "input": {"boardSize": [5, 5], "initPosition": [0, 0], "initDirection": [1, 1], "k": 8},
-            "expectedOutput": [1, 1]
+            "input": {
+                "boardSize": [
+                    5,
+                    5
+                ],
+                "initPosition": [
+                    0,
+                    0
+                ],
+                "initDirection": [
+                    1,
+                    1
+                ],
+                "k": 8
+            },
+            "expectedOutput": [
+                1,
+                1
+            ]
         },
         {
-            "input": {"boardSize": [2, 2], "initPosition": [1, 1], "initDirection": [-1, -1], "k": 2},
-            "expectedOutput": [0, 0]
+            "input": {
+                "boardSize": [
+                    2,
+                    2
+                ],
+                "initPosition": [
+                    1,
+                    1
+                ],
+                "initDirection": [
+                    -1,
+                    -1
+                ],
+                "k": 2
+            },
+            "expectedOutput": [
+                0,
+                0
+            ]
         },
         {
-            "input": {"boardSize": [100, 100], "initPosition": [50, 50], "initDirection": [1, 1], "k": 1000},
-            "expectedOutput": [50, 50]
+            "input": {
+                "boardSize": [
+                    100,
+                    100
+                ],
+                "initPosition": [
+                    50,
+                    50
+                ],
+                "initDirection": [
+                    1,
+                    1
+                ],
+                "k": 1000
+            },
+            "expectedOutput": [
+                50,
+                50
+            ]
         },
         {
-            "input": {"boardSize": [1, 3], "initPosition": [0, 1], "initDirection": [0, -1], "k": 5},
-            "expectedOutput": [0, 2]
+            "input": {
+                "boardSize": [
+                    1,
+                    3
+                ],
+                "initPosition": [
+                    0,
+                    1
+                ],
+                "initDirection": [
+                    0,
+                    -1
+                ],
+                "k": 5
+            },
+            "expectedOutput": [
+                0,
+                2
+            ]
         }
     ]
 }

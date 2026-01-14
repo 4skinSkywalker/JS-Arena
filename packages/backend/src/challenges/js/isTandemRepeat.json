@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 4,
     "tests": [
         {
-            "input": {"inputString": "tandemtandem"},
+            "input": {
+                "inputString": "tandemtandem"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "qqq"},
+            "input": {
+                "inputString": "qqq"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "2w2ww"},
+            "input": {
+                "inputString": "2w2ww"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "abcabc"},
+            "input": {
+                "inputString": "abcabc"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "xyzxyzxyz"},
+            "input": {
+                "inputString": "xyzxyzxyz"
+            },
             "expectedOutput": false
         }
     ]

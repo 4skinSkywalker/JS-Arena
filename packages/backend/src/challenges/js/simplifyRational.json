@@ -1,24 +1,55 @@
 {
-    "rating": 4,
+    "rating": 6,
     "tests": [
-    {
-        "input": {"numerator": 3, "denominator": 6},
-        "expectedOutput": [1, 2]
-    },
-    {
-        "input": {"numerator": 8, "denominator": 5},
-        "expectedOutput": [8, 5]
-    },
-    {
-        "input": {"numerator": 8, "denominator": -5},
-        "expectedOutput": [-8, 5]
-    },
-    {
-        "input": {"numerator": 0, "denominator": 1},
-        "expectedOutput": [0, 1]
-    },
-    {
-        "input": {"numerator": 125, "denominator": 500},
-        "expectedOutput": [1, 4]
-    }
-]}
+        {
+            "input": {
+                "numerator": 3,
+                "denominator": 6
+            },
+            "expectedOutput": [
+                1,
+                2
+            ]
+        },
+        {
+            "input": {
+                "numerator": 8,
+                "denominator": 5
+            },
+            "expectedOutput": [
+                8,
+                5
+            ]
+        },
+        {
+            "input": {
+                "numerator": 8,
+                "denominator": -5
+            },
+            "expectedOutput": [
+                -8,
+                5
+            ]
+        },
+        {
+            "input": {
+                "numerator": 0,
+                "denominator": 1
+            },
+            "expectedOutput": [
+                0,
+                1
+            ]
+        },
+        {
+            "input": {
+                "numerator": 125,
+                "denominator": 500
+            },
+            "expectedOutput": [
+                1,
+                4
+            ]
+        }
+    ]
+}

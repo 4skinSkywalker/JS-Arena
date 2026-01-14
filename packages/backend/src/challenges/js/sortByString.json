@@ -1,24 +1,39 @@
 {
-    "rating": 5,
+    "rating": 7,
     "tests": [
         {
-            "input": {"s": "weather", "t": "therapyw"},
+            "input": {
+                "s": "weather",
+                "t": "therapyw"
+            },
             "expectedOutput": "theeraw"
         },
         {
-            "input": {"s": "good", "t": "odg"},
+            "input": {
+                "s": "good",
+                "t": "odg"
+            },
             "expectedOutput": "oodg"
         },
         {
-            "input": {"s": "happy", "t": "pyah"},
+            "input": {
+                "s": "happy",
+                "t": "pyah"
+            },
             "expectedOutput": "ppyah"
         },
         {
-            "input": {"s": "mississippi", "t": "issm"},
+            "input": {
+                "s": "mississippi",
+                "t": "issm"
+            },
             "expectedOutput": "iiiissssm"
         },
         {
-            "input": {"s": "abcabc", "t": "cab"},
+            "input": {
+                "s": "abcabc",
+                "t": "cab"
+            },
             "expectedOutput": "ccaabb"
         }
     ]

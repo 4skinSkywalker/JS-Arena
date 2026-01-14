@@ -1,24 +1,49 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"marathonLength": 100, "maxScore": 400, "submissions": 4, "successfulSubmissionTime": 30},
+            "input": {
+                "marathonLength": 100,
+                "maxScore": 400,
+                "submissions": 4,
+                "successfulSubmissionTime": 30
+            },
             "expectedOutput": 310
         },
         {
-            "input": {"marathonLength": 100, "maxScore": 400, "submissions": 95, "successfulSubmissionTime": 30},
+            "input": {
+                "marathonLength": 100,
+                "maxScore": 400,
+                "submissions": 95,
+                "successfulSubmissionTime": 30
+            },
             "expectedOutput": 200
         },
         {
-            "input": {"marathonLength": 100, "maxScore": 400, "submissions": 95, "successfulSubmissionTime": -1},
+            "input": {
+                "marathonLength": 100,
+                "maxScore": 400,
+                "submissions": 95,
+                "successfulSubmissionTime": -1
+            },
             "expectedOutput": 0
         },
         {
-            "input": {"marathonLength": 50, "maxScore": 100, "submissions": 1, "successfulSubmissionTime": 10},
+            "input": {
+                "marathonLength": 50,
+                "maxScore": 100,
+                "submissions": 1,
+                "successfulSubmissionTime": 10
+            },
             "expectedOutput": 90
         },
         {
-            "input": {"marathonLength": 200, "maxScore": 300, "submissions": 3, "successfulSubmissionTime": 50},
+            "input": {
+                "marathonLength": 200,
+                "maxScore": 300,
+                "submissions": 3,
+                "successfulSubmissionTime": 50
+            },
             "expectedOutput": 243
         }
     ]

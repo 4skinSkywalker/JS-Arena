@@ -1,24 +1,39 @@
 {
-    "rating": 4,
+    "rating": 3,
     "tests": [
         {
-            "input": {"number": 1234, "width": 2},
+            "input": {
+                "number": 1234,
+                "width": 2
+            },
             "expectedOutput": "34"
         },
         {
-            "input": {"number": 1234, "width": 4},
+            "input": {
+                "number": 1234,
+                "width": 4
+            },
             "expectedOutput": "1234"
         },
         {
-            "input": {"number": 1234, "width": 5},
+            "input": {
+                "number": 1234,
+                "width": 5
+            },
             "expectedOutput": "01234"
         },
         {
-            "input": {"number": 56789, "width": 3},
+            "input": {
+                "number": 56789,
+                "width": 3
+            },
             "expectedOutput": "789"
         },
         {
-            "input": {"number": 1, "width": 6},
+            "input": {
+                "number": 1,
+                "width": 6
+            },
             "expectedOutput": "000001"
         }
     ]

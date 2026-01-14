@@ -1,25 +1,119 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"sourceArray": [33531593, 96933415, 28506400, 39457872, 29684716, 86010806], "destinationArray": [33531593, 96913415, 28506400, 39457872, 29684716, 86010806]},
-            "expectedOutput": [4, 2]
+            "input": {
+                "sourceArray": [
+                    33531593,
+                    96933415,
+                    28506400,
+                    39457872,
+                    29684716,
+                    86010806
+                ],
+                "destinationArray": [
+                    33531593,
+                    96913415,
+                    28506400,
+                    39457872,
+                    29684716,
+                    86010806
+                ]
+            },
+            "expectedOutput": [
+                4,
+                2
+            ]
         },
         {
-            "input": {"sourceArray": [12345678, 23456789, 34567890], "destinationArray": [12345678, 23456789, 34567890]},
-            "expectedOutput": [3, 0]
+            "input": {
+                "sourceArray": [
+                    12345678,
+                    23456789,
+                    34567890
+                ],
+                "destinationArray": [
+                    12345678,
+                    23456789,
+                    34567890
+                ]
+            },
+            "expectedOutput": [
+                3,
+                0
+            ]
         },
         {
-            "input": {"sourceArray": [11111111, 22222222, 33333333], "destinationArray": [11111112, 22222223, 33333334]},
-            "expectedOutput": [0, 0]
+            "input": {
+                "sourceArray": [
+                    11111111,
+                    22222222,
+                    33333333
+                ],
+                "destinationArray": [
+                    11111112,
+                    22222223,
+                    33333334
+                ]
+            },
+            "expectedOutput": [
+                0,
+                0
+            ]
         },
         {
-            "input": {"sourceArray": [1, 2, 3, 4, 5, 6], "destinationArray": [1, 2, 3, 7, 8, 9]},
-            "expectedOutput": [3, 0]
+            "input": {
+                "sourceArray": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ],
+                "destinationArray": [
+                    1,
+                    2,
+                    3,
+                    7,
+                    8,
+                    9
+                ]
+            },
+            "expectedOutput": [
+                3,
+                0
+            ]
         },
         {
-            "input": {"sourceArray": [9, 8, 7, 6, 5, 4, 3, 2, 1], "destinationArray": [9, 8, 7, 6, 5, 3, 2, 1, 0]},
-            "expectedOutput": [5, 0]
+            "input": {
+                "sourceArray": [
+                    9,
+                    8,
+                    7,
+                    6,
+                    5,
+                    4,
+                    3,
+                    2,
+                    1
+                ],
+                "destinationArray": [
+                    9,
+                    8,
+                    7,
+                    6,
+                    5,
+                    3,
+                    2,
+                    1,
+                    0
+                ]
+            },
+            "expectedOutput": [
+                5,
+                0
+            ]
         }
     ]
 }

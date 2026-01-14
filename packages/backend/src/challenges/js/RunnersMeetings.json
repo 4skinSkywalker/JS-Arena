@@ -1,24 +1,81 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"startPosition": [1, 4, 2], "speed": [27, 18, 24]},
+            "input": {
+                "startPosition": [
+                    1,
+                    4,
+                    2
+                ],
+                "speed": [
+                    27,
+                    18,
+                    24
+                ]
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"startPosition": [0, 5, 10], "speed": [5, 5, 5]},
+            "input": {
+                "startPosition": [
+                    0,
+                    5,
+                    10
+                ],
+                "speed": [
+                    5,
+                    5,
+                    5
+                ]
+            },
             "expectedOutput": -1
         },
         {
-            "input": {"startPosition": [1, 2, 3], "speed": [3, 2, 1]},
+            "input": {
+                "startPosition": [
+                    1,
+                    2,
+                    3
+                ],
+                "speed": [
+                    3,
+                    2,
+                    1
+                ]
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"startPosition": [1, 4, 7, 10], "speed": [10, 5, 10, 10]},
+            "input": {
+                "startPosition": [
+                    1,
+                    4,
+                    7,
+                    10
+                ],
+                "speed": [
+                    10,
+                    5,
+                    10,
+                    10
+                ]
+            },
             "expectedOutput": 2
         },
         {
-            "input": {"startPosition": [6, 2, 3], "speed": [3, 5, 4]},
+            "input": {
+                "startPosition": [
+                    6,
+                    2,
+                    3
+                ],
+                "speed": [
+                    3,
+                    5,
+                    4
+                ]
+            },
             "expectedOutput": 2
         }
     ]

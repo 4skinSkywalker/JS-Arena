@@ -1,24 +1,34 @@
 {
-    "rating": 5,
+    "rating": 7,
     "tests": [
         {
-            "input": {"p": "b1;g1;b8;g8"},
+            "input": {
+                "p": "b1;g1;b8;g8"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"p": "b1;h3;b8;g8"},
+            "input": {
+                "p": "b1;h3;b8;g8"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"p": "b1;h3;b8;f6"},
+            "input": {
+                "p": "b1;h3;b8;f6"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"p": "b1;f4;b8;f6"},
+            "input": {
+                "p": "b1;f4;b8;f6"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"p": "b1;f4;c6;f6"},
+            "input": {
+                "p": "b1;f4;c6;f6"
+            },
             "expectedOutput": true
         }
     ]

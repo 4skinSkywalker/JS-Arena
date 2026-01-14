@@ -1,24 +1,59 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"takeOffTime": "23:35", "minutes": [60, 90, 140]},
+            "input": {
+                "takeOffTime": "23:35",
+                "minutes": [
+                    60,
+                    90,
+                    140
+                ]
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"takeOffTime": "22:00", "minutes": [120, 180, 240]},
+            "input": {
+                "takeOffTime": "22:00",
+                "minutes": [
+                    120,
+                    180,
+                    240
+                ]
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"takeOffTime": "19:00", "minutes": [60, 120, 180, 240, 300]},
+            "input": {
+                "takeOffTime": "19:00",
+                "minutes": [
+                    60,
+                    120,
+                    180,
+                    240,
+                    300
+                ]
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"takeOffTime": "00:00", "minutes": [60, 90, 240]},
+            "input": {
+                "takeOffTime": "00:00",
+                "minutes": [
+                    60,
+                    90,
+                    240
+                ]
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"takeOffTime": "12:00", "minutes": [720]},
+            "input": {
+                "takeOffTime": "12:00",
+                "minutes": [
+                    720
+                ]
+            },
             "expectedOutput": 2
         }
     ]

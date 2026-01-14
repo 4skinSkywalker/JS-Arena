@@ -1,24 +1,108 @@
 {
-    "rating": 7,
+    "rating": 8,
     "tests": [
         {
-            "input": {"stocks": [[-1, 2], [10, 15], [11, 13], [9, 10]], "riskBudget": 30}, 
+            "input": {
+                "stocks": [
+                    [
+                        -1,
+                        2
+                    ],
+                    [
+                        10,
+                        15
+                    ],
+                    [
+                        11,
+                        13
+                    ],
+                    [
+                        9,
+                        10
+                    ]
+                ],
+                "riskBudget": 30
+            },
             "expectedOutput": 21
         },
         {
-            "input": {"stocks": [[100, 50], [20, 10], [10, 5]], "riskBudget": 50}, 
+            "input": {
+                "stocks": [
+                    [
+                        100,
+                        50
+                    ],
+                    [
+                        20,
+                        10
+                    ],
+                    [
+                        10,
+                        5
+                    ]
+                ],
+                "riskBudget": 50
+            },
             "expectedOutput": 100
         },
         {
-            "input": {"stocks": [[10, 10], [20, 20], [30, 30]], "riskBudget": 50}, 
+            "input": {
+                "stocks": [
+                    [
+                        10,
+                        10
+                    ],
+                    [
+                        20,
+                        20
+                    ],
+                    [
+                        30,
+                        30
+                    ]
+                ],
+                "riskBudget": 50
+            },
             "expectedOutput": 50
         },
         {
-            "input": {"stocks": [[5, 5], [10, 15], [25, 50]], "riskBudget": 100}, 
+            "input": {
+                "stocks": [
+                    [
+                        5,
+                        5
+                    ],
+                    [
+                        10,
+                        15
+                    ],
+                    [
+                        25,
+                        50
+                    ]
+                ],
+                "riskBudget": 100
+            },
             "expectedOutput": 40
         },
         {
-            "input": {"stocks": [[20, 30], [30, 40], [40, 50]], "riskBudget": 70}, 
+            "input": {
+                "stocks": [
+                    [
+                        20,
+                        30
+                    ],
+                    [
+                        30,
+                        40
+                    ],
+                    [
+                        40,
+                        50
+                    ]
+                ],
+                "riskBudget": 70
+            },
             "expectedOutput": 50
         }
     ]

@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"s": "CodesignalIsAwesome"},
+            "input": {
+                "s": "CodesignalIsAwesome"
+            },
             "expectedOutput": "codesignal is awesome"
         },
         {
-            "input": {"s": "Hello"},
+            "input": {
+                "s": "Hello"
+            },
             "expectedOutput": "hello"
         },
         {
-            "input": {"s": "LongAndWindingRoad"},
+            "input": {
+                "s": "LongAndWindingRoad"
+            },
             "expectedOutput": "long and winding road"
         },
         {
-            "input": {"s": "JavaProgrammingLanguage"},
+            "input": {
+                "s": "JavaProgrammingLanguage"
+            },
             "expectedOutput": "java programming language"
         },
         {
-            "input": {"s": "CatsAndDogs"},
+            "input": {
+                "s": "CatsAndDogs"
+            },
             "expectedOutput": "cats and dogs"
         }
     ]

@@ -1,25 +1,35 @@
 {
-    "rating": 6,
+    "rating": 7,
     "tests": [
         {
-            "input": {"items": "Doughnuts, 4; doughnuts holes, 0.08; glue, 3.4"},
+            "input": {
+                "items": "Doughnuts, 4; doughnuts holes, 0.08; glue, 3.4"
+            },
             "expectedOutput": 7.48
         },
         {
-            "input": {"items": "blue suit for 24$, cape for 12.99$ & glasses for 15.70"},
+            "input": {
+                "items": "blue suit for 24$, cape for 12.99$ & glasses for 15.70"
+            },
             "expectedOutput": 52.69
         },
         {
-            "input": {"items": "sandwich, 4.50; water bottle, 1; backpack, 19.99"},
+            "input": {
+                "items": "sandwich, 4.50; water bottle, 1; backpack, 19.99"
+            },
             "expectedOutput": 25.49
         },
         {
-            "input": {"items": "sweatshirt for 24.99$, socks for 3.5$ & cap for 15.70"},
+            "input": {
+                "items": "sweatshirt for 24.99$, socks for 3.5$ & cap for 15.70"
+            },
             "expectedOutput": 44.19
         },
         {
-            "input": {"items": "jacket for 50$, shirt for 20$ & shoes for 70"},
-            "expectedOutput": 140.0
+            "input": {
+                "items": "jacket for 50$, shirt for 20$ & shoes for 70"
+            },
+            "expectedOutput": 140
         }
     ]
 }

@@ -1,24 +1,39 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"level": 3, "pos": 3},
+            "input": {
+                "level": 3,
+                "pos": 3
+            },
             "expectedOutput": "Doctor"
         },
         {
-            "input": {"level": 1, "pos": 1},
+            "input": {
+                "level": 1,
+                "pos": 1
+            },
             "expectedOutput": "Engineer"
         },
         {
-            "input": {"level": 2, "pos": 2},
+            "input": {
+                "level": 2,
+                "pos": 2
+            },
             "expectedOutput": "Doctor"
         },
         {
-            "input": {"level": 4, "pos": 1},
+            "input": {
+                "level": 4,
+                "pos": 1
+            },
             "expectedOutput": "Engineer"
         },
         {
-            "input": {"level": 5, "pos": 6},
+            "input": {
+                "level": 5,
+                "pos": 6
+            },
             "expectedOutput": "Engineer"
         }
     ]

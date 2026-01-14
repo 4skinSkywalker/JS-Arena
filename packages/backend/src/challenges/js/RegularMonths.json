@@ -1,24 +1,34 @@
 {
-    "rating": 5,
+    "rating": 7,
     "tests": [
         {
-            "input": {"currMonth": "02-2016"},
+            "input": {
+                "currMonth": "02-2016"
+            },
             "expectedOutput": "08-2016"
         },
         {
-            "input": {"currMonth": "08-2016"},
+            "input": {
+                "currMonth": "08-2016"
+            },
             "expectedOutput": "05-2017"
         },
         {
-            "input": {"currMonth": "12-2020"},
+            "input": {
+                "currMonth": "12-2020"
+            },
             "expectedOutput": "02-2021"
         },
         {
-            "input": {"currMonth": "01-2001"},
+            "input": {
+                "currMonth": "01-2001"
+            },
             "expectedOutput": "10-2001"
         },
         {
-            "input": {"currMonth": "07-2022"},
+            "input": {
+                "currMonth": "07-2022"
+            },
             "expectedOutput": "08-2022"
         }
     ]

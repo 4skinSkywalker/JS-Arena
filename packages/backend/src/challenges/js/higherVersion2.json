@@ -1,24 +1,39 @@
 {
-    "rating": 4,
+    "rating": 6,
     "tests": [
         {
-            "input": {"ver1": "1.2.2", "ver2": "1.2.0"},
+            "input": {
+                "ver1": "1.2.2",
+                "ver2": "1.2.0"
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"ver1": "1.0.5", "ver2": "1.1.0"},
+            "input": {
+                "ver1": "1.0.5",
+                "ver2": "1.1.0"
+            },
             "expectedOutput": -1
         },
         {
-            "input": {"ver1": "1.0.5", "ver2": "1.00.05"},
+            "input": {
+                "ver1": "1.0.5",
+                "ver2": "1.00.05"
+            },
             "expectedOutput": 0
         },
         {
-            "input": {"ver1": "2.0.0", "ver2": "1.9.9"},
+            "input": {
+                "ver1": "2.0.0",
+                "ver2": "1.9.9"
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"ver1": "1.0.0", "ver2": "1.0.0"},
+            "input": {
+                "ver1": "1.0.0",
+                "ver2": "1.0.0"
+            },
             "expectedOutput": 0
         }
     ]

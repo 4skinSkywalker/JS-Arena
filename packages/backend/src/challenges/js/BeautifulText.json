@@ -1,24 +1,44 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"inputString": "Look at this example of a correct text", "l": 5, "r": 15},
+            "input": {
+                "inputString": "Look at this example of a correct text",
+                "l": 5,
+                "r": 15
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "abc def ghi", "l": 4, "r": 10},
+            "input": {
+                "inputString": "abc def ghi",
+                "l": 4,
+                "r": 10
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "This is a longer sentence with varied letters and spaces", "l": 10, "r": 20},
+            "input": {
+                "inputString": "This is a longer sentence with varied letters and spaces",
+                "l": 10,
+                "r": 20
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "ThisSentenceHasNoSpaces", "l": 4, "r": 10},
+            "input": {
+                "inputString": "ThisSentenceHasNoSpaces",
+                "l": 4,
+                "r": 10
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "The quick brown fox jumps over the lazy dog", "l": 10, "r": 30},
+            "input": {
+                "inputString": "The quick brown fox jumps over the lazy dog",
+                "l": 10,
+                "r": 30
+            },
             "expectedOutput": false
         }
     ]

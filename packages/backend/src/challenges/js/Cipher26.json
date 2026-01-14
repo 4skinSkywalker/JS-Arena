@@ -1,24 +1,34 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"message": "taiaiaertkixquxjnfxxdh"},
+            "input": {
+                "message": "taiaiaertkixquxjnfxxdh"
+            },
             "expectedOutput": "thisisencryptedmessage"
         },
         {
-            "input": {"message": "abcdefghijklmnopqrstvwxyz"},
+            "input": {
+                "message": "abcdefghijklmnopqrstvwxyz"
+            },
             "expectedOutput": "abbbbbbbbbbbbbbbbbbbcbbbb"
         },
         {
-            "input": {"message": "thebrowserisaverygoodbrowser"},
+            "input": {
+                "message": "thebrowserisaverygoodbrowser"
+            },
             "expectedOutput": "toxxqxiwmnrkivjnhiiapyqxiwmn"
         },
         {
-            "input": {"message": "likeicecream"},
+            "input": {
+                "message": "likeicecream"
+            },
             "expectedOutput": "lxcueucypnwm"
         },
         {
-            "input": {"message": "thequickbrownfoxjumpsoverthelazydog"},
+            "input": {
+                "message": "thequickbrownfoxjumpsoverthelazydog"
+            },
             "expectedOutput": "toxmeouirqxirsjjmlsddwhjncoxhpzzfls"
         }
     ]

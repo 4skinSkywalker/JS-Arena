@@ -1,25 +1,89 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"inputArray": ["abc", "", "aaa", "a", "zz"]},
-            "expectedOutput": ["", "a", "zz", "abc", "aaa"]
+            "input": {
+                "inputArray": [
+                    "abc",
+                    "",
+                    "aaa",
+                    "a",
+                    "zz"
+                ]
+            },
+            "expectedOutput": [
+                "",
+                "a",
+                "zz",
+                "abc",
+                "aaa"
+            ]
         },
         {
-            "input": {"inputArray": ["hello", "world", "hi", "yes", "a"]},
-            "expectedOutput": ["a", "hi", "yes", "hello", "world"]
+            "input": {
+                "inputArray": [
+                    "hello",
+                    "world",
+                    "hi",
+                    "yes",
+                    "a"
+                ]
+            },
+            "expectedOutput": [
+                "a",
+                "hi",
+                "yes",
+                "hello",
+                "world"
+            ]
         },
         {
-            "input": {"inputArray": ["", "", "", "a"]},
-            "expectedOutput": ["", "", "", "a"]
+            "input": {
+                "inputArray": [
+                    "",
+                    "",
+                    "",
+                    "a"
+                ]
+            },
+            "expectedOutput": [
+                "",
+                "",
+                "",
+                "a"
+            ]
         },
         {
-            "input": {"inputArray": ["abc", "abcd", "abcde", "abcdef"]},
-            "expectedOutput": ["abc", "abcd", "abcde", "abcdef"]
+            "input": {
+                "inputArray": [
+                    "abc",
+                    "abcd",
+                    "abcde",
+                    "abcdef"
+                ]
+            },
+            "expectedOutput": [
+                "abc",
+                "abcd",
+                "abcde",
+                "abcdef"
+            ]
         },
         {
-            "input": {"inputArray": ["abc", "defg", "hijk", "lmn"]},
-            "expectedOutput": ["abc", "lmn", "defg", "hijk"]
+            "input": {
+                "inputArray": [
+                    "abc",
+                    "defg",
+                    "hijk",
+                    "lmn"
+                ]
+            },
+            "expectedOutput": [
+                "abc",
+                "lmn",
+                "defg",
+                "hijk"
+            ]
         }
     ]
 }

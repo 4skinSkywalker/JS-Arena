@@ -1,24 +1,35 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
-    {
-        "input": {"s": "4[ab]"},
-        "expectedOutput": "abababab"
-    },
-    {
-        "input": {"s": "2[b3[a]]"},
-        "expectedOutput": "baaabaaa"
-    },
-    {
-        "input": {"s": "z1[y]zzz2[abc]"},
-        "expectedOutput": "zyzzzabcabc"
-    },
-    {
-        "input": {"s": "3[2[jk]1[abc]]"},
-        "expectedOutput": "jkjkabcjkjkabcjkjkabc"
-    },
-    {
-        "input": {"s": "5[z]"},
-        "expectedOutput": "zzzzz"
-    }
-]}
+        {
+            "input": {
+                "s": "4[ab]"
+            },
+            "expectedOutput": "abababab"
+        },
+        {
+            "input": {
+                "s": "2[b3[a]]"
+            },
+            "expectedOutput": "baaabaaa"
+        },
+        {
+            "input": {
+                "s": "z1[y]zzz2[abc]"
+            },
+            "expectedOutput": "zyzzzabcabc"
+        },
+        {
+            "input": {
+                "s": "3[2[jk]1[abc]]"
+            },
+            "expectedOutput": "jkjkabcjkjkabcjkjkabc"
+        },
+        {
+            "input": {
+                "s": "5[z]"
+            },
+            "expectedOutput": "zzzzz"
+        }
+    ]
+}

@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 6,
     "tests": [
         {
-            "input": {"s": "effg"},
+            "input": {
+                "s": "effg"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"s": "cdce"},
+            "input": {
+                "s": "cdce"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"s": "ace"},
+            "input": {
+                "s": "ace"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"s": "bxz"},
+            "input": {
+                "s": "bxz"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"s": "helloai"},
+            "input": {
+                "s": "helloai"
+            },
             "expectedOutput": false
         }
     ]

@@ -1,25 +1,89 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"a": [1, 1, 1, 1, 1]},
-            "expectedOutput": [0, 1, 0, 1, 0]
+            "input": {
+                "a": [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            },
+            "expectedOutput": [
+                0,
+                1,
+                0,
+                1,
+                0
+            ]
         },
         {
-            "input": {"a": [0, 0]},
-            "expectedOutput": [0, 0]
+            "input": {
+                "a": [
+                    0,
+                    0
+                ]
+            },
+            "expectedOutput": [
+                0,
+                0
+            ]
         },
         {
-            "input": {"a": [1, 0, 1, 0, 1]},
-            "expectedOutput": [0, 0, 1, 1, 0]
+            "input": {
+                "a": [
+                    1,
+                    0,
+                    1,
+                    0,
+                    1
+                ]
+            },
+            "expectedOutput": [
+                0,
+                0,
+                1,
+                1,
+                0
+            ]
         },
         {
-            "input": {"a": [0, 1, 0, 1, 0]},
-            "expectedOutput": [0, 1, 1, 0, 0]
+            "input": {
+                "a": [
+                    0,
+                    1,
+                    0,
+                    1,
+                    0
+                ]
+            },
+            "expectedOutput": [
+                0,
+                1,
+                1,
+                0,
+                0
+            ]
         },
         {
-            "input": {"a": [1, 1, 0, 0, 1]},
-            "expectedOutput": [0, 1, 1, 1, 0]
+            "input": {
+                "a": [
+                    1,
+                    1,
+                    0,
+                    0,
+                    1
+                ]
+            },
+            "expectedOutput": [
+                0,
+                1,
+                1,
+                1,
+                0
+            ]
         }
     ]
 }

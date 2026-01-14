@@ -1,24 +1,39 @@
 {
-    "rating": 4,
+    "rating": 6,
     "tests": [
         {
-            "input": {"ver1": "1.2.2", "ver2": "1.2.0"},
+            "input": {
+                "ver1": "1.2.2",
+                "ver2": "1.2.0"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"ver1": "1.0.5", "ver2": "1.1.0"},
+            "input": {
+                "ver1": "1.0.5",
+                "ver2": "1.1.0"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"ver1": "1.15.82", "ver2": "1.15.8"},
+            "input": {
+                "ver1": "1.15.82",
+                "ver2": "1.15.8"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"ver1": "0.0.1", "ver2": "0.0.0"},
+            "input": {
+                "ver1": "0.0.1",
+                "ver2": "0.0.0"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"ver1": "10.5.7", "ver2": "10.5.7"},
+            "input": {
+                "ver1": "10.5.7",
+                "ver2": "10.5.7"
+            },
             "expectedOutput": false
         }
     ]

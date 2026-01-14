@@ -1,24 +1,39 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"maxLength": 4, "text": "The Fox asked the stork, 'How is the soup?'"},
+            "input": {
+                "maxLength": 4,
+                "text": "The Fox asked the stork, 'How is the soup?'"
+            },
             "expectedOutput": 7
         },
         {
-            "input": {"maxLength": 3, "text": "Jack and Jill went up the hill"},
+            "input": {
+                "maxLength": 3,
+                "text": "Jack and Jill went up the hill"
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"maxLength": 2, "text": "Humpty Dumpty sat on a wall"},
+            "input": {
+                "maxLength": 2,
+                "text": "Humpty Dumpty sat on a wall"
+            },
             "expectedOutput": 2
         },
         {
-            "input": {"maxLength": 1, "text": "Little Bo-Peep has lost her sheep"},
+            "input": {
+                "maxLength": 1,
+                "text": "Little Bo-Peep has lost her sheep"
+            },
             "expectedOutput": 0
         },
         {
-            "input": {"maxLength": 5, "text": "Old Mother Hubbard Went to the cupboard, To fetch her poor dog a bone."},
+            "input": {
+                "maxLength": 5,
+                "text": "Old Mother Hubbard Went to the cupboard, To fetch her poor dog a bone."
+            },
             "expectedOutput": 11
         }
     ]

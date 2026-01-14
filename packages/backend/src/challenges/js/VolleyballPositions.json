@@ -1,89 +1,249 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
             "input": {
                 "formation": [
-                    ["empty", "Player5", "empty"],
-                    ["Player4", "empty", "Player2"],
-                    ["empty", "Player3", "empty"],
-                    ["Player6", "empty", "Player1"]
-                ], 
+                    [
+                        "empty",
+                        "Player5",
+                        "empty"
+                    ],
+                    [
+                        "Player4",
+                        "empty",
+                        "Player2"
+                    ],
+                    [
+                        "empty",
+                        "Player3",
+                        "empty"
+                    ],
+                    [
+                        "Player6",
+                        "empty",
+                        "Player1"
+                    ]
+                ],
                 "k": 2
             },
             "expectedOutput": [
-                ["empty", "Player1", "empty"],
-                ["Player2", "empty", "Player3"],
-                ["empty", "Player4", "empty"],
-                ["Player5", "empty", "Player6"]
+                [
+                    "empty",
+                    "Player1",
+                    "empty"
+                ],
+                [
+                    "Player2",
+                    "empty",
+                    "Player3"
+                ],
+                [
+                    "empty",
+                    "Player4",
+                    "empty"
+                ],
+                [
+                    "Player5",
+                    "empty",
+                    "Player6"
+                ]
             ]
         },
         {
             "input": {
                 "formation": [
-                    ["empty", "Alice", "empty"],
-                    ["Bob",   "empty", "Charlie"],
-                    ["empty", "Dave",  "empty"],
-                    ["Eve",   "empty", "Frank"]
-                ], 
+                    [
+                        "empty",
+                        "Alice",
+                        "empty"
+                    ],
+                    [
+                        "Bob",
+                        "empty",
+                        "Charlie"
+                    ],
+                    [
+                        "empty",
+                        "Dave",
+                        "empty"
+                    ],
+                    [
+                        "Eve",
+                        "empty",
+                        "Frank"
+                    ]
+                ],
                 "k": 6
             },
             "expectedOutput": [
-                ["empty", "Alice", "empty"],
-                ["Bob",   "empty", "Charlie"],
-                ["empty", "Dave",  "empty"],
-                ["Eve",   "empty", "Frank"]
+                [
+                    "empty",
+                    "Alice",
+                    "empty"
+                ],
+                [
+                    "Bob",
+                    "empty",
+                    "Charlie"
+                ],
+                [
+                    "empty",
+                    "Dave",
+                    "empty"
+                ],
+                [
+                    "Eve",
+                    "empty",
+                    "Frank"
+                ]
             ]
         },
         {
             "input": {
                 "formation": [
-                    ["empty", "P1", "empty"],
-                    ["P2", "empty", "P3"],
-                    ["empty", "P4", "empty"],
-                    ["P5", "empty", "P6"]
-                ], 
+                    [
+                        "empty",
+                        "P1",
+                        "empty"
+                    ],
+                    [
+                        "P2",
+                        "empty",
+                        "P3"
+                    ],
+                    [
+                        "empty",
+                        "P4",
+                        "empty"
+                    ],
+                    [
+                        "P5",
+                        "empty",
+                        "P6"
+                    ]
+                ],
                 "k": 1
             },
             "expectedOutput": [
-                [ "empty", "P3", "empty" ],
-                [ "P1", "empty", "P6" ],
-                [ "empty", "P5", "empty" ],
-                [ "P2", "empty", "P4" ]
+                [
+                    "empty",
+                    "P3",
+                    "empty"
+                ],
+                [
+                    "P1",
+                    "empty",
+                    "P6"
+                ],
+                [
+                    "empty",
+                    "P5",
+                    "empty"
+                ],
+                [
+                    "P2",
+                    "empty",
+                    "P4"
+                ]
             ]
         },
         {
             "input": {
                 "formation": [
-                    ["empty", "A", "empty"],
-                    ["B", "empty", "C"],
-                    ["empty", "D", "empty"],
-                    ["E", "empty", "F"]
+                    [
+                        "empty",
+                        "A",
+                        "empty"
+                    ],
+                    [
+                        "B",
+                        "empty",
+                        "C"
+                    ],
+                    [
+                        "empty",
+                        "D",
+                        "empty"
+                    ],
+                    [
+                        "E",
+                        "empty",
+                        "F"
+                    ]
                 ],
                 "k": 4
             },
             "expectedOutput": [
-                [ "empty", "E", "empty" ],
-                [ "D", "empty", "B" ],
-                [ "empty", "C", "empty" ],
-                [ "F", "empty", "A" ]
+                [
+                    "empty",
+                    "E",
+                    "empty"
+                ],
+                [
+                    "D",
+                    "empty",
+                    "B"
+                ],
+                [
+                    "empty",
+                    "C",
+                    "empty"
+                ],
+                [
+                    "F",
+                    "empty",
+                    "A"
+                ]
             ]
         },
         {
             "input": {
                 "formation": [
-                    ["empty", "AA", "empty"],
-                    ["BB", "empty", "CC"],
-                    ["empty", "DD", "empty"],
-                    ["EE", "empty", "FF"]
+                    [
+                        "empty",
+                        "AA",
+                        "empty"
+                    ],
+                    [
+                        "BB",
+                        "empty",
+                        "CC"
+                    ],
+                    [
+                        "empty",
+                        "DD",
+                        "empty"
+                    ],
+                    [
+                        "EE",
+                        "empty",
+                        "FF"
+                    ]
                 ],
                 "k": 5
             },
             "expectedOutput": [
-                [ "empty", "BB", "empty" ],
-                [ "EE", "empty", "AA" ],
-                [ "empty", "FF", "empty" ],
-                [ "DD", "empty", "CC" ]
+                [
+                    "empty",
+                    "BB",
+                    "empty"
+                ],
+                [
+                    "EE",
+                    "empty",
+                    "AA"
+                ],
+                [
+                    "empty",
+                    "FF",
+                    "empty"
+                ],
+                [
+                    "DD",
+                    "empty",
+                    "CC"
+                ]
             ]
         }
     ]

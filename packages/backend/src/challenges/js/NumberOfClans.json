@@ -1,24 +1,59 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"divisors": [2, 3], "k": 6},
+            "input": {
+                "divisors": [
+                    2,
+                    3
+                ],
+                "k": 6
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"divisors": [2, 5], "k": 10},
+            "input": {
+                "divisors": [
+                    2,
+                    5
+                ],
+                "k": 10
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"divisors": [3, 4], "k": 12},
+            "input": {
+                "divisors": [
+                    3,
+                    4
+                ],
+                "k": 12
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"divisors": [1, 2, 3, 4, 5], "k": 6},
+            "input": {
+                "divisors": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "k": 6
+            },
             "expectedOutput": 6
         },
         {
-            "input": {"divisors": [2, 3, 5, 7], "k": 14},
+            "input": {
+                "divisors": [
+                    2,
+                    3,
+                    5,
+                    7
+                ],
+                "k": 14
+            },
             "expectedOutput": 8
         }
     ]

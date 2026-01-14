@@ -1,24 +1,34 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"expr": "(2 + 2) * 2"},
+            "input": {
+                "expr": "(2 + 2) * 2"
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"expr": "2 + 2 * 2"},
+            "input": {
+                "expr": "2 + 2 * 2"
+            },
             "expectedOutput": 6
         },
         {
-            "input": {"expr": "((2 + 2) * 2) * 3 + (2 + (2 * 2))"},
+            "input": {
+                "expr": "((2 + 2) * 2) * 3 + (2 + (2 * 2))"
+            },
             "expectedOutput": 28
         },
         {
-            "input": {"expr": "((2 + 3) * (7 - 4)) + 6"},
+            "input": {
+                "expr": "((2 + 3) * (7 - 4)) + 6"
+            },
             "expectedOutput": 4
         },
         {
-            "input": {"expr": "8 * (3 + 2) - (6 / 3)"},
+            "input": {
+                "expr": "8 * (3 + 2) - (6 / 3)"
+            },
             "expectedOutput": 7
         }
     ]

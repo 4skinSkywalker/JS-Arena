@@ -1,24 +1,63 @@
 {
-    "rating": 6,
+    "rating": 7,
     "tests": [
         {
-            "input": {"inputArray": ["abc", "aaa", "aba", "bab"], "result": "bbb"},
+            "input": {
+                "inputArray": [
+                    "abc",
+                    "aaa",
+                    "aba",
+                    "bab"
+                ],
+                "result": "bbb"
+            },
             "expectedOutput": 2
         },
         {
-            "input": {"inputArray": ["abc", "def", "ghi", "jkl"], "result": "def"},
+            "input": {
+                "inputArray": [
+                    "abc",
+                    "def",
+                    "ghi",
+                    "jkl"
+                ],
+                "result": "def"
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"inputArray": ["aaa", "aaa", "aaa"], "result": "aaa"},
+            "input": {
+                "inputArray": [
+                    "aaa",
+                    "aaa",
+                    "aaa"
+                ],
+                "result": "aaa"
+            },
             "expectedOutput": 3
         },
         {
-            "input": {"inputArray": ["abd", "bbc", "ccc", "ddd"], "result": "abc"},
+            "input": {
+                "inputArray": [
+                    "abd",
+                    "bbc",
+                    "ccc",
+                    "ddd"
+                ],
+                "result": "abc"
+            },
             "expectedOutput": 2
         },
         {
-            "input": {"inputArray": ["xyz", "xzy", "zxy", "zzy"], "result": "xzy"},
+            "input": {
+                "inputArray": [
+                    "xyz",
+                    "xzy",
+                    "zxy",
+                    "zzy"
+                ],
+                "result": "xzy"
+            },
             "expectedOutput": 4
         }
     ]

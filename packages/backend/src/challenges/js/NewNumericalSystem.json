@@ -1,8 +1,10 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"number": "G"},
+            "input": {
+                "number": "G"
+            },
             "expectedOutput": [
                 "A + G",
                 "B + F",
@@ -11,25 +13,35 @@
             ]
         },
         {
-            "input": {"number": "C"},
+            "input": {
+                "number": "C"
+            },
             "expectedOutput": [
                 "A + C",
                 "B + B"
             ]
         },
         {
-            "input": {"number": "D"},
+            "input": {
+                "number": "D"
+            },
             "expectedOutput": [
                 "A + D",
                 "B + C"
             ]
         },
         {
-            "input": {"number": "A"},
-            "expectedOutput": ["A + A"]
+            "input": {
+                "number": "A"
+            },
+            "expectedOutput": [
+                "A + A"
+            ]
         },
         {
-            "input": {"number": "K"},
+            "input": {
+                "number": "K"
+            },
             "expectedOutput": [
                 "A + K",
                 "B + J",

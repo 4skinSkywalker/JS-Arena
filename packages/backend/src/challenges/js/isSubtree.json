@@ -1,11 +1,42 @@
 {
-    "rating": 7,
+    "rating": 8,
     "tests": [
-    {
-        "input": {
-            "t1": {
-                "value": 5,
-                "left": {
+        {
+            "input": {
+                "t1": {
+                    "value": 5,
+                    "left": {
+                        "value": 10,
+                        "left": {
+                            "value": 4,
+                            "left": {
+                                "value": 1,
+                                "left": null,
+                                "right": null
+                            },
+                            "right": {
+                                "value": 2,
+                                "left": null,
+                                "right": null
+                            }
+                        },
+                        "right": {
+                            "value": 6,
+                            "left": null,
+                            "right": {
+                                "value": -1,
+                                "left": null,
+                                "right": null
+                            }
+                        }
+                    },
+                    "right": {
+                        "value": 7,
+                        "left": null,
+                        "right": null
+                    }
+                },
+                "t2": {
                     "value": 10,
                     "left": {
                         "value": 4,
@@ -29,46 +60,46 @@
                             "right": null
                         }
                     }
-                },
-                "right": {
-                    "value": 7,
-                    "left": null,
-                    "right": null
                 }
             },
-            "t2": {
-                "value": 10,
-                "left": {
-                    "value": 4,
+            "expectedOutput": true
+        },
+        {
+            "input": {
+                "t1": {
+                    "value": 5,
                     "left": {
-                        "value": 1,
-                        "left": null,
-                        "right": null
+                        "value": 10,
+                        "left": {
+                            "value": 4,
+                            "left": {
+                                "value": 1,
+                                "left": null,
+                                "right": null
+                            },
+                            "right": {
+                                "value": 2,
+                                "left": null,
+                                "right": null
+                            }
+                        },
+                        "right": {
+                            "value": 6,
+                            "left": {
+                                "value": -1,
+                                "left": null,
+                                "right": null
+                            },
+                            "right": null
+                        }
                     },
                     "right": {
-                        "value": 2,
+                        "value": 7,
                         "left": null,
                         "right": null
                     }
                 },
-                "right": {
-                    "value": 6,
-                    "left": null,
-                    "right": {
-                        "value": -1,
-                        "left": null,
-                        "right": null
-                    }
-                }
-            }
-        },
-        "expectedOutput": true
-    },
-    {
-        "input": {
-            "t1": {
-                "value": 5,
-                "left": {
+                "t2": {
                     "value": 10,
                     "left": {
                         "value": 4,
@@ -85,111 +116,81 @@
                     },
                     "right": {
                         "value": 6,
-                        "left": {
+                        "left": null,
+                        "right": {
                             "value": -1,
                             "left": null,
                             "right": null
-                        },
-                        "right": null
+                        }
                     }
-                },
-                "right": {
-                    "value": 7,
-                    "left": null,
-                    "right": null
                 }
             },
-            "t2": {
-                "value": 10,
-                "left": {
-                    "value": 4,
-                    "left": {
-                        "value": 1,
-                        "left": null,
-                        "right": null
-                    },
-                    "right": {
-                        "value": 2,
-                        "left": null,
-                        "right": null
-                    }
-                },
-                "right": {
-                    "value": 6,
-                    "left": null,
-                    "right": {
-                        "value": -1,
-                        "left": null,
-                        "right": null
-                    }
-                }
-            }
+            "expectedOutput": false
         },
-        "expectedOutput": false
-    },
-    {
-        "input": {
-            "t1": {
-                "value": 1,
-                "left": {
-                    "value": 2,
-                    "left": null,
-                    "right": null
-                },
-                "right": {
-                    "value": 2,
-                    "left": null,
-                    "right": null
-                }
-            },
-            "t2": {
-                "value": 2,
-                "left": {
+        {
+            "input": {
+                "t1": {
                     "value": 1,
-                    "left": null,
-                    "right": null
+                    "left": {
+                        "value": 2,
+                        "left": null,
+                        "right": null
+                    },
+                    "right": {
+                        "value": 2,
+                        "left": null,
+                        "right": null
+                    }
                 },
-                "right": null
-            }
-        },
-        "expectedOutput": false
-    },
-    {
-        "input": {
-            "t1": {
-                "value": 1,
-                "left": {
+                "t2": {
                     "value": 2,
-                    "left": null,
-                    "right": null
-                },
-                "right": {
-                    "value": 2,
-                    "left": null,
+                    "left": {
+                        "value": 1,
+                        "left": null,
+                        "right": null
+                    },
                     "right": null
                 }
             },
-            "t2": null
+            "expectedOutput": false
         },
-        "expectedOutput": true
-    },
-    {
-        "input": {
-            "t1": null,
-            "t2": {
-                "value": 1,
-                "left": {
-                    "value": 2,
-                    "left": null,
-                    "right": null
+        {
+            "input": {
+                "t1": {
+                    "value": 1,
+                    "left": {
+                        "value": 2,
+                        "left": null,
+                        "right": null
+                    },
+                    "right": {
+                        "value": 2,
+                        "left": null,
+                        "right": null
+                    }
                 },
-                "right": {
-                    "value": 2,
-                    "left": null,
-                    "right": null
-                }
-            }
+                "t2": null
+            },
+            "expectedOutput": true
         },
-        "expectedOutput": false
-    }
-]}
+        {
+            "input": {
+                "t1": null,
+                "t2": {
+                    "value": 1,
+                    "left": {
+                        "value": 2,
+                        "left": null,
+                        "right": null
+                    },
+                    "right": {
+                        "value": 2,
+                        "left": null,
+                        "right": null
+                    }
+                }
+            },
+            "expectedOutput": false
+        }
+    ]
+}

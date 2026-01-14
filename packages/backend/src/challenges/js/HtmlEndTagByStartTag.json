@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"startTag": "<button type=\"button\" disabled>"},
+            "input": {
+                "startTag": "<button type=\"button\" disabled>"
+            },
             "expectedOutput": "</button>"
         },
         {
-            "input": {"startTag": "<i>"},
+            "input": {
+                "startTag": "<i>"
+            },
             "expectedOutput": "</i>"
         },
         {
-            "input": {"startTag": "<div class=\"container\">"},
+            "input": {
+                "startTag": "<div class=\"container\">"
+            },
             "expectedOutput": "</div>"
         },
         {
-            "input": {"startTag": "<p id=\"paragraph\">"},
+            "input": {
+                "startTag": "<p id=\"paragraph\">"
+            },
             "expectedOutput": "</p>"
         },
         {
-            "input": {"startTag": "<h1 style=\"color: red;\">"},
+            "input": {
+                "startTag": "<h1 style=\"color: red;\">"
+            },
             "expectedOutput": "</h1>"
         }
     ]

@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 6,
     "tests": [
         {
-            "input": {"birthdayDate": "02-01-2016"},
+            "input": {
+                "birthdayDate": "02-01-2016"
+            },
             "expectedOutput": 5
         },
         {
-            "input": {"birthdayDate": "03-15-2025"},
+            "input": {
+                "birthdayDate": "03-15-2025"
+            },
             "expectedOutput": 6
         },
         {
-            "input": {"birthdayDate": "07-04-2000"},
+            "input": {
+                "birthdayDate": "07-04-2000"
+            },
             "expectedOutput": 6
         },
         {
-            "input": {"birthdayDate": "12-25-2021"},
+            "input": {
+                "birthdayDate": "12-25-2021"
+            },
             "expectedOutput": 6
         },
         {
-            "input": {"birthdayDate": "02-29-2020"},
+            "input": {
+                "birthdayDate": "02-29-2020"
+            },
             "expectedOutput": 5
         }
     ]

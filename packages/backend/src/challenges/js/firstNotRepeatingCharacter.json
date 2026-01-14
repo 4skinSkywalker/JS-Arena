@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"s": "abacabad"},
+            "input": {
+                "s": "abacabad"
+            },
             "expectedOutput": "c"
         },
         {
-            "input": {"s": "abacabaabacaba"},
+            "input": {
+                "s": "abacabaabacaba"
+            },
             "expectedOutput": "_"
         },
         {
-            "input": {"s": "abcdefghijklmnopqrstuvwxyz"},
+            "input": {
+                "s": "abcdefghijklmnopqrstuvwxyz"
+            },
             "expectedOutput": "a"
         },
         {
-            "input": {"s": "aabbaaccdd"},
+            "input": {
+                "s": "aabbaaccdd"
+            },
             "expectedOutput": "_"
         },
         {
-            "input": {"s": "aabbccd"},
+            "input": {
+                "s": "aabbccd"
+            },
             "expectedOutput": "d"
         }
     ]

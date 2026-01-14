@@ -1,25 +1,140 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"jobs": [15, 30, 15, 5, 10], "servers": 3},
-            "expectedOutput": [[1], [0, 4], [2, 3]]
+            "input": {
+                "jobs": [
+                    15,
+                    30,
+                    15,
+                    5,
+                    10
+                ],
+                "servers": 3
+            },
+            "expectedOutput": [
+                [
+                    1
+                ],
+                [
+                    0,
+                    4
+                ],
+                [
+                    2,
+                    3
+                ]
+            ]
         },
         {
-            "input": {"jobs": [10, 20, 30, 40, 50], "servers": 2},
-            "expectedOutput": [[4, 1, 0], [3, 2]]
+            "input": {
+                "jobs": [
+                    10,
+                    20,
+                    30,
+                    40,
+                    50
+                ],
+                "servers": 2
+            },
+            "expectedOutput": [
+                [
+                    4,
+                    1,
+                    0
+                ],
+                [
+                    3,
+                    2
+                ]
+            ]
         },
         {
-            "input": {"jobs": [1, 2, 3, 4, 5, 6, 7, 8, 9], "servers": 1},
-            "expectedOutput": [[8, 7, 6, 5, 4, 3, 2, 1, 0]]
+            "input": {
+                "jobs": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                ],
+                "servers": 1
+            },
+            "expectedOutput": [
+                [
+                    8,
+                    7,
+                    6,
+                    5,
+                    4,
+                    3,
+                    2,
+                    1,
+                    0
+                ]
+            ]
         },
         {
-            "input": {"jobs": [10, 20, 30], "servers": 3},
-            "expectedOutput": [[2], [1], [0]]
+            "input": {
+                "jobs": [
+                    10,
+                    20,
+                    30
+                ],
+                "servers": 3
+            },
+            "expectedOutput": [
+                [
+                    2
+                ],
+                [
+                    1
+                ],
+                [
+                    0
+                ]
+            ]
         },
         {
-            "input": {"jobs": [5, 5, 5, 5, 5, 10, 10, 10, 10], "servers": 5},
-            "expectedOutput": [[5, 2], [6, 3], [7, 4], [8], [0, 1]]
+            "input": {
+                "jobs": [
+                    5,
+                    5,
+                    5,
+                    5,
+                    5,
+                    10,
+                    10,
+                    10,
+                    10
+                ],
+                "servers": 5
+            },
+            "expectedOutput": [
+                [
+                    5,
+                    2
+                ],
+                [
+                    6,
+                    3
+                ],
+                [
+                    7,
+                    4
+                ],
+                [
+                    8
+                ],
+                [
+                    0,
+                    1
+                ]
+            ]
         }
     ]
 }

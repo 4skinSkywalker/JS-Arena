@@ -1,25 +1,91 @@
 {
-    "rating": 8,
+    "rating": 7,
     "tests": [
         {
-            "input": {"calls": ["/project1/subproject1/method1", "/project2/subproject1/method1", "/project1/subproject1/method1", "/project1/subproject2/method1", "/project1/subproject1/method2", "/project1/subproject2/method1", "/project2/subproject1/method1", "/project1/subproject2/method1"]}, 
-            "expectedOutput": ["--project1 (6)", "----subproject1 (3)", "------method1 (2)", "------method2 (1)", "----subproject2 (3)", "------method1 (3)", "--project2 (2)", "----subproject1 (2)", "------method1 (2)"]
+            "input": {
+                "calls": [
+                    "/project1/subproject1/method1",
+                    "/project2/subproject1/method1",
+                    "/project1/subproject1/method1",
+                    "/project1/subproject2/method1",
+                    "/project1/subproject1/method2",
+                    "/project1/subproject2/method1",
+                    "/project2/subproject1/method1",
+                    "/project1/subproject2/method1"
+                ]
+            },
+            "expectedOutput": [
+                "--project1 (6)",
+                "----subproject1 (3)",
+                "------method1 (2)",
+                "------method2 (1)",
+                "----subproject2 (3)",
+                "------method1 (3)",
+                "--project2 (2)",
+                "----subproject1 (2)",
+                "------method1 (2)"
+            ]
         },
         {
-            "input": {"calls": ["/project1/subproject1/method1", "/project1/subproject1/method1", "/project1/subproject2/method1", "/project3/subproject1/method1", "/project4/subproject1/method2"]},
-            "expectedOutput": ["--project1 (3)", "----subproject1 (2)", "------method1 (2)", "----subproject2 (1)", "------method1 (1)", "--project3 (1)", "----subproject1 (1)", "------method1 (1)", "--project4 (1)", "----subproject1 (1)", "------method2 (1)"]
+            "input": {
+                "calls": [
+                    "/project1/subproject1/method1",
+                    "/project1/subproject1/method1",
+                    "/project1/subproject2/method1",
+                    "/project3/subproject1/method1",
+                    "/project4/subproject1/method2"
+                ]
+            },
+            "expectedOutput": [
+                "--project1 (3)",
+                "----subproject1 (2)",
+                "------method1 (2)",
+                "----subproject2 (1)",
+                "------method1 (1)",
+                "--project3 (1)",
+                "----subproject1 (1)",
+                "------method1 (1)",
+                "--project4 (1)",
+                "----subproject1 (1)",
+                "------method2 (1)"
+            ]
         },
         {
-            "input": {"calls": ["/project1/subproject1/method1"]},
-            "expectedOutput": ["--project1 (1)", "----subproject1 (1)", "------method1 (1)"]
+            "input": {
+                "calls": [
+                    "/project1/subproject1/method1"
+                ]
+            },
+            "expectedOutput": [
+                "--project1 (1)",
+                "----subproject1 (1)",
+                "------method1 (1)"
+            ]
         },
         {
-            "input": {"calls": []},
+            "input": {
+                "calls": []
+            },
             "expectedOutput": []
         },
         {
-            "input": {"calls": ["/project1/subproject1/method1", "/project1/subproject1/method2", "/project1/subproject1/method3", "/project1/subproject1/method1", "/project1/subproject1/method2", "/project1/subproject1/method3"]},
-            "expectedOutput": ["--project1 (6)", "----subproject1 (6)", "------method1 (2)", "------method2 (2)", "------method3 (2)"]
+            "input": {
+                "calls": [
+                    "/project1/subproject1/method1",
+                    "/project1/subproject1/method2",
+                    "/project1/subproject1/method3",
+                    "/project1/subproject1/method1",
+                    "/project1/subproject1/method2",
+                    "/project1/subproject1/method3"
+                ]
+            },
+            "expectedOutput": [
+                "--project1 (6)",
+                "----subproject1 (6)",
+                "------method1 (2)",
+                "------method2 (2)",
+                "------method3 (2)"
+            ]
         }
     ]
 }

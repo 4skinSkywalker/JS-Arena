@@ -1,24 +1,34 @@
 {
-    "rating": 3,
+    "rating": 7,
     "tests": [
         {
-            "input": {"inputString": "AaBaa"},
+            "input": {
+                "inputString": "AaBaa"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "abac"},
+            "input": {
+                "inputString": "abac"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "MadaM"},
+            "input": {
+                "inputString": "MadaM"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"inputString": "PalindRome"},
+            "input": {
+                "inputString": "PalindRome"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"inputString": "lEveL"},
+            "input": {
+                "inputString": "lEveL"
+            },
             "expectedOutput": true
         }
     ]

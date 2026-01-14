@@ -1,25 +1,119 @@
 {
-    "rating": 9,
+    "rating": 8,
     "tests": [
         {
-            "input": ["WRITE Hello", "WRITE World", "READ 0", "READ 1", "DELETE 0", "WRITE World", "READ 0", "READ 1", "READ 2"],
-            "expectedOutput": [0, 1, "Hello", "World", "Hello", 1, null, "World", null]
+            "input": [
+                "WRITE Hello",
+                "WRITE World",
+                "READ 0",
+                "READ 1",
+                "DELETE 0",
+                "WRITE World",
+                "READ 0",
+                "READ 1",
+                "READ 2"
+            ],
+            "expectedOutput": [
+                0,
+                1,
+                "Hello",
+                "World",
+                "Hello",
+                1,
+                null,
+                "World",
+                null
+            ]
         },
         {
-            "input": ["WRITE Python", "WRITE Java", "READ 0", "READ 1", "DELETE 1", "WRITE Python", "READ 0", "READ 1", "READ 2"],
-            "expectedOutput": [0, 1, "Python", "Java", "Java", 0, "Python", null, null]
+            "input": [
+                "WRITE Python",
+                "WRITE Java",
+                "READ 0",
+                "READ 1",
+                "DELETE 1",
+                "WRITE Python",
+                "READ 0",
+                "READ 1",
+                "READ 2"
+            ],
+            "expectedOutput": [
+                0,
+                1,
+                "Python",
+                "Java",
+                "Java",
+                0,
+                "Python",
+                null,
+                null
+            ]
         },
         {
-            "input": ["WRITE AI", "WRITE Assistant", "READ 0", "READ 1", "DELETE 0", "WRITE Assistant", "READ 0", "READ 1", "READ 2"],
-            "expectedOutput": [0, 1, "AI", "Assistant", "AI", 1, null, "Assistant", null]
+            "input": [
+                "WRITE AI",
+                "WRITE Assistant",
+                "READ 0",
+                "READ 1",
+                "DELETE 0",
+                "WRITE Assistant",
+                "READ 0",
+                "READ 1",
+                "READ 2"
+            ],
+            "expectedOutput": [
+                0,
+                1,
+                "AI",
+                "Assistant",
+                "AI",
+                1,
+                null,
+                "Assistant",
+                null
+            ]
         },
         {
-            "input": ["WRITE Test", "WRITE Case", "READ 0", "READ 1", "DELETE 0", "WRITE Case", "READ 0", "READ 1", "READ 2"],
-            "expectedOutput": [0, 1, "Test", "Case", "Test", 1, null, "Case", null]
+            "input": [
+                "WRITE Test",
+                "WRITE Case",
+                "READ 0",
+                "READ 1",
+                "DELETE 0",
+                "WRITE Case",
+                "READ 0",
+                "READ 1",
+                "READ 2"
+            ],
+            "expectedOutput": [
+                0,
+                1,
+                "Test",
+                "Case",
+                "Test",
+                1,
+                null,
+                "Case",
+                null
+            ]
         },
         {
-            "input": ["WRITE Python", "WRITE Java", "DELETE 0", "WRITE Java", "READ 0", "READ 1"],
-            "expectedOutput": [0, 1, "Python", 1, null, "Java"]
+            "input": [
+                "WRITE Python",
+                "WRITE Java",
+                "DELETE 0",
+                "WRITE Java",
+                "READ 0",
+                "READ 1"
+            ],
+            "expectedOutput": [
+                0,
+                1,
+                "Python",
+                1,
+                null,
+                "Java"
+            ]
         }
     ]
 }

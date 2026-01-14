@@ -1,24 +1,44 @@
 {
-    "rating": 3,
+    "rating": 5,
     "tests": [
         {
-            "input": {"young": true, "beautiful": true, "loved": true},
+            "input": {
+                "young": true,
+                "beautiful": true,
+                "loved": true
+            },
             "expectedOutput": false
         },
         {
-            "input": {"young": true, "beautiful": false, "loved": true},
+            "input": {
+                "young": true,
+                "beautiful": false,
+                "loved": true
+            },
             "expectedOutput": true
         },
         {
-            "input": {"young": false, "beautiful": true, "loved": true},
+            "input": {
+                "young": false,
+                "beautiful": true,
+                "loved": true
+            },
             "expectedOutput": true
         },
         {
-            "input": {"young": true, "beautiful": true, "loved": false},
+            "input": {
+                "young": true,
+                "beautiful": true,
+                "loved": false
+            },
             "expectedOutput": true
         },
         {
-            "input": {"young": false, "beautiful": false, "loved": false},
+            "input": {
+                "young": false,
+                "beautiful": false,
+                "loved": false
+            },
             "expectedOutput": false
         }
     ]

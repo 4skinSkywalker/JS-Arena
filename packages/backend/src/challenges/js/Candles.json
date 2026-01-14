@@ -1,24 +1,39 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"candlesNumber": 5, "makeNew": 2},
+            "input": {
+                "candlesNumber": 5,
+                "makeNew": 2
+            },
             "expectedOutput": 9
         },
         {
-            "input": {"candlesNumber": 3, "makeNew": 2},
+            "input": {
+                "candlesNumber": 3,
+                "makeNew": 2
+            },
             "expectedOutput": 5
         },
         {
-            "input": {"candlesNumber": 10, "makeNew": 3},
+            "input": {
+                "candlesNumber": 10,
+                "makeNew": 3
+            },
             "expectedOutput": 14
         },
         {
-            "input": {"candlesNumber": 1, "makeNew": 2},
+            "input": {
+                "candlesNumber": 1,
+                "makeNew": 2
+            },
             "expectedOutput": 1
         },
         {
-            "input": {"candlesNumber": 20, "makeNew": 5},
+            "input": {
+                "candlesNumber": 20,
+                "makeNew": 5
+            },
             "expectedOutput": 24
         }
     ]

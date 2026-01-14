@@ -1,28 +1,40 @@
 {
-    "rating": 7,
+    "rating": 6,
     "tests": [
         {
-            "input": {"line": "123_456_789"},
+            "input": {
+                "line": "123_456_789"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"line": "16#123abc#"},
+            "input": {
+                "line": "16#123abc#"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"line": "10#123abc#"},
+            "input": {
+                "line": "10#123abc#"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"line": "10#10#123ABC#"},
+            "input": {
+                "line": "10#10#123ABC#"
+            },
             "expectedOutput": false
         },
         {
-            "input": {"line": "10#0#"},
+            "input": {
+                "line": "10#0#"
+            },
             "expectedOutput": true
         },
         {
-            "input": {"line": "10##"},
+            "input": {
+                "line": "10##"
+            },
             "expectedOutput": false
         }
     ]

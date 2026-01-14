@@ -1,24 +1,85 @@
 {
-    "rating": 5,
+    "rating": 7,
     "tests": [
         {
-            "input": {"strings": ["cat", "dog", "dog"], "patterns": ["a", "b", "b"]},
+            "input": {
+                "strings": [
+                    "cat",
+                    "dog",
+                    "dog"
+                ],
+                "patterns": [
+                    "a",
+                    "b",
+                    "b"
+                ]
+            },
             "expectedOutput": true
         },
         {
-            "input": {"strings": ["cat", "dog", "doggy"], "patterns": ["a", "b", "b"]},
+            "input": {
+                "strings": [
+                    "cat",
+                    "dog",
+                    "doggy"
+                ],
+                "patterns": [
+                    "a",
+                    "b",
+                    "b"
+                ]
+            },
             "expectedOutput": false
         },
         {
-            "input": {"strings": ["cat", "cat","dog","dog"], "patterns": ["a", "a","b","b"]},
+            "input": {
+                "strings": [
+                    "cat",
+                    "cat",
+                    "dog",
+                    "dog"
+                ],
+                "patterns": [
+                    "a",
+                    "a",
+                    "b",
+                    "b"
+                ]
+            },
             "expectedOutput": true
         },
         {
-            "input": {"strings": ["cat", "dog","cat","cat"], "patterns": ["a", "b","c","d"]},
+            "input": {
+                "strings": [
+                    "cat",
+                    "dog",
+                    "cat",
+                    "cat"
+                ],
+                "patterns": [
+                    "a",
+                    "b",
+                    "c",
+                    "d"
+                ]
+            },
             "expectedOutput": false
         },
         {
-            "input": {"strings": ["cat", "cat","dog","cat"], "patterns": ["x", "x","y","z"]},
+            "input": {
+                "strings": [
+                    "cat",
+                    "cat",
+                    "dog",
+                    "cat"
+                ],
+                "patterns": [
+                    "x",
+                    "x",
+                    "y",
+                    "z"
+                ]
+            },
             "expectedOutput": false
         }
     ]

@@ -1,20 +1,153 @@
 {
     "rating": 8,
     "tests": [
-    {
-        "input": {"l":  { "value" : 1, "next" : { "value" : 2, "next" : { "value" : 3, "next" : { "value" : 4, "next" : {"value" : 5, "next" : null}}}}}, "k": 2},
-        "expectedOutput": { "value" : 2, "next" : { "value" : 1, "next" : { "value" : 4, "next" : { "value" : 3, "next" : {"value" : 5, "next" : null}}}}}
-    },
-    {
-        "input": {"l":  { "value" : 1, "next" : { "value" : 2, "next" : { "value" : 3, "next" : { "value" : 4, "next" : {"value" : 5, "next" : null}}}}}, "k": 1},
-        "expectedOutput": { "value" : 1, "next" : { "value" : 2, "next" : { "value" : 3, "next" : { "value" : 4, "next" : {"value" : 5, "next" : null}}}}}
-    },
-    {
-        "input": {"l":  { "value" : 1, "next" : { "value" : 2, "next" : { "value" : 3, "next" : { "value" : 4, "next" : null}}}}, "k": 4},
-        "expectedOutput": { "value" : 4, "next" : { "value" : 3, "next" : { "value" : 2, "next" : { "value" : 1, "next" : null}}}}
-    },
-    {
-        "input": {"l":  { "value" : 1, "next" : { "value" : 2, "next" : { "value" : 3, "next" : { "value" : 4, "next" : { "value" : 5, "next" : { "value" : 6, "next" : null}}}}}}, "k": 3},
-        "expectedOutput": { "value" : 3, "next" : { "value" : 2, "next" : { "value" : 1, "next" : { "value" : 6, "next" : { "value" : 5, "next" : { "value" : 4, "next" : null}}}}}}
-    }
-]}
+        {
+            "input": {
+                "l": {
+                    "value": 1,
+                    "next": {
+                        "value": 2,
+                        "next": {
+                            "value": 3,
+                            "next": {
+                                "value": 4,
+                                "next": {
+                                    "value": 5,
+                                    "next": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "k": 2
+            },
+            "expectedOutput": {
+                "value": 2,
+                "next": {
+                    "value": 1,
+                    "next": {
+                        "value": 4,
+                        "next": {
+                            "value": 3,
+                            "next": {
+                                "value": 5,
+                                "next": null
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "input": {
+                "l": {
+                    "value": 1,
+                    "next": {
+                        "value": 2,
+                        "next": {
+                            "value": 3,
+                            "next": {
+                                "value": 4,
+                                "next": {
+                                    "value": 5,
+                                    "next": null
+                                }
+                            }
+                        }
+                    }
+                },
+                "k": 1
+            },
+            "expectedOutput": {
+                "value": 1,
+                "next": {
+                    "value": 2,
+                    "next": {
+                        "value": 3,
+                        "next": {
+                            "value": 4,
+                            "next": {
+                                "value": 5,
+                                "next": null
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "input": {
+                "l": {
+                    "value": 1,
+                    "next": {
+                        "value": 2,
+                        "next": {
+                            "value": 3,
+                            "next": {
+                                "value": 4,
+                                "next": null
+                            }
+                        }
+                    }
+                },
+                "k": 4
+            },
+            "expectedOutput": {
+                "value": 4,
+                "next": {
+                    "value": 3,
+                    "next": {
+                        "value": 2,
+                        "next": {
+                            "value": 1,
+                            "next": null
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "input": {
+                "l": {
+                    "value": 1,
+                    "next": {
+                        "value": 2,
+                        "next": {
+                            "value": 3,
+                            "next": {
+                                "value": 4,
+                                "next": {
+                                    "value": 5,
+                                    "next": {
+                                        "value": 6,
+                                        "next": null
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "k": 3
+            },
+            "expectedOutput": {
+                "value": 3,
+                "next": {
+                    "value": 2,
+                    "next": {
+                        "value": 1,
+                        "next": {
+                            "value": 6,
+                            "next": {
+                                "value": 5,
+                                "next": {
+                                    "value": 4,
+                                    "next": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}
