@@ -45,6 +45,7 @@ export interface IProblem {
     solution: string;
     tests: ITest[];
     rating: number;
+    additionalTitle?: string;
 }
 
 export interface IClientJSON {
