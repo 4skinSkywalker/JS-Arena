@@ -2,17 +2,22 @@ export const getProblemSummary = (problem: string) => `
 Summarize this problem in 3 lines:
 """${problem}"""
 
-Do not include any extra text or commentary just the summary
+Do not include any extra text or commentary just the summary.
 `;
 
-export const getProblemRating = (problem: string, solution?: string) => `
-How would you rate this problem in terms of difficulty from 1 to 10?
+export const getProblemRating = (problem: string, solution?: string, editorRating?: string | number) => `
+Rate the difficulty of the following problem on a scale from 1 to 10, considering aspects such as problem complexity, length, required knowledge, and clarity.
+Keep in mind that players are mostly professional programmers.
+
+Problem:
 """${problem}"""
 
-${solution ? 'For the reating keep in consideration the solution:\n"""' + solution + '"""' : ''}
+${solution ? 'Consider the solution provided to assess the difficulty of the challenge:\n"""' + solution + '"""' : ''}
 
-Only output the rating number.
-Do not include any extra text or commentary just the summary
+${editorRating ? 'Keeping the editor’s previous rating in consideration:\n"""' + editorRating + '"""' : ''}
+
+Only provide the rating number.
+Do not include any extra text or commentary just the summary.
 `;
 
 export const getTestSuite = (problemSummary: string, testSuite: any) => `

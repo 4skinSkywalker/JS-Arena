@@ -50,7 +50,7 @@ export async function agentCallJSON(userPrompt: string, systemPrompt = "", model
   return JSON.parse(sanitized);
 }
 
-async function addNewTest() {
+async function addNewTestSQL() {
 
   for (const problem of languages.SQL.problems) {
     const filename = problem.filename;
@@ -90,7 +90,7 @@ async function addNewTest() {
 
 }
 
-async function addRating() {
+async function addRatingSQL() {
 
   for (const problem of languages.SQL.problems) {
     const filename = problem.filename;
@@ -119,4 +119,32 @@ async function addRating() {
 
 }
 
-addRating();
+async function addRatingJS() {
+
+  for (const problem of languages.JS.problems) {
+    const filename = problem.filename;
+
+    // if (problem.rating > 0) {
+    //   continue;
+    // }
+
+    console.log(filename);
+
+    const problemSummary = await agentCall(getProblemSummary(problem.description));
+    // console.log(problemSummary);
+
+    const problemRating = await agentCall(getProblemRating(problemSummary, problem.solution, problem.rating));
+    // console.log(problemRating);
+
+    fs.writeFileSync(
+      `./src/challenges/js/${problem.filename}.json`,
+      JSON.stringify({
+        rating: Number(problemRating),
+        tests: problem.tests
+      }, null, 4)
+    );
+  }
+
+}
+
+addRatingJS();
