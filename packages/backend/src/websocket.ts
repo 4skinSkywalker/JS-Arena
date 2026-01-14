@@ -175,6 +175,7 @@ class Client {
                     filename,
                     title: problem.title,
                     rating: problem.rating,
+                    additionalTitle: problem.additionalTitle,
                 }))
         });
     }

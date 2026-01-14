@@ -165,6 +165,7 @@ export interface IProblemSnippet {
     filename: string;
     title: string;
     rating: number;
+    additionalTitle?: string;
 }
 
 export interface IProblemTitlesReceivedMessage {
