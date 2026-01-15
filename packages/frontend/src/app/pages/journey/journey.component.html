@@ -32,6 +32,9 @@
 </div>
 
 <div class="solved-indicator">
+    <a routerLink="/" class="btn compact">
+        <i class="bi bi-house"></i> Home
+    </a>
     <div style="font-size: 21px;">{{ solvedProblems().length }} / {{ problemTitles().length }}</div>
     <button class="btn compact btn-primary" (click)="saveData()">Save <i class="bi bi-cloud-arrow-down-fill"></i></button>
     <button class="btn compact btn-secondary" (click)="loadData()">Load <i class="bi bi-cloud-arrow-up-fill"></i></button>
