@@ -30,13 +30,17 @@
         },
         {
             "scripts": [
-                "INSERT INTO orders VALUES (4, 'Alice Smith', '2;4;16');"
+                "DROP TABLE IF EXISTS orders CASCADE;",
+                "INSERT INTO orders VALUES (4, 'Alice Smith', '2;4;16');",
+                "DROP TABLE IF EXISTS item_prices CASCADE;",
+                "CREATE TABLE item_prices (id INTEGER, price INTEGER);",
+                "INSERT INTO item_prices VALUES (1, 100), (2, 200), (3, 500), (4, 250), (14, 50), (15, 75), (16, 100);"
             ],
             "expectedOutput": [
                 {
                     "id": 4,
                     "buyer": "Alice Smith",
-                    "total_price": 350
+                    "total_price": 550
                 }
             ]
         }
