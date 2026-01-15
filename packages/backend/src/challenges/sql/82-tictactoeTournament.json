@@ -45,11 +45,11 @@
             "scripts": [
                 "DROP TABLE IF EXISTS results CASCADE;",
                 "CREATE TABLE results (timestamp TEXT, name_naughts TEXT, name_crosses TEXT, board TEXT);",
-                "INSERT INTO results VALUES ('2017-05-01 08:06:00', 'Sebastiano Fassina', 'Federico Trotta', 'X..X..X..'), ('2017-05-01 09:06:00', 'Federico Trotta', 'Sebastiano Fassina', 'X..X..X..');"
+                "INSERT INTO results VALUES ('2017-05-01 08:06:00', 'Uncle Bob', 'Fredo Corleone', 'X..X..X..'), ('2017-05-01 09:06:00', 'Fredo Corleone', 'Uncle Bob', 'X..X..X..');"
             ],
             "expectedOutput": [
                 {
-                    "name": "Federico Trotta",
+                    "name": "Fredo Corleone",
                     "points": 2,
                     "played": 2,
                     "won": 1,
@@ -57,7 +57,7 @@
                     "lost": 1
                 },
                 {
-                    "name": "Sebastiano Fassina",
+                    "name": "Uncle Bob",
                     "points": 2,
                     "played": 2,
                     "won": 1,
