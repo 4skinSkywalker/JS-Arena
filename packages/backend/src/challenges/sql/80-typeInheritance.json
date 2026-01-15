@@ -36,16 +36,16 @@
             ],
             "expectedOutput": [
                 {
+                    "var_name": "W",
+                    "var_type": "Float64"
+                },
+                {
                     "var_name": "X",
                     "var_type": "Long"
                 },
                 {
                     "var_name": "Z",
                     "var_type": "Float"
-                },
-                {
-                    "var_name": "W",
-                    "var_type": "Float64"
                 }
             ]
         }
