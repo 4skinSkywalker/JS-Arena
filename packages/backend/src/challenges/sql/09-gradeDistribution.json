@@ -26,20 +26,20 @@
             "scripts": [
                 "DROP TABLE IF EXISTS Grades CASCADE;",
                 "CREATE TABLE Grades (name TEXT, id INTEGER, Midterm1 INTEGER, Midterm2 INTEGER, Final INTEGER);",
-                "INSERT INTO Grades VALUES ('David', 42334, 34, 54, 124), ('Anthony', 54528, 100, 10, 50), ('Jonathan', 58754, 49, 58, 121), ('Jonty', 11000, 25, 30, 180);"
+                "INSERT INTO Grades VALUES ('Fred', 1, 34, 54, 124), ('Spency', 2, 100, 10, 50), ('Vlad', 3, 49, 58, 121), ('Postman', 4, 25, 30, 180);"
             ],
             "expectedOutput": [
                 {
-                    "name": "David",
-                    "id": 42334
+                    "name": "Fred",
+                    "id": 1
                 },
                 {
-                    "name": "Jonty",
-                    "id": 11000
+                    "name": "Postman",
+                    "id": 4
                 },
                 {
-                    "name": "Jonathan",
-                    "id": 58754
+                    "name": "Vlad",
+                    "id": 3
                 }
             ]
         }

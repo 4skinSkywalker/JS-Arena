@@ -1,4 +1,5 @@
 {
+    "additionalTitle": "GROUP BY",
     "rating": 7,
     "tests": [
         {
@@ -22,10 +23,10 @@
             "scripts": [
                 "DROP TABLE IF EXISTS countries CASCADE;",
                 "CREATE TABLE countries (name TEXT, continent TEXT, population INTEGER);",
-                "INSERT INTO countries VALUES ('Grenada', 'North America', 103328);",
-                "INSERT INTO countries VALUES ('Monaco', 'Europe', 38400);",
-                "INSERT INTO countries VALUES ('San Marino', 'Europe', 33005);",
-                "INSERT INTO countries VALUES ('Vanuatu', 'Australia', 277500);"
+                "INSERT INTO countries VALUES ('A', 'A', 222222);",
+                "INSERT INTO countries VALUES ('B', 'B', 33333);",
+                "INSERT INTO countries VALUES ('C', 'B', 44444);",
+                "INSERT INTO countries VALUES ('D', 'C', 111111);"
             ],
             "expectedOutput": [
                 {
