@@ -59,16 +59,8 @@
             ],
             "expectedOutput": [
                 {
-                    "actor": "Morgan Freeman",
-                    "age": 83
-                },
-                {
                     "actor": "Mark Ruffalo",
                     "age": 53
-                },
-                {
-                    "actor": "Brad Pitt",
-                    "age": 57
                 },
                 {
                     "actor": "Hugh Jackman",
@@ -81,18 +73,6 @@
                 {
                     "actor": "Leonardo DiCaprio",
                     "age": 46
-                },
-                {
-                    "actor": "Rosamund Pike",
-                    "age": 42
-                },
-                {
-                    "actor": "Joseph Gordon-Levitt",
-                    "age": 40
-                },
-                {
-                    "actor": "Ben Affleck",
-                    "age": 48
                 }
             ]
         }
