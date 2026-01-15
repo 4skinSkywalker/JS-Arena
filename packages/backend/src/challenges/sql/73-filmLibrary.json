@@ -49,7 +49,7 @@
             "scripts": [
                 "DROP TABLE IF EXISTS movies CASCADE;",
                 "CREATE TABLE movies (movie TEXT, genre TEXT);",
-                "INSERT INTO movies VALUES ('The Dark Knight', 'action'), ('Inception', 'sci-fi'), ('Se7en', 'thriller'), ('Gone Girl', 'thriller'), ('The Prestige', 'mystery'), ('Shutter Island', 'mystery');",
+                "INSERT INTO movies VALUES ('The Dark Knight', 'action'), ('Inception', 'sci-fi'), ('Se7en', 'thriller'), ('Gone Girl', 'horror'), ('The Prestige', 'mystery'), ('Shutter Island', 'mystery');",
                 "DROP TABLE IF EXISTS starring_actors CASCADE;",
                 "CREATE TABLE starring_actors (id INTEGER, movie_name TEXT, actor TEXT);",
                 "INSERT INTO starring_actors VALUES (1, 'The Dark Knight', 'Christian Bale'), (2, 'The Dark Knight', 'Heath Ledger'), (3, 'Inception', 'Leonardo DiCaprio'), (4, 'Inception', 'Joseph Gordon-Levitt'), (5, 'Se7en', 'Brad Pitt'), (6, 'Se7en', 'Morgan Freeman'), (7, 'Gone Girl', 'Ben Affleck'), (8, 'Gone Girl', 'Rosamund Pike'), (9, 'The Prestige', 'Hugh Jackman'), (10, 'The Prestige', 'Christian Bale'), (11, 'Shutter Island', 'Leonardo DiCaprio'), (12, 'Shutter Island', 'Mark Ruffalo');",
