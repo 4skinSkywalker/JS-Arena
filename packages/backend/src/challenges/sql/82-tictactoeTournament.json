@@ -40,6 +40,31 @@
                     "lost": 2
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS results CASCADE;",
+                "CREATE TABLE results (timestamp TEXT, name_naughts TEXT, name_crosses TEXT, board TEXT);",
+                "INSERT INTO results VALUES ('2017-05-01 08:06:00', 'Sebastiano Fassina', 'Federico Trotta', 'X..X..X..'), ('2017-05-01 09:06:00', 'Federico Trotta', 'Sebastiano Fassina', 'X..X..X..');"
+            ],
+            "expectedOutput": [
+                {
+                    "name": "Federico Trotta",
+                    "points": 2,
+                    "played": 2,
+                    "won": 1,
+                    "draw": 0,
+                    "lost": 1
+                },
+                {
+                    "name": "Sebastiano Fassina",
+                    "points": 2,
+                    "played": 2,
+                    "won": 1,
+                    "draw": 0,
+                    "lost": 1
+                }
+            ]
         }
     ]
 }
