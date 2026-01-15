@@ -31,6 +31,7 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS orders CASCADE;",
+                "CREATE TABLE orders (id INTEGER, buyer TEXT, items TEXT);",
                 "INSERT INTO orders VALUES (4, 'Alice Smith', '2;4;16');",
                 "DROP TABLE IF EXISTS item_prices CASCADE;",
                 "CREATE TABLE item_prices (id INTEGER, price INTEGER);",
