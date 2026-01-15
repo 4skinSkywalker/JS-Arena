@@ -1,3 +1,13 @@
+.favorite {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .star-wrap {
+        width: 30px;
+    }
+}
+
 .game-container {
     display: grid;
     grid-template-columns: 640px 1fr;

@@ -37,6 +37,7 @@ export class JSGameArcadeComponent {
   testsRunning = signal(false);
   testsPassed = signal(0);
   problemFilename = signal<string>("");
+  problemFavorite = signal<boolean>(false);
   problemDescription = signal("");
   revealSolutionCountdown: ReturnType<typeof setInterval> | null = null;
   problemSolutionUnlockCountdown = signal("--");
@@ -105,6 +106,14 @@ export class JSGameArcadeComponent {
     this.api.unsubscribe(this.handlers);
     this.loaderService.isLoading.set(false);
     clearInterval(this.matrixInterval);
+  }
+
+  favorite() {
+    this.problemFavorite.set(!this.problemFavorite());
+    this.arcadeService.setFavorites({
+      ...this.arcadeService.getFavorites(),
+      [this.problemFilename()]: this.problemFavorite()
+    })
   }
 
   updateUrl(newId: string) {
@@ -396,7 +405,8 @@ export class JSGameArcadeComponent {
   handleGetProblemReceived(msg: IGetProblemReceivedMessage) {
     console.log({ msg });
     this.problemFilename.set(msg.problem.filename);
-    this.problemDescription.set(msg.problem.description);    
+    this.problemFavorite.set(this.arcadeService.getFavorites()[msg.problem.filename] ?? false);
+    this.problemDescription.set(msg.problem.description);
     this.setSolutionEditorContent(msg.problem.solution);
     this.problemTitle.set(msg.problem.title);
     this.problemRating.set(String(msg.problem.rating));
