@@ -1,5 +1,5 @@
 {
-    "rating": 7,
+    "rating": 8,
     "tests": [
         {
             "scripts": [
@@ -22,6 +22,30 @@
                 {
                     "var_name": "D",
                     "var_type": "Int64"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS inheritance CASCADE;",
+                "CREATE TABLE inheritance (derived TEXT, base TEXT);",
+                "INSERT INTO inheritance VALUES ('Float', 'Number'), ('Long', 'Number'), ('Float64', 'Float'), ('Number', 'Object');",
+                "DROP TABLE IF EXISTS variables CASCADE;",
+                "CREATE TABLE variables (var_name TEXT, type TEXT);",
+                "INSERT INTO variables VALUES ('X', 'Long'), ('Y', 'Object'), ('Z', 'Float'), ('W', 'Float64'), ('V', 'Number');"
+            ],
+            "expectedOutput": [
+                {
+                    "var_name": "X",
+                    "var_type": "Long"
+                },
+                {
+                    "var_name": "Z",
+                    "var_type": "Float"
+                },
+                {
+                    "var_name": "W",
+                    "var_type": "Float64"
                 }
             ]
         }

@@ -31,6 +31,37 @@
                     "free_seats": 7
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS flights CASCADE;",
+                "CREATE TABLE flights (flight_id INTEGER, plane_id INTEGER);",
+                "INSERT INTO flights VALUES (101, 239), (122, 128), (133, 157), (144, 23);",
+                "DROP TABLE IF EXISTS planes CASCADE;",
+                "CREATE TABLE planes (plane_id INTEGER, number_of_seats INTEGER);",
+                "INSERT INTO planes VALUES (128, 5), (23, 7), (157, 4), (239, 2);",
+                "DROP TABLE IF EXISTS purchases CASCADE;",
+                "CREATE TABLE purchases (flight_id INTEGER, seat_no INTEGER);",
+                "INSERT INTO purchases VALUES (101, 1), (101, 2), (122, 1), (122, 2), (133, 1), (144, 1)"
+            ],
+            "expectedOutput": [
+                {
+                    "flight_id": 101,
+                    "free_seats": 0
+                },
+                {
+                    "flight_id": 122,
+                    "free_seats": 3
+                },
+                {
+                    "flight_id": 133,
+                    "free_seats": 3
+                },
+                {
+                    "flight_id": 144,
+                    "free_seats": 6
+                }
+            ]
         }
     ]
 }

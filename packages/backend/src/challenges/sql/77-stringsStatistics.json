@@ -23,6 +23,120 @@
                     "max_occurrence_reached": 1
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS strs CASCADE;",
+                "CREATE TABLE strs (str TEXT);",
+                "INSERT INTO strs VALUES ('abc'), ('def'), ('ghi'), ('jkl'), ('mno');"
+            ],
+            "expectedOutput": [
+                {
+                    "letter": "a",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "b",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "c",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "d",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "e",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "f",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "g",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "h",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "i",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "j",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "k",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "l",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "m",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "n",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                },
+                {
+                    "letter": "o",
+                    "total": 1,
+                    "occurrence": 1,
+                    "max_occurrence": 1,
+                    "max_occurrence_reached": 1
+                }
+            ]
         }
     ]
 }

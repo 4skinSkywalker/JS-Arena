@@ -1,6 +1,6 @@
 {
     "additionalTitle": "JOIN - Advanced",
-    "rating": 7,
+    "rating": 8,
     "tests": [
         {
             "scripts": [
@@ -42,6 +42,57 @@
                 {
                     "actor": "Elle Fanning",
                     "age": 18
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS movies CASCADE;",
+                "CREATE TABLE movies (movie TEXT, genre TEXT);",
+                "INSERT INTO movies VALUES ('The Dark Knight', 'action'), ('Inception', 'sci-fi'), ('Se7en', 'thriller'), ('Gone Girl', 'thriller'), ('The Prestige', 'mystery'), ('Shutter Island', 'mystery');",
+                "DROP TABLE IF EXISTS starring_actors CASCADE;",
+                "CREATE TABLE starring_actors (id INTEGER, movie_name TEXT, actor TEXT);",
+                "INSERT INTO starring_actors VALUES (1, 'The Dark Knight', 'Christian Bale'), (2, 'The Dark Knight', 'Heath Ledger'), (3, 'Inception', 'Leonardo DiCaprio'), (4, 'Inception', 'Joseph Gordon-Levitt'), (5, 'Se7en', 'Brad Pitt'), (6, 'Se7en', 'Morgan Freeman'), (7, 'Gone Girl', 'Ben Affleck'), (8, 'Gone Girl', 'Rosamund Pike'), (9, 'The Prestige', 'Hugh Jackman'), (10, 'The Prestige', 'Christian Bale'), (11, 'Shutter Island', 'Leonardo DiCaprio'), (12, 'Shutter Island', 'Mark Ruffalo');",
+                "DROP TABLE IF EXISTS actor_ages CASCADE;",
+                "CREATE TABLE actor_ages (actor TEXT, age INTEGER);",
+                "INSERT INTO actor_ages VALUES ('Ben Affleck', 48), ('Brad Pitt', 57), ('Christian Bale', 47), ('Heath Ledger', 28), ('Hugh Jackman', 52), ('Joseph Gordon-Levitt', 40), ('Leonardo DiCaprio', 46), ('Mark Ruffalo', 53), ('Morgan Freeman', 83), ('Rosamund Pike', 42);"
+            ],
+            "expectedOutput": [
+                {
+                    "actor": "Morgan Freeman",
+                    "age": 83
+                },
+                {
+                    "actor": "Mark Ruffalo",
+                    "age": 53
+                },
+                {
+                    "actor": "Brad Pitt",
+                    "age": 57
+                },
+                {
+                    "actor": "Hugh Jackman",
+                    "age": 52
+                },
+                {
+                    "actor": "Christian Bale",
+                    "age": 47
+                },
+                {
+                    "actor": "Leonardo DiCaprio",
+                    "age": 46
+                },
+                {
+                    "actor": "Rosamund Pike",
+                    "age": 42
+                },
+                {
+                    "actor": "Joseph Gordon-Levitt",
+                    "age": 40
+                },
+                {
+                    "actor": "Ben Affleck",
+                    "age": 48
                 }
             ]
         }

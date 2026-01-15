@@ -27,6 +27,18 @@
                     "total_price": 225
                 }
             ]
+        },
+        {
+            "scripts": [
+                "INSERT INTO orders VALUES (4, 'Alice Smith', '2;4;16');"
+            ],
+            "expectedOutput": [
+                {
+                    "id": 4,
+                    "buyer": "Alice Smith",
+                    "total_price": 350
+                }
+            ]
         }
     ]
 }

@@ -36,6 +36,30 @@
                     "chapter_name": "A Dead Man"
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS book_chapters CASCADE;",
+                "CREATE TABLE book_chapters (chapter_name TEXT, chapter_number TEXT);",
+                "INSERT INTO book_chapters VALUES ('Chapter One', 'VIII'), ('Chapter Two', 'XII'), ('Chapter Three', 'XVII'), ('Chapter Four', 'XIX'), ('Chapter Five', 'XIV');"
+            ],
+            "expectedOutput": [
+                {
+                    "chapter_name": "Chapter One"
+                },
+                {
+                    "chapter_name": "Chapter Two"
+                },
+                {
+                    "chapter_name": "Chapter Five"
+                },
+                {
+                    "chapter_name": "Chapter Three"
+                },
+                {
+                    "chapter_name": "Chapter Four"
+                }
+            ]
         }
     ]
 }

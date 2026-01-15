@@ -35,6 +35,36 @@
                     "bugs_in_component": 2
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS Bug CASCADE;",
+                "CREATE TABLE Bug (num INTEGER, title TEXT);",
+                "INSERT INTO Bug VALUES (1, 'Login button not working'), (2, 'Profile picture not updating'), (3, 'Search bar not displaying results');",
+                "DROP TABLE IF EXISTS Component CASCADE;",
+                "CREATE TABLE Component (id INTEGER, title TEXT);",
+                "INSERT INTO Component VALUES (1, 'User authentication'), (2, 'User profile'), (3, 'Search functionality');",
+                "DROP TABLE IF EXISTS BugComponent CASCADE;",
+                "CREATE TABLE BugComponent (bug_num INTEGER, component_id INTEGER);",
+                "INSERT INTO BugComponent VALUES (1, 1), (2, 2), (3, 3), (1, 2), (2, 1), (3, 3);"
+            ],
+            "expectedOutput": [
+                {
+                    "bug_title": "Login button not working",
+                    "component_title": "User authentication",
+                    "bugs_in_component": 2
+                },
+                {
+                    "bug_title": "Profile picture not updating",
+                    "component_title": "User profile",
+                    "bugs_in_component": 2
+                },
+                {
+                    "bug_title": "Search bar not displaying results",
+                    "component_title": "Search functionality",
+                    "bugs_in_component": 2
+                }
+            ]
         }
     ]
 }
