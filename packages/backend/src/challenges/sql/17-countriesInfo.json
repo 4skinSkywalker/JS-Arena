@@ -31,8 +31,8 @@
             "expectedOutput": [
                 {
                     "number": 4,
-                    "average_population": 113058.25,
-                    "total_population": 452233
+                    "average_population": 102777.5,
+                    "total_population": 411110
                 }
             ]
         }
