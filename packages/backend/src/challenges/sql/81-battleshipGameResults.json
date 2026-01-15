@@ -43,13 +43,13 @@
             "expectedOutput": [
                 {
                     "size": 2,
-                    "undamaged": 0,
+                    "undamaged": 2,
                     "partly_damaged": 0,
                     "sunk": 0
                 },
                 {
                     "size": 3,
-                    "undamaged": 0,
+                    "undamaged": 1,
                     "partly_damaged": 0,
                     "sunk": 0
                 },
