@@ -243,6 +243,7 @@ class Room {
     lang: EnumLang;
     started = false;
     problem: IProblem;
+    problemSet = new Set<string>();
     host: Client;
     clients = new Map<string, Client>();
 
@@ -258,6 +259,7 @@ class Room {
         this.enableLateJoin = opts.enableLateJoin;
         this.lang = opts.lang;
         this.problem = this.getRandomProblem({ lang: this.lang });
+        this.problemSet.add(this.problem.filename);
         this.host = opts.host;
         this.clients.set(opts.host.id, opts.host);
         globalRooms.set(this.id, this);
@@ -276,10 +278,19 @@ class Room {
         return problems[Math.floor(Math.random() * problems.length)];
     }
 
-    setStarted(value: boolean) {
+    setStarted(value: boolean, retries = 5) {
         console.log("Game starting in room", this.id);
         this.started = value;
         this.problem = this.getRandomProblem({ lang: this.lang });
+        retries--;
+        if (retries < 1) {
+            this.problemSet.clear();
+        }
+        if (this.problemSet.has(this.problem.filename)) {
+            this.setStarted(value, retries);
+            return;
+        }
+        this.problemSet.add(this.problem.filename);
 
         for (const client of this.clients.values()) {
             client.send("gameStarted");

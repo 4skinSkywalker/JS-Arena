@@ -7,13 +7,14 @@
                         <i class="bi bi-house"></i> Home
                     </a>
                     <a routerLink="../" class="btn compact btn-secondary">
-                        <i class="bi bi-list-task"></i> Challenges
+                        <i class="bi bi-list-task"></i> List
                     </a>
+                    <div class="favorite" title="Add this challenge to your favorites">
+                        <div class="star-wrap" (click)="favorite()">
+                            <div class="star" [class.starred]="problemFavorite()"></div>
+                        </div>
+                    </div>
                 </div>
-                <button
-                    class="btn compact btn-secondary"
-                    (click)="runCode(problemTests()[0]?.input || null)"
-                >Run code (⇧ + ↵)</button>
                 <button
                     class="btn compact btn-primary"
                     (click)="runAllTests()"
