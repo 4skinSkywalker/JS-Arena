@@ -1,3 +1,3 @@
-SELECT *
+SELECT first_name, second_name, attribute
 FROM users
-WHERE attribute ~ CONCAT('.+%', first_name, '_', second_name, '%.*');
+WHERE attribute ~ ('.+%' || first_name || '_' || second_name || '%.*');

@@ -1,7 +1,7 @@
 SELECT
     id,
     CASE
-        WHEN COALESCE(given_answer, '') = '' THEN 'no answer'
+        WHEN given_answer IS NULL OR given_answer = '' THEN 'no answer'
         WHEN correct_answer = given_answer THEN 'correct'
         ELSE 'incorrect'
     END AS checks

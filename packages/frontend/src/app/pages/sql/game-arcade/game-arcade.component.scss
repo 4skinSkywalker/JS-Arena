@@ -5,6 +5,12 @@
 
     .star-wrap {
         width: 30px;
+        padding: 4px;
+        cursor: pointer;
+
+        .star {
+            width: 30px;
+        }
     }
 }
 
