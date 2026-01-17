@@ -18,7 +18,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./src/server.ts",
     "watch": "nodemon --exec npx ts-node ./src/server.ts",
-    "agents": "ts-node ./src/agent/agents.ts"
+    "agents": "ts-node ./src/agent/agents.ts",
+    "beautify-html": "npx prettier --write \"src/challenges/sql/**/*.html\""
   },
   "keywords": [],
   "author": "",

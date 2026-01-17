@@ -1,7 +1,7 @@
 SELECT 
     SUM(
-        CASE
-            WHEN type = 'human' THEN 2
+        CASE type
+            WHEN 'human' THEN 2
             ELSE 4
         END
     ) AS summary_legs
