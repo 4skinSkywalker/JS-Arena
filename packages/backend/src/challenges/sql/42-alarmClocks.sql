@@ -1,9 +1,6 @@
-WITH first_alarm AS (
-    SELECT input_date::TIMESTAMP FROM userInput LIMIT 1
-)
-SELECT alarm_date::TEXT
+SELECT TO_CHAR(generate_series, 'YYYY-MM-DD HH24:MI:SS') AS alarm_date
 FROM GENERATE_SERIES(
-    (SELECT * FROM first_alarm),
-    DATE_TRUNC('year' , (SELECT * FROM first_alarm)) + '1 year'::INTERVAL,
-    '1 week'::INTERVAL
-) AS alarm_date;
+    (SELECT * FROM userInput)::TIMESTAMP,
+    DATE_TRUNC('year', (SELECT * FROM userInput)::TIMESTAMP) + '1 year',
+    '1 week'
+);

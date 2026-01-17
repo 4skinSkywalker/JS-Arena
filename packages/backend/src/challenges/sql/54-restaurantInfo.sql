@@ -1,10 +1,5 @@
 ALTER TABLE restaurants
-ADD COLUMN description TEXT;
-
-ALTER TABLE restaurants
-ADD COLUMN active INTEGER;
-
-UPDATE restaurants
-SET description = 'TBD', active = 1;
+ADD COLUMN description TEXT DEFAULT 'TBD',
+ADD COLUMN active INTEGER DEFAULT 1;
 
 SELECT * FROM restaurants;

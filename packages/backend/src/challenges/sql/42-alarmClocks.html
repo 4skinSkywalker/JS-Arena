@@ -22,18 +22,23 @@
   </p>
 
   <h3>Tips</h3>
-  <p>
-    You could use PL/pgSQL to generate the alarms. Here a list of some useful
-    things that might help you:
-  </p>
   <ul class="list-group list-group-flush my-3">
     <li class="list-group-item">
-      <code>DATE_TRUNC('year', current_alarm) + INTERVAL '1 year'</code>: to get
-      the end of the current year;
+      <code>GENERATE_SERIES(A, B, C)</code>: Generates a series from A to B with
+      interval C, A and B can be timestamps, while C can be a text interval such
+      as '1 week';
     </li>
     <li class="list-group-item">
-      <code>current_alarm + INTERVAL '1 week'</code>: to get the next alarm
-      date.
+      <code>(my_text_date)::TIMESTAMP</code>: Converts an iso date text into a
+      timestamp;
+    </li>
+    <li class="list-group-item">
+      <code>DATE_TRUNC('year', my_timestamp) + '1 year'</code>: Computes the end
+      of the year of my_timestamp;
+    </li>
+    <li class="list-group-item">
+      <code>TO_CHAR(my_timestamp, 'YYYY-MM-DD HH24:MI:SS')</code>: Formats a
+      date or timestamp into a consistent string representation.
     </li>
   </ul>
 
