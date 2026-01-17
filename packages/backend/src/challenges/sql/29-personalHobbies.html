@@ -1,74 +1,87 @@
-
 <div>
-    <p>You've been looking for new friends on the Internet. You just came across a cool website that helps people all
-        over the world become friends by suggesting perfect friend candidates based on the information in users'
-        profiles.</p>
-    <p>The system suggested some people for you to reach out to, and you're ready to make a move. However, you don't
-        want to exercise your communication skills in vain, which is why prior to contacting a person you want to make
-        sure you'll have something in common to talk about.</p>
-    <p>You downloaded the list of suggested people and saved it in the <strong>people_hobbies</strong> table, which has
-        the following structure:</p>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><code>name</code> - the unique person's name;</li>
-        <li class="list-group-item"><code>hobbies</code> - a list of hobbies the person has.
-        </li>
-    </ul>
-    <p>Given the <strong>people_hobbies</strong> table, your goal is to return the sorted names of people who have
-        <em>sports</em> or <em>reading</em>, but not both, in their list of <code>hobbies</code>.</p>
+  <p>
+    You've been looking for new friends on the Internet. You just came across a
+    cool website that helps people all over the world become friends by
+    suggesting perfect friend candidates based on the information in users'
+    profiles.
+  </p>
+  <p>
+    The system suggested some people for you to reach out to, and you're ready
+    to make a move. However, you don't want to exercise your communication
+    skills in vain, which is why prior to contacting a person you want to make
+    sure you'll have something in common to talk about.
+  </p>
+  <p>
+    You downloaded the list of suggested people and saved it in the
+    <strong>people_hobbies</strong> table, which has the following structure:
+  </p>
+  <ul class="list-group list-group-flush my-3">
+    <li class="list-group-item">
+      <code>name</code> - the unique person's name;
+    </li>
+    <li class="list-group-item">
+      <code>hobbies</code> - a list of hobbies the person has.
+    </li>
+  </ul>
+  <p>
+    Given the <strong>people_hobbies</strong> table, your goal is to return the
+    sorted names of people who have <em>sports</em> or <em>reading</em>, but not
+    both, in their list of <code>hobbies</code>.
+  </p>
 
-    <h3>Example</h3>
-    <p>For the given table <strong>people_hobbies</strong></p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>hobbies</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Adam</td>
-                <td>swimming</td>
-            </tr>
-            <tr>
-                <td>Amy</td>
-                <td>reading,swimming</td>
-            </tr>
-            <tr>
-                <td>Carl</td>
-                <td>filmwatching,writing</td>
-            </tr>
-            <tr>
-                <td>Jake</td>
-                <td>reading,filmwatching,swimming</td>
-            </tr>
-            <tr>
-                <td>Lola</td>
-                <td>swimming,sports,painting</td>
-            </tr>
-            <tr>
-                <td>Nina</td>
-                <td>sports,reading</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>the output should be</p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Amy</td>
-            </tr>
-            <tr>
-                <td>Jake</td>
-            </tr>
-            <tr>
-                <td>Lola</td>
-            </tr>
-        </tbody>
-    </table>
+  <h3>Example</h3>
+  <p>For the given table <strong>people_hobbies</strong></p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>hobbies</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Adam</td>
+        <td>swimming</td>
+      </tr>
+      <tr>
+        <td>Amy</td>
+        <td>reading,swimming</td>
+      </tr>
+      <tr>
+        <td>Carl</td>
+        <td>filmwatching,writing</td>
+      </tr>
+      <tr>
+        <td>Jake</td>
+        <td>reading,filmwatching,swimming</td>
+      </tr>
+      <tr>
+        <td>Lola</td>
+        <td>swimming,sports,painting</td>
+      </tr>
+      <tr>
+        <td>Nina</td>
+        <td>sports,reading</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>the output should be</p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Amy</td>
+      </tr>
+      <tr>
+        <td>Jake</td>
+      </tr>
+      <tr>
+        <td>Lola</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

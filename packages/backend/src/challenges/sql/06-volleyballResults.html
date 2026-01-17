@@ -1,104 +1,120 @@
-
 <div>
-    <p>You are creating a website that will help you and your friends keep track of the results of volleyball teams from
-        all around the world. Your website regularly crawls the web searching for new games, and adds the results of
-        these games to the <strong>results</strong> table stored in your local database. After each update, the table
-        should be sorted in ascending order by the total number of games won. This year's results are quite marvelous -
-        at any given moment there are no two teams that have won the same number of games!</p>
-    <p>The <strong>results</strong> table contains the following columns:</p>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><code>name</code> - the unique name of the team;</li>
-        <li class="list-group-item"><code>country</code> - the country of the team;</li>
-        <li class="list-group-item"><code>scored</code> - the number of scored goals;</li>
-        <li class="list-group-item"><code>missed</code> - the number of missed goals;</li>
-        <li class="list-group-item"><code>wins</code> - the total number of games the team has won.</li>
-    </ul>
-    <p>Your task is to sort the given <strong>results</strong> table in ascending order by the number of
-        <code>wins</code>.</p>
-    
-    <h3>Example</h3>
-    <p>For given table <strong>results</strong></p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>country</th>
-                <th>scored</th>
-                <th>missed</th>
-                <th>wins</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>FC Tokyo</td>
-                <td>Japan</td>
-                <td>26</td>
-                <td>28</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Fujian</td>
-                <td>China</td>
-                <td>24</td>
-                <td>26</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>Jesus Maria</td>
-                <td>Argentina</td>
-                <td>25</td>
-                <td>23</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>University Blues</td>
-                <td>Australia</td>
-                <td>16</td>
-                <td>25</td>
-                <td>2</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>the output should be</p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>country</th>
-                <th>scored</th>
-                <th>missed</th>
-                <th>wins</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Fujian</td>
-                <td>China</td>
-                <td>24</td>
-                <td>26</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>FC Tokyo</td>
-                <td>Japan</td>
-                <td>26</td>
-                <td>28</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>University Blues</td>
-                <td>Australia</td>
-                <td>16</td>
-                <td>25</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Jesus Maria</td>
-                <td>Argentina</td>
-                <td>25</td>
-                <td>23</td>
-                <td>3</td>
-            </tr>
-        </tbody>
-    </table>
+  <p>
+    You are creating a website that will help you and your friends keep track of
+    the results of volleyball teams from all around the world. Your website
+    regularly crawls the web searching for new games, and adds the results of
+    these games to the <strong>results</strong> table stored in your local
+    database. After each update, the table should be sorted in ascending order
+    by the total number of games won. This year's results are quite marvelous -
+    at any given moment there are no two teams that have won the same number of
+    games!
+  </p>
+  <p>The <strong>results</strong> table contains the following columns:</p>
+  <ul class="list-group list-group-flush my-3">
+    <li class="list-group-item">
+      <code>name</code> - the unique name of the team;
+    </li>
+    <li class="list-group-item">
+      <code>country</code> - the country of the team;
+    </li>
+    <li class="list-group-item">
+      <code>scored</code> - the number of scored goals;
+    </li>
+    <li class="list-group-item">
+      <code>missed</code> - the number of missed goals;
+    </li>
+    <li class="list-group-item">
+      <code>wins</code> - the total number of games the team has won.
+    </li>
+  </ul>
+  <p>
+    Your task is to sort the given <strong>results</strong> table in ascending
+    order by the number of <code>wins</code>.
+  </p>
+
+  <h3>Example</h3>
+  <p>For given table <strong>results</strong></p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>country</th>
+        <th>scored</th>
+        <th>missed</th>
+        <th>wins</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FC Tokyo</td>
+        <td>Japan</td>
+        <td>26</td>
+        <td>28</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Fujian</td>
+        <td>China</td>
+        <td>24</td>
+        <td>26</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Jesus Maria</td>
+        <td>Argentina</td>
+        <td>25</td>
+        <td>23</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>University Blues</td>
+        <td>Australia</td>
+        <td>16</td>
+        <td>25</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>the output should be</p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>country</th>
+        <th>scored</th>
+        <th>missed</th>
+        <th>wins</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fujian</td>
+        <td>China</td>
+        <td>24</td>
+        <td>26</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>FC Tokyo</td>
+        <td>Japan</td>
+        <td>26</td>
+        <td>28</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>University Blues</td>
+        <td>Australia</td>
+        <td>16</td>
+        <td>25</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Jesus Maria</td>
+        <td>Argentina</td>
+        <td>25</td>
+        <td>23</td>
+        <td>3</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

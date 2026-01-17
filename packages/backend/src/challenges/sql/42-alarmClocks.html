@@ -1,21 +1,40 @@
-
 <div>
-  <p>You are developing an alarm clock app that works as follows: the user can set a date and a time, and the app will
-    ring every week at the given time, starting at the given date until the end of the current year.</p>
-  <p>The starting date is the only record in the <strong>userInput</strong> table, which has the following structure:
+  <p>
+    You are developing an alarm clock app that works as follows: the user can
+    set a date and a time, and the app will ring every week at the given time,
+    starting at the given date until the end of the current year.
+  </p>
+  <p>
+    The starting date is the only record in the
+    <strong>userInput</strong> table, which has the following structure:
   </p>
   <ul class="list-group list-group-flush my-3">
-    <li class="list-group-item"><code>input_date</code>: the date and time of the first alarm (of a <code>DATETIME</code> type).</li>
+    <li class="list-group-item">
+      <code>input_date</code>: the date and time of the first alarm (of a
+      <code>DATETIME</code> type).
+    </li>
   </ul>
-  <p>Given the table, your task is to compose the resulting table with a single column <code>alarm_date</code>. This
-    column should contain all dates (including the time) when the alarm clock will ring. The entries should be arranged
-    in <em>ascending</em> chronological order.</p>
+  <p>
+    Given the table, your task is to compose the resulting table with a single
+    column <code>alarm_date</code>. This column should contain all dates
+    (including the time) when the alarm clock will ring. The entries should be
+    arranged in <em>ascending</em> chronological order.
+  </p>
 
   <h3>Tips</h3>
-  <p>You could use PL/pgSQL to generate the alarms. Here a list of some useful things that might help you:</p>
+  <p>
+    You could use PL/pgSQL to generate the alarms. Here a list of some useful
+    things that might help you:
+  </p>
   <ul class="list-group list-group-flush my-3">
-    <li class="list-group-item"><code>DATE_TRUNC('year', current_alarm) + INTERVAL '1 year'</code>: to get the end of the current year;</li>
-    <li class="list-group-item"><code>current_alarm + INTERVAL '1 week'</code>: to get the next alarm date.</li>
+    <li class="list-group-item">
+      <code>DATE_TRUNC('year', current_alarm) + INTERVAL '1 year'</code>: to get
+      the end of the current year;
+    </li>
+    <li class="list-group-item">
+      <code>current_alarm + INTERVAL '1 week'</code>: to get the next alarm
+      date.
+    </li>
   </ul>
 
   <h3>Example</h3>

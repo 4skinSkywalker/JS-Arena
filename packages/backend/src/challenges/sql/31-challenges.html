@@ -1,166 +1,175 @@
-
-<p>Julia asked her students to create some coding challenges. Write a query to print the hacker_id, name, and the total
-    number of challenges created by each student. Sort your results by the total number of challenges in descending
-    order. If more than one student created the same number of challenges, then sort the result by hacker_id.</p>
+<p>
+  Julia asked her students to create some coding challenges. Write a query to
+  print the hacker_id, name, and the total number of challenges created by each
+  student. Sort your results by the total number of challenges in descending
+  order. If more than one student created the same number of challenges, then
+  sort the result by hacker_id.
+</p>
 
 <p>The following tables contain challenge data:</p>
 <ul class="list-group list-group-flush my-3">
-    <li class="list-group-item"><strong>Hackers:</strong> The hacker_id is the id of the hacker, and name is the name of the hacker.</li>
-    <li class="list-group-item"><strong>Challenges:</strong> The challenge_id is the id of the challenge, and hacker_id is the id of the student
-        who created the challenge.</li>
+  <li class="list-group-item">
+    <strong>Hackers:</strong> The hacker_id is the id of the hacker, and name is
+    the name of the hacker.
+  </li>
+  <li class="list-group-item">
+    <strong>Challenges:</strong> The challenge_id is the id of the challenge,
+    and hacker_id is the id of the student who created the challenge.
+  </li>
 </ul>
 
 <h3>Example</h3>
 <p>For the following table Hackers</p>
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>hacker_id</th>
-            <th>name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>5077</td>
-            <td>Rose</td>
-        </tr>
-        <tr>
-            <td>21283</td>
-            <td>Angela</td>
-        </tr>
-        <tr>
-            <td>62643</td>
-            <td>Frank</td>
-        </tr>
-        <tr>
-            <td>88255</td>
-            <td>Patrick</td>
-        </tr>
-        <tr>
-            <td>96196</td>
-            <td>Lisa</td>
-        </tr>
+  <thead>
+    <tr>
+      <th>hacker_id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5077</td>
+      <td>Rose</td>
+    </tr>
+    <tr>
+      <td>21283</td>
+      <td>Angela</td>
+    </tr>
+    <tr>
+      <td>62643</td>
+      <td>Frank</td>
+    </tr>
+    <tr>
+      <td>88255</td>
+      <td>Patrick</td>
+    </tr>
+    <tr>
+      <td>96196</td>
+      <td>Lisa</td>
+    </tr>
+  </tbody>
 </table>
 <p>and the following table Challenges</p>
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>challenge_id</th>
-            <th>hacker_id</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>61654</td>
-            <td>5077</td>
-        </tr>
-        <tr>
-            <td>58302</td>
-            <td>21283</td>
-        </tr>
-        <tr>
-            <td>40587</td>
-            <td>88255</td>
-        </tr>
-        <tr>
-            <td>29477</td>
-            <td>5077</td>
-        </tr>
-        <tr>
-            <td>1220</td>
-            <td>21283</td>
-        </tr>
-        <tr>
-            <td>69514</td>
-            <td>21283</td>
-        </tr>
-        <tr>
-            <td>46561</td>
-            <td>62743</td>
-        </tr>
-        <tr>
-            <td>58077</td>
-            <td>62743</td>
-        </tr>
-        <tr>
-            <td>18483</td>
-            <td>88255</td>
-        </tr>
-        <tr>
-            <td>76766</td>
-            <td>21283</td>
-        </tr>
-        <tr>
-            <td>52382</td>
-            <td>5077</td>
-        </tr>
-        <tr>
-            <td>74467</td>
-            <td>21283</td>
-        </tr>
-        <tr>
-            <td>33625</td>
-            <td>96196</td>
-        </tr>
-        <tr>
-            <td>26053</td>
-            <td>88255</td>
-        </tr>
-        <tr>
-            <td>42665</td>
-            <td>62743</td>
-        </tr>
-        <tr>
-            <td>12859</td>
-            <td>62743</td>
-        </tr>
-        <tr>
-            <td>70094</td>
-            <td>21283</td>
-        </tr>
-        <tr>
-            <td>34599</td>
-            <td>88255</td>
-        </tr>
-        <tr>
-            <td>54680</td>
-            <td>88255</td>
-        </tr>
-        <tr>
-            <td>61881</td>
-            <td>5077</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>challenge_id</th>
+      <th>hacker_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>61654</td>
+      <td>5077</td>
+    </tr>
+    <tr>
+      <td>58302</td>
+      <td>21283</td>
+    </tr>
+    <tr>
+      <td>40587</td>
+      <td>88255</td>
+    </tr>
+    <tr>
+      <td>29477</td>
+      <td>5077</td>
+    </tr>
+    <tr>
+      <td>1220</td>
+      <td>21283</td>
+    </tr>
+    <tr>
+      <td>69514</td>
+      <td>21283</td>
+    </tr>
+    <tr>
+      <td>46561</td>
+      <td>62743</td>
+    </tr>
+    <tr>
+      <td>58077</td>
+      <td>62743</td>
+    </tr>
+    <tr>
+      <td>18483</td>
+      <td>88255</td>
+    </tr>
+    <tr>
+      <td>76766</td>
+      <td>21283</td>
+    </tr>
+    <tr>
+      <td>52382</td>
+      <td>5077</td>
+    </tr>
+    <tr>
+      <td>74467</td>
+      <td>21283</td>
+    </tr>
+    <tr>
+      <td>33625</td>
+      <td>96196</td>
+    </tr>
+    <tr>
+      <td>26053</td>
+      <td>88255</td>
+    </tr>
+    <tr>
+      <td>42665</td>
+      <td>62743</td>
+    </tr>
+    <tr>
+      <td>12859</td>
+      <td>62743</td>
+    </tr>
+    <tr>
+      <td>70094</td>
+      <td>21283</td>
+    </tr>
+    <tr>
+      <td>34599</td>
+      <td>88255</td>
+    </tr>
+    <tr>
+      <td>54680</td>
+      <td>88255</td>
+    </tr>
+    <tr>
+      <td>61881</td>
+      <td>5077</td>
+    </tr>
+  </tbody>
 </table>
 <p>the output should be</p>
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>hacker_id</th>
-            <th>name</th>
-            <th>count</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>21283</td>
-            <td>Angela</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>88255</td>
-            <td>Patrick</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>5077</td>
-            <td>Rose</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>96196</td>
-            <td>Lisa</td>
-            <td>1</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>hacker_id</th>
+      <th>name</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>21283</td>
+      <td>Angela</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>88255</td>
+      <td>Patrick</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>5077</td>
+      <td>Rose</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>96196</td>
+      <td>Lisa</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>

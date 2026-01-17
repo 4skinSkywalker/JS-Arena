@@ -1,26 +1,46 @@
-
 <div>
-  <p>Your boss wants to identify the successful projects running in your company, so he asked you to prepare a list of
-    all the currently active projects and their average monthly income.</p>
-  <p>You have stored the information about these projects in a simple database with a single <strong>Projects</strong>
-    table that has five columns:</p>
+  <p>
+    Your boss wants to identify the successful projects running in your company,
+    so he asked you to prepare a list of all the currently active projects and
+    their average monthly income.
+  </p>
+  <p>
+    You have stored the information about these projects in a simple database
+    with a single <strong>Projects</strong> table that has five columns:
+  </p>
   <ul class="list-group list-group-flush my-3">
-    <li class="list-group-item"><strong>internal_id</strong>: the company's internal identifier for the project;</li>
-    <li class="list-group-item"><strong>project_name</strong>: the official name of the project;</li>
-    <li class="list-group-item"><strong>team_size</strong>: the number of employees working on the project;</li>
-    <li class="list-group-item"><strong>team_lead</strong>: the name of the project manager;</li>
-    <li class="list-group-item"><strong>income</strong>: the average monthly income of the project.</li>
+    <li class="list-group-item">
+      <strong>internal_id</strong>: the company's internal identifier for the
+      project;
+    </li>
+    <li class="list-group-item">
+      <strong>project_name</strong>: the official name of the project;
+    </li>
+    <li class="list-group-item">
+      <strong>team_size</strong>: the number of employees working on the
+      project;
+    </li>
+    <li class="list-group-item">
+      <strong>team_lead</strong>: the name of the project manager;
+    </li>
+    <li class="list-group-item">
+      <strong>income</strong>: the average monthly income of the project.
+    </li>
   </ul>
-  <p>Your boss says that internal project ids are irrelevant to him and that he isn't interested in how big the teams
-    are. Since that's the case, he wants you to create another table by removing the <strong>internal_id</strong> and
-    <strong>team_size</strong> columns from the existing <strong>Projects</strong> table. Return it sorted by
-    <code>internal_id</code> in ascending order.</p>
-    
+  <p>
+    Your boss says that internal project ids are irrelevant to him and that he
+    isn't interested in how big the teams are. Since that's the case, he wants
+    you to create another table by removing the <strong>internal_id</strong> and
+    <strong>team_size</strong> columns from the existing
+    <strong>Projects</strong> table. Return it sorted by
+    <code>internal_id</code> in ascending order.
+  </p>
+
   <h3>Example</h3>
   <p>For the following table <strong>projects</strong></p>
   <table class="table table-striped my-3">
     <thead>
-        <tr>
+      <tr>
         <th>internal_id</th>
         <th>project_name</th>
         <th>team_size</th>
@@ -55,7 +75,7 @@
   the resulting table should be
   <table class="table table-striped my-3">
     <thead>
-        <tr>
+      <tr>
         <th>project_name</th>
         <th>team_lead</th>
         <th>income</th>

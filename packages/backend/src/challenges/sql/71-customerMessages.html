@@ -1,88 +1,105 @@
-
-
 <p>
-    You recently added feedback functionality to the small web service you own. You were able to handle everything
-    manually at first, but the amount of messages you receive now is overwhelming. As such, you've decided to start
-    generating generic responses automatically.
+  You recently added feedback functionality to the small web service you own.
+  You were able to handle everything manually at first, but the amount of
+  messages you receive now is overwhelming. As such, you've decided to start
+  generating generic responses automatically.
 </p>
 
 <p>
-    All customer names are stored in the table <strong>customers</strong> with the following structure:
+  All customer names are stored in the table <strong>customers</strong> with the
+  following structure:
 </p>
 
 <ul class="list-group list-group-flush my-3">
-    <li class="list-group-item"><strong>id</strong>: unique customer id;</li>
-    <li class="list-group-item"><strong>name</strong>: the name of the customer in the format described below.</li>
+  <li class="list-group-item"><strong>id</strong>: unique customer id;</li>
+  <li class="list-group-item">
+    <strong>name</strong>: the name of the customer in the format described
+    below.
+  </li>
 </ul>
 
 <p>
-    The customer's <code>name</code> is stored in the following format:
-    <code>&lt;first name&gt; &lt;last name&gt;</code> (two words separated by a single space), where first and last
-    names can contain both uppercase and lowercase English letters.
+  The customer's <code>name</code> is stored in the following format:
+  <code>&lt;first name&gt; &lt;last name&gt;</code> (two words separated by a
+  single space), where first and last names can contain both uppercase and
+  lowercase English letters.
 </p>
 
 <p>
-    Your task is to write a function that, given the customer's <code>name</code>, will return the following message:
+  Your task is to write a function that, given the customer's <code>name</code>,
+  will return the following message:
 </p>
 
 <pre>
 Dear &lt;Firstname&gt; &lt;Lastname&gt;! We received your message and will process it as soon as possible. Thanks for using our service. FooBar On! - FooBarIO team.
-        </pre>
+        </pre
+>
 
 <p>
-    Here, <code>&lt;Firstname&gt;</code> and <code>&lt;Lastname&gt;</code> are the first and the last names of the
-    customer, with the first letter in uppercase and all other letters in lowercase.
+  Here, <code>&lt;Firstname&gt;</code> and <code>&lt;Lastname&gt;</code> are the
+  first and the last names of the customer, with the first letter in uppercase
+  and all other letters in lowercase.
 </p>
 
 <h3>Tips</h3>
-<p>You can use <code>UNNEST(STRING_TO_ARRAY(...))</code> to split the name into first and last names into multiple rows.</p>
-<p>You can use <code>STRING_AGG(...)</code> to concatenate the first and last names from multiple rows back into a single name in a single row.</p>
+<p>
+  You can use <code>UNNEST(STRING_TO_ARRAY(...))</code> to split the name into
+  first and last names into multiple rows.
+</p>
+<p>
+  You can use <code>STRING_AGG(...)</code> to concatenate the first and last
+  names from multiple rows back into a single name in a single row.
+</p>
 
 <h3>Example</h3>
 
 <p>For the following table <strong>customers</strong>:</p>
 
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>JOHN GaLT</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>SANDY COHEN</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>JOHN GaLT</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SANDY COHEN</td>
+    </tr>
+  </tbody>
 </table>
 
 <p>The output should be:</p>
 
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>response</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>JOHN GaLT</td>
-            <td>Dear John Galt! We received your message and will process it as soon as possible. Thanks for using our
-                service. FooBar On! - FooBarIO team.</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>SANDY COHEN</td>
-            <td>Dear Sandy Cohen! We received your message and will process it as soon as possible. Thanks for using our
-                service. FooBar On! - FooBarIO team.</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>response</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>JOHN GaLT</td>
+      <td>
+        Dear John Galt! We received your message and will process it as soon as
+        possible. Thanks for using our service. FooBar On! - FooBarIO team.
+      </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SANDY COHEN</td>
+      <td>
+        Dear Sandy Cohen! We received your message and will process it as soon
+        as possible. Thanks for using our service. FooBar On! - FooBarIO team.
+      </td>
+    </tr>
+  </tbody>
 </table>

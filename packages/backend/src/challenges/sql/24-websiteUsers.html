@@ -1,141 +1,148 @@
-
 <div>
-    <p>The <strong>users</strong> table contains the following columns:</p>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><code>id</code> - The unique user's ID;</li>
-        <li class="list-group-item"><code>login</code> - The unique user's login;</li>
-        <li class="list-group-item"><code>name</code> - The user's name;</li>
-        <li class="list-group-item"><code>user_type</code> - The user's role type (which can be <code>"user"</code>, <code>"admin"</code>,
-            <code>"moderator"</code>, etc.).</li>
-    </ul>
-    <p>Your task is to return the number of users of each type.</p>
-    <p>Sort the results by the number of users of a given type in descending order, in case of a tie, sort by the type.</p>
-    
-    <h3>First Example</h3>
-    <p>For the given table <strong>users</strong></p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>login</th>
-                <th>name</th>
-                <th>user_type</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ann92</td>
-                <td>Ann</td>
-                <td>user</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Bob88</td>
-                <td>Bob</td>
-                <td>user</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Carol412</td>
-                <td>Carol</td>
-                <td>admin</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Deril39</td>
-                <td>Deril</td>
-                <td>admin</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>EvaGrin</td>
-                <td>Eva</td>
-                <td>user</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>You should return the following table:</p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>stats</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>There are 3 users</td>
-            </tr>
-            <tr>
-                <td>There are 2 admins</td>
-            </tr>
-        </tbody>
-    </table>
+  <p>The <strong>users</strong> table contains the following columns:</p>
+  <ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><code>id</code> - The unique user's ID;</li>
+    <li class="list-group-item">
+      <code>login</code> - The unique user's login;
+    </li>
+    <li class="list-group-item"><code>name</code> - The user's name;</li>
+    <li class="list-group-item">
+      <code>user_type</code> - The user's role type (which can be
+      <code>"user"</code>, <code>"admin"</code>, <code>"moderator"</code>,
+      etc.).
+    </li>
+  </ul>
+  <p>Your task is to return the number of users of each type.</p>
+  <p>
+    Sort the results by the number of users of a given type in descending order,
+    in case of a tie, sort by the type.
+  </p>
 
-    <h3>Second Example</h3>
-    <p>For the given table <strong>users</strong></p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>login</th>
-                <th>name</th>
-                <th>user_type</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ann92</td>
-                <td>Ann</td>
-                <td>user</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Bob88</td>
-                <td>Bob</td>
-                <td>moderator</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Carol412</td>
-                <td>Carol</td>
-                <td>editor</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Deril39</td>
-                <td>Deril</td>
-                <td>admin</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>EvaGrin</td>
-                <td>Eva</td>
-                <td>admin</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>You should return the following table:</p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>stats</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>There are 2 admins</td>
-            </tr>
-            <tr>
-                <td>There is 1 editor</td>
-            </tr>
-            <tr>
-                <td>There is 1 moderator</td>
-            </tr>
-            <tr>
-                <td>There is 1 user</td>
-            </tr>
-        </tbody>
-    </table>
+  <h3>First Example</h3>
+  <p>For the given table <strong>users</strong></p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>login</th>
+        <th>name</th>
+        <th>user_type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Ann92</td>
+        <td>Ann</td>
+        <td>user</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Bob88</td>
+        <td>Bob</td>
+        <td>user</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Carol412</td>
+        <td>Carol</td>
+        <td>admin</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Deril39</td>
+        <td>Deril</td>
+        <td>admin</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>EvaGrin</td>
+        <td>Eva</td>
+        <td>user</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>You should return the following table:</p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>stats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>There are 3 users</td>
+      </tr>
+      <tr>
+        <td>There are 2 admins</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Second Example</h3>
+  <p>For the given table <strong>users</strong></p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>login</th>
+        <th>name</th>
+        <th>user_type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Ann92</td>
+        <td>Ann</td>
+        <td>user</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Bob88</td>
+        <td>Bob</td>
+        <td>moderator</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Carol412</td>
+        <td>Carol</td>
+        <td>editor</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Deril39</td>
+        <td>Deril</td>
+        <td>admin</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>EvaGrin</td>
+        <td>Eva</td>
+        <td>admin</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>You should return the following table:</p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>stats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>There are 2 admins</td>
+      </tr>
+      <tr>
+        <td>There is 1 editor</td>
+      </tr>
+      <tr>
+        <td>There is 1 moderator</td>
+      </tr>
+      <tr>
+        <td>There is 1 user</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

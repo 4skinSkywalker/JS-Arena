@@ -1,96 +1,107 @@
-
 <div>
-    <p>Your company is planning to expand internationally very soon. You have been tasked with preparing a report on
-        foreign markets and potential competitors.</p>
-    <p>After some investigation, you've created a database containing a <strong>foreignCompetitors</strong> table, which
-        has the following structure:</p>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><code>competitor</code>: the name of the competitor;</li>
-        <li class="list-group-item"><code>country</code>: the country in which the competitor is operating.</li>
-    </ul>
-    <p>Given the <strong>foreignCompetitors</strong> table, compose the resulting table with two columns:
-        <code>country</code> and <code>competitors</code>. The first column should contain the country name, and the
-        second column should contain the number of competitors in this country. The table should be sorted by the
-        country names in <em>ascending</em> order. In addition, it should have an extra row at the bottom with the
-        summary, as described above.</p>
-    
-    <h3>Example</h3>
-    <p>For the following table <strong>foreignCompetitors</strong></p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>competitor</th>
-                <th>country</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Acme Corp</td>
-                <td>USA</td>
-            </tr>
-            <tr>
-                <td>GLOBEX</td>
-                <td>USA</td>
-            </tr>
-            <tr>
-                <td>Openmedia</td>
-                <td>France</td>
-            </tr>
-            <tr>
-                <td>K-bam</td>
-                <td>USA</td>
-            </tr>
-            <tr>
-                <td>Hatdrill</td>
-                <td>UK</td>
-            </tr>
-            <tr>
-                <td>Hexgreen</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>D-ranron</td>
-                <td>France</td>
-            </tr>
-            <tr>
-                <td>Faxla</td>
-                <td>Spain</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>the output should be</p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>country</th>
-                <th>competitors</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>France</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>Germany</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>Spain</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>UK</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>USA</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>Total:</td>
-                <td>8</td>
-            </tr>
-        </tbody>
-    </table>
+  <p>
+    Your company is planning to expand internationally very soon. You have been
+    tasked with preparing a report on foreign markets and potential competitors.
+  </p>
+  <p>
+    After some investigation, you've created a database containing a
+    <strong>foreignCompetitors</strong> table, which has the following
+    structure:
+  </p>
+  <ul class="list-group list-group-flush my-3">
+    <li class="list-group-item">
+      <code>competitor</code>: the name of the competitor;
+    </li>
+    <li class="list-group-item">
+      <code>country</code>: the country in which the competitor is operating.
+    </li>
+  </ul>
+  <p>
+    Given the <strong>foreignCompetitors</strong> table, compose the resulting
+    table with two columns: <code>country</code> and <code>competitors</code>.
+    The first column should contain the country name, and the second column
+    should contain the number of competitors in this country. The table should
+    be sorted by the country names in <em>ascending</em> order. In addition, it
+    should have an extra row at the bottom with the summary, as described above.
+  </p>
+
+  <h3>Example</h3>
+  <p>For the following table <strong>foreignCompetitors</strong></p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>competitor</th>
+        <th>country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Acme Corp</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <td>GLOBEX</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <td>Openmedia</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <td>K-bam</td>
+        <td>USA</td>
+      </tr>
+      <tr>
+        <td>Hatdrill</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Hexgreen</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>D-ranron</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <td>Faxla</td>
+        <td>Spain</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>the output should be</p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>country</th>
+        <th>competitors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>France</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Germany</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Spain</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>UK</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>USA</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Total:</td>
+        <td>8</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -1,16 +1,13 @@
-
+<p>Julia conducted a <strong>15 days of learning SQL</strong> contest.</p>
 
 <p>
-  Julia conducted a <strong>15 days of learning SQL</strong> contest.
+  Write a query to print the total number of unique hackers who made at least
+  one submission each day (starting on the first day of the contest).
 </p>
 
 <p>
-  Write a query to print the total number of unique hackers who made at least one submission
-  each day (starting on the first day of the contest).
-</p>
-
-<p>
-  The query should print this information for each day of the contest, sorted by the date.
+  The query should print this information for each day of the contest, sorted by
+  the date.
 </p>
 
 <h3>Input Format</h3>
@@ -22,16 +19,26 @@
     <strong>Hackers</strong>:
     <ul class="list-group list-group-flush my-3">
       <li class="list-group-item"><code>id</code> – the id of the hacker</li>
-      <li class="list-group-item"><code>name</code> – the name of the hacker</li>
+      <li class="list-group-item">
+        <code>name</code> – the name of the hacker
+      </li>
     </ul>
   </li>
   <li class="list-group-item">
     <strong>Submissions</strong>:
     <ul class="list-group list-group-flush my-3">
-      <li class="list-group-item"><code>date</code> – the date of the submission</li>
-      <li class="list-group-item"><code>id</code> – the id of the submission</li>
-      <li class="list-group-item"><code>hacker_id</code> – the id of the hacker who made the submission</li>
-      <li class="list-group-item"><code>score</code> – the score of the submission</li>
+      <li class="list-group-item">
+        <code>date</code> – the date of the submission
+      </li>
+      <li class="list-group-item">
+        <code>id</code> – the id of the submission
+      </li>
+      <li class="list-group-item">
+        <code>hacker_id</code> – the id of the hacker who made the submission
+      </li>
+      <li class="list-group-item">
+        <code>score</code> – the score of the submission
+      </li>
     </ul>
   </li>
 </ul>
@@ -44,13 +51,24 @@
 
 <h4>Steps to solve this challenge</h4>
 <ul class="list-group list-group-flush my-3">
-  <li class="list-group-item">Order rows within a partition using <code>ROW_NUMBER()</code>.</li>
-  <li class="list-group-item">Subtract the row number from the ordered value (such as a date or integer).</li>
-  <li class="list-group-item">Consecutive rows produce the same result and form an "island".</li>
-  <li class="list-group-item">Missing values create a change in the result, forming a "gap".</li>
+  <li class="list-group-item">
+    Order rows within a partition using <code>ROW_NUMBER()</code>.
+  </li>
+  <li class="list-group-item">
+    Subtract the row number from the ordered value (such as a date or integer).
+  </li>
+  <li class="list-group-item">
+    Consecutive rows produce the same result and form an "island".
+  </li>
+  <li class="list-group-item">
+    Missing values create a change in the result, forming a "gap".
+  </li>
 </ul>
 
-<p>Search for "Gaps-and-Islands SQL" to find more information on how to solve this challenge.</p>
+<p>
+  Search for "Gaps-and-Islands SQL" to find more information on how to solve
+  this challenge.
+</p>
 
 <h3>Sample Input</h3>
 
@@ -288,25 +306,27 @@
 </p>
 
 <p>
-  On March 02, 2016 hackers made submissions. Now only two hackers submitted every day,
-  so there are <strong>2 unique hackers</strong> who made at least one submission each day.
+  On March 02, 2016 hackers made submissions. Now only two hackers submitted
+  every day, so there are <strong>2 unique hackers</strong> who made at least
+  one submission each day.
 </p>
 
 <p>
-  On March 03, 2016 hackers made submissions. Again, only two hackers submitted every day.
+  On March 03, 2016 hackers made submissions. Again, only two hackers submitted
+  every day.
 </p>
 
 <p>
-  On March 04, 2016 hackers made submissions. The same two hackers continued submitting
-  daily.
+  On March 04, 2016 hackers made submissions. The same two hackers continued
+  submitting daily.
 </p>
 
 <p>
-  On March 05, 2016 hackers made submissions. Only one hacker submitted every day,
-  so there is <strong>1 unique hacker</strong>.
+  On March 05, 2016 hackers made submissions. Only one hacker submitted every
+  day, so there is <strong>1 unique hacker</strong>.
 </p>
 
 <p>
-  On March 06, 2016 only one hacker made a submission.
-  There is <strong>1 unique hacker</strong>.
+  On March 06, 2016 only one hacker made a submission. There is
+  <strong>1 unique hacker</strong>.
 </p>

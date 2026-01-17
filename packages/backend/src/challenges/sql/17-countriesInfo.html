@@ -1,86 +1,102 @@
-
 <div>
-    <p>Your friend wants to become a professional tour guide and travel all around the world. In pursuit of this dream,
-        she enrolled in tour guide school. The professors in this school turned out to be very demanding, and one of
-        them gave your friend a difficult assignment that she has to finish over the weekend.</p>
-    <p>Here's the task: Given a list of countries, your friend should calculate the average population and total
-        population of all the countries in the list. To help her, you have decided to write a function that will
-        calculate the required values for any number of countries. The <strong>countries</strong> table in which the
-        countries are stored has the following structure:</p>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item"><code>name</code>: the name of the country;</li>
-        <li class="list-group-item"><code>continent</code>: the continent on which the country is situated;</li>
-        <li class="list-group-item"><code>population</code>: the population of the country.</li>
-    </ul>
-    <p>Your task is to return a new table that contains the number of countries in the given list, along with their
-        average and total population, in columns titled <code>number</code>, <code>average</code> and
-        <code>total</code>.
-    </p>
+  <p>
+    Your friend wants to become a professional tour guide and travel all around
+    the world. In pursuit of this dream, she enrolled in tour guide school. The
+    professors in this school turned out to be very demanding, and one of them
+    gave your friend a difficult assignment that she has to finish over the
+    weekend.
+  </p>
+  <p>
+    Here's the task: Given a list of countries, your friend should calculate the
+    average population and total population of all the countries in the list. To
+    help her, you have decided to write a function that will calculate the
+    required values for any number of countries. The
+    <strong>countries</strong> table in which the countries are stored has the
+    following structure:
+  </p>
+  <ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><code>name</code>: the name of the country;</li>
+    <li class="list-group-item">
+      <code>continent</code>: the continent on which the country is situated;
+    </li>
+    <li class="list-group-item">
+      <code>population</code>: the population of the country.
+    </li>
+  </ul>
+  <p>
+    Your task is to return a new table that contains the number of countries in
+    the given list, along with their average and total population, in columns
+    titled <code>number</code>, <code>average</code> and <code>total</code>.
+  </p>
 
-    <h3>Tips</h3>
-    <ul class="list-group list-group-flush my-3">
-        <li class="list-group-item">
-            <strong>TRUNC(123.456, 2)</strong> yields <strong>123.45</strong>.
-        </li>
-        <li class="list-group-item">
-            <strong>AVG(population)</strong> yields the average of the <strong>population</strong> column.
-        </li>
-        <li class="list-group-item">
-            <strong>value::target_type</strong> for instance <strong>'123.456'::double precision</strong> yields <strong>123.456</strong>.
-        </li>
-        <li class="list-group-item">
-            <strong>SUM(population)</strong> yields the sum of the <strong>population</strong> column.
-        </li>
-    </ul>
+  <h3>Tips</h3>
+  <ul class="list-group list-group-flush my-3">
+    <li class="list-group-item">
+      <strong>TRUNC(123.456, 2)</strong> yields <strong>123.45</strong>.
+    </li>
+    <li class="list-group-item">
+      <strong>AVG(population)</strong> yields the average of the
+      <strong>population</strong> column.
+    </li>
+    <li class="list-group-item">
+      <strong>value::target_type</strong> for instance
+      <strong>'123.456'::double precision</strong> yields
+      <strong>123.456</strong>.
+    </li>
+    <li class="list-group-item">
+      <strong>SUM(population)</strong> yields the sum of the
+      <strong>population</strong> column.
+    </li>
+  </ul>
 
-    <h3>Example</h3>
-    <p>For the following table <strong>countries</strong></p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>continent</th>
-                <th>population</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Grenada</td>
-                <td>North America</td>
-                <td>103328</td>
-            </tr>
-            <tr>
-                <td>Monaco</td>
-                <td>Europe</td>
-                <td>38400</td>
-            </tr>
-            <tr>
-                <td>San Marino</td>
-                <td>Europe</td>
-                <td>33005</td>
-            </tr>
-            <tr>
-                <td>Vanuatu</td>
-                <td>Australia</td>
-                <td>277500</td>
-            </tr>
-        </tbody>
-    </table>
-    <p>the output should be</p>
-    <table class="table table-striped my-3">
-        <thead>
-            <tr>
-                <th>number</th>
-                <th>average_population</th>
-                <th>total_population</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>4</td>
-                <td>113058.2500</td>
-                <td>452233</td>
-            </tr>
-        </tbody>
-    </table>
+  <h3>Example</h3>
+  <p>For the following table <strong>countries</strong></p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>continent</th>
+        <th>population</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Grenada</td>
+        <td>North America</td>
+        <td>103328</td>
+      </tr>
+      <tr>
+        <td>Monaco</td>
+        <td>Europe</td>
+        <td>38400</td>
+      </tr>
+      <tr>
+        <td>San Marino</td>
+        <td>Europe</td>
+        <td>33005</td>
+      </tr>
+      <tr>
+        <td>Vanuatu</td>
+        <td>Australia</td>
+        <td>277500</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>the output should be</p>
+  <table class="table table-striped my-3">
+    <thead>
+      <tr>
+        <th>number</th>
+        <th>average_population</th>
+        <th>total_population</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>4</td>
+        <td>113058.2500</td>
+        <td>452233</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

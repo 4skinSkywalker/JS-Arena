@@ -1,183 +1,188 @@
-
-
 <p>
-    The elf factories have already finished producing all Christmas presents, but before Santa can start delivering them
-    they need to be properly packaged.
+  The elf factories have already finished producing all Christmas presents, but
+  before Santa can start delivering them they need to be properly packaged.
 </p>
 
 <p>
-    All produced gifts and available packages are stored in two tables called <strong>gifts</strong> and
-    <strong>packages</strong> respectively, that have the following structures:
+  All produced gifts and available packages are stored in two tables called
+  <strong>gifts</strong> and <strong>packages</strong> respectively, that have
+  the following structures:
 </p>
 
 <ul class="list-group list-group-flush my-3">
-    <li class="list-group-item"><strong>gifts</strong>:
-        <ul class="list-group list-group-flush my-3">
-            <li class="list-group-item">id: unique gift id;</li>
-            <li class="list-group-item">gift_name: the name of the gift;</li>
-            <li class="list-group-item">length: gift length;</li>
-            <li class="list-group-item">width: gift width;</li>
-            <li class="list-group-item">height: gift height;</li>
-        </ul>
-    </li>
-    <li class="list-group-item"><strong>packages</strong>:
-        <ul class="list-group list-group-flush my-3">
-            <li class="list-group-item">package_type: package type;</li>
-            <li class="list-group-item">length: the length of the package;</li>
-            <li class="list-group-item">width: the width of the package;</li>
-            <li class="list-group-item">height: the height of the package.</li>
-        </ul>
-    </li>
+  <li class="list-group-item">
+    <strong>gifts</strong>:
+    <ul class="list-group list-group-flush my-3">
+      <li class="list-group-item">id: unique gift id;</li>
+      <li class="list-group-item">gift_name: the name of the gift;</li>
+      <li class="list-group-item">length: gift length;</li>
+      <li class="list-group-item">width: gift width;</li>
+      <li class="list-group-item">height: gift height;</li>
+    </ul>
+  </li>
+  <li class="list-group-item">
+    <strong>packages</strong>:
+    <ul class="list-group list-group-flush my-3">
+      <li class="list-group-item">package_type: package type;</li>
+      <li class="list-group-item">length: the length of the package;</li>
+      <li class="list-group-item">width: the width of the package;</li>
+      <li class="list-group-item">height: the height of the package.</li>
+    </ul>
+  </li>
 </ul>
 
 <p>
-    A gift fits in a package if its <code>length</code>, <code>width</code> and <code>height</code> are equal to or less
-    than <code>length</code>, <code>width</code> and <code>height</code> of the package respectively. Note that the
-    presents can't be rotated, since some of them are very fragile.
+  A gift fits in a package if its <code>length</code>, <code>width</code> and
+  <code>height</code> are equal to or less than <code>length</code>,
+  <code>width</code> and <code>height</code> of the package respectively. Note
+  that the presents can't be rotated, since some of them are very fragile.
 </p>
 
 <p>
-    There is not much space on Santa's sleigh, so each gift is put in the smallest package it fits. One package is
-    considered smaller than another if its volume is smaller. One package can't hold more than one gift.
+  There is not much space on Santa's sleigh, so each gift is put in the smallest
+  package it fits. One package is considered smaller than another if its volume
+  is smaller. One package can't hold more than one gift.
 </p>
 
 <p>
-    Given the tables <strong>gifts</strong> and <strong>packages</strong>, compose the resulting table with two columns:
-    <code>package_type</code> and <code>number</code>. The first column should contain the <code>package_type</code> of
-    the package, and the second one should contain the number of packages with such <code>package_type</code> that will
-    be used for packaging Christmas gifts as described. If a package of some type wasn't used, it shouldn't be included
-    in the result.
+  Given the tables <strong>gifts</strong> and <strong>packages</strong>, compose
+  the resulting table with two columns: <code>package_type</code> and
+  <code>number</code>. The first column should contain the
+  <code>package_type</code> of the package, and the second one should contain
+  the number of packages with such <code>package_type</code> that will be used
+  for packaging Christmas gifts as described. If a package of some type wasn't
+  used, it shouldn't be included in the result.
 </p>
 
 <p>
-    The result should be sorted by <code>package_type</code> in ascending order.
+  The result should be sorted by <code>package_type</code> in ascending order.
 </p>
 
 <p>
-    It is guaranteed that each gift fits some package and that there are no package <code>types</code> with the same
-    volume.
+  It is guaranteed that each gift fits some package and that there are no
+  package <code>types</code> with the same volume.
 </p>
 
 <h3>Example</h3>
 
 <p>Table <strong>gifts</strong>:</p>
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>gift_name</th>
-            <th>length</th>
-            <th>width</th>
-            <th>height</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Water gun</td>
-            <td>3</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Video game</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Toy car</td>
-            <td>4</td>
-            <td>2</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Toy car</td>
-            <td>4</td>
-            <td>2</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Toy gun</td>
-            <td>2</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>gift_name</th>
+      <th>length</th>
+      <th>width</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Water gun</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Video game</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Toy car</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Toy car</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Toy gun</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>
 
 <p>Table <strong>packages</strong>:</p>
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>package_type</th>
-            <th>length</th>
-            <th>width</th>
-            <th>height</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>big</td>
-            <td>4</td>
-            <td>4</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>extra</td>
-            <td>5</td>
-            <td>5</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>medium</td>
-            <td>2</td>
-            <td>2</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>small</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>special</td>
-            <td>4</td>
-            <td>3</td>
-            <td>1</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>package_type</th>
+      <th>length</th>
+      <th>width</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>big</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>extra</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>medium</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>small</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>special</td>
+      <td>4</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>
 
 <p>The output should be:</p>
 <table class="table table-striped my-3">
-    <thead>
-        <tr>
-            <th>package_type</th>
-            <th>number</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>big</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>medium</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>small</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>special</td>
-            <td>1</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>package_type</th>
+      <th>number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>big</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>medium</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>small</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>special</td>
+      <td>1</td>
+    </tr>
+  </tbody>
 </table>
