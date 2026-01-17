@@ -47,14 +47,14 @@
             ],
             "expectedOutput": [
                 {
-                    "first_name": "Alice",
-                    "second_name": "Smith",
-                    "attribute": "12%Alice_Smith%34"
-                },
-                {
                     "first_name": "Bob",
                     "second_name": "Johnson",
                     "attribute": "0%Bob_Johnson%"
+                },
+                {
+                    "first_name": "Alice",
+                    "second_name": "Smith",
+                    "attribute": "12%Alice_Smith%34"
                 },
                 {
                     "first_name": "Charlie",
