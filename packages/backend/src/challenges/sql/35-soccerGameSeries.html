@@ -17,14 +17,13 @@
       <code>match_id</code> - the unique ID of the match;
     </li>
     <li class="list-group-item">
-      <code>team_1_score</code> - the score of the team with id '1';
+      <code>goals_home</code> - the score of the team that plays at home;
     </li>
     <li class="list-group-item">
-      <code>team_2_score</code> - the score of the team with id '2';
+      <code>goals_away</code> - the score of the team that plays away;
     </li>
     <li class="list-group-item">
-      <code>match_host</code> - the id of the team that hosted the game (plays
-      at home). This value can be either '1' or '2'.
+      <code>team_home</code> - the id of the team that plays at home. This value can be either '1' or '2'.
     </li>
   </ul>
   <p>
@@ -39,9 +38,9 @@
     <thead>
       <tr>
         <th>match_id</th>
-        <th>team_1_score</th>
-        <th>team_2_score</th>
-        <th>match_host</th>
+        <th>goals_home</th>
+        <th>goals_away</th>
+        <th>team_home</th>
       </tr>
     </thead>
     <tbody>
@@ -85,7 +84,14 @@
     </tbody>
   </table>
   <p>
-    Team 1 won <code>3</code> games out of <code>4</code>, so it's the winner of
-    the series.
+    <ul class="list-group list-group-flush my-3">
+      <li class="list-group-item">Team 1 won the first game.</li>
+      <li class="list-group-item">Team 2 won the second game.</li>
+      <li class="list-group-item">Team 2 won the third game.</li>
+      <li class="list-group-item">Team 2 won the fourth game.</li>
+      <li class="list-group-item">Team 1 scored 6 goals, 2 of which away.</li>
+      <li class="list-group-item">Team 2 scored 8 goals, 4 of which away.</li>
+    </ul>
+    Therefore, team 2 won the series.
   </p>
 </div>
