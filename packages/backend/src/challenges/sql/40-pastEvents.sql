@@ -1,10 +1,9 @@
-WITH max_date AS (
-    SELECT MAX(event_date::DATE)
-    FROM Events
+WITH latest AS (
+    SELECT MAX(event_date) FROM Events
 )
 SELECT name, event_date
 FROM Events
 WHERE
-    event_date != (SELECT * FROM max_date)::TEXT AND
-    (SELECT * FROM max_date) - event_date::DATE <= 7
+    event_date < (SELECT * FROM latest) AND
+    event_date::TIMESTAMP >= (SELECT * FROM latest)::TIMESTAMP - '1 week'::INTERVAL
 ORDER BY event_date DESC;
