@@ -1,11 +1,6 @@
 <div>
-  <p>
-    During the most recent social event you attended, you suddenly realized that
-    you forgot your USB drive at a previous event. You're pretty sure that you
-    had your flash drive with you just last week, which means that you probably
-    lost it during one of the events of the last <code>7</code> days. You want
-    to find all the events you attended during this period.
-  </p>
+  <p>You recently attended an event and noticed that your USB drive is missing. You are certain that you still had the drive before this most recent event, so you must have lost it at one of the events you attended earlier.</p>
+  <p>You remember having the USB drive within the last 7 days, so the event where you lost it must have occurred within the 7 days immediately preceding your most recent event.</p>
   <p>
     The list of events you've attended (including the most recent one) is stored
     in a table called <strong>Events</strong>. It has three columns:
@@ -19,15 +14,19 @@
       <code>event_date</code>: the date of the event.
     </li>
   </ul>
+
+  <h3>Task</h3>
   <p>
-    You want to come up with the list of all the events you attended over the
-    past <code>7</code> days, except for the very last one (since you know you
-    lost your flash drive before then). Return this list as a table with columns
-    <code>name</code> and <code>event_date</code> sorted by event dates in
-    descending order.
+    Return all events that meet the following conditions:
   </p>
+  <ul class="list-group list-group-flush my-3">
+    <li class="list-group-item">They occurred <strong>before</strong> the most recent event.</li>
+    <li class="list-group-item">They took place within the <strong>7-day period immediately preceding</strong> the most recent event date.</li>
+    <li class="list-group-item">The most recent event itself must <strong>not</strong> be included.</li>
+  </ul>
   <p>
-    <em>It is guaranteed that there is at most one event on any given day</em>.
+    The result should contain the columns <strong>name</strong> and <strong>event_date</strong>,
+    and should be sorted by <strong>event_date</strong> in descending order.
   </p>
 
   <h3>Example</h3>
