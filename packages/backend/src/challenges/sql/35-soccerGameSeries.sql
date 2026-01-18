@@ -1,28 +1,59 @@
-SELECT
-    CASE
-        WHEN team_1_wins > team_2_wins THEN '1'
-        WHEN team_2_wins > team_1_wins THEN '2'
-        WHEN team_1_goals > team_2_goals THEN '1'
-        WHEN team_2_goals > team_1_goals THEN '2'
-        WHEN team_1_goals_away > team_2_goals_away THEN '1'
-        WHEN team_2_goals_away > team_1_goals_away THEN '2'
-        ELSE '0'
-    END AS winner_team
-FROM (
+WITH stats AS (
     SELECT
         SUM(
-            CASE WHEN team_1_score > team_2_score THEN 1 ELSE 0 END
-        ) AS team_1_wins,
+            CASE
+                WHEN team_home = '1' AND goals_home > goals_away THEN 1
+                WHEN team_home = '2' AND goals_away > goals_home THEN 1
+                ELSE 0
+            END
+        ) AS wins_1,
         SUM(
-            CASE WHEN team_2_score > team_1_score THEN 1 ELSE 0 END
-        ) AS team_2_wins,
-        SUM(team_1_score) AS team_1_goals,
-        SUM(team_2_score) AS team_2_goals,
+            CASE
+                WHEN team_home = '2' AND goals_home > goals_away THEN 1
+                WHEN team_home = '1' AND goals_away > goals_home THEN 1
+                ELSE 0
+            END
+        ) AS wins_2,
         SUM(
-            CASE WHEN match_host = '2' THEN team_1_score ELSE 0 END
-        ) AS team_1_goals_away,
+            CASE
+                WHEN team_home = '1' THEN goals_home
+                ELSE goals_away
+            END
+        ) AS goals_1,
         SUM(
-            CASE WHEN match_host = '1' THEN team_2_score ELSE 0 END
-        ) AS team_2_goals_away
+            CASE
+                WHEN team_home = '2' THEN goals_home
+                ELSE goals_away
+            END
+        ) AS goals_2,
+        SUM(
+            CASE
+                WHEN team_home = '2' THEN goals_away
+                ELSE 0
+            END
+        ) AS goals_away_1,
+        SUM(
+            CASE
+                WHEN team_home = '1' THEN goals_away
+                ELSE 0
+            END
+        ) AS goals_away_2
     FROM scores
 )
+SELECT
+    CASE
+        WHEN wins_1 = wins_2 THEN
+            CASE
+                WHEN goals_1 = goals_2 THEN
+                    CASE
+                        WHEN goals_away_1 = goals_away_2 THEN '0'
+                        WHEN goals_away_1 > goals_away_2 THEN '1'
+                        ELSE '2'
+                    END
+                WHEN goals_1 > goals_2 THEN '1'
+                ELSE '2'
+            END
+        WHEN wins_1 > wins_2 THEN '1'
+        ELSE '2'
+    END AS winner_team
+FROM stats;
