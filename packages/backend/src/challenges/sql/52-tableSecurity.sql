@@ -1,6 +1,10 @@
-CREATE VIEW my_view AS (
-    SELECT id, name, EXTRACT('year' FROM date_joined::DATE)::INTEGER AS date_joined, '-' AS salary
+CREATE VIEW obfuscated AS (
+    SELECT
+        id,
+        name,
+        EXTRACT(YEAR FROM date_joined::DATE)::INTEGER AS date_joined,
+        '-' AS salary
     FROM employees
 );
 
-SELECT * FROM my_view;
+SELECT * FROM obfuscated;
