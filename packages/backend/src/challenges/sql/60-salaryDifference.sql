@@ -1,20 +1,11 @@
-WITH mint AS (
-    SELECT MIN(salary)
-    FROM employees
-),
-minc AS (
-    SELECT COUNT(*) AS min_count
-    FROM employees
-    JOIN mint ON salary = min
-),
-maxt AS (
-    SELECT MAX(salary)
-    FROM employees
-),
-maxc AS (
-    SELECT COUNT(*) AS max_count
-    FROM employees
-    JOIN maxt ON salary = max
+WITH agg AS (
+    SELECT rank, SUM(salary)
+    FROM (
+        SELECT *, RANK() OVER (ORDER BY salary DESC)
+        FROM employees
+    )
+    GROUP BY rank
 )
-SELECT (max * max_count) - (min * min_count) AS difference
-FROM maxt, maxc, mint, minc;
+SELECT (t1.sum - t2.sum) AS difference
+FROM (SELECT sum FROM agg WHERE rank = 1) AS t1,
+     (SELECT sum FROM agg ORDER BY rank DESC LIMIT 1) AS t2;
