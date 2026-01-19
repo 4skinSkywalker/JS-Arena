@@ -89,13 +89,14 @@ export class ListComponent {
       lang: this.lang
     };
 
-    this.api.one("roomCreated", async ({ room }) => {
+    const roomCreatedSubscription = this.api.on("roomCreated", async ({ room }) => {
       if (room.id !== createRoom.roomId) {
         return;
       }
 
       await this.router.navigate([`/${this.lang.toLowerCase()}-multiplayer`, room.id]);
       this.loaderService.isLoading.set(false);
+      roomCreatedSubscription();
     });
 
     this.api.send("createRoom", createRoom);

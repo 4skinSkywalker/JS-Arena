@@ -2,7 +2,7 @@ import { Component, computed, effect, HostListener, Signal, signal } from '@angu
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard } from '../../../shared/utils';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, loadFromLS } from '../../../shared/utils';
 import { EnumLang, IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../../backend/src/models';
 import { BasicModule } from '../../../basic.module';
 import { FormControl } from '@angular/forms';
@@ -464,6 +464,7 @@ export class SQLGameMultiplayerComponent {
         this.alreadyStartedOnInit.set(true);
         this.generateSystemMessage("Game already started");
       }
+      this.api.send("claimRoomHosting", { secret: loadFromLS("lastRoomSecret") });
     }
     this.initializedRoom.set(true);
 

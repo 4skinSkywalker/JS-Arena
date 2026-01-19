@@ -47,6 +47,7 @@ class Client {
         "restartGame": this.handleRestartGame.bind(this),
         "getProblemTitles": this.handleGetProblemTitles.bind(this),
         "getProblem": this.handleGetProblem.bind(this),
+        "claimRoomHosting": this.claimRoomHosting.bind(this),
     };
 
     constructor(ws: WebSocket) {
@@ -65,6 +66,16 @@ class Client {
 
     send(topic: string, message?: {}) {
         this.ws.send(JSON.stringify({ topic, message }));
+    }
+
+    claimRoomHosting(msg: { secret: string }) {
+        const room = this.getRoom();
+        if (msg.secret !== room.secret) {
+            throw new Error("Invalid room secret");
+        }
+
+        room.host = this;
+        room.sendRoomDetails();
     }
 
     handleVoice(msg: IAudioMessage) {
@@ -210,11 +221,6 @@ class Client {
         if (this.room) {
             console.log(`Client "${this.name}" (${this.id}) is leaving the room "${this.room.name}" (${this.room.id})`);
             this.room.removeClient(this);
-        
-            if (!this.room.deleteFromGlobalIfEmpty() && this.room.host.id === this.id) {
-                this.room.passHostToNextClient();
-            }
-
             sendEverybodyRooms();
         }
         
@@ -246,6 +252,7 @@ class Room {
     problemSet = new Set<string>();
     host: Client;
     clients = new Map<string, Client>();
+    secret = getUid();
 
     constructor(opts: {
         id?: string,
@@ -263,6 +270,7 @@ class Room {
         this.host = opts.host;
         this.clients.set(opts.host.id, opts.host);
         globalRooms.set(this.id, this);
+        this.host.send("roomSecret", { secret: this.secret });
     }
 
     sendVoice(msg: IAudioMessage) {
@@ -340,19 +348,6 @@ class Room {
                 });
             }
         }
-    }
-
-    passHostToNextClient() {
-        const clients = Array.from(this.clients.values());
-        if (!clients.length) {
-            throw new Error("Room has no clients");
-        }
-
-        const previousHost = this.host;
-        this.host = clients[0];
-        console.log(`Room "${this.name}" (${this.id}) host changed from ${previousHost.name} (${previousHost.id}) to ${this.host.name} (${this.host.id})`);
-        
-        this.sendRoomDetails();
     }
 
     addClient(client: Client) {

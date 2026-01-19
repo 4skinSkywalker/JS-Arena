@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IClientJSON, IClientsListedMessage, IRoomJSON, IRoomsListedMessage, IWhoAmIReceivedMessage } from '../../../../backend/src/models';
 import { BehaviorSubject } from 'rxjs';
 import { LoaderService } from '../components/loader/loader-service.service';
+import { saveIntoLS } from '../shared/utils';
 
 export type Handlers  = Record<string, (msg: any) => void>;
 
@@ -21,6 +22,7 @@ export class ApiService {
     "pong": [this.handlePong.bind(this)],
     "clientsListed": [this.handleClientListed.bind(this)],
     "roomsListed": [this.handleRoomsListed.bind(this)],
+    "roomSecret": [this.handleRoomSecret.bind(this)],
   };
 
   constructor(
@@ -32,8 +34,8 @@ export class ApiService {
   connectWebSocket() {
     this.loaderService.isLoading.set(true);
 
-    // this.ws = new WebSocket("ws://localhost:5000");
-    this.ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
+    this.ws = new WebSocket("ws://localhost:5000");
+    // this.ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
 
     this.ws.addEventListener("open", () => {
       this.ready = true;
@@ -123,7 +125,7 @@ export class ApiService {
 
   handlePong() {
     // console.log("Pong received");
-    setTimeout(() => this.send("ping"), 15000);
+    setTimeout(() => this.send("ping"), 5000);
   }
 
   handleClientListed(msg: IClientsListedMessage) {
@@ -132,6 +134,10 @@ export class ApiService {
 
   handleRoomsListed(msg: IRoomsListedMessage) {
     this.rooms$.next(msg.rooms);
+  }
+
+  handleRoomSecret(msg: { secret: string }) {
+    saveIntoLS("lastRoomSecret", msg.secret);
   }
 
   handleMessage(event: any) {
