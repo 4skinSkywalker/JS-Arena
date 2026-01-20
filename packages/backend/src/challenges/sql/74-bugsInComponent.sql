@@ -17,7 +17,7 @@ FROM BugComponent bc
 JOIN Component c ON bc.component_id = c.id
 JOIN Bug b ON bc.bug_num = b.num
 JOIN component_bugs t1 ON bc.component_id = t1.component_id
-WHERE bc.bug_num IN (SELECT bug_num FROM bug_components)
+JOIN bug_components t2 ON bc.bug_num = t2.bug_num
 ORDER BY
     bugs_in_component DESC,
     c.id,

@@ -1,4 +1,5 @@
 SELECT dep_name
-FROM departments
-WHERE id NOT IN (SELECT department FROM employees)
-ORDER BY id;
+FROM departments AS d
+LEFT JOIN employees AS e ON d.id = e.department
+WHERE e.department IS NULL
+ORDER BY d.id;

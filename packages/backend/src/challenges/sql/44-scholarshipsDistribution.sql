@@ -1,3 +1,4 @@
 SELECT candidate_id AS student_id
-FROM candidates
-WHERE candidate_id NOT IN (SELECT student_id FROM detentions);
+FROM candidates AS c
+LEFT JOIN detentions AS d ON c.candidate_id = d.student_id
+WHERE d.student_id IS NULL;

@@ -1,4 +1,5 @@
-SELECT id, name, club_id
-FROM students
-WHERE club_id IN (SELECT id FROM clubs)
-ORDER BY id;
+SELECT s.id, s.name, club_id
+FROM students AS s
+LEFT JOIN clubs AS c ON s.club_id = c.id
+WHERE c.id IS NOT NULL
+ORDER BY s.id;
