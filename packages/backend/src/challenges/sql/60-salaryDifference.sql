@@ -1,11 +1,22 @@
-WITH agg AS (
+WITH rank_sum_salaries AS (
     SELECT rank, SUM(salary)
     FROM (
-        SELECT *, RANK() OVER (ORDER BY salary DESC)
+        SELECT salary, RANK() OVER (ORDER BY salary)
         FROM employees
     )
     GROUP BY rank
+),
+min_sum AS (
+    SELECT sum AS min_sum
+    FROM rank_sum_salaries
+    ORDER BY rank
+    LIMIT 1
+),
+max_sum AS (
+    SELECT sum AS max_sum
+    FROM rank_sum_salaries
+    ORDER BY rank DESC
+    LIMIT 1
 )
-SELECT (t1.sum - t2.sum) AS difference
-FROM (SELECT sum FROM agg WHERE rank = 1) AS t1,
-     (SELECT sum FROM agg ORDER BY rank DESC LIMIT 1) AS t2;
+SELECT (max_sum - min_sum) AS difference
+FROM min_sum, max_sum;
