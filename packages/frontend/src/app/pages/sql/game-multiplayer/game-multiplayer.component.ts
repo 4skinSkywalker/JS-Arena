@@ -2,7 +2,7 @@ import { Component, computed, effect, HostListener, Signal, signal } from '@angu
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Handlers } from '../../../services/api.service';
-import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, loadFromLS } from '../../../shared/utils';
+import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, loadFromLS, scrollBottom, scrollTop } from '../../../shared/utils';
 import { EnumLang, IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../../backend/src/models';
 import { BasicModule } from '../../../basic.module';
 import { FormControl } from '@angular/forms';
@@ -219,7 +219,7 @@ export class SQLGameMultiplayerComponent {
         memory.shift();
       }
       this.onEditorValueChange(content);
-    }, 500));
+    }, 150));
 
     const lastEditorContent = localStorage.getItem(this.editorContentKey) || '';
     if (lastEditorContent) {
@@ -310,12 +310,6 @@ export class SQLGameMultiplayerComponent {
     });
   }
 
-  async scrollToBottom(selector: string) {
-    await delay(0.15);
-    const el = document.querySelector(selector) as HTMLDivElement;
-    el.scrollTop = el.scrollHeight;
-  }
-
   async runSingleTest(test: ITest) {
     test.output = null;
     test.status = "running";
@@ -384,7 +378,7 @@ export class SQLGameMultiplayerComponent {
       isSystem: true,
     };
     this.chatMessages.update(prev => [...prev, chatMsg]);
-    this.scrollToBottom(".chat");
+    scrollBottom(".chat");
   }
 
   sendChatMessage(text: string, isSystem = false) {
@@ -452,7 +446,7 @@ export class SQLGameMultiplayerComponent {
 
   handleChatReceived(msg: IChatReceivedMessage) {
     this.chatMessages.update(prev => [...prev, msg]);
-    this.scrollToBottom(".chat");
+    scrollBottom(".chat");
   }
 
   handleRoomDetailsReceived(msg: IRoomDetailsReceivedMessage) {
@@ -464,7 +458,8 @@ export class SQLGameMultiplayerComponent {
         this.alreadyStartedOnInit.set(true);
         this.generateSystemMessage("Game already started");
       }
-      this.api.send("claimRoomHosting", { secret: loadFromLS("lastRoomSecret") });
+
+      this.api.send("claimRoomHosting", { secret: loadFromLS("roomSecret") || "" });
     }
     this.initializedRoom.set(true);
 
@@ -488,6 +483,7 @@ export class SQLGameMultiplayerComponent {
     this.editor.clearSelection();
 
     this.navTab.set("instructions");
+    scrollTop(".nav-panel-description")
 
     this.problemDescription.set("");
     this.problemTests.set([]);

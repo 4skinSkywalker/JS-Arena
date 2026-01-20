@@ -22,7 +22,7 @@ export class ListComponent {
   closedRooms$;
   filterByName = new FormControl("", { nonNullable: true });
   roomName = new FormControl("", { nonNullable: true });
-  enableLateJoin = new FormControl(false, { nonNullable: true });
+  enableLateJoin = new FormControl(true, { nonNullable: true });
   lang: EnumLang;
 
   handlers: Handlers = {};

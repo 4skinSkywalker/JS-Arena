@@ -67,11 +67,11 @@ class Client {
     send(topic: string, message?: {}) {
         this.ws.send(JSON.stringify({ topic, message }));
     }
-
+    
     claimRoomHosting(msg: { secret: string }) {
         const room = this.getRoom();
-        if (msg.secret !== room.secret) {
-            throw new Error("Invalid room secret");
+        if (!msg.secret || msg.secret !== room.secret) {
+            return;
         }
 
         room.host = this;

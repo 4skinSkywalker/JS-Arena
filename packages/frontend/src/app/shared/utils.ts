@@ -189,6 +189,33 @@ export function scrollElIntoView(sel: string) {
     }
 }
 
+export async function scroll(where: 'top' | 'bottom' | number, selector: string) {
+    await delay(0.15);
+    const el = document.querySelector(selector) as HTMLDivElement;
+    switch (true) {
+        case (typeof where === 'number'): {
+            el.scrollTop = where;
+            break;
+        }
+        case (where === 'bottom'): {
+            el.scrollTop = el.scrollHeight;
+            break;
+        }
+        case (where === 'top'): {
+            el.scrollTop = 0;
+            break;
+        }
+    }
+}
+
+export async function scrollBottom(selector: string) {
+    await scroll('bottom', selector);
+}
+
+export async function scrollTop(selector: string) {
+    await scroll('top', selector);
+}
+
 export function runInWorker(src: string) {
     const w = new Worker(new URL("./w.js", import.meta.url));
     return new Promise<any>((resolve, reject) => {

@@ -34,8 +34,8 @@ export class ApiService {
   connectWebSocket() {
     this.loaderService.isLoading.set(true);
 
-    this.ws = new WebSocket("ws://localhost:5000");
-    // this.ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
+    // this.ws = new WebSocket("ws://localhost:5000");
+    this.ws = new WebSocket("wss://js-arena-a762750b0e8d.herokuapp.com");
 
     this.ws.addEventListener("open", () => {
       this.ready = true;
@@ -125,7 +125,7 @@ export class ApiService {
 
   handlePong() {
     // console.log("Pong received");
-    setTimeout(() => this.send("ping"), 5000);
+    setTimeout(() => this.send("ping"), 7500);
   }
 
   handleClientListed(msg: IClientsListedMessage) {
@@ -137,7 +137,7 @@ export class ApiService {
   }
 
   handleRoomSecret(msg: { secret: string }) {
-    saveIntoLS("lastRoomSecret", msg.secret);
+    saveIntoLS("roomSecret", msg.secret);
   }
 
   handleMessage(event: any) {
