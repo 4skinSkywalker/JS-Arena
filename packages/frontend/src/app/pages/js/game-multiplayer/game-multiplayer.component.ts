@@ -1,6 +1,6 @@
 import { Component, computed, effect, HostListener, Signal, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService, Handlers } from '../../../services/api.service';
 import { focus, check, debounce, deepCopy, delay, drag, equal, matrixRain, uncheck, copyToClipboard, runInWorker, scrollBottom, scrollTop, loadFromLS } from '../../../shared/utils';
 import { EnumLang, IChatReceivedMessage, IClientJSON, IClientWithRoomMessage, ILogMessage, IProgressDetails, IProgressReceivedMessage, IRoomDetailsReceivedMessage, IRoomJSON, ITest } from '../../../../../../backend/src/models';
@@ -113,6 +113,7 @@ export class JSGameMultiplayerComponent {
     public markdownService: MarkdownService,
     public voip: VoipService,
     private route: ActivatedRoute,
+    private router: Router,
     private loaderService: LoaderService,
   ) {
     this.roomId = this.route.snapshot.paramMap.get("id")!;

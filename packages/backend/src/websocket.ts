@@ -222,8 +222,10 @@ class Client {
             console.log(`Client "${this.name}" (${this.id}) is leaving the room "${this.room.name}" (${this.room.id})`);
             this.room.removeClient(this);
             sendEverybodyRooms();
+
+            this.room.deleteFromGlobalIfEmpty();
         }
-        
+
         console.log(`Client "${this.name}" (${this.id}) disconnected`);
         globalClients.delete(this.id); 
         sendEverybodyClients();
@@ -351,9 +353,6 @@ class Room {
     }
 
     addClient(client: Client) {
-        if (this.clients.has(client.id)) {
-            return console.error("Client already in room");
-        }
         this.clients.set(client.id, client);
         for (const _client of this.clients.values()) {
             _client.send("clientJoined", {
@@ -381,17 +380,19 @@ class Room {
     }
 
     deleteFromGlobalIfEmpty() {
-        if (!this.clients.size) {
-            // Wait 15 minutes before deleting the room
-            setTimeout(() => {
-                if (!this.clients.size) {
-                    globalRooms.delete(this.id);
-                    sendEverybodyRooms();
-                }
-            }, 15 * 60 * 1000);
-            return true;
+        if (this.clients.size) {
+            return;
         }
-        return false;
+
+        // Wait 5 minutes before deleting the room
+        setTimeout(() => {
+            if (this.clients.size) {
+                return console.error("Room cannot be deleted, it still has clients");
+            }
+
+            globalRooms.delete(this.id);
+            sendEverybodyRooms();
+        }, 5 * 60 * 1000);
     }
 
     toJSON(opts?: IRoomToJSONOptions): IRoomJSON {

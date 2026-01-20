@@ -24,6 +24,7 @@ export class ListComponent {
   roomName = new FormControl("", { nonNullable: true });
   enableLateJoin = new FormControl(true, { nonNullable: true });
   lang: EnumLang;
+  roomCreatedSubscription?: () => void;
 
   handlers: Handlers = {};
 
@@ -55,6 +56,10 @@ export class ListComponent {
       );
 
     this.api.send("listRooms", { lang: this.lang });
+  }
+
+  ngOnDestroy() {
+    this.roomCreatedSubscription?.();
   }
 
   openCreateRoomModal() {
@@ -89,14 +94,14 @@ export class ListComponent {
       lang: this.lang
     };
 
-    const roomCreatedSubscription = this.api.on("roomCreated", async ({ room }) => {
+    this.roomCreatedSubscription = this.api.on("roomCreated", async ({ room }) => {
       if (room.id !== createRoom.roomId) {
         return;
       }
 
       await this.router.navigate([`/${this.lang.toLowerCase()}-multiplayer`, room.id]);
       this.loaderService.isLoading.set(false);
-      roomCreatedSubscription();
+      this.roomCreatedSubscription?.();
     });
 
     this.api.send("createRoom", createRoom);
