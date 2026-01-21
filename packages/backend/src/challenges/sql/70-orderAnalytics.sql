@@ -1,12 +1,8 @@
 SELECT
     id,
-    EXTRACT(YEAR FROM order_date::TIMESTAMP)::INTEGER AS year,
-    CASE
-        WHEN EXTRACT(MONTH FROM order_date::TIMESTAMP) < 4 THEN 1
-        WHEN EXTRACT(MONTH FROM order_date::TIMESTAMP) < 8 THEN 2
-        WHEN EXTRACT(MONTH FROM order_date::TIMESTAMP) < 12 THEN 3
-        ELSE 4
-    END AS quarter,
+    EXTRACT(YEAR FROM order_date::DATE)::INTEGER AS year,
+    CEIL(EXTRACT(MONTH FROM order_date::DATE) / 3)::INTEGER AS quarter,
     type,
-    price * quantity AS total_price
-FROM orders;
+    (quantity * price) AS total_price
+FROM orders
+ORDER BY id;
