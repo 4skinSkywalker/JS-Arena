@@ -1,42 +1,38 @@
-WITH unnested AS (
-    SELECT *, UNNEST(STRING_TO_ARRAY(str, NULL)) AS letter
+WITH distinct_letters AS (
+    SELECT DISTINCT UNNEST(STRING_TO_ARRAY(str, NULL)) AS letter
     FROM strs
 ),
-letters AS (
-    SELECT DISTINCT letter
-    FROM unnested
+match_count_tab AS (
+    SELECT *, LENGTH(str) - LENGTH(REPLACE(str, letter, '')) AS match_count
+    FROM strs, distinct_letters
 ),
-totals AS (
-    SELECT letter, COUNT(*) AS total
-    FROM unnested
+total_tab AS (
+    SELECT letter, SUM(match_count) AS total
+    FROM match_count_tab
     GROUP BY letter
 ),
-occurrences AS (
-    SELECT letter, COUNT(DISTINCT str) AS occurrence
-    FROM unnested
+occurrence_tab AS (
+    SELECT letter, COUNT(*) AS occurrence
+    FROM match_count_tab
+    WHERE match_count > 0
     GROUP BY letter
 ),
-letters_counts AS (
-    SELECT *, (CHAR_LENGTH(str) - CHAR_LENGTH(REPLACE(str, letter, ''))) AS letter_count
-    FROM letters
-    CROSS JOIN strs
-),
-max_occurrences AS (
-    SELECT letter, MAX(letter_count) AS max_occurrence
-    FROM letters_counts
+max_occurrence_tab AS (
+    SELECT letter, MAX(match_count) AS max_occurrence
+    FROM match_count_tab
     GROUP BY letter
 ),
-max_occurrence_reached AS (
-    SELECT lc.letter, COUNT(*) AS max_occurrence_reached
-    FROM letters_counts AS lc
-    JOIN max_occurrences AS mo ON lc.letter = mo.letter
-    WHERE lc.letter_count = mo.max_occurrence
-    GROUP BY lc.letter
+max_occurrence_reached_tab AS (
+    SELECT mct.letter, COUNT(*) AS max_occurrence_reached
+    FROM match_count_tab AS mct
+    JOIN max_occurrence_tab AS mot ON mct.letter = mot.letter
+    WHERE match_count = max_occurrence
+    GROUP BY mct.letter
 )
 SELECT *
-FROM letters AS t1
-JOIN totals AS t2 ON t1.letter = t2.letter
-JOIN occurrences AS t3 ON t1.letter = t3.letter
-JOIN max_occurrences AS t4 ON t1.letter = t4.letter
-JOIN max_occurrence_reached AS t5 ON t1.letter = t5.letter
-ORDER BY t1.letter;
+FROM distinct_letters AS dl
+LEFT JOIN total_tab AS tt ON dl.letter = tt.letter
+LEFT JOIN occurrence_tab AS ot ON dl.letter = ot.letter
+LEFT JOIN max_occurrence_tab AS mot ON dl.letter = mot.letter
+LEFT JOIN max_occurrence_reached_tab AS mort ON dl.letter = mort.letter
+ORDER BY dl.letter;
