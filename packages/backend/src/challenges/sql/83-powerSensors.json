@@ -1,0 +1,81 @@
+{
+    "rating": 9,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS sensors CASCADE;",
+                "CREATE TABLE sensors (id INTEGER, name TEXT, prev_sensor_id INTEGER);",
+                "INSERT INTO sensors VALUES (1, 'Breaker', null);",
+                "INSERT INTO sensors VALUES (2, 'Mains', 1);",
+                "INSERT INTO sensors VALUES (3, 'Bedroom Light Switch', 1);",
+                "INSERT INTO sensors VALUES (4, 'Bedroom Lights', 3);",
+                "INSERT INTO sensors VALUES (5, 'Bathroom Lights', 1);",
+                "DROP TABLE IF EXISTS events CASCADE;",
+                "CREATE TABLE events (id INTEGER, sensor_id INTEGER, power_usage INTEGER);",
+                "INSERT INTO events VALUES (1, 2, 1050);",
+                "INSERT INTO events VALUES (2, 3, 150);",
+                "INSERT INTO events VALUES (3, 4, 300);",
+                "INSERT INTO events VALUES (4, 5, 130);"
+            ],
+            "expectedOutput": [
+                {
+                    "complete_path": "Breaker <- Bathroom Lights",
+                    "avg_power_usage": 130
+                },
+                {
+                    "complete_path": "Breaker <- Bathroom Light Switch <- Bedroom Lights",
+                    "avg_power_usage": 225
+                },
+                {
+                    "complete_path": "Breaker <- Mains",
+                    "avg_power_usage": 1050
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS sensors CASCADE;",
+                "CREATE TABLE sensors (id INTEGER, name TEXT, prev_sensor_id INTEGER);",
+                "INSERT INTO sensors VALUES (1, 'Breaker', null);",
+                "INSERT INTO sensors VALUES (2, 'Kitchen Mains', 1);",
+                "INSERT INTO sensors VALUES (3, 'Bathroom Mains', 1);",
+                "INSERT INTO sensors VALUES (4, 'Hair Dryer', 3);",
+                "INSERT INTO sensors VALUES (5, 'Washing Machine', 3);",
+                "INSERT INTO sensors VALUES (6, 'Fridge', 2);",
+                "INSERT INTO sensors VALUES (7, 'Dishwasher', 2);",
+                "INSERT INTO sensors VALUES (8, 'Electric Stove', 1);",
+                "DROP TABLE IF EXISTS events CASCADE;",
+                "CREATE TABLE events (id INTEGER, sensor_id INTEGER, power_usage INTEGER);",
+                "INSERT INTO events VALUES (1, 2, 2000);",
+                "INSERT INTO events VALUES (2, 3, 1500);",
+                "INSERT INTO events VALUES (3, 4, 500);",
+                "INSERT INTO events VALUES (4, 5, 1000);",
+                "INSERT INTO events VALUES (5, 6, 1000);",
+                "INSERT INTO events VALUES (6, 7, 1000);",
+                "INSERT INTO events VALUES (7, 8, 3000);"
+            ],
+            "expectedOutput": [
+                {
+                    "complete_path": "Breaker <- Bathroom Mains <- Hair Dryer",
+                    "avg_power_usage": 1000
+                },
+                {
+                    "complete_path": "Breaker <- Bathroom Mains <- Washing Machine",
+                    "avg_power_usage": 1250
+                },
+                {
+                    "complete_path": "Breaker <- Electric Stove",
+                    "avg_power_usage": 3000
+                },
+                {
+                    "complete_path": "Breaker <- Kitchen Mains <- Dishwasher",
+                    "avg_power_usage": 1500
+                },
+                {
+                    "complete_path": "Breaker <- Kitchen Mains <- Fridge",
+                    "avg_power_usage": 1500
+                }
+            ]
+        }
+    ]
+}
