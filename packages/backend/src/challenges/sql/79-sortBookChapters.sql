@@ -1,39 +1,43 @@
-WITH unnested AS (
-    SELECT
-        chapter_name,
-        UNNEST(STRING_TO_ARRAY(chapter_number, NULL)) AS symbol
-    FROM book_chapters
-),
-numbered AS (
-    SELECT *, ROW_NUMBER() OVER () AS rn
-    FROM unnested
-),
-roman_to_integer AS (
+WITH roman_arabic AS (
     SELECT *
-    FROM (
-        VALUES 
-            ('I', 1),
-            ('V', 5),
-            ('X', 10),
-            ('L', 50),
-            ('C', 100),
-            ('D', 500),
-            ('M', 1000)
-    ) AS t(roman, value)
-),
-integer_chapter_number AS (
-    SELECT
-        t1.chapter_name,
-        SUM(
-            CASE
-                WHEN (SELECT value FROM roman_to_integer WHERE roman = t1.symbol) < (SELECT value FROM roman_to_integer WHERE roman = t2.symbol) THEN -1
-                ELSE 1
-            END * (SELECT value FROM roman_to_integer WHERE roman = t1.symbol)
-        ) AS chapter_number
-    FROM numbered AS t1
-    LEFT JOIN numbered AS t2 ON t1.chapter_name = t2.chapter_name AND t1.rn+1 = t2.rn
-    GROUP BY t1.chapter_name
+    FROM (VALUES
+        ('I', 1),
+        ('V', 5),
+        ('X', 10),
+        ('L', 50),
+        ('C', 100),
+        ('D', 100),
+        ('M', 100)
+    ) AS t(roman, arabic)
 )
 SELECT chapter_name
-FROM integer_chapter_number
-ORDER BY chapter_number;
+FROM (
+    SELECT
+        chapter_name,
+        SUM(
+            CASE
+                WHEN roman >= next_roman OR next_roman IS NULL THEN 1
+                ELSE -1
+            END * roman
+        ) AS arabic 
+    FROM (
+        SELECT
+            chapter_name,
+            (SELECT arabic FROM roman_arabic AS r WHERE r.roman = p.roman) AS roman,
+            (SELECT arabic FROM roman_arabic AS r WHERE r.roman = p.next_roman) AS next_roman
+        FROM (
+            SELECT
+                chapter_name,
+                roman,
+                LEAD(roman) OVER (PARTITION BY chapter_name) AS next_roman
+            FROM (
+                SELECT
+                    chapter_name,
+                    UNNEST(STRING_TO_ARRAY(chapter_number, NULL)) AS roman
+                FROM book_chapters
+            )
+        ) AS p
+    )
+    GROUP BY chapter_name
+)
+ORDER BY arabic;
