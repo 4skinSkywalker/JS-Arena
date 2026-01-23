@@ -48,6 +48,38 @@
                     "var_type": "Float"
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS inheritance CASCADE;",
+                "CREATE TABLE inheritance (derived TEXT, base TEXT);",
+                "INSERT INTO inheritance VALUES ('Float', 'Number'), ('Long', 'Number'), ('Float64', 'Float'), ('Float128', 'Float64'), ('Float256', 'Float128'), ('Float512', 'Float256'), ('Number', 'Object');",
+                "DROP TABLE IF EXISTS variables CASCADE;",
+                "CREATE TABLE variables (var_name TEXT, type TEXT);",
+                "INSERT INTO variables VALUES ('A', 'Float512'), ('B', 'Float256'), ('C', 'Float128'), ('D', 'Float64'), ('E', 'Float'), ('F', 'Object');"
+            ],
+            "expectedOutput": [
+                {
+                    "var_name": "A",
+                    "var_type": "Float512"
+                },
+                {
+                    "var_name": "B",
+                    "var_type": "Float256"
+                },
+                {
+                    "var_name": "C",
+                    "var_type": "Float128"
+                },
+                {
+                    "var_name": "D",
+                    "var_type": "Float64"
+                },
+                {
+                    "var_name": "E",
+                    "var_type": "Float"
+                }
+            ]
         }
     ]
 }
