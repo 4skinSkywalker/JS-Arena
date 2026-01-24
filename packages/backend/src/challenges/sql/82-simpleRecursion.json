@@ -1,0 +1,69 @@
+{
+    "additionalTitle": "Recursive Queries",
+    "rating": 6,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS number CASCADE;",
+                "CREATE TABLE number (n INTEGER);",
+                "INSERT INTO number VALUES (5);"
+            ],
+            "expectedOutput": [
+                {
+                    "n": 1
+                },
+                {
+                    "n": 2
+                },
+                {
+                    "n": 3
+                },
+                {
+                    "n": 4
+                },
+                {
+                    "n": 5
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS number CASCADE;",
+                "CREATE TABLE number (n INTEGER);",
+                "INSERT INTO number VALUES (10);"
+            ],
+            "expectedOutput": [
+                {
+                    "n": 1
+                },
+                {
+                    "n": 2
+                },
+                {
+                    "n": 3
+                },
+                {
+                    "n": 4
+                },
+                {
+                    "n": 5
+                },
+                {
+                    "n": 6
+                },
+                {
+                    "n": 7
+                },
+                {
+                    "n": 8
+                },
+                {
+                    "n": 9
+                },
+                {
+                    "n": 10
+                }
+            ]
+        }
+    ]
+}

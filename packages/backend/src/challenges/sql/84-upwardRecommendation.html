@@ -1,0 +1,134 @@
+<p>
+    Find the upward recommendation chain for the member with ID 7.
+    This means identifying who recommended them, who recommended that member, and so on.
+    The final output should include each member's ID, first name, and surname in the chain.
+</p>
+
+<h3>Structure</h3>
+<p>The member information is stored in the following table:</p>
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>members</strong>:
+        <ul>
+            <li><strong>memid</strong>: Unique identifier for the member.</li>
+            <li><strong>surname</strong>: The member's last name.</li>
+            <li><strong>firstname</strong>: The member's first name.</li>
+            <li><strong>recommendedby</strong>: ID of the member who recommended them.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Task</h3>
+<p>
+    Your task is to write a query that finds the recommendation chain starting from the member with ID 27.
+    The result should list each member in this chain with their ID, first name, and surname,
+    ordered by descending member ID.
+</p>
+
+<h3>Example</h3>
+<p>Given the following <strong>members</strong> table:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>memid</th>
+            <th>surname</th>
+            <th>firstname</th>
+            <th>recommendedby</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Smith</td>
+            <td>John</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Doe</td>
+            <td>Jane</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Brown</td>
+            <td>Michael</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Johnson</td>
+            <td>Emily</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Williams</td>
+            <td>Daniel</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Taylor</td>
+            <td>Sarah</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Anderson</td>
+            <td>James</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Thomas</td>
+            <td>Olivia</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Jackson</td>
+            <td>David</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>White</td>
+            <td>Sophia</td>
+            <td>9</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Output</h3>
+<p>The expected result for member ID 7 would look like this:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>memid</th>
+            <th>firstname</th>
+            <th>surname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>7</td>
+            <td>Anderson</td>
+            <td>James</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Daniel</td>
+            <td>Williams</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane</td>
+            <td>Doe</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John</td>
+            <td>Smith</td>
+        </tr>
+    </tbody>
+</table>

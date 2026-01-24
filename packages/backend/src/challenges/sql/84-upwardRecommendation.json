@@ -1,0 +1,93 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS members CASCADE;",
+                "CREATE TABLE members (memid INTEGER, surname TEXT, firstname TEXT, recommendedby INTEGER);",
+                "INSERT INTO members VALUES (1, 'Smith', 'John', NULL);",
+                "INSERT INTO members VALUES (2, 'Doe', 'Jane', 1);",
+                "INSERT INTO members VALUES (3, 'Brown', 'Michael', 1);",
+                "INSERT INTO members VALUES (4, 'Johnson', 'Emily', 2);",
+                "INSERT INTO members VALUES (5, 'Williams', 'Daniel', 2);",
+                "INSERT INTO members VALUES (6, 'Taylor', 'Sarah', 3);",
+                "INSERT INTO members VALUES (7, 'Anderson', 'James', 5);",
+                "INSERT INTO members VALUES (8, 'Thomas', 'Olivia', 4);",
+                "INSERT INTO members VALUES (9, 'Jackson', 'David', NULL);",
+                "INSERT INTO members VALUES (10, 'White', 'Sophia', 9);"
+            ],
+            "expectedOutput": [
+                {
+                    "memid": 7,
+                    "firstname": "James",
+                    "surname": "Anderson"
+                },
+                {
+                    "memid": 5,
+                    "firstname": "Daniel",
+                    "surname": "Williams"
+                },
+                {
+                    "memid": 2,
+                    "firstname": "Jane",
+                    "surname": "Doe"
+                },
+                {
+                    "memid": 1,
+                    "firstname": "John",
+                    "surname": "Smith"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS members CASCADE;",
+                "CREATE TABLE members (memid INTEGER, firstname TEXT, surname TEXT, recommendedby INTEGER);",
+                "INSERT INTO members VALUES (1, 'First', 'Tsrif', NULL);",
+                "INSERT INTO members VALUES (2, 'Second', 'Dnoces', 1);",
+                "INSERT INTO members VALUES (3, 'Third', 'Driht', 2);",
+                "INSERT INTO members VALUES (4, 'Fourth', 'Htruof', 3);",
+                "INSERT INTO members VALUES (5, 'Fifth', 'Htfif', 4);",
+                "INSERT INTO members VALUES (6, 'Sixth', 'Htxis', 5);",
+                "INSERT INTO members VALUES (7, 'Seventh', 'Htneves', 6);"
+            ],
+            "expectedOutput": [
+                {
+                    "memid": 7,
+                    "firstname": "Seventh",
+                    "surname": "Htneves"
+                },
+                {
+                    "memid": 6,
+                    "firstname": "Sixth",
+                    "surname": "Htxis"
+                },
+                {
+                    "memid": 5,
+                    "firstname": "Fifth",
+                    "surname": "Htfif"
+                },
+                {
+                    "memid": 4,
+                    "firstname": "Fourth",
+                    "surname": "Htruof"
+                },
+                {
+                    "memid": 3,
+                    "firstname": "Third",
+                    "surname": "Driht"
+                },
+                {
+                    "memid": 2,
+                    "firstname": "Second",
+                    "surname": "Dnoces"
+                },
+                {
+                    "memid": 1,
+                    "firstname": "First",
+                    "surname": "Tsrif"
+                }
+            ]
+        }
+    ]
+}
