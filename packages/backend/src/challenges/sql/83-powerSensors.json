@@ -23,7 +23,7 @@
                     "avg_power_usage": 130
                 },
                 {
-                    "complete_path": "Breaker <- Bathroom Light Switch <- Bedroom Lights",
+                    "complete_path": "Breaker <- Bedroom Light Switch <- Bedroom Lights",
                     "avg_power_usage": 225
                 },
                 {
