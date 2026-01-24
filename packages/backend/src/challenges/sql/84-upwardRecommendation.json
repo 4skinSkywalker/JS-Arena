@@ -13,11 +13,6 @@
             ],
             "expectedOutput": [
                 {
-                    "memid": 7,
-                    "firstname": "James",
-                    "surname": "Anderson"
-                },
-                {
                     "memid": 5,
                     "firstname": "Daniel",
                     "surname": "Williams"
@@ -37,14 +32,14 @@
         {
             "scripts": [
                 "DROP TABLE IF EXISTS members CASCADE;",
-                "CREATE TABLE members (memid INTEGER, firstname TEXT, surname TEXT, recommendedby INTEGER);",
-                "INSERT INTO members VALUES (1, 'First', 'Tsrif', NULL);",
-                "INSERT INTO members VALUES (2, 'Second', 'Dnoces', 1);",
-                "INSERT INTO members VALUES (3, 'Third', 'Driht', 2);",
-                "INSERT INTO members VALUES (4, 'Fourth', 'Htruof', 3);",
-                "INSERT INTO members VALUES (5, 'Fifth', 'Htfif', 4);",
-                "INSERT INTO members VALUES (6, 'Sixth', 'Htxis', 5);",
-                "INSERT INTO members VALUES (7, 'Seventh', 'Htneves', 6);"
+                "CREATE TABLE members (memid INTEGER, surname TEXT, firstname TEXT, recommendedby INTEGER);",
+                "INSERT INTO members VALUES (1, 'Tsrif', 'First', NULL);",
+                "INSERT INTO members VALUES (2, 'Dnoces', 'Second', 1);",
+                "INSERT INTO members VALUES (3, 'Driht', 'Third', 2);",
+                "INSERT INTO members VALUES (4, 'Htruof', 'Fourth', 3);",
+                "INSERT INTO members VALUES (5, 'Htfif', 'Fifth', 4);",
+                "INSERT INTO members VALUES (6, 'Htxis', 'Sixth', 5);",
+                "INSERT INTO members VALUES (7, 'Htneves', 'Seventh', 6);"
             ],
             "expectedOutput": [
                 {
