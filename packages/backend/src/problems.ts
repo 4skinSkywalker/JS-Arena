@@ -50,6 +50,12 @@ function popuplateProblemsByLanguage(lang: EnumLang) {
             : a.rating - b.rating
     );
 
+    languages['SQL'].problems.sort((a, b) => {
+        const aidx = Number(a.filename.split('-')[0]);
+        const bidx = Number(b.filename.split('-')[0]);
+        return aidx - bidx;
+    });
+
     languages[lang].problems.forEach(p => languages[lang].filenameProblemMap.set(p.filename, p));
 }
 

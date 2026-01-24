@@ -1,0 +1,102 @@
+<p>
+  Identify contiguous intervals of numbers (islands) and separations (gaps) within a given sequence from a database.
+  The task is to return a list of intervals that represent islands, as well as concatenate the intervals representing
+  gaps.
+</p>
+
+<h3>Structure</h3>
+<p>The sequence of numbers is stored in the sequence table: </p>
+<ul class="list-group list-group-flush my-3">
+  <li class="list-group-item"><strong>value</strong>: an integer representing each element in the sequence.</li>
+</ul>
+
+<h3>Example</h3>
+<p>Here is an example of the <strong>sequence</strong> table:</p>
+<table class="table table-striped my-3">
+  <thead>
+    <tr>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Output</h3>
+<p>The query should return the following, specifying the type of each interval:</p>
+<table class="table table-striped my-3">
+  <thead>
+    <tr>
+      <th>type</th>
+      <th>start</th>
+      <th>end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>island</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>island</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>island</td>
+      <td>20</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>island</td>
+      <td>30</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>gap</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>gap</td>
+      <td>10</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>gap</td>
+      <td>21</td>
+      <td>30</td>
+    </tr>
+  </tbody>
+</table>
