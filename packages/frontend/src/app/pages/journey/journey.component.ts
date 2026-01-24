@@ -51,16 +51,36 @@ export class JourneyComponent {
   }
 
   replaceOldLocalStorageFormat() {
+    // Fix editor contents
     Object.entries(localStorage)
       .sort(([k1], [k2]) => k1.localeCompare(k2))
       .forEach(([k, v]) => {
-        const m = k.match(/^(arcade-editor-content-)\d\+(?:.\d+)?-(.*)$/);
+        const m = k.match(/^(arcade-editor-content-)\d+(?:.\d+)?-(.*)$/);
         if (m) {
           const newKey = m[1] + m[2];
           localStorage.removeItem(k);
           localStorage.setItem(newKey, v);
         }
       });
+    
+    // Fix game states
+    const lsKeys = ['arcade-state-favorite', 'arcade-state'];
+    lsKeys.forEach(lsKey => {
+      const state = localStorage.getItem(lsKey);
+      if (state) {
+        const parsed = JSON.parse(state);
+        Object.entries(parsed)
+          .sort(([k1], [k2]) => k1.localeCompare(k2))
+          .forEach(([k, v]) => {
+            const m = k.match(/^\d+(?:.\d+)?-(.*)$/);
+            if (m) {
+              delete parsed[k];
+              parsed[m[1]] = v;
+            }
+          });
+        localStorage.setItem(lsKey, JSON.stringify(parsed));
+      }
+    });
   }
 
   async handleProblemTitlesReceived(msg: IProblemTitlesReceivedMessage) {

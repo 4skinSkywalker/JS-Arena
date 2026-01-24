@@ -62,7 +62,7 @@ function popuplateProblemsByLanguage(lang: EnumLang) {
     });
     languages['SQL'].problems.forEach(p => {
         // Remove filename numeric prefix
-        return { ...p, filename: p.filename.split('-')[1] };
+        p.filename = p.filename.split('-')[1];
     });
 
     languages[lang].problems.forEach(p => languages[lang].filenameProblemMap.set(p.filename, p));
