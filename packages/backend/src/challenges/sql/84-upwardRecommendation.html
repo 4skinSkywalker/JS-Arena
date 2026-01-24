@@ -1,5 +1,5 @@
 <p>
-    Your task is to write a query that finds the recommendation chain starting from the member with ID 7.
+    Your task is to write a query that finds the recommendation chain starting from the member with highest ID.
     The result should list each member in this chain with their ID, first name, and surname,
     ordered by descending member ID.
 </p>
@@ -55,23 +55,11 @@
             <td>Daniel</td>
             <td>2</td>
         </tr>
-        <tr>
-            <td>6</td>
-            <td>Taylor</td>
-            <td>Sarah</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Anderson</td>
-            <td>James</td>
-            <td>5</td>
-        </tr>
     </tbody>
 </table>
 
 <h3>Output</h3>
-<p>The expected result for member ID 7 would look like this:</p>
+<p>The expected result for member with the highest ID would look like this:</p>
 <table class="table table-striped my-3">
     <thead>
         <tr>
@@ -81,11 +69,6 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>7</td>
-            <td>Anderson</td>
-            <td>James</td>
-        </tr>
         <tr>
             <td>5</td>
             <td>Daniel</td>

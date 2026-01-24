@@ -9,9 +9,7 @@
                 "INSERT INTO members VALUES (2, 'Doe', 'Jane', 1);",
                 "INSERT INTO members VALUES (3, 'Brown', 'Michael', 1);",
                 "INSERT INTO members VALUES (4, 'Johnson', 'Emily', 2);",
-                "INSERT INTO members VALUES (5, 'Williams', 'Daniel', 2);",
-                "INSERT INTO members VALUES (6, 'Taylor', 'Sarah', 3);",
-                "INSERT INTO members VALUES (7, 'Anderson', 'James', 5);"
+                "INSERT INTO members VALUES (5, 'Williams', 'Daniel', 2);"
             ],
             "expectedOutput": [
                 {
