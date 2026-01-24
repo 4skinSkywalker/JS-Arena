@@ -2,12 +2,11 @@
   Determine the average power usage for all sensors in a specified chain (e.g., Bedroom Lights -> Light
   Switch -> Breaker), the result should be rounded to the nearest integer. For better debugging,
   the path through each sensor will also be displayed.
-  Sort the results by the complete_path in lexicographic ascending order.
 </p>
+<p>Sort the results by the <code>complete_path</code> in lexicographic ascending order.</p>
 
 <h3>Data Structure</h3>
 <p>The information is stored in the following tables:</p>
-
 <ul class="list-group list-group-flush my-3">
   <li class="list-group-item"><strong>sensors</strong>: Contains the ID, name, and previous sensor ID in the chain.</li>
   <li class="list-group-item"><strong>events</strong>: Records the sensor ID and the power usage in Watts.</li>
