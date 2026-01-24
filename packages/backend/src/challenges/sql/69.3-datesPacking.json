@@ -3,10 +3,44 @@
     "tests": [
         {
             "scripts": [
-                "DROP TABLE IF EXISTS sequence CASCADE;"
+                "DROP TABLE IF EXISTS dates CASCADE;",
+                "CREATE TABLE dates (date_start TEXT, date_end TEXT);",
+                "INSERT INTO dates VALUES ('2020-01-01', '2020-01-31');",
+                "INSERT INTO dates VALUES ('2020-01-15', '2020-02-22');",
+                "INSERT INTO dates VALUES ('2020-03-01', '2020-03-31');",
+                "INSERT INTO dates VALUES ('2020-02-26', '2020-04-26');",
+                "INSERT INTO dates VALUES ('2020-04-27', '2020-04-29');",
+                "INSERT INTO dates VALUES ('2020-05-01', '2020-05-31');"
             ],
             "expectedOutput": [
-                {}
+                {
+                    "start": "2020-01-01",
+                    "end": "2020-02-22"
+                },
+                {
+                    "start": "2020-02-26",
+                    "end": "2020-04-29"
+                },
+                {
+                    "start": "2020-05-01",
+                    "end": "2020-05-31"
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS dates CASCADE;",
+                "CREATE TABLE dates (date_start TEXT, date_end TEXT);",
+                "INSERT INTO dates VALUES ('2020-01-01', '2021-01-31');",
+                "INSERT INTO dates VALUES ('2020-01-15', '2020-02-15');",
+                "INSERT INTO dates VALUES ('2020-03-15', '2020-04-15');",
+                "INSERT INTO dates VALUES ('2021-02-01', '2021-02-05');"
+            ],
+            "expectedOutput": [
+                {
+                    "start": "2020-01-01",
+                    "end": "2021-02-05"
+                }
             ]
         }
     ]

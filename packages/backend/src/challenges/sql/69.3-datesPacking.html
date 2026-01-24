@@ -1,0 +1,79 @@
+<p>
+    Your task is to merge overlapping or consecutive date intervals from a database. You'll be given
+    a set of date ranges, and your goal is to combine them into the fewest possible intervals that represent the same
+    overall coverage.
+</p>
+
+<h3>Structure</h3>
+<p>The date ranges are stored in the following table <code>dates</code>:</p>
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>date_start</strong>: Represents the start date of an interval.</li>
+    <li class="list-group-item"><strong>date_end</strong>: Represents the end date of an interval.</li>
+</ul>
+
+<h3>Example</h3>
+<p>Given the following <strong>dates</strong> table:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>date_start</th>
+            <th>date_end</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2020-01-01</td>
+            <td>2020-01-31</td>
+        </tr>
+        <tr>
+            <td>2020-01-15</td>
+            <td>2020-02-22</td>
+        </tr>
+        <tr>
+            <td>2020-03-01</td>
+            <td>2020-03-31</td>
+        </tr>
+        <tr>
+            <td>2020-02-26</td>
+            <td>2020-04-26</td>
+        </tr>
+        <tr>
+            <td>2020-04-27</td>
+            <td>2020-04-30</td>
+        </tr>
+        <tr>
+            <td>2020-05-01</td>
+            <td>2020-05-31</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Output</h3>
+<p>The query should return the following merged intervals:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>start</th>
+            <th>end</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2020-01-01</td>
+            <td>2020-02-22</td>
+        </tr>
+        <tr>
+            <td>2020-02-26</td>
+            <td>2020-04-29</td>
+        </tr>
+        <tr>
+            <td>2020-05-01</td>
+            <td>2020-05-31</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    For each data set, your query should effectively combine periods and produce results that correctly represent the
+    continuous coverage of dates without unnecessary overlaps.
+</p>

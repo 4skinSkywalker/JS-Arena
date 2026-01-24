@@ -44,26 +44,34 @@ function popuplateProblemsByLanguage(lang: EnumLang) {
         }
     }
 
-    languages['JS'].problems.sort((a, b) =>
-        // Sort by rating and filename
-        (a.rating === b.rating)
-            ? a.filename.localeCompare(b.filename)
-            : a.rating - b.rating
-    );
-    languages['JS'].problems.forEach(p => {
-        // NOP
-    });
-
-    languages['SQL'].problems.sort((a, b) => {
-        // Sort by filename numeric prefix
-        const aidx = Number(a.filename.split('-')[0]);
-        const bidx = Number(b.filename.split('-')[0]);
-        return aidx - bidx;
-    });
-    languages['SQL'].problems.forEach(p => {
-        // Remove filename numeric prefix
-        p.filename = p.filename.split('-')[1];
-    });
+    switch (true) {
+        case (lang === EnumLang.JS): {
+            languages[lang].problems.sort((a, b) =>
+                // Sort by rating and filename
+                (a.rating === b.rating)
+                    ? a.filename.localeCompare(b.filename)
+                    : a.rating - b.rating
+            );
+            languages[lang].problems.forEach(p => {
+                // NOP
+            });
+            break;
+        }
+        case (lang === EnumLang.SQL): {
+            languages[lang].problems.sort((a, b) => {
+                // Sort by filename numeric prefix
+                const aidx = Number(a.filename.split('-')[0]);
+                const bidx = Number(b.filename.split('-')[0]);
+                return aidx - bidx;
+            });
+            languages[lang].problems.forEach(p => {
+                // Remove filename numeric prefix and recalculate title
+                p.filename = p.filename.split('-')[1];
+                p.title = titlecase(decamelize(p.filename));
+            });
+            break;
+        }
+    }
 
     languages[lang].problems.forEach(p => languages[lang].filenameProblemMap.set(p.filename, p));
 }
