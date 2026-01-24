@@ -1,28 +1,17 @@
 <p>
-    Find the upward recommendation chain for the member with ID 7.
-    This means identifying who recommended them, who recommended that member, and so on.
-    The final output should include each member's ID, first name, and surname in the chain.
-</p>
-
-<h3>Structure</h3>
-<p>The member information is stored in the following table:</p>
-<ul class="list-group list-group-flush my-3">
-    <li class="list-group-item"><strong>members</strong>:
-        <ul>
-            <li><strong>memid</strong>: Unique identifier for the member.</li>
-            <li><strong>surname</strong>: The member's last name.</li>
-            <li><strong>firstname</strong>: The member's first name.</li>
-            <li><strong>recommendedby</strong>: ID of the member who recommended them.</li>
-        </ul>
-    </li>
-</ul>
-
-<h3>Task</h3>
-<p>
-    Your task is to write a query that finds the recommendation chain starting from the member with ID 27.
+    Your task is to write a query that finds the recommendation chain starting from the member with ID 7.
     The result should list each member in this chain with their ID, first name, and surname,
     ordered by descending member ID.
 </p>
+
+<h3>Structure</h3>
+<p>The member information is stored in the following way:</p>
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>memid</strong>: Unique identifier for the member.</li>
+    <li class="list-group-item"><strong>surname</strong>: The member's last name.</li>
+    <li class="list-group-item"><strong>firstname</strong>: The member's first name.</li>
+    <li class="list-group-item"><strong>recommendedby</strong>: ID of the member who recommended them.</li>
+</ul>
 
 <h3>Example</h3>
 <p>Given the following <strong>members</strong> table:</p>
