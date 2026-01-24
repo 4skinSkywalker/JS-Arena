@@ -38,6 +38,7 @@ export class JourneyComponent {
     private loaderService: LoaderService,
     private route: ActivatedRoute
   ) {
+    this.replaceOldLocalStorageFormat();
     this.lang = (this.route.snapshot.data as { lang: EnumLang }).lang;
     this.api.subscribe(this.handlers);
     this.api.send("getProblemTitles", { lang: this.lang });
@@ -47,6 +48,19 @@ export class JourneyComponent {
   ngOnDestroy() {
     this.api.unsubscribe(this.handlers);
     this.loaderService.isLoading.set(false);
+  }
+
+  replaceOldLocalStorageFormat() {
+    Object.entries(localStorage)
+      .sort(([k1], [k2]) => k1.localeCompare(k2))
+      .forEach(([k, v]) => {
+        const m = k.match(/^(arcade-editor-content-)\d\+(?:.\d+)?-(.*)$/);
+        if (m) {
+          const newKey = m[1] + m[2];
+          localStorage.removeItem(k);
+          localStorage.setItem(newKey, v);
+        }
+      });
   }
 
   async handleProblemTitlesReceived(msg: IProblemTitlesReceivedMessage) {

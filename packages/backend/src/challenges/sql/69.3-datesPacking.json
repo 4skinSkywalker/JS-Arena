@@ -1,0 +1,13 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS sequence CASCADE;"
+            ],
+            "expectedOutput": [
+                {}
+            ]
+        }
+    ]
+}

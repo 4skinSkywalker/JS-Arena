@@ -45,15 +45,24 @@ function popuplateProblemsByLanguage(lang: EnumLang) {
     }
 
     languages['JS'].problems.sort((a, b) =>
-        (a.rating  === b.rating)
+        // Sort by rating and filename
+        (a.rating === b.rating)
             ? a.filename.localeCompare(b.filename)
             : a.rating - b.rating
     );
+    languages['JS'].problems.forEach(p => {
+        // NOP
+    });
 
     languages['SQL'].problems.sort((a, b) => {
+        // Sort by filename numeric prefix
         const aidx = Number(a.filename.split('-')[0]);
         const bidx = Number(b.filename.split('-')[0]);
         return aidx - bidx;
+    });
+    languages['SQL'].problems.forEach(p => {
+        // Remove filename numeric prefix
+        return { ...p, filename: p.filename.split('-')[1] };
     });
 
     languages[lang].problems.forEach(p => languages[lang].filenameProblemMap.set(p.filename, p));
