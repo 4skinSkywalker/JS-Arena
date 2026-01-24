@@ -1,36 +1,34 @@
-WITH locations_with_sizes AS (
+WITH t AS (
     SELECT
-        *,
+        los.id AS ship_id,
+        os.id AS shot_id,
+        (
+            target_x >= upper_left_x AND
+            target_x <= bottom_right_x AND
+            target_y >= upper_left_y AND
+            target_y <= bottom_right_y
+        )::INTEGER AS hit,
         CASE
-            WHEN dx = 0 THEN dy
-            ELSE dx
-        END + 1 AS size
-    FROM (
-        SELECT
-            *,
-            bottom_right_x - upper_left_x AS dx,
-            bottom_right_y - upper_left_y AS dy
-        FROM locations_of_ships
-    )
-),
-hits AS (
-    SELECT
-        lws.id AS ship_id,
-        COUNT(*) AS hits
-    FROM opponents_shots AS os
-    LEFT JOIN locations_with_sizes AS lws
-        ON os.target_x >= lws.upper_left_x AND
-           os.target_x <= lws.bottom_right_x AND
-           os.target_y >= lws.upper_left_y AND
-           os.target_y <= lws.bottom_right_y
-    GROUP BY lws.id, size
+            WHEN upper_left_x = bottom_right_x THEN bottom_right_y - upper_left_y
+            ELSE bottom_right_x - upper_left_x
+        END + 1 AS ship_size
+    FROM locations_of_ships AS los
+    CROSS JOIN opponents_shots AS os
 )
 SELECT
-    size,
-    SUM(CASE WHEN hits IS NULL OR hits = 0 THEN 1 ELSE 0 END) AS undamaged,
-    SUM(CASE WHEN size > hits THEN 1 ELSE 0 END) AS partly_damaged,
-    SUM(CASE WHEN size = hits THEN 1 ELSE 0 END) AS sunk
-FROM locations_with_sizes
-LEFT JOIN hits ON ship_id = id
-GROUP BY size
-ORDER BY size;
+    ship_size AS size,
+    SUM(undamaged) AS undamaged,
+    SUM(partly_damaged) AS partly_damaged,
+    SUM(sunk) AS sunk
+FROM (
+    SELECT
+        ship_id,
+        ship_size,
+        (SUM(hit) = 0)::INTEGER AS undamaged,
+        (SUM(hit) != 0 AND SUM(hit) != ship_size)::INTEGER AS partly_damaged,
+        (SUM(hit) = ship_size)::INTEGER AS sunk
+    FROM t
+    GROUP BY ship_id, ship_size
+)
+GROUP BY ship_size
+ORDER BY ship_size;
