@@ -4,14 +4,14 @@ SELECT
 FROM (
     SELECT
         date,
-        TO_CHAR(date - ((DENSE_RANK() OVER (ORDER BY date)) || ' day')::INTERVAL, 'yyyy-mm-dd') AS grp
+        (date - DENSE_RANK() OVER (ORDER BY date) * '1 day'::INTERVAL) AS grp
     FROM (
         SELECT date
         FROM dates AS d
         CROSS JOIN GENERATE_SERIES(
             d.date_start::DATE,
             d.date_end::DATE,
-            '1 day'::INTERVAL
+            INTERVAL '1 day'
         ) AS t(date)
     )
 )
