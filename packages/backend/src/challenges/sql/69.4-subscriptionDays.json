@@ -1,0 +1,39 @@
+{
+    "rating": 7,
+    "tests": [
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS subscriptions CASCADE;",
+                "CREATE TABLE subscriptions (user_id INTEGER, start_date TEXT, end_date TEXT);",
+                "INSERT INTO subscriptions VALUES (1, '2024-01-01', '2024-01-10'), (1, '2024-01-11', '2024-01-20'), (1, '2024-02-01', '2024-02-10'), (2, '2024-01-05', '2024-01-15'), (2, '2024-01-14', '2024-01-25');"
+            ],
+            "expectedOutput": [
+                {
+                    "user_id": 1,
+                    "total_days": 30
+                },
+                {
+                    "user_id": 2,
+                    "total_days": 21
+                }
+            ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS subscriptions CASCADE;",
+                "CREATE TABLE subscriptions (user_id INTEGER, start_date TEXT, end_date TEXT);",
+                "INSERT INTO subscriptions VALUES (10, '2020-01-01', '2020-01-02'), (10, '2020-01-01', '2020-01-02'), (100, '2020-01-01', '2020-01-02'), (100, '2020-01-01', '2020-01-02');"
+            ],
+            "expectedOutput": [
+                {
+                    "user_id": 10,
+                    "total_days": 2
+                },
+                {
+                    "user_id": 100,
+                    "total_days": 2
+                }
+            ]
+        }
+    ]
+}

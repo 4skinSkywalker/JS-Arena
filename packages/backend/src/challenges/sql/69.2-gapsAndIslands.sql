@@ -1,7 +1,3 @@
-WITH t AS (
-    SELECT value, ROW_NUMBER() OVER (ORDER BY value) AS rn
-    FROM sequence
-)
 SELECT
     'island' AS type,
     MIN(value) AS start,
@@ -18,8 +14,12 @@ UNION ALL
 
 SELECT
     'gap' AS type,
-    t1.value AS start,
-    t2.value AS end
-FROM t AS t1
-JOIN t AS t2 ON t1.rn + 1 = t2.rn
-WHERE t2.value - t1.value > 1;
+    value AS start,
+    next_value AS end
+FROM (
+    SELECT
+        value,
+        LEAD(value) OVER (ORDER BY value) AS next_value
+    FROM sequence
+)
+WHERE next_value - value > 1;

@@ -1,0 +1,80 @@
+<p>
+    Your task is to calculate the total number of days each user was subscribed, taking into account any overlapping or
+    consecutive subscription periods. You need to merge these periods to determine the correct total coverage for each
+    user.
+</p>
+
+<h3>Structure</h3>
+<p>The subscription periods are stored in the following table <code>subscriptions</code>:</p>
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item"><strong>user_id</strong>: The unique identifier for each user.</li>
+    <li class="list-group-item"><strong>start_date</strong>: The start date of the subscription period.</li>
+    <li class="list-group-item"><strong>end_date</strong>: The end date of the subscription period.</li>
+</ul>
+
+<p>Keep in mind the following rules:</p>
+<ul class="list-group list-group-flush my-3">
+    <li class="list-group-item">Consecutive periods must be merged;</li>
+    <li class="list-group-item">Overlaps must be merged;</li>
+    <li class="list-group-item">Assume dates are inclusive.</li>
+</ul>
+
+<h3>Example</h3>
+<p>Given the following <strong>subscriptions</strong> table:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>user_id</th>
+            <th>start_date</th>
+            <th>end_date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>'2024-01-01'</td>
+            <td>'2024-01-10'</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>'2024-01-11'</td>
+            <td>'2024-01-20'</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>'2024-02-01'</td>
+            <td>'2024-02-10'</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>'2024-01-05'</td>
+            <td>'2024-01-15'</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>'2024-01-14'</td>
+            <td>'2024-01-25'</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Output</h3>
+<p>The query should return one row per user, with the total subscription days merged:</p>
+<table class="table table-striped my-3">
+    <thead>
+        <tr>
+            <th>user_id</th>
+            <th>total_days</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>21</td>
+        </tr>
+    </tbody>
+</table>
