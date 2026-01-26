@@ -50,7 +50,7 @@ Program:
 
 ```
 program = [
-"               v",
+">              v",
 "v  ,,,,,"Hello"<",
 ">48*,          v",
 ""!dlroW",,,,,,v>",
