@@ -11,19 +11,17 @@ function solution({height}) {
     
     // Trap water
     for (let i = 0; i < matrix.length; i++) {
-        let collectMode = false;
-        for (let j = 0; j < matrix[i].length; j++) {
-            if (matrix[i][j] === '#' && !collectMode) {
-                collectMode = !collectMode;
-            }
-            if (matrix[i][j] === ' ' && collectMode) {
-                matrix[i][j] = 'w';
-            }
+        let a = matrix[i].indexOf("#");
+        const b = matrix[i].lastIndexOf("#");
+        for (; a < b; a++) {
+            matrix[i][a] =
+                (matrix[i][a] === ' ')
+                    ? 'w'
+                    : matrix[i][a];
         }
     }
     
-    // Join matrix
-    return matrix.map(x => x.join('')).join('\n');
+    return matrix.map(x => x.join(''));
 }
 
 module.exports = solution;

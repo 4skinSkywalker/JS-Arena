@@ -1,25 +1,52 @@
 {
     "rating": 8,
+    "indentOutput": true,
     "tests": [
         {
             "input": {"height": [0,1,0,2,1,0,1,3,2,1,2,1]},
-            "expectedOutput": []
+            "expectedOutput": [
+                "       #    ",
+                "   #www##w# ",
+                " #w##w######"
+            ]
         },
         {
             "input": {"height": [4,2,0,3,2,5]},
-            "expectedOutput": []
+            "expectedOutput": [
+                "     #",
+                "#wwww#",
+                "#ww#w#",
+                "##w###",
+                "##w###"
+            ]
         },
         {
             "input": {"height": [3,0,3,0,3]},
-            "expectedOutput": []
+            "expectedOutput": [
+                "#w#w#",
+                "#w#w#",
+                "#w#w#"
+            ]
         },
         {
             "input": {"height": [1,2,3,4,5]},
-            "expectedOutput": []
+            "expectedOutput": [
+                "    #",
+                "   ##",
+                "  ###",
+                " ####",
+                "#####"
+            ]
         },
         {
             "input": {"height": [5,4,3,2,1,2,3,4,5]},
-            "expectedOutput": []
+            "expectedOutput": [
+                "#wwwwwww#",
+                "##wwwww##",
+                "###www###",
+                "####w####",
+                "#########"
+            ]
         }
     ]
 }

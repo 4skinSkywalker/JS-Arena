@@ -156,12 +156,22 @@
 
                                 <div class="mb-2">
                                     <div>Expected output</div>
-                                    <pre>{{ JSON.stringify(test.expectedOutput) }}</pre>
+                                    <pre>{{
+                                        problemIndentOutput()
+                                            ? JSON.stringify(test.expectedOutput, null, 2)
+                                            : JSON.stringify(test.expectedOutput)
+                                    }}</pre>
                                 </div>
 
                                 <div class="mb-2">
                                     <div>Your output</div>
-                                    <pre>{{ (test.output != null) ? JSON.stringify(test.output, null, 2) : test.output }}</pre>
+                                    <pre>{{
+                                        (test.output != null)
+                                            ? problemIndentOutput()
+                                                ? JSON.stringify(test.output, null, 2)
+                                                : JSON.stringify(test.output)
+                                            : test.output
+                                    }}</pre>
                                 </div>
 
                                 <div>
