@@ -161,7 +161,7 @@
 
                                 <div class="mb-2">
                                     <div>Your output</div>
-                                    <pre>{{ (test.output != null) ? JSON.stringify(test.output) : test.output }}</pre>
+                                    <pre>{{ (test.output != null) ? JSON.stringify(test.output, null, 2) : test.output }}</pre>
                                 </div>
 
                                 <div>
