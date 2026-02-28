@@ -46,6 +46,7 @@ export interface IProblem {
     tests: ITest[];
     rating: number;
     additionalTitle?: string;
+    indentOutput?: boolean;
 }
 
 export interface IClientJSON {

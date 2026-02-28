@@ -57,6 +57,7 @@ export class JSGameMultiplayerComponent {
   );
   problemDescription = signal("");
   problemTests = signal<ITest[]>([]);
+  problemIndentOutput = signal(false);
   clientProgressDataMap = signal<Record<string, IProgressDetails>>({});
   clients = computed<IClientJSON[]>(() => {
     return [...(this.room()?.clients || [])];
@@ -532,6 +533,7 @@ export class JSGameMultiplayerComponent {
       this.roomStarted.set(msg.room.started);
       this.problemDescription.set(msg.room.problem.description);
       this.problemTests.set(msg.room.problem.tests);
+      this.problemIndentOutput.set(msg.room.problem.indentOutput ?? false);
     }
   }
 
@@ -554,6 +556,7 @@ export class JSGameMultiplayerComponent {
 
     this.problemDescription.set("");
     this.problemTests.set([]);
+    this.problemIndentOutput.set(false);
 
     this.alreadyStartedOnInit.set(false);
     this.roomStarted.set(false);

@@ -41,23 +41,23 @@
             "scripts": [
                 "DROP TABLE IF EXISTS book_chapters CASCADE;",
                 "CREATE TABLE book_chapters (chapter_name TEXT, chapter_number TEXT);",
-                "INSERT INTO book_chapters VALUES ('Chapter One', 'VIII'), ('Chapter Two', 'XII'), ('Chapter Three', 'XVII'), ('Chapter Four', 'XIX'), ('Chapter Five', 'XIV');"
+                "INSERT INTO book_chapters VALUES ('The Best Cake', 'IV'), ('Flavorful Berries', 'IX'), ('Look Up But Be Careful Of What Is On The Ground', 'LXXX'), ('Another Chapter Title', 'XCIX'), ('Everyday Drink Some Water', 'XIV');"
             ],
             "expectedOutput": [
                 {
-                    "chapter_name": "Chapter One"
+                    "chapter_name": "The Best Cake"
                 },
                 {
-                    "chapter_name": "Chapter Two"
+                    "chapter_name": "Flavorful Berries"
                 },
                 {
-                    "chapter_name": "Chapter Five"
+                    "chapter_name": "Everyday Drink Some Water"
                 },
                 {
-                    "chapter_name": "Chapter Three"
+                    "chapter_name": "Look Up But Be Careful Of What Is On The Ground"
                 },
                 {
-                    "chapter_name": "Chapter Four"
+                    "chapter_name": "Another Chapter Title"
                 }
             ]
         }

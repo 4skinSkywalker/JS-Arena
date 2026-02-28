@@ -45,6 +45,7 @@ export class JSGameArcadeComponent {
   problemTitle = signal("");
   problemRating = signal("");
   problemTests = signal<ITest[]>([]);
+  problemIndentOutput = signal(false);
   problemSolved = signal(false);
   prevProblemFilename = signal<string | undefined | null>(null);
   nextProblemFilename = signal<string | undefined | null>(null);
@@ -411,6 +412,7 @@ export class JSGameArcadeComponent {
     this.problemTitle.set(msg.problem.title);
     this.problemRating.set(String(msg.problem.rating));
     this.problemTests.set(msg.problem.tests);
+    this.problemIndentOutput.set(msg.problem.indentOutput ?? false);
     this.prevProblemFilename.set(msg.problem.prevProblemFilename);
     this.nextProblemFilename.set(msg.problem.nextProblemFilename);
     this.updateUrl(this.problemFilename());
@@ -468,5 +470,6 @@ export class JSGameArcadeComponent {
     this.problemTitle.set("");
     this.problemRating.set("");
     this.problemTests.set([]);
+    this.problemIndentOutput.set(false);
   }
 }
