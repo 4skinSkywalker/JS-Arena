@@ -1,7 +1,10 @@
 SELECT Name, ID
-FROM Grades
-WHERE
-    (Midterm1 >= 25 AND Midterm2 >= 25 AND Final >= 100) OR
-    (Midterm1 >= 50 AND Midterm2 >= 50) OR
-    Final >= 200
-ORDER BY SUBSTRING(Name, 1, 3), id;
+FROM (
+    SELECT *,
+        0.25*Midterm1 + 0.25*Midterm2 + 0.5*Final AS option1,
+        0.5*Midterm1 + 0.5*Midterm2 AS option2,
+        Final AS option3
+    FROM Grades
+)
+WHERE option3 > option2 AND option3 > option1
+ORDER BY SUBSTRING(Name, 1, 3), ID;
