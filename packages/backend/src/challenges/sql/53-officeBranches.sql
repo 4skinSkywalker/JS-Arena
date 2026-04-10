@@ -1,6 +1,10 @@
-UPDATE branches
+UPDATE branches b
 SET branchtype_id = NULL
-WHERE branchtype_id IN (SELECT id FROM branch_types WHERE name ~ '-outdated$');
+WHERE EXISTS (
+    SELECT 1
+    FROM branch_types bt
+    WHERE bt.name ~ '-outdated$' AND bt.id = b.branchtype_id
+);
 
 SELECT *
 FROM branches
