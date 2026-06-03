@@ -189,7 +189,7 @@ export class SQLGameArcadeComponent {
   }
 
   setSolutionEditorContent(content: string) {
-    this.solutionEditor.setValue(`--This is the author's solution to this SQL challenge\n${content}`);
+    this.solutionEditor.setValue(`-- This is the author's solution to this SQL challenge\n${content}`);
     this.solutionEditor.clearSelection();
     this.forceSolutionEditorRefresh();
     this.startProblemSolutionUnlockCountdown();

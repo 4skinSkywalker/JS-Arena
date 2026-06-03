@@ -24,6 +24,17 @@
                     "difference": 700
                 }
             ]
+        },
+        {
+            "scripts": [
+                "DROP TABLE IF EXISTS employees CASCADE;",
+                "CREATE TABLE employees (id INTEGER, name TEXT, salary INTEGER);"
+            ],
+            "expectedOutput": [
+                {
+                    "difference": 0
+                }
+            ]
         }
     ]
 }

@@ -20,3 +20,17 @@ max_sum AS (
 )
 SELECT (max_sum - min_sum) AS difference
 FROM min_sum, max_sum;
+
+-- Another possible solution
+WITH min_max_salaries AS (
+    SELECT MIN(salary), MAX(salary)
+    FROM employees
+),
+min_max_count AS (
+    SELECT
+        COUNT(CASE WHEN salary = min THEN 1 END) AS min_count,
+        COUNT(CASE WHEN salary = max THEN 1 END) AS max_count
+    FROM employees, min_max_salaries
+)
+SELECT (max_count * max - min_count * min) AS difference
+FROM min_max_salaries, min_max_count;
