@@ -1,5 +1,7 @@
 # JS Arena
 
+<img width="1885" height="884" alt="jsarena-home" src="https://github.com/user-attachments/assets/8925660c-b601-4efd-92ff-34406168a430" />
+
 > Master JavaScript, PostgreSQL, and CSS through coding challenges.
 
 Play JS Arena directly in your browser:
