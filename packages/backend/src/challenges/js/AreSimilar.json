@@ -18,6 +18,10 @@
             "expectedOutput": true
         },
         {
+            "input": {"a": [1, 2, 3, 4], "b": [2, 1, 4, 3]},
+            "expectedOutput": false
+        },
+        {
             "input": {"a": [7, 8, 9], "b": [7, 8, 10]},
             "expectedOutput": false
         }
