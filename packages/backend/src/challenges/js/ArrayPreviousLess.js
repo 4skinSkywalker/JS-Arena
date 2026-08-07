@@ -1,19 +1,18 @@
 function solution({items}) {
-    var res = [];
-
-    for (var i = 0; i < items.length; i++) {
-        for (var j = i - 1; j > -1; j--) {
-            if (items[j] < items[i]) {
-                res.push(items[j]);
+    const r = [];
+    const s = [];
+    for (let i = 0; i < items.length; i++) {
+        while (true) {
+            if (s[s.length-1] >= items[i]) {
+                s.pop();
+            } else {
+                r.push(s[s.length-1] ?? -1);
+                s.push(items[i]);
                 break;
             }
         }
-        if (j === -1) {
-            res.push(-1);
-        }
     }
-
-    return res;
+    return r;
 }
 
 module.exports = solution;
