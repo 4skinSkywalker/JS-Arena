@@ -10,6 +10,10 @@
             "expectedOutput": false
         },
         {
+            "input": {"ver1": "1.00.6", "ver2": "1.00.05"},
+            "expectedOutput": true
+        },
+        {
             "input": {"ver1": "1.1.9", "ver2": "1.1.82"},
             "expectedOutput": true
         },

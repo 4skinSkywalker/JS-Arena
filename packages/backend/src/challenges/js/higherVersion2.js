@@ -1,19 +1,8 @@
-function solution({ver1, ver2}) {
-    // Split the version strings into lists of integers
-    var versions1 = ver1.split('.').map(Number);
-    var versions2 = ver2.split('.').map(Number);
-
-    // Compare the versions
-    for(let i=0; i < versions1.length; i++){
-        if(versions1[i] > versions2[i]){
-            return 1;
-        }
-        else if(versions1[i] < versions2[i]){
-            return -1;
-        }
-    }
-
-    return 0;
+function solution({ver1: v1, ver2: v2}) {
+    const [j1, j2] = [v1, v2].map(v =>
+        +v.split`.`.map(x => (+x+``).padEnd(3, "0")).join``
+    );
+    return Math.sign(j1 - j2);
 }
 
 module.exports = solution;
