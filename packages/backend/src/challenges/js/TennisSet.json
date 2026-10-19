@@ -10,6 +10,10 @@
             "expectedOutput": false
         },
         {
+            "input": {"score1": 7, "score2": 4},
+            "expectedOutput": false
+        },
+        {
             "input": {"score1": 6, "score2": 5},
             "expectedOutput": false
         },
